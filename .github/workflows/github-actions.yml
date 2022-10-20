@@ -1,10 +1,10 @@
 name: Java CI
-run-name: ${{ github.actor }} pushed changes to $echo(${GITHUB_REF##*/}) 🚀
+run-name: ${{ github.actor }} pushed changes 🚀
 on: [push]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest, windows-latest, macos-latest
 
     steps:
       - uses: actions/checkout@v3
