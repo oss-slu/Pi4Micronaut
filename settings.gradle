@@ -1,0 +1,3 @@
+rootProject.name = "micronaut-pi4j"
+include 'components', 'pi4j-utils'
+
