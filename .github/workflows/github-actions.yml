@@ -1,5 +1,5 @@
 name: Java CI
-run-name: ${{ github.actor }} pushed changes to ${GITHUB_REF##*/} 🚀
+run-name: ${{ github.actor }} pushed changes to $echo(${GITHUB_REF##*/}) 🚀
 on: [push]
 
 jobs:
