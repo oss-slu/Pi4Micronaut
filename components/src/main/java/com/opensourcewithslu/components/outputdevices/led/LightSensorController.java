@@ -1,4 +1,4 @@
-package com.opensourcewithslu.components.inputdevices.led;
+package com.opensourcewithslu.components.outputdevices.led;
 
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.annotation.Controller;

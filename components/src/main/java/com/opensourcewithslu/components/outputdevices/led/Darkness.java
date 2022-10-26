@@ -1,4 +1,4 @@
-package com.opensourcewithslu.components.inputdevices.led;
+package com.opensourcewithslu.components.outputdevices.led;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.micronaut.core.annotation.Introspected;

@@ -1,4 +1,4 @@
-package com.opensourcewithslu.components.inputdevices.led;
+package com.opensourcewithslu.components.outputdevices.led;
 
 import com.pi4j.io.gpio.digital.DigitalOutput;
 import jakarta.inject.Named;

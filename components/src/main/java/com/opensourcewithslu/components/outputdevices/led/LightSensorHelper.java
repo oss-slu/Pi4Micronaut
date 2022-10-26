@@ -1,4 +1,4 @@
-package com.opensourcewithslu.components.inputdevices.led;
+package com.opensourcewithslu.components.outputdevices.led;
 
 import com.pi4j.io.gpio.digital.DigitalInput;
 import com.pi4j.io.gpio.digital.DigitalOutput;
@@ -17,7 +17,6 @@ public class LightSensorHelper {
     private DigitalOutput sensorOutput;
     private DigitalInput sensorInput;
 
-    private final LEDHelper ledHelper;
 
     private long startTime;
     private long endTime;
@@ -26,10 +25,9 @@ public class LightSensorHelper {
     private int darknessValue;
 
 
-    public LightSensorHelper(LEDHelper ledHelper,
+    public LightSensorHelper(
                              @Named("photo-resistor-output") DigitalOutput sensorOutput,
                              @Named("photo-resistor-input") DigitalInput sensorInput) {
-        this.ledHelper = ledHelper;
         this.sensorOutput = sensorOutput;
         this.sensorInput = sensorInput;
 
@@ -55,9 +53,9 @@ public class LightSensorHelper {
 
     private void updateLed(boolean illuminate) {
         if (illuminate) {
-            ledHelper.ledOn();
+
         } else {
-            ledHelper.ledOff();
+
         }
     }
 
