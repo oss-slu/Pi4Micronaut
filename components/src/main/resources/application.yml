@@ -14,7 +14,6 @@ pi4j:
       address: 18
       provider: pigpio-digital-input
   digital-output:
-    button:
     led:
       name: LED Output
       address: 22

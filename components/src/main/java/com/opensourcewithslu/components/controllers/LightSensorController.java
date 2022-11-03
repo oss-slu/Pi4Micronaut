@@ -1,5 +1,7 @@
-package com.opensourcewithslu.components.outputdevices.led;
+package com.opensourcewithslu.components.controllers;
 
+import com.opensourcewithslu.components.outputdevices.led.Darkness;
+import com.opensourcewithslu.components.outputdevices.led.LightSensorHelper;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
