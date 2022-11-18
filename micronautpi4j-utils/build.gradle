@@ -1,6 +1,6 @@
 plugins {
     id("com.github.johnrengelman.shadow") version "7.1.2"
-    id("io.micronaut.library") version "3.0.2"
+    id("io.micronaut.library") version "3.6.3"
 }
 
 repositories {
@@ -12,12 +12,17 @@ dependencies {
     implementation("io.micronaut:micronaut-http-client")
     implementation("jakarta.annotation:jakarta.annotation-api")
     runtimeOnly("ch.qos.logback:logback-classic")
+    implementation("io.micronaut:micronaut-jackson-databind")
     implementation("io.micronaut:micronaut-validation")
-    api 'com.pi4j:pi4j-core:2.0'
-    api 'com.pi4j:pi4j-plugin-raspberrypi:2.0'
-    api 'com.pi4j:pi4j-plugin-pigpio:2.0'
+    api 'com.pi4j:pi4j-core:2.2.1'
+    api 'com.pi4j:pi4j-plugin-raspberrypi:2.2.1'
+    api 'com.pi4j:pi4j-plugin-pigpio:2.2.1'
 }
 
+java {
+    sourceCompatibility = JavaVersion.toVersion("11")
+    targetCompatibility = JavaVersion.toVersion("11")
+}
 
 
 

@@ -12,11 +12,13 @@ pi4j:
     button-input:
       name: Push Button Input
       address: 18
+      pull: PULL_DOWN
+      debounce: 3000
       provider: pigpio-digital-input
   digital-output:
     led:
       name: LED Output
-      address: 22
+      address: 17
       shutdown: LOW
       initial: LOW
       provider: pigpio-digital-output

@@ -1,4 +1,4 @@
-package com.opensourcewithslu.components.utilities;
+package com.opensourcewithslu.utilities;
 
 import com.pi4j.io.gpio.digital.DigitalState;
 import io.micronaut.context.annotation.EachProperty;
