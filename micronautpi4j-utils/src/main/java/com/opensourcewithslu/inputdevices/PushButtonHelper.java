@@ -12,10 +12,11 @@ public class PushButtonHelper extends InputDevice {
     private static final Logger log = LoggerFactory.getLogger(PushButtonHelper.class);
 
     private DigitalInput buttonInput;
-    public Boolean isPressed = false;
+    public Boolean isPressed;
 
     public PushButtonHelper(@Named("button-input") DigitalInput buttonInput){
         this.buttonInput = buttonInput;
+        this.isPressed = buttonInput.isHigh();
     }
 
     @PostConstruct
@@ -23,7 +24,7 @@ public class PushButtonHelper extends InputDevice {
         log.info("Initializing Push Button");
 
         buttonInput.addListener(e->{
-           isPressed = !isPressed;
+           isPressed = buttonInput.isHigh();
         });
     }
 
