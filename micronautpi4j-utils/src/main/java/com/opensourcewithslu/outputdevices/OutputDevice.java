@@ -1,4 +1,4 @@
-package com.opensourcewithslu.components.outputdevices;
+package com.opensourcewithslu.outputdevices;
 
 public abstract class OutputDevice {
     public abstract void deviceOn();

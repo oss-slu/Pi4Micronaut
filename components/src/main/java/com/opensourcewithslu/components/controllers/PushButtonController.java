@@ -1,21 +1,27 @@
 package com.opensourcewithslu.components.controllers;
 
-import com.opensourcewithslu.components.inputdevices.pushbutton.PushButtonHelper;
+import com.opensourcewithslu.inputdevices.PushButtonHelper;
+import com.opensourcewithslu.outputdevices.LEDHelper;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 
 @Controller("/pushButton")
 public class PushButtonController {
     private final PushButtonHelper pushButtonHelper;
+    private final LEDHelper ledHelper;
 
-    public PushButtonController(PushButtonHelper pushButtonHelper) {
-        System.out.println("Push Button Controller Notification");
+    public PushButtonController(PushButtonHelper pushButtonHelper, LEDHelper ledHelper) {
         this.pushButtonHelper = pushButtonHelper;
+        this.ledHelper = ledHelper;
     }
 
-    @Get("/button")
-    public int checkThing(){
-        return 3;
+    @Get("/init")
+    public void initController(){
+        pushButtonHelper.addEventListener(e ->{
+            if(pushButtonHelper.isPressed){
+                ledHelper.switchState();
+            }
+        });
     }
 }
 

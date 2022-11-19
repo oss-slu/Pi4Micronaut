@@ -1,6 +1,4 @@
-package com.opensourcewithslu.components.outputdevices.led;
-
-import com.opensourcewithslu.components.outputdevices.OutputDevice;
+package com.opensourcewithslu.outputdevices;
 import com.pi4j.io.gpio.digital.DigitalOutput;
 import jakarta.inject.Named;
 import jakarta.inject.Singleton;
@@ -28,6 +26,15 @@ public class LEDHelper extends OutputDevice {
         if (ledOutput.isHigh()) {
             log.debug("Turning off LED");
             ledOutput.low();
+        }
+    }
+
+    public void switchState(){
+        if(ledOutput.isHigh()){
+            deviceOff();
+        }
+        else{
+            deviceOn();
         }
     }
 }
