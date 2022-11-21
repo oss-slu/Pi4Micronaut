@@ -15,6 +15,12 @@ pi4j:
       pull: PULL_DOWN
       debounce: 3000
       provider: pigpio-digital-input
+    slide-switch-input:
+      name: Slide Switch Input
+      address: 27
+      pull: PULL_DOWN
+      debounce: 3000
+      provider: pigpio-digital-input
   digital-output:
     led:
       name: LED Output
