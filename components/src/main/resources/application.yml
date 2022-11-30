@@ -3,34 +3,58 @@ micronaut:
     name: components
 pi4j:
   digital-input:
-    photo-resistor-input:
-      name: Photo Resistor Input
-      address: 4
-      debounce: 100000
-      pull: PULL_DOWN
-      provider: pigpio-digital-input
-    button-input:
-      name: Push Button Input
-      address: 18
-      pull: PULL_DOWN
-      debounce: 3000
-      provider: pigpio-digital-input
-    slide-switch-input:
-      name: Slide Switch Input
+#    photo-resistor-input:
+#      name: Photo Resistor Input
+#      address: 4
+#      debounce: 100000
+#      pull: PULL_DOWN
+#      provider: pigpio-digital-input
+#    button-input:
+#      name: Push Button Input
+#      address: 17
+#      pull: PULL_DOWN
+#      debounce: 3000
+#      provider: pigpio-digital-input
+#    slide-switch-input:
+#      name: Slide Switch Input
+#      address: 27
+#      pull: PULL_DOWN
+#      debounce: 3000
+#      provider: pigpio-digital-input
+    sw:
+      name: SW Output
       address: 27
+      debounce: 6000
       pull: PULL_DOWN
-      debounce: 3000
-      provider: pigpio-digital-input
-  digital-output:
-    led:
-      name: LED Output
-      address: 17
-      shutdown: LOW
-      initial: LOW
-      provider: pigpio-digital-output
-    photo-resistor-output:
-      name: Photo Resistor Output
-      address: 27
       shutdown: LOW
       initial: HIGH
-      provider: pigpio-digital-output
+      provider: pigpio-digital-input
+    clk:
+      name: CLK Output
+      address: 17
+      debounce: 500
+      pull: PULL_UP
+      shutdown: LOW
+      initial: HIGH
+      provider: pigpio-digital-input
+    dt:
+      name: DT Output
+      address: 18
+      debounce: 500
+      pull: PULL_UP
+      shutdown: LOW
+      initial: HIGH
+      provider: pigpio-digital-input
+#  digital-output:
+#    led:
+#      name: LED Output
+#      address: 17
+#      shutdown: LOW
+#      initial: LOW
+#      provider: pigpio-digital-output
+#    photo-resistor-output:
+#      name: Photo Resistor Output
+#      address: 27
+#      shutdown: LOW
+#      initial: HIGH
+#      provider: pigpio-digital-output
