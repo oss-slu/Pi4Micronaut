@@ -9,7 +9,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @Singleton
-@Context
 public class RotaryEncoderHelper extends InputDevice {
     private static final Logger log = LoggerFactory.getLogger(RotaryEncoderHelper.class);
 
@@ -40,8 +39,8 @@ public class RotaryEncoderHelper extends InputDevice {
         });
 
         sw.addListener(e -> {
-            log.info("Resetting globalCounter");
-            if(sw.isLow()) {
+            if(sw.isHigh()) {
+                log.info("Resetting globalCounter");
                 globalCounter = 0;
             }
 
