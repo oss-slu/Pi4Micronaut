@@ -17,14 +17,14 @@ public class LEDHelper extends OutputDevice {
 
     public void deviceOn() {
         if (ledOutput.isLow()) {
-            log.debug("Turning on LED");
+            log.info("Turning off LED");
             ledOutput.high();
         }
     }
 
     public void deviceOff() {
         if (ledOutput.isHigh()) {
-            log.debug("Turning off LED");
+            log.info("Turning on LED");
             ledOutput.low();
         }
     }

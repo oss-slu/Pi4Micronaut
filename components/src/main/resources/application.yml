@@ -2,6 +2,7 @@ micronaut:
   application:
     name: components
 pi4j:
+  ### DIGITAL INPUTS
   digital-input:
     photo-resistor-input:
       name: Photo Resistor Input
@@ -11,20 +12,47 @@ pi4j:
       provider: pigpio-digital-input
     button-input:
       name: Push Button Input
-      address: 18
+      address: 21
       pull: PULL_DOWN
       debounce: 3000
       provider: pigpio-digital-input
     slide-switch-input:
       name: Slide Switch Input
-      address: 27
+      address: 19
       pull: PULL_DOWN
       debounce: 3000
       provider: pigpio-digital-input
+    # Rotary Encoder
+    sw:
+      name: SW Output
+      address: 25
+      debounce: 6000
+      pull: PULL_DOWN
+      shutdown: LOW
+      initial: HIGH
+      provider: pigpio-digital-input
+    clk:
+      name: CLK Output
+      address: 23
+      debounce: 500
+      pull: PULL_UP
+      shutdown: LOW
+      initial: HIGH
+      provider: pigpio-digital-input
+    dt:
+      name: DT Output
+      address: 24
+      debounce: 500
+      pull: PULL_UP
+      shutdown: LOW
+      initial: HIGH
+      provider: pigpio-digital-input
+
+  ### DIGITAL OUTPUTS
   digital-output:
     led:
       name: LED Output
-      address: 17
+      address: 26
       shutdown: LOW
       initial: LOW
       provider: pigpio-digital-output
