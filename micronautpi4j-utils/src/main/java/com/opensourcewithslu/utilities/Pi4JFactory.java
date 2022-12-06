@@ -4,6 +4,7 @@ import com.pi4j.Pi4J;
 import com.pi4j.context.Context;
 import com.pi4j.io.gpio.digital.DigitalInput;
 import com.pi4j.io.gpio.digital.DigitalOutput;
+import com.pi4j.io.pwm.Pwm;
 import io.micronaut.context.annotation.Bean;
 import io.micronaut.context.annotation.EachBean;
 import io.micronaut.context.annotation.Factory;
@@ -39,5 +40,18 @@ public class Pi4JFactory {
                 .pull(config.getPull())
                 .provider(config.getProvider());
         return pi4jContext.create(inputConfigBuilder);
+    }
+
+    @EachBean(PwmConfiguration.class)
+    public Pwm createPWM(PwmConfiguration config, Context pi4jContext){
+        var pwmConfigBuilder = Pwm.newConfigBuilder(pi4jContext)
+                .id(config.getId())
+                .name(config.getName())
+                .address(config.getAddress())
+                .frequency(config.getFrequency())
+                .initial(config.getInitial())
+                .shutdown(config.getShutdown())
+                .provider(config.getProvider());
+        return pi4jContext.create(pwmConfigBuilder);
     }
 }
