@@ -13,18 +13,33 @@ import org.slf4j.LoggerFactory;
 public class LEDHelper extends OutputDevice {
     private static final Logger log = LoggerFactory.getLogger(LEDHelper.class);
 
-    private final DigitalOutput ledOutput;
+    private DigitalOutput ledOutput;
+    private final ApplicationContext appContext;
 
-    @Inject
-    ApplicationContext appContext;
-
-    public LEDHelper(@Named("led") DigitalOutput ledOutput) {
-        this.ledOutput = ledOutput;
+    public LEDHelper(ApplicationContext appContext){
+        this.appContext = appContext;
     }
 
-    public LEDHelper(String name){
-        DigitalOutput ledOutput = appContext.getBean(DigitalOutput.class, Qualifiers.byName(name));
-        this.ledOutput = ledOutput;
+//    @Inject
+//    ApplicationContext appContext;
+//
+//    public LEDHelper(@Named("led") DigitalOutput ledOutput, ApplicationContext appContext) {
+//        this.ledOutput = ledOutput;
+//    }
+//
+//    public LEDHelper(String name){
+//        DigitalOutput ledHold = appContext.getBean(DigitalOutput.class, Qualifiers.byName(name));
+//        this.ledOutput = ledHold;
+//    }
+//
+//    public LEDHelper(String name, ApplicationContext appContext){
+//        DigitalOutput ledHold = appContext.getBean(DigitalOutput.class, Qualifiers.byName(name));
+//
+//        this.ledOutput = ledHold;
+//    }
+
+    public void setBean(String name){
+        this.ledOutput = appContext.getBean(DigitalOutput.class, Qualifiers.byName(name));
     }
 
     public void deviceOn() {
