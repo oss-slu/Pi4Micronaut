@@ -2,6 +2,7 @@ package com.opensourcewithslu.utilities;
 
 import com.pi4j.io.spi.SpiMode;
 import io.micronaut.context.annotation.EachProperty;
+import io.micronaut.context.annotation.Parameter;
 
 @EachProperty("pi4j.spi")
 public class SpiConfiguration {
@@ -15,7 +16,7 @@ public class SpiConfiguration {
 
     private int baud;
 
-    public SpiConfiguration(String id) {
+    public SpiConfiguration(@Parameter String id) {
         this.id = id;
     }
 
