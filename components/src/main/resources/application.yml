@@ -22,32 +22,6 @@ pi4j:
       pull: PULL_DOWN
       debounce: 3000
       provider: pigpio-digital-input
-    # Rotary Encoder
-    sw:
-      name: SW Output
-      address: 25
-      debounce: 6000
-      pull: PULL_DOWN
-      shutdown: LOW
-      initial: HIGH
-      provider: pigpio-digital-input
-    clk:
-      name: CLK Output
-      address: 23
-      debounce: 500
-      pull: PULL_UP
-      shutdown: LOW
-      initial: HIGH
-      provider: pigpio-digital-input
-    dt:
-      name: DT Output
-      address: 24
-      debounce: 500
-      pull: PULL_UP
-      shutdown: LOW
-      initial: HIGH
-      provider: pigpio-digital-input
-
   ### DIGITAL OUTPUTS
   digital-output:
     led:
@@ -62,3 +36,28 @@ pi4j:
       shutdown: LOW
       initial: HIGH
       provider: pigpio-digital-output
+  multipin:
+    rotary-encoder:
+      name: Rotary-Encoder
+      addresses: [25, 23, 24]
+      debounces: [6000, 500, 500]
+      pulls: [PULL_DOWN, PULL_UP, PULL_UP]
+      shutdown: LOW
+      initial: HIGH
+      provider: pigpio-digital-input
+#  clk:
+#    name: CLK Output
+#    address: 23
+#    debounce: 500
+#    pull: PULL_UP
+#    shutdown: LOW
+#    initial: HIGH
+#    provider: pigpio-digital-input
+#  dt:
+#    name: DT Output
+#    address: 24
+#    debounce: 500
+#    pull: PULL_UP
+#    shutdown: LOW
+#    initial: HIGH
+#    provider: pigpio-digital-input
