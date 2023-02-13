@@ -8,7 +8,7 @@ import io.micronaut.http.annotation.Get;
 @Controller("/pushButton")
 public class PushButtonController {
     private final PushButtonHelper pushButtonHelper;
-    private final LEDHelper ledHelper;
+    private final LEDHelper ledHelper; //= new LEDHelper("led");
 
     public PushButtonController(PushButtonHelper pushButtonHelper, LEDHelper ledHelper) {
         this.pushButtonHelper = pushButtonHelper;
