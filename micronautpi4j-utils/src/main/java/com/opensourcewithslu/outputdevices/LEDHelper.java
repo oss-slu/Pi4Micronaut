@@ -14,32 +14,9 @@ public class LEDHelper extends OutputDevice {
     private static final Logger log = LoggerFactory.getLogger(LEDHelper.class);
 
     private DigitalOutput ledOutput;
-    private final ApplicationContext appContext;
 
-    public LEDHelper(ApplicationContext appContext){
-        this.appContext = appContext;
-    }
-
-//    @Inject
-//    ApplicationContext appContext;
-//
-//    public LEDHelper(@Named("led") DigitalOutput ledOutput, ApplicationContext appContext) {
-//        this.ledOutput = ledOutput;
-//    }
-//
-//    public LEDHelper(String name){
-//        DigitalOutput ledHold = appContext.getBean(DigitalOutput.class, Qualifiers.byName(name));
-//        this.ledOutput = ledHold;
-//    }
-//
-//    public LEDHelper(String name, ApplicationContext appContext){
-//        DigitalOutput ledHold = appContext.getBean(DigitalOutput.class, Qualifiers.byName(name));
-//
-//        this.ledOutput = ledHold;
-//    }
-
-    public void setBean(String name){
-        this.ledOutput = appContext.getBean(DigitalOutput.class, Qualifiers.byName(name));
+    public LEDHelper(DigitalOutput ledOutput){
+        this.ledOutput = ledOutput;
     }
 
     public void deviceOn() {
