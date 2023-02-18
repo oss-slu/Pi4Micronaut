@@ -1,1 +1,14 @@
+= MicronautPi4J documentation
+:docinfo: shared
+:doctype: book
+:title: MicronautPi4J documentation
+:toc: left
+:toclevels: 2
+:sectanchors:
+:sectlinks:
+:sectnums:
 
+toc::[]
+
+== Hello World!
+This is the introduction to the **MicronautPi4J Documentation**!
