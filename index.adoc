@@ -3,12 +3,26 @@
 :doctype: book
 :title: MicronautPi4J documentation
 :toc: left
-:toclevels: 2
+:toclevels: 4 
 :sectanchors:
 :sectlinks:
 :sectnums:
 
 toc::[]
 
-== Hello World!
+== Introduction
 This is the introduction to the **MicronautPi4J Documentation**!
+
+== Adding to a project
+
+== Using the library
+=== Input Components
+
+====Push Button
+====Slide Switch
+
+=== Output Components
+==== LED 
+
+
+== Contributing to the library
