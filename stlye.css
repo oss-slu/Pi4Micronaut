@@ -5,6 +5,11 @@ body {
 	margin: 0;
 }
 
+.anchor{
+	color: green;
+	text-decoration: none;
+}
+
 .article {
 	display: grid;
 	grid-template-areas: "nav content";
