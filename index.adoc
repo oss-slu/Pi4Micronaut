@@ -12,6 +12,8 @@ toc::[]
 
 == Introduction
 This is the introduction to the **MicronautPi4J Documentation**!
+=== Currently Supported Components
+=== Components In Progress
 
 == Adding to a project
 
