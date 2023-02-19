@@ -5,7 +5,6 @@
 :toc: left
 :toclevels: 4 
 :sectanchors:
-:sectlinks:
 :sectnums:
 
 toc::[]
@@ -14,15 +13,32 @@ toc::[]
 This is the introduction to the **MicronautPi4J Documentation**!
 
 === Currently Supported Components
+.Input Components
+* Push Button
+* Slide Switch
+* Rotary Encoder
+
+.Output Components
+* LED
+
+.Misc. Components
 
 === Components In Progress
+* RGB LED
+* RFID Scanner
+* LCD Display
+* Servo Motor
 
 == Adding to a project
 
 == Using the library
+
+=== General Info
+
 === Input Components
 
 ==== Push Button
+
 ==== Slide Switch
 
 === Output Components
