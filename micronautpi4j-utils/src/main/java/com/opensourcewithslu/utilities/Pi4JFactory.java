@@ -62,7 +62,7 @@ public class Pi4JFactory {
     }
 
     @EachBean(SpiConfiguration.class)
-    public SpiConfig createDigitalOutput(SpiConfiguration config, Context pi4jContext) {
+    public SpiConfig createSpi(SpiConfiguration config, Context pi4jContext) {
         var outputConfigBuilder = Spi.newConfigBuilder(pi4jContext)
                 .id(config.getId())
                 .channel(config.getChannel())
