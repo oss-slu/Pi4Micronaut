@@ -61,7 +61,7 @@ public class Pi4JFactory {
     }
 
     @EachBean(SpiConfiguration.class)
-    public SpiConfig createDigitalOutput(SpiConfiguration config, Context pi4jContext) {
+    public SpiConfig createSpi(SpiConfiguration config, Context pi4jContext) {
         var outputConfigBuilder = Spi.newConfigBuilder(pi4jContext)
                 .id(config.getId())
                 .channel(config.getChannel())
@@ -72,7 +72,7 @@ public class Pi4JFactory {
     }
 
     @EachBean(i2cConfiguration.class)
-    public I2CConfig createDigitalOutput(i2cConfiguration config, Context pi4jContext) {
+    public I2CConfig createI2C(i2cConfiguration config, Context pi4jContext) {
         var outputConfigBuilder = I2C.newConfigBuilder(pi4jContext)
                 .id(config.getId())
                 .name(config.getName())
