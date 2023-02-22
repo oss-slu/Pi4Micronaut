@@ -67,8 +67,8 @@ public class Pi4JFactory {
     public SpiConfig createSpi(SpiConfiguration config, Context pi4jContext) {
         var outputConfigBuilder = Spi.newConfigBuilder(pi4jContext)
                 .id(config.getId())
-                .channel(config.getChannel())
-                .mode(config.getMode())
+                .name(config.getName())
+                .address(config.getChannel())
                 .baud(config.getBaud())
                 .build();
         return outputConfigBuilder;
