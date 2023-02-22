@@ -44,4 +44,5 @@ public class SoftPwmConfiguration {
     public void setRange(int range) {
         this.range = range;
     }
+
 }
