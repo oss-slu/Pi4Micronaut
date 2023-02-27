@@ -35,6 +35,7 @@ This is the introduction to the **MicronautPi4J Documentation**!
 === DigitalInput
 To define in application.yaml add digital-input as a field under pi4j, then add each component under digital-input
 Each component will need
+
 * name: Name of the component
 * address: GPIO pin associated with component
 * debounce:
@@ -49,6 +50,7 @@ Each component will need
 === DigitalOutput
 To define in application.yaml add digital-output as a field under pi4j, then add each component under digital-input
 Each component will need
+
 * name: Name of the component
 * address: GPIO pin associated with component
 * initial: Initial value, either LOW or HIGH
@@ -61,6 +63,7 @@ Each component will need
 === PWM
 To define in application.yaml add digital-input as a field under pi4j, then add each component under digital-input
 Each component will need
+
 * name: Name of the component
 * address: GPIO pin associated with component
 * pwmType: Either SOFTWARE or HARDWARE based upon which type of PWM you wish to use

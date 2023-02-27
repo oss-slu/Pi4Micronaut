@@ -217,12 +217,26 @@ th {
 <h3 id="_digitalinput"><a class="anchor" href="#_digitalinput"></a>2.1. DigitalInput</h3>
 <div class="paragraph">
 <p>To define in application.yaml add digital-input as a field under pi4j, then add each component under digital-input
-Each component will need
-* name: Name of the component
-* address: GPIO pin associated with component
-* debounce:
-* pull: Either PULL_UP or PULL_DOWN depending on component
-* provider: pigpio-digital-input</p>
+Each component will need</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>name: Name of the component</p>
+</li>
+<li>
+<p>address: GPIO pin associated with component</p>
+</li>
+<li>
+<p>debounce:</p>
+</li>
+<li>
+<p>pull: Either PULL_UP or PULL_DOWN depending on component</p>
+</li>
+<li>
+<p>provider: pigpio-digital-input</p>
+</li>
+</ul>
 </div>
 <div class="ulist">
 <div class="title">Components</div>
@@ -243,12 +257,26 @@ Each component will need
 <h3 id="_digitaloutput"><a class="anchor" href="#_digitaloutput"></a>2.2. DigitalOutput</h3>
 <div class="paragraph">
 <p>To define in application.yaml add digital-output as a field under pi4j, then add each component under digital-input
-Each component will need
-* name: Name of the component
-* address: GPIO pin associated with component
-* initial: Initial value, either LOW or HIGH
-* shutdown: State to take when program successfully shuts down properly, either LOW or HIGH
-* provider: pigpio-digital-output</p>
+Each component will need</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>name: Name of the component</p>
+</li>
+<li>
+<p>address: GPIO pin associated with component</p>
+</li>
+<li>
+<p>initial: Initial value, either LOW or HIGH</p>
+</li>
+<li>
+<p>shutdown: State to take when program successfully shuts down properly, either LOW or HIGH</p>
+</li>
+<li>
+<p>provider: pigpio-digital-output</p>
+</li>
+</ul>
 </div>
 <div class="ulist">
 <div class="title">Components</div>
@@ -263,11 +291,23 @@ Each component will need
 <h3 id="_pwm"><a class="anchor" href="#_pwm"></a>2.3. PWM</h3>
 <div class="paragraph">
 <p>To define in application.yaml add digital-input as a field under pi4j, then add each component under digital-input
-Each component will need
-* name: Name of the component
-* address: GPIO pin associated with component
-* pwmType: Either SOFTWARE or HARDWARE based upon which type of PWM you wish to use
-* provider: pigpio-pwm</p>
+Each component will need</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>name: Name of the component</p>
+</li>
+<li>
+<p>address: GPIO pin associated with component</p>
+</li>
+<li>
+<p>pwmType: Either SOFTWARE or HARDWARE based upon which type of PWM you wish to use</p>
+</li>
+<li>
+<p>provider: pigpio-pwm</p>
+</li>
+</ul>
 </div>
 <div class="ulist">
 <div class="title">Components</div>
@@ -344,7 +384,7 @@ Each component will need
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-02-27 19:33:33 UTC
+Last updated 2023-02-27 19:36:35 UTC
 </div>
 </div>
 </body>
