@@ -121,24 +121,33 @@ th {
 <li><a href="#_components_in_progress">1.2. Components In Progress</a></li>
 </ul>
 </li>
-<li><a href="#_adding_to_a_project">2. Adding to a project</a></li>
-<li><a href="#_using_the_library">3. Using the library</a>
+<li><a href="#_types_of_components">2. Types of Components</a>
 <ul class="sectlevel2">
-<li><a href="#_general_info">3.1. General Info</a></li>
-<li><a href="#_input_components">3.2. Input Components</a>
+<li><a href="#_digitalinput">2.1. DigitalInput</a></li>
+<li><a href="#_digitaloutput">2.2. DigitalOutput</a></li>
+<li><a href="#_pwm">2.3. PWM</a></li>
+<li><a href="#_spi">2.4. SPI</a></li>
+<li><a href="#_i2c">2.5. I2C</a></li>
+</ul>
+</li>
+<li><a href="#_adding_to_a_project">3. Adding to a project</a></li>
+<li><a href="#_using_the_library">4. Using the library</a>
+<ul class="sectlevel2">
+<li><a href="#_general_info">4.1. General Info</a></li>
+<li><a href="#_input_components">4.2. Input Components</a>
 <ul class="sectlevel3">
-<li><a href="#_push_button">3.2.1. Push Button</a></li>
-<li><a href="#_slide_switch">3.2.2. Slide Switch</a></li>
+<li><a href="#_push_button">4.2.1. Push Button</a></li>
+<li><a href="#_slide_switch">4.2.2. Slide Switch</a></li>
 </ul>
 </li>
-<li><a href="#_output_components">3.3. Output Components</a>
+<li><a href="#_output_components">4.3. Output Components</a>
 <ul class="sectlevel3">
-<li><a href="#_led">3.3.1. LED</a></li>
+<li><a href="#_led">4.3.1. LED</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#_contributing_to_the_library">4. Contributing to the library</a></li>
+<li><a href="#_contributing_to_the_library">5. Contributing to the library</a></li>
 </ul>
 </div>
 </div>
@@ -202,40 +211,132 @@ th {
 </div>
 </div>
 <div class="sect1">
-<h2 id="_adding_to_a_project"><a class="anchor" href="#_adding_to_a_project"></a>2. Adding to a project</h2>
+<h2 id="_types_of_components"><a class="anchor" href="#_types_of_components"></a>2. Types of Components</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_digitalinput"><a class="anchor" href="#_digitalinput"></a>2.1. DigitalInput</h3>
+<div class="paragraph">
+<p>To define in application.yaml add digital-input as a field under pi4j, then add each component under digital-input
+Each component will need
+* name: Name of the component
+* address: GPIO pin associated with component
+* debounce:
+* pull: Either PULL_UP or PULL_DOWN depending on component
+* provider: pigpio-digital-input</p>
+</div>
+<div class="ulist">
+<div class="title">Components</div>
+<ul>
+<li>
+<p>Push Button</p>
+</li>
+<li>
+<p>Slide Switch</p>
+</li>
+<li>
+<p>Rotary Encoder</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_digitaloutput"><a class="anchor" href="#_digitaloutput"></a>2.2. DigitalOutput</h3>
+<div class="paragraph">
+<p>To define in application.yaml add digital-output as a field under pi4j, then add each component under digital-input
+Each component will need
+* name: Name of the component
+* address: GPIO pin associated with component
+* initial: Initial value, either LOW or HIGH
+* shutdown: State to take when program successfully shuts down properly, either LOW or HIGH
+* provider: pigpio-digital-output</p>
+</div>
+<div class="ulist">
+<div class="title">Components</div>
+<ul>
+<li>
+<p>LED</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_pwm"><a class="anchor" href="#_pwm"></a>2.3. PWM</h3>
+<div class="paragraph">
+<p>To define in application.yaml add digital-input as a field under pi4j, then add each component under digital-input
+Each component will need
+* name: Name of the component
+* address: GPIO pin associated with component
+* pwmType: Either SOFTWARE or HARDWARE based upon which type of PWM you wish to use
+* provider: pigpio-pwm</p>
+</div>
+<div class="ulist">
+<div class="title">Components</div>
+<ul>
+<li>
+<p>RGB LED</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_spi"><a class="anchor" href="#_spi"></a>2.4. SPI</h3>
+<div class="ulist">
+<div class="title">Components</div>
+<ul>
+<li>
+<p>RFID Scanner</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_i2c"><a class="anchor" href="#_i2c"></a>2.5. I2C</h3>
+<div class="ulist">
+<div class="title">Components</div>
+<ul>
+<li>
+<p>LCD Screen</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_adding_to_a_project"><a class="anchor" href="#_adding_to_a_project"></a>3. Adding to a project</h2>
 <div class="sectionbody">
 
 </div>
 </div>
 <div class="sect1">
-<h2 id="_using_the_library"><a class="anchor" href="#_using_the_library"></a>3. Using the library</h2>
+<h2 id="_using_the_library"><a class="anchor" href="#_using_the_library"></a>4. Using the library</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_general_info"><a class="anchor" href="#_general_info"></a>3.1. General Info</h3>
+<h3 id="_general_info"><a class="anchor" href="#_general_info"></a>4.1. General Info</h3>
 
 </div>
 <div class="sect2">
-<h3 id="_input_components"><a class="anchor" href="#_input_components"></a>3.2. Input Components</h3>
+<h3 id="_input_components"><a class="anchor" href="#_input_components"></a>4.2. Input Components</h3>
 <div class="sect3">
-<h4 id="_push_button"><a class="anchor" href="#_push_button"></a>3.2.1. Push Button</h4>
+<h4 id="_push_button"><a class="anchor" href="#_push_button"></a>4.2.1. Push Button</h4>
 
 </div>
 <div class="sect3">
-<h4 id="_slide_switch"><a class="anchor" href="#_slide_switch"></a>3.2.2. Slide Switch</h4>
+<h4 id="_slide_switch"><a class="anchor" href="#_slide_switch"></a>4.2.2. Slide Switch</h4>
 
 </div>
 </div>
 <div class="sect2">
-<h3 id="_output_components"><a class="anchor" href="#_output_components"></a>3.3. Output Components</h3>
+<h3 id="_output_components"><a class="anchor" href="#_output_components"></a>4.3. Output Components</h3>
 <div class="sect3">
-<h4 id="_led"><a class="anchor" href="#_led"></a>3.3.1. LED</h4>
+<h4 id="_led"><a class="anchor" href="#_led"></a>4.3.1. LED</h4>
 
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_contributing_to_the_library"><a class="anchor" href="#_contributing_to_the_library"></a>4. Contributing to the library</h2>
+<h2 id="_contributing_to_the_library"><a class="anchor" href="#_contributing_to_the_library"></a>5. Contributing to the library</h2>
 <div class="sectionbody">
 
 </div>
@@ -243,7 +344,7 @@ th {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-02-20 13:18:51 UTC
+Last updated 2023-02-27 19:33:33 UTC
 </div>
 </div>
 </body>
