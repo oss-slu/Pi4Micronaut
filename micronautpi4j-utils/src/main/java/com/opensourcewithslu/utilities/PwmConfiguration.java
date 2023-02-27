@@ -58,8 +58,12 @@ public class PwmConfiguration {
         return pwmType;
     }
 
-    public void setPwmType(PwmType pwmType) {
-        this.pwmType = pwmType;
+    public void setPwmType(String pwmType) {
+        if(pwmType.equals("SOFTWARE")){
+            this.pwmType = PwmType.SOFTWARE;
+        } else if (pwmType.equals("HARDWARE")) {
+            this.pwmType = PwmType.HARDWARE;
+        }
     }
 
     public String getProvider() {
