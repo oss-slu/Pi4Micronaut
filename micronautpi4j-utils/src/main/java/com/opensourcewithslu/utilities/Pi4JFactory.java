@@ -48,16 +48,18 @@ public class Pi4JFactory {
     }
 
     @EachBean(PwmConfiguration.class)
-    public PwmConfig createPwm(PwmConfiguration config, Context pi4jContext) {
-        var outputConfigBuilder = Pwm.newConfigBuilder(pi4jContext)
-                .id(config.getId())
-                .name(config.getName())
-                .address(config.getAddress())
-                .pwmType(config.getPwmType())
-                .provider(config.getProvider())
-                .initial(config.getInital())
-                .shutdown(config.getShutdown())
-                .build();
+    public Pwm createPwm(PwmConfiguration config, Context pi4jContext) {
+        var outputConfigBuilder = pi4jContext.create(
+                Pwm.newConfigBuilder(pi4jContext)
+                    .id(config.getId())
+                    .name(config.getName())
+                    .address(config.getAddress())
+                    .pwmType(config.getPwmType())
+                    .provider(config.getProvider())
+                    .initial(config.getInital())
+                    .shutdown(config.getShutdown())
+                    .build()
+            );
         return outputConfigBuilder;
     }
 
