@@ -21,8 +21,8 @@ public class RFidHelper extends InputDevice {
     private Context context;
     private EventHandler<RfidCard> handler;
 
-    public RFidHelper(SpiConfig config, int reset){
-        this.context = Pi4J.newAutoContext();
+    public RFidHelper(SpiConfig config, int reset, Context pi4jContext){
+        this.context = pi4jContext;
         this.scanner = new RfidComponent(this.context, reset, config.getAddress(), config.getBaud());
     }
     public RFidHelper(SpiConfig config){
