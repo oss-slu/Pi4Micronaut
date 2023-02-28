@@ -82,6 +82,7 @@ public class Pi4JFactory {
                     .shutdown(config.getShutdown())
                     .build()
             );
+
         return outputConfigBuilder;
     }
 
