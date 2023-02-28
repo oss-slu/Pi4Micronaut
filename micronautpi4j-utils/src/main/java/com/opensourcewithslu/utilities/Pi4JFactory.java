@@ -28,7 +28,6 @@ public class Pi4JFactory {
     @Singleton
     @Bean(preDestroy = "shutdown")
     public com.pi4j.context.Context createPi4jContext() {
-        // Initialize PiGPIO
         final var piGpio = PiGpio.newNativeInstance();
 
         // Build Pi4J context with this platform and PiGPIO providers
