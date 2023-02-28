@@ -5,8 +5,8 @@ pi4j:
   i2c:
     lcd:
       name: lcd
-      bus: 0
-      device: 2
+      bus: 1
+      device: 0x27
   ### DIGITAL INPUTS
   digital-input:
     photo-resistor-input:

@@ -14,7 +14,7 @@ dependencies {
     runtimeOnly("ch.qos.logback:logback-classic")
     implementation("io.micronaut:micronaut-jackson-databind")
     implementation("io.micronaut:micronaut-validation")
-    implementation files("libs/crowpi.jar")
+    implementation files("libs/crowpi.jar", "libs/components.jar")
     api 'com.pi4j:pi4j-core:2.2.1'
     api 'com.pi4j:pi4j-plugin-raspberrypi:2.2.1'
     api 'com.pi4j:pi4j-plugin-pigpio:2.2.1'
