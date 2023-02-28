@@ -16,7 +16,7 @@ public class LCD1602Helper {
     private final LcdDisplay lcdDisplay;
 
     public LCD1602Helper(I2CConfig i2CConfig, Context pi4jContext){
-        this.lcdDisplay = new LcdDisplay(pi4jContext, 4, 20);
+        this.lcdDisplay = new LcdDisplay(pi4jContext, 4, 16);
         log.info("In constructor");
         lcdDisplay.setDisplayBacklight(true);
         log.info("backlight should be on");

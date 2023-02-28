@@ -16,8 +16,8 @@ public class lcdController {
         this.lcdHelper = new LCD1602Helper(i2cConfig, pi4jContext);
     }
 
-    @Get("/write")
-    public void writeData(){
-        lcdHelper.writeText("It Worked");
+    @Get("/write/{text}")
+    public void writeData(String text){
+        lcdHelper.writeText(text);
     }
 }
