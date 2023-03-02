@@ -1,48 +1,55 @@
 package com.opensourcewithslu.inputdevices;
-import com.pi4j.Pi4J;
 import com.pi4j.crowpi.components.exceptions.RfidException;
 import com.pi4j.io.gpio.digital.DigitalStateChangeListener;
 import com.pi4j.context.Context;
 import com.pi4j.io.spi.SpiConfig;
+import io.micronaut.context.annotation.Prototype;
 import jakarta.annotation.PostConstruct;
-import jakarta.inject.Singleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.pi4j.crowpi.components.RfidComponent;
-import com.pi4j.crowpi.components.internal.rfid.RfidCard;
-import com.pi4j.crowpi.components.events.EventHandler;
+
+import java.util.concurrent.atomic.AtomicReference;
 
 
-@Singleton
-public class RFidHelper extends InputDevice {
+@Prototype
+public class RFidHelper {
     private static final Logger log = LoggerFactory.getLogger(RFidHelper.class);
 
     private RfidComponent scanner;
-    private Context context;
-    private EventHandler<RfidCard> handler;
 
     public RFidHelper(SpiConfig config, int reset, Context pi4jContext){
-        this.context = pi4jContext;
-        this.scanner = new RfidComponent(this.context, reset, config.getAddress(), config.getBaud());
-    }
-    public RFidHelper(SpiConfig config){
-        this.context = Pi4J.newAutoContext();
-        this.scanner = new RfidComponent(this.context, config.getAddress(), config.getBaud());
+        this.scanner = new RfidComponent(pi4jContext, reset, config.getAddress(), config.getBaud());
     }
 
-    @PostConstruct
-    public void initialize(){
-        log.info("starting Rfid scanner");
+    public RFidHelper(SpiConfig config, Context pi4jContext){
+        this.scanner = new RfidComponent(pi4jContext, config.getAddress(), config.getBaud());
+    }
+    public void writeCard(Object data){
+        log.info("Tap to write to card");
         scanner.waitForAnyCard(card -> {
-            log.info("We did it. Hooray.");
+            try {
+                card.writeObject(data);
+            } catch (RfidException e){
+                log.info(e.getMessage());
+            }
         });
     }
-
-    public void addEventListener(DigitalStateChangeListener function)  {
-
+    public Object readFromCard(){
+        log.info("Tap to read card");
+        AtomicReference<Object> data = new AtomicReference<>(new Object());
+        scanner.waitForAnyCard(card -> {
+            try {
+                data.set(card.readObject());
+            } catch (RfidException e){
+                log.info(e.getMessage());
+            }
+        });
+        return data;
     }
 
-    public void removeEventListener(DigitalStateChangeListener function){
-
+    public void resetScanner(){
+        log.info("Resetting Scanner");
+        scanner.reset();
     }
 }

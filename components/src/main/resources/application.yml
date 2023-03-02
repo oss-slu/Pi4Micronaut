@@ -5,7 +5,7 @@ pi4j:
   spi:
     rfid:
       name: MFRC522
-      address: 0
+      address: 8
       baud: 500000
       reset-pin: 25
   ### DIGITAL INPUTS
