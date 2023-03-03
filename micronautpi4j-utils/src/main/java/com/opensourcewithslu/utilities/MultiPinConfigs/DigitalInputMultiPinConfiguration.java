@@ -36,6 +36,7 @@ public class DigitalInputMultiPinConfiguration {
     }
 
     public void setAddresses(String addresses) {
+        addresses = addresses.replaceAll("\\s", "");
         this.addresses = Arrays.stream(addresses.split(",")).mapToInt(Integer::parseInt).toArray();
     }
 
@@ -48,7 +49,7 @@ public class DigitalInputMultiPinConfiguration {
         PullResistance[] pullResistances = new PullResistance[pulls.length];
 
         for(int i = 0; i < pulls.length; i++){
-            if(pulls[i].equals("PULL_DOWN")){
+            if(pulls[i].trim().equals("PULL_DOWN")){
                 pullResistances[i] = PullResistance.PULL_DOWN;
             }
             else{
@@ -64,6 +65,7 @@ public class DigitalInputMultiPinConfiguration {
     }
 
     public void setDebounces(String debounces) {
+        debounces = debounces.replaceAll("\\s", "");
         this.debounces = Arrays.stream(debounces.split(",")).mapToLong(Long::parseLong).toArray();
     }
 
