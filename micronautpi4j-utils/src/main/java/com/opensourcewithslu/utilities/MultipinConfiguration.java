@@ -4,79 +4,21 @@ import com.pi4j.io.gpio.digital.DigitalState;
 import com.pi4j.io.gpio.digital.PullResistance;
 import io.micronaut.context.annotation.EachProperty;
 import io.micronaut.context.annotation.Parameter;
+import io.micronaut.context.annotation.Prototype;
 
-@EachProperty("pi4j.mulitpin")
+import java.util.Arrays;
+import java.util.List;
+
 public class MultipinConfiguration {
     private final String id;
-    private String name;
-    private int[] addresses;
-    private long[] debounces;
-    private PullResistance[] pulls;
-    private DigitalState inital;
-    private DigitalState shutdown;
-    private String provider;
+    private final Object[] components;
 
-    public MultipinConfiguration(@Parameter String id) {
+    public MultipinConfiguration(String id, Object[] components){
         this.id = id;
+        this.components = components;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int[] getAddresses() {
-        return addresses;
-    }
-
-    public void setAddresses(int[] addresses) {
-        this.addresses = addresses;
-    }
-
-    public long[] getDebounces() {
-        return debounces;
-    }
-
-    public void setDebounces(long[] debounces) {
-        this.debounces = debounces;
-    }
-
-    public PullResistance[] getPulls() {
-        return pulls;
-    }
-
-    public void setPulls(PullResistance[] pulls) {
-        this.pulls = pulls;
-    }
-
-    public DigitalState getInital() {
-        return inital;
-    }
-
-    public void setInital(DigitalState inital) {
-        this.inital = inital;
-    }
-
-    public DigitalState getShutdown() {
-        return shutdown;
-    }
-
-    public void setShutdown(DigitalState shutdown) {
-        this.shutdown = shutdown;
-    }
-
-    public String getProvider() {
-        return provider;
-    }
-
-    public void setProvider(String provider) {
-        this.provider = provider;
+    public Object[] getComponents() {
+        return components;
     }
 }
