@@ -1,4 +1,5 @@
 package com.opensourcewithslu.inputdevices;
+import com.opensourcewithslu.utilities.MultiPinConfigs.DigitalInputMultiPinConfiguration;
 import com.opensourcewithslu.utilities.MultipinConfiguration;
 import com.opensourcewithslu.utilities.Pi4JMultipinFactory;
 import com.pi4j.io.gpio.digital.DigitalInput;
@@ -30,19 +31,29 @@ public class RotaryEncoderHelper extends InputDevice {
     public void initialize(){
         log.info("Initializing Rotary Encoder");
 
-        Pi4JMultipinFactory multipinFactory = new Pi4JMultipinFactory();
+        DigitalInput[] allPins = (DigitalInput[]) this.multiPin.getComponents();
 
-        DigitalInput[] allPins = multipinFactory.multiPinInput(multiPin);
+        log.info("Setting pins");
         this.sw = allPins[0];
-        this.clk = allPins[1];
-        this.dt = allPins[2];
+        this.dt = allPins[1];
+        this.clk = allPins[2];
 
         clk.addListener(e -> {
             if(clk.equals(dt.state())){
-                globalCounter++;
+                if(globalCounter == 2147483647){
+                    globalCounter = -2147483647;
+                }
+                else {
+                    globalCounter++;
+                }
             }
             else if (!clk.equals(dt.state())){
-                globalCounter--;
+                if(globalCounter == -2147483648){
+                    globalCounter = 2147483646;
+                }
+                else{
+                    globalCounter--;
+                }
             }
             log.info("Global Counter is {}", globalCounter);
         });

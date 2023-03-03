@@ -36,12 +36,12 @@ pi4j:
       shutdown: LOW
       initial: HIGH
       provider: pigpio-digital-output
-  multipin:
+  multi-digital-input:
     rotary-encoder:
-      name: Rotary-Encoder
-      addresses: [25, 23, 24]
-      debounces: [6000, 500, 500]
-      pulls: [PULL_DOWN, PULL_UP, PULL_UP]
+      name: Rotary Encoder
+      addresses: 27,18,17
+      debounces: 6000,500,500
+      pulls: PULL_DOWN,PULL_UP,PULL_UP
       shutdown: LOW
       initial: HIGH
       provider: pigpio-digital-input
