@@ -117,37 +117,39 @@ th {
 <ul class="sectlevel1">
 <li><a href="#_introduction">1. Introduction</a>
 <ul class="sectlevel2">
-<li><a href="#_currently_supported_components">1.1. Currently Supported Components</a></li>
-<li><a href="#_components_in_progress">1.2. Components In Progress</a></li>
-</ul>
-</li>
-<li><a href="#_types_of_components">2. Types of Components</a>
-<ul class="sectlevel2">
-<li><a href="#_digitalinput">2.1. DigitalInput</a></li>
-<li><a href="#_digitaloutput">2.2. DigitalOutput</a></li>
-<li><a href="#_pwm">2.3. PWM</a></li>
-<li><a href="#_spi">2.4. SPI</a></li>
-<li><a href="#_i2c">2.5. I2C</a></li>
-</ul>
-</li>
-<li><a href="#_adding_to_a_project">3. Adding to a project</a></li>
-<li><a href="#_using_the_library">4. Using the library</a>
-<ul class="sectlevel2">
-<li><a href="#_general_info">4.1. General Info</a></li>
-<li><a href="#_input_components">4.2. Input Components</a>
+<li><a href="#_general_information">1.1. General Information</a></li>
+<li><a href="#_adding_the_library_to_a_project">1.2. Adding the library to a project</a></li>
+<li><a href="#_using_the_library">1.3. Using the Library</a></li>
+<li><a href="#_digitalinput">1.4. DigitalInput</a>
 <ul class="sectlevel3">
-<li><a href="#_push_button">4.2.1. Push Button</a></li>
-<li><a href="#_slide_switch">4.2.2. Slide Switch</a></li>
+<li><a href="#_push_button">1.4.1. Push Button</a></li>
+<li><a href="#_slide_switch">1.4.2. Slide Switch</a></li>
+<li><a href="#_rotary_encoder">1.4.3. Rotary Encoder</a></li>
 </ul>
 </li>
-<li><a href="#_output_components">4.3. Output Components</a>
+<li><a href="#_digitaloutput">1.5. DigitalOutput</a>
 <ul class="sectlevel3">
-<li><a href="#_led">4.3.1. LED</a></li>
+<li><a href="#_led">1.5.1. LED</a></li>
+</ul>
+</li>
+<li><a href="#_pwm">1.6. PWM</a>
+<ul class="sectlevel3">
+<li><a href="#_rgb_led">1.6.1. RGB LED</a></li>
+</ul>
+</li>
+<li><a href="#_spi">1.7. SPI</a>
+<ul class="sectlevel3">
+<li><a href="#_rfid_scanner">1.7.1. RFID Scanner</a></li>
+</ul>
+</li>
+<li><a href="#_i2c">1.8. I2C</a>
+<ul class="sectlevel3">
+<li><a href="#_lcd_screen">1.8.1. LCD Screen</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#_contributing_to_the_library">5. Contributing to the library</a></li>
+<li><a href="#_contributing_to_the_library">2. Contributing to the library</a></li>
 </ul>
 </div>
 </div>
@@ -164,57 +166,19 @@ th {
 <p>This is the introduction to the <strong>MicronautPi4J Documentation</strong>!</p>
 </div>
 <div class="sect2">
-<h3 id="_currently_supported_components"><a class="anchor" href="#_currently_supported_components"></a>1.1. Currently Supported Components</h3>
-<div class="ulist">
-<div class="title">Input Components</div>
-<ul>
-<li>
-<p>Push Button</p>
-</li>
-<li>
-<p>Slide Switch</p>
-</li>
-<li>
-<p>Rotary Encoder</p>
-</li>
-</ul>
-</div>
-<div class="ulist">
-<div class="title">Output Components</div>
-<ul>
-<li>
-<p>LED</p>
-</li>
-</ul>
-</div>
+<h3 id="_general_information"><a class="anchor" href="#_general_information"></a>1.1. General Information</h3>
+
 </div>
 <div class="sect2">
-<h3 id="_components_in_progress"><a class="anchor" href="#_components_in_progress"></a>1.2. Components In Progress</h3>
-<div class="ulist">
-<div class="title">Misc. Components</div>
-<ul>
-<li>
-<p>RGB LED</p>
-</li>
-<li>
-<p>RFID Scanner</p>
-</li>
-<li>
-<p>LCD Display</p>
-</li>
-<li>
-<p>Servo Motor</p>
-</li>
-</ul>
+<h3 id="_adding_the_library_to_a_project"><a class="anchor" href="#_adding_the_library_to_a_project"></a>1.2. Adding the library to a project</h3>
+
 </div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_types_of_components"><a class="anchor" href="#_types_of_components"></a>2. Types of Components</h2>
-<div class="sectionbody">
 <div class="sect2">
-<h3 id="_digitalinput"><a class="anchor" href="#_digitalinput"></a>2.1. DigitalInput</h3>
+<h3 id="_using_the_library"><a class="anchor" href="#_using_the_library"></a>1.3. Using the Library</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_digitalinput"><a class="anchor" href="#_digitalinput"></a>1.4. DigitalInput</h3>
 <div class="paragraph">
 <p>To define in application.yaml add digital-input as a field under pi4j, then add each component under digital-input
 Each component will need</p>
@@ -238,23 +202,50 @@ Each component will need</p>
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>For digital input components with multiple data pins, such as the rotary encoder, in the application.yaml define
+a multi-digital-input field under pi4j and add each multipin component with the following information</p>
+</div>
 <div class="ulist">
-<div class="title">Components</div>
 <ul>
 <li>
-<p>Push Button</p>
+<p>name: Name of the component</p>
 </li>
 <li>
-<p>Slide Switch</p>
+<p>addresses: Comma separated string of address numbers for each pin (i.e. 27, 17, 18)</p>
 </li>
 <li>
-<p>Rotary Encoder</p>
+<p>debounces: Comma separated list of debounces (i.e. 6000, 500, 500)</p>
+</li>
+<li>
+<p>pulls: Comma separated list of pulls (each either PULL_UP or PULL_DOWN)</p>
+</li>
+<li>
+<p>initial: The initial state (will be applied to all pins)</p>
+</li>
+<li>
+<p>shutdown: The shutdown state (will be applied to all pins)</p>
+</li>
+<li>
+<p>provider: pigpio-digital-input (Will be applied to all  pins)</p>
 </li>
 </ul>
 </div>
+<div class="sect3">
+<h4 id="_push_button"><a class="anchor" href="#_push_button"></a>1.4.1. Push Button</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_slide_switch"><a class="anchor" href="#_slide_switch"></a>1.4.2. Slide Switch</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_rotary_encoder"><a class="anchor" href="#_rotary_encoder"></a>1.4.3. Rotary Encoder</h4>
+
+</div>
 </div>
 <div class="sect2">
-<h3 id="_digitaloutput"><a class="anchor" href="#_digitaloutput"></a>2.2. DigitalOutput</h3>
+<h3 id="_digitaloutput"><a class="anchor" href="#_digitaloutput"></a>1.5. DigitalOutput</h3>
 <div class="paragraph">
 <p>To define in application.yaml add digital-output as a field under pi4j, then add each component under digital-input
 Each component will need</p>
@@ -278,17 +269,13 @@ Each component will need</p>
 </li>
 </ul>
 </div>
-<div class="ulist">
-<div class="title">Components</div>
-<ul>
-<li>
-<p>LED</p>
-</li>
-</ul>
+<div class="sect3">
+<h4 id="_led"><a class="anchor" href="#_led"></a>1.5.1. LED</h4>
+
 </div>
 </div>
 <div class="sect2">
-<h3 id="_pwm"><a class="anchor" href="#_pwm"></a>2.3. PWM</h3>
+<h3 id="_pwm"><a class="anchor" href="#_pwm"></a>1.6. PWM</h3>
 <div class="paragraph">
 <p>To define in application.yaml add digital-input as a field under pi4j, then add each component under digital-input
 Each component will need</p>
@@ -309,74 +296,29 @@ Each component will need</p>
 </li>
 </ul>
 </div>
-<div class="ulist">
-<div class="title">Components</div>
-<ul>
-<li>
-<p>RGB LED</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_spi"><a class="anchor" href="#_spi"></a>2.4. SPI</h3>
-<div class="ulist">
-<div class="title">Components</div>
-<ul>
-<li>
-<p>RFID Scanner</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_i2c"><a class="anchor" href="#_i2c"></a>2.5. I2C</h3>
-<div class="ulist">
-<div class="title">Components</div>
-<ul>
-<li>
-<p>LCD Screen</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_adding_to_a_project"><a class="anchor" href="#_adding_to_a_project"></a>3. Adding to a project</h2>
-<div class="sectionbody">
-
-</div>
-</div>
-<div class="sect1">
-<h2 id="_using_the_library"><a class="anchor" href="#_using_the_library"></a>4. Using the library</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_general_info"><a class="anchor" href="#_general_info"></a>4.1. General Info</h3>
-
-</div>
-<div class="sect2">
-<h3 id="_input_components"><a class="anchor" href="#_input_components"></a>4.2. Input Components</h3>
 <div class="sect3">
-<h4 id="_push_button"><a class="anchor" href="#_push_button"></a>4.2.1. Push Button</h4>
-
-</div>
-<div class="sect3">
-<h4 id="_slide_switch"><a class="anchor" href="#_slide_switch"></a>4.2.2. Slide Switch</h4>
+<h4 id="_rgb_led"><a class="anchor" href="#_rgb_led"></a>1.6.1. RGB LED</h4>
 
 </div>
 </div>
 <div class="sect2">
-<h3 id="_output_components"><a class="anchor" href="#_output_components"></a>4.3. Output Components</h3>
+<h3 id="_spi"><a class="anchor" href="#_spi"></a>1.7. SPI</h3>
 <div class="sect3">
-<h4 id="_led"><a class="anchor" href="#_led"></a>4.3.1. LED</h4>
+<h4 id="_rfid_scanner"><a class="anchor" href="#_rfid_scanner"></a>1.7.1. RFID Scanner</h4>
+
+</div>
+</div>
+<div class="sect2">
+<h3 id="_i2c"><a class="anchor" href="#_i2c"></a>1.8. I2C</h3>
+<div class="sect3">
+<h4 id="_lcd_screen"><a class="anchor" href="#_lcd_screen"></a>1.8.1. LCD Screen</h4>
 
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_contributing_to_the_library"><a class="anchor" href="#_contributing_to_the_library"></a>5. Contributing to the library</h2>
+<h2 id="_contributing_to_the_library"><a class="anchor" href="#_contributing_to_the_library"></a>2. Contributing to the library</h2>
 <div class="sectionbody">
 
 </div>
@@ -384,7 +326,7 @@ Each component will need</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-02-27 19:36:35 UTC
+Last updated 2023-03-05 13:03:04 UTC
 </div>
 </div>
 </body>

@@ -13,24 +13,11 @@ toc::[]
 == Introduction
 This is the introduction to the **MicronautPi4J Documentation**!
 
-=== Currently Supported Components
-.Input Components
-* Push Button
-* Slide Switch
-* Rotary Encoder
+=== General Information
 
-.Output Components
-* LED
+=== Adding the library to a project
 
-.Misc. Components
-
-=== Components In Progress
-* RGB LED
-* RFID Scanner
-* LCD Display
-* Servo Motor
-
-== Types of Components
+=== Using the Library
 
 === DigitalInput
 To define in application.yaml add digital-input as a field under pi4j, then add each component under digital-input
@@ -42,10 +29,22 @@ Each component will need
 * pull: Either PULL_UP or PULL_DOWN depending on component
 * provider: pigpio-digital-input
 
-.Components
-* Push Button
-* Slide Switch
-* Rotary Encoder
+For digital input components with multiple data pins, such as the rotary encoder, in the application.yaml define
+a multi-digital-input field under pi4j and add each multipin component with the following information
+
+* name: Name of the component
+* addresses: Comma separated string of address numbers for each pin (i.e. 27, 17, 18)
+* debounces: Comma separated list of debounces (i.e. 6000, 500, 500)
+* pulls: Comma separated list of pulls (each either PULL_UP or PULL_DOWN)
+* initial: The initial state (will be applied to all pins)
+* shutdown: The shutdown state (will be applied to all pins)
+* provider: pigpio-digital-input (Will be applied to all  pins)
+
+==== Push Button
+
+==== Slide Switch
+
+==== Rotary Encoder
 
 === DigitalOutput
 To define in application.yaml add digital-output as a field under pi4j, then add each component under digital-input
@@ -57,8 +56,7 @@ Each component will need
 * shutdown: State to take when program successfully shuts down properly, either LOW or HIGH
 * provider: pigpio-digital-output
 
-.Components
-* LED
+==== LED
 
 === PWM
 To define in application.yaml add digital-input as a field under pi4j, then add each component under digital-input
@@ -69,33 +67,15 @@ Each component will need
 * pwmType: Either SOFTWARE or HARDWARE based upon which type of PWM you wish to use
 * provider: pigpio-pwm
 
-.Components
-* RGB LED
+==== RGB LED
 
 === SPI
 
-.Components
-* RFID Scanner
+==== RFID Scanner
 
 === I2C
 
-.Components
-* LCD Screen
-
-== Adding to a project
-
-== Using the library
-
-=== General Info
-
-=== Input Components
-
-==== Push Button
-
-==== Slide Switch
-
-=== Output Components
-==== LED 
+==== LCD Screen
 
 
 == Contributing to the library
