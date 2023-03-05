@@ -120,36 +120,36 @@ th {
 <li><a href="#_general_information">1.1. General Information</a></li>
 <li><a href="#_adding_the_library_to_a_project">1.2. Adding the library to a project</a></li>
 <li><a href="#_using_the_library">1.3. Using the Library</a></li>
-<li><a href="#_digitalinput">1.4. DigitalInput</a>
-<ul class="sectlevel3">
-<li><a href="#_push_button">1.4.1. Push Button</a></li>
-<li><a href="#_slide_switch">1.4.2. Slide Switch</a></li>
-<li><a href="#_rotary_encoder">1.4.3. Rotary Encoder</a></li>
 </ul>
 </li>
-<li><a href="#_digitaloutput">1.5. DigitalOutput</a>
-<ul class="sectlevel3">
-<li><a href="#_led">1.5.1. LED</a></li>
+<li><a href="#_digitalinput">2. DigitalInput</a>
+<ul class="sectlevel2">
+<li><a href="#_push_button">2.1. Push Button</a></li>
+<li><a href="#_slide_switch">2.2. Slide Switch</a></li>
+<li><a href="#_rotary_encoder">2.3. Rotary Encoder</a></li>
 </ul>
 </li>
-<li><a href="#_pwm">1.6. PWM</a>
-<ul class="sectlevel3">
-<li><a href="#_rgb_led">1.6.1. RGB LED</a></li>
+<li><a href="#_digitaloutput">3. DigitalOutput</a>
+<ul class="sectlevel2">
+<li><a href="#_led">3.1. LED</a></li>
 </ul>
 </li>
-<li><a href="#_spi">1.7. SPI</a>
-<ul class="sectlevel3">
-<li><a href="#_rfid_scanner">1.7.1. RFID Scanner</a></li>
+<li><a href="#_pwm">4. PWM</a>
+<ul class="sectlevel2">
+<li><a href="#_rgb_led">4.1. RGB LED</a></li>
 </ul>
 </li>
-<li><a href="#_i2c">1.8. I2C</a>
-<ul class="sectlevel3">
-<li><a href="#_lcd_screen">1.8.1. LCD Screen</a></li>
+<li><a href="#_spi">5. SPI</a>
+<ul class="sectlevel2">
+<li><a href="#_rfid_scanner">5.1. RFID Scanner</a></li>
 </ul>
 </li>
+<li><a href="#_i2c">6. I2C</a>
+<ul class="sectlevel2">
+<li><a href="#_lcd_screen">6.1. LCD Screen</a></li>
 </ul>
 </li>
-<li><a href="#_contributing_to_the_library">2. Contributing to the library</a></li>
+<li><a href="#_contributing_to_the_library">7. Contributing to the library</a></li>
 </ul>
 </div>
 </div>
@@ -177,8 +177,11 @@ th {
 <h3 id="_using_the_library"><a class="anchor" href="#_using_the_library"></a>1.3. Using the Library</h3>
 
 </div>
-<div class="sect2">
-<h3 id="_digitalinput"><a class="anchor" href="#_digitalinput"></a>1.4. DigitalInput</h3>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_digitalinput"><a class="anchor" href="#_digitalinput"></a>2. DigitalInput</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>To define in application.yaml add digital-input as a field under pi4j, then add each component under digital-input
 Each component will need</p>
@@ -231,21 +234,23 @@ a multi-digital-input field under pi4j and add each multipin component with the 
 </li>
 </ul>
 </div>
-<div class="sect3">
-<h4 id="_push_button"><a class="anchor" href="#_push_button"></a>1.4.1. Push Button</h4>
+<div class="sect2">
+<h3 id="_push_button"><a class="anchor" href="#_push_button"></a>2.1. Push Button</h3>
 
-</div>
-<div class="sect3">
-<h4 id="_slide_switch"><a class="anchor" href="#_slide_switch"></a>1.4.2. Slide Switch</h4>
-
-</div>
-<div class="sect3">
-<h4 id="_rotary_encoder"><a class="anchor" href="#_rotary_encoder"></a>1.4.3. Rotary Encoder</h4>
-
-</div>
 </div>
 <div class="sect2">
-<h3 id="_digitaloutput"><a class="anchor" href="#_digitaloutput"></a>1.5. DigitalOutput</h3>
+<h3 id="_slide_switch"><a class="anchor" href="#_slide_switch"></a>2.2. Slide Switch</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_rotary_encoder"><a class="anchor" href="#_rotary_encoder"></a>2.3. Rotary Encoder</h3>
+
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_digitaloutput"><a class="anchor" href="#_digitaloutput"></a>3. DigitalOutput</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>To define in application.yaml add digital-output as a field under pi4j, then add each component under digital-input
 Each component will need</p>
@@ -269,13 +274,15 @@ Each component will need</p>
 </li>
 </ul>
 </div>
-<div class="sect3">
-<h4 id="_led"><a class="anchor" href="#_led"></a>1.5.1. LED</h4>
+<div class="sect2">
+<h3 id="_led"><a class="anchor" href="#_led"></a>3.1. LED</h3>
 
 </div>
 </div>
-<div class="sect2">
-<h3 id="_pwm"><a class="anchor" href="#_pwm"></a>1.6. PWM</h3>
+</div>
+<div class="sect1">
+<h2 id="_pwm"><a class="anchor" href="#_pwm"></a>4. PWM</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>To define in application.yaml add digital-input as a field under pi4j, then add each component under digital-input
 Each component will need</p>
@@ -296,29 +303,32 @@ Each component will need</p>
 </li>
 </ul>
 </div>
-<div class="sect3">
-<h4 id="_rgb_led"><a class="anchor" href="#_rgb_led"></a>1.6.1. RGB LED</h4>
-
-</div>
-</div>
 <div class="sect2">
-<h3 id="_spi"><a class="anchor" href="#_spi"></a>1.7. SPI</h3>
-<div class="sect3">
-<h4 id="_rfid_scanner"><a class="anchor" href="#_rfid_scanner"></a>1.7.1. RFID Scanner</h4>
+<h3 id="_rgb_led"><a class="anchor" href="#_rgb_led"></a>4.1. RGB LED</h3>
 
-</div>
-</div>
-<div class="sect2">
-<h3 id="_i2c"><a class="anchor" href="#_i2c"></a>1.8. I2C</h3>
-<div class="sect3">
-<h4 id="_lcd_screen"><a class="anchor" href="#_lcd_screen"></a>1.8.1. LCD Screen</h4>
-
-</div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_contributing_to_the_library"><a class="anchor" href="#_contributing_to_the_library"></a>2. Contributing to the library</h2>
+<h2 id="_spi"><a class="anchor" href="#_spi"></a>5. SPI</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_rfid_scanner"><a class="anchor" href="#_rfid_scanner"></a>5.1. RFID Scanner</h3>
+
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_i2c"><a class="anchor" href="#_i2c"></a>6. I2C</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_lcd_screen"><a class="anchor" href="#_lcd_screen"></a>6.1. LCD Screen</h3>
+
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_contributing_to_the_library"><a class="anchor" href="#_contributing_to_the_library"></a>7. Contributing to the library</h2>
 <div class="sectionbody">
 
 </div>
@@ -326,7 +336,7 @@ Each component will need</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-03-05 13:03:04 UTC
+Last updated 2023-03-05 13:05:28 UTC
 </div>
 </div>
 </body>
