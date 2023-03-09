@@ -1,8 +1,10 @@
 name: Build JAR
 on: 
+  push:
   pull_request:
     branches: 
       -master
+      -GreihMurray-patch-1
 jobs:
   gradle:
     strategy:
