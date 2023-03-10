@@ -3,6 +3,8 @@ plugins {
     id("io.micronaut.library") version "3.6.3"
 }
 
+apply plugin: 'maven-publish'
+
 repositories {
     mavenCentral()
 }
@@ -25,15 +27,29 @@ java {
     targetCompatibility = JavaVersion.toVersion("11")
 }
 
-publishing{
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'io.github.oss-slu'
+            artifactId = 'MicronautPi4J-Utils'
+            version = "0.1-SNAPSHOT"
+            from components.java
+
+            pom {
+                name = 'My Library'
+                description = 'A description of my library'
+            }
+        }
+    }
     repositories {
-        maven{
+        maven {
             name = "OSSRH"
-            url = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
-            credentials{
+            credentials {
                 username = System.getenv("MAVEN_USERNAME")
                 password = System.getenv("MAVEN_PASSWORD")
             }
+
+            url = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
         }
     }
 }
