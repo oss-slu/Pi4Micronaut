@@ -29,5 +29,4 @@ jobs:
     - name: Upload built JAR
       uses: actions/upload-artifact@v3
       with:
-        name: micronautpi4j-utils-lib
-        path: build/libs
+        path: micronautpi4j-utils/build/libs
