@@ -28,31 +28,14 @@ java {
 }
 
 publishing {
-    publications {
-        maven(MavenPublication) {
-            groupId = 'io.github.oss-slu'
-            artifactId = 'MicronautPi4J-Utils'
-            version = "0.1-SNAPSHOT"
-            from components.java
-
-            pom {
-                name = 'My Library'
-                description = 'A description of my library'
-            }
-        }
-    }
     repositories {
         maven {
-            name = "OSSRH"
+            name = "GitHubPackages"
+            url = "https://maven.pkg.github.com/oss-slu/Pi4Micronaut"
             credentials {
-                username = System.getenv("MAVEN_USERNAME")
-                password = System.getenv("MAVEN_PASSWORD")
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
             }
-
-            url = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
         }
     }
 }
-
-
-
