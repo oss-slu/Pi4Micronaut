@@ -19,28 +19,21 @@ jobs:
         java-version: 11
     - name: Change wrapper permissions
       run: chmod +x micronautpi4j-utils/gradlew
-  build-jar:
-      strategy:
-        matrix:
-         os: [ubuntu-latest, macos-latest, windows-latest]
-      runs-on: ${{ matrix.os }}
-      needs: setup-gradle
-      steps:
-      - name: Setup Gradle
-        uses: gradle/gradle-build-action@v2
-        with:
-          arguments: build
-          build-root-directory: micronautpi4j-utils/
-      - name: Execute Gradle build
-        run: ./gradlew shadowJar
-      - name: Upload built JAR
-        uses: actions/upload-artifact@v3
-        with:
-          name: micronautpi4j-utils
-          path: micronautpi4j-utils/build/libs/*-all.jar
+    - name: Setup Gradle
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: build
+        build-root-directory: micronautpi4j-utils/
+    - name: Execute Gradle build
+      run: ./gradlew shadowJar
+    - name: Upload built JAR
+      uses: actions/upload-artifact@v3
+      with:
+        name: micronautpi4j-utils
+        path: micronautpi4j-utils/build/libs/*-all.jar
   publish-jar:
       runs-on: ubuntu-latest
-      needs: [setup-gradle, build-jar]
+      needs: setup-gradle
       steps:
       - uses: actions/checkout@v3
       - name: Set up Java
