@@ -26,4 +26,15 @@ public class LCD1602Helper {
         log.info("writing");
         lcdDisplay.displayText(text);
     }
+
+    public void setBackLight(boolean state){
+        log.info("changing backlight");
+        if (state == true){
+            log.info("backlight on");
+            lcdDisplay.setDisplayBacklight(state);
+        } else{
+            log.info("backlight off");
+            lcdDisplay.setDisplayBacklight(state);
+        }
+    }
 }
