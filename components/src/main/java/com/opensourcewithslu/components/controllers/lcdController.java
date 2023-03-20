@@ -30,4 +30,14 @@ public class lcdController {
     public void backlightOff(){
         lcdHelper.setBackLight(false);
     }
+
+    @Get("/clear/all")
+    public void clearDisplay(){
+        lcdHelper.clearDisplay();
+    }
+
+    @Get("/clear/{line}")
+    public void clearLine(int line){
+        lcdHelper.clearLine(line);
+    }
 }
