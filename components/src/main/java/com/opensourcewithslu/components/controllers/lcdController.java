@@ -21,12 +21,17 @@ public class lcdController {
         lcdHelper.writeText(text);
     }
 
-    @Get("/setBackLight/on")
+    @Get("/write/{text}/{line}")
+    public void writeDataAtLine(String text, int line){
+        lcdHelper.writeTextAtLine(text, line);
+    }
+
+    @Get("/backlight/on")
     public void backlightOn(){
         lcdHelper.setBackLight(true);
     }
 
-    @Get("/setBackLight/off")
+    @Get("/backlight/off")
     public void backlightOff(){
         lcdHelper.setBackLight(false);
     }

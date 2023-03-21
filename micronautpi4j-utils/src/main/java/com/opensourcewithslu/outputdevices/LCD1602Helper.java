@@ -27,6 +27,11 @@ public class LCD1602Helper {
         lcdDisplay.displayText(text);
     }
 
+    public void writeTextAtLine(String text, int line){
+        log.info("writing on " + line + "line");
+        lcdDisplay.displayText(text, line);
+    }
+
     public void setBackLight(boolean state){
         log.info("changing backlight");
         if (state){
