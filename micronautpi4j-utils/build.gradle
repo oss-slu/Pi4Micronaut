@@ -1,9 +1,16 @@
 plugins {
     id("com.github.johnrengelman.shadow") version "7.1.2"
     id("io.micronaut.library") version "3.6.3"
+    id 'maven-publish'
+    id 'signing'
+    id('io.github.gradle-nexus.publish-plugin') version '1.1.0'
 }
 
-apply plugin: 'maven-publish'
+group = 'io.github.oss-slu'
+version = 'v0.1.0-SNAPSHOT'
+
+//apply plugin: 'maven-publish'
+//apply plugin: 'io.github.gradle-nexus.publish-plugin'
 
 repositories {
     mavenCentral()
@@ -25,17 +32,67 @@ dependencies {
 java {
     sourceCompatibility = JavaVersion.toVersion("11")
     targetCompatibility = JavaVersion.toVersion("11")
+    withJavadocJar()
+    withSourcesJar()
 }
 
-publishing {
+nexusPublishing{
     repositories {
-        maven {
-            name = "GitHubPackages"
-            url = "https://maven.pkg.github.com/oss-slu/Pi4Micronaut"
-            credentials {
-                username = System.getenv("GITHUB_ACTOR")
-                password = System.getenv("GITHUB_TOKEN")
+        sonatype{
+            nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
+
+            snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
+        }
+    }
+}
+
+ext.genOutputDir = file("$buildDir/generated-resources")
+
+task generateVersionTxt()  {
+    ext.outputFile = file("$genOutputDir/version.txt")
+    outputs.file(outputFile)
+    doLast {
+        outputFile.text = """GroupId: ${project.group}
+Name: ${project.name}
+Version: $version
+Build-time: ${java.time.LocalDateTime.now()}
+"""
+    }
+}
+
+sourceSets.main.output.dir genOutputDir, builtBy: generateVersionTxt
+
+publishing{
+    publications{
+        mavenJava(MavenPublication){
+            from(components.java)
+            pom{
+                name = 'publish-java'
+                description = 'A Micronaut based library built to simplify using Micronaut with Raspberry Pi and external hardware components'
+                url="https://github.com/oss-slu/Pi4Micronaut"
+                licenses{
+                    license{
+                        name= 'The Apache Licence, Version 2.0'
+                        url= 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+
+                developers{
+                    developer{
+                        id = 'MurrayG'
+                        name = 'Greih Murray'
+                    }
+                }
+                scm{
+                    url = 'https://github.com/oss-slu/Pi4Micronaut'
+                    connection =  'scm:https://github.com/oss-slu/Pi4Micronaut.git'
+                    developerConnection = 'scm:https://github.com/oss-slu/Pi4Micronaut.git'
+                }
             }
         }
     }
+}
+
+signing{
+    sign publishing.publications.mavenJava
 }
