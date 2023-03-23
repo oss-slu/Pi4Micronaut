@@ -38,6 +38,8 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
           cache: 'gradle'
+      - name: Change wrapper permissions
+        run: chmod +x micronautpi4j-utils/gradlew
       - name: Publish Library
         working-directory: micronautpi4j-utils
         env:
