@@ -1,4 +1,4 @@
-micronaut:
+.micronaut:
   application:
     name: components
 pi4j:
