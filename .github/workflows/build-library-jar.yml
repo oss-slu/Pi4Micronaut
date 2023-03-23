@@ -4,7 +4,6 @@ on:
   pull_request:
     branches: 
       -master
-      -GreihMurray-patch-1
 jobs:
   build-library:
     runs-on: ubuntu-latest
