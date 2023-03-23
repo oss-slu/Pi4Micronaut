@@ -23,9 +23,9 @@ public class RGBLEDHelper {
     }
 
     public void setColor(int[] colors){
-        red.on(50, colors[0]);
-        green.on(50, colors[1]);
-        blue.on(50, colors[2]);
+        red.on(colors[0], 50);
+        green.on(colors[1], 50);
+        blue.on(colors[2], 50);
     }
 
     public void setColor(int[] colors, int[] frequency){
