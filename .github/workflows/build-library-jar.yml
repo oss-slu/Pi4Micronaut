@@ -1,10 +1,9 @@
-name: Build JAR
+name: Build and Release Library
 on: 
   push:
   pull_request:
     branches: 
       -master
-      -GreihMurray-patch-1
 jobs:
   build-library:
     runs-on: ubuntu-latest
@@ -22,6 +21,7 @@ jobs:
         arguments: build
         build-root-directory: micronautpi4j-utils/
     - name: Execute Gradle build
+      working-directory: micronautpi4j-utils
       run: ./gradlew shadowJar
   publish-jar:
       runs-on: ubuntu-latest
@@ -37,10 +37,13 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
           cache: 'gradle'
+      - name: Change wrapper permissions
+        run: chmod +x micronautpi4j-utils/gradlew
       - name: Publish Library
+        working-directory: micronautpi4j-utils
         env:
           ORG_GRADLE_PROJECT_sonatypePassword: ${{ secrets.SONATYPE_PASSWORD }}
           ORG_GRADLE_PROJECT_sonatypeUsername: ${{ secrets.SONATYPE_USERNAME }}
           ORG_GRADLE_PROJECT_signingKey: ${{ secrets.PGP_SECRET }}
           ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.PGP_PASSPHRASE }}
-        run: ./gradlew publishToSonatype --no-daemon
+        run: ./gradlew publishToSonatype closeAndReleaseSonatypeStagingRepository --no-daemon
