@@ -17,9 +17,8 @@ public class LCD1602Helper {
 
     public LCD1602Helper(I2CConfig i2CConfig, Context pi4jContext){
         this.lcdDisplay = new LcdDisplay(pi4jContext, 4, 16);
-        log.info("In constructor");
         lcdDisplay.setDisplayBacklight(true);
-        log.info("backlight should be on");
+        log.info("LCD is set up with 4 rows and 16 columns. Backlight is on by default");
     }
 
     public void writeText(String text){
