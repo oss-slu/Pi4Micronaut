@@ -48,3 +48,6 @@ jobs:
           ORG_GRADLE_PROJECT_signingKey: ${{ secrets.PGP_SECRET }}
           ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.PGP_PASSPHRASE }}
         run: ./gradlew publishToSonatype --no-daemon
+      - name: Close Sonatype Repo
+        working-directory: micronautpi4j-utils
+        run: ./gradlew closeAndReleaseSonatypeStagingRepository
