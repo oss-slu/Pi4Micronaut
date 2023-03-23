@@ -2,6 +2,11 @@ micronaut:
   application:
     name: components
 pi4j:
+  i2c:
+    lcd:
+      name: lcd
+      bus: 1
+      device: 0x27
   ### DIGITAL INPUTS
   digital-input:
     photo-resistor-input:
