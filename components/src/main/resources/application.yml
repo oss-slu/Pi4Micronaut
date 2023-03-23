@@ -1,7 +1,29 @@
-micronaut:
+.micronaut:
   application:
     name: components
 pi4j:
+  pwm:
+    red-pwm:
+      name: red
+      address: 17
+      pwmType: SOFTWARE
+      provider: pigpio-pwm
+      initial: 0
+      shutdown: 0
+    blue-pwm:
+      name: blue
+      address: 18
+      pwmType: SOFTWARE
+      provider: pigpio-pwm
+      initial: 0
+      shutdown: 0
+    green-pwm:
+      name: green
+      address: 27
+      pwmType: SOFTWARE
+      provider: pigpio-pwm
+      initial: 0
+      shutdown: 0
   i2c:
     lcd:
       name: lcd
