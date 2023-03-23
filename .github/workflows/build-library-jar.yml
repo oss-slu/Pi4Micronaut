@@ -1,4 +1,4 @@
-name: Build JAR
+name: Build and Release Library
 on: 
   push:
   pull_request:
