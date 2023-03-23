@@ -53,13 +53,12 @@ public class PwmConfiguration {
     public void setShutdown(int shutdown) {
         this.shutdown = shutdown;
     }
-
     public PwmType getPwmType() {
         return pwmType;
     }
 
     public void setPwmType(String pwmType) {
-        if(pwmType.equals("SOFTWARE")){
+        if (pwmType.equals("SOFTWARE")) {
             this.pwmType = PwmType.SOFTWARE;
         } else if (pwmType.equals("HARDWARE")) {
             this.pwmType = PwmType.HARDWARE;
