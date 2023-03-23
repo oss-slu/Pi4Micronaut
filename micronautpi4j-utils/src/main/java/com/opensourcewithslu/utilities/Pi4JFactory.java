@@ -11,6 +11,14 @@ import com.pi4j.io.pwm.PwmConfig;
 import com.pi4j.io.pwm.PwmType;
 import com.pi4j.io.spi.Spi;
 import com.pi4j.io.spi.SpiConfig;
+import com.pi4j.library.pigpio.PiGpio;
+import com.pi4j.plugin.pigpio.provider.gpio.digital.PiGpioDigitalInputProvider;
+import com.pi4j.plugin.pigpio.provider.gpio.digital.PiGpioDigitalOutputProvider;
+import com.pi4j.plugin.pigpio.provider.i2c.PiGpioI2CProvider;
+import com.pi4j.plugin.pigpio.provider.pwm.PiGpioPwmProvider;
+import com.pi4j.plugin.pigpio.provider.serial.PiGpioSerialProvider;
+import com.pi4j.plugin.pigpio.provider.spi.PiGpioSpiProvider;
+import com.pi4j.plugin.raspberrypi.platform.RaspberryPiPlatform;
 import io.micronaut.context.annotation.Bean;
 import io.micronaut.context.annotation.EachBean;
 import io.micronaut.context.annotation.Factory;
@@ -21,7 +29,21 @@ public class Pi4JFactory {
     @Singleton
     @Bean(preDestroy = "shutdown")
     public com.pi4j.context.Context createPi4jContext() {
-        return Pi4J.newAutoContext();
+        final var piGpio = PiGpio.newNativeInstance();
+
+        // Build Pi4J context with this platform and PiGPIO providers
+        return Pi4J.newContextBuilder()
+                .noAutoDetect()
+                .add(new RaspberryPiPlatform())
+                .add(
+                        PiGpioDigitalInputProvider.newInstance(piGpio),
+                        PiGpioDigitalOutputProvider.newInstance(piGpio),
+                        PiGpioPwmProvider.newInstance(piGpio),
+                        PiGpioI2CProvider.newInstance(piGpio),
+                        PiGpioSerialProvider.newInstance(piGpio),
+                        PiGpioSpiProvider.newInstance(piGpio)
+                )
+                .build();
     }
 
     @EachBean(DigitalOutputConfiguration.class)
@@ -50,15 +72,18 @@ public class Pi4JFactory {
 
     @EachBean(PwmConfiguration.class)
     public Pwm createPwm(PwmConfiguration config, Context pi4jContext) {
-        var outputConfigBuilder = pi4jContext.create(Pwm.newConfigBuilder(pi4jContext)
-                .id(config.getId())
-                .name(config.getName())
-                .address(config.getAddress())
-                .pwmType(PwmType.SOFTWARE)
-                .provider(config.getProvider())
-                .initial(config.getInital())
-                .shutdown(config.getShutdown())
-                .build());
+        var outputConfigBuilder = pi4jContext.create(
+                Pwm.newConfigBuilder(pi4jContext)
+                    .id(config.getId())
+                    .name(config.getName())
+                    .address(config.getAddress())
+                    .pwmType(config.getPwmType())
+                    .provider(config.getProvider())
+                    .initial(config.getInital())
+                    .shutdown(config.getShutdown())
+                    .build()
+            );
+
         return outputConfigBuilder;
     }
 

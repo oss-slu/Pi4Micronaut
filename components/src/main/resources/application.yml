@@ -24,6 +24,11 @@ pi4j:
       provider: pigpio-pwm
       initial: 0
       shutdown: 0
+  i2c:
+    lcd:
+      name: lcd
+      bus: 1
+      device: 0x27
   ### DIGITAL INPUTS
   digital-input:
     photo-resistor-input:

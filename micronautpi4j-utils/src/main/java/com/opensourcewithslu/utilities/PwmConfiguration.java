@@ -53,7 +53,6 @@ public class PwmConfiguration {
     public void setShutdown(int shutdown) {
         this.shutdown = shutdown;
     }
-
     public PwmType getPwmType() {
         return pwmType;
     }
