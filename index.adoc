@@ -13,13 +13,26 @@ toc::[]
 == Introduction
 This is the introduction to the **MicronautPi4J Documentation**!
 
-=== General Information
+=== Currently Supported Components
+.Input Components
+* Push Button
+* Slide Switch
+* Rotary Encoder
 
-=== Adding the library to a project
+.Output Components
+* LED
 
-=== Using the Library
+.Misc. Components
 
-== DigitalInput
+=== Components In Progress
+* RGB LED
+* RFID Scanner
+* LCD Display
+* Servo Motor
+
+== Types of Components
+
+=== DigitalInput
 To define in application.yaml add digital-input as a field under pi4j, then add each component under digital-input
 Each component will need
 
@@ -29,24 +42,12 @@ Each component will need
 * pull: Either PULL_UP or PULL_DOWN depending on component
 * provider: pigpio-digital-input
 
-For digital input components with multiple data pins, such as the rotary encoder, in the application.yaml define
-a multi-digital-input field under pi4j and add each multipin component with the following information
+.Components
+* Push Button
+* Slide Switch
+* Rotary Encoder
 
-* name: Name of the component
-* addresses: Comma separated string of address numbers for each pin (i.e. 27, 17, 18)
-* debounces: Comma separated list of debounces (i.e. 6000, 500, 500)
-* pulls: Comma separated list of pulls (each either PULL_UP or PULL_DOWN)
-* initial: The initial state (will be applied to all pins)
-* shutdown: The shutdown state (will be applied to all pins)
-* provider: pigpio-digital-input (Will be applied to all  pins)
-
-=== Push Button
-
-=== Slide Switch
-
-=== Rotary Encoder
-
-== DigitalOutput
+=== DigitalOutput
 To define in application.yaml add digital-output as a field under pi4j, then add each component under digital-input
 Each component will need
 
@@ -56,9 +57,10 @@ Each component will need
 * shutdown: State to take when program successfully shuts down properly, either LOW or HIGH
 * provider: pigpio-digital-output
 
-=== LED
+.Components
+* LED
 
-== PWM
+=== PWM
 To define in application.yaml add digital-input as a field under pi4j, then add each component under digital-input
 Each component will need
 
@@ -67,15 +69,33 @@ Each component will need
 * pwmType: Either SOFTWARE or HARDWARE based upon which type of PWM you wish to use
 * provider: pigpio-pwm
 
-=== RGB LED
+.Components
+* RGB LED
 
-== SPI
+=== SPI
 
-=== RFID Scanner
+.Components
+* RFID Scanner
 
-== I2C
+=== I2C
 
-=== LCD Screen
+.Components
+* LCD Screen
+
+== Adding to a project
+
+== Using the library
+
+=== General Info
+
+=== Input Components
+
+==== Push Button
+
+==== Slide Switch
+
+=== Output Components
+==== LED 
 
 
 == Contributing to the library
