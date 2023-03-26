@@ -4,6 +4,7 @@ on:
   push:
     branches:
     - develop
+    - Docs_Tests
 jobs:
   adoc_build:
     runs-on: ubuntu-latest
