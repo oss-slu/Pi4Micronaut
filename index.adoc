@@ -45,7 +45,7 @@ Each component will need
 .Components
 * Push Button
 
-<<include::PushButton.adoc[]>>
+include::pushbutton.adoc[]
 
 * Slide Switch
 * Rotary Encoder
