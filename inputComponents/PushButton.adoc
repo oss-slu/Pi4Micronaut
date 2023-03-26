@@ -1,0 +1,4 @@
+.Generic list
+* a
+* b
+* c
