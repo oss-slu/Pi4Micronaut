@@ -8,7 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @Singleton
-public class PushButtonHelper extends InputDevice {
+public class PushButtonHelper {
     private static final Logger log = LoggerFactory.getLogger(PushButtonHelper.class);
 
     private DigitalInput buttonInput;

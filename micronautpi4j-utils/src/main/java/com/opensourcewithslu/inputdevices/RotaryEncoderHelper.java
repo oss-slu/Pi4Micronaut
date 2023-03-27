@@ -9,7 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @Singleton
-public class RotaryEncoderHelper extends InputDevice {
+public class RotaryEncoderHelper {
     private static final Logger log = LoggerFactory.getLogger(RotaryEncoderHelper.class);
 
     private DigitalInput clk;
@@ -49,12 +49,4 @@ public class RotaryEncoderHelper extends InputDevice {
     }
 
     public int getEncoderValue(){return this.globalCounter;}
-
-    public void addEventListener(DigitalStateChangeListener function)  {
-
-    }
-
-    public void removeEventListener(DigitalStateChangeListener function){
-
-    }
 }
