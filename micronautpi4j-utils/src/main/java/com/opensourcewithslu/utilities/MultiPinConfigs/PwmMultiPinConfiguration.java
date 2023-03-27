@@ -1,19 +1,23 @@
 package com.opensourcewithslu.utilities.MultiPinConfigs;
 
+import com.opensourcewithslu.utilities.Pi4JMultipinFactory;
 import com.pi4j.io.gpio.digital.PullResistance;
 import com.pi4j.io.pwm.PwmType;
 import io.micronaut.context.annotation.EachProperty;
 import io.micronaut.context.annotation.Parameter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Arrays;
 
 @EachProperty("pi4j.multi-pwm")
 public class PwmMultiPinConfiguration {
+    private static final Logger log = LoggerFactory.getLogger(PwmMultiPinConfiguration.class);
     private final String id;
     private String name;
     private int[] addresses;
     private PwmType[] pwmTypes;
-    private int[] initals;
+    private int[] initials;
     private int[] shutdowns;
     private String provider;
 
@@ -58,15 +62,17 @@ public class PwmMultiPinConfiguration {
                 all_pwms[i] = PwmType.HARDWARE;
             }
         }
+
+        this.pwmTypes = all_pwms;
     }
 
     public int[] getInitals() {
-        return initals;
+        return initials;
     }
 
-    public void setInitals(String initals) {
-        initals = initals.replaceAll("\\s", "");
-        this.initals = Arrays.stream(initals.split(",")).mapToInt(Integer::parseInt).toArray();
+    public void setInitials(String initials) {
+        initials = initials.replaceAll("\\s", "");
+        this.initials = Arrays.stream(initials.split(",")).mapToInt(Integer::parseInt).toArray();
     }
 
     public int[] getShutdowns() {

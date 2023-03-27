@@ -15,28 +15,24 @@ import org.slf4j.LoggerFactory;
 @Singleton
 public class RotaryEncoderHelper extends InputDevice {
     private static final Logger log = LoggerFactory.getLogger(RotaryEncoderHelper.class);
-
-    private final MultipinConfiguration multiPin;
     private DigitalInput clk;
     private DigitalInput dt;
     private DigitalInput sw;
 
     private int globalCounter;
 
-    public RotaryEncoderHelper(@Named("rotary-encoder") MultipinConfiguration multiPin){
-        this.multiPin = multiPin;
+    public RotaryEncoderHelper(MultipinConfiguration multiPin){
+        DigitalInput[] allPins = (DigitalInput[]) multiPin.getComponents();
+
+        this.sw = allPins[0];
+        this.clk = allPins[1];
+        this.dt = allPins[2];
+
+        initialize();
     }
 
-    @PostConstruct
     public void initialize(){
         log.info("Initializing Rotary Encoder");
-
-        DigitalInput[] allPins = (DigitalInput[]) this.multiPin.getComponents();
-
-        log.info("Setting pins");
-        this.sw = allPins[0];
-        this.dt = allPins[1];
-        this.clk = allPins[2];
 
         clk.addListener(e -> {
             if(clk.equals(dt.state())){

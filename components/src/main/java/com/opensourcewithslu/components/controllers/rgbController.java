@@ -6,12 +6,15 @@ import com.pi4j.io.pwm.Pwm;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import jakarta.inject.Named;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Controller("/rgb")
 public class rgbController {
     private final RGBLEDHelper rgbledHelper;
+    private static final Logger log = LoggerFactory.getLogger(rgbController.class);
 
-    public rgbController(@Named("rgbled") MultipinConfiguration rgbLed){
+    public rgbController(@Named("rgb-led") MultipinConfiguration rgbLed){
         this.rgbledHelper = new RGBLEDHelper(rgbLed);
     }
 

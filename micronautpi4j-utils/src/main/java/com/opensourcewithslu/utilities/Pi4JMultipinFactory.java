@@ -1,6 +1,7 @@
 package com.opensourcewithslu.utilities;
 
 import com.opensourcewithslu.inputdevices.RotaryEncoderHelper;
+import com.opensourcewithslu.outputdevices.RGBLEDHelper;
 import com.opensourcewithslu.utilities.MultiPinConfigs.DigitalInputMultiPinConfiguration;
 import com.opensourcewithslu.utilities.MultiPinConfigs.PwmMultiPinConfiguration;
 import com.pi4j.context.Context;
@@ -15,7 +16,7 @@ import org.slf4j.LoggerFactory;
 
 @Factory
 public class Pi4JMultipinFactory {
-
+    private static final Logger log = LoggerFactory.getLogger(Pi4JMultipinFactory.class);
     @EachBean(DigitalInputMultiPinConfiguration.class)
     public MultipinConfiguration multiPinInput(DigitalInputMultiPinConfiguration config, Context pi4jContext){
         int[] addresses = config.getAddresses();
@@ -54,6 +55,7 @@ public class Pi4JMultipinFactory {
             allPwms[i] = pi4jContext.create(pwmConfigBuilder);
         }
 
-        return new MultipinConfiguration(config.getId(), allPwms);
+        String multiPinId = config.getId().substring(0, config.getId().length() - 8);
+        return new MultipinConfiguration(multiPinId, allPwms);
     }
 }
