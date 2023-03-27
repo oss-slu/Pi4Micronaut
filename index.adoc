@@ -1,11 +1,10 @@
 = MicronautPi4J documentation
-:source-highlighter: highlight.js
 :stylesheet: style.css
 :docinfo: shared
 :doctype: book
 :title: MicronautPi4J documentation
 :toc: left
-:toclevels: 3
+:toclevels: 4
 :sectanchors:
 :sectnums:
 
@@ -14,11 +13,22 @@ toc::[]
 == Introduction
 This is the introduction to the **MicronautPi4J Documentation**!
 
-== Adding to a project
+=== Currently Supported Components
+.Input Components
+* Push Button
+* Slide Switch
+* Rotary Encoder
 
-== Using the library
+.Output Components
+* LED
 
-=== General Info
+.Misc. Components
+
+=== Components In Progress
+* RGB LED
+* RFID Scanner
+* LCD Display
+* Servo Motor
 
 == Types of Components
 
@@ -32,17 +42,10 @@ Each component will need
 * pull: Either PULL_UP or PULL_DOWN depending on component
 * provider: pigpio-digital-input
 
-==== Components
-===== Push Button
-
-include::inputComponents/pushbutton.adoc[]
-
-===== Slide Switch
-include::inputComponents/slideSwitch.adoc[]
-
-===== Rotary Encoder
-
-include::inputComponents/rotaryEncoder.adoc[]
+.Components
+* Push Button
+* Slide Switch
+* Rotary Encoder
 
 === DigitalOutput
 To define in application.yaml add digital-output as a field under pi4j, then add each component under digital-input
@@ -54,10 +57,8 @@ Each component will need
 * shutdown: State to take when program successfully shuts down properly, either LOW or HIGH
 * provider: pigpio-digital-output
 
-==== Components
-===== LED
-
-include::outputComponents/led.adoc[]
+.Components
+* LED
 
 === PWM
 To define in application.yaml add digital-input as a field under pi4j, then add each component under digital-input
@@ -68,24 +69,33 @@ Each component will need
 * pwmType: Either SOFTWARE or HARDWARE based upon which type of PWM you wish to use
 * provider: pigpio-pwm
 
-==== Components
-===== RGB LED
-
-include::pwmComponents/rgbLed.adoc[]
+.Components
+* RGB LED
 
 === SPI
 
-==== Components
-===== RFID Scanner
-
-include::spiComponents/rfidScanner.adoc[]
+.Components
+* RFID Scanner
 
 === I2C
 
-==== Components
-===== LCD Screen
+.Components
+* LCD Screen
 
-include::i2cComponents/lcdScreen.adoc[]
+== Adding to a project
+
+== Using the library
+
+=== General Info
+
+=== Input Components
+
+==== Push Button
+
+==== Slide Switch
+
+=== Output Components
+==== LED 
 
 
 == Contributing to the library

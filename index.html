@@ -108,7 +108,6 @@ th {
 }
 
 </style>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css">
 </head>
 <body class="book toc2 toc-left">
 <div id="header">
@@ -116,38 +115,34 @@ th {
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_introduction">1. Introduction</a></li>
-<li><a href="#_adding_to_a_project">2. Adding to a project</a></li>
-<li><a href="#_using_the_library">3. Using the library</a>
+<li><a href="#_introduction">1. Introduction</a>
 <ul class="sectlevel2">
-<li><a href="#_general_info">3.1. General Info</a></li>
+<li><a href="#_currently_supported_components">1.1. Currently Supported Components</a></li>
+<li><a href="#_components_in_progress">1.2. Components In Progress</a></li>
 </ul>
 </li>
-<li><a href="#_types_of_components">4. Types of Components</a>
+<li><a href="#_types_of_components">2. Types of Components</a>
 <ul class="sectlevel2">
-<li><a href="#_digitalinput">4.1. DigitalInput</a>
-<ul class="sectlevel3">
-<li><a href="#_components">4.1.1. Components</a></li>
+<li><a href="#_digitalinput">2.1. DigitalInput</a></li>
+<li><a href="#_digitaloutput">2.2. DigitalOutput</a></li>
+<li><a href="#_pwm">2.3. PWM</a></li>
+<li><a href="#_spi">2.4. SPI</a></li>
+<li><a href="#_i2c">2.5. I2C</a></li>
 </ul>
 </li>
-<li><a href="#_digitaloutput">4.2. DigitalOutput</a>
+<li><a href="#_adding_to_a_project">3. Adding to a project</a></li>
+<li><a href="#_using_the_library">4. Using the library</a>
+<ul class="sectlevel2">
+<li><a href="#_general_info">4.1. General Info</a></li>
+<li><a href="#_input_components">4.2. Input Components</a>
 <ul class="sectlevel3">
-<li><a href="#_components_2">4.2.1. Components</a></li>
+<li><a href="#_push_button">4.2.1. Push Button</a></li>
+<li><a href="#_slide_switch">4.2.2. Slide Switch</a></li>
 </ul>
 </li>
-<li><a href="#_pwm">4.3. PWM</a>
+<li><a href="#_output_components">4.3. Output Components</a>
 <ul class="sectlevel3">
-<li><a href="#_components_3">4.3.1. Components</a></li>
-</ul>
-</li>
-<li><a href="#_spi">4.4. SPI</a>
-<ul class="sectlevel3">
-<li><a href="#_components_4">4.4.1. Components</a></li>
-</ul>
-</li>
-<li><a href="#_i2c">4.5. I2C</a>
-<ul class="sectlevel3">
-<li><a href="#_components_5">4.5.1. Components</a></li>
+<li><a href="#_led">4.3.1. LED</a></li>
 </ul>
 </li>
 </ul>
@@ -168,28 +163,58 @@ th {
 <div class="paragraph">
 <p>This is the introduction to the <strong>MicronautPi4J Documentation</strong>!</p>
 </div>
+<div class="sect2">
+<h3 id="_currently_supported_components"><a class="anchor" href="#_currently_supported_components"></a>1.1. Currently Supported Components</h3>
+<div class="ulist">
+<div class="title">Input Components</div>
+<ul>
+<li>
+<p>Push Button</p>
+</li>
+<li>
+<p>Slide Switch</p>
+</li>
+<li>
+<p>Rotary Encoder</p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">Output Components</div>
+<ul>
+<li>
+<p>LED</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_components_in_progress"><a class="anchor" href="#_components_in_progress"></a>1.2. Components In Progress</h3>
+<div class="ulist">
+<div class="title">Misc. Components</div>
+<ul>
+<li>
+<p>RGB LED</p>
+</li>
+<li>
+<p>RFID Scanner</p>
+</li>
+<li>
+<p>LCD Display</p>
+</li>
+<li>
+<p>Servo Motor</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_adding_to_a_project"><a class="anchor" href="#_adding_to_a_project"></a>2. Adding to a project</h2>
-<div class="sectionbody">
-
-</div>
-</div>
-<div class="sect1">
-<h2 id="_using_the_library"><a class="anchor" href="#_using_the_library"></a>3. Using the library</h2>
+<h2 id="_types_of_components"><a class="anchor" href="#_types_of_components"></a>2. Types of Components</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_general_info"><a class="anchor" href="#_general_info"></a>3.1. General Info</h3>
-
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_types_of_components"><a class="anchor" href="#_types_of_components"></a>4. Types of Components</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_digitalinput"><a class="anchor" href="#_digitalinput"></a>4.1. DigitalInput</h3>
+<h3 id="_digitalinput"><a class="anchor" href="#_digitalinput"></a>2.1. DigitalInput</h3>
 <div class="paragraph">
 <p>To define in application.yaml add digital-input as a field under pi4j, then add each component under digital-input
 Each component will need</p>
@@ -213,153 +238,23 @@ Each component will need</p>
 </li>
 </ul>
 </div>
-<div class="sect3">
-<h4 id="_components"><a class="anchor" href="#_components"></a>4.1.1. Components</h4>
-<div class="sect4">
-<h5 id="_push_button"><a class="anchor" href="#_push_button"></a>Push Button</h5>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package com.opensourcewithslu.inputdevices;
-import com.pi4j.io.gpio.digital.DigitalInput;
-import com.pi4j.io.gpio.digital.DigitalStateChangeListener;
-import jakarta.annotation.PostConstruct;
-import jakarta.inject.Named;
-import jakarta.inject.Singleton;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-@Singleton
-public class PushButtonHelper {
-    private static final Logger log = LoggerFactory.getLogger(PushButtonHelper.class);
-
-    private DigitalInput buttonInput;
-    public Boolean isPressed;
-
-    public PushButtonHelper(@Named("button-input") DigitalInput buttonInput){
-        this.buttonInput = buttonInput;
-        this.isPressed = buttonInput.isHigh();
-    }
-
-    @PostConstruct
-    public void initialize(){
-        log.info("Initializing Push Button");</code></pre>
-</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_slide_switch"><a class="anchor" href="#_slide_switch"></a>Slide Switch</h5>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package com.opensourcewithslu.inputdevices;
-import com.pi4j.io.gpio.digital.DigitalInput;
-import com.pi4j.io.gpio.digital.DigitalStateChangeListener;
-import jakarta.annotation.PostConstruct;
-import jakarta.inject.Named;
-import jakarta.inject.Singleton;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-@Singleton
-public class SlideSwitchHelper {
-
-    private static final Logger log = LoggerFactory.getLogger(SlideSwitchHelper.class);
-
-    private DigitalInput slideSwitchInput;
-
-    public boolean isOn;
-
-    public SlideSwitchHelper(@Named("slide-switch-input") DigitalInput slideSwitchInput) {
-        this.slideSwitchInput = slideSwitchInput;
-        this.isOn = slideSwitchInput.isHigh();
-    }
-
-    @PostConstruct
-    public void initialize(){
-        log.info("Initializing Slide Switch");
-
-        slideSwitchInput.addListener(e-&gt;{
-            isOn = slideSwitchInput.isHigh();
-        });
-
-    }
-
-
-    public void addEventListener(DigitalStateChangeListener function) {
-        slideSwitchInput.addListener(function);
-    }
-
-
-    public void removeEventListener(DigitalStateChangeListener function) {
-        slideSwitchInput.removeListener(function);
-    }
-}</code></pre>
-</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_rotary_encoder"><a class="anchor" href="#_rotary_encoder"></a>Rotary Encoder</h5>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package com.opensourcewithslu.inputdevices;
-import com.pi4j.io.gpio.digital.DigitalInput;
-import com.pi4j.io.gpio.digital.DigitalStateChangeListener;
-import io.micronaut.context.annotation.Context;
-import jakarta.annotation.PostConstruct;
-import jakarta.inject.Named;
-import jakarta.inject.Singleton;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-@Singleton
-public class RotaryEncoderHelper {
-    private static final Logger log = LoggerFactory.getLogger(RotaryEncoderHelper.class);
-
-    private DigitalInput clk;
-    private DigitalInput dt;
-    private DigitalInput sw;
-
-    private int globalCounter;
-
-    public RotaryEncoderHelper(@Named("sw") DigitalInput sw, @Named("dt") DigitalInput dt, @Named("clk") DigitalInput clk){
-        this.sw = sw;
-        this.dt = dt;
-        this.clk = clk;
-    }
-
-    @PostConstruct
-    public void initialize(){
-        log.info("Initializing Rotary Encoder");
-
-        clk.addListener(e -&gt; {
-            if(clk.equals(dt.state())){
-                globalCounter++;
-            }
-            else if (!clk.equals(dt.state())){
-                globalCounter--;
-            }
-            log.info("Global Counter is {}", globalCounter);
-        });
-
-        sw.addListener(e -&gt; {
-            if(sw.isHigh()) {
-                log.info("Resetting globalCounter");
-                globalCounter = 0;
-            }
-
-            log.info("Global Counter is {}", globalCounter);
-        });
-    }
-
-    public int getEncoderValue(){return this.globalCounter;}
-}</code></pre>
-</div>
-</div>
-</div>
+<div class="ulist">
+<div class="title">Components</div>
+<ul>
+<li>
+<p>Push Button</p>
+</li>
+<li>
+<p>Slide Switch</p>
+</li>
+<li>
+<p>Rotary Encoder</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_digitaloutput"><a class="anchor" href="#_digitaloutput"></a>4.2. DigitalOutput</h3>
+<h3 id="_digitaloutput"><a class="anchor" href="#_digitaloutput"></a>2.2. DigitalOutput</h3>
 <div class="paragraph">
 <p>To define in application.yaml add digital-output as a field under pi4j, then add each component under digital-input
 Each component will need</p>
@@ -383,59 +278,17 @@ Each component will need</p>
 </li>
 </ul>
 </div>
-<div class="sect3">
-<h4 id="_components_2"><a class="anchor" href="#_components_2"></a>4.2.1. Components</h4>
-<div class="sect4">
-<h5 id="_led"><a class="anchor" href="#_led"></a>LED</h5>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package com.opensourcewithslu.outputdevices;
-import com.pi4j.io.gpio.digital.DigitalOutput;
-import jakarta.inject.Named;
-import jakarta.inject.Singleton;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-@Singleton
-public class LEDHelper {
-    private static final Logger log = LoggerFactory.getLogger(LEDHelper.class);
-
-    private final DigitalOutput ledOutput;
-
-    public LEDHelper(@Named("led") DigitalOutput ledOutput) {
-        this.ledOutput = ledOutput;
-    }
-
-    public void deviceOn() {
-        if (ledOutput.isLow()) {
-            log.info("Turning off LED");
-            ledOutput.high();
-        }
-    }
-
-    public void deviceOff() {
-        if (ledOutput.isHigh()) {
-            log.info("Turning on LED");
-            ledOutput.low();
-        }
-    }
-
-    public void switchState(){
-        if(ledOutput.isHigh()){
-            deviceOff();
-        }
-        else{
-            deviceOn();
-        }
-    }
-}</code></pre>
-</div>
-</div>
-</div>
+<div class="ulist">
+<div class="title">Components</div>
+<ul>
+<li>
+<p>LED</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_pwm"><a class="anchor" href="#_pwm"></a>4.3. PWM</h3>
+<h3 id="_pwm"><a class="anchor" href="#_pwm"></a>2.3. PWM</h3>
 <div class="paragraph">
 <p>To define in application.yaml add digital-input as a field under pi4j, then add each component under digital-input
 Each component will need</p>
@@ -456,185 +309,68 @@ Each component will need</p>
 </li>
 </ul>
 </div>
-<div class="sect3">
-<h4 id="_components_3"><a class="anchor" href="#_components_3"></a>4.3.1. Components</h4>
-<div class="sect4">
-<h5 id="_rgb_led"><a class="anchor" href="#_rgb_led"></a>RGB LED</h5>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package com.opensourcewithslu.outputdevices;
-
-import com.opensourcewithslu.inputdevices.PushButtonHelper;
-import com.pi4j.io.pwm.Pwm;
-import com.pi4j.io.pwm.PwmConfig;
-import io.micronaut.context.annotation.Prototype;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-@Prototype
-public class RGBLEDHelper {
-    private static final Logger log = LoggerFactory.getLogger(RGBLEDHelper.class);
-
-    private final Pwm red;
-    private final Pwm green;
-    private final Pwm blue;
-
-    public RGBLEDHelper(Pwm red, Pwm green, Pwm blue){
-        log.info("Init rgb");
-        this.red = red;
-        this.green = green;
-        this.blue = blue;
-    }
-
-    public void setColor(int[] colors){
-        red.on(colors[0], 50);
-        green.on(colors[1], 50);
-        blue.on(colors[2], 50);
-    }
-
-    public void setColor(int[] colors, int[] frequency){
-        log.info("setting the colors and frequency via a list");
-        red.on(colors[0], frequency[0]);
-        green.on(colors[1], frequency[1]);
-        blue.on(colors[2], frequency[2]);
-    }
-
-    public void setColorHex(String hex) {
-        log.info("setting the color via hex");
-        //input the hex splitting and frequency stuff
-    }
-
-    public void setColorHex(String hex, int frequency) {
-        log.info("setting the color and frequency via hex and int");
-        // input the hex splitting and frequency stuff
-    }
-
-    public void setRed(int red){
-        log.info("Set red");
-        this.red.on(red, 50);
-    }
-
-    public void setRed(int red, int frequency) {
-        log.info("set red and set frequency");
-        this.red.on(red, frequency);
-    }
-
-    public void setBlue(int blue){
-        log.info("set blue");
-        this.blue.on(blue, 50);
-    }
-
-    public void setBlue(int blue, int frequency) {
-        log.info("set blue and set frequency");
-        this.blue.on(blue, frequency);
-    }
-
-    public void setGreen(int green){
-        log.info("set green");
-        this.green.on(green, 50);
-    }
-
-    public void setGreen(int green, int frequency) {
-        log.info("set green and set frequency");
-        this.green.on(green, frequency);
-    }
-
-    public void ledOff() {
-        log.info("Turning off all the LED pins");
-        this.red.off();
-        this.green.off();
-        this.blue.off();
-    }
-
-    public void ledOn() {
-        log.info("turning on each LED pin and setting to 100");
-        this.red.on(100, 50);
-        this.green.on(100, 50);
-        this.blue.on(100, 50);
-    }
-}</code></pre>
-</div>
-</div>
-</div>
+<div class="ulist">
+<div class="title">Components</div>
+<ul>
+<li>
+<p>RGB LED</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_spi"><a class="anchor" href="#_spi"></a>4.4. SPI</h3>
-<div class="sect3">
-<h4 id="_components_4"><a class="anchor" href="#_components_4"></a>4.4.1. Components</h4>
-<div class="sect4">
-<h5 id="_rfid_scanner"><a class="anchor" href="#_rfid_scanner"></a>RFID Scanner</h5>
-<div class="paragraph">
-<p>rfid</p>
-</div>
-</div>
+<h3 id="_spi"><a class="anchor" href="#_spi"></a>2.4. SPI</h3>
+<div class="ulist">
+<div class="title">Components</div>
+<ul>
+<li>
+<p>RFID Scanner</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_i2c"><a class="anchor" href="#_i2c"></a>4.5. I2C</h3>
+<h3 id="_i2c"><a class="anchor" href="#_i2c"></a>2.5. I2C</h3>
+<div class="ulist">
+<div class="title">Components</div>
+<ul>
+<li>
+<p>LCD Screen</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_adding_to_a_project"><a class="anchor" href="#_adding_to_a_project"></a>3. Adding to a project</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_using_the_library"><a class="anchor" href="#_using_the_library"></a>4. Using the library</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_general_info"><a class="anchor" href="#_general_info"></a>4.1. General Info</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_input_components"><a class="anchor" href="#_input_components"></a>4.2. Input Components</h3>
 <div class="sect3">
-<h4 id="_components_5"><a class="anchor" href="#_components_5"></a>4.5.1. Components</h4>
-<div class="sect4">
-<h5 id="_lcd_screen"><a class="anchor" href="#_lcd_screen"></a>LCD Screen</h5>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package com.opensourcewithslu.outputdevices;
+<h4 id="_push_button"><a class="anchor" href="#_push_button"></a>4.2.1. Push Button</h4>
 
-import com.pi4j.Pi4J;
-import com.pi4j.catalog.components.LcdDisplay;
-import com.pi4j.context.Context;
-import com.pi4j.io.i2c.I2CConfig;
-import io.micronaut.context.annotation.Prototype;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import com.pi4j.crowpi.components.LcdDisplayComponent;
+</div>
+<div class="sect3">
+<h4 id="_slide_switch"><a class="anchor" href="#_slide_switch"></a>4.2.2. Slide Switch</h4>
 
-@Prototype
-public class LCD1602Helper {
-    private static final Logger log = LoggerFactory.getLogger(LEDHelper.class);
-
-    private final LcdDisplay lcdDisplay;
-
-    public LCD1602Helper(I2CConfig i2CConfig, Context pi4jContext){
-        this.lcdDisplay = new LcdDisplay(pi4jContext, 4, 16);
-        lcdDisplay.setDisplayBacklight(true);
-        log.info("LCD is set up with 4 rows and 16 columns. Backlight is on by default");
-    }
-
-    public void writeText(String text){
-        log.info("writing");
-        lcdDisplay.displayText(text);
-    }
-
-    public void writeTextAtLine(String text, int line){
-        log.info("writing on " + line + "line");
-        lcdDisplay.displayText(text, line);
-    }
-
-    public void setBackLight(boolean state){
-        log.info("changing backlight");
-        if (state){
-            log.info("backlight on");
-            lcdDisplay.setDisplayBacklight(true);
-        } else{
-            log.info("backlight off");
-            lcdDisplay.setDisplayBacklight(false);
-        }
-    }
-
-    public void clearDisplay(){
-        log.info("Clear display");
-        lcdDisplay.clearDisplay();
-    }
-
-    public void clearLine(int line){
-        log.info("Clear line " + line + " display");
-        lcdDisplay.clearLine(line);
-    }
-}</code></pre>
 </div>
 </div>
-</div>
+<div class="sect2">
+<h3 id="_output_components"><a class="anchor" href="#_output_components"></a>4.3. Output Components</h3>
+<div class="sect3">
+<h4 id="_led"><a class="anchor" href="#_led"></a>4.3.1. LED</h4>
+
 </div>
 </div>
 </div>
@@ -648,15 +384,8 @@ public class LCD1602Helper {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-03-27 14:26:57 UTC
+Last updated 2023-03-27 19:14:40 UTC
 </div>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
-<script>
-if (!hljs.initHighlighting.called) {
-  hljs.initHighlighting.called = true
-  ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
-}
-</script>
 </body>
 </html>
