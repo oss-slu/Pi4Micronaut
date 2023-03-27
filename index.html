@@ -302,7 +302,11 @@ public class SlideSwitchHelper {
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package com.opensourcewithslu.inputdevices;
+import com.opensourcewithslu.utilities.MultiPinConfigs.DigitalInputMultiPinConfiguration;
+import com.opensourcewithslu.utilities.MultipinConfiguration;
+import com.opensourcewithslu.utilities.Pi4JMultipinFactory;
 import com.pi4j.io.gpio.digital.DigitalInput;
+import com.pi4j.io.gpio.digital.DigitalListener;
 import com.pi4j.io.gpio.digital.DigitalStateChangeListener;
 import io.micronaut.context.annotation.Context;
 import jakarta.annotation.PostConstruct;
@@ -314,29 +318,41 @@ import org.slf4j.LoggerFactory;
 @Singleton
 public class RotaryEncoderHelper {
     private static final Logger log = LoggerFactory.getLogger(RotaryEncoderHelper.class);
-
     private DigitalInput clk;
     private DigitalInput dt;
     private DigitalInput sw;
 
     private int globalCounter;
 
-    public RotaryEncoderHelper(@Named("sw") DigitalInput sw, @Named("dt") DigitalInput dt, @Named("clk") DigitalInput clk){
-        this.sw = sw;
-        this.dt = dt;
-        this.clk = clk;
+    public RotaryEncoderHelper(MultipinConfiguration multiPin){
+        DigitalInput[] allPins = (DigitalInput[]) multiPin.getComponents();
+
+        this.sw = allPins[0];
+        this.clk = allPins[1];
+        this.dt = allPins[2];
+
+        initialize();
     }
 
-    @PostConstruct
     public void initialize(){
         log.info("Initializing Rotary Encoder");
 
         clk.addListener(e -&gt; {
             if(clk.equals(dt.state())){
-                globalCounter++;
+                if(globalCounter == 2147483647){
+                    globalCounter = -2147483647;
+                }
+                else {
+                    globalCounter++;
+                }
             }
             else if (!clk.equals(dt.state())){
-                globalCounter--;
+                if(globalCounter == -2147483648){
+                    globalCounter = 2147483646;
+                }
+                else{
+                    globalCounter--;
+                }
             }
             log.info("Global Counter is {}", globalCounter);
         });
@@ -465,6 +481,7 @@ Each component will need</p>
 <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package com.opensourcewithslu.outputdevices;
 
 import com.opensourcewithslu.inputdevices.PushButtonHelper;
+import com.opensourcewithslu.utilities.MultipinConfiguration;
 import com.pi4j.io.pwm.Pwm;
 import com.pi4j.io.pwm.PwmConfig;
 import io.micronaut.context.annotation.Prototype;
@@ -479,11 +496,12 @@ public class RGBLEDHelper {
     private final Pwm green;
     private final Pwm blue;
 
-    public RGBLEDHelper(Pwm red, Pwm green, Pwm blue){
+    public RGBLEDHelper(MultipinConfiguration pwm){
         log.info("Init rgb");
-        this.red = red;
-        this.green = green;
-        this.blue = blue;
+        Pwm[] pwms = (Pwm[]) pwm.getComponents();
+        this.red = pwms[0];
+        this.green = pwms[1];
+        this.blue = pwms[2];
     }
 
     public void setColor(int[] colors){
@@ -648,7 +666,7 @@ public class LCD1602Helper {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-03-27 20:26:26 UTC
+Last updated 2023-03-27 23:48:40 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
