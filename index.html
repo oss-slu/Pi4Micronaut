@@ -251,7 +251,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @Singleton
-public class PushButtonHelper extends InputDevice {
+public class PushButtonHelper {
     private static final Logger log = LoggerFactory.getLogger(PushButtonHelper.class);
 
     private DigitalInput buttonInput;
@@ -297,7 +297,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @Singleton
-public class SlideSwitchHelper extends InputDevice{
+public class SlideSwitchHelper {
 
     private static final Logger log = LoggerFactory.getLogger(SlideSwitchHelper.class);
 
@@ -348,7 +348,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @Singleton
-public class RotaryEncoderHelper extends InputDevice {
+public class RotaryEncoderHelper {
     private static final Logger log = LoggerFactory.getLogger(RotaryEncoderHelper.class);
 
     private DigitalInput clk;
@@ -388,14 +388,6 @@ public class RotaryEncoderHelper extends InputDevice {
     }
 
     public int getEncoderValue(){return this.globalCounter;}
-
-    public void addEventListener(DigitalStateChangeListener function)  {
-
-    }
-
-    public void removeEventListener(DigitalStateChangeListener function){
-
-    }
 }</code></pre>
 </div>
 </div>
@@ -441,7 +433,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @Singleton
-public class LEDHelper extends OutputDevice {
+public class LEDHelper {
     private static final Logger log = LoggerFactory.getLogger(LEDHelper.class);
 
     private final DigitalOutput ledOutput;
@@ -692,7 +684,7 @@ public class LCD1602Helper {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-03-27 13:45:40 UTC
+Last updated 2023-03-27 13:47:47 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
