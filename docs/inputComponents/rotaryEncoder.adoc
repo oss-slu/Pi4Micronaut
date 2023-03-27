@@ -1,4 +1,4 @@
 [source, java]
 ----
-include::../../micronautpi4j-utils/src/main/java/com/opensourcewithslu/outputdevices/LCD1602Helper.java[]
+include::../../micronautpi4j-utils/src/main/java/com/opensourcewithslu/inputdevices/RotaryEncoderHelper.java[]
 ----
