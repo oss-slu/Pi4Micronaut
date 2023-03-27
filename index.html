@@ -351,43 +351,57 @@ Each component will need</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-java" data-lang="java">package com.opensourcewithslu.outputdevices;
-import com.pi4j.io.gpio.digital.DigitalOutput;
-import jakarta.inject.Named;
-import jakarta.inject.Singleton;
+
+import com.pi4j.Pi4J;
+import com.pi4j.catalog.components.LcdDisplay;
+import com.pi4j.context.Context;
+import com.pi4j.io.i2c.I2CConfig;
+import io.micronaut.context.annotation.Prototype;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import com.pi4j.crowpi.components.LcdDisplayComponent;
 
-@Singleton
-public class LEDHelper extends OutputDevice {
+@Prototype
+public class LCD1602Helper {
     private static final Logger log = LoggerFactory.getLogger(LEDHelper.class);
 
-    private final DigitalOutput ledOutput;
+    private final LcdDisplay lcdDisplay;
 
-    public LEDHelper(@Named("led") DigitalOutput ledOutput) {
-        this.ledOutput = ledOutput;
+    public LCD1602Helper(I2CConfig i2CConfig, Context pi4jContext){
+        this.lcdDisplay = new LcdDisplay(pi4jContext, 4, 16);
+        lcdDisplay.setDisplayBacklight(true);
+        log.info("LCD is set up with 4 rows and 16 columns. Backlight is on by default");
     }
 
-    public void deviceOn() {
-        if (ledOutput.isLow()) {
-            log.info("Turning off LED");
-            ledOutput.high();
+    public void writeText(String text){
+        log.info("writing");
+        lcdDisplay.displayText(text);
+    }
+
+    public void writeTextAtLine(String text, int line){
+        log.info("writing on " + line + "line");
+        lcdDisplay.displayText(text, line);
+    }
+
+    public void setBackLight(boolean state){
+        log.info("changing backlight");
+        if (state){
+            log.info("backlight on");
+            lcdDisplay.setDisplayBacklight(true);
+        } else{
+            log.info("backlight off");
+            lcdDisplay.setDisplayBacklight(false);
         }
     }
 
-    public void deviceOff() {
-        if (ledOutput.isHigh()) {
-            log.info("Turning on LED");
-            ledOutput.low();
-        }
+    public void clearDisplay(){
+        log.info("Clear display");
+        lcdDisplay.clearDisplay();
     }
 
-    public void switchState(){
-        if(ledOutput.isHigh()){
-            deviceOff();
-        }
-        else{
-            deviceOn();
-        }
+    public void clearLine(int line){
+        log.info("Clear line " + line + " display");
+        lcdDisplay.clearLine(line);
     }
 }</code></pre>
 </div>
@@ -406,7 +420,7 @@ public class LEDHelper extends OutputDevice {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-03-27 11:43:40 UTC
+Last updated 2023-03-27 11:52:21 UTC
 </div>
 </div>
 </body>
