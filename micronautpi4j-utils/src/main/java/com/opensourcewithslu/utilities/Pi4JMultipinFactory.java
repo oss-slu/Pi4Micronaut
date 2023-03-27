@@ -1,22 +1,15 @@
 package com.opensourcewithslu.utilities;
 
-import com.opensourcewithslu.inputdevices.RotaryEncoderHelper;
-import com.opensourcewithslu.outputdevices.RGBLEDHelper;
 import com.opensourcewithslu.utilities.MultiPinConfigs.DigitalInputMultiPinConfiguration;
 import com.opensourcewithslu.utilities.MultiPinConfigs.PwmMultiPinConfiguration;
 import com.pi4j.context.Context;
 import com.pi4j.io.gpio.digital.DigitalInput;
-import com.pi4j.io.gpio.digital.DigitalOutput;
 import com.pi4j.io.pwm.Pwm;
 import io.micronaut.context.annotation.EachBean;
 import io.micronaut.context.annotation.Factory;
-import jakarta.inject.Inject;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 @Factory
 public class Pi4JMultipinFactory {
-    private static final Logger log = LoggerFactory.getLogger(Pi4JMultipinFactory.class);
     @EachBean(DigitalInputMultiPinConfiguration.class)
     public MultipinConfiguration multiPinInput(DigitalInputMultiPinConfiguration config, Context pi4jContext){
         int[] addresses = config.getAddresses();
