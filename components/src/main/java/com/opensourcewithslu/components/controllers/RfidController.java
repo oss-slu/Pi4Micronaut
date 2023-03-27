@@ -19,7 +19,7 @@ public class RfidController {
 
     @Post("/write/{value}")
     public void writeToCard(String value){
-        rfidHelper.writeCard(value);
+        rfidHelper.writeToCard(value);
     }
 
     @Get("/read")
