@@ -1,4 +1,6 @@
-.Generic list
-* a
-* b
-* c
+:source-highlighter: highlight.js
+
+[source, java, subs="specialchars"]
+----
+include::../../micronautpi4j-utils/src/main/java/com/opensourcewithslu/outputdevices/LCD1602Helper.java[]
+----
