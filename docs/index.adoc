@@ -1,0 +1,101 @@
+= MicronautPi4J documentation
+:stylesheet: style.css
+:docinfo: shared
+:doctype: book
+:title: MicronautPi4J documentation
+:toc: left
+:toclevels: 4
+:sectanchors:
+:sectnums:
+
+toc::[]
+
+== Introduction
+This is the introduction to the **MicronautPi4J Documentation**!
+
+=== Currently Supported Components
+.Input Components
+* Push Button
+* Slide Switch
+* Rotary Encoder
+
+.Output Components
+* LED
+
+.Misc. Components
+
+=== Components In Progress
+* RGB LED
+* RFID Scanner
+* LCD Display
+* Servo Motor
+
+== Types of Components
+
+=== DigitalInput
+To define in application.yaml add digital-input as a field under pi4j, then add each component under digital-input
+Each component will need
+
+* name: Name of the component
+* address: GPIO pin associated with component
+* debounce:
+* pull: Either PULL_UP or PULL_DOWN depending on component
+* provider: pigpio-digital-input
+
+.Components
+* Push Button
+* Slide Switch
+* Rotary Encoder
+
+=== DigitalOutput
+To define in application.yaml add digital-output as a field under pi4j, then add each component under digital-input
+Each component will need
+
+* name: Name of the component
+* address: GPIO pin associated with component
+* initial: Initial value, either LOW or HIGH
+* shutdown: State to take when program successfully shuts down properly, either LOW or HIGH
+* provider: pigpio-digital-output
+
+.Components
+* LED
+
+=== PWM
+To define in application.yaml add digital-input as a field under pi4j, then add each component under digital-input
+Each component will need
+
+* name: Name of the component
+* address: GPIO pin associated with component
+* pwmType: Either SOFTWARE or HARDWARE based upon which type of PWM you wish to use
+* provider: pigpio-pwm
+
+.Components
+* RGB LED
+
+=== SPI
+
+.Components
+* RFID Scanner
+
+=== I2C
+
+.Components
+* LCD Screen
+
+== Adding to a project
+
+== Using the library
+
+=== General Info
+
+=== Input Components
+
+==== Push Button
+
+==== Slide Switch
+
+=== Output Components
+==== LED 
+
+
+== Contributing to the library
