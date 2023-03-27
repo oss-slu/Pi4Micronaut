@@ -239,19 +239,63 @@ Each component will need</p>
 <h4 id="_components"><a class="anchor" href="#_components"></a>4.1.1. Components</h4>
 <div class="sect4">
 <h5 id="_push_button"><a class="anchor" href="#_push_button"></a>Push Button</h5>
-<div class="ulist">
-<div class="title">Generic list</div>
-<ul>
-<li>
-<p>a</p>
-</li>
-<li>
-<p>b</p>
-</li>
-<li>
-<p>c</p>
-</li>
-</ul>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package com.opensourcewithslu.outputdevices;
+
+import com.pi4j.Pi4J;
+import com.pi4j.catalog.components.LcdDisplay;
+import com.pi4j.context.Context;
+import com.pi4j.io.i2c.I2CConfig;
+import io.micronaut.context.annotation.Prototype;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import com.pi4j.crowpi.components.LcdDisplayComponent;
+
+@Prototype
+public class LCD1602Helper {
+    private static final Logger log = LoggerFactory.getLogger(LEDHelper.class);
+
+    private final LcdDisplay lcdDisplay;
+
+    public LCD1602Helper(I2CConfig i2CConfig, Context pi4jContext){
+        this.lcdDisplay = new LcdDisplay(pi4jContext, 4, 16);
+        lcdDisplay.setDisplayBacklight(true);
+        log.info("LCD is set up with 4 rows and 16 columns. Backlight is on by default");
+    }
+
+    public void writeText(String text){
+        log.info("writing");
+        lcdDisplay.displayText(text);
+    }
+
+    public void writeTextAtLine(String text, int line){
+        log.info("writing on " + line + "line");
+        lcdDisplay.displayText(text, line);
+    }
+
+    public void setBackLight(boolean state){
+        log.info("changing backlight");
+        if (state){
+            log.info("backlight on");
+            lcdDisplay.setDisplayBacklight(true);
+        } else{
+            log.info("backlight off");
+            lcdDisplay.setDisplayBacklight(false);
+        }
+    }
+
+    public void clearDisplay(){
+        log.info("Clear display");
+        lcdDisplay.clearDisplay();
+    }
+
+    public void clearLine(int line){
+        log.info("Clear line " + line + " display");
+        lcdDisplay.clearLine(line);
+    }
+}</code></pre>
+</div>
 </div>
 </div>
 <div class="sect4">
@@ -260,7 +304,64 @@ Each component will need</p>
 </div>
 <div class="sect4">
 <h5 id="_rotary_encoder"><a class="anchor" href="#_rotary_encoder"></a>Rotary Encoder</h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package com.opensourcewithslu.outputdevices;
 
+import com.pi4j.Pi4J;
+import com.pi4j.catalog.components.LcdDisplay;
+import com.pi4j.context.Context;
+import com.pi4j.io.i2c.I2CConfig;
+import io.micronaut.context.annotation.Prototype;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import com.pi4j.crowpi.components.LcdDisplayComponent;
+
+@Prototype
+public class LCD1602Helper {
+    private static final Logger log = LoggerFactory.getLogger(LEDHelper.class);
+
+    private final LcdDisplay lcdDisplay;
+
+    public LCD1602Helper(I2CConfig i2CConfig, Context pi4jContext){
+        this.lcdDisplay = new LcdDisplay(pi4jContext, 4, 16);
+        lcdDisplay.setDisplayBacklight(true);
+        log.info("LCD is set up with 4 rows and 16 columns. Backlight is on by default");
+    }
+
+    public void writeText(String text){
+        log.info("writing");
+        lcdDisplay.displayText(text);
+    }
+
+    public void writeTextAtLine(String text, int line){
+        log.info("writing on " + line + "line");
+        lcdDisplay.displayText(text, line);
+    }
+
+    public void setBackLight(boolean state){
+        log.info("changing backlight");
+        if (state){
+            log.info("backlight on");
+            lcdDisplay.setDisplayBacklight(true);
+        } else{
+            log.info("backlight off");
+            lcdDisplay.setDisplayBacklight(false);
+        }
+    }
+
+    public void clearDisplay(){
+        log.info("Clear display");
+        lcdDisplay.clearDisplay();
+    }
+
+    public void clearLine(int line){
+        log.info("Clear line " + line + " display");
+        lcdDisplay.clearLine(line);
+    }
+}</code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -421,7 +522,7 @@ public class LCD1602Helper {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-03-27 12:01:12 UTC
+Last updated 2023-03-27 12:12:09 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
