@@ -1,6 +1,7 @@
 package com.opensourcewithslu.outputdevices;
 
 import com.opensourcewithslu.inputdevices.PushButtonHelper;
+import com.opensourcewithslu.utilities.MultipinConfiguration;
 import com.pi4j.io.pwm.Pwm;
 import com.pi4j.io.pwm.PwmConfig;
 import io.micronaut.context.annotation.Prototype;
@@ -15,11 +16,12 @@ public class RGBLEDHelper {
     private final Pwm green;
     private final Pwm blue;
 
-    public RGBLEDHelper(Pwm red, Pwm green, Pwm blue){
+    public RGBLEDHelper(MultipinConfiguration pwm){
         log.info("Init rgb");
-        this.red = red;
-        this.green = green;
-        this.blue = blue;
+        Pwm[] pwms = (Pwm[]) pwm.getComponents();
+        this.red = pwms[0];
+        this.green = pwms[1];
+        this.blue = pwms[2];
     }
 
     public void setColor(int[] colors){

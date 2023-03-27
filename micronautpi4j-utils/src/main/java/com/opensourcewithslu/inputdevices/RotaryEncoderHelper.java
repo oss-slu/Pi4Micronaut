@@ -1,5 +1,9 @@
 package com.opensourcewithslu.inputdevices;
+import com.opensourcewithslu.utilities.MultiPinConfigs.DigitalInputMultiPinConfiguration;
+import com.opensourcewithslu.utilities.MultipinConfiguration;
+import com.opensourcewithslu.utilities.Pi4JMultipinFactory;
 import com.pi4j.io.gpio.digital.DigitalInput;
+import com.pi4j.io.gpio.digital.DigitalListener;
 import com.pi4j.io.gpio.digital.DigitalStateChangeListener;
 import io.micronaut.context.annotation.Context;
 import jakarta.annotation.PostConstruct;
@@ -11,29 +15,41 @@ import org.slf4j.LoggerFactory;
 @Singleton
 public class RotaryEncoderHelper {
     private static final Logger log = LoggerFactory.getLogger(RotaryEncoderHelper.class);
-
     private DigitalInput clk;
     private DigitalInput dt;
     private DigitalInput sw;
 
     private int globalCounter;
 
-    public RotaryEncoderHelper(@Named("sw") DigitalInput sw, @Named("dt") DigitalInput dt, @Named("clk") DigitalInput clk){
-        this.sw = sw;
-        this.dt = dt;
-        this.clk = clk;
+    public RotaryEncoderHelper(MultipinConfiguration multiPin){
+        DigitalInput[] allPins = (DigitalInput[]) multiPin.getComponents();
+
+        this.sw = allPins[0];
+        this.clk = allPins[1];
+        this.dt = allPins[2];
+
+        initialize();
     }
 
-    @PostConstruct
     public void initialize(){
         log.info("Initializing Rotary Encoder");
 
         clk.addListener(e -> {
             if(clk.equals(dt.state())){
-                globalCounter++;
+                if(globalCounter == 2147483647){
+                    globalCounter = -2147483647;
+                }
+                else {
+                    globalCounter++;
+                }
             }
             else if (!clk.equals(dt.state())){
-                globalCounter--;
+                if(globalCounter == -2147483648){
+                    globalCounter = 2147483646;
+                }
+                else{
+                    globalCounter--;
+                }
             }
             log.info("Global Counter is {}", globalCounter);
         });
