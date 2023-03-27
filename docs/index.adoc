@@ -5,7 +5,7 @@
 :doctype: book
 :title: MicronautPi4J documentation
 :toc: left
-:toclevels: 4
+:toclevels: 3
 :sectanchors:
 :sectnums:
 
