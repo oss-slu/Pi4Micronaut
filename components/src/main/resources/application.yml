@@ -78,10 +78,26 @@ pi4j:
       initial: HIGH
       provider: pigpio-digital-input
   multi-pwm:
-    rgb-led:
+    rgbled:
       name: RGB LED
       addresses: 17, 18, 27
-      pwmTypes: SOFTWARE, SOFTWARE, SOFTWARE
+      pwmType: SOFTWARE, SOFTWARE, SOFTWARE
       provider: pigpio-pwm
-      initials: 0, 0, 0
-      shutdowns: 0, 0, 0
+      initial: 0, 0, 0
+      shutdown: 0, 0, 0
+#  clk:
+#    name: CLK Output
+#    address: 23
+#    debounce: 500
+#    pull: PULL_UP
+#    shutdown: LOW
+#    initial: HIGH
+#    provider: pigpio-digital-input
+#  dt:
+#    name: DT Output
+#    address: 24
+#    debounce: 500
+#    pull: PULL_UP
+#    shutdown: LOW
+#    initial: HIGH
+#    provider: pigpio-digital-input

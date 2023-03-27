@@ -1,6 +1,7 @@
 package com.opensourcewithslu.components.controllers;
 
 import com.opensourcewithslu.outputdevices.RGBLEDHelper;
+import com.opensourcewithslu.utilities.MultipinConfiguration;
 import com.pi4j.io.pwm.Pwm;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
@@ -10,10 +11,8 @@ import jakarta.inject.Named;
 public class rgbController {
     private final RGBLEDHelper rgbledHelper;
 
-    public rgbController(@Named("red-pwm") Pwm red,
-                         @Named("green-pwm") Pwm green,
-                         @Named("blue-pwm") Pwm blue){
-        this.rgbledHelper = new RGBLEDHelper(red, green, blue);
+    public rgbController(@Named("rgbled") MultipinConfiguration rgbLed){
+        this.rgbledHelper = new RGBLEDHelper(rgbLed);
     }
 
     @Get("/setRed/{val}")
