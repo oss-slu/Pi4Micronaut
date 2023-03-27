@@ -1,5 +1,8 @@
 package com.opensourcewithslu.inputdevices;
+import com.opensourcewithslu.utilities.MultipinConfiguration;
+import com.opensourcewithslu.utilities.Pi4JMultipinFactory;
 import com.pi4j.io.gpio.digital.DigitalInput;
+import com.pi4j.io.gpio.digital.DigitalListener;
 import com.pi4j.io.gpio.digital.DigitalStateChangeListener;
 import io.micronaut.context.annotation.Context;
 import jakarta.annotation.PostConstruct;
@@ -12,21 +15,27 @@ import org.slf4j.LoggerFactory;
 public class RotaryEncoderHelper extends InputDevice {
     private static final Logger log = LoggerFactory.getLogger(RotaryEncoderHelper.class);
 
+    private final MultipinConfiguration multiPin;
     private DigitalInput clk;
     private DigitalInput dt;
     private DigitalInput sw;
 
     private int globalCounter;
 
-    public RotaryEncoderHelper(@Named("sw") DigitalInput sw, @Named("dt") DigitalInput dt, @Named("clk") DigitalInput clk){
-        this.sw = sw;
-        this.dt = dt;
-        this.clk = clk;
+    public RotaryEncoderHelper(@Named("rotary-encoder") MultipinConfiguration multiPin){
+        this.multiPin = multiPin;
     }
 
     @PostConstruct
     public void initialize(){
         log.info("Initializing Rotary Encoder");
+
+        Pi4JMultipinFactory multipinFactory = new Pi4JMultipinFactory();
+
+        DigitalInput[] allPins = multipinFactory.multiPinInput(multiPin);
+        this.sw = allPins[0];
+        this.clk = allPins[1];
+        this.dt = allPins[2];
 
         clk.addListener(e -> {
             if(clk.equals(dt.state())){
