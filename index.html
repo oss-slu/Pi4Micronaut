@@ -350,7 +350,46 @@ Each component will need</p>
 <h5 id="_lcd_screen"><a class="anchor" href="#_lcd_screen"></a>LCD Screen</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">include::../../micronautpi4j-utils/src/main/java/com/opensourcewithslu/outputdevices/LEDHelper.java</code></pre>
+<pre class="highlight"><code class="language-java" data-lang="java">package com.opensourcewithslu.outputdevices;
+import com.pi4j.io.gpio.digital.DigitalOutput;
+import jakarta.inject.Named;
+import jakarta.inject.Singleton;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+@Singleton
+public class LEDHelper extends OutputDevice {
+    private static final Logger log = LoggerFactory.getLogger(LEDHelper.class);
+
+    private final DigitalOutput ledOutput;
+
+    public LEDHelper(@Named("led") DigitalOutput ledOutput) {
+        this.ledOutput = ledOutput;
+    }
+
+    public void deviceOn() {
+        if (ledOutput.isLow()) {
+            log.info("Turning off LED");
+            ledOutput.high();
+        }
+    }
+
+    public void deviceOff() {
+        if (ledOutput.isHigh()) {
+            log.info("Turning on LED");
+            ledOutput.low();
+        }
+    }
+
+    public void switchState(){
+        if(ledOutput.isHigh()){
+            deviceOff();
+        }
+        else{
+            deviceOn();
+        }
+    }
+}</code></pre>
 </div>
 </div>
 </div>
@@ -367,7 +406,7 @@ Each component will need</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-03-27 11:39:31 UTC
+Last updated 2023-03-27 11:43:40 UTC
 </div>
 </div>
 </body>
