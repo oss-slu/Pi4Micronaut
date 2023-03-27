@@ -1,5 +1,4 @@
 = MicronautPi4J documentation
-:source-highlighter: highlight.js
 :stylesheet: style.css
 :docinfo: shared
 :doctype: book
