@@ -9,7 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @Singleton
-public class SlideSwitchHelper extends InputDevice{
+public class SlideSwitchHelper {
 
     private static final Logger log = LoggerFactory.getLogger(SlideSwitchHelper.class);
 

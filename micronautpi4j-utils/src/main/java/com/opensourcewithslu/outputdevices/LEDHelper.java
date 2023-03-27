@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @Singleton
-public class LEDHelper extends OutputDevice {
+public class LEDHelper {
     private static final Logger log = LoggerFactory.getLogger(LEDHelper.class);
 
     private final DigitalOutput ledOutput;
