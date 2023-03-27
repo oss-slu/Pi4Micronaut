@@ -2,6 +2,12 @@
   application:
     name: components
 pi4j:
+  spi:
+    rfid:
+      name: MFRC522
+      address: 8
+      baud: 500000
+      reset-pin: 25
   pwm:
     red-pwm:
       name: red
@@ -30,62 +36,62 @@ pi4j:
       bus: 1
       device: 0x27
   ### DIGITAL INPUTS
-  digital-input:
-    photo-resistor-input:
-      name: Photo Resistor Input
-      address: 4
-      debounce: 100000
-      pull: PULL_DOWN
-      provider: pigpio-digital-input
-    button-input:
-      name: Push Button Input
-      address: 21
-      pull: PULL_DOWN
-      debounce: 3000
-      provider: pigpio-digital-input
-    slide-switch-input:
-      name: Slide Switch Input
-      address: 19
-      pull: PULL_DOWN
-      debounce: 3000
-      provider: pigpio-digital-input
-    # Rotary Encoder
-    sw:
-      name: SW Output
-      address: 25
-      debounce: 6000
-      pull: PULL_DOWN
-      shutdown: LOW
-      initial: HIGH
-      provider: pigpio-digital-input
-    clk:
-      name: CLK Output
-      address: 23
-      debounce: 500
-      pull: PULL_UP
-      shutdown: LOW
-      initial: HIGH
-      provider: pigpio-digital-input
-    dt:
-      name: DT Output
-      address: 24
-      debounce: 500
-      pull: PULL_UP
-      shutdown: LOW
-      initial: HIGH
-      provider: pigpio-digital-input
-
-  ### DIGITAL OUTPUTS
-  digital-output:
-    led:
-      name: LED Output
-      address: 26
-      shutdown: LOW
-      initial: LOW
-      provider: pigpio-digital-output
-    photo-resistor-output:
-      name: Photo Resistor Output
-      address: 27
-      shutdown: LOW
-      initial: HIGH
-      provider: pigpio-digital-output
+#  digital-input:
+#    photo-resistor-input:
+#      name: Photo Resistor Input
+#      address: 4
+#      debounce: 100000
+#      pull: PULL_DOWN
+#      provider: pigpio-digital-input
+#    button-input:
+#      name: Push Button Input
+#      address: 21
+#      pull: PULL_DOWN
+#      debounce: 3000
+#      provider: pigpio-digital-input
+#    slide-switch-input:
+#      name: Slide Switch Input
+#      address: 19
+#      pull: PULL_DOWN
+#      debounce: 3000
+#      provider: pigpio-digital-input
+#    # Rotary Encoder
+#    sw:
+#      name: SW Output
+#      address: 25
+#      debounce: 6000
+#      pull: PULL_DOWN
+#      shutdown: LOW
+#      initial: HIGH
+#      provider: pigpio-digital-input
+#    clk:
+#      name: CLK Output
+#      address: 23
+#      debounce: 500
+#      pull: PULL_UP
+#      shutdown: LOW
+#      initial: HIGH
+#      provider: pigpio-digital-input
+#    dt:
+#      name: DT Output
+#      address: 24
+#      debounce: 500
+#      pull: PULL_UP
+#      shutdown: LOW
+#      initial: HIGH
+#      provider: pigpio-digital-input
+#
+#  ### DIGITAL OUTPUTS
+#  digital-output:
+#    led:
+#      name: LED Output
+#      address: 26
+#      shutdown: LOW
+#      initial: LOW
+#      provider: pigpio-digital-output
+#    photo-resistor-output:
+#      name: Photo Resistor Output
+#      address: 27
+#      shutdown: LOW
+#      initial: HIGH
+#      provider: pigpio-digital-output
