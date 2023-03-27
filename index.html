@@ -242,21 +242,7 @@ public class PushButtonHelper {
 
     @PostConstruct
     public void initialize(){
-        log.info("Initializing Push Button");
-
-        buttonInput.addListener(e-&gt;{
-           isPressed = buttonInput.isHigh();
-        });
-    }
-
-    public void addEventListener(DigitalStateChangeListener function)  {
-        buttonInput.addListener(function);
-    }
-
-    public void removeEventListener(DigitalStateChangeListener function){
-        buttonInput.removeListener(function);
-    }
-}</code></pre>
+        log.info("Initializing Push Button");</code></pre>
 </div>
 </div>
 </div>
@@ -662,7 +648,7 @@ public class LCD1602Helper {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-03-27 13:55:49 UTC
+Last updated 2023-03-27 14:13:39 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
