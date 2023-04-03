@@ -30,6 +30,7 @@ a {
 	padding: 1em;
 	float: left;
 	height: 100vh;
+	overflow-y: auto;
 }
 
 #toc a {
@@ -103,4 +104,8 @@ td, th {
 th {
 	background-color: #f9f9f9;
 	text-align: left;
+}
+
+#footer {
+	float: right;
 }
