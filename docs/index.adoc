@@ -9,7 +9,7 @@
 :sectanchors:
 :sectnums:
 
-
+toc::[]
 
 == Introduction
 This is the introduction to the **MicronautPi4J Documentation**!
