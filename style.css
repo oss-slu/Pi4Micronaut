@@ -28,10 +28,12 @@ a {
 
 #toc {
 	padding: 1em;
+	float: left;
+	height: 100vh;
 }
 
 #toc a {
-	color: white;
+	color: cornflowerblue;
 }
 
 #toc li {
@@ -61,9 +63,9 @@ h1 {
 	color: red;
 }
 
-.toc2{
-	float: left;
-}
+/*.toc2{*/
+/*	float: left;*/
+/*}*/
 
 #toc a:hover {
 	background-color: maroon;
@@ -75,6 +77,7 @@ h1 {
 	max-width: 1000px;
 	padding: 1em;
 	margin: auto;
+	float: right;
 }
 
 #content img {
