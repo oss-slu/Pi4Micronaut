@@ -35,7 +35,7 @@ a {
 	overflow-y: auto;
 	position: fixed;
 	box-sizing: border-box;
-	width: auto
+	width: auto;
 	background-color: lightgray;
 }
 
