@@ -115,8 +115,11 @@ th {
 	text-align: left;
 }
 
-/*#footer {*/
-/*	float: right;*/
-/*	position: absolute;*/
-/*	bottom: 0px;*/
-/*}*/
+#footer {
+	float: right;
+	position: absolute;
+	bottom: 0px;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}
