@@ -26,7 +26,6 @@ a {
 	background-color: #444;
 	grid-area: nav;
 	position: fixed;
-	width: 100vh;
 }
 
 #toc {
@@ -36,6 +35,7 @@ a {
 	overflow-y: auto;
 	position: fixed;
 	background-color: lightgray;
+	width: 100%;
 }
 
 #toc a {
