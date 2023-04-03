@@ -25,6 +25,7 @@ a {
 #header {
 	background-color: #444;
 	grid-area: nav;
+	position: fixed;
 }
 
 #toc {
@@ -79,7 +80,8 @@ h1 {
 	grid-area: content;
 	max-width: 1000px;
 	padding: 1em;
-	margin: auto;
+	/*margin: auto;*/
+	margin-left: -20px;
 	float: right;
 }
 
