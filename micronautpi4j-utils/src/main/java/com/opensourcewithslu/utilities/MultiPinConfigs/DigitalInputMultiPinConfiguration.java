@@ -45,6 +45,7 @@ public class DigitalInputMultiPinConfiguration {
     }
 
     public void setPulls(String all_pulls) {
+        all_pulls = all_pulls.replaceAll("\\s", "");
         String[] pulls = all_pulls.split(",");
         PullResistance[] pullResistances = new PullResistance[pulls.length];
 

@@ -89,6 +89,14 @@ pi4j:
       shutdown: LOW
       initial: HIGH
       provider: pigpio-digital-input
+    rotary-encoder-2:
+      name: Rotary Encoder 2
+      addresses: 12, 16, 20
+      debounces: 6000, 500, 500
+      pulls: PULL_DOWN, PULL_UP, PULL_UP
+      shutdown: LOW
+      initial: HIGH
+      provider: pigpio-digital-input
   multi-pwm:
     rgb-led:
       name: RGB LED
