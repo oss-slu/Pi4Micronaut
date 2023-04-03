@@ -34,6 +34,7 @@ a {
 	height: 100%;
 	overflow-y: auto;
 	position: fixed;
+	box-sizing: border-box;
 	background-color: lightgray;
 }
 
