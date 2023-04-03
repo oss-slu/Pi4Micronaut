@@ -56,7 +56,13 @@ pi4j:
       provider: pigpio-digital-input
     slide-switch-input:
       name: Slide Switch Input
-      address: 27
+      address: 18
+      pull: PULL_DOWN
+      debounce: 3000
+      provider: pigpio-digital-input
+    slide-switch-input-2:
+      name: Slide Switch Input
+      address: 22
       pull: PULL_DOWN
       debounce: 3000
       provider: pigpio-digital-input
