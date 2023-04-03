@@ -26,6 +26,7 @@ a {
 	background-color: #444;
 	grid-area: nav;
 	position: fixed;
+	width: 100vh;
 }
 
 #toc {
@@ -57,7 +58,7 @@ a {
 
 #toctitle {
 	font-weight: bold;
-	color: white;
+	color: black;
 }
 
 h1 {
