@@ -42,15 +42,27 @@ pi4j:
       debounce: 100000
       pull: PULL_DOWN
       provider: pigpio-digital-input
-    button-input:
+    button-input-1:
+      name: Push Button Input
+      address: 16
+      pull: PULL_DOWN
+      debounce: 30
+      provider: pigpio-digital-input
+    button-input-2:
       name: Push Button Input
       address: 21
       pull: PULL_DOWN
-      debounce: 3000
+      debounce: 30
       provider: pigpio-digital-input
     slide-switch-input:
       name: Slide Switch Input
-      address: 19
+      address: 18
+      pull: PULL_DOWN
+      debounce: 3000
+      provider: pigpio-digital-input
+    slide-switch-input-2:
+      name: Slide Switch Input
+      address: 22
       pull: PULL_DOWN
       debounce: 3000
       provider: pigpio-digital-input
@@ -58,9 +70,15 @@ pi4j:
   digital-output:
     led:
       name: LED Output
+      address: 17
+      shutdown: HIGH
+      initial: HIGH
+      provider: pigpio-digital-output
+    led2:
+      name: LED Output
       address: 26
-      shutdown: LOW
-      initial: LOW
+      shutdown: HIGH
+      initial: HIGH
       provider: pigpio-digital-output
     photo-resistor-output:
       name: Photo Resistor Output
@@ -74,6 +92,14 @@ pi4j:
       addresses: 27,18,17
       debounces: 6000,500,500
       pulls: PULL_DOWN,PULL_UP,PULL_UP
+      shutdown: LOW
+      initial: HIGH
+      provider: pigpio-digital-input
+    rotary-encoder-2:
+      name: Rotary Encoder 2
+      addresses: 12, 16, 20
+      debounces: 6000, 500, 500
+      pulls: PULL_DOWN, PULL_UP, PULL_UP
       shutdown: LOW
       initial: HIGH
       provider: pigpio-digital-input
