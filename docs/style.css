@@ -61,6 +61,10 @@ h1 {
 	color: red;
 }
 
+.toc2{
+	float: left;
+}
+
 #toc a:hover {
 	background-color: maroon;
 }
