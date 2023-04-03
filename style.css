@@ -29,8 +29,9 @@ a {
 #toc {
 	padding: 1em;
 	float: left;
-	height: 100vh;
+	height: 100%;
 	overflow-y: auto;
+	position: fixed;
 }
 
 #toc a {
@@ -109,5 +110,5 @@ th {
 #footer {
 	float: right;
 	position: absolute;
-	bottom: 0px;
+	bottom: 0;
 }
