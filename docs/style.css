@@ -3,7 +3,6 @@ body {
 	line-height: 1.5;
 	padding: 0;
 	margin: 0;
-	position: relative;
 }
 
 .anchor{
@@ -89,6 +88,8 @@ h1 {
 	padding: 1em;
 	margin: auto;
 	float: right;
+	left: auto;
+	position: relative;
 }
 
 #content img {
