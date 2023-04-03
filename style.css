@@ -27,6 +27,7 @@ a {
 	grid-area: nav;
 	position: fixed;
 	width: auto;
+	display: inline-block;
 }
 
 #toc {
