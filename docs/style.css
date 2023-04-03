@@ -81,7 +81,7 @@ h1 {
 #content {
 	background-color: white;
 	grid-area: content;
-	max-width: 1000px;
+	/*max-width: 1000px;*/
 	padding: 1em;
 	margin: auto;
 	float: right;
@@ -112,8 +112,8 @@ th {
 	text-align: left;
 }
 
-#footer {
-	float: right;
-	position: absolute;
-	bottom: 0px;
-}
+/*#footer {*/
+/*	float: right;*/
+/*	position: absolute;*/
+/*	bottom: 0px;*/
+/*}*/
