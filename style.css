@@ -90,8 +90,8 @@ h1 {
 	background-color: white;
 	grid-area: content;
 	padding: 1em;
-	margin: 5%;
-	max-width: 85%;
+	margin-top: 3%;
+	max-width: 80%;
 	width: 100%;
 	float: right;
 	position: relative;
