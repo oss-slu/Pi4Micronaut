@@ -25,7 +25,7 @@ a {
 	background-color: #444;
 	grid-area: nav;
 	position: fixed;
-	width: auto;
+	width: 100%;
 	display: inline-block;
 	z-index: 10;
 }
