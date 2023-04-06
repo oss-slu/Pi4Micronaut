@@ -41,7 +41,7 @@ a {
 	position: fixed;
 	box-sizing: border-box;
 	background-color: lightgray;
-	max-width: 20%;
+	max-width: 15%;
 	width: 100%;
 	/*width: 100%;*/
 }
@@ -92,7 +92,7 @@ h1 {
 	padding: 1em;
 	margin-top: 5%;
 	max-width: 80%;
-	width: auto;
+	width: 100%;
 	float: right;
 	right:10%;
 	position: relative;
