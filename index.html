@@ -33,14 +33,27 @@ a {
 #header {
 	background-color: #444;
 	grid-area: nav;
+	position: fixed;
+	width: auto;
+	display: inline-block;
 }
 
 #toc {
-	padding: 1em;
+	padding-top: 1em;
+	padding-left: 1em;
+	padding-right: 1em;
+	padding-bottom: 2em;
+	float: left;
+	height: 100%;
+	overflow-y: auto;
+	position: fixed;
+	box-sizing: border-box;
+	background-color: lightgray;
+	width: 100%;
 }
 
 #toc a {
-	color: white;
+	color: cornflowerblue;
 }
 
 #toc li {
@@ -59,7 +72,7 @@ a {
 
 #toctitle {
 	font-weight: bold;
-	color: white;
+	color: black;
 }
 
 h1 {
@@ -67,8 +80,13 @@ h1 {
 	background-color: black;
 	padding: .6em;
 	margin: 0;
+	width: 100%;
 	color: red;
 }
+
+/*.toc2{*/
+/*	float: left;*/
+/*}*/
 
 #toc a:hover {
 	background-color: maroon;
@@ -77,9 +95,12 @@ h1 {
 #content {
 	background-color: white;
 	grid-area: content;
-	max-width: 1000px;
+	/*max-width: 1000px;*/
 	padding: 1em;
 	margin: auto;
+	float: right;
+	right:10%;
+	position: relative;
 }
 
 #content img {
@@ -107,6 +128,14 @@ th {
 	text-align: left;
 }
 
+#footer {
+	float: right;
+	position: absolute;
+	bottom: 0px;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css">
 </head>
@@ -153,6 +182,15 @@ th {
 </ul>
 </li>
 <li><a href="#_contributing_to_the_library">5. Contributing to the library</a></li>
+<li><a href="#_yo">6. yo</a></li>
+<li><a href="#_adrian">7. adrian</a></li>
+<li><a href="#_what">8. what</a></li>
+<li><a href="#_am">9. am</a></li>
+<li><a href="#_i">10. i</a></li>
+<li><a href="#_even">11. even</a></li>
+<li><a href="#_saying">12. saying</a></li>
+<li><a href="#_right">13. right</a></li>
+<li><a href="#_now">14. now</a></li>
 </ul>
 </div>
 </div>
@@ -222,27 +260,27 @@ Each component will need</p>
 <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package com.opensourcewithslu.inputdevices;
 import com.pi4j.io.gpio.digital.DigitalInput;
 import com.pi4j.io.gpio.digital.DigitalStateChangeListener;
-import io.micronaut.context.annotation.Prototype;
 import jakarta.annotation.PostConstruct;
 import jakarta.inject.Named;
 import jakarta.inject.Singleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@Prototype
-
+@Singleton
 public class PushButtonHelper {
     private static final Logger log = LoggerFactory.getLogger(PushButtonHelper.class);
 
     private DigitalInput buttonInput;
     public Boolean isPressed;
 
-    public PushButtonHelper(DigitalInput buttonInput){
+    public PushButtonHelper(@Named("button-input") DigitalInput buttonInput){
         this.buttonInput = buttonInput;
         this.isPressed = buttonInput.isHigh();
+    }
 
-        initialize();
-    }</code></pre>
+    @PostConstruct
+    public void initialize(){
+        log.info("Initializing Push Button");</code></pre>
 </div>
 </div>
 </div>
@@ -253,7 +291,6 @@ public class PushButtonHelper {
 <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package com.opensourcewithslu.inputdevices;
 import com.pi4j.io.gpio.digital.DigitalInput;
 import com.pi4j.io.gpio.digital.DigitalStateChangeListener;
-import io.micronaut.context.annotation.Prototype;
 import jakarta.annotation.PostConstruct;
 import jakarta.inject.Named;
 import jakarta.inject.Singleton;
@@ -261,7 +298,7 @@ import jakarta.inject.Singleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@Prototype
+@Singleton
 public class SlideSwitchHelper {
 
     private static final Logger log = LoggerFactory.getLogger(SlideSwitchHelper.class);
@@ -270,13 +307,12 @@ public class SlideSwitchHelper {
 
     public boolean isOn;
 
-    public SlideSwitchHelper(DigitalInput slideSwitchInput) {
+    public SlideSwitchHelper(@Named("slide-switch-input") DigitalInput slideSwitchInput) {
         this.slideSwitchInput = slideSwitchInput;
         this.isOn = slideSwitchInput.isHigh();
-
-        initialize();
     }
 
+    @PostConstruct
     public void initialize(){
         log.info("Initializing Slide Switch");
 
@@ -311,25 +347,24 @@ import com.pi4j.io.gpio.digital.DigitalInput;
 import com.pi4j.io.gpio.digital.DigitalListener;
 import com.pi4j.io.gpio.digital.DigitalStateChangeListener;
 import io.micronaut.context.annotation.Context;
-import io.micronaut.context.annotation.Prototype;
 import jakarta.annotation.PostConstruct;
 import jakarta.inject.Named;
 import jakarta.inject.Singleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@Prototype
+@Singleton
 public class RotaryEncoderHelper {
     private static final Logger log = LoggerFactory.getLogger(RotaryEncoderHelper.class);
     private DigitalInput clk;
     private DigitalInput dt;
     private DigitalInput sw;
-    private String helperName;
+
     private int globalCounter;
 
     public RotaryEncoderHelper(MultipinConfiguration multiPin){
         DigitalInput[] allPins = (DigitalInput[]) multiPin.getComponents();
-        helperName = multiPin.getId().substring(0, multiPin.getId().length() - 8);
+
         this.sw = allPins[0];
         this.clk = allPins[1];
         this.dt = allPins[2];
@@ -338,9 +373,7 @@ public class RotaryEncoderHelper {
     }
 
     public void initialize(){
-        log.info("Initializing " + helperName);
-
-        String logInfo = helperName + " counter is {}";
+        log.info("Initializing Rotary Encoder");
 
         clk.addListener(e -&gt; {
             if(clk.equals(dt.state())){
@@ -359,16 +392,16 @@ public class RotaryEncoderHelper {
                     globalCounter--;
                 }
             }
-            log.info(logInfo, globalCounter);
+            log.info("Global Counter is {}", globalCounter);
         });
 
         sw.addListener(e -&gt; {
             if(sw.isHigh()) {
-                log.info("Resetting " + helperName + " counter");
+                log.info("Resetting globalCounter");
                 globalCounter = 0;
             }
 
-            log.info(logInfo, globalCounter);
+            log.info("Global Counter is {}", globalCounter);
         });
     }
 
@@ -412,22 +445,18 @@ Each component will need</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package com.opensourcewithslu.outputdevices;
 import com.pi4j.io.gpio.digital.DigitalOutput;
-import io.micronaut.context.ApplicationContext;
-import io.micronaut.context.annotation.Prototype;
-import io.micronaut.inject.qualifiers.Qualifiers;
-import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import jakarta.inject.Singleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@Prototype
+@Singleton
 public class LEDHelper {
     private static final Logger log = LoggerFactory.getLogger(LEDHelper.class);
 
-    private DigitalOutput ledOutput;
+    private final DigitalOutput ledOutput;
 
-    public LEDHelper(DigitalOutput ledOutput){
+    public LEDHelper(@Named("led") DigitalOutput ledOutput) {
         this.ledOutput = ledOutput;
     }
 
@@ -672,10 +701,64 @@ public class LCD1602Helper {
 
 </div>
 </div>
+<div class="sect1">
+<h2 id="_yo"><a class="anchor" href="#_yo"></a>6. yo</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_adrian"><a class="anchor" href="#_adrian"></a>7. adrian</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_what"><a class="anchor" href="#_what"></a>8. what</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_am"><a class="anchor" href="#_am"></a>9. am</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_i"><a class="anchor" href="#_i"></a>10. i</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_even"><a class="anchor" href="#_even"></a>11. even</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_saying"><a class="anchor" href="#_saying"></a>12. saying</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_right"><a class="anchor" href="#_right"></a>13. right</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_now"><a class="anchor" href="#_now"></a>14. now</h2>
+<div class="sectionbody">
+
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-04-03 21:44:54 UTC
+Last updated 2023-04-06 12:35:11 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
