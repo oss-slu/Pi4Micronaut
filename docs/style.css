@@ -27,6 +27,7 @@ a {
 	position: fixed;
 	width: auto;
 	display: inline-block;
+	z-index: 10;
 }
 
 #toc {
@@ -87,10 +88,11 @@ h1 {
 	background-color: white;
 	grid-area: content;
 	padding: 1em;
-	margin: auto;
+	margin-top: 5%;
 	float: right;
 	right:10%;
 	position: relative;
+	z-index: 1;
 }
 
 #content img {
