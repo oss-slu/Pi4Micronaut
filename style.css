@@ -41,6 +41,8 @@ a {
 	position: fixed;
 	box-sizing: border-box;
 	background-color: lightgray;
+	max-width: 20%;
+	width: 100%;
 	/*width: 100%;*/
 }
 
@@ -89,6 +91,8 @@ h1 {
 	grid-area: content;
 	padding: 1em;
 	margin-top: 5%;
+	max-width: 80%;
+	width: auto;
 	float: right;
 	right:10%;
 	position: relative;
