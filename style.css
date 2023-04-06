@@ -40,7 +40,7 @@ a {
 	position: fixed;
 	box-sizing: border-box;
 	background-color: lightgray;
-	width: 100%;
+	/*width: 100%;*/
 }
 
 #toc a {
@@ -86,11 +86,10 @@ h1 {
 #content {
 	background-color: white;
 	grid-area: content;
-	/*max-width: 1000px;*/
 	padding: 1em;
 	margin: auto;
 	float: right;
-	right:10%;
+	/*right:10%;*/
 	position: relative;
 }
 
