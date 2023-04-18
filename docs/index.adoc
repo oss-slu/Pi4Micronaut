@@ -33,14 +33,15 @@ Each component will need
 * provider: pigpio-digital-input
 
 ==== Components
-===== Push Button
+===== 1.) Push Button
 
 include::inputComponents/pushbutton.adoc[]
 
-===== Slide Switch
+===== 2.) Slide Switch
+
 include::inputComponents/slideSwitch.adoc[]
 
-===== Rotary Encoder
+===== 3.) Rotary Encoder
 
 include::inputComponents/rotaryEncoder.adoc[]
 
