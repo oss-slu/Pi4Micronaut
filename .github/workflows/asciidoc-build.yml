@@ -15,10 +15,11 @@ jobs:
       id: adocbuild
       uses: tonynv/asciidoctor-action@master
       with:
-          program: "asciidoctor -D docs -a stylesheet=style.css --backend=html5 -o index.html ./docs/index.adoc && echo 'docs.upsilonproject.io' > docs/CNAME"
+          program: "asciidoctor -D docs -a stylesheet=style.css -a toc=left --backend=html5 -o index.html ./docs/index.adoc && echo 'docs.upsilonproject.io' > docs/CNAME"
     - name: Deploy docs to ghpages
       uses: peaceiris/actions-gh-pages@v3
       with: 
         deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
         publish_branch: gh-pages
         publish_dir: ./docs/
+

@@ -89,3 +89,33 @@ include::i2cComponents/lcdScreen.adoc[]
 
 
 == Contributing to the library
+
+== yo
+
+== adrian
+
+== what
+
+== am
+
+== i
+
+== even
+
+== saying
+
+== right
+
+== now
+
+== yo
+
+== what
+
+== is
+
+== up
+
+== my
+
+== guys
