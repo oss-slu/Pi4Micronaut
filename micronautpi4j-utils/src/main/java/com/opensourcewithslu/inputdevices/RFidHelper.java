@@ -10,7 +10,6 @@ import com.pi4j.crowpi.components.RfidComponent;
 import java.util.concurrent.atomic.AtomicReference;
 
 
-@Prototype
 public class RFidHelper {
     private static final Logger log = LoggerFactory.getLogger(RFidHelper.class);
     private RfidComponent scanner;

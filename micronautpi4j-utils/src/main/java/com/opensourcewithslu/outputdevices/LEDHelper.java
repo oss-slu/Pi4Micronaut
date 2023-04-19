@@ -9,7 +9,6 @@ import jakarta.inject.Singleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@Prototype
 public class LEDHelper {
     private static final Logger log = LoggerFactory.getLogger(LEDHelper.class);
 
@@ -27,7 +26,7 @@ public class LEDHelper {
     //end::method[]
     {
         if (ledOutput.isLow()) {
-            log.info("Turning off LED");
+            log.trace("Turning off LED");
             ledOutput.high();
         }
     }
@@ -37,7 +36,7 @@ public class LEDHelper {
     //end::method[]
     {
         if (ledOutput.isHigh()) {
-            log.info("Turning on LED");
+            log.trace("Turning on LED");
             ledOutput.low();
         }
     }

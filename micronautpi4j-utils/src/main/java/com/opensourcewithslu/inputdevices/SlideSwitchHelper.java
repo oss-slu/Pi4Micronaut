@@ -9,7 +9,6 @@ import jakarta.inject.Singleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@Prototype
 public class SlideSwitchHelper {
 
     private static final Logger log = LoggerFactory.getLogger(SlideSwitchHelper.class);
@@ -32,7 +31,7 @@ public class SlideSwitchHelper {
     public void initialize()
     //end::method[]
     {
-        log.info("Initializing Slide Switch");
+        log.trace("Initializing Slide Switch");
 
         slideSwitchInput.addListener(e->{
             isOn = slideSwitchInput.isHigh();

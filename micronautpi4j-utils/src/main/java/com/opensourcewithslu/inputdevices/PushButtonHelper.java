@@ -8,8 +8,6 @@ import jakarta.inject.Singleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@Prototype
-
 public class PushButtonHelper {
     private static final Logger log = LoggerFactory.getLogger(PushButtonHelper.class);
 
@@ -30,7 +28,7 @@ public class PushButtonHelper {
     public void initialize()
     //end::method[]
     {
-        log.info("Initializing " + buttonInput.getName());
+        log.trace("Initializing " + buttonInput.getName());
 
         buttonInput.addListener(e->{
            isPressed = buttonInput.isHigh();

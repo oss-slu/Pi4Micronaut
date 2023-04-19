@@ -9,7 +9,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.pi4j.crowpi.components.LcdDisplayComponent;
 
-@Prototype
 public class LCD1602Helper {
     private static final Logger log = LoggerFactory.getLogger(LEDHelper.class);
 
@@ -21,14 +20,14 @@ public class LCD1602Helper {
     {
         this.lcdDisplay = new LcdDisplay(pi4jContext, 4, 16);
         lcdDisplay.setDisplayBacklight(true);
-        log.info("LCD is set up with 4 rows and 16 columns. Backlight is on by default");
+        log.trace("LCD is set up with 4 rows and 16 columns. Backlight is on by default");
     }
 
     //tag::method[]
     public void writeText(String text)
     //end::method[]
     {
-        log.info("writing");
+        log.trace("writing");
         lcdDisplay.displayText(text);
     }
 
@@ -36,7 +35,7 @@ public class LCD1602Helper {
     public void writeTextAtLine(String text, int line)
     //end::method[]
     {
-        log.info("writing on " + line + "line");
+        log.trace("writing on " + line + "line");
         lcdDisplay.displayText(text, line);
     }
 
@@ -45,11 +44,12 @@ public class LCD1602Helper {
     //end::method[]
     {
         log.info("changing backlight");
+
         if (state){
-            log.info("backlight on");
+            log.trace("backlight on");
             lcdDisplay.setDisplayBacklight(true);
         } else{
-            log.info("backlight off");
+            log.trace("backlight off");
             lcdDisplay.setDisplayBacklight(false);
         }
     }
@@ -58,7 +58,7 @@ public class LCD1602Helper {
     public void clearDisplay()
     //end::method[]
     {
-        log.info("Clear display");
+        log.trace("Clear display");
         lcdDisplay.clearDisplay();
     }
 
@@ -66,7 +66,6 @@ public class LCD1602Helper {
     public void clearLine(int line)
     //end::method[]
     {
-        log.info("Clear line " + line + " display");
         lcdDisplay.clearLine(line);
     }
 }
