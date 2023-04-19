@@ -270,27 +270,27 @@ Each component will need</p>
 <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package com.opensourcewithslu.inputdevices;
 import com.pi4j.io.gpio.digital.DigitalInput;
 import com.pi4j.io.gpio.digital.DigitalStateChangeListener;
+import io.micronaut.context.annotation.Prototype;
 import jakarta.annotation.PostConstruct;
 import jakarta.inject.Named;
 import jakarta.inject.Singleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@Singleton
+@Prototype
+
 public class PushButtonHelper {
     private static final Logger log = LoggerFactory.getLogger(PushButtonHelper.class);
 
     private DigitalInput buttonInput;
     public Boolean isPressed;
 
-    public PushButtonHelper(@Named("button-input") DigitalInput buttonInput){
+    public PushButtonHelper(DigitalInput buttonInput){
         this.buttonInput = buttonInput;
         this.isPressed = buttonInput.isHigh();
-    }
 
-    @PostConstruct
-    public void initialize(){
-        log.info("Initializing Push Button");</code></pre>
+        initialize();
+    }</code></pre>
 </div>
 </div>
 </div>
@@ -301,6 +301,7 @@ public class PushButtonHelper {
 <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package com.opensourcewithslu.inputdevices;
 import com.pi4j.io.gpio.digital.DigitalInput;
 import com.pi4j.io.gpio.digital.DigitalStateChangeListener;
+import io.micronaut.context.annotation.Prototype;
 import jakarta.annotation.PostConstruct;
 import jakarta.inject.Named;
 import jakarta.inject.Singleton;
@@ -308,7 +309,7 @@ import jakarta.inject.Singleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@Singleton
+@Prototype
 public class SlideSwitchHelper {
 
     private static final Logger log = LoggerFactory.getLogger(SlideSwitchHelper.class);
@@ -317,12 +318,13 @@ public class SlideSwitchHelper {
 
     public boolean isOn;
 
-    public SlideSwitchHelper(@Named("slide-switch-input") DigitalInput slideSwitchInput) {
+    public SlideSwitchHelper(DigitalInput slideSwitchInput) {
         this.slideSwitchInput = slideSwitchInput;
         this.isOn = slideSwitchInput.isHigh();
+
+        initialize();
     }
 
-    @PostConstruct
     public void initialize(){
         log.info("Initializing Slide Switch");
 
@@ -357,24 +359,25 @@ import com.pi4j.io.gpio.digital.DigitalInput;
 import com.pi4j.io.gpio.digital.DigitalListener;
 import com.pi4j.io.gpio.digital.DigitalStateChangeListener;
 import io.micronaut.context.annotation.Context;
+import io.micronaut.context.annotation.Prototype;
 import jakarta.annotation.PostConstruct;
 import jakarta.inject.Named;
 import jakarta.inject.Singleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@Singleton
+@Prototype
 public class RotaryEncoderHelper {
     private static final Logger log = LoggerFactory.getLogger(RotaryEncoderHelper.class);
     private DigitalInput clk;
     private DigitalInput dt;
     private DigitalInput sw;
-
+    private String helperName;
     private int globalCounter;
 
     public RotaryEncoderHelper(MultipinConfiguration multiPin){
         DigitalInput[] allPins = (DigitalInput[]) multiPin.getComponents();
-
+        helperName = multiPin.getId().substring(0, multiPin.getId().length() - 8);
         this.sw = allPins[0];
         this.clk = allPins[1];
         this.dt = allPins[2];
@@ -383,7 +386,9 @@ public class RotaryEncoderHelper {
     }
 
     public void initialize(){
-        log.info("Initializing Rotary Encoder");
+        log.info("Initializing " + helperName);
+
+        String logInfo = helperName + " counter is {}";
 
         clk.addListener(e -&gt; {
             if(clk.equals(dt.state())){
@@ -402,16 +407,16 @@ public class RotaryEncoderHelper {
                     globalCounter--;
                 }
             }
-            log.info("Global Counter is {}", globalCounter);
+            log.info(logInfo, globalCounter);
         });
 
         sw.addListener(e -&gt; {
             if(sw.isHigh()) {
-                log.info("Resetting globalCounter");
+                log.info("Resetting " + helperName + " counter");
                 globalCounter = 0;
             }
 
-            log.info("Global Counter is {}", globalCounter);
+            log.info(logInfo, globalCounter);
         });
     }
 
@@ -455,18 +460,22 @@ Each component will need</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package com.opensourcewithslu.outputdevices;
 import com.pi4j.io.gpio.digital.DigitalOutput;
+import io.micronaut.context.ApplicationContext;
+import io.micronaut.context.annotation.Prototype;
+import io.micronaut.inject.qualifiers.Qualifiers;
+import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import jakarta.inject.Singleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@Singleton
+@Prototype
 public class LEDHelper {
     private static final Logger log = LoggerFactory.getLogger(LEDHelper.class);
 
-    private final DigitalOutput ledOutput;
+    private DigitalOutput ledOutput;
 
-    public LEDHelper(@Named("led") DigitalOutput ledOutput) {
+    public LEDHelper(DigitalOutput ledOutput){
         this.ledOutput = ledOutput;
     }
 
@@ -804,7 +813,7 @@ public class LCD1602Helper {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-04-06 13:23:04 UTC
+Last updated 2023-04-19 13:20:22 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
