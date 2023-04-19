@@ -10,10 +10,6 @@
 |public void | initialize() +
     Creates Push Button Bean from @Post-Construct
 |===
-[source, java]
-----
-include::../../micronautpi4j-utils/src/main/java/com/opensourcewithslu/inputdevices/PushButtonHelper.java[lines=9..25]
-----
 ===== An Example Controller using PushButtonHelper
 [source, java]
 ----

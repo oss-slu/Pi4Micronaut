@@ -1,1 +1,23 @@
-rfid
+[cols="1a,2a"]
+|===
+|Constructor and Description
+|public RFidHelper(SpiConfig config, int reset, context pi4jContext) + 
+    Creates an RFidHelper using an SpiConfig and reset pin where reset is the address of the reset pin
+|public RFidHelper(SpiConfig config, context pi4jContext) + 
+    Creates an RFidHelper using an SpiConfig without a reset pin
+|===
+[cols = "2a, 4a"]
+|===
+|Modifier and Type | Method and Description
+|public void | writeToCard(Object data) +
+    Waits until a card is scanned and attempts to write data to the card
+|public Object | readFromCard() +
+    Waits until a card is scanned and returns the read Object
+|public void | resetScanner() +
+    Resets the scanner hardware to a known state
+|===
+===== An Example Controller using RFidHelper
+[source, java]
+----
+include::../../components/src/main/java/com/opensourcewithslu/components/controllers/RfidController.java[lines=11..30]
+----

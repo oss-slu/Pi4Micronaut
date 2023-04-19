@@ -1,5 +1,36 @@
+[cols="1a,2a"]
+|===
+|Constructor and Description
+|public RGBLEDHelper(MultipinConfiguration pwm) + 
+    Accepts a MultipinConfiguration to create an RGBLEDHelper
+|===
+[cols = "2a, 11a"]
+|===
+|Modifier and Type | Method and Description
+|public void | setColor(int[] colors) +
+    Sets the RGB LED color where colors = [red, blue, green] and 0 &lt;= color &lt;= 100
+|public void | setColor(int[] colors, int[] frequency) +
+    Sets the RGB LED color where colors and frequency = [red, blue, green] and 0 &lt;= color/frequency &lt;= 100
+|public void | setRed(int red) +
+    Sets the RGBLED's red pin intensity where 0 &lt;= red &lt;= 100
+|public void | setRed(int red, int frequency) +
+    Sets the RGBLED's red pin intensity and frequency where 0 &lt;= red &lt;= 100 and 0 &lt;= frequency &lt;= 100
+|public void | setBlue(int blue) +
+    Sets the RGBLED's blue pin intensity where 0 &lt;= blue &lt;= 100
+|public void | setBlue(int blue, int frequency) +
+    Sets the RGBLED's blue pin intensity where 0 &lt;= blue &lt;= 100 and 0 &lt;= frequency &lt;= 100
+|public void | setGreen(int green) +
+    Sets the RGBLED's green pin intensity where 0 &lt;= green &lt;= 100
+|public void | setGreen(int green, int frequency) +
+    Sets the RGBLED's green pin intensity and frequency where 0 &lt;= green &lt;= 100 and 0 &lt;= frequency &lt;= 100
+|public void | ledOff() +
+    Turns the RGBLED off
+|public void | ledOn() +
+    Turns the RGB LED with each pin set to 100 intensity
+|===
+===== An Example Controller using RGBLEDHelper
 [source, java]
 ----
-include::../../micronautpi4j-utils/src/main/java/com/opensourcewithslu/outputdevices/RGBLEDHelper.java[]
+include::../../components/src/main/java/com/opensourcewithslu/components/controllers/rgbController.java[lines=12..73]
 ----
 
