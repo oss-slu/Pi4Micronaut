@@ -1,21 +1,22 @@
-[cols="1a,2a"]
-|===
-|Constructor and Description
-|public SlideSwitchHelper(DigitalInput slideSwitchInput) + 
-    Handles a singular DigitalInput typically created by @Named within the controller
-|===
-[cols = "2a, 4a"]
-|===
-|Modifier and Type | Method and Description
-|public void | initialize() +
-    Initializes the SlideSwitchHelper Bean and adds a listener to the switch
-|public void | addEvenListener(DigitalStateChangeListener function) +
-    Adds a listener for function
-|public void | removeEventListener(DigitalStateChangeListener function) +
-    Removes a listener for function
-|===
-===== An Example Controller using SlideSwitchHelper
+===== Constructors
+
 [source, java]
 ----
-include::../../components/src/main/java/com/opensourcewithslu/components/controllers/SlideSwitchController.java[lines=11..32]
+include::../../micronautpi4j-utils/src/main/java/com/opensourcewithslu/inputDevices/SlideSwitchHelper.java[tag=const]
+----
+
+===== Methods
+
+[source, java]
+----
+include::../../micronautpi4j-utils/src/main/java/com/opensourcewithslu/inputDevices/SlideSwitchHelper.java[tags=method]
+----
+
+===== An Example Controller
+
+====== This controller sets up two slide switches
+
+[source, java]
+----
+include::../../components/src/main/java/com/opensourcewithslu/components/controllers/SlideSwitchController.java[tag=ex]
 ----

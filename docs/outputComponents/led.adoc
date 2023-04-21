@@ -1,18 +1,19 @@
-[cols="1a,2a"]
-|===
-|Constructor and Description
-|public LEDHelper(DigitalOutput ledOutput) + 
-    Handles a singular DigitalOutput typically created by @Named within the controller
-|===
-[cols = "2a, 4a"]
-|===
-|Modifier and Type | Method and Description
-|public void | deviceOn() +
-    Turns on the LED
-|public void | deviceOff() +
-    Turns off the LED
-|public void | switchState() +
-    Turns the LED to the opposite of its current state
-|===
-===== TODO: Create An Example Controller using LEDHelper
+===== Constructors
 
+[source, java]
+----
+include::../../micronautpi4j-utils/src/main/java/com/opensourcewithslu/outputDevices/LEDHelper.java[tag=const]
+----
+
+===== Methods
+
+[source, java]
+----
+include::../../micronautpi4j-utils/src/main/java/com/opensourcewithslu/outputDevices/LEDHelper.java[tags=method]
+----
+
+===== An Example Controller
+
+====== This controller turns the LED on and off
+
+TODO: Create an example LED Controller

@@ -15,25 +15,37 @@ public class LEDHelper {
 
     private DigitalOutput ledOutput;
 
-    public LEDHelper(DigitalOutput ledOutput){
+    //tag::const[]
+    public LEDHelper(DigitalOutput ledOutput)
+    //end::const[]
+    {
         this.ledOutput = ledOutput;
     }
 
-    public void deviceOn() {
+    //tag::method[]
+    public void deviceOn() 
+    //end::method[]
+    {
         if (ledOutput.isLow()) {
             log.info("Turning off LED");
             ledOutput.high();
         }
     }
 
-    public void deviceOff() {
+    //tag::method[]
+    public void deviceOff() 
+    //end::method[]
+    {
         if (ledOutput.isHigh()) {
             log.info("Turning on LED");
             ledOutput.low();
         }
     }
 
-    public void switchState(){
+    //tag::method[]
+    public void switchState()
+    //end::method[]
+    {
         if(ledOutput.isHigh()){
             deviceOff();
         }

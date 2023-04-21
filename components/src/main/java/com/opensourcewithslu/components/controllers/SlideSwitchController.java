@@ -8,13 +8,15 @@ import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import jakarta.inject.Named;
 
+//tag::ex[]
 @Controller("/slideSwitch")
 public class SlideSwitchController {
     private final SlideSwitchHelper slideSwitchHelper;
 
     private final SlideSwitchHelper slideSwitchHelper2;
 
-    public SlideSwitchController(@Named("slide-switch-input")DigitalInput slideSwitch, @Named("slide-switch-input-2")DigitalInput slideSwitch2) {
+    public SlideSwitchController(@Named("slide-switch-input")DigitalInput slideSwitch, 
+                                    @Named("slide-switch-input-2")DigitalInput slideSwitch2) {
         this.slideSwitchHelper = new SlideSwitchHelper(slideSwitch);
         this.slideSwitchHelper2 = new SlideSwitchHelper(slideSwitch2);
     }
@@ -30,3 +32,4 @@ public class SlideSwitchController {
     }
 
 }
+//end::ex[]

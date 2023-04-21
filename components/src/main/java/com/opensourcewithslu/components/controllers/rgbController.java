@@ -9,6 +9,7 @@ import jakarta.inject.Named;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+//tag::ex[]
 @Controller("/rgb")
 public class rgbController {
     private final RGBLEDHelper rgbledHelper;
@@ -71,3 +72,4 @@ public class rgbController {
         rgbledHelper.ledOn();
     }
 }
+//end::ex[]

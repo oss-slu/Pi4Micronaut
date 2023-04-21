@@ -18,14 +18,20 @@ public class SlideSwitchHelper {
 
     public boolean isOn;
 
-    public SlideSwitchHelper(DigitalInput slideSwitchInput) {
+    //tag::const[]
+    public SlideSwitchHelper(DigitalInput slideSwitchInput) 
+    //end::const[]
+    {
         this.slideSwitchInput = slideSwitchInput;
         this.isOn = slideSwitchInput.isHigh();
 
         initialize();
     }
 
-    public void initialize(){
+    //tag::method[]
+    public void initialize()
+    //end::method[]
+    {
         log.info("Initializing Slide Switch");
 
         slideSwitchInput.addListener(e->{
@@ -34,13 +40,17 @@ public class SlideSwitchHelper {
 
     }
 
-
-    public void addEventListener(DigitalStateChangeListener function) {
+    //tag::method[]
+    public void addEventListener(DigitalStateChangeListener function) 
+    //end::method[]
+    {
         slideSwitchInput.addListener(function);
     }
 
-
-    public void removeEventListener(DigitalStateChangeListener function) {
+    //tag::method[]
+    public void removeEventListener(DigitalStateChangeListener function) 
+    //end::method[]
+    {
         slideSwitchInput.removeListener(function);
     }
 }

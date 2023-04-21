@@ -1,19 +1,22 @@
-[cols="1a,2a"]
-|===
-|Constructor and Description
-|public RotaryEncoderHelper(MultipinConfiguration multiPin) +
-    Creates a RotaryEncoderHelper using a multipin configuration with 3 DigitalInputs
-|===
-[cols = "2a, 3a"]
-|===
-|Modifier and Type | Method and Description
-|public void | initialize() +
-    Initializes the RotaryEncoderHelper and assigns listeners to the necessary pins
-|public int | getEncoderValue() +
-    Returns the RotaryEncoderHelper's global counter
-|===
-===== An Example Controller using RotaryEncoderHelper
+===== Constructors
+
 [source, java]
 ----
-include::../../components/src/main/java/com/opensourcewithslu/components/controllers/RotaryEncoderController.java[lines=9..22]
+include::../../micronautpi4j-utils/src/main/java/com/opensourcewithslu/inputDevices/RotaryEncoderHelper.java[tag=const]
+----
+
+===== Methods
+
+[source, java]
+----
+include::../../micronautpi4j-utils/src/main/java/com/opensourcewithslu/inputDevices/RotaryEncoderHelper.java[tags=method]
+----
+
+===== An Example Controller
+
+====== This controller sets up two rotary encoders
+
+[source, java]
+----
+include::../../components/src/main/java/com/opensourcewithslu/components/controllers/RotaryEncoderController.java[tag=ex]
 ----

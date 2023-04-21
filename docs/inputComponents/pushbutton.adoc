@@ -1,18 +1,22 @@
-[cols="1a,2a"]
-|===
-|Constructor and Description
-|public PushButtonHelper(@Named("button-input") DigitalInput buttonInput) + 
-    @Named("button-input") references the name attribute as defined in application.yaml
-|===
-[cols = "2a, 2a"]
-|===
-|Modifier and Type | Method and Description
-|public void | initialize() +
-    Creates Push Button Bean from @Post-Construct
-|===
-===== An Example Controller using PushButtonHelper
+===== Constructors
+
 [source, java]
 ----
-=======
-include::../../components/src/main/java/com/opensourcewithslu/components/controllers/PushButtonController.java[lines=8..26]
+include::../../micronautpi4j-utils/src/main/java/com/opensourcewithslu/inputDevices/PushButtonHelper.java[tag=const]
+----
+
+===== Methods
+
+[source, java]
+----
+include::../../micronautpi4j-utils/src/main/java/com/opensourcewithslu/inputDevices/PushButtonHelper.java[tags=method]
+----
+
+===== An Example Controller
+
+====== This controller uses the push button to turn an LED on and off
+
+[source, java]
+----
+include::../../components/src/main/java/com/opensourcewithslu/components/controllers/PushButtonController.java[tag=ex]
 ----

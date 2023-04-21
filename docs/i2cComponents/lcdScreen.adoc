@@ -1,25 +1,20 @@
-[cols="1a,2a"]
-|===
-|Constructor and Description
-|public LCD1602Helper(I2CConfig i2cConfig, Context pi4jContext) + 
-    Creates an LCD1602Helper using i2cConfig
-|===
-[cols = "2a, 4a"]
-|===
-|Modifier and Type | Method and Description
-|public void | writeText(String text) +
-    Writes text to LCD
-|public void | writeTextAtLine(String text, int line) +
-    Writes text to LCD at a given line
-|public void | setBackLight(boolean state) +
-    Turns the backlight on or off where True = on and False = off
-|public void | clearDisplay() +
-    Clears the LCD of all text
-|public void | clearLine(int line) +
-    Clears the LCD of all text at a given line
-|===
-===== An Example Controller using LCD1602Helper
+===== Constructors
+
 [source, java]
 ----
-include::../../components/src/main/java/com/opensourcewithslu/components/controllers/lcdController.java[lines=11..48]
+include::../../micronautpi4j-utils/src/main/java/com/opensourcewithslu/outputDevices/LCD1602Helper.java[tag=const]
+----
+
+===== Methods
+
+[source, java]
+----
+include::../../micronautpi4j-utils/src/main/java/com/opensourcewithslu/outputDevices/LCD1602Helper.java[tags=method]
+----
+
+===== An Example Controller
+
+[source, java]
+----
+include::../../components/src/main/java/com/opensourcewithslu/components/controllers/lcdController.java[tag=ex]
 ----
