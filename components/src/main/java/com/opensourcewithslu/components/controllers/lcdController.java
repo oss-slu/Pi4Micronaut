@@ -8,6 +8,7 @@ import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.Post;
 import jakarta.inject.Named;
 
+//tag::ex[]
 @Controller("/lcd")
 public class lcdController {
     private final LCD1602Helper lcdHelper;
@@ -46,3 +47,4 @@ public class lcdController {
         lcdHelper.clearLine(line);
     }
 }
+//end::ex[]

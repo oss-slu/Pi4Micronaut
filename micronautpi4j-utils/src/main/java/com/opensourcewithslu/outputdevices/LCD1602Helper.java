@@ -15,23 +15,35 @@ public class LCD1602Helper {
 
     private final LcdDisplay lcdDisplay;
 
-    public LCD1602Helper(I2CConfig i2CConfig, Context pi4jContext){
+    //tag::const[]
+    public LCD1602Helper(I2CConfig i2CConfig, Context pi4jContext)
+    //end::const[]
+    {
         this.lcdDisplay = new LcdDisplay(pi4jContext, 4, 16);
         lcdDisplay.setDisplayBacklight(true);
         log.info("LCD is set up with 4 rows and 16 columns. Backlight is on by default");
     }
 
-    public void writeText(String text){
+    //tag::method[]
+    public void writeText(String text)
+    //end::method[]
+    {
         log.info("writing");
         lcdDisplay.displayText(text);
     }
 
-    public void writeTextAtLine(String text, int line){
+    //tag::method[]
+    public void writeTextAtLine(String text, int line)
+    //end::method[]
+    {
         log.info("writing on " + line + "line");
         lcdDisplay.displayText(text, line);
     }
 
-    public void setBackLight(boolean state){
+    //tag::method[]
+    public void setBackLight(boolean state)
+    //end::method[]
+    {
         log.info("changing backlight");
         if (state){
             log.info("backlight on");
@@ -42,12 +54,18 @@ public class LCD1602Helper {
         }
     }
 
-    public void clearDisplay(){
+    //tag::method[]
+    public void clearDisplay()
+    //end::method[]
+    {
         log.info("Clear display");
         lcdDisplay.clearDisplay();
     }
 
-    public void clearLine(int line){
+    //tag::method[]
+    public void clearLine(int line)
+    //end::method[]
+    {
         log.info("Clear line " + line + " display");
         lcdDisplay.clearLine(line);
     }

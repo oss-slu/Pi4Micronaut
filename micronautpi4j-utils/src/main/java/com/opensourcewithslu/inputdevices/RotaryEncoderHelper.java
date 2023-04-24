@@ -22,7 +22,10 @@ public class RotaryEncoderHelper {
     private String helperName;
     private int globalCounter;
 
-    public RotaryEncoderHelper(MultipinConfiguration multiPin){
+    //tag::const[]
+    public RotaryEncoderHelper(MultipinConfiguration multiPin)
+    //end::const[]
+    {
         DigitalInput[] allPins = (DigitalInput[]) multiPin.getComponents();
         helperName = multiPin.getId().substring(0, multiPin.getId().length() - 8);
         this.sw = allPins[0];
@@ -32,7 +35,10 @@ public class RotaryEncoderHelper {
         initialize();
     }
 
-    public void initialize(){
+    //tag::method[]
+    public void initialize()
+    //end::method[]
+    {
         log.info("Initializing " + helperName);
 
         String logInfo = helperName + " counter is {}";
@@ -67,5 +73,10 @@ public class RotaryEncoderHelper {
         });
     }
 
-    public int getEncoderValue(){return this.globalCounter;}
+    //tag::method[]
+    public int getEncoderValue()
+    //end::method[]
+    {
+        return this.globalCounter;
+    }
 }

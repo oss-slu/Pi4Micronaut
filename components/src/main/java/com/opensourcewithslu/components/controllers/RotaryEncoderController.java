@@ -6,6 +6,7 @@ import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import jakarta.inject.Named;
 
+//tag::ex[]
 @Controller("/rotaryEncoder")
 public class RotaryEncoderController {
 
@@ -20,3 +21,4 @@ public class RotaryEncoderController {
     @Get("/value")
     public int getEncoderValue(){return encoderHelper.getEncoderValue();}
 }
+//end::ex[]

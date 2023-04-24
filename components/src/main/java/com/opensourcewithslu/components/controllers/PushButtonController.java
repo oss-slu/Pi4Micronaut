@@ -5,10 +5,11 @@ import com.opensourcewithslu.outputdevices.LEDHelper;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 
+//tag::ex[]
 @Controller("/pushButton")
 public class PushButtonController {
     private final PushButtonHelper pushButtonHelper;
-    private final LEDHelper ledHelper; //= new LEDHelper("led");
+    private final LEDHelper ledHelper;
 
     public PushButtonController(PushButtonHelper pushButtonHelper, LEDHelper ledHelper) {
         this.pushButtonHelper = pushButtonHelper;
@@ -24,4 +25,4 @@ public class PushButtonController {
         });
     }
 }
-
+//end::ex[]

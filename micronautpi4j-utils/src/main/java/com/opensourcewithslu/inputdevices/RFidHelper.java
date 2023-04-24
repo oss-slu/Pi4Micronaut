@@ -15,14 +15,24 @@ public class RFidHelper {
     private static final Logger log = LoggerFactory.getLogger(RFidHelper.class);
     private RfidComponent scanner;
 
-    public RFidHelper(SpiConfig config, int reset, Context pi4jContext){
+    //tag::const[]
+    public RFidHelper(SpiConfig config, int reset, Context pi4jContext)
+    //end::const[]
+    {
         this.scanner = new RfidComponent(pi4jContext, reset, config.getAddress(), config.getBaud());
     }
-
-    public RFidHelper(SpiConfig config, Context pi4jContext){
+    
+    //tag::const[]
+    public RFidHelper(SpiConfig config, Context pi4jContext)
+    //end::const[]
+    {
         this.scanner = new RfidComponent(pi4jContext, config.getAddress(), config.getBaud());
     }
-    public void writeToCard(Object data){
+
+    //tag::method[]
+    public void writeToCard(Object data)
+    //end::method[]
+    {
         scanner.waitForAnyCard(card -> {
             try {
                 card.writeObject(data);
@@ -31,7 +41,11 @@ public class RFidHelper {
             }
         });
     }
-    public Object readFromCard(){
+
+    //tag::method[]
+    public Object readFromCard()
+    //end::method[]
+    {
         AtomicReference<Object> data = new AtomicReference<>(new Object());
         scanner.waitForAnyCard(card -> {
             try {
@@ -43,7 +57,10 @@ public class RFidHelper {
         return data;
     }
 
-    public void resetScanner(){
+    //tag::method[]
+    public void resetScanner()
+    //end::method[]
+    {
         scanner.reset();
     }
 }

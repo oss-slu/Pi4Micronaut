@@ -8,6 +8,7 @@ import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.Post;
 import jakarta.inject.Named;
 
+//tag::ex[]
 @Controller("/rfid")
 public class RfidController {
 
@@ -28,3 +29,4 @@ public class RfidController {
         return data.toString();
     }
 }
+//end::ex[]

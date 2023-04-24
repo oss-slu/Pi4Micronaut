@@ -1,0 +1,129 @@
+.micronaut:
+  application:
+    name: components
+pi4j:
+  spi:
+    rfid:
+      name: MFRC522
+      address: 8
+      baud: 500000
+      reset-pin: 25
+  pwm:
+    red-pwm:
+      name: red
+      address: 17
+      pwmType: SOFTWARE
+      provider: pigpio-pwm
+      initial: 0
+      shutdown: 0
+    blue-pwm:
+      name: blue
+      address: 18
+      pwmType: SOFTWARE
+      provider: pigpio-pwm
+      initial: 0
+      shutdown: 0
+    green-pwm:
+      name: green
+      address: 27
+      pwmType: SOFTWARE
+      provider: pigpio-pwm
+      initial: 0
+      shutdown: 0
+  i2c:
+    lcd:
+      name: lcd
+      bus: 1
+      device: 0x27
+  digital-input:
+    photo-resistor-input:
+      name: Photo Resistor Input
+      address: 4
+      debounce: 100000
+      pull: PULL_DOWN
+      provider: pigpio-digital-input
+    button-input-1:
+      name: Push Button Input
+      address: 16
+      pull: PULL_DOWN
+      debounce: 30
+      provider: pigpio-digital-input
+    button-input-2:
+      name: Push Button Input
+      address: 21
+      pull: PULL_DOWN
+      debounce: 30
+      provider: pigpio-digital-input
+    slide-switch-input:
+      name: Slide Switch Input
+      address: 18
+      pull: PULL_DOWN
+      debounce: 3000
+      provider: pigpio-digital-input
+    slide-switch-input-2:
+      name: Slide Switch Input
+      address: 22
+      pull: PULL_DOWN
+      debounce: 3000
+      provider: pigpio-digital-input
+  ### DIGITAL OUTPUTS
+  digital-output:
+    led:
+      name: LED Output
+      address: 17
+      shutdown: HIGH
+      initial: HIGH
+      provider: pigpio-digital-output
+    led2:
+      name: LED Output
+      address: 26
+      shutdown: HIGH
+      initial: HIGH
+      provider: pigpio-digital-output
+    photo-resistor-output:
+      name: Photo Resistor Output
+      address: 27
+      shutdown: LOW
+      initial: HIGH
+      provider: pigpio-digital-output
+  multi-digital-input:
+    rotary-encoder:
+      name: Rotary Encoder
+      addresses: 27,18,17
+      debounces: 6000,500,500
+      pulls: PULL_DOWN,PULL_UP,PULL_UP
+      shutdown: LOW
+      initial: HIGH
+      provider: pigpio-digital-input
+    rotary-encoder-2:
+      name: Rotary Encoder 2
+      addresses: 12, 16, 20
+      debounces: 6000, 500, 500
+      pulls: PULL_DOWN, PULL_UP, PULL_UP
+      shutdown: LOW
+      initial: HIGH
+      provider: pigpio-digital-input
+  multi-pwm:
+    rgb-led:
+      name: RGB LED
+      addresses: 17, 18, 27
+      pwmTypes: SOFTWARE, SOFTWARE, SOFTWARE
+      provider: pigpio-pwm
+      initials: 0, 0, 0
+      shutdowns: 0, 0, 0
+#  clk:
+#    name: CLK Output
+#    address: 23
+#    debounce: 500
+#    pull: PULL_UP
+#    shutdown: LOW
+#    initial: HIGH
+#    provider: pigpio-digital-input
+#  dt:
+#    name: DT Output
+#    address: 24
+#    debounce: 500
+#    pull: PULL_UP
+#    shutdown: LOW
+#    initial: HIGH
+#    provider: pigpio-digital-input

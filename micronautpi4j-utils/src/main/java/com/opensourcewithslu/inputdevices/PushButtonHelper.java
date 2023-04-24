@@ -16,14 +16,20 @@ public class PushButtonHelper {
     private DigitalInput buttonInput;
     public Boolean isPressed;
 
-    public PushButtonHelper(DigitalInput buttonInput){
+    //tag::const[]
+    public PushButtonHelper(DigitalInput buttonInput)
+    //end::const[]
+    {
         this.buttonInput = buttonInput;
         this.isPressed = buttonInput.isHigh();
 
         initialize();
     }
 
-    public void initialize(){
+    //tag::method[]
+    public void initialize()
+    //end::method[]
+    {
         log.info("Initializing " + buttonInput.getName());
 
         buttonInput.addListener(e->{
@@ -31,11 +37,17 @@ public class PushButtonHelper {
         });
     }
 
-    public void addEventListener(DigitalStateChangeListener function)  {
+    //tag::method[]
+    public void addEventListener(DigitalStateChangeListener function)  
+    //end::method[]
+    {
         buttonInput.addListener(function);
     }
 
-    public void removeEventListener(DigitalStateChangeListener function){
+    //tag::method[]
+    public void removeEventListener(DigitalStateChangeListener function)
+    //end::method[]
+    {
         buttonInput.removeListener(function);
     }
 }
