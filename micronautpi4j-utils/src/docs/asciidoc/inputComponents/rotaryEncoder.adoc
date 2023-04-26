@@ -1,0 +1,22 @@
+===== Constructors
+
+[source, java]
+----
+include::../../../main/java/com/opensourcewithslu/inputDevices/RotaryEncoderHelper.java[tag=const]
+----
+
+===== Methods
+
+[source, java]
+----
+include::../../../main/java/com/opensourcewithslu/inputDevices/RotaryEncoderHelper.java[tags=method]
+----
+
+===== An Example Controller
+
+====== This controller sets up two rotary encoders
+
+[source, java]
+----
+include::../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/RotaryEncoderController.java[tag=ex]
+----
