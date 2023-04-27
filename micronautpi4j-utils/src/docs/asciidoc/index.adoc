@@ -76,6 +76,17 @@ Each component will need
 * shutdown: State to take when program successfully shuts down properly, either LOW or HIGH
 * provider: pigpio-digital-output
 
+[source,yaml]
+----
+include::../../../../components/src/main/resources/application.yml[tags=digitalOutput]
+----
+<1> Component Identifier (Used in @Named annotations)
+<2> Component Name
+<3> Address of connected GPIO pin
+<4> Value to have on shutdown (HIGH = Off, LOW = On)
+<5> Value to have on startup
+<6> Provider (pigpio-digital-output)
+
 ==== Multipin Configurations
 
 TODO: add information about multipin configs

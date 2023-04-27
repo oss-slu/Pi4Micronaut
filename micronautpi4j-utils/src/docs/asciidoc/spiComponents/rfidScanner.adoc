@@ -2,14 +2,14 @@
 
 [source, java]
 ----
-include::../../micronautpi4j-utils/src/main/java/com/opensourcewithslu/inputDevices/RFidHelper.java[tag=const]
+include::../../../main/java/com/opensourcewithslu/inputDevices/RFidHelper.java[tag=const]
 ----
 
 ===== Methods
 
 [source, java]
 ----
-include::../../micronautpi4j-utils/src/main/java/com/opensourcewithslu/inputDevices/RFidHelper.java[tag=method]
+include::../../../main/java/com/opensourcewithslu/inputDevices/RFidHelper.java[tag=method]
 ----
 
 ===== An Example Controller
@@ -18,5 +18,5 @@ include::../../micronautpi4j-utils/src/main/java/com/opensourcewithslu/inputDevi
 
 [source, java]
 ----
-include::../../components/src/main/java/com/opensourcewithslu/components/controllers/RFidController.java[tag=ex]
+include::../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/RFidController.java[tag=ex]
 ----
