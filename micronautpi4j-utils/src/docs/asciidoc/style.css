@@ -3,6 +3,7 @@ body {
 	line-height: 1.5;
 	padding: 0;
 	margin: 0;
+	overflow-y: hidden;
 }
 
 .anchor{
@@ -22,10 +23,13 @@ a {
 }
 
 #header {
-	background-color: #444;
+	background-color: #000;
 	grid-area: nav;
 	position: fixed;
 	width: 100%;
+	vertical-align: center;
+	max-height: 6%;
+	height: 100%;
 	display: inline-block;
 	z-index: 10;
 }
@@ -36,6 +40,7 @@ a {
 	padding-right: 1em;
 	padding-bottom: 2em;
 	float: left;
+	max-height: 90%;
 	height: 100%;
 	overflow-y: auto;
 	position: fixed;
@@ -43,7 +48,6 @@ a {
 	background-color: lightgray;
 	max-width: 15%;
 	width: 100%;
-	/*width: 100%;*/
 }
 
 #toc a {
@@ -76,6 +80,8 @@ h1 {
 	margin: 0;
 	width: 100%;
 	color: red;
+	height: 100%;
+	vertical-align: center;
 }
 
 /*.toc2{*/
@@ -88,18 +94,33 @@ h1 {
 
 #content {
 	background-color: white;
+	overflow-y: auto;
 	grid-area: content;
 	padding: 1em;
-	margin-top: 3%;
-	max-width: 80%;
+	max-width: 84%;
 	width: 100%;
-	float: right;
-	position: relative;
+	position: fixed;
 	z-index: 1;
+	max-height: 80%;
+	height: 100%;
+	margin-left: 15%;
+	margin-right: 0;
+	margin-bottom: 10%;
+	margin-top: 5%;
+	padding-bottom: 50px;
 }
 
 #content img {
 	max-width: 100%;
+}
+
+.details{
+	float: right;
+	position: absolute;
+	bottom: 0px;
+	visibility: hidden;
+	width: 0;
+	height: 0;
 }
 
 pre {
@@ -123,7 +144,7 @@ th {
 	text-align: left;
 }
 
-#footer {
+#footer-text {
 	float: right;
 	position: absolute;
 	bottom: 0px;

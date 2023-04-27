@@ -13,7 +13,6 @@ import jakarta.inject.Singleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@Prototype
 public class RotaryEncoderHelper {
     private static final Logger log = LoggerFactory.getLogger(RotaryEncoderHelper.class);
     private DigitalInput clk;
@@ -39,7 +38,7 @@ public class RotaryEncoderHelper {
     public void initialize()
     //end::method[]
     {
-        log.info("Initializing " + helperName);
+        log.trace("Initializing " + helperName);
 
         String logInfo = helperName + " counter is {}";
 
@@ -60,16 +59,16 @@ public class RotaryEncoderHelper {
                     globalCounter--;
                 }
             }
-            log.info(logInfo, globalCounter);
+            log.trace(logInfo, globalCounter);
         });
 
         sw.addListener(e -> {
             if(sw.isHigh()) {
-                log.info("Resetting " + helperName + " counter");
+                log.debug("Resetting " + helperName + " counter");
                 globalCounter = 0;
             }
 
-            log.info(logInfo, globalCounter);
+            log.debug(logInfo, globalCounter);
         });
     }
 
