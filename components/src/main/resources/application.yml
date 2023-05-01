@@ -4,21 +4,21 @@
 pi4j:
   # tag::spi[]
   spi:
-    rfid: # <1>
-      name: MFRC522 # <2>
-      address: 8 # <3>
-      baud: 500000 # <4>
-      reset-pin: 25 # <5>
+    rfid:                   # <1>
+      name: MFRC522         # <2>
+      address: 8            # <3>
+      baud: 500000          # <4>
+      reset-pin: 25         # <5>
   # end::spi[]
   pwm:
     # tag::pwm[]
-    red-pwm:
-      name: red
-      address: 17
-      pwmType: SOFTWARE
-      provider: pigpio-pwm
-      initial: 0
-      shutdown: 0
+    red-pwm:                  # <1>
+      name: red               # <2>
+      address: 17             # <3>
+      pwmType: SOFTWARE       # <4>
+      provider: pigpio-pwm    # <5>
+      initial: 0              # <6>
+      shutdown: 0             # <7>
     # end::pwm[]
     blue-pwm:
       name: blue
@@ -36,19 +36,19 @@ pi4j:
       shutdown: 0
   i2c:
     # tag::i2c[]
-    lcd:
-      name: lcd
-      bus: 1
-      device: 0x27
+    lcd:                                  # <1>
+      name: lcd                           # <2>
+      bus: 1                              # <3>
+      device: 0x27                        # <4>
     # end::i2c[]
   digital-input:
     # tag::digitalInput[]
-    photo-resistor-input:
-      name: Photo Resistor Input
-      address: 4
-      debounce: 100000
-      pull: PULL_DOWN
-      provider: pigpio-digital-input
+    photo-resistor-input:                 # <1>
+      name: Photo Resistor Input          # <2>
+      address: 4                          # <3>
+      debounce: 100000                    # <4>
+      pull: PULL_DOWN                     # <5>
+      provider: pigpio-digital-input      # <6>
     # end::digitalInput[]
     button-input-1:
       name: Push Button Input
@@ -77,12 +77,12 @@ pi4j:
   ### DIGITAL OUTPUTS
   digital-output:
     # tag::digitalOutput[]
-    led: # <1>
-      name: LED Output # <2>
-      address: 17 # <3>
-      shutdown: HIGH # <4>
-      initial: HIGH # <5>
-      provider: pigpio-digital-output # <6>
+    led:                                    # <1>
+      name: LED Output                      # <2>
+      address: 17                           # <3>
+      shutdown: HIGH                        # <4>
+      initial: HIGH                         # <5>
+      provider: pigpio-digital-output       # <6>
     # end::digitalOutput[]
     led2:
       name: LED Output

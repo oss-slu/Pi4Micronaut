@@ -110,6 +110,14 @@ h1 {
 	padding-bottom: 50px;
 }
 
+.hljs{
+	background: #cacbca !important;
+}
+
+.colist{
+
+}
+
 #content img {
 	max-width: 100%;
 }
