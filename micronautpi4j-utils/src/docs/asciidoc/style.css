@@ -135,7 +135,8 @@ pre {
 }
 
 table {
-	border-collapse: collapse;
+	grid: none;
+	frame: none;
 }
 
 td, th {

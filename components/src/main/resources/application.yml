@@ -43,12 +43,12 @@ pi4j:
     # end::i2c[]
   digital-input:
     # tag::digitalInput[]
-    photo-resistor-input:                 # <1>
-      name: Photo Resistor Input          # <2>
-      address: 4                          # <3>
-      debounce: 100000                    # <4>
-      pull: PULL_DOWN                     # <5>
-      provider: pigpio-digital-input      # <6>
+    photo-resistor-input:                 # <.>
+      name: Photo Resistor Input          # <.>
+      address: 4                          # <.>
+      debounce: 100000                    # <.>
+      pull: PULL_DOWN                     # <.>
+      provider: pigpio-digital-input      # <.>
     # end::digitalInput[]
     button-input-1:
       name: Push Button Input

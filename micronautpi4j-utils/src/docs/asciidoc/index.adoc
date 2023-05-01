@@ -1,5 +1,6 @@
 = Pi4Micronaut Documentation
-:source-highlighter: highlight.js
+:source-highlighter: rouge
+:rouge-style: thankful_eyes
 :stylesheet: style.css
 :docinfo: shared
 :icons: font
@@ -71,12 +72,13 @@ Each component will need
 ----
 include::../../../../components/src/main/resources/application.yml[tags=digitalInput]
 ----
-<1> Component Identifier (Used in @Named annotations)
-<2> Component Name
-<3> Address of connected GPIO pin
-<4> Debounce value
-<5> Pull value (PULL_UP or PULL_DOWN)
-<6> Provider (pigpio-digital-input)
+
+<.> Component Identifier (Used in @Named annotations)
+<.> Component Name
+<.> Address of connected GPIO pin
+<.> Debounce value
+<.> Pull value (PULL_UP or PULL_DOWN)
+<.> Provider (pigpio-digital-input)
 
 ==== Digital Output
 To define in application.yaml add digital-output as a field under pi4j, then add each component under digital-input
