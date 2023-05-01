@@ -1,0 +1,192 @@
+= Pi4Micronaut Documentation
+:source-highlighter: highlight.js
+:stylesheet: style.css
+:docinfo: shared
+:icons: font
+:doctype: book
+:title: Pi4Micronaut Documentation
+:toc: left
+:toclevels: 3
+:sectanchors:
+:sectnums:
+
+toc::[]
+
+== Introduction
+Welcome to the **Pi4Micronaut Documentation**!
+
+Pi4Micronaut is an Open Source Java library which utilizes the Micronaut Framework and Pi4J to streamline the process of creating custom IoT applications that require hardware connectivity to Raspberry Pi's.
+
+By reading through our documentation, you will learn how to implement our library into your application.
+
+=== Currently Supported Hardware
+
+If you plan on creating an application using any of the hardware components listed below, then our library is perfect for you!
+
+We plan on offering support for many more hardware components in the future. If you have a hardware component you would like to use but can't find, feel free to checkout how you can add support for it under "Contributing to the Library"
+
+* Push Button
+* Slide Switch
+* Rotary Encoder
+* RFID Scanner
+* LEDs
+* RGB LEDs
+* LCDs
+* Photosensors
+
+=== Example Applications
+
+If you're curious about what Pi4Micronaut is capable of, check out some of the working applications created using our library.
+
+==== Remote Mointoring Check-In System
+https://github.com/oss-slu/SLU_OSS_CheckIn
+
+== Adding to/Creating an Application
+
+TODO: outline how to create a basic applicaton like we did for the start of the check-in system +
+TODO: outline how someone should add our jar to their exsisting application
+
+== Using the library
+
+TODO: outline the most basic use cases of the library, tbh now sure how this differs from the section above
+
+== Components
+
+=== Communicating with a Hardware Component
+
+TODO: outline the use and access of application.yaml for an app +
+TODO: Consolidate the format and include examples of how each comm type is used
+
+==== Digital Input
+To define in application.yaml add digital-input as a field under pi4j, then add each component under digital-input
+Each component will need
+
+* name: Name of the component
+* address: GPIO pin associated with component
+* debounce:
+* pull: Either PULL_UP or PULL_DOWN depending on component
+* provider: pigpio-digital-input
+
+[source,yaml]
+----
+include::../../../../components/src/main/resources/application.yml[tags=digitalInput]
+----
+<1> Component Identifier (Used in @Named annotations)
+<2> Component Name
+<3> Address of connected GPIO pin
+<4> Debounce value
+<5> Pull value (PULL_UP or PULL_DOWN)
+<6> Provider (pigpio-digital-input)
+
+==== Digital Output
+To define in application.yaml add digital-output as a field under pi4j, then add each component under digital-input
+Each component will need
+
+* name: Name of the component
+* address: GPIO pin associated with component
+* initial: Initial value, either LOW or HIGH
+* shutdown: State to take when program successfully shuts down properly, either LOW or HIGH
+* provider: pigpio-digital-output
+
+[source,yaml]
+----
+include::../../../../components/src/main/resources/application.yml[tags=digitalOutput]
+----
+<1> Component Identifier (Used in @Named annotations)
+<2> Component Name
+<3> Address of connected GPIO pin
+<4> Value to have on shutdown (HIGH = Off, LOW = On)
+<5> Value to have on startup
+<6> Provider (pigpio-digital-output)
+
+==== Multipin Configurations
+
+TODO: add information about multipin configs
+
+==== PWM
+To define in application.yaml add digital-input as a field under pi4j, then add each component under digital-input
+Each component will need
+
+* name: Name of the component
+* address: GPIO pin associated with component
+* pwmType: Either SOFTWARE or HARDWARE based upon which type of PWM you wish to use
+* provider: pigpio-pwm
+
+[source,yaml]
+----
+include::../../../../components/src/main/resources/application.yml[tags=pwm]
+----
+<1> Component Identifier (Used in @Named annotations)
+<2> Component Name
+<3> Address of connected GPIO pin
+<4> PWM Type (HARDWARE or SOFTWARE)
+<5> Provider (pigpio-digital-output)
+<6> Value to have on start up
+<7> Value to have on shut down
+
+==== SPI
+
+[source,yaml]
+----
+include::../../../../components/src/main/resources/application.yml[tags=spi]
+----
+<1> Component Identifier (Used in @Named annotations)
+<2> Component Name
+<3> TO DO: Figure out what this address is
+<4> Baud rate
+<5> Address of GPIO Reset pin
+
+TODO: add SPI information
+
+==== I2C
+
+[source,yaml]
+----
+include::../../../../components/src/main/resources/application.yml[tags=i2c]
+----
+<1> Component Identifier (Used in @Named annotations)
+<2> Component Name
+<3> Device bus (0 or 1)
+<4> Device address
+
+TODO: add I2C information
+
+=== Input Components
+
+==== Push Button
+
+include::inputComponents/pushbutton.adoc[]
+
+==== Slide Switch
+
+include::inputComponents/slideSwitch.adoc[]
+
+==== Rotary Encoder
+
+include::inputComponents/rotaryEncoder.adoc[]
+
+==== RFID Scanner
+
+include::spiComponents/rfidScanner.adoc[]
+
+==== Photosensor
+
+TODO: add in photosensor support docs
+
+=== Output Components
+
+==== LED
+
+include::outputComponents/led.adoc[]
+
+==== RGB LED
+
+include::pwmComponents/rgbLed.adoc[]
+
+==== LCD
+
+include::i2cComponents/lcdScreen.adoc[]
+
+== Contributing to the Library
+
+TODO: outline how someone can contribute to our library
