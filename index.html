@@ -144,7 +144,8 @@ pre {
 }
 
 table {
-	border-collapse: collapse;
+	grid: none;
+	frame: none;
 }
 
 td, th {
@@ -345,12 +346,12 @@ Each component will need</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="yaml" class="language-yaml hljs">    photo-resistor-input:                 <i class="conum" data-value="1"></i><b>(1)</b>
-      name: Photo Resistor Input          <i class="conum" data-value="2"></i><b>(2)</b>
-      address: 4                          <i class="conum" data-value="3"></i><b>(3)</b>
-      debounce: 100000                    <i class="conum" data-value="4"></i><b>(4)</b>
-      pull: PULL_DOWN                     <i class="conum" data-value="5"></i><b>(5)</b>
-      provider: pigpio-digital-input      <i class="conum" data-value="6"></i><b>(6)</b></code></pre>
+<pre class="rouge highlight"><code data-lang="yaml">    <span class="na">photo-resistor-input</span><span class="pi">:</span>                 <i class="conum" data-value="1"></i><b>(1)</b>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">Photo Resistor Input</span>          <i class="conum" data-value="2"></i><b>(2)</b>
+      <span class="na">address</span><span class="pi">:</span> <span class="s">4</span>                          <i class="conum" data-value="3"></i><b>(3)</b>
+      <span class="na">debounce</span><span class="pi">:</span> <span class="s">100000</span>                    <i class="conum" data-value="4"></i><b>(4)</b>
+      <span class="na">pull</span><span class="pi">:</span> <span class="s">PULL_DOWN</span>                     <i class="conum" data-value="5"></i><b>(5)</b>
+      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-digital-input</span>      <i class="conum" data-value="6"></i><b>(6)</b></code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -409,12 +410,12 @@ Each component will need</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="yaml" class="language-yaml hljs">    led:                                    <i class="conum" data-value="1"></i><b>(1)</b>
-      name: LED Output                      <i class="conum" data-value="2"></i><b>(2)</b>
-      address: 17                           <i class="conum" data-value="3"></i><b>(3)</b>
-      shutdown: HIGH                        <i class="conum" data-value="4"></i><b>(4)</b>
-      initial: HIGH                         <i class="conum" data-value="5"></i><b>(5)</b>
-      provider: pigpio-digital-output       <i class="conum" data-value="6"></i><b>(6)</b></code></pre>
+<pre class="rouge highlight"><code data-lang="yaml">    <span class="na">led</span><span class="pi">:</span>                                    <i class="conum" data-value="1"></i><b>(1)</b>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">LED Output</span>                      <i class="conum" data-value="2"></i><b>(2)</b>
+      <span class="na">address</span><span class="pi">:</span> <span class="s">17</span>                           <i class="conum" data-value="3"></i><b>(3)</b>
+      <span class="na">shutdown</span><span class="pi">:</span> <span class="s">HIGH</span>                        <i class="conum" data-value="4"></i><b>(4)</b>
+      <span class="na">initial</span><span class="pi">:</span> <span class="s">HIGH</span>                         <i class="conum" data-value="5"></i><b>(5)</b>
+      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-digital-output</span>       <i class="conum" data-value="6"></i><b>(6)</b></code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -476,13 +477,13 @@ Each component will need</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="yaml" class="language-yaml hljs">    red-pwm:                  <i class="conum" data-value="1"></i><b>(1)</b>
-      name: red               <i class="conum" data-value="2"></i><b>(2)</b>
-      address: 17             <i class="conum" data-value="3"></i><b>(3)</b>
-      pwmType: SOFTWARE       <i class="conum" data-value="4"></i><b>(4)</b>
-      provider: pigpio-pwm    <i class="conum" data-value="5"></i><b>(5)</b>
-      initial: 0              <i class="conum" data-value="6"></i><b>(6)</b>
-      shutdown: 0             <i class="conum" data-value="7"></i><b>(7)</b></code></pre>
+<pre class="rouge highlight"><code data-lang="yaml">    <span class="na">red-pwm</span><span class="pi">:</span>                  <i class="conum" data-value="1"></i><b>(1)</b>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">red</span>               <i class="conum" data-value="2"></i><b>(2)</b>
+      <span class="na">address</span><span class="pi">:</span> <span class="s">17</span>             <i class="conum" data-value="3"></i><b>(3)</b>
+      <span class="na">pwmType</span><span class="pi">:</span> <span class="s">SOFTWARE</span>       <i class="conum" data-value="4"></i><b>(4)</b>
+      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-pwm</span>    <i class="conum" data-value="5"></i><b>(5)</b>
+      <span class="na">initial</span><span class="pi">:</span> <span class="s">0</span>              <i class="conum" data-value="6"></i><b>(6)</b>
+      <span class="na">shutdown</span><span class="pi">:</span> <span class="s">0</span>             <i class="conum" data-value="7"></i><b>(7)</b></code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -522,12 +523,12 @@ Each component will need</p>
 <h4 id="_spi"><a class="anchor" href="#_spi"></a>4.1.5. SPI</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="yaml" class="language-yaml hljs">  spi:
-    rfid:                   <i class="conum" data-value="1"></i><b>(1)</b>
-      name: MFRC522         <i class="conum" data-value="2"></i><b>(2)</b>
-      address: 8            <i class="conum" data-value="3"></i><b>(3)</b>
-      baud: 500000          <i class="conum" data-value="4"></i><b>(4)</b>
-      reset-pin: 25         <i class="conum" data-value="5"></i><b>(5)</b></code></pre>
+<pre class="rouge highlight"><code data-lang="yaml">  <span class="na">spi</span><span class="pi">:</span>
+    <span class="na">rfid</span><span class="pi">:</span>                   <i class="conum" data-value="1"></i><b>(1)</b>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">MFRC522</span>         <i class="conum" data-value="2"></i><b>(2)</b>
+      <span class="na">address</span><span class="pi">:</span> <span class="s">8</span>            <i class="conum" data-value="3"></i><b>(3)</b>
+      <span class="na">baud</span><span class="pi">:</span> <span class="s">500000</span>          <i class="conum" data-value="4"></i><b>(4)</b>
+      <span class="na">reset-pin</span><span class="pi">:</span> <span class="s">25</span>         <i class="conum" data-value="5"></i><b>(5)</b></code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -562,10 +563,10 @@ Each component will need</p>
 <h4 id="_i2c"><a class="anchor" href="#_i2c"></a>4.1.6. I2C</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="yaml" class="language-yaml hljs">    lcd:                                  <i class="conum" data-value="1"></i><b>(1)</b>
-      name: lcd                           <i class="conum" data-value="2"></i><b>(2)</b>
-      bus: 1                              <i class="conum" data-value="3"></i><b>(3)</b>
-      device: 0x27                        <i class="conum" data-value="4"></i><b>(4)</b></code></pre>
+<pre class="rouge highlight"><code data-lang="yaml">    <span class="na">lcd</span><span class="pi">:</span>                                  <i class="conum" data-value="1"></i><b>(1)</b>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">lcd</span>                           <i class="conum" data-value="2"></i><b>(2)</b>
+      <span class="na">bus</span><span class="pi">:</span> <span class="s">1</span>                              <i class="conum" data-value="3"></i><b>(3)</b>
+      <span class="na">device</span><span class="pi">:</span> <span class="s">0x27</span>                        <i class="conum" data-value="4"></i><b>(4)</b></code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -601,7 +602,7 @@ Each component will need</p>
 <h5 id="_constructors"><a class="anchor" href="#_constructors"></a>Constructors</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">Unresolved directive in inputComponents/pushbutton.adoc - include::../../../main/java/com/opensourcewithslu/inputDevices/PushButtonHelper.java[tag=const]</code></pre>
+<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">inputComponents</span><span class="o">/</span><span class="n">pushbutton</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">inputDevices</span><span class="o">/</span><span class="nc">PushButtonHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tag</span><span class="o">=</span><span class="kd">const</span><span class="o">]</span></code></pre>
 </div>
 </div>
 </div>
@@ -609,7 +610,7 @@ Each component will need</p>
 <h5 id="_methods"><a class="anchor" href="#_methods"></a>Methods</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">Unresolved directive in inputComponents/pushbutton.adoc - include::../../../main/java/com/opensourcewithslu/inputDevices/PushButtonHelper.java[tags=method]</code></pre>
+<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">inputComponents</span><span class="o">/</span><span class="n">pushbutton</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">inputDevices</span><span class="o">/</span><span class="nc">PushButtonHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tags</span><span class="o">=</span><span class="n">method</span><span class="o">]</span></code></pre>
 </div>
 </div>
 </div>
@@ -619,25 +620,25 @@ Each component will need</p>
 <h6 id="_this_controller_uses_the_push_button_to_turn_an_led_on_and_off"><a class="anchor" href="#_this_controller_uses_the_push_button_to_turn_an_led_on_and_off"></a>This controller uses the push button to turn an LED on and off</h6>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">@Controller("/pushButton")
-public class PushButtonController {
-    private final PushButtonHelper pushButtonHelper;
-    private final LEDHelper ledHelper;
+<pre class="rouge highlight"><code data-lang="java"><span class="nd">@Controller</span><span class="o">(</span><span class="s">"/pushButton"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">PushButtonController</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">PushButtonHelper</span> <span class="n">pushButtonHelper</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">LEDHelper</span> <span class="n">ledHelper</span><span class="o">;</span>
 
-    public PushButtonController(PushButtonHelper pushButtonHelper, LEDHelper ledHelper) {
-        this.pushButtonHelper = pushButtonHelper;
-        this.ledHelper = ledHelper;
-    }
+    <span class="kd">public</span> <span class="nf">PushButtonController</span><span class="o">(</span><span class="nc">PushButtonHelper</span> <span class="n">pushButtonHelper</span><span class="o">,</span> <span class="nc">LEDHelper</span> <span class="n">ledHelper</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">pushButtonHelper</span> <span class="o">=</span> <span class="n">pushButtonHelper</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">ledHelper</span> <span class="o">=</span> <span class="n">ledHelper</span><span class="o">;</span>
+    <span class="o">}</span>
 
-    @Get("/init")
-    public void initController(){
-        pushButtonHelper.addEventListener(e -&gt;{
-            if(pushButtonHelper.isPressed){
-                ledHelper.switchState();
-            }
-        });
-    }
-}</code></pre>
+    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/init"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">initController</span><span class="o">(){</span>
+        <span class="n">pushButtonHelper</span><span class="o">.</span><span class="na">addEventListener</span><span class="o">(</span><span class="n">e</span> <span class="o">-&gt;{</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">pushButtonHelper</span><span class="o">.</span><span class="na">isPressed</span><span class="o">){</span>
+                <span class="n">ledHelper</span><span class="o">.</span><span class="na">switchState</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
 </div>
 </div>
 </div>
@@ -649,7 +650,7 @@ public class PushButtonController {
 <h5 id="_constructors_2"><a class="anchor" href="#_constructors_2"></a>Constructors</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">Unresolved directive in inputComponents/slideSwitch.adoc - include::../../../main/java/com/opensourcewithslu/inputDevices/SlideSwitchHelper.java[tag=const]</code></pre>
+<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">inputComponents</span><span class="o">/</span><span class="n">slideSwitch</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">inputDevices</span><span class="o">/</span><span class="nc">SlideSwitchHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tag</span><span class="o">=</span><span class="kd">const</span><span class="o">]</span></code></pre>
 </div>
 </div>
 </div>
@@ -657,7 +658,7 @@ public class PushButtonController {
 <h5 id="_methods_2"><a class="anchor" href="#_methods_2"></a>Methods</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">Unresolved directive in inputComponents/slideSwitch.adoc - include::../../../main/java/com/opensourcewithslu/inputDevices/SlideSwitchHelper.java[tags=method]</code></pre>
+<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">inputComponents</span><span class="o">/</span><span class="n">slideSwitch</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">inputDevices</span><span class="o">/</span><span class="nc">SlideSwitchHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tags</span><span class="o">=</span><span class="n">method</span><span class="o">]</span></code></pre>
 </div>
 </div>
 </div>
@@ -667,29 +668,29 @@ public class PushButtonController {
 <h6 id="_this_controller_sets_up_two_slide_switches"><a class="anchor" href="#_this_controller_sets_up_two_slide_switches"></a>This controller sets up two slide switches</h6>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">@Controller("/slideSwitch")
-public class SlideSwitchController {
-    private final SlideSwitchHelper slideSwitchHelper;
+<pre class="rouge highlight"><code data-lang="java"><span class="nd">@Controller</span><span class="o">(</span><span class="s">"/slideSwitch"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SlideSwitchController</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">SlideSwitchHelper</span> <span class="n">slideSwitchHelper</span><span class="o">;</span>
 
-    private final SlideSwitchHelper slideSwitchHelper2;
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">SlideSwitchHelper</span> <span class="n">slideSwitchHelper2</span><span class="o">;</span>
 
-    public SlideSwitchController(@Named("slide-switch-input")DigitalInput slideSwitch,
-                                    @Named("slide-switch-input-2")DigitalInput slideSwitch2) {
-        this.slideSwitchHelper = new SlideSwitchHelper(slideSwitch);
-        this.slideSwitchHelper2 = new SlideSwitchHelper(slideSwitch2);
-    }
+    <span class="kd">public</span> <span class="nf">SlideSwitchController</span><span class="o">(</span><span class="nd">@Named</span><span class="o">(</span><span class="s">"slide-switch-input"</span><span class="o">)</span><span class="nc">DigitalInput</span> <span class="n">slideSwitch</span><span class="o">,</span>
+                                    <span class="nd">@Named</span><span class="o">(</span><span class="s">"slide-switch-input-2"</span><span class="o">)</span><span class="nc">DigitalInput</span> <span class="n">slideSwitch2</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">slideSwitchHelper</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">SlideSwitchHelper</span><span class="o">(</span><span class="n">slideSwitch</span><span class="o">);</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">slideSwitchHelper2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">SlideSwitchHelper</span><span class="o">(</span><span class="n">slideSwitch2</span><span class="o">);</span>
+    <span class="o">}</span>
 
-    @Get("/switch1")
-    public boolean checkSwitch1(){
-        return slideSwitchHelper.isOn;
-    }
+    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/switch1"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">checkSwitch1</span><span class="o">(){</span>
+        <span class="k">return</span> <span class="n">slideSwitchHelper</span><span class="o">.</span><span class="na">isOn</span><span class="o">;</span>
+    <span class="o">}</span>
 
-    @Get("/switch2")
-    public boolean checkSwitch2(){
-        return slideSwitchHelper2.isOn;
-    }
+    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/switch2"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">checkSwitch2</span><span class="o">(){</span>
+        <span class="k">return</span> <span class="n">slideSwitchHelper2</span><span class="o">.</span><span class="na">isOn</span><span class="o">;</span>
+    <span class="o">}</span>
 
-}</code></pre>
+<span class="o">}</span></code></pre>
 </div>
 </div>
 </div>
@@ -701,7 +702,7 @@ public class SlideSwitchController {
 <h5 id="_constructors_3"><a class="anchor" href="#_constructors_3"></a>Constructors</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">Unresolved directive in inputComponents/rotaryEncoder.adoc - include::../../../main/java/com/opensourcewithslu/inputDevices/RotaryEncoderHelper.java[tag=const]</code></pre>
+<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">inputComponents</span><span class="o">/</span><span class="n">rotaryEncoder</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">inputDevices</span><span class="o">/</span><span class="nc">RotaryEncoderHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tag</span><span class="o">=</span><span class="kd">const</span><span class="o">]</span></code></pre>
 </div>
 </div>
 </div>
@@ -709,7 +710,7 @@ public class SlideSwitchController {
 <h5 id="_methods_3"><a class="anchor" href="#_methods_3"></a>Methods</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">Unresolved directive in inputComponents/rotaryEncoder.adoc - include::../../../main/java/com/opensourcewithslu/inputDevices/RotaryEncoderHelper.java[tags=method]</code></pre>
+<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">inputComponents</span><span class="o">/</span><span class="n">rotaryEncoder</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">inputDevices</span><span class="o">/</span><span class="nc">RotaryEncoderHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tags</span><span class="o">=</span><span class="n">method</span><span class="o">]</span></code></pre>
 </div>
 </div>
 </div>
@@ -719,20 +720,20 @@ public class SlideSwitchController {
 <h6 id="_this_controller_sets_up_two_rotary_encoders"><a class="anchor" href="#_this_controller_sets_up_two_rotary_encoders"></a>This controller sets up two rotary encoders</h6>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">@Controller("/rotaryEncoder")
-public class RotaryEncoderController {
+<pre class="rouge highlight"><code data-lang="java"><span class="nd">@Controller</span><span class="o">(</span><span class="s">"/rotaryEncoder"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">RotaryEncoderController</span> <span class="o">{</span>
 
-    private final RotaryEncoderHelper encoderHelper;
-    private final RotaryEncoderHelper encoderHelper2;
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">RotaryEncoderHelper</span> <span class="n">encoderHelper</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">RotaryEncoderHelper</span> <span class="n">encoderHelper2</span><span class="o">;</span>
 
-    public RotaryEncoderController(@Named("rotary-encoder")MultipinConfiguration rotaryEncoder, @Named("rotary-encoder-2")MultipinConfiguration rotaryEncoder2){
-        this.encoderHelper = new RotaryEncoderHelper(rotaryEncoder);
-        this.encoderHelper2 = new RotaryEncoderHelper(rotaryEncoder2);
-    }
+    <span class="kd">public</span> <span class="nf">RotaryEncoderController</span><span class="o">(</span><span class="nd">@Named</span><span class="o">(</span><span class="s">"rotary-encoder"</span><span class="o">)</span><span class="nc">MultipinConfiguration</span> <span class="n">rotaryEncoder</span><span class="o">,</span> <span class="nd">@Named</span><span class="o">(</span><span class="s">"rotary-encoder-2"</span><span class="o">)</span><span class="nc">MultipinConfiguration</span> <span class="n">rotaryEncoder2</span><span class="o">){</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">encoderHelper</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">RotaryEncoderHelper</span><span class="o">(</span><span class="n">rotaryEncoder</span><span class="o">);</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">encoderHelper2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">RotaryEncoderHelper</span><span class="o">(</span><span class="n">rotaryEncoder2</span><span class="o">);</span>
+    <span class="o">}</span>
 
-    @Get("/value")
-    public int getEncoderValue(){return encoderHelper.getEncoderValue();}
-}</code></pre>
+    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/value"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getEncoderValue</span><span class="o">(){</span><span class="k">return</span> <span class="n">encoderHelper</span><span class="o">.</span><span class="na">getEncoderValue</span><span class="o">();}</span>
+<span class="o">}</span></code></pre>
 </div>
 </div>
 </div>
@@ -744,7 +745,7 @@ public class RotaryEncoderController {
 <h5 id="_constructors_4"><a class="anchor" href="#_constructors_4"></a>Constructors</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">Unresolved directive in spiComponents/rfidScanner.adoc - include::../../../main/java/com/opensourcewithslu/inputDevices/RFidHelper.java[tag=const]</code></pre>
+<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">spiComponents</span><span class="o">/</span><span class="n">rfidScanner</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">inputDevices</span><span class="o">/</span><span class="nc">RFidHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tag</span><span class="o">=</span><span class="kd">const</span><span class="o">]</span></code></pre>
 </div>
 </div>
 </div>
@@ -752,7 +753,7 @@ public class RotaryEncoderController {
 <h5 id="_methods_4"><a class="anchor" href="#_methods_4"></a>Methods</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">Unresolved directive in spiComponents/rfidScanner.adoc - include::../../../main/java/com/opensourcewithslu/inputDevices/RFidHelper.java[tag=method]</code></pre>
+<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">spiComponents</span><span class="o">/</span><span class="n">rfidScanner</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">inputDevices</span><span class="o">/</span><span class="nc">RFidHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tag</span><span class="o">=</span><span class="n">method</span><span class="o">]</span></code></pre>
 </div>
 </div>
 </div>
@@ -762,7 +763,7 @@ public class RotaryEncoderController {
 <h6 id="_this_controller_uses_the_rfid_scanner_to_write_and_read_to_a_card"><a class="anchor" href="#_this_controller_uses_the_rfid_scanner_to_write_and_read_to_a_card"></a>This controller uses the RFID scanner to write and read to a card</h6>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">Unresolved directive in spiComponents/rfidScanner.adoc - include::../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/RFidController.java[tag=ex]</code></pre>
+<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">spiComponents</span><span class="o">/</span><span class="n">rfidScanner</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../../../</span><span class="n">components</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">components</span><span class="o">/</span><span class="n">controllers</span><span class="o">/</span><span class="nc">RFidController</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tag</span><span class="o">=</span><span class="n">ex</span><span class="o">]</span></code></pre>
 </div>
 </div>
 </div>
@@ -783,7 +784,7 @@ public class RotaryEncoderController {
 <h5 id="_constructors_5"><a class="anchor" href="#_constructors_5"></a>Constructors</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">Unresolved directive in outputComponents/led.adoc - include::../../../main/java/com/opensourcewithslu/outputDevices/LEDHelper.java[tag=const]</code></pre>
+<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">outputComponents</span><span class="o">/</span><span class="n">led</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">outputDevices</span><span class="o">/</span><span class="nc">LEDHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tag</span><span class="o">=</span><span class="kd">const</span><span class="o">]</span></code></pre>
 </div>
 </div>
 </div>
@@ -791,7 +792,7 @@ public class RotaryEncoderController {
 <h5 id="_methods_5"><a class="anchor" href="#_methods_5"></a>Methods</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">Unresolved directive in outputComponents/led.adoc - include::../../../main/java/com/opensourcewithslu/outputDevices/LEDHelper.java[tags=method]</code></pre>
+<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">outputComponents</span><span class="o">/</span><span class="n">led</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">outputDevices</span><span class="o">/</span><span class="nc">LEDHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tags</span><span class="o">=</span><span class="n">method</span><span class="o">]</span></code></pre>
 </div>
 </div>
 </div>
@@ -811,7 +812,7 @@ public class RotaryEncoderController {
 <h5 id="_constructors_6"><a class="anchor" href="#_constructors_6"></a>Constructors</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">Unresolved directive in pwmComponents/rgbLed.adoc - include::../../../main/java/com/opensourcewithslu/outputDevices/RGBLEDHelper.java[tag=const]</code></pre>
+<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">pwmComponents</span><span class="o">/</span><span class="n">rgbLed</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">outputDevices</span><span class="o">/</span><span class="nc">RGBLEDHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tag</span><span class="o">=</span><span class="kd">const</span><span class="o">]</span></code></pre>
 </div>
 </div>
 </div>
@@ -819,7 +820,7 @@ public class RotaryEncoderController {
 <h5 id="_methods_6"><a class="anchor" href="#_methods_6"></a>Methods</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">Unresolved directive in pwmComponents/rgbLed.adoc - include::../../../main/java/com/opensourcewithslu/outputDevices/RGBLEDHelper.java[tags=method]</code></pre>
+<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">pwmComponents</span><span class="o">/</span><span class="n">rgbLed</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">outputDevices</span><span class="o">/</span><span class="nc">RGBLEDHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tags</span><span class="o">=</span><span class="n">method</span><span class="o">]</span></code></pre>
 </div>
 </div>
 </div>
@@ -827,68 +828,68 @@ public class RotaryEncoderController {
 <h5 id="_an_example_controller_6"><a class="anchor" href="#_an_example_controller_6"></a>An Example Controller</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">@Controller("/rgb")
-public class rgbController {
-    private final RGBLEDHelper rgbledHelper;
-    private static final Logger log = LoggerFactory.getLogger(rgbController.class);
+<pre class="rouge highlight"><code data-lang="java"><span class="nd">@Controller</span><span class="o">(</span><span class="s">"/rgb"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">rgbController</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">RGBLEDHelper</span> <span class="n">rgbledHelper</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Logger</span> <span class="n">log</span> <span class="o">=</span> <span class="nc">LoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="n">rgbController</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
 
-    public rgbController(@Named("rgb-led") MultipinConfiguration rgbLed){
-        this.rgbledHelper = new RGBLEDHelper(rgbLed);
-    }
+    <span class="kd">public</span> <span class="nf">rgbController</span><span class="o">(</span><span class="nd">@Named</span><span class="o">(</span><span class="s">"rgb-led"</span><span class="o">)</span> <span class="nc">MultipinConfiguration</span> <span class="n">rgbLed</span><span class="o">){</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">rgbledHelper</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">RGBLEDHelper</span><span class="o">(</span><span class="n">rgbLed</span><span class="o">);</span>
+    <span class="o">}</span>
 
-    @Get("/setRed/{val}")
-    public void setRed(String val){
-        rgbledHelper.setRed(Integer.parseInt(val));
-    }
+    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/setRed/{val}"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setRed</span><span class="o">(</span><span class="nc">String</span> <span class="n">val</span><span class="o">){</span>
+        <span class="n">rgbledHelper</span><span class="o">.</span><span class="na">setRed</span><span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">val</span><span class="o">));</span>
+    <span class="o">}</span>
 
-    @Get("/setRed/{val},{frequency}")
-    public void setRed(String val, String frequency){
-        rgbledHelper.setRed(Integer.parseInt(val), Integer.parseInt(frequency));
-    }
+    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/setRed/{val},{frequency}"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setRed</span><span class="o">(</span><span class="nc">String</span> <span class="n">val</span><span class="o">,</span> <span class="nc">String</span> <span class="n">frequency</span><span class="o">){</span>
+        <span class="n">rgbledHelper</span><span class="o">.</span><span class="na">setRed</span><span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">val</span><span class="o">),</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">frequency</span><span class="o">));</span>
+    <span class="o">}</span>
 
-    @Get("/setBlue/{val}")
-    public void setBlue(String val){
-        rgbledHelper.setBlue(Integer.parseInt(val));
-    }
+    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/setBlue/{val}"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setBlue</span><span class="o">(</span><span class="nc">String</span> <span class="n">val</span><span class="o">){</span>
+        <span class="n">rgbledHelper</span><span class="o">.</span><span class="na">setBlue</span><span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">val</span><span class="o">));</span>
+    <span class="o">}</span>
 
-    @Get("/setBlue/{val},{frequency}")
-    public void setBlue(String val, String frequency){
-        rgbledHelper.setBlue(Integer.parseInt(val), Integer.parseInt(frequency));
-    }
+    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/setBlue/{val},{frequency}"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setBlue</span><span class="o">(</span><span class="nc">String</span> <span class="n">val</span><span class="o">,</span> <span class="nc">String</span> <span class="n">frequency</span><span class="o">){</span>
+        <span class="n">rgbledHelper</span><span class="o">.</span><span class="na">setBlue</span><span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">val</span><span class="o">),</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">frequency</span><span class="o">));</span>
+    <span class="o">}</span>
 
-    @Get("/setGreen/{val}")
-    public void setGreen(String val){
-        rgbledHelper.setGreen(Integer.parseInt(val));
-    }
+    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/setGreen/{val}"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setGreen</span><span class="o">(</span><span class="nc">String</span> <span class="n">val</span><span class="o">){</span>
+        <span class="n">rgbledHelper</span><span class="o">.</span><span class="na">setGreen</span><span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">val</span><span class="o">));</span>
+    <span class="o">}</span>
 
-    @Get("/setGreen/{val},{frequency}")
-    public void setGreen(String val, String frequency){
-        rgbledHelper.setGreen(Integer.parseInt(val), Integer.parseInt(frequency));
-    }
+    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/setGreen/{val},{frequency}"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setGreen</span><span class="o">(</span><span class="nc">String</span> <span class="n">val</span><span class="o">,</span> <span class="nc">String</span> <span class="n">frequency</span><span class="o">){</span>
+        <span class="n">rgbledHelper</span><span class="o">.</span><span class="na">setGreen</span><span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">val</span><span class="o">),</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">frequency</span><span class="o">));</span>
+    <span class="o">}</span>
 
-    @Get("/setColor/{redVal},{greenVal},{blueVal}")
-    public void setColor(int redVal, int greenVal, int blueVal){
-        int[] colors = new int[] {redVal, greenVal, blueVal};
-        rgbledHelper.setColor(colors);
-    }
+    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/setColor/{redVal},{greenVal},{blueVal}"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setColor</span><span class="o">(</span><span class="kt">int</span> <span class="n">redVal</span><span class="o">,</span> <span class="kt">int</span> <span class="n">greenVal</span><span class="o">,</span> <span class="kt">int</span> <span class="n">blueVal</span><span class="o">){</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">colors</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span><span class="n">redVal</span><span class="o">,</span> <span class="n">greenVal</span><span class="o">,</span> <span class="n">blueVal</span><span class="o">};</span>
+        <span class="n">rgbledHelper</span><span class="o">.</span><span class="na">setColor</span><span class="o">(</span><span class="n">colors</span><span class="o">);</span>
+    <span class="o">}</span>
 
-    @Get("/setColor/{redVal},{greenVal},{blueVal},{frequency1},{frequency2},{frequency3}")
-    public void setColor(int redVal, int greenVal, int blueVal, int frequency1, int frequency2, int frequency3){
-        int[] colors = new int[] {redVal, greenVal, blueVal};
-        int[] frequency = new int[] {frequency1, frequency2, frequency3};
-        rgbledHelper.setColor(colors, frequency);
-    }
+    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/setColor/{redVal},{greenVal},{blueVal},{frequency1},{frequency2},{frequency3}"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setColor</span><span class="o">(</span><span class="kt">int</span> <span class="n">redVal</span><span class="o">,</span> <span class="kt">int</span> <span class="n">greenVal</span><span class="o">,</span> <span class="kt">int</span> <span class="n">blueVal</span><span class="o">,</span> <span class="kt">int</span> <span class="n">frequency1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">frequency2</span><span class="o">,</span> <span class="kt">int</span> <span class="n">frequency3</span><span class="o">){</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">colors</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span><span class="n">redVal</span><span class="o">,</span> <span class="n">greenVal</span><span class="o">,</span> <span class="n">blueVal</span><span class="o">};</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">frequency</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span><span class="n">frequency1</span><span class="o">,</span> <span class="n">frequency2</span><span class="o">,</span> <span class="n">frequency3</span><span class="o">};</span>
+        <span class="n">rgbledHelper</span><span class="o">.</span><span class="na">setColor</span><span class="o">(</span><span class="n">colors</span><span class="o">,</span> <span class="n">frequency</span><span class="o">);</span>
+    <span class="o">}</span>
 
-    @Get("/ledOff")
-    public void ledOff() {
-        rgbledHelper.ledOff();
-    }
+    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/ledOff"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">ledOff</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">rgbledHelper</span><span class="o">.</span><span class="na">ledOff</span><span class="o">();</span>
+    <span class="o">}</span>
 
-    @Get("/ledOn")
-    public void ledOn() {
-        rgbledHelper.ledOn();
-    }
-}</code></pre>
+    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/ledOn"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">ledOn</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">rgbledHelper</span><span class="o">.</span><span class="na">ledOn</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
 </div>
 </div>
 </div>
@@ -899,7 +900,7 @@ public class rgbController {
 <h5 id="_constructors_7"><a class="anchor" href="#_constructors_7"></a>Constructors</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">Unresolved directive in i2cComponents/lcdScreen.adoc - include::../../../main/java/com/opensourcewithslu/outputDevices/LCD1602Helper.java[tag=const]</code></pre>
+<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">i2cComponents</span><span class="o">/</span><span class="n">lcdScreen</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">outputDevices</span><span class="o">/</span><span class="nc">LCD1602Helper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tag</span><span class="o">=</span><span class="kd">const</span><span class="o">]</span></code></pre>
 </div>
 </div>
 </div>
@@ -907,7 +908,7 @@ public class rgbController {
 <h5 id="_methods_7"><a class="anchor" href="#_methods_7"></a>Methods</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">Unresolved directive in i2cComponents/lcdScreen.adoc - include::../../../main/java/com/opensourcewithslu/outputDevices/LCD1602Helper.java[tags=method]</code></pre>
+<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">i2cComponents</span><span class="o">/</span><span class="n">lcdScreen</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">outputDevices</span><span class="o">/</span><span class="nc">LCD1602Helper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tags</span><span class="o">=</span><span class="n">method</span><span class="o">]</span></code></pre>
 </div>
 </div>
 </div>
@@ -915,44 +916,44 @@ public class rgbController {
 <h5 id="_an_example_controller_7"><a class="anchor" href="#_an_example_controller_7"></a>An Example Controller</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">@Controller("/lcd")
-public class lcdController {
-    private final LCD1602Helper lcdHelper;
+<pre class="rouge highlight"><code data-lang="java"><span class="nd">@Controller</span><span class="o">(</span><span class="s">"/lcd"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">lcdController</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">LCD1602Helper</span> <span class="n">lcdHelper</span><span class="o">;</span>
 
-    public lcdController(@Named("lcd")I2CConfig i2cConfig, Context pi4jContext){
-        this.lcdHelper = new LCD1602Helper(i2cConfig, pi4jContext);
-    }
+    <span class="kd">public</span> <span class="nf">lcdController</span><span class="o">(</span><span class="nd">@Named</span><span class="o">(</span><span class="s">"lcd"</span><span class="o">)</span><span class="nc">I2CConfig</span> <span class="n">i2cConfig</span><span class="o">,</span> <span class="nc">Context</span> <span class="n">pi4jContext</span><span class="o">){</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">lcdHelper</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LCD1602Helper</span><span class="o">(</span><span class="n">i2cConfig</span><span class="o">,</span> <span class="n">pi4jContext</span><span class="o">);</span>
+    <span class="o">}</span>
 
-    @Get("/write/{text}")
-    public void writeData(String text){
-        lcdHelper.writeText(text);
-    }
+    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/write/{text}"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">writeData</span><span class="o">(</span><span class="nc">String</span> <span class="n">text</span><span class="o">){</span>
+        <span class="n">lcdHelper</span><span class="o">.</span><span class="na">writeText</span><span class="o">(</span><span class="n">text</span><span class="o">);</span>
+    <span class="o">}</span>
 
-    @Get("/write/{text}/{line}")
-    public void writeDataAtLine(String text, int line){
-        lcdHelper.writeTextAtLine(text, line);
-    }
+    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/write/{text}/{line}"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">writeDataAtLine</span><span class="o">(</span><span class="nc">String</span> <span class="n">text</span><span class="o">,</span> <span class="kt">int</span> <span class="n">line</span><span class="o">){</span>
+        <span class="n">lcdHelper</span><span class="o">.</span><span class="na">writeTextAtLine</span><span class="o">(</span><span class="n">text</span><span class="o">,</span> <span class="n">line</span><span class="o">);</span>
+    <span class="o">}</span>
 
-    @Get("/backlight/on")
-    public void backlightOn(){
-        lcdHelper.setBackLight(true);
-    }
+    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/backlight/on"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">backlightOn</span><span class="o">(){</span>
+        <span class="n">lcdHelper</span><span class="o">.</span><span class="na">setBackLight</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+    <span class="o">}</span>
 
-    @Get("/backlight/off")
-    public void backlightOff(){
-        lcdHelper.setBackLight(false);
-    }
+    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/backlight/off"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">backlightOff</span><span class="o">(){</span>
+        <span class="n">lcdHelper</span><span class="o">.</span><span class="na">setBackLight</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+    <span class="o">}</span>
 
-    @Get("/clear/all")
-    public void clearDisplay(){
-        lcdHelper.clearDisplay();
-    }
+    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/clear/all"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">clearDisplay</span><span class="o">(){</span>
+        <span class="n">lcdHelper</span><span class="o">.</span><span class="na">clearDisplay</span><span class="o">();</span>
+    <span class="o">}</span>
 
-    @Get("/clear/{line}")
-    public void clearLine(int line){
-        lcdHelper.clearLine(line);
-    }
-}</code></pre>
+    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/clear/{line}"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">clearLine</span><span class="o">(</span><span class="kt">int</span> <span class="n">line</span><span class="o">){</span>
+        <span class="n">lcdHelper</span><span class="o">.</span><span class="na">clearLine</span><span class="o">(</span><span class="n">line</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
 </div>
 </div>
 </div>
@@ -972,11 +973,182 @@ public class lcdController {
 <div id="footer">
 <div id="footer-text">
 Version v0.1.2<br>
-Last updated 2023-05-01 18:57:20 UTC
+Last updated 2023-05-01 20:08:10 UTC
 </div>
 </div>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
-<script>hljs.initHighlighting()</script>
+<style>
+pre.rouge table td { padding: 5px; }
+pre.rouge table pre { margin: 0; }
+pre.rouge {
+  color: #faf6e4;
+  background-color: #122b3b;
+}
+pre.rouge .gl {
+  color: #dee5e7;
+  background-color: #4e5d62;
+}
+pre.rouge .gp {
+  color: #a8e1fe;
+  font-weight: bold;
+}
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cm, pre.rouge .cpf, pre.rouge .c1, pre.rouge .cs {
+  color: #6c8b9f;
+  font-style: italic;
+}
+pre.rouge .cp {
+  color: #b2fd6d;
+  font-weight: bold;
+}
+pre.rouge .err {
+  color: #fefeec;
+  background-color: #cc0000;
+}
+pre.rouge .gr {
+  color: #cc0000;
+  font-weight: bold;
+  font-style: italic;
+}
+pre.rouge .k, pre.rouge .kd, pre.rouge .kv {
+  color: #f6dd62;
+  font-weight: bold;
+}
+pre.rouge .o, pre.rouge .ow {
+  color: #4df4ff;
+  font-weight: bold;
+}
+pre.rouge .p, pre.rouge .pi {
+  color: #4df4ff;
+}
+pre.rouge .gd {
+  color: #cc0000;
+}
+pre.rouge .gi {
+  color: #b2fd6d;
+}
+pre.rouge .ge {
+  font-style: italic;
+}
+pre.rouge .gs {
+  font-weight: bold;
+}
+pre.rouge .gt {
+  color: #dee5e7;
+  background-color: #4e5d62;
+}
+pre.rouge .kc {
+  color: #f696db;
+  font-weight: bold;
+}
+pre.rouge .kn {
+  color: #ffb000;
+  font-weight: bold;
+}
+pre.rouge .kp {
+  color: #ffb000;
+  font-weight: bold;
+}
+pre.rouge .kr {
+  color: #ffb000;
+  font-weight: bold;
+}
+pre.rouge .gh {
+  color: #ffb000;
+  font-weight: bold;
+}
+pre.rouge .gu {
+  color: #ffb000;
+  font-weight: bold;
+}
+pre.rouge .kt {
+  color: #b2fd6d;
+  font-weight: bold;
+}
+pre.rouge .no {
+  color: #b2fd6d;
+  font-weight: bold;
+}
+pre.rouge .nc {
+  color: #b2fd6d;
+  font-weight: bold;
+}
+pre.rouge .nd {
+  color: #b2fd6d;
+  font-weight: bold;
+}
+pre.rouge .nn {
+  color: #b2fd6d;
+  font-weight: bold;
+}
+pre.rouge .bp {
+  color: #b2fd6d;
+  font-weight: bold;
+}
+pre.rouge .ne {
+  color: #b2fd6d;
+  font-weight: bold;
+}
+pre.rouge .nl {
+  color: #ffb000;
+  font-weight: bold;
+}
+pre.rouge .nt {
+  color: #ffb000;
+  font-weight: bold;
+}
+pre.rouge .m, pre.rouge .mb, pre.rouge .mf, pre.rouge .mh, pre.rouge .mi, pre.rouge .il, pre.rouge .mo, pre.rouge .mx {
+  color: #f696db;
+  font-weight: bold;
+}
+pre.rouge .ld {
+  color: #f696db;
+  font-weight: bold;
+}
+pre.rouge .ss {
+  color: #f696db;
+  font-weight: bold;
+}
+pre.rouge .s, pre.rouge .sa, pre.rouge .sb, pre.rouge .dl, pre.rouge .sd, pre.rouge .s2, pre.rouge .sh, pre.rouge .sx, pre.rouge .sr, pre.rouge .s1 {
+  color: #fff0a6;
+  font-weight: bold;
+}
+pre.rouge .se {
+  color: #4df4ff;
+  font-weight: bold;
+}
+pre.rouge .sc {
+  color: #4df4ff;
+  font-weight: bold;
+}
+pre.rouge .si {
+  color: #4df4ff;
+  font-weight: bold;
+}
+pre.rouge .nb {
+  font-weight: bold;
+}
+pre.rouge .ni {
+  color: #999999;
+  font-weight: bold;
+}
+pre.rouge .w {
+  color: #BBBBBB;
+}
+pre.rouge .go {
+  color: #BBBBBB;
+}
+pre.rouge .nf, pre.rouge .fm {
+  color: #a8e1fe;
+}
+pre.rouge .py {
+  color: #a8e1fe;
+}
+pre.rouge .na {
+  color: #a8e1fe;
+}
+pre.rouge .nv, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi, pre.rouge .vm {
+  color: #a8e1fe;
+  font-weight: bold;
+}
+</style>
 </body>
 </html>
