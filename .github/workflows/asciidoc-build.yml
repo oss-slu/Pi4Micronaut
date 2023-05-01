@@ -16,7 +16,7 @@ jobs:
       id: adocbuild
       uses: tonynv/asciidoctor-action@master
       with:
-          program: "asciidoctor -D docs -a stylesheet=style.css -a toc=left --backend=html5 -o index.html ./docs/index.adoc && echo 'docs.upsilonproject.io' > docs/CNAME"
+          program: "./gradlew asciidoctor"
     - name: Deploy docs to ghpages
       uses: peaceiris/actions-gh-pages@v3
       with: 
