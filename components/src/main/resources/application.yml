@@ -96,16 +96,16 @@ pi4j:
       shutdown: LOW
       initial: HIGH
       provider: pigpio-digital-output
-  multi-digital-input:
-    # tag::multiInput[]
-    rotary-encoder:
-      name: Rotary Encoder
-      addresses: 27,18,17
-      debounces: 6000,500,500
-      pulls: PULL_DOWN,PULL_UP,PULL_UP
-      shutdown: LOW
-      initial: HIGH
-      provider: pigpio-digital-input
+  # tag::multiInput[]
+  multi-digital-input:                     # <.>
+    rotary-encoder:                        # <.>
+      name: Rotary Encoder                 # <.>
+      addresses: 27,18,17                  # <.>
+      debounces: 6000,500,500              # <.>
+      pulls: PULL_DOWN,PULL_UP,PULL_UP     # <.>
+      shutdown: LOW                        # <.>
+      initial: HIGH                        # <.>
+      provider: pigpio-digital-input       # <.>
     # end::multiInput[]
     rotary-encoder-2:
       name: Rotary Encoder 2
@@ -115,15 +115,15 @@ pi4j:
       shutdown: LOW
       initial: HIGH
       provider: pigpio-digital-input
+  # tag::multipwm[]
   multi-pwm:
-    # tag::multipwm[]
-    rgb-led:
-      name: RGB LED
-      addresses: 17, 18, 27
-      pwmTypes: SOFTWARE, SOFTWARE, SOFTWARE
-      provider: pigpio-pwm
-      initials: 0, 0, 0
-      shutdowns: 0, 0, 0
+    rgb-led:                                    # <.>
+      name: RGB LED                             # <.>
+      addresses: 17, 18, 27                     # <.>
+      pwmTypes: SOFTWARE, SOFTWARE, SOFTWARE    # <.>
+      provider: pigpio-pwm                      # <.>
+      initials: 0, 0, 0                         # <.>
+      shutdowns: 0, 0, 0                        # <.>
     # end::multipwm[]
 #  clk:
 #    name: CLK Output

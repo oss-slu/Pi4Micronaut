@@ -1,3 +1,19 @@
+===== YAML Pin Order
+The order for declaring pins for a RGB LED component in the application.yaml file is as follows
+
+*RED-PIN-INFO, GREEN-PIN-INFO, BLUE-PIN-INFO*
+
+So in the case of
+
+[source, yaml]
+----
+multi-pwm:
+  rgb-led:
+    addresses: 17, 18, 27
+----
+
+the red pin would be the one connected to GPIO 17, green to GPIO 18, and blue to GPIO 27. All lists of values for RGB LED components will follow the same order.
+
 ===== Constructors
 
 [source, java]

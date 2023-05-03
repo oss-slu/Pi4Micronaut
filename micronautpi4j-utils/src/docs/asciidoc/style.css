@@ -157,3 +157,8 @@ th {
 	width: 0;
 	height: 0;
 }
+
+.title{
+	font-style: italic;
+	padding-top: 2em;
+}
