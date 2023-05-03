@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
-<title>Constructors</title>
+<title>YAML Pin Order</title>
 <style>
 body {
 	font-family: sans-serif;
@@ -166,12 +166,39 @@ th {
 	width: 0;
 	height: 0;
 }
+
+.title{
+	font-style: italic;
+	padding-top: 2em;
+}
 </style>
 </head>
 <body class="article">
 <div id="header">
 </div>
 <div id="content">
+<div class="sect4">
+<h5 id="_yaml_pin_order">YAML Pin Order</h5>
+<div class="paragraph">
+<p>The order for declaring pins for a Rotary Encoder component in the application.yaml file is as follows</p>
+</div>
+<div class="paragraph">
+<p><strong>SW-PIN-INFO, CLK-PIN-INFO, DT-PIN-INFO</strong></p>
+</div>
+<div class="paragraph">
+<p>So in the case of</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">multi-digital-input:
+  rot-encoder:
+    addresses: 17, 18, 27</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>the sw pin would be the one connected to GPIO 17, the clk pin would be connected to GPIO 18, and the dt pin would connect to GPIO 27. All lists of values for Rotray Encoder components will follow the same order.</p>
+</div>
+</div>
 <div class="sect4">
 <h5 id="_constructors">Constructors</h5>
 <div class="listingblock">
@@ -203,7 +230,7 @@ th {
 <div id="footer">
 <div id="footer-text">
 Version v0.1.2<br>
-Last updated 2023-05-01 20:08:10 UTC
+Last updated 2023-05-03 20:48:55 UTC
 </div>
 </div>
 </body>
