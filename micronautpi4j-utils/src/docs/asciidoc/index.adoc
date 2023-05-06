@@ -1,7 +1,9 @@
 = Pi4Micronaut Documentation
-:source-highlighter: highlight.js
+:source-highlighter: rouge
+:rouge-style: thankful_eyes
 :stylesheet: style.css
 :docinfo: shared
+:icons: font
 :doctype: book
 :title: Pi4Micronaut Documentation
 :toc: left
@@ -66,6 +68,18 @@ Each component will need
 * pull: Either PULL_UP or PULL_DOWN depending on component
 * provider: pigpio-digital-input
 
+[source,yaml]
+----
+include::../../../../components/src/main/resources/application.yml[tags=digitalInput]
+----
+
+<.> Component Identifier (Used in @Named annotations)
+<.> Component Name
+<.> Address of connected GPIO pin
+<.> Debounce value
+<.> Pull value (PULL_UP or PULL_DOWN)
+<.> Provider (pigpio-digital-input)
+
 ==== Digital Output
 To define in application.yaml add digital-output as a field under pi4j, then add each component under digital-input
 Each component will need
@@ -76,9 +90,51 @@ Each component will need
 * shutdown: State to take when program successfully shuts down properly, either LOW or HIGH
 * provider: pigpio-digital-output
 
+[source,yaml]
+----
+include::../../../../components/src/main/resources/application.yml[tags=digitalOutput]
+----
+<1> Component Identifier (Used in @Named annotations)
+<2> Component Name
+<3> Address of connected GPIO pin
+<4> Value to have on shutdown (HIGH = Off, LOW = On)
+<5> Value to have on startup
+<6> Provider (pigpio-digital-output)
+
 ==== Multipin Configurations
 
-TODO: add information about multipin configs
+Multipin components are unique in that they require several of the same type of pin in order to function properly.
+Each class of multipin component (Digital Input, PWM), is declared slightly differently in the application.yaml file
+
+.Example Multipin Digital Input declaration
+[source, yaml]
+----
+include::../../../../components/src/main/resources/application.yml[tags=multiInput]
+----
+<.> Top level field for multipin digital inputs (equivlent of digital-output declaration)
+<.> Component Identifier (Used in @Named annotations)
+<.> Component Name
+<.> Addresses for each pin (Each component has a specific order outlined in the component description)
+<.> Debounce values for each pin (same order as above)
+<.> Pull values for each pin (same order as above)
+<.> Shutdown value (All pins have the same shut down)
+<.> Startup value (All pins have the same start up)
+<.> Provider (All pins have the same provider)
+
+.Example Multipin PWM declaration
+[source, yaml]
+----
+include::../../../../components/src/main/resources/application.yml[tags=multipwm]
+----
+<.> Top level field for multipin PWMs (equivlent of digital-output declaration)
+<.> Component Identifier (Used in @Named annotations)
+<.> Component Name
+<.> Addresses for each pin (Each component has a specific order outlined in the component description)
+<.> PWM types for each pin (same order as above)
+<.> Provider (All pins have the same provider)
+<.> Startup values (Same order as above)
+<.> Shutdown values (Same order as above)
+
 
 ==== PWM
 To define in application.yaml add digital-input as a field under pi4j, then add each component under digital-input
@@ -89,11 +145,42 @@ Each component will need
 * pwmType: Either SOFTWARE or HARDWARE based upon which type of PWM you wish to use
 * provider: pigpio-pwm
 
+[source,yaml]
+----
+include::../../../../components/src/main/resources/application.yml[tags=pwm]
+----
+<1> Component Identifier (Used in @Named annotations)
+<2> Component Name
+<3> Address of connected GPIO pin
+<4> PWM Type (HARDWARE or SOFTWARE)
+<5> Provider (pigpio-digital-output)
+<6> Value to have on start up
+<7> Value to have on shut down
+
 ==== SPI
+
+[source,yaml]
+----
+include::../../../../components/src/main/resources/application.yml[tags=spi]
+----
+<1> Component Identifier (Used in @Named annotations)
+<2> Component Name
+<3> TO DO: Figure out what this address is
+<4> Baud rate
+<5> Address of GPIO Reset pin
 
 TODO: add SPI information
 
 ==== I2C
+
+[source,yaml]
+----
+include::../../../../components/src/main/resources/application.yml[tags=i2c]
+----
+<1> Component Identifier (Used in @Named annotations)
+<2> Component Name
+<3> Device bus (0 or 1)
+<4> Device address
 
 TODO: add I2C information
 
@@ -128,7 +215,6 @@ include::outputComponents/led.adoc[]
 ==== RGB LED
 
 include::pwmComponents/rgbLed.adoc[]
-
 ==== LCD
 
 include::i2cComponents/lcdScreen.adoc[]

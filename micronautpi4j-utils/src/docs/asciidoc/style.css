@@ -110,6 +110,10 @@ h1 {
 	padding-bottom: 50px;
 }
 
+.hljs{
+	background: #cacbca !important;
+}
+
 #content img {
 	max-width: 100%;
 }
@@ -131,7 +135,8 @@ pre {
 }
 
 table {
-	border-collapse: collapse;
+	grid: none;
+	frame: none;
 }
 
 td, th {
@@ -151,4 +156,9 @@ th {
 	visibility: hidden;
 	width: 0;
 	height: 0;
+}
+
+.title{
+	font-style: italic;
+	padding-top: 2em;
 }

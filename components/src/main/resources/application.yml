@@ -2,20 +2,24 @@
   application:
     name: components
 pi4j:
+  # tag::spi[]
   spi:
-    rfid:
-      name: MFRC522
-      address: 8
-      baud: 500000
-      reset-pin: 25
+    rfid:                   # <1>
+      name: MFRC522         # <2>
+      address: 8            # <3>
+      baud: 500000          # <4>
+      reset-pin: 25         # <5>
+  # end::spi[]
   pwm:
-    red-pwm:
-      name: red
-      address: 17
-      pwmType: SOFTWARE
-      provider: pigpio-pwm
-      initial: 0
-      shutdown: 0
+    # tag::pwm[]
+    red-pwm:                  # <1>
+      name: red               # <2>
+      address: 17             # <3>
+      pwmType: SOFTWARE       # <4>
+      provider: pigpio-pwm    # <5>
+      initial: 0              # <6>
+      shutdown: 0             # <7>
+    # end::pwm[]
     blue-pwm:
       name: blue
       address: 18
@@ -31,17 +35,21 @@ pi4j:
       initial: 0
       shutdown: 0
   i2c:
-    lcd:
-      name: lcd
-      bus: 1
-      device: 0x27
+    # tag::i2c[]
+    lcd:                                  # <1>
+      name: lcd                           # <2>
+      bus: 1                              # <3>
+      device: 0x27                        # <4>
+    # end::i2c[]
   digital-input:
-    photo-resistor-input:
-      name: Photo Resistor Input
-      address: 4
-      debounce: 100000
-      pull: PULL_DOWN
-      provider: pigpio-digital-input
+    # tag::digitalInput[]
+    photo-resistor-input:                 # <.>
+      name: Photo Resistor Input          # <.>
+      address: 4                          # <.>
+      debounce: 100000                    # <.>
+      pull: PULL_DOWN                     # <.>
+      provider: pigpio-digital-input      # <.>
+    # end::digitalInput[]
     button-input-1:
       name: Push Button Input
       address: 16
@@ -68,12 +76,14 @@ pi4j:
       provider: pigpio-digital-input
   ### DIGITAL OUTPUTS
   digital-output:
-    led:
-      name: LED Output
-      address: 17
-      shutdown: HIGH
-      initial: HIGH
-      provider: pigpio-digital-output
+    # tag::digitalOutput[]
+    led:                                    # <1>
+      name: LED Output                      # <2>
+      address: 17                           # <3>
+      shutdown: HIGH                        # <4>
+      initial: HIGH                         # <5>
+      provider: pigpio-digital-output       # <6>
+    # end::digitalOutput[]
     led2:
       name: LED Output
       address: 26
@@ -86,15 +96,17 @@ pi4j:
       shutdown: LOW
       initial: HIGH
       provider: pigpio-digital-output
-  multi-digital-input:
-    rotary-encoder:
-      name: Rotary Encoder
-      addresses: 27,18,17
-      debounces: 6000,500,500
-      pulls: PULL_DOWN,PULL_UP,PULL_UP
-      shutdown: LOW
-      initial: HIGH
-      provider: pigpio-digital-input
+  # tag::multiInput[]
+  multi-digital-input:                     # <.>
+    rotary-encoder:                        # <.>
+      name: Rotary Encoder                 # <.>
+      addresses: 27,18,17                  # <.>
+      debounces: 6000,500,500              # <.>
+      pulls: PULL_DOWN,PULL_UP,PULL_UP     # <.>
+      shutdown: LOW                        # <.>
+      initial: HIGH                        # <.>
+      provider: pigpio-digital-input       # <.>
+    # end::multiInput[]
     rotary-encoder-2:
       name: Rotary Encoder 2
       addresses: 12, 16, 20
@@ -103,14 +115,16 @@ pi4j:
       shutdown: LOW
       initial: HIGH
       provider: pigpio-digital-input
+  # tag::multipwm[]
   multi-pwm:
-    rgb-led:
-      name: RGB LED
-      addresses: 17, 18, 27
-      pwmTypes: SOFTWARE, SOFTWARE, SOFTWARE
-      provider: pigpio-pwm
-      initials: 0, 0, 0
-      shutdowns: 0, 0, 0
+    rgb-led:                                    # <.>
+      name: RGB LED                             # <.>
+      addresses: 17, 18, 27                     # <.>
+      pwmTypes: SOFTWARE, SOFTWARE, SOFTWARE    # <.>
+      provider: pigpio-pwm                      # <.>
+      initials: 0, 0, 0                         # <.>
+      shutdowns: 0, 0, 0                        # <.>
+    # end::multipwm[]
 #  clk:
 #    name: CLK Output
 #    address: 23
