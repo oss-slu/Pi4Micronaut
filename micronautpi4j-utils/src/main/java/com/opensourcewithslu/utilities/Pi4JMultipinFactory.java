@@ -10,25 +10,28 @@ import io.micronaut.context.annotation.Factory;
 
 @Factory
 public class Pi4JMultipinFactory {
-    @EachBean(DigitalInputMultiPinConfiguration.class)
-    public MultipinConfiguration multiPinInput(DigitalInputMultiPinConfiguration config, Context pi4jContext){
-        int[] addresses = config.getAddresses();
-        DigitalInput[] allInputs = new DigitalInput[addresses.length];
 
-        for(int i = 0; i < addresses.length; i++){
-            var inputConfigBuilder = DigitalInput.newConfigBuilder(pi4jContext)
-                    .id(config.getId() + String.valueOf(i))
+    //tag::digitalInput[]
+    @EachBean(DigitalInputMultiPinConfiguration.class)                                                          //<.>
+    public MultipinConfiguration multiPinInput(DigitalInputMultiPinConfiguration config, Context pi4jContext){  //<.>
+        int[] addresses = config.getAddresses();                                                                //<.>
+        DigitalInput[] allInputs = new DigitalInput[addresses.length];                                          //<.>
+
+        for(int i = 0; i < addresses.length; i++){                                                              //<.>
+            var inputConfigBuilder = DigitalInput.newConfigBuilder(pi4jContext)             //<.>
+                    .id(config.getId() + String.valueOf(i))                                                     //<.>
                     .name(config.getName())
                     .address(config.getAddresses()[i])
                     .debounce(config.getDebounces()[i])
                     .pull(config.getPulls()[i])
                     .provider(config.getProvider());
 
-            allInputs[i] = pi4jContext.create(inputConfigBuilder);
+            allInputs[i] = pi4jContext.create(inputConfigBuilder);                                              //<.>
         }
 
-        return new MultipinConfiguration(config.getId(), allInputs);
+        return new MultipinConfiguration(config.getId(), allInputs);                                            //<.>
     }
+    //end::digitalInput[]
 
     @EachBean(PwmMultiPinConfiguration.class)
     public MultipinConfiguration multiPinPwm(PwmMultiPinConfiguration config, Context pi4jContext){

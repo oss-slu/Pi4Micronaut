@@ -233,6 +233,7 @@ First, the helper class for the component should be created, and each Digital In
 field within the class.
 The constructor should accept a MultipinConfiguration object as an argument, and access the components within it
 by making use of the MultipinConfiguration getComponents method which will return a list of Digital Input objects.
+(Results of getComponents method must be cast to the appropriate type)
 Each object in this list should then be assigned to the appropriate Digital Input pin previously declared as a field
 in the new helper class.
 
@@ -242,18 +243,128 @@ in the new helper class.
 include::../../main/java/com/opensourcewithslu/inputdevices/RotaryEncoderHelper.java[tags=const_logic]
 ----
 <.> Constructor definition which accepts a MultipinConfiguration argument
-<.> Accessing the DigitalInput components from the MultipinConfiguration object
+<.> Accessing the DigitalInput components from the MultipinConfiguration object and casting to DigitalInput
 <.> Setting the first value to the sw pin
 <.> Setting the second value to the clk pin
 <.> Setting the third value to the dt pin
+
+For additional reference you can refer to the RotaryEncoderHelper.java file
 
 After appropriately creating the constructor development of support for the new component can proceed as outlined
 in the standard "Contributing to the Library" section.
 
 ==== PWM
+All the supporting code for being able to create multipin PWM components has previously been added
+to the library. As such, adding support for new PWM components should prove fairly straightforward.
 
-==== SCI, I2C
-SCI and I2C devices are not multipin components in the same way as a multipin digital input or output.
-While they do each use multiple pins, SCI and I2C devices use pins dedicated for SCI and I2C communications
+First, the helper class for the component should be created, and each PWM pin declared as a private
+field within the class.
+The constructor should accept a MultipinConfiguration object as an argument, and access the components within it
+by making use of the MultipinConfiguration getComponents method which will return a list of PWM objects.
+(Results of getComponents method must be cast to the appropriate type)
+Each object in this list should then be assigned to the appropriate PWM pin previously declared as a field
+in the new helper class.
+
+.Example Multipin PWM Constructor
+[source, java]
+----
+include::../../main/java/com/opensourcewithslu/outputdevices/RGBLEDHelper.java[tags=const_logic]
+----
+<.> Constructor definition which accepts a MultipinConfiguration argument
+<.> Accessing the PWM components from the MultipinConfiguration object and casting to PWM
+<.> Setting the first value to the red pin
+<.> Setting the second value to the green pin
+<.> Setting the third value to the blue pin
+
+
+==== Digital Output
+Adding support for multipin Digital Output devices will be one of the more involved processes, at least initially.
+At the moment very little of the supporting work for multipin Digital Outputs has been completed, and as such,
+prior to adding a multipin Digital Output, the supporting work must be done.
+
+First, a DigitalOutputMultiPinConfiguration class will have to be made under the /utilities/MultiPinConfigs/ directory.
+This class must be annotated with @EachProperty("pi4j.multi-digital-output").
+This class will need the following fields
+*id
+** private, final, String
+*name
+** private, string
+*inital
+** private, DigitalState
+*shutdown
+** private, DigitalState
+*addresses
+** private, array of ints
+*provider
+** private, String
+
+Of these fields, it is likely that only one will require multiple values (the addresses field), though the final
+decision on that topic should be made by the developer/development team when adding this class.
+
+The constructor for this class must accept a String argument, annotated with @Parameter, and set the class id
+to this value, as shown in the example below.
+
+.Example Multipin Configuration Constructor
+[source, java]
+----
+include::../../main/java/com/opensourcewithslu/utilities/MultiPinConfigs/DigitalInputMultiPinConfiguration.java[tags=const]
+----
+
+Each field will need its respective getter and setter, though each field that requires an array of values,
+such as the addresses field, will require a setter with logic to split a comma separated string into the appropriate
+number of values, and create the list from this, as shown in the below example.
+
+.Example Multipin Configuration Setter
+[source, java]
+----
+include::../../main/java/com/opensourcewithslu/utilities/MultiPinConfigs/DigitalInputMultiPinConfiguration.java[tags=setter]
+----
+<.> Removing spaces from the string if present
+<.> Splitting the string into an array and setting as the value for the global field
+
+After adding the new DigitalOutputConfiguration class, work must be done in the Pi4JMultipinFactory class to make use
+of the newly added class.
+
+In the multipin factory, you will need to add a method, annotated with @EachBean(DigitalOutputConfiguration.class).
+This method should be named multiPinDigitalOutput, and must accept two arguments, a PwmMultiPinConfiguration object,
+and a com.pi4j.Contect object (able to be declared simply as Context). This method will then need to create a
+Digital Output object for each pin present in the list of addresses, setting the id, name, address, inital, shutdown,
+and provider, values for each, then using the pi4jContext to create the new Digital Output object. Each new object
+should be added to an array of objects, which will be passed to the MultipinConfiguration constructor in order to
+create a MultipinConfiguration bean with the appropriate data, which can later be injected by the user by making use
+of the @Named annotation. The existing method for DigitalInputMultiPinConfiguration.class has been added below for
+easy reference.
+
+.Example Pi4JMultipinFactory Method
+[source, java]
+----
+include::../../main/java/com/opensourcewithslu/utilities/Pi4JMultipinFactory.java[tags=digitalInput]
+----
+<.> Annotating the method with @EachBean and the appropriate class
+<.> Constructor declaration with required arguments
+<.> Retrieving the list of addresses for use
+<.> Creating an appropriately sized list to store created object
+<.> Declaring a for loop to iterate through each object
+<.> Creating a new configBuilder for the appropriate class and setting each value
+<.> Adding the current value of 'i' to the id to prevent creating multiple beans with the same id and the resulting error
+<.> Using pi4jContext to create a Digital Input object from the builder and adding to the array
+<.> Passing the id of the configuration, and the list of Digital Inputs, to the MultipinConfiguration constructor and returning the result
+
+After completing all of this work it should then be possible to declare a multipin Digital Output device in the
+application.yaml file under
+
+[source, yaml]
+----
+pi4j:
+  multi-digital-output:
+    COMPONENT-IDENTIFIER:
+----
+
+with the component being accessible via the @Named annotation with the COMPONENT-IDENTIFIER that was set in the
+application.yaml
+
+==== SPI, I2C
+SPI and I2C devices are not multipin components in the same way as a multipin digital input or output.
+While they do each use multiple pins, SPI and I2C devices use pins dedicated for SPI and I2C communications
 and are not declared in the same manner. As such, these types of components can all be added to the library
 as outlined in the standard "Contributing to the Library" section.

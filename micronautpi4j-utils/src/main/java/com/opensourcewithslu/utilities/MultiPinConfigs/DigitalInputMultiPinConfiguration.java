@@ -15,9 +15,11 @@ public class DigitalInputMultiPinConfiguration {
     private long[] debounces;
     private String provider;
 
+    //tag::const[]
     public DigitalInputMultiPinConfiguration(@Parameter String id){
         this.id = id + "Multipin";
     }
+    //end::const[]
 
     public String getId() {
         return id;
@@ -35,10 +37,12 @@ public class DigitalInputMultiPinConfiguration {
         return addresses;
     }
 
+    //tag::setter[]
     public void setAddresses(String addresses) {
-        addresses = addresses.replaceAll("\\s", "");
-        this.addresses = Arrays.stream(addresses.split(",")).mapToInt(Integer::parseInt).toArray();
+        addresses = addresses.replaceAll("\\s", "");                                            //<.>
+        this.addresses = Arrays.stream(addresses.split(",")).mapToInt(Integer::parseInt).toArray();       //<.>
     }
+    //end::setter[]
 
     public PullResistance[] getPulls() {
         return pulls;

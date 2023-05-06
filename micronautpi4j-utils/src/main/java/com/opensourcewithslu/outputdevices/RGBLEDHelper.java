@@ -15,6 +15,7 @@ public class RGBLEDHelper {
     private final Pwm green;
     private final Pwm blue;
 
+    //tag::const_logic[]
     //tag::const[]
     public RGBLEDHelper(MultipinConfiguration pwm)
     //end::const[]
@@ -25,6 +26,7 @@ public class RGBLEDHelper {
         this.green = pwms[1];
         this.blue = pwms[2];
     }
+    //end::const_logic[]
 
     //tag::method[]
     public void setColor(int[] colors)
