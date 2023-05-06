@@ -21,18 +21,20 @@ public class RotaryEncoderHelper {
     private String helperName;
     private int globalCounter;
 
+    //tag::const_logic[]
     //tag::const[]
-    public RotaryEncoderHelper(MultipinConfiguration multiPin)
+    public RotaryEncoderHelper(MultipinConfiguration multiPin)                          // <.>
     //end::const[]
     {
-        DigitalInput[] allPins = (DigitalInput[]) multiPin.getComponents();
+        DigitalInput[] allPins = (DigitalInput[]) multiPin.getComponents();             // <.>
         helperName = multiPin.getId().substring(0, multiPin.getId().length() - 8);
-        this.sw = allPins[0];
-        this.clk = allPins[1];
-        this.dt = allPins[2];
+        this.sw = allPins[0];                                                           // <.>
+        this.clk = allPins[1];                                                          // <.>
+        this.dt = allPins[2];                                                           // <.>
 
         initialize();
     }
+    //end::const_logic[]
 
     //tag::method[]
     public void initialize()

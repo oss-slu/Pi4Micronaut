@@ -222,3 +222,38 @@ include::i2cComponents/lcdScreen.adoc[]
 == Contributing to the Library
 
 TODO: outline how someone can contribute to our library
+
+=== MultiPin Components
+
+==== Digital Input
+All the supporting code for being able to create multipin Digital Input components has previously been added
+to the library. As such, adding support for new Digital Input components should prove fairly straightforward.
+
+First, the helper class for the component should be created, and each Digital Input pin declared as a private
+field within the class.
+The constructor should accept a MultipinConfiguration object as an argument, and access the components within it
+by making use of the MultipinConfiguration getComponents method which will return a list of Digital Input objects.
+Each object in this list should then be assigned to the appropriate Digital Input pin previously declared as a field
+in the new helper class.
+
+.Example Multipin Digital Input Constructor
+[source, java]
+----
+include::../../main/java/com/opensourcewithslu/inputdevices/RotaryEncoderHelper.java[tags=const_logic]
+----
+<.> Constructor definition which accepts a MultipinConfiguration argument
+<.> Accessing the DigitalInput components from the MultipinConfiguration object
+<.> Setting the first value to the sw pin
+<.> Setting the second value to the clk pin
+<.> Setting the third value to the dt pin
+
+After appropriately creating the constructor development of support for the new component can proceed as outlined
+in the standard "Contributing to the Library" section.
+
+==== PWM
+
+==== SCI, I2C
+SCI and I2C devices are not multipin components in the same way as a multipin digital input or output.
+While they do each use multiple pins, SCI and I2C devices use pins dedicated for SCI and I2C communications
+and are not declared in the same manner. As such, these types of components can all be added to the library
+as outlined in the standard "Contributing to the Library" section.
