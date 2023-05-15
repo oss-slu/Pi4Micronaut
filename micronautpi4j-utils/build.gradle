@@ -87,6 +87,10 @@ publishing{
                     developer{
                         id = 'MurrayG'
                         name = 'Greih Murray'
+                    },
+                    developer{
+                        id = 'TraisonD'
+                        name = 'Traison Diedrich'
                     }
                 }
                 scm{
