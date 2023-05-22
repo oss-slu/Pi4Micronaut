@@ -101,6 +101,7 @@ publishing{
                         name = 'Sinuo Liu'
                     }
                 }
+
                 scm{
                     url = 'https://github.com/oss-slu/Pi4Micronaut'
                     connection =  'scm:https://github.com/oss-slu/Pi4Micronaut.git'
