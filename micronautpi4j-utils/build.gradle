@@ -87,10 +87,18 @@ publishing{
                     developer{
                         id = 'MurrayG'
                         name = 'Greih Murray'
-                    },
+                    }
                     developer{
                         id = 'TraisonD'
                         name = 'Traison Diedrich'
+                    }
+                    developer{
+                        id = 'AustinH'
+                        name = 'Austin Howard'
+                    }
+                    developer{
+                        id = 'SinuoL'
+                        name = 'Sinuo Liu'
                     }
                 }
                 scm{
