@@ -1,4 +1,6 @@
 === Communicating with a Hardware Component
+[.text-right]
+https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/commun_WithHardware.adoc[Improve this doc]
 
 TODO: outline the use and access of application.yaml for an app +
 TODO: Consolidate the format and include examples of how each comm type is used

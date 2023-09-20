@@ -1,5 +1,7 @@
 
 === Example Applications
+[.text-right]
+https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/Introduction/exampleApplications.adoc[Improve this doc]
 
 If you're curious about what Pi4Micronaut is capable of, check out some of the working applications created using our library.
 

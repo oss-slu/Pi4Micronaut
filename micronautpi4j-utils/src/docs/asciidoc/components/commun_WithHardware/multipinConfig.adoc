@@ -1,5 +1,7 @@
 
 ==== Multipin Configurations
+[.text-right]
+https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/commun_WithHardware/multipinConfig.adoc[Improve this doc]
 
 Multipin components are unique in that they require several of the same type of pin in order to function properly.
 Each class of multipin component (Digital Input, PWM), is declared slightly differently in the application.yaml file

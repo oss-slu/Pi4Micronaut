@@ -1,4 +1,6 @@
 === Currently Supported Hardware
+[.text-right]
+https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/Introduction/supportedHardware.adoc[Improve this doc]
 
 If you plan on creating an application using any of the hardware components listed below, then our library is perfect for you!
 

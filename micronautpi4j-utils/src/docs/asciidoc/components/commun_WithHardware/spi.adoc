@@ -1,6 +1,9 @@
 
 ==== SPI
 
+[.text-right]
+https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/commun_WithHardware/spi.adoc[Improve this doc]
+
 [source,yaml]
 ----
 include::../../../../../../components/src/main/resources/application.yml[tags=spi]

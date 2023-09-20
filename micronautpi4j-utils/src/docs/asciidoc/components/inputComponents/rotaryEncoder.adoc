@@ -1,4 +1,7 @@
 ==== Rotary Encoder
+[.text-right] 
+https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/inputComponents/rotaryEncoder.adoc[Improve this doc]
+
 ===== YAML Pin Order
 The order for declaring pins for a Rotary Encoder component in the application.yaml file is as follows
 

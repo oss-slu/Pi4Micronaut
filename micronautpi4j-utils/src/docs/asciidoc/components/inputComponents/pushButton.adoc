@@ -1,4 +1,7 @@
 ==== Push Button
+[.text-right] 
+https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/inputComponents/pushButton.adoc[Improve this doc]
+
 ===== Constructors
 
 [source, java]

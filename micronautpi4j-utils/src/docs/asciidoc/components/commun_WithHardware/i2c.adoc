@@ -1,4 +1,6 @@
 ==== I2C
+[.text-right]
+https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/commun_WithHardware/i2c.adoc[Improve this doc]
 
 [source,yaml]
 ----
