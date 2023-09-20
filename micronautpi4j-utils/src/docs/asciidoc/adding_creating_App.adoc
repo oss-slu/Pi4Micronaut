@@ -1,0 +1,5 @@
+
+== Adding to/Creating an Application
+
+TODO: outline how to create a basic applicaton like we did for the start of the check-in system +
+TODO: outline how someone should add our jar to their exsisting application

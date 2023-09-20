@@ -1,0 +1,14 @@
+=== Currently Supported Hardware
+
+If you plan on creating an application using any of the hardware components listed below, then our library is perfect for you!
+
+We plan on offering support for many more hardware components in the future. If you have a hardware component you would like to use but can't find, feel free to checkout how you can add support for it under "Contributing to the Library"
+
+* Push Button
+* Slide Switch
+* Rotary Encoder
+* RFID Scanner
+* LEDs
+* RGB LEDs
+* LCDs
+* Photosensors

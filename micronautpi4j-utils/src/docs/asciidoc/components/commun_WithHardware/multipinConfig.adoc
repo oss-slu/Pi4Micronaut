@@ -1,0 +1,34 @@
+
+==== Multipin Configurations
+
+Multipin components are unique in that they require several of the same type of pin in order to function properly.
+Each class of multipin component (Digital Input, PWM), is declared slightly differently in the application.yaml file
+
+.Example Multipin Digital Input declaration
+[source, yaml]
+----
+include::../../../../../../components/src/main/resources/application.yml[tags=multiInput]
+----
+<.> Top level field for multipin digital inputs (equivlent of digital-output declaration)
+<.> Component Identifier (Used in @Named annotations)
+<.> Component Name
+<.> Addresses for each pin (Each component has a specific order outlined in the component description)
+<.> Debounce values for each pin (same order as above)
+<.> Pull values for each pin (same order as above)
+<.> Shutdown value (All pins have the same shut down)
+<.> Startup value (All pins have the same start up)
+<.> Provider (All pins have the same provider)
+
+.Example Multipin PWM declaration
+[source, yaml]
+----
+include::../../../../../../components/src/main/resources/application.yml[tags=multipwm]
+----
+<.> Top level field for multipin PWMs (equivlent of digital-output declaration)
+<.> Component Identifier (Used in @Named annotations)
+<.> Component Name
+<.> Addresses for each pin (Each component has a specific order outlined in the component description)
+<.> PWM types for each pin (same order as above)
+<.> Provider (All pins have the same provider)
+<.> Startup values (Same order as above)
+<.> Shutdown values (Same order as above)

@@ -1,3 +1,4 @@
+==== Rotary Encoder
 ===== YAML Pin Order
 The order for declaring pins for a Rotary Encoder component in the application.yaml file is as follows
 
@@ -18,14 +19,14 @@ the sw pin would be the one connected to GPIO 17, the clk pin would be connected
 
 [source, java]
 ----
-include::../../../main/java/com/opensourcewithslu/inputDevices/RotaryEncoderHelper.java[tag=const]
+include::../../../../main/java/com/opensourcewithslu/inputDevices/RotaryEncoderHelper.java[tag=const]
 ----
 
 ===== Methods
 
 [source, java]
 ----
-include::../../../main/java/com/opensourcewithslu/inputDevices/RotaryEncoderHelper.java[tags=method]
+include::../../../../main/java/com/opensourcewithslu/inputDevices/RotaryEncoderHelper.java[tags=method]
 ----
 
 ===== An Example Controller
@@ -34,5 +35,5 @@ include::../../../main/java/com/opensourcewithslu/inputDevices/RotaryEncoderHelp
 
 [source, java]
 ----
-include::../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/RotaryEncoderController.java[tag=ex]
+include::../../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/RotaryEncoderController.java[tag=ex]
 ----

@@ -1,0 +1,3 @@
+== Using the library
+
+TODO: outline the most basic use cases of the library, tbh now sure how this differs from the section above

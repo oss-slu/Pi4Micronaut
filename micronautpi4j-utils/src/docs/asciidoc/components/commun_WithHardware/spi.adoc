@@ -1,0 +1,14 @@
+
+==== SPI
+
+[source,yaml]
+----
+include::../../../../../../components/src/main/resources/application.yml[tags=spi]
+----
+<1> Component Identifier (Used in @Named annotations)
+<2> Component Name
+<3> TO DO: Figure out what this address is
+<4> Baud rate
+<5> Address of GPIO Reset pin
+
+TODO: add SPI information

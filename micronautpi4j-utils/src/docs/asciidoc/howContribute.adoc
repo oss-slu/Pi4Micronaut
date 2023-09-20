@@ -1,0 +1,3 @@
+== Contributing to the Library
+
+TODO: outline how someone can contribute to our library

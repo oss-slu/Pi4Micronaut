@@ -1,0 +1,12 @@
+==== I2C
+
+[source,yaml]
+----
+include::../../../../../../components/src/main/resources/application.yml[tags=i2c]
+----
+<1> Component Identifier (Used in @Named annotations)
+<2> Component Name
+<3> Device bus (0 or 1)
+<4> Device address
+
+TODO: add I2C information

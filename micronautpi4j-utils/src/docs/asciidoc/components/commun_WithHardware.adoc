@@ -1,0 +1,4 @@
+=== Communicating with a Hardware Component
+
+TODO: outline the use and access of application.yaml for an app +
+TODO: Consolidate the format and include examples of how each comm type is used

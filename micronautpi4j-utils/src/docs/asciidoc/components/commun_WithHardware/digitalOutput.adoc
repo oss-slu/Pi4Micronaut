@@ -1,0 +1,20 @@
+==== Digital Output
+To define in application.yaml add digital-output as a field under pi4j, then add each component under digital-input
+Each component will need
+
+* name: Name of the component
+* address: GPIO pin associated with component
+* initial: Initial value, either LOW or HIGH
+* shutdown: State to take when program successfully shuts down properly, either LOW or HIGH
+* provider: pigpio-digital-output
+
+[source,yaml]
+----
+include::../../../../../../components/src/main/resources/application.yml[tags=digitalOutput]
+----
+<1> Component Identifier (Used in @Named annotations)
+<2> Component Name
+<3> Address of connected GPIO pin
+<4> Value to have on shutdown (HIGH = Off, LOW = On)
+<5> Value to have on startup
+<6> Provider (pigpio-digital-output)
