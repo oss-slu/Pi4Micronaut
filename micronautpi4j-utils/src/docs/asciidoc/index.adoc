@@ -13,212 +13,91 @@
 
 toc::[]
 
-== Introduction
-Welcome to the **Pi4Micronaut Documentation**!
+include::introduction.adoc[]
 
-Pi4Micronaut is an Open Source Java library which utilizes the Micronaut Framework and Pi4J to streamline the process of creating custom IoT applications that require hardware connectivity to Raspberry Pi's.
+include::Introduction/supportedHardware.adoc[]
 
-By reading through our documentation, you will learn how to implement our library into your application.
+include::Introduction/exampleApplications.adoc[]
 
-=== Currently Supported Hardware
-
-If you plan on creating an application using any of the hardware components listed below, then our library is perfect for you!
-
-We plan on offering support for many more hardware components in the future. If you have a hardware component you would like to use but can't find, feel free to checkout how you can add support for it under "Contributing to the Library"
-
-* Push Button
-* Slide Switch
-* Rotary Encoder
-* RFID Scanner
-* LEDs
-* RGB LEDs
-* LCDs
-* Photosensors
-
-=== Example Applications
-
-If you're curious about what Pi4Micronaut is capable of, check out some of the working applications created using our library.
-
-==== Remote Mointoring Check-In System
-https://github.com/oss-slu/SLU_OSS_CheckIn
-
-== Adding to/Creating an Application
-
-TODO: outline how to create a basic applicaton like we did for the start of the check-in system +
-TODO: outline how someone should add our jar to their exsisting application
-
-== Using the library
-
-TODO: outline the most basic use cases of the library, tbh now sure how this differs from the section above
-
-== Components
-
-=== Communicating with a Hardware Component
-
-TODO: outline the use and access of application.yaml for an app +
-TODO: Consolidate the format and include examples of how each comm type is used
-
-==== Digital Input
-To define in application.yaml add digital-input as a field under pi4j, then add each component under digital-input
-Each component will need
-
-* name: Name of the component
-* address: GPIO pin associated with component
-* debounce:
-* pull: Either PULL_UP or PULL_DOWN depending on component
-* provider: pigpio-digital-input
-
-[source,yaml]
-----
-include::../../../../components/src/main/resources/application.yml[tags=digitalInput]
-----
-
-<.> Component Identifier (Used in @Named annotations)
-<.> Component Name
-<.> Address of connected GPIO pin
-<.> Debounce value
-<.> Pull value (PULL_UP or PULL_DOWN)
-<.> Provider (pigpio-digital-input)
-
-==== Digital Output
-To define in application.yaml add digital-output as a field under pi4j, then add each component under digital-input
-Each component will need
-
-* name: Name of the component
-* address: GPIO pin associated with component
-* initial: Initial value, either LOW or HIGH
-* shutdown: State to take when program successfully shuts down properly, either LOW or HIGH
-* provider: pigpio-digital-output
-
-[source,yaml]
-----
-include::../../../../components/src/main/resources/application.yml[tags=digitalOutput]
-----
-<1> Component Identifier (Used in @Named annotations)
-<2> Component Name
-<3> Address of connected GPIO pin
-<4> Value to have on shutdown (HIGH = Off, LOW = On)
-<5> Value to have on startup
-<6> Provider (pigpio-digital-output)
-
-==== Multipin Configurations
-
-Multipin components are unique in that they require several of the same type of pin in order to function properly.
-Each class of multipin component (Digital Input, PWM), is declared slightly differently in the application.yaml file
-
-.Example Multipin Digital Input declaration
-[source, yaml]
-----
-include::../../../../components/src/main/resources/application.yml[tags=multiInput]
-----
-<.> Top level field for multipin digital inputs (equivlent of digital-output declaration)
-<.> Component Identifier (Used in @Named annotations)
-<.> Component Name
-<.> Addresses for each pin (Each component has a specific order outlined in the component description)
-<.> Debounce values for each pin (same order as above)
-<.> Pull values for each pin (same order as above)
-<.> Shutdown value (All pins have the same shut down)
-<.> Startup value (All pins have the same start up)
-<.> Provider (All pins have the same provider)
-
-.Example Multipin PWM declaration
-[source, yaml]
-----
-include::../../../../components/src/main/resources/application.yml[tags=multipwm]
-----
-<.> Top level field for multipin PWMs (equivlent of digital-output declaration)
-<.> Component Identifier (Used in @Named annotations)
-<.> Component Name
-<.> Addresses for each pin (Each component has a specific order outlined in the component description)
-<.> PWM types for each pin (same order as above)
-<.> Provider (All pins have the same provider)
-<.> Startup values (Same order as above)
-<.> Shutdown values (Same order as above)
+include::adding_creating_App.adoc[]
 
 
-==== PWM
-To define in application.yaml add digital-input as a field under pi4j, then add each component under digital-input
-Each component will need
+include::usingLibrary.adoc[]
 
-* name: Name of the component
-* address: GPIO pin associated with component
-* pwmType: Either SOFTWARE or HARDWARE based upon which type of PWM you wish to use
-* provider: pigpio-pwm
+include::components.adoc[]
 
-[source,yaml]
-----
-include::../../../../components/src/main/resources/application.yml[tags=pwm]
-----
-<1> Component Identifier (Used in @Named annotations)
-<2> Component Name
-<3> Address of connected GPIO pin
-<4> PWM Type (HARDWARE or SOFTWARE)
-<5> Provider (pigpio-digital-output)
-<6> Value to have on start up
-<7> Value to have on shut down
+include::components/commun_WithHardware.adoc[]
 
-==== SPI
+include::components/commun_WithHardware/digitalInput.adoc[]
 
-[source,yaml]
-----
-include::../../../../components/src/main/resources/application.yml[tags=spi]
-----
-<1> Component Identifier (Used in @Named annotations)
-<2> Component Name
-<3> TO DO: Figure out what this address is
-<4> Baud rate
-<5> Address of GPIO Reset pin
+include::components/commun_WithHardware/digitalOutput.adoc[]
 
-TODO: add SPI information
+include::components/commun_WithHardware/multipinConfig.adoc[]
 
-==== I2C
+include::components/commun_WithHardware/pwm.adoc[]
 
-[source,yaml]
-----
-include::../../../../components/src/main/resources/application.yml[tags=i2c]
-----
-<1> Component Identifier (Used in @Named annotations)
-<2> Component Name
-<3> Device bus (0 or 1)
-<4> Device address
+include::components/commun_WithHardware/spi.adoc[]
 
-TODO: add I2C information
 
-=== Input Components
+include::components/commun_WithHardware/i2c.adoc[]
 
-==== Push Button
+include::components/inputComponents.adoc[]
 
-include::inputComponents/pushbutton.adoc[]
+include::components/inputComponents/pushButton.adoc[]
 
-==== Slide Switch
+include::components/inputComponents/slideSwitch.adoc[]
 
-include::inputComponents/slideSwitch.adoc[]
+include::components/inputComponents/rotaryEncoder.adoc[]
 
-==== Rotary Encoder
+include::components/inputComponents/rfidScanner.adoc[]
 
-include::inputComponents/rotaryEncoder.adoc[]
+include::components/inputComponents/photosensor.adoc[]
 
-==== RFID Scanner
 
-include::spiComponents/rfidScanner.adoc[]
+include::components/outputComponents.adoc[]
 
-==== Photosensor
+include::components/outputComponents/led.adoc[]
 
-TODO: add in photosensor support docs
+include::components/outputComponents/rgbLed.adoc[]
 
-=== Output Components
+include::components/outputComponents/lcdScreen.adoc[]
 
-==== LED
+include::howContribute.adoc[]
 
-include::outputComponents/led.adoc[]
 
-==== RGB LED
 
-include::pwmComponents/rgbLed.adoc[]
-==== LCD
 
-include::i2cComponents/lcdScreen.adoc[]
 
-== Contributing to the Library
 
-TODO: outline how someone can contribute to our library
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

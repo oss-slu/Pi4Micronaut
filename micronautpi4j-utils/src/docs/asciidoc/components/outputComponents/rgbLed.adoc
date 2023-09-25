@@ -1,3 +1,7 @@
+==== RGB LED
+[.text-right] 
+https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/outputComponents/rgbLed.adoc[Improve this doc]
+
 ===== YAML Pin Order
 The order for declaring pins for a RGB LED component in the application.yaml file is as follows
 
@@ -18,19 +22,19 @@ the red pin would be the one connected to GPIO 17, green to GPIO 18, and blue to
 
 [source, java]
 ----
-include::../../../main/java/com/opensourcewithslu/outputDevices/RGBLEDHelper.java[tag=const]
+include::../../../../main/java/com/opensourcewithslu/outputDevices/RGBLEDHelper.java[tag=const]
 ----
 
 ===== Methods
 
 [source, java]
 ----
-include::../../../main/java/com/opensourcewithslu/outputDevices/RGBLEDHelper.java[tags=method]
+include::../../../../main/java/com/opensourcewithslu/outputDevices/RGBLEDHelper.java[tags=method]
 ----
 
 ===== An Example Controller
 
 [source, java]
 ----
-include::../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/rgbController.java[tag=ex]
+include::../../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/rgbController.java[tag=ex]
 ----
