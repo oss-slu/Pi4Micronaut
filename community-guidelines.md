@@ -1,4 +1,9 @@
 # Community Guidelines
+
+The Pi4Micronaut is an Open source project. Our goal is to create a Java library using the Micronaut Framework and Pi4J to streamline the process of creating IoT web applications which utilize hardware connectivity to Raspberry Pi's.
+
+***
+
 The Micronaut Foundation™ is a not-for-profit organization that serves to:
 - Ensure technical innovation and advancement of the Micronaut framework as a free and open public-use software development toolkit for a growing global community
 - Evangelize and promote the Micronaut framework as a leading technology in the JVM space
