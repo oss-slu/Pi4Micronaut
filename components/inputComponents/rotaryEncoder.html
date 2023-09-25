@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>Rotary Encoder</title>
+<style>
+body {
+	font-family: sans-serif;
+	line-height: 1.5;
+	padding: 0;
+	margin: 0;
+	overflow-y: hidden;
+}
+
+.anchor{
+	color: green;
+	text-decoration: none;
+}
+
+.article {
+	display: grid;
+	grid-template-areas: "nav content";
+	grid-template-columns: 20em 1fr;
+	grid-template-rows: auto;
+}
+
+a {
+	text-decoration: none;
+}
+
+#header {
+	background-color: #000;
+	grid-area: nav;
+	position: fixed;
+	width: 100%;
+	vertical-align: center;
+	max-height: 6%;
+	height: 100%;
+	display: inline-block;
+	z-index: 10;
+}
+
+#toc {
+	padding-top: 1em;
+	padding-left: 1em;
+	padding-right: 1em;
+	padding-bottom: 2em;
+	float: left;
+	max-height: 90%;
+	height: 100%;
+	overflow-y: auto;
+	position: fixed;
+	box-sizing: border-box;
+	background-color: lightgray;
+	max-width: 15%;
+	width: 100%;
+}
+
+#toc a {
+	color: cornflowerblue;
+}
+
+#toc li {
+	padding-bottom: .6em;
+}
+
+#toc ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+#toc ul ul {
+	padding-left: 1.4em;
+}
+
+#toctitle {
+	font-weight: bold;
+	color: black;
+}
+
+h1 {
+	font-size: 1.4em;
+	background-color: black;
+	padding: .6em;
+	margin: 0;
+	width: 100%;
+	color: red;
+	height: 100%;
+	vertical-align: center;
+}
+
+/*.toc2{*/
+/*	float: left;*/
+/*}*/
+
+#toc a:hover {
+	background-color: maroon;
+}
+
+#content {
+	background-color: white;
+	overflow-y: auto;
+	grid-area: content;
+	padding: 1em;
+	max-width: 84%;
+	width: 100%;
+	position: fixed;
+	z-index: 1;
+	max-height: 80%;
+	height: 100%;
+	margin-left: 15%;
+	margin-right: 0;
+	margin-bottom: 10%;
+	margin-top: 5%;
+	padding-bottom: 50px;
+}
+
+.hljs{
+	background: #cacbca !important;
+}
+
+#content img {
+	max-width: 100%;
+}
+
+.details{
+	float: right;
+	position: absolute;
+	bottom: 0px;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}
+
+pre {
+	background-color: #f7f7f8;
+	padding: 1em;
+	word-wrap: break-word;
+	white-space: pre-wrap;
+}
+
+table {
+	grid: none;
+	frame: none;
+}
+
+td, th {
+	border: 1px solid gray;
+	padding: .4em;
+}
+
+th {
+	background-color: #f9f9f9;
+	text-align: left;
+}
+
+#footer-text {
+	float: right;
+	position: absolute;
+	bottom: 0px;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}
+
+.title{
+	font-style: italic;
+	padding-top: 2em;
+}
+</style>
+</head>
+<body class="article">
+<div id="header">
+</div>
+<div id="content">
+<div class="sect3">
+<h4 id="_rotary_encoder">Rotary Encoder</h4>
+<div class="paragraph text-right">
+<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/inputComponents/rotaryEncoder.adoc">Improve this doc</a></p>
+</div>
+<div class="sect4">
+<h5 id="_yaml_pin_order">YAML Pin Order</h5>
+<div class="paragraph">
+<p>The order for declaring pins for a Rotary Encoder component in the application.yaml file is as follows</p>
+</div>
+<div class="paragraph">
+<p><strong>SW-PIN-INFO, CLK-PIN-INFO, DT-PIN-INFO</strong></p>
+</div>
+<div class="paragraph">
+<p>So in the case of</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">multi-digital-input:
+  rot-encoder:
+    addresses: 17, 18, 27</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>the sw pin would be the one connected to GPIO 17, the clk pin would be connected to GPIO 18, and the dt pin would connect to GPIO 27. All lists of values for Rotray Encoder components will follow the same order.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_constructors">Constructors</h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">Unresolved directive in rotaryEncoder.adoc - include::../../../../main/java/com/opensourcewithslu/inputDevices/RotaryEncoderHelper.java[tag=const]</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_methods">Methods</h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">Unresolved directive in rotaryEncoder.adoc - include::../../../../main/java/com/opensourcewithslu/inputDevices/RotaryEncoderHelper.java[tags=method]</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_an_example_controller">An Example Controller</h5>
+<div class="sect5">
+<h6 id="_this_controller_sets_up_two_rotary_encoders">This controller sets up two rotary encoders</h6>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">Unresolved directive in rotaryEncoder.adoc - include::../../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/RotaryEncoderController.java[tag=ex]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version v1.0.0<br>
+Last updated 2023-09-25 19:18:12 UTC
+</div>
+</div>
+</body>
+</html>
