@@ -1,0 +1,7 @@
+micronaut:
+  application:
+    name: micronautpi4jUtils
+netty:
+  default:
+    allocator:
+      max-order: 3

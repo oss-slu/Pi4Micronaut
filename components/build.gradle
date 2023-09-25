@@ -1,7 +1,6 @@
 plugins {
     id("com.github.johnrengelman.shadow") version "7.1.2"
-    id("io.micronaut.application") version "3.6.2"
-    id("io.micronaut.library") version "3.6.2"
+    id("io.micronaut.application") version "3.0.2"
 }
 
 version = "0.1"
@@ -12,15 +11,10 @@ repositories {
 }
 
 dependencies {
-    annotationProcessor("io.micronaut:micronaut-http-validation")
-    implementation("io.micronaut:micronaut-http-client")
-    implementation("io.micronaut:micronaut-jackson-databind")
-    implementation("jakarta.annotation:jakarta.annotation-api")
-    runtimeOnly("ch.qos.logback:logback-classic")
+    annotationProcessor "io.micronaut:micronaut-inject-java"
+    annotationProcessor "io.micronaut:micronaut-validation"
     implementation("io.micronaut:micronaut-validation")
-    api 'com.pi4j:pi4j-core:2.0'
-    api 'com.pi4j:pi4j-plugin-raspberrypi:2.0'
-    api 'com.pi4j:pi4j-plugin-pigpio:2.0'
+    implementation project(":micronautpi4j-utils")
 }
 
 
@@ -28,17 +22,32 @@ application {
     mainClass.set("com.opensourcewithslu.components.Application")
 }
 java {
-    sourceCompatibility = JavaVersion.toVersion("17")
-    targetCompatibility = JavaVersion.toVersion("17")
+    sourceCompatibility = JavaVersion.toVersion("11")
+    targetCompatibility = JavaVersion.toVersion("11")
 }
 
-graalvmNative.toolchainDetection = false
 micronaut {
     runtime("netty")
     testRuntime("junit5")
     processing {
         incremental(true)
         annotations("com.opensourcewithslu.components.*")
+    }
+}
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'com.opensourcewithslu.components.Application'
+        )
+    }
+}
+
+graalvmNative {
+    binaries {
+        main {
+            buildArgs.add("-H:-UseServiceLoaderFeature")
+        }
     }
 }
 
