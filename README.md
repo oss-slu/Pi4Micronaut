@@ -13,4 +13,8 @@
 
 - [Micronaut HTTP Client documentation](https://docs.micronaut.io/latest/guide/index.html#httpClient)
 
+## Pi4Micronaut Individual Contributer License Agreement
+
+- [Link to CLA](CLA.md)
+
 
