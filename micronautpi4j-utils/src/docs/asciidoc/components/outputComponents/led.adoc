@@ -1,0 +1,24 @@
+
+==== LED
+[.text-right] 
+https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/outputComponents/led.adoc[Improve this doc]
+
+===== Constructors
+
+[source, java]
+----
+include::../../../../main/java/com/opensourcewithslu/outputDevices/LEDHelper.java[tag=const]
+----
+
+===== Methods
+
+[source, java]
+----
+include::../../../../main/java/com/opensourcewithslu/outputDevices/LEDHelper.java[tags=method]
+----
+
+===== An Example Controller
+
+====== This controller turns the LED on and off
+
+TODO: Create an example LED Controller

@@ -1,0 +1,25 @@
+
+==== Digital Input
+[.text-right]
+https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/commun_WithHardware/digitalInput.adoc[Improve this doc]
+
+To define in application.yaml add digital-input as a field under pi4j, then add each component under digital-input
+Each component will need
+
+* name: Name of the component
+* address: GPIO pin associated with component
+* debounce:
+* pull: Either PULL_UP or PULL_DOWN depending on component
+* provider: pigpio-digital-input
+
+[source,yaml]
+----
+include::../../../../../../components/src/main/resources/application.yml[tags=digitalInput]
+----
+
+<.> Component Identifier (Used in @Named annotations)
+<.> Component Name
+<.> Address of connected GPIO pin
+<.> Debounce value
+<.> Pull value (PULL_UP or PULL_DOWN)
+<.> Provider (pigpio-digital-input)
