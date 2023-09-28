@@ -1,3 +1,23 @@
-
+=== How to Create a New Component
+[.text-right] 
+https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/contribute/newComponent.adoc[Improve this doc]
 
 TODO: add info on how to add a new component
+
+* controller
+** controls the component
+** `components\src\main\java\com\opensourcewithslu\components\controllers`
+
+include::exampleController.java[tag=ex]
+
+
+* helper
+** where all the actions are defined. 
+** `micronautpi4j-utils\src\main\java\com\opensourcewithslu`
+
+
+* input versus output device
+** input devices main task is taking in information
+*** `micronautpi4j-utils\src\main\java\com\opensourcewithslu\inputdevices`
+** output devices display or output information
+*** `micronautpi4j-utils\src\main\java\com\opensourcewithslu\outputdevices`
