@@ -4,6 +4,8 @@ https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/doc
 
 TODO: add info on how to add a new component
 
+NOTE: helper and controller are just micronaut framework practices, might not need to include exact details, may just reference a user to the micronaut documentation. 
+
 * controller
 ** controls the component
 ** `components\src\main\java\com\opensourcewithslu\components\controllers`
@@ -21,3 +23,13 @@ include::exampleController.java[tag=ex]
 *** `micronautpi4j-utils\src\main\java\com\opensourcewithslu\inputdevices`
 ** output devices display or output information
 *** `micronautpi4j-utils\src\main\java\com\opensourcewithslu\outputdevices`
+
+
+
+
+
+## Adding components to the application yml
+
+TODO: explain the purpose of the yml file and what parameters each component will need to have, it will presumably be different for each component type. 
+
+Each component will need to be added to the application yml found at `components\src\main\resources\application.yml`.  
