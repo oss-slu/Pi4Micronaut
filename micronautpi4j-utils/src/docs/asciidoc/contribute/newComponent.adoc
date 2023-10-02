@@ -4,32 +4,38 @@ https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/doc
 
 TODO: add info on how to add a new component
 
-NOTE: helper and controller are just micronaut framework practices, might not need to include exact details, may just reference a user to the micronaut documentation. 
-
-* controller
-** controls the component
-** `components\src\main\java\com\opensourcewithslu\components\controllers`
-
-include::exampleController.java[tag=ex]
+If its compatible with a Raspberry Pi then it should work well with the Pi4Micronaut framework. The following steps should encompass how most components are added to the framework, but should more or different steps be needed, use the
+https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/contribute/newComponent.adoc[Improve this doc] link to suggest changes. 
 
 
-* helper
-** where all the actions are defined. 
-** `micronautpi4j-utils\src\main\java\com\opensourcewithslu`
+TODO: helper and controller are just micronaut framework practices, might not need to include exact details, may just reference a user to the micronaut documentation. 
 
 
-* input versus output device
-** input devices main task is taking in information
-*** `micronautpi4j-utils\src\main\java\com\opensourcewithslu\inputdevices`
-** output devices display or output information
-*** `micronautpi4j-utils\src\main\java\com\opensourcewithslu\outputdevices`
+1. Determine if the device is Input or Output:
+** (TODO: find better definition of what an input device is)input devices main task is taking in information
+
+** (TODO: find better definition of what an output device is) output devices display or output information
 
 
+2. Create a Controller:
+** TODO: define what a controller is and reference the Micronaut documentation
+** (TODO: better describe the code base structure) 
+    Where the controllers go: 
+`components\src\main\java\com\opensourcewithslu\components\controllers`
+//include::exampleController.java[tag=ex]
 
+3. Create a Helper: 
+** TODO: define what a helper does and reference the micronaut documentation
+** (TODO: better describe the code base structure) 
+    Where the helpers go: `micronautpi4j-utils\src\main\java\com\opensourcewithslu`\ (inputdevices or outputdevices)
 
+4. Add Component to the Application yml
 
-## Adding components to the application yml
+    ** TODO: explain the purpose of the yml file and what parameters each component will need to have, it will presumably be different for each component type. 
 
-TODO: explain the purpose of the yml file and what parameters each component will need to have, it will presumably be different for each component type. 
+    ** Each component will need to be added to the application yml found at `components\src\main\resources\application.yml`.
 
-Each component will need to be added to the application yml found at `components\src\main\resources\application.yml`.  
+5. Thoroughly test:
+    ** Contributors should thoroughly test their integrations
+    ** When submitting a pull request, make sure to include the circuit setup you used and the steps you took to setup the example that you used for testing. 
+    ** It is important that reviewers are able to replicated your work in order to properly test the implementation. 
