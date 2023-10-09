@@ -38,3 +38,10 @@ include::../../../../main/java/com/opensourcewithslu/outputDevices/RGBLEDHelper.
 ----
 include::../../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/rgbController.java[tag=ex]
 ----
+
+===== A Circuit Guide
+
+[source, jpg]
+----
+
+----
