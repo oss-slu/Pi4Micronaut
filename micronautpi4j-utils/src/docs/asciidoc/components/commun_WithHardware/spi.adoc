@@ -1,0 +1,17 @@
+
+==== SPI
+
+[.text-right]
+https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/commun_WithHardware/spi.adoc[Improve this doc]
+
+[source,yaml]
+----
+include::../../../../../../components/src/main/resources/application.yml[tags=spi]
+----
+<1> Component Identifier (Used in @Named annotations)
+<2> Component Name
+<3> TO DO: Figure out what this address is
+<4> Baud rate
+<5> Address of GPIO Reset pin
+
+TODO: add SPI information
