@@ -67,7 +67,7 @@ public class rgbController {
         rgbledHelper.setColorHex(hexValue);
     }
 
-    @Get("/setColorHex/{hexValue}, {frequency1}, {frequency2}, {frequency3}")
+    @Get("/setColorHex/{hexValue},{frequency1},{frequency2},{frequency3}")
     public void setColorHex(String hexValue, int frequency1, int frequency2, int frequency3) {
         int[] frequency = new int[] {frequency1, frequency2, frequency3};
         rgbledHelper.setColorHex(hexValue, frequency);
