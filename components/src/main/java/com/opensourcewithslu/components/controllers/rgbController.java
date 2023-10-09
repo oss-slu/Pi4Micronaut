@@ -62,6 +62,17 @@ public class rgbController {
         rgbledHelper.setColor(colors, frequency);
     }
 
+    @Get("/setColorHex/{hexValue}")
+    public void setColorHex(String hexValue) {
+        rgbledHelper.setColorHex(hexValue);
+    }
+
+    @Get("/setColorHex/{hexValue}, {frequency1}, {frequency2}, {frequency3}")
+    public void setColorHex(String hexValue, int frequency1, int frequency2, int frequency3) {
+        int[] frequency = new int[] {frequency1, frequency2, frequency3};
+        rgbledHelper.setColorHex(hexValue, frequency);
+    }
+
     @Get("/ledOff")
     public void ledOff() {
         rgbledHelper.ledOff();
