@@ -1,4 +1,4 @@
-Pi4Micronaut Framework Individual Contributor License Agreement
+Pi4Micronaut Individual Contributor License Agreement
 
 By signing below, you accept and agree to the following terms and conditions for Your present and future Contributions submitted to the Pi4Micronaut project. In return, Pi4Micronaut shall not use Your Contributions in a way that is contrary to the public benefit or inconsistent with the Apache License v. 2.0. Except for the license granted herein to Pi4Micronaut and recipients of software distributed by Pi4Micronaut, You reserve all right, title, and interest in and to Your Contributions.
 
