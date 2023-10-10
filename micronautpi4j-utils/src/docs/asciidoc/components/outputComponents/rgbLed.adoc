@@ -18,6 +18,17 @@ multi-pwm:
 
 the red pin would be the one connected to GPIO 17, green to GPIO 18, and blue to GPIO 27. All lists of values for RGB LED components will follow the same order.
 
+
+===== A Circuit Guide
+Follow this guide from https://docs.sunfounder.com/projects/raphael-kit/en/latest/c/1.1.2_rgb_led_c.html#c[Sunfounder] to build the circuit with a raphael kit.
+
+image::https://docs.sunfounder.com/projects/raphael-kit/en/latest/_images/image61.png[]
+
+Circuit Diagram:
+
+image::https://docs.sunfounder.com/projects/raphael-kit/en/latest/_images/rgb_led_schematic.png[]
+
+
 ===== Constructors
 
 [source, java]
@@ -37,11 +48,4 @@ include::../../../../main/java/com/opensourcewithslu/outputDevices/RGBLEDHelper.
 [source, java]
 ----
 include::../../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/rgbController.java[tag=ex]
-----
-
-===== A Circuit Guide
-
-[source, jpg]
-----
-
 ----
