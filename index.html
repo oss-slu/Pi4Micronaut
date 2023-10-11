@@ -1099,6 +1099,17 @@ Each component will need</p>
         <span class="n">rgbledHelper</span><span class="o">.</span><span class="na">setColor</span><span class="o">(</span><span class="n">colors</span><span class="o">,</span> <span class="n">frequency</span><span class="o">);</span>
     <span class="o">}</span>
 
+    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/setColorHex/{hexValue}"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setColorHex</span><span class="o">(</span><span class="nc">String</span> <span class="n">hexValue</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">rgbledHelper</span><span class="o">.</span><span class="na">setColorHex</span><span class="o">(</span><span class="n">hexValue</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/setColorHex/{hexValue},{frequency1},{frequency2},{frequency3}"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setColorHex</span><span class="o">(</span><span class="nc">String</span> <span class="n">hexValue</span><span class="o">,</span> <span class="kt">int</span> <span class="n">frequency1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">frequency2</span><span class="o">,</span> <span class="kt">int</span> <span class="n">frequency3</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">frequency</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span><span class="n">frequency1</span><span class="o">,</span> <span class="n">frequency2</span><span class="o">,</span> <span class="n">frequency3</span><span class="o">};</span>
+        <span class="n">rgbledHelper</span><span class="o">.</span><span class="na">setColorHex</span><span class="o">(</span><span class="n">hexValue</span><span class="o">,</span> <span class="n">frequency</span><span class="o">);</span>
+    <span class="o">}</span>
+
     <span class="nd">@Get</span><span class="o">(</span><span class="s">"/ledOff"</span><span class="o">)</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">ledOff</span><span class="o">()</span> <span class="o">{</span>
         <span class="n">rgbledHelper</span><span class="o">.</span><span class="na">ledOff</span><span class="o">();</span>
@@ -1198,7 +1209,7 @@ Each component will need</p>
 <div id="footer">
 <div id="footer-text">
 Version v1.0.0<br>
-Last updated 2023-09-25 21:11:20 UTC
+Last updated 2023-10-11 18:40:52 UTC
 </div>
 </div>
 <style>
