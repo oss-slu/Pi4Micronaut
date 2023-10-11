@@ -47,12 +47,27 @@ public class RGBLEDHelper {
 
     public void setColorHex(String hex) {
         log.trace("setting the color via hex");
-        //input the hex splitting and frequency stuff
+        // hex splitting into rbg int values
+        int r = (Integer.decode(hex) & 0xFF0000) >> 16;
+        int g = (Integer.decode(hex) & 0xFF00) >> 8;
+        int b = (Integer.decode(hex) & 0xFF);
+
+        // no frequency input, default value 50
+        red.on(r, 50);
+        green.on(g, 50);
+        blue.on(b, 50);
     }
 
-    public void setColorHex(String hex, int frequency) {
+    public void setColorHex(String hex, int[] frequency) {
         log.trace("setting the color and frequency via hex and int");
-        // input the hex splitting and frequency stuff
+        // hex splitting into rbg int values
+        int r = (Integer.decode(hex) & 0xFF0000) >> 16;
+        int g = (Integer.decode(hex) & 0xFF00) >> 8;
+        int b = (Integer.decode(hex) & 0xFF);
+
+        red.on(r, frequency[0]);
+        green.on(g, frequency[1]);
+        blue.on(b, frequency[2]);
     }
 
     //tag::method[]
