@@ -14,9 +14,9 @@ public class PushButtonHelper {
     private DigitalInput buttonInput;
     public Boolean isPressed;
 
-    //tag::const[]
+//tag::const[]
     public PushButtonHelper(DigitalInput buttonInput)
-    //end::const[]
+//end::const[]
     {
         this.buttonInput = buttonInput;
         this.isPressed = buttonInput.isHigh();
@@ -24,9 +24,9 @@ public class PushButtonHelper {
         initialize();
     }
 
-    //tag::method[]
+//tag::method[]
     public void initialize()
-    //end::method[]
+//end::method[]
     {
         log.trace("Initializing " + buttonInput.getName());
 
@@ -35,16 +35,16 @@ public class PushButtonHelper {
         });
     }
 
-    //tag::method[]
+//tag::method[]
     public void addEventListener(DigitalStateChangeListener function)  
-    //end::method[]
+//end::method[]
     {
         buttonInput.addListener(function);
     }
 
-    //tag::method[]
+//tag::method[]
     public void removeEventListener(DigitalStateChangeListener function)
-    //end::method[]
+//end::method[]
     {
         buttonInput.removeListener(function);
     }
