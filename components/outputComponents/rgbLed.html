@@ -177,10 +177,147 @@ th {
 <div id="header">
 </div>
 <div id="content">
-<div class="sect3">
-<h4 id="_rgb_led">RGB LED</h4>
+<div class="sect1">
+<h2 id="_rgb_led">RGB LED</h2>
+<div class="sectionbody">
 <div class="paragraph text-right">
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/outputComponents/rgbLed.adoc">Improve this doc</a></p>
+</div>
+<div class="sect4">
+<h5 id="_overview">Overview</h5>
+<div class="paragraph">
+<p>This document provides details of the RGB (Red-Green-Blue) LED circuit,
+including its components, assembly instructions, and functionality.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_components">Components</h5>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>RGB LED</p>
+</li>
+<li>
+<p>3 x 220Ω resistors (for current limiting)</p>
+</li>
+<li>
+<p>Breadboard</p>
+</li>
+<li>
+<p>Jumper wires</p>
+</li>
+<li>
+<p>Power source (appropriate voltage, typically 3.3V or 5V)</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_assembly_instructions">Assembly Instructions</h5>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Place the RGB LED on the Breadboard. The LED has four pins - one for each of the
+colors (Red, Green, and Blue) and one common pin (either cathode or anode).</p>
+</li>
+<li>
+<p>Connect the Resistors. Attach a 220Ω resistor to each of the RGB pins of the LED.
+This is to limit the current and protect the LED.</p>
+</li>
+<li>
+<p>Power Connections:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>If using a common cathode RGB LED, connect the common pin directly to the
+ground (GND) and the other ends of the resistors to the respective positive
+terminals (like GPIO pins of a microcontroller or direct power source).</p>
+</li>
+<li>
+<p>If using a common anode RGB LED, connect the common pin directly to the
+positive voltage source (VCC) and the other ends of the resistors to the respective
+negative terminals (like GPIO pins set to OUTPUT and LOW on a microcontroller).</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_circuit_diagram">Circuit Diagram</h5>
+<div class="paragraph">
+<p>Model:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://docs.sunfounder.com/projects/raphael-kit/en/latest/_images/image61.png" alt="image61">
+</div>
+</div>
+<div class="paragraph">
+<p>Circuit Diagram:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://docs.sunfounder.com/projects/raphael-kit/en/latest/_images/rgb_led_schematic.png" alt="rgb led schematic">
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_functionality">Functionality</h5>
+<div class="paragraph">
+<p>The RGB LED can produce a wide range of colors by mixing different intensities of
+Red, Green, and Blue. By adjusting the power to each pin, various colors can be
+produced. For instance:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Red: Power the Red pin while keeping Green and Blue off.</p>
+</li>
+<li>
+<p>Green: Power the Green pin while keeping Red and Blue off.</p>
+</li>
+<li>
+<p>Blue: Power the Blue pin while keeping Red and Green off.</p>
+</li>
+<li>
+<p>Yellow: Power both Red and Green pins while keeping Blue off.</p>
+</li>
+<li>
+<p>Cyan: Power both Green and Blue pins while keeping Red off.</p>
+</li>
+<li>
+<p>Magenta: Power both Red and Blue pins while keeping Green off.</p>
+</li>
+<li>
+<p>White: Power all three pins</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_troubleshooting">Troubleshooting</h5>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>LED not lighting up: Check all connections, ensure the LED is placed correctly,
+and check the power source.</p>
+</li>
+<li>
+<p>Only one color is working: One of the pins might have a loose connection. Verify
+each color pin&#8217;s connection.</p>
+</li>
+<li>
+<p>LED is too dim: The resistor value might be too high. Ensure you&#8217;re using 220Ω or
+adjust according to your power source and LED specifications</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_note_the_hex_value_format_must_start_with_0x_not_while_passing_it_as_a_parameter_of_setcolorhex_method_for_example_use_0x0000ff_for_blue">Note: The Hex value format must start with "0x" not "#" while passing it as a parameter of "setColorHex()" method. For example, use "0x0000ff" for blue.</h5>
+
 </div>
 <div class="sect4">
 <h5 id="_yaml_pin_order">YAML Pin Order</h5>
@@ -230,10 +367,11 @@ th {
 </div>
 </div>
 </div>
+</div>
 <div id="footer">
 <div id="footer-text">
 Version v1.0.0<br>
-Last updated 2023-10-11 18:40:52 UTC
+Last updated 2023-10-16 02:57:26 UTC
 </div>
 </div>
 </body>
