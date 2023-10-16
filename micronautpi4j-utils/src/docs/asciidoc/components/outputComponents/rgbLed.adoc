@@ -1,4 +1,4 @@
-==== RGB LED
+== RGB LED
 [.text-right] 
 https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/outputComponents/rgbLed.adoc[Improve this doc]
 
@@ -55,6 +55,8 @@ and check the power source.
 each color pin's connection.
 . LED is too dim: The resistor value might be too high. Ensure you're using 220Ω or
 adjust according to your power source and LED specifications
+
+===== Note: The Hex value format must start with "0x" not "#" while passing it as a parameter of "setColorHex()" method. For example, use "0x0000ff" for blue.
 
 ===== YAML Pin Order
 The order for declaring pins for a RGB LED component in the application.yaml file is as follows
