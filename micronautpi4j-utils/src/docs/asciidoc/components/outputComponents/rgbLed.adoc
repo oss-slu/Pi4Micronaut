@@ -1,6 +1,62 @@
-==== RGB LED
+== RGB LED
 [.text-right] 
 https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/outputComponents/rgbLed.adoc[Improve this doc]
+
+===== Overview
+This document provides details of the RGB (Red-Green-Blue) LED circuit,
+including its components, assembly instructions, and functionality.
+
+===== Components
+. RGB LED
+. 3 x 220Ω resistors (for current limiting)
+. Breadboard
+. Jumper wires
+. Power source (appropriate voltage, typically 3.3V or 5V)
+
+===== Assembly Instructions
+. Place the RGB LED on the Breadboard. The LED has four pins - one for each of the
+colors (Red, Green, and Blue) and one common pin (either cathode or anode).
+. Connect the Resistors. Attach a 220Ω resistor to each of the RGB pins of the LED.
+This is to limit the current and protect the LED.
+. Power Connections:
+**  If using a common cathode RGB LED, connect the common pin directly to the
+ground (GND) and the other ends of the resistors to the respective positive
+terminals (like GPIO pins of a microcontroller or direct power source).
+** If using a common anode RGB LED, connect the common pin directly to the
+positive voltage source (VCC) and the other ends of the resistors to the respective
+negative terminals (like GPIO pins set to OUTPUT and LOW on a microcontroller).
+
+===== Circuit Diagram
+Model:
+
+image::https://docs.sunfounder.com/projects/raphael-kit/en/latest/_images/image61.png[]
+
+Circuit Diagram:
+
+image::https://docs.sunfounder.com/projects/raphael-kit/en/latest/_images/rgb_led_schematic.png[]
+
+===== Functionality
+The RGB LED can produce a wide range of colors by mixing different intensities of
+Red, Green, and Blue. By adjusting the power to each pin, various colors can be
+produced. For instance:
+
+* Red: Power the Red pin while keeping Green and Blue off.
+* Green: Power the Green pin while keeping Red and Blue off.
+* Blue: Power the Blue pin while keeping Red and Green off.
+* Yellow: Power both Red and Green pins while keeping Blue off.
+* Cyan: Power both Green and Blue pins while keeping Red off.
+* Magenta: Power both Red and Blue pins while keeping Green off.
+* White: Power all three pins
+
+===== Troubleshooting
+. LED not lighting up: Check all connections, ensure the LED is placed correctly,
+and check the power source.
+. Only one color is working: One of the pins might have a loose connection. Verify
+each color pin's connection.
+. LED is too dim: The resistor value might be too high. Ensure you're using 220Ω or
+adjust according to your power source and LED specifications
+
+===== Note: The Hex value format must start with "0x" not "#" while passing it as a parameter of "setColorHex()" method. For example, use "0x0000ff" for blue.
 
 ===== YAML Pin Order
 The order for declaring pins for a RGB LED component in the application.yaml file is as follows
