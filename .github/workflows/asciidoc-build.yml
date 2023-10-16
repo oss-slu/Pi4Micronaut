@@ -3,6 +3,7 @@ name: build adocs
 on:
   push:
     branches:
+    - main
     - develop
     - yamlDocs
 jobs:

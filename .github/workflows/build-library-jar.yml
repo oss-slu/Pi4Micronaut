@@ -2,10 +2,12 @@ name: Build and Release Library
 on: 
   push:
     branches:
-      -master
+    - main
+    - develop
   pull_request:
     branches: 
-      -master
+    - main
+    - develop
 jobs:
   build-library:
     runs-on: ubuntu-latest
