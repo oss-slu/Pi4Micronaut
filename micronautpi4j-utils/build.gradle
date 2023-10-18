@@ -39,7 +39,7 @@ java {
 
 asciidoctor{
     attributes 'stylesheet': "style.css"
-    baseDirFollowsSourceFile()
+    baseDirFollowsSourceDir()
 }
 
 /*
