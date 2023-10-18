@@ -7,14 +7,14 @@ https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/doc
 
 [source, java]
 ----
-include::../../../../main/java/com/opensourcewithslu/outputDevices/LEDHelper.java[tag=const]
+include::../../../../../../micronautpi4j-utils/src/main/java/com/opensourcewithslu/outputDevices/LEDHelper.java[tag=const]
 ----
 
 ===== Methods
 
 [source, java]
 ----
-include::../../../../main/java/com/opensourcewithslu/outputDevices/LEDHelper.java[tags=method]
+include::../../../../../../micronautpi4j-utils/src/main/java/com/opensourcewithslu/outputDevices/LEDHelper.java[tags=method]
 ----
 
 ===== An Example Controller

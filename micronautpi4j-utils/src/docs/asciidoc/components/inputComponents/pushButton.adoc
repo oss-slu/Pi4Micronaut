@@ -6,14 +6,14 @@ https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/doc
 
 [source, java]
 ----
-include::../../../../main/java/com/opensourcewithslu/inputDevices/PushButtonHelper.java[tag=const]
+include::../../../../../../micronautpi4j-utils/src/main/java/com/opensourcewithslu/inputDevices/PushButtonHelper.java[tag=const]
 ----
 
 ===== Methods
 
 [source, java]
 ----
-include::../../../../main/java/com/opensourcewithslu/inputDevices/PushButtonHelper.java[tags=method]
+include::../../../../../../micronautpi4j-utils/src/main/java/com/opensourcewithslu/inputDevices/PushButtonHelper.java[tags=method]
 ----
 
 ===== An Example Controller
