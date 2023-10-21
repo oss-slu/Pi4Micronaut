@@ -30,9 +30,9 @@ public class RGBLEDHelper {
     public void setColor(int[] colors)
     //end::method[]
     {
-        red.on(colors[0], 200);
-        green.on(colors[1], 200);
-        blue.on(colors[2], 200);
+        red.on(colors[0], 50);
+        green.on(colors[1], 50);
+        blue.on(colors[2], 50);
     }
 
     //tag::method[]
@@ -45,25 +45,20 @@ public class RGBLEDHelper {
         blue.on(colors[2], frequency[2]);
     }
 
-    //tag::method[]
-    public void setColorHex(String hex)
-    //end::method[]
-    {
+    public void setColorHex(String hex) {
         log.trace("setting the color via hex");
         // hex splitting into rbg int values
         int r = (Integer.decode(hex) & 0xFF0000) >> 16;
         int g = (Integer.decode(hex) & 0xFF00) >> 8;
         int b = (Integer.decode(hex) & 0xFF);
 
-        // no frequency input, default value 200
-        red.on(r, 200);
-        green.on(g, 200);
-        blue.on(b, 200);
+        // no frequency input, default value 50
+        red.on(r, 50);
+        green.on(g, 50);
+        blue.on(b, 50);
     }
-    //tag::method[]
-    public void setColorHex(String hex, int[] frequency)
-    //end::method[]
-    {
+
+    public void setColorHex(String hex, int[] frequency) {
         log.trace("setting the color and frequency via hex and int");
         // hex splitting into rbg int values
         int r = (Integer.decode(hex) & 0xFF0000) >> 16;
@@ -80,7 +75,7 @@ public class RGBLEDHelper {
     //end::method[]
     {
         log.trace("Set red");
-        this.red.on(red, 200);
+        this.red.on(red, 50);
     }
 
     //tag::method[]
@@ -96,7 +91,7 @@ public class RGBLEDHelper {
     //end::method[]
     {
         log.trace("set blue");
-        this.blue.on(blue, 200);
+        this.blue.on(blue, 50);
     }
 
     //tag::method[]
@@ -112,7 +107,7 @@ public class RGBLEDHelper {
     //end::method[]
     {
         log.trace("set green");
-        this.green.on(green, 200);
+        this.green.on(green, 50);
     }
 
     //tag::method[]
@@ -137,8 +132,8 @@ public class RGBLEDHelper {
     //end::method[]
     {
         log.trace("turning on each LED pin and setting to 100");
-        this.red.on(100, 200);
-        this.green.on(100, 200);
-        this.blue.on(100, 200);
+        this.red.on(100, 50);
+        this.green.on(100, 50);
+        this.blue.on(100, 50);
     }
 }
