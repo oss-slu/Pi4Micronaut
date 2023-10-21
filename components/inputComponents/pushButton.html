@@ -183,6 +183,117 @@ th {
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/inputComponents/pushButton.adoc">Improve this doc</a></p>
 </div>
 <div class="sect4">
+<h5 id="_overview">Overview</h5>
+<div class="paragraph">
+<p>This document provides details of the Push Button circuit,
+including its components, assembly instructions, and functionality.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_components">Components</h5>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>LED light</p>
+</li>
+<li>
+<p>Push button</p>
+</li>
+<li>
+<p>1 x 10Ω resistor</p>
+</li>
+<li>
+<p>1 x 220Ω resistor</p>
+</li>
+<li>
+<p>Breadboard</p>
+</li>
+<li>
+<p>Jumper wires</p>
+</li>
+<li>
+<p>Power source</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_circuit_diagram">Circuit Diagram</h5>
+<div class="paragraph">
+<p>Model:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Note the 220Ω resistor is for the LED and the 10Ω for the button.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://docs.sunfounder.com/projects/raphael-kit/en/latest/_images/image152.png" alt="image152">
+</div>
+</div>
+<div class="paragraph">
+<p>Circuit Diagram:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://docs.sunfounder.com/projects/raphael-kit/en/latest/_images/image303.png" alt="image303">
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_functionality">Functionality</h5>
+<div class="paragraph">
+<p>A push of the button turns the LED light on and another push turns it off.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_troubleshooting">Troubleshooting</h5>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>LED not lighting up: Check all connections, ensure the LED is placed correctly,
+and check the power source.</p>
+</li>
+<li>
+<p>LED is too dim: The resistor value might be too high. Ensure you&#8217;re using the correct resistors or
+adjust according to your power source and LED specifications</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_yaml_pin_order">YAML Pin Order</h5>
+<div class="paragraph">
+<p>The order for declaring the pin for the LED is as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">digital-output:
+  led:
+    address: 17</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So the LED would be connected to GPIO 17.</p>
+</div>
+<div class="paragraph">
+<p>The order for declaring the pin for the push button is as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">digital-input:
+  button-input-3:
+    address: 18</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So the push button would be connected to GPIO 18.</p>
+</div>
+</div>
+<div class="sect4">
 <h5 id="_constructors">Constructors</h5>
 <div class="listingblock">
 <div class="content">
@@ -214,7 +325,7 @@ th {
 <div id="footer">
 <div id="footer-text">
 Version v1.0.0<br>
-Last updated 2023-10-18 21:31:47 UTC
+Last updated 2023-10-21 14:50:16 UTC
 </div>
 </div>
 </body>

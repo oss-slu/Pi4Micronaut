@@ -757,6 +757,117 @@ Each component will need</p>
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/inputComponents/pushButton.adoc">Improve this doc</a></p>
 </div>
 <div class="sect4">
+<h5 id="_overview"><a class="anchor" href="#_overview"></a>Overview</h5>
+<div class="paragraph">
+<p>This document provides details of the Push Button circuit,
+including its components, assembly instructions, and functionality.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_components_2"><a class="anchor" href="#_components_2"></a>Components</h5>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>LED light</p>
+</li>
+<li>
+<p>Push button</p>
+</li>
+<li>
+<p>1 x 10Ω resistor</p>
+</li>
+<li>
+<p>1 x 220Ω resistor</p>
+</li>
+<li>
+<p>Breadboard</p>
+</li>
+<li>
+<p>Jumper wires</p>
+</li>
+<li>
+<p>Power source</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_circuit_diagram"><a class="anchor" href="#_circuit_diagram"></a>Circuit Diagram</h5>
+<div class="paragraph">
+<p>Model:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Note the 220Ω resistor is for the LED and the 10Ω for the button.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://docs.sunfounder.com/projects/raphael-kit/en/latest/_images/image152.png" alt="image152">
+</div>
+</div>
+<div class="paragraph">
+<p>Circuit Diagram:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://docs.sunfounder.com/projects/raphael-kit/en/latest/_images/image303.png" alt="image303">
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_functionality"><a class="anchor" href="#_functionality"></a>Functionality</h5>
+<div class="paragraph">
+<p>A push of the button turns the LED light on and another push turns it off.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_troubleshooting"><a class="anchor" href="#_troubleshooting"></a>Troubleshooting</h5>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>LED not lighting up: Check all connections, ensure the LED is placed correctly,
+and check the power source.</p>
+</li>
+<li>
+<p>LED is too dim: The resistor value might be too high. Ensure you&#8217;re using the correct resistors or
+adjust according to your power source and LED specifications</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_yaml_pin_order"><a class="anchor" href="#_yaml_pin_order"></a>YAML Pin Order</h5>
+<div class="paragraph">
+<p>The order for declaring the pin for the LED is as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">digital-output</span><span class="pi">:</span>
+  <span class="na">led</span><span class="pi">:</span>
+    <span class="na">address</span><span class="pi">:</span> <span class="s">17</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So the LED would be connected to GPIO 17.</p>
+</div>
+<div class="paragraph">
+<p>The order for declaring the pin for the push button is as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">digital-input</span><span class="pi">:</span>
+  <span class="na">button-input-3</span><span class="pi">:</span>
+    <span class="na">address</span><span class="pi">:</span> <span class="s">18</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So the push button would be connected to GPIO 18.</p>
+</div>
+</div>
+<div class="sect4">
 <h5 id="_constructors"><a class="anchor" href="#_constructors"></a>Constructors</h5>
 <div class="listingblock">
 <div class="content">
@@ -783,9 +894,10 @@ Each component will need</p>
     <span class="kd">private</span> <span class="kd">final</span> <span class="nc">PushButtonHelper</span> <span class="n">pushButtonHelper</span><span class="o">;</span>
     <span class="kd">private</span> <span class="kd">final</span> <span class="nc">LEDHelper</span> <span class="n">ledHelper</span><span class="o">;</span>
 
-    <span class="kd">public</span> <span class="nf">PushButtonController</span><span class="o">(</span><span class="nc">PushButtonHelper</span> <span class="n">pushButtonHelper</span><span class="o">,</span> <span class="nc">LEDHelper</span> <span class="n">ledHelper</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">pushButtonHelper</span> <span class="o">=</span> <span class="n">pushButtonHelper</span><span class="o">;</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">ledHelper</span> <span class="o">=</span> <span class="n">ledHelper</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="nf">PushButtonController</span><span class="o">(</span><span class="nd">@Named</span><span class="o">(</span><span class="s">"button-input-3"</span><span class="o">)</span> <span class="nc">DigitalInput</span> <span class="n">pushButton1</span><span class="o">,</span>
+                                <span class="nd">@Named</span><span class="o">(</span><span class="s">"led"</span><span class="o">)</span> <span class="nc">DigitalOutput</span> <span class="n">led1</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">pushButtonHelper</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PushButtonHelper</span><span class="o">(</span><span class="n">pushButton1</span><span class="o">);</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">ledHelper</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LEDHelper</span><span class="o">(</span><span class="n">led1</span><span class="o">);</span>
     <span class="o">}</span>
 
     <span class="nd">@Get</span><span class="o">(</span><span class="s">"/init"</span><span class="o">)</span>
@@ -863,7 +975,7 @@ Each component will need</p>
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/inputComponents/rotaryEncoder.adoc">Improve this doc</a></p>
 </div>
 <div class="sect4">
-<h5 id="_yaml_pin_order"><a class="anchor" href="#_yaml_pin_order"></a>YAML Pin Order</h5>
+<h5 id="_yaml_pin_order_2"><a class="anchor" href="#_yaml_pin_order_2"></a>YAML Pin Order</h5>
 <div class="paragraph">
 <p>The order for declaring pins for a Rotary Encoder component in the application.yaml file is as follows</p>
 </div>
@@ -1010,14 +1122,14 @@ Each component will need</p>
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/outputComponents/rgbLed.adoc">Improve this doc</a></p>
 </div>
 <div class="sect4">
-<h5 id="_overview"><a class="anchor" href="#_overview"></a>Overview</h5>
+<h5 id="_overview_2"><a class="anchor" href="#_overview_2"></a>Overview</h5>
 <div class="paragraph">
 <p>This document provides details of the RGB (Red-Green-Blue) LED circuit,
 including its components, assembly instructions, and functionality.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_components_2"><a class="anchor" href="#_components_2"></a>Components</h5>
+<h5 id="_components_3"><a class="anchor" href="#_components_3"></a>Components</h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1071,7 +1183,7 @@ negative terminals (like GPIO pins set to OUTPUT and LOW on a microcontroller).<
 </div>
 </div>
 <div class="sect4">
-<h5 id="_circuit_diagram"><a class="anchor" href="#_circuit_diagram"></a>Circuit Diagram</h5>
+<h5 id="_circuit_diagram_2"><a class="anchor" href="#_circuit_diagram_2"></a>Circuit Diagram</h5>
 <div class="paragraph">
 <p>Model:</p>
 </div>
@@ -1090,7 +1202,7 @@ negative terminals (like GPIO pins set to OUTPUT and LOW on a microcontroller).<
 </div>
 </div>
 <div class="sect4">
-<h5 id="_functionality"><a class="anchor" href="#_functionality"></a>Functionality</h5>
+<h5 id="_functionality_2"><a class="anchor" href="#_functionality_2"></a>Functionality</h5>
 <div class="paragraph">
 <p>The RGB LED can produce a wide range of colors by mixing different intensities of
 Red, Green, and Blue. By adjusting the power to each pin, various colors can be
@@ -1123,7 +1235,7 @@ produced. For instance:</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_troubleshooting"><a class="anchor" href="#_troubleshooting"></a>Troubleshooting</h5>
+<h5 id="_troubleshooting_2"><a class="anchor" href="#_troubleshooting_2"></a>Troubleshooting</h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1146,7 +1258,7 @@ adjust according to your power source and LED specifications</p>
 
 </div>
 <div class="sect4">
-<h5 id="_yaml_pin_order_2"><a class="anchor" href="#_yaml_pin_order_2"></a>YAML Pin Order</h5>
+<h5 id="_yaml_pin_order_3"><a class="anchor" href="#_yaml_pin_order_3"></a>YAML Pin Order</h5>
 <div class="paragraph">
 <p>The order for declaring pins for a RGB LED component in the application.yaml file is as follows</p>
 </div>
@@ -1450,7 +1562,7 @@ adjust according to your power source and LED specifications</p>
 <div id="footer">
 <div id="footer-text">
 Version v1.0.0<br>
-Last updated 2023-10-18 21:31:47 UTC
+Last updated 2023-10-21 14:50:16 UTC
 </div>
 </div>
 <style>
