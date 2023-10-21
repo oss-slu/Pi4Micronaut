@@ -62,6 +62,12 @@ pi4j:
       pull: PULL_DOWN
       debounce: 30
       provider: pigpio-digital-input
+    button-input-3:
+      name: Push Button Input
+      address: 18
+      pull: PULL_DOWN
+      debounce: 30
+      provider: pigpio-digital-input
     slide-switch-input:
       name: Slide Switch Input
       address: 18
