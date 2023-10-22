@@ -183,10 +183,84 @@ th {
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/inputComponents/slideSwitch.adoc">Improve this doc</a></p>
 </div>
 <div class="sect4">
+<h5 id="_overview">Overview</h5>
+<div class="paragraph">
+<p>This section provides the details of the Slide Switch circuit, including its components, assembly instructions, and functionality.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_components">Components</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Slide Switch</p>
+</li>
+<li>
+<p>1 x 10Ω resistor</p>
+</li>
+<li>
+<p>1 x Capacitor 104</p>
+</li>
+<li>
+<p>Breadboard</p>
+</li>
+<li>
+<p>7 x Jumper Wires</p>
+</li>
+<li>
+<p>Power source (appropriate voltage, typically 3.3V or 5V)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_circuit_diagram">Circuit Diagram</h5>
+<div class="paragraph">
+<p>Model:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://github.com/oss-slu/Pi4Micronaut/tree/main/micronautpi4j-utils/src/docs/asciidoc/img/slideSwitch_circuit.jpg" alt="slideSwitch circuit">
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_testing_the_circuit">Testing the Circuit:</h5>
+<div class="paragraph">
+<p>Use: <code>curl <a href="http://localhost:8080/slideSwitch/switch1" class="bare">http://localhost:8080/slideSwitch/switch1</a></code> to test the switch. This will either return true,if the switch is on, and false if the switch is off. Flip the switch and run the command again to see the opposite result of the first call.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_yaml">YAML</h5>
+<div class="paragraph">
+<p>The slide switch as it appears in the application.yml:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">    slide-switch-input:
+      name: Slide Switch Input
+      address: 18
+      pull: PULL_DOWN
+      debounce: 3000
+      provider: pigpio-digital-input
+
+    slide-switch-input-2:
+      name: Slide Switch Input
+      address: 22
+      pull: PULL_DOWN
+      debounce: 3000
+      provider: pigpio-digital-input</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that there are two slide switches, one that uses GPIO 18 and the other uses GPIO 22.</p>
+</div>
+</div>
+<div class="sect4">
 <h5 id="_constructors">Constructors</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">Unresolved directive in slideSwitch.adoc - include::../../../../../../micronautpi4j-utils/src/main/java/com/opensourcewithslu/inputDevices/SlideSwitchHelper.java[tag=const]</code></pre>
+<pre class="highlight"><code class="language-java" data-lang="java">Unresolved directive in slideSwitch.adoc - include::../../../../main/java/com/opensourcewithslu/inputDevices/SlideSwitchHelper.java[tag=const]</code></pre>
 </div>
 </div>
 </div>
@@ -194,7 +268,7 @@ th {
 <h5 id="_methods">Methods</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">Unresolved directive in slideSwitch.adoc - include::../../../../../../micronautpi4j-utils/src/main/java/com/opensourcewithslu/inputDevices/SlideSwitchHelper.java[tags=method]</code></pre>
+<pre class="highlight"><code class="language-java" data-lang="java">Unresolved directive in slideSwitch.adoc - include::../../../../main/java/com/opensourcewithslu/inputDevices/SlideSwitchHelper.java[tags=method]</code></pre>
 </div>
 </div>
 </div>
@@ -214,7 +288,7 @@ th {
 <div id="footer">
 <div id="footer-text">
 Version v1.0.0<br>
-Last updated 2023-10-21 14:50:16 UTC
+Last updated 2023-10-22 15:43:37 UTC
 </div>
 </div>
 </body>

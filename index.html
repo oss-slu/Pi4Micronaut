@@ -920,10 +920,84 @@ adjust according to your power source and LED specifications</p>
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/inputComponents/slideSwitch.adoc">Improve this doc</a></p>
 </div>
 <div class="sect4">
+<h5 id="_overview_2"><a class="anchor" href="#_overview_2"></a>Overview</h5>
+<div class="paragraph">
+<p>This section provides the details of the Slide Switch circuit, including its components, assembly instructions, and functionality.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_components_3"><a class="anchor" href="#_components_3"></a>Components</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Slide Switch</p>
+</li>
+<li>
+<p>1 x 10Ω resistor</p>
+</li>
+<li>
+<p>1 x Capacitor 104</p>
+</li>
+<li>
+<p>Breadboard</p>
+</li>
+<li>
+<p>7 x Jumper Wires</p>
+</li>
+<li>
+<p>Power source (appropriate voltage, typically 3.3V or 5V)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_circuit_diagram_2"><a class="anchor" href="#_circuit_diagram_2"></a>Circuit Diagram</h5>
+<div class="paragraph">
+<p>Model:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://github.com/oss-slu/Pi4Micronaut/tree/main/micronautpi4j-utils/src/docs/asciidoc/img/slideSwitch_circuit.jpg" alt="slideSwitch circuit">
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_testing_the_circuit"><a class="anchor" href="#_testing_the_circuit"></a>Testing the Circuit:</h5>
+<div class="paragraph">
+<p>Use: <code>curl <a href="http://localhost:8080/slideSwitch/switch1" class="bare">http://localhost:8080/slideSwitch/switch1</a></code> to test the switch. This will either return true,if the switch is on, and false if the switch is off. Flip the switch and run the command again to see the opposite result of the first call.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_yaml"><a class="anchor" href="#_yaml"></a>YAML</h5>
+<div class="paragraph">
+<p>The slide switch as it appears in the application.yml:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml">    <span class="na">slide-switch-input</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">Slide Switch Input</span>
+      <span class="na">address</span><span class="pi">:</span> <span class="m">18</span>
+      <span class="na">pull</span><span class="pi">:</span> <span class="s">PULL_DOWN</span>
+      <span class="na">debounce</span><span class="pi">:</span> <span class="m">3000</span>
+      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-digital-input</span>
+
+    <span class="na">slide-switch-input-2</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">Slide Switch Input</span>
+      <span class="na">address</span><span class="pi">:</span> <span class="m">22</span>
+      <span class="na">pull</span><span class="pi">:</span> <span class="s">PULL_DOWN</span>
+      <span class="na">debounce</span><span class="pi">:</span> <span class="m">3000</span>
+      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-digital-input</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that there are two slide switches, one that uses GPIO 18 and the other uses GPIO 22.</p>
+</div>
+</div>
+<div class="sect4">
 <h5 id="_constructors_2"><a class="anchor" href="#_constructors_2"></a>Constructors</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">inputComponents</span><span class="o">/</span><span class="n">slideSwitch</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../../../../</span><span class="n">micronautpi4j</span><span class="o">-</span><span class="n">utils</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">inputDevices</span><span class="o">/</span><span class="nc">SlideSwitchHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tag</span><span class="o">=</span><span class="kd">const</span><span class="o">]</span></code></pre>
+<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">inputComponents</span><span class="o">/</span><span class="n">slideSwitch</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../../</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">inputDevices</span><span class="o">/</span><span class="nc">SlideSwitchHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tag</span><span class="o">=</span><span class="kd">const</span><span class="o">]</span></code></pre>
 </div>
 </div>
 </div>
@@ -931,7 +1005,7 @@ adjust according to your power source and LED specifications</p>
 <h5 id="_methods_2"><a class="anchor" href="#_methods_2"></a>Methods</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">inputComponents</span><span class="o">/</span><span class="n">slideSwitch</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../../../../</span><span class="n">micronautpi4j</span><span class="o">-</span><span class="n">utils</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">inputDevices</span><span class="o">/</span><span class="nc">SlideSwitchHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tags</span><span class="o">=</span><span class="n">method</span><span class="o">]</span></code></pre>
+<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">inputComponents</span><span class="o">/</span><span class="n">slideSwitch</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../../</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">inputDevices</span><span class="o">/</span><span class="nc">SlideSwitchHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tags</span><span class="o">=</span><span class="n">method</span><span class="o">]</span></code></pre>
 </div>
 </div>
 </div>
@@ -1122,14 +1196,14 @@ adjust according to your power source and LED specifications</p>
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/outputComponents/rgbLed.adoc">Improve this doc</a></p>
 </div>
 <div class="sect4">
-<h5 id="_overview_2"><a class="anchor" href="#_overview_2"></a>Overview</h5>
+<h5 id="_overview_3"><a class="anchor" href="#_overview_3"></a>Overview</h5>
 <div class="paragraph">
 <p>This document provides details of the RGB (Red-Green-Blue) LED circuit,
 including its components, assembly instructions, and functionality.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_components_3"><a class="anchor" href="#_components_3"></a>Components</h5>
+<h5 id="_components_4"><a class="anchor" href="#_components_4"></a>Components</h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1183,7 +1257,7 @@ negative terminals (like GPIO pins set to OUTPUT and LOW on a microcontroller).<
 </div>
 </div>
 <div class="sect4">
-<h5 id="_circuit_diagram_2"><a class="anchor" href="#_circuit_diagram_2"></a>Circuit Diagram</h5>
+<h5 id="_circuit_diagram_3"><a class="anchor" href="#_circuit_diagram_3"></a>Circuit Diagram</h5>
 <div class="paragraph">
 <p>Model:</p>
 </div>
@@ -1562,7 +1636,7 @@ adjust according to your power source and LED specifications</p>
 <div id="footer">
 <div id="footer-text">
 Version v1.0.0<br>
-Last updated 2023-10-21 14:50:16 UTC
+Last updated 2023-10-22 15:43:37 UTC
 </div>
 </div>
 <style>
