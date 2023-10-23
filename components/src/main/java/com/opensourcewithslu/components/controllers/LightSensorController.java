@@ -2,6 +2,7 @@ package com.opensourcewithslu.components.controllers;
 
 
 import com.opensourcewithslu.inputdevices.LightSensorHelper;
+import com.opensourcewithslu.inputdevices.Darkness;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
@@ -21,5 +22,15 @@ public class LightSensorController {
         this.lightSensorHelper = lightSensorHelper;
     }
 
+    @Get
+    public Darkness status() {
+        return this.lightSensorHelper.getDarkness();
+    }
+
+    @Post("/threshold/{i}")
+    public HttpResponse update(@Positive int i) {
+        this.lightSensorHelper.setDarknessThreshold(i);
+        return HttpResponse.noContent();
+    }
 
 }
