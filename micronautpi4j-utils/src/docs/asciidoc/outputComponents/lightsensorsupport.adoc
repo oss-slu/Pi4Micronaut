@@ -1,0 +1,169 @@
+//Defined so :omega: can be used within the .adoc
+:omega:
+
+== Overview
+
+This document provides details of the RGB (Red-Green-Blue) LED circuit, including 
+its components, assembly instructions, and functionality.
+
+== Components
+1.RGB LED
+2.3x 220 resistors{omega} (for current limiting)
+3.Breadboard
+4.Juniper wires
+5.Power source (appropriate voltage, typically 3.3V or 5v)
+
+== Circuit Diagram
+
+|===
+|T-Board Name | physical | wiringPi | BCM
+|GPIO17   |Pin 11 | 0 | 17
+|GPIO18   |Pin 12 | 1 | 18
+|GPIO27   |Pin 13 | 2 | 27
+|GPIO22   |Pin 14 | 3 | 22
+|===
+
+
+//Diagram Here:
+image::https://learn.sunfounder.com/wp-content/uploads/2020/10/image-1193.png
+
+
+
+== Assembly 
+1. Place the RGB LED on the Breadboard: The LED has four pins - one for each of the colors (Red, Green, and Blue)
+and one common pin (either cathode or anode).
+2. Connect the Resistors: Attach a 220{omega} resistor to each of the RGB pins of the LED.
+This is to limit the current and protect the LED.
+3. Power Connections: 
+    * If using a common cathode RGB LED, connect the common pin directly to the ground (GND)
+    and the other ends of the resistors to the respective positive terminals (like GPIO pins of a microcontroller or direct power source).
+    * If using a common anode RGB LED, connect the common pin directly to the positive voltage source (VCC) and the other ends of the resistors
+    to the respective negative terminals (like GPIO pins set to the OUTPUT and LOW on a microcontroller).
+
+== Testing Procedure
+
+To test, download the source code from https://github.com/oci-labs/iot-light-sensor/archive/refs/tags/v1.0.zip or
+clone from the github repository at https://github.com/oci-labs/iot-light-sensor.
+
+To build the source, navigate to the root directory and build a fat jar that includes all the dependencies
+the Micronaut application needs.
+
+[source]
+----
+$ ./gradlew shadowJar
+----
+
+Copy the jar file to the Raspberry Pi:
+
+[source]
+----
+$ scp ./light-sensor/build/libs/light-sensor-1.0-all.jar pi@raspberrypi.local:
+----
+
+Connect to the Raspberry Pi with ssh:
+
+[source]
+----
+$ ssh pi@raspberrypi.local
+pi@raspberrypi.local's password: 
+Linux raspberrypi.local 5.10.63-v7+ #1488 SMP Thu Nov 18 16:14:44 GMT 2021 armv7
+ 
+pi@raspberrypi.local:~ $
+----
+
+Pi4J depends on the pigpio C library, so you must use the `sudo` command to launch the application
+on the Raspberry Pi:
+
+[source]
+----
+$ sudo java -jar light-sensor-1.0-all.jar
+----
+
+It is possible to interact with the light sensor microservice from a remote machine. Two commands are supported
+and available via URI endpoints.
+
+Users can query the status...
+
+[source]
+----
+$ http raspberrypi.local:8080/light
+HTTP/1.1 200 OK
+Content-Type: application/json
+connection: keep-alive
+content-length: 45
+date: Mon, 24 Jan 2022 21:38:54 GMT
+ 
+{
+    "time": "24-01-2022 09:38:54 UTC",
+    "value": 41
+}
+----
+
+.... or set a new threshold value for the LED:
+
+[source]
+----
+$ http POST raspberrypi.local:8080/light/threshold/35
+HTTP/1.1 204 No Content
+connection: keep-alive
+date: Mon, 24 Jan 2022 21:39:04 GMT
+----
+
+The updated threshold value is displayed in the console log on the Raspberry Pi:
+
+[source]
+----
+20:49:42.777 [Thread-10] DEBUG c.o.iot.demo.LightSensorHelper - Darkness Level 42
+20:49:45.755 [default-nioEventLoopGroup-1-2] DEBUG c.o.iot.demo.LightSensorHelper - Darkness Threshold Is 35
+20:49:47.776 [Thread-12] DEBUG c.o.iot.demo.LightSensorHelper - Darkness Level 41
+20:49:47.777 [Thread-12] DEBUG c.objectcomputing.iot.demo.LEDHelper - Turning on LED
+----
+
+== Functionality
+The RGB LED can produce a wide range of colors by mixing different intensities of 
+Red, Green, and Blue. By adjusting the power to each pin, various colors can be 
+produced. For instance:
+
+* Red: Power the Red pin while keeping Green and Blue off.
+* Green: Power the Green pin while keeping Red and Blue off.
+* Blue: Power the Blue pin while keeping Red and Green off.
+* Yellow: Power both Red and Green pins while keeping Blue off.
+* Cyan: Power both Green and Blue pins while keeping Red off.
+* Magenta: Power both Red and Blue pins while keeping Green off.
+* White: Power all three pins
+
+== Troubleshooting
+
+1. LED not lighting up: Check all connections, ensure the LED is placed correctly, 
+and check the power source.
+2. Only one color is working: One of the pins might have a loose connection. Verify 
+each color pin's connection.
+3. LED is too dim: The resistor value might be too high. Ensure you're using 220Ω or 
+adjust according to your power source and LED specifications.
+
+== Constuctors
+
+[source, Java]
+----
+include::../../../main/java/com/opensourcewithslu/outputDevices/LEDHelper.java[tag=const]
+----
+== Methods
+
+[source, java]
+----
+include::../../../main/java/com/opensourcewithslu/outputDevices/LEDHelper.java[tags=method]
+----
+
+
+== Any other useful information
+
+//Additional images here:
+
+Components
+image::https://learn.sunfounder.com/wp-content/uploads/2020/10/image-1187.png
+
+Photoresistor
+image::https://learn.sunfounder.com/wp-content/uploads/2020/10/image-1192.png
+
+Phenomenon Picture
+image::https://learn.sunfounder.com/wp-content/uploads/2020/10/image-1195.png
