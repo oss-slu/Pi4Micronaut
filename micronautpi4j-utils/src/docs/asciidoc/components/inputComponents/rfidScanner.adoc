@@ -1,7 +1,39 @@
 ==== RFID Scanner
 
-[.text-right] 
+[.text-right]
 https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/inputComponents/rfidScanner.adoc[Improve this doc]
+
+===== Overview
+This section provides information regarding the RFID scanner component and its circuit, including assembly instructions.
+
+
+===== Components
+
+* RFID-RC522
+* 9 x Jumper Wires
+* Breadboard
+* Power source (3.3V)
+
+
+
+
+
+
+
+
+===== Circuit Diagram
+Model:
+
+
+===== Testing the Circuit:
+
+
+
+===== YAML
+The RFID scanner as it appears in the application.yml:
+
+include::../../../../../../components/src/main/resources/application.yml[tag=spi]
+
 
 ===== Constructors
 
