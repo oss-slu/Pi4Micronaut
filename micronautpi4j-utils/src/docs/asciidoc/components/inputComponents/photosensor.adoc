@@ -1,5 +1,167 @@
-==== Photosensor
+:omega:
+===== Photosensor
+
 [.text-right] 
 https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/inputComponents/photosensor.adoc[Improve this doc]
 
-TODO: add in photosensor support docs
+//TODO: add in photosensor support docs
+
+
+//Defined so :omega: can be used within the .adoc
+
+
+=====  Overview
+
+This document provides details of the photoresistor, including 
+its components, assembly instructions, and functionality.
+
+=====  Components
+1. RaspberryPi
+2. 2x 220 resistors{omega} (for current limiting)
+3. Breadboard
+4. Several Jumper wires
+5. Power source (appropriate voltage, typically 3.3V or 5v)
+6. GPIO Extension Board
+7. 40-pin Cable
+8. ADC0834
+
+
+=====  Assembly 
+1. Place the photoresistor on the Breadboard: The photoresistor has two pins - one for components, like wires connecting to a ADC0834,
+and one common pin (either cathode or anode).
+2. Connect the Resistor: Attach a 220{omega} resistor to one of the pins of the photoresistor.
+This is to limit the current and protect the LED.
+3. Power Connections: 
+    * If using a common cathode RGB LED, connect the common pin directly to the ground (GND)
+    and the other ends of the resistors to the respective positive terminals (like GPIO pins of a microcontroller or direct power source).
+    * If using a common anode RGB LED, connect the common pin directly to the positive voltage source (VCC) and the other ends of the resistors
+    to the respective negative terminals (like GPIO pins set to the OUTPUT and LOW on a microcontroller).
+
+=====  Circuit Diagram
+
+
+//Diagram Here:
+image::https://github.com/oss-slu/Pi4Micronaut/tree/main/micronautpi4j-utils/src/docs/asciidoc/img/image-1194.png[]
+
+|===
+|T-Board Name | physical | wiringPi | BCM
+|GPIO17   |Pin 11 | 0 | 17
+|GPIO18   |Pin 12 | 1 | 18
+|GPIO27   |Pin 13 | 2 | 27
+|GPIO22   |Pin 14 | 3 | 22
+|===
+
+=====  Testing Procedure
+
+To build the source, navigate to the root directory and build a fat jar that includes all the dependencies
+the Micronaut application needs.
+
+[source]
+----
+$ ./gradlew shadowJar
+----
+
+Copy the jar file to the Raspberry Pi:
+
+[source]
+----
+$ scp ./light-sensor/build/libs/light-sensor-1.0-all.jar pi@raspberrypi.local:
+----
+
+Connect to the Raspberry Pi with ssh:
+
+[source]
+----
+$ ssh pi@raspberrypi.local
+pi@raspberrypi.local's password: 
+Linux raspberrypi.local 5.10.63-v7+ #1488 SMP Thu Nov 18 16:14:44 GMT 2021 armv7
+ 
+pi@raspberrypi.local:~ $
+----
+
+Pi4J depends on the pigpio C library, so you must use the `sudo` command to launch the application
+on the Raspberry Pi:
+
+[source]
+----
+$ sudo java -jar light-sensor-1.0-all.jar
+----
+
+It is possible to interact with the light sensor microservice from a remote machine. Two commands are supported
+and available via URI endpoints.
+
+Users can query the status...
+
+[source]
+----
+$ http raspberrypi.local:8080/light
+HTTP/1.1 200 OK
+Content-Type: application/json
+connection: keep-alive
+content-length: 45
+date: Mon, 24 Jan 2022 21:38:54 GMT
+ 
+{
+    "time": "24-01-2022 09:38:54 UTC",
+    "value": 41
+}
+----
+
+.... or set a new threshold value for the LED:
+
+[source]
+----
+$ http POST raspberrypi.local:8080/light/threshold/35
+HTTP/1.1 204 No Content
+connection: keep-alive
+date: Mon, 24 Jan 2022 21:39:04 GMT
+----
+
+The updated threshold value is displayed in the console log on the Raspberry Pi:
+
+[source]
+----
+20:49:42.777 [Thread-10] DEBUG c.o.iot.demo.LightSensorHelper - Darkness Level 42
+20:49:45.755 [default-nioEventLoopGroup-1-2] DEBUG c.o.iot.demo.LightSensorHelper - Darkness Threshold Is 35
+20:49:47.776 [Thread-12] DEBUG c.o.iot.demo.LightSensorHelper - Darkness Level 41
+20:49:47.777 [Thread-12] DEBUG c.objectcomputing.iot.demo.LEDHelper - Turning on LED
+----
+
+=====  Functionality
+A photoresistor is a light-controlled variable resistor. The resistance of a photoresistor decreases with
+increasing incident light intensity. It can be applied in light-sensitive detector circuits, as well as light and darkness 
+activated circuits.
+
+* When the photoresistor detects light corresponding LED will light up in response. 
+* If no light is detected by the photoresistor then the LED will remain dark.
+
+=====  Troubleshooting
+
+1. Photoresistor not detecting light: Check all connections, ensure the Photoresistor is placed correctly, 
+and check the power source.
+
+=====  Constuctors
+
+[source, Java]
+----
+include::../../../main/java/com/opensourcewithslu/outputDevices/LEDHelper.java[tag=const]
+----
+=====  Methods
+
+[source, java]
+----
+include::../../../main/java/com/opensourcewithslu/outputDevices/LEDHelper.java[tags=method]
+----
+
+
+=====  Any other useful information
+
+//Additional images here:
+
+Components
+image::https://github.com/oss-slu/Pi4Micronaut/tree/main/micronautpi4j-utils/src/docs/asciidoc/img/image-1187.png[]
+
+Photoresistor
+image::https://github.com/oss-slu/Pi4Micronaut/tree/main/micronautpi4j-utils/src/docs/asciidoc/img/image-1192.png[]
+
+
