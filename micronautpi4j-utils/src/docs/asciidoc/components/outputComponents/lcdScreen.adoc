@@ -2,18 +2,37 @@
 [.text-right] 
 https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/outputComponents/lcdScreen.adoc[Improve this doc]
 
+===== Overview
+This section provides details of the LCD (Liquid Crystal Display) circuit, including its components, assembly instructions, and functionality.
+
+===== Components
+. LCD
+
+===== Assembly Instructions
+
+===== Circuit Diagram
+Model:
+
+Circuit Diagram:
+
+===== Functionality
+The LCD is a N × M pixel screen that can be used to display different images or words. 
+
+===== Troubleshooting
+1. LCD screen not turning on: Check all connections, ensure the LCD is placed correctly, and check the power source
+
 ===== Constructors
 
 [source, java]
 ----
-include::../../../../../../micronautpi4j-utils/src/main/java/com/opensourcewithslu/outputDevices/LCD1602Helper.java[tag=const]
+include::../../../../main/java/com/opensourcewithslu/outputDevices/LCD1602Helper.java[tag=const]
 ----
 
 ===== Methods
 
 [source, java]
 ----
-include::../../../../../../micronautpi4j-utils/src/main/java/com/opensourcewithslu/outputDevices/LCD1602Helper.java[tags=method]
+include::../../../../main/java/com/opensourcewithslu/outputDevices/LCD1602Helper.java[tags=method]
 ----
 
 ===== An Example Controller
