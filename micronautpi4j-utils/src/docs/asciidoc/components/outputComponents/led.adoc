@@ -3,6 +3,19 @@
 [.text-right] 
 https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/outputComponents/led.adoc[Improve this doc]
 
+===== Overview
+This section contains an overview of the LED component, it's circuit, and other instructions.
+
+
+===== Components
+
+
+
+
+===== Circuit Diagram
+
+
+
 ===== Constructors
 
 [source, java]
@@ -22,3 +35,7 @@ include::../../../../../../micronautpi4j-utils/src/main/java/com/opensourcewiths
 ====== This controller turns the LED on and off
 
 TODO: Create an example LED Controller
+
+===== Troubleshooting
+
+===== YAML
