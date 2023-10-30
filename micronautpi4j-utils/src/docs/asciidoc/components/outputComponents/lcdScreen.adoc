@@ -25,14 +25,14 @@ The LCD is a N × M pixel screen that can be used to display different images or
 
 [source, java]
 ----
-include::../../../../main/java/com/opensourcewithslu/outputDevices/LCD1602Helper.java[tag=const]
+include::../../../../../../micronautpi4j-utils/src/main/java/com/opensourcewithslu/outputDevices/LCD1602Helper.java[tag=const]
 ----
 
 ===== Methods
 
 [source, java]
 ----
-include::../../../../main/java/com/opensourcewithslu/outputDevices/LCD1602Helper.java[tags=method]
+include::../../../../../../micronautpi4j-utils/src/main/java/com/opensourcewithslu/outputDevices/LCD1602Helper.java[tags=method]
 ----
 
 ===== An Example Controller
