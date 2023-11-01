@@ -1,4 +1,4 @@
-image::../../../../Pi4Micronaut_logo.png[]
+= Pi4Micronaut Documentation
 :source-highlighter: rouge
 :rouge-style: thankful_eyes
 :stylesheet: style.css
@@ -19,7 +19,11 @@ include::Introduction/supportedHardware.adoc[]
 
 include::Introduction/exampleApplications.adoc[]
 
+include::contribute/contributingToLibrary.adoc[]
+
+
 include::adding_creating_App.adoc[]
+
 
 include::usingLibrary.adoc[]
 
@@ -60,43 +64,5 @@ include::components/outputComponents/led.adoc[]
 include::components/outputComponents/rgbLed.adoc[]
 
 include::components/outputComponents/lcdScreen.adoc[]
-
-include::contributingToLibrary.adoc[]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
