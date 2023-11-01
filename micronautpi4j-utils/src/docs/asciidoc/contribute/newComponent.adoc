@@ -1,4 +1,4 @@
-== How to Create a New Component
+=== How to Create a New Component
 [.text-right] 
 https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/contribute/newComponent.adoc[Improve this doc]
 
