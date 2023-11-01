@@ -18,7 +18,7 @@ This section provides the details of the Slide Switch circuit, including its com
 ===== Circuit Diagram
 Model:
 
-image::https://github.com/oss-slu/Pi4Micronaut/tree/main/micronautpi4j-utils/src/docs/asciidoc/img/slideSwitch_circuit.jpg[]
+image::../../img/slideSwitch_circuit.jpg[]
 
 ===== Testing the Circuit:
 
