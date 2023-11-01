@@ -21,6 +21,7 @@ include::Introduction/exampleApplications.adoc[]
 
 include::contribute/contributingToLibrary.adoc[]
 
+include::contribute/newComponent.adoc[]
 
 include::adding_creating_App.adoc[]
 

@@ -77,7 +77,7 @@ Be open to suggestions and make necessary revisions.
 
 Thanks for considering a contribution to the Pi4Micronaut library! Your involvement helps make the project better for everyone.
 
-include::newComponent.adoc[]
+
 
 
 
