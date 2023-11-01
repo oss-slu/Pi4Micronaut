@@ -2,9 +2,13 @@ name: Java CI
 run-name: ${{ github.actor }} pushed changes 🚀
 on: 
   push:
+    branches:
+      - main
+      - develop
   pull_request:
     branches:
-      -develop
+      - main
+      - develop
 
 jobs:
   build:
