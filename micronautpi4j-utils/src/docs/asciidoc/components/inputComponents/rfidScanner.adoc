@@ -10,6 +10,7 @@ This section provides information regarding the RFID scanner component and its c
 ===== Components
 
 * RFID-RC522
+* RFID key fob
 * 9 x Jumper Wires
 * Breadboard
 * Power source (3.3V)
@@ -27,7 +28,23 @@ Model:
 
 ===== Testing the Circuit:
 
+To write to the RFID fob: `curl -X POST http://localhost:8080/rfid/write/{message}`
 
+Example:
+[source]
+----
+$ curl -X POST http://localhost:8080/rfid/write/HelloThere
+----
+Scan the key fob.
+
+To read from the RFID fob: `curl http://localhost:8080/rfid/read`
+
+Example:
+[source]
+----
+$ curl http://localhost:8080/rfid/read
+----
+Scan the key fob.
 
 ===== YAML
 The RFID scanner as it appears in the application.yml:
