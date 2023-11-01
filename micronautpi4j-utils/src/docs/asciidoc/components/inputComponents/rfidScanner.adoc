@@ -1,5 +1,6 @@
 ==== RFID Scanner
-
+:imagesdir: ../../images
+:data-uri:
 [.text-right]
 https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/inputComponents/rfidScanner.adoc[Improve this doc]
 
@@ -25,6 +26,7 @@ This section provides information regarding the RFID scanner component and its c
 ===== Circuit Diagram
 Model:
 
+image::https://docs.sunfounder.com/projects/davinci-kit/en/latest/_images/image232.png[]
 
 ===== Testing the Circuit:
 
