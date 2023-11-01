@@ -3,19 +3,29 @@
 https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/inputComponents/rotaryEncoder.adoc[Improve this doc]
 
 ===== Overview
-...
+This section provides details of the Rotary Encoder circuit,
+including its components, assembly instructions, and functionality.
 
 ===== Components
-...
+. Rotary encoder module
+. 1 x 10kΩ resistor
+. Breadboard
+. Jumper wires
+. Power source
 
 ===== Circuit Diagram
-...
+
+- Note the resistor location at GPIO 27
+
+image::https://learn.sunfounder.com/wp-content/uploads/2020/11/image-767.png[]
 
 ===== Functionality
 ...
 
 ===== Troubleshooting
-...
+- Value not being returned: Make sure all pins on the encoder match up
+  to the correct GPIO pins according to the YAML pin order below.
+- Make sure that a 10k resistor is being used
 
 ===== YAML Pin Order
 The order for declaring pins for a Rotary Encoder component in the application.yaml file is as follows
@@ -31,7 +41,7 @@ multi-digital-input:
     addresses: 17, 18, 27
 ----
 
-the sw pin would be the one connected to GPIO 17, the clk pin would be connected to GPIO 18, and the dt pin would connect to GPIO 27. All lists of values for Rotray Encoder components will follow the same order.
+the sw pin would be the one connected to GPIO 27, the clk pin would be connected to GPIO 18, and the dt pin would connect to GPIO 17. All lists of values for Rotary Encoder components will follow the same order.
 
 ===== Constructors
 
