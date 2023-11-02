@@ -193,41 +193,41 @@ th {
 </li>
 </ul>
 </li>
-<li><a href="#_adding_tocreating_an_application">2. Adding to/Creating an Application</a></li>
-<li><a href="#_using_the_library">3. Using the library</a></li>
-<li><a href="#_components">4. Components</a>
+<li><a href="#_contribute_to_the_pi4micronaut_library">2. Contribute to the Pi4Micronaut Library</a>
 <ul class="sectlevel2">
-<li><a href="#_communicating_with_a_hardware_component">4.1. Communicating with a Hardware Component</a>
-<ul class="sectlevel3">
-<li><a href="#_digital_input">4.1.1. Digital Input</a></li>
-<li><a href="#_digital_output">4.1.2. Digital Output</a></li>
-<li><a href="#_multipin_configurations">4.1.3. Multipin Configurations</a></li>
-<li><a href="#_pwm">4.1.4. PWM</a></li>
-<li><a href="#_spi">4.1.5. SPI</a></li>
-<li><a href="#_i2c">4.1.6. I2C</a></li>
+<li><a href="#_how_to_create_a_new_component">2.1. How to Create a New Component</a></li>
 </ul>
 </li>
-<li><a href="#_input_components">4.2. Input Components</a>
-<ul class="sectlevel3">
-<li><a href="#_push_button">4.2.1. Push Button</a></li>
-<li><a href="#_slide_switch">4.2.2. Slide Switch</a></li>
-<li><a href="#_rotary_encoder">4.2.3. Rotary Encoder</a></li>
-<li><a href="#_rfid_scanner">4.2.4. RFID Scanner</a></li>
-<li><a href="#_photosensor">4.2.5. Photosensor</a></li>
-</ul>
-</li>
-<li><a href="#_output_components">4.3. Output Components</a>
-<ul class="sectlevel3">
-<li><a href="#_led">4.3.1. LED</a></li>
-<li><a href="#_rgb_led">4.3.2. RGB LED</a></li>
-<li><a href="#_lcd">4.3.3. LCD</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#_contributing_to_the_library">5. Contributing to the Library</a>
+<li><a href="#_adding_tocreating_an_application">3. Adding to/Creating an Application</a></li>
+<li><a href="#_using_the_library">4. Using the library</a></li>
+<li><a href="#_components">5. Components</a>
 <ul class="sectlevel2">
-<li><a href="#_how_to_create_a_new_component">5.1. How to Create a New Component</a></li>
+<li><a href="#_communicating_with_a_hardware_component">5.1. Communicating with a Hardware Component</a>
+<ul class="sectlevel3">
+<li><a href="#_digital_input">5.1.1. Digital Input</a></li>
+<li><a href="#_digital_output">5.1.2. Digital Output</a></li>
+<li><a href="#_multipin_configurations">5.1.3. Multipin Configurations</a></li>
+<li><a href="#_pwm">5.1.4. PWM</a></li>
+<li><a href="#_spi">5.1.5. SPI</a></li>
+<li><a href="#_i2c">5.1.6. I2C</a></li>
+</ul>
+</li>
+<li><a href="#_input_components">5.2. Input Components</a>
+<ul class="sectlevel3">
+<li><a href="#_push_button">5.2.1. Push Button</a></li>
+<li><a href="#_slide_switch">5.2.2. Slide Switch</a></li>
+<li><a href="#_rotary_encoder">5.2.3. Rotary Encoder</a></li>
+<li><a href="#_rfid_scanner">5.2.4. RFID Scanner</a></li>
+<li><a href="#_photosensor">5.2.5. Photosensor</a></li>
+</ul>
+</li>
+<li><a href="#_output_components">5.3. Output Components</a>
+<ul class="sectlevel3">
+<li><a href="#_led">5.3.1. LED</a></li>
+<li><a href="#_rgb_led">5.3.2. RGB LED</a></li>
+<li><a href="#_lcd">5.3.3. LCD</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -312,7 +312,298 @@ th {
 </div>
 </div>
 <div class="sect1">
-<h2 id="_adding_tocreating_an_application"><a class="anchor" href="#_adding_tocreating_an_application"></a>2. Adding to/Creating an Application</h2>
+<h2 id="_contribute_to_the_pi4micronaut_library"><a class="anchor" href="#_contribute_to_the_pi4micronaut_library"></a>2. Contribute to the Pi4Micronaut Library</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Get Familiar with the Library</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Before making contributions,understand the purpose and functionality of the Pi4Micronaut library.</p>
+</li>
+<li>
+<p>Review the library documentation, any related articles, or tutorials.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Set Up Your Development Environment</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Fork the library&#8217;s repository from the GitHub.</p>
+</li>
+<li>
+<p>Clone your fork locally.</p>
+</li>
+<li>
+<p>Follow setup instructions provided in the repository&#8217;s README or ADOC files.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Understand the Contribution Process</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Familiarize yourself with the library&#8217;s contribution guidelines.</p>
+</li>
+<li>
+<p>Understand the community guidelines.</p>
+</li>
+<li>
+<p>Find out the preferred method of communication (e.g., issues, mailing list, discord).</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Identify a Way to Contribute</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Bug fixes: Look for open issues tagged as 'bug' or report new ones.</p>
+</li>
+<li>
+<p>New features: Discuss new ideas before implementing, to gauge interest and get guidance.</p>
+</li>
+<li>
+<p>Documentation: Contribute to the README, ADOC or other documentation.</p>
+</li>
+<li>
+<p>Testing: Improve or expand the test suite.</p>
+</li>
+<li>
+<p>Refactoring: Optimize existing code or improve its readability.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Making Changes</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Always create a new branch for your changes.</p>
+</li>
+<li>
+<p>Follow the library&#8217;s coding style and standards.</p>
+</li>
+<li>
+<p>Write clean, well-documented code.</p>
+</li>
+<li>
+<p>Add or update tests for your changes, if necessary.</p>
+</li>
+<li>
+<p>Commit frequently with meaningful commit messages.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Test Your Changes</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Ensure that all tests pass.</p>
+</li>
+<li>
+<p>Manually test your changes for unforeseen issues.</p>
+</li>
+<li>
+<p>Ensure your changes do not introduce regressions.</p>
+</li>
+<li>
+<p>Use your own hardware to test the new component integration.</p>
+</li>
+<li>
+<p>Note: A test suite will be developed in future to test the components without the use of external hardware</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Signing the Contributor License Agreement</p>
+<div class="ulist">
+<ul>
+<li>
+<p>While creating a pull request, you&#8217;ll be prompted to sign a Contributor License Agreement. Please do so by logging in with your GitHub account.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Submit a Pull Request (PR)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Push your changes to your forked repository.
+Create a pull request from your branch to the main library&#8217;s main branch.</p>
+</li>
+<li>
+<p>In the PR description, explain your changes, motivations, and any decisions made.</p>
+</li>
+<li>
+<p>Link to any related issues or discussions.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Respond to Feedback</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Maintainers or other contributors might provide feedback.
+Be open to suggestions and make necessary revisions.</p>
+</li>
+<li>
+<p>Engage in a constructive dialogue to ensure the quality of the contribution.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Stay Updated</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Keep your fork synchronized with the main repository to ease future contributions.</p>
+</li>
+<li>
+<p>Regularly check for updates or changes in the library&#8217;s contribution guidelines.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Engage with the Community</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Attend community meetings or join chat groups.</p>
+</li>
+<li>
+<p>Help other contributors or users when you can.</p>
+</li>
+<li>
+<p>Note: While your contribution is highly valued, there&#8217;s no guarantee that all pull requests will be merged. It depends on the library&#8217;s direction, quality of the contribution, and decisions of the maintainers.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Thanks for considering a contribution to the Pi4Micronaut library! Your involvement helps make the project better for everyone.</p>
+</div>
+<div class="sect2">
+<h3 id="_how_to_create_a_new_component"><a class="anchor" href="#_how_to_create_a_new_component"></a>2.1. How to Create a New Component</h3>
+<div class="paragraph text-right">
+<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/contribute/newComponent.adoc">Improve this doc</a></p>
+</div>
+<div class="paragraph">
+<p>If its compatible with a Raspberry Pi then it should work well with the Pi4Micronaut framework. The following steps should encompass how most components are added to the framework, but should more or different steps be needed, use the
+<a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/contribute/newComponent.adoc">Improve this doc</a> link to suggest changes.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Determine if the device is Input or Output</p>
+</li>
+<li>
+<p>Create a Controller:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Controllers define and handle interactions with a given component. The Controller of a component will have a <code>@Controller("/example")</code> right above the class declaration that acts as the endpoint for requests to the component. Instead of "example", you should name the endpoint something that is identifiable to the component. Each method of the Controller should have a <code>@Get("/examppleendpoint")</code> above the method declaration. The endpoint for the method should have the same name as the method and any parameters should be included in the endpoint <code>/examppleendpoint/{parameter1},{parameter2}</code>.</p>
+</li>
+<li>
+<p>See the <a href="https://github.com/oss-slu/Pi4Micronaut/blob/develop/components/src/main/java/com/opensourcewithslu/components/controllers/rgbController.java">RGB Controller</a> for an example of a Controller.</p>
+</li>
+<li>
+<p>Consult the <a href="https://micronaut-projects.github.io/micronaut-docs-mn3/3.8.1/guide/#creatingClient">Micronaut Documentation</a> for more explanation on Controllers.</p>
+</li>
+<li>
+<p>All Controllers should be kept here:
+<code>components\src\main\java\com\opensourcewithslu\components\controllers</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Create a Helper:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>A Helper is what the Controller calls to do a action. For example, to change the color of an RGB LED the controller will take the request to change it. The Controller will then call the change color method in the helper. The helper then takes all the actions needed to change the color of the LED.</p>
+</li>
+<li>
+<p>See the <a href="https://github.com/oss-slu/Pi4Micronaut/blob/develop/micronautpi4j-utils/src/main/java/com/opensourcewithslu/outputdevices/RGBLEDHelper.java">RBG Helper</a> for an example of a Helper.</p>
+</li>
+<li>
+<p>All Helpers should be kept here: <code>micronautpi4j-utils\src\main\java\com\opensourcewithslu\(inputdevices or outputdevices)</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Add Component to the Application yml</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The new component will need to be added to the application yml found at <code>components/src/main/resources/application.yml</code>.</p>
+</li>
+<li>
+<p>More infomation on the <code>application.yml</code> found in <a href="#_communicating_with_a_hardware_component">Communicating with a Hardware Component</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Thoroughly test:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Contributors should thoroughly test their integrations</p>
+</li>
+<li>
+<p>When submitting a pull request, make sure to include how you tested the component, any circuits that you may have used, and how to run any examples you may have created.</p>
+</li>
+<li>
+<p>It is important that reviewers are able to replicated your work in order to properly test the implementation.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Create documentation for the component:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Create an .adoc file with the component name as the file name.</p>
+</li>
+<li>
+<p>Make sure to include all the information that the other components. Simply copy/paste an existing components documentation and edit as needed.</p>
+</li>
+<li>
+<p>Add the file here: <code>micronautpi4j-utils/src/docs/asciidoc/components</code> under either input or output components.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_adding_tocreating_an_application"><a class="anchor" href="#_adding_tocreating_an_application"></a>3. Adding to/Creating an Application</h2>
 <div class="sectionbody">
 <div class="paragraph text-right">
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/adding_creating_App.adoc">Improve this doc</a></p>
@@ -324,7 +615,7 @@ TODO: outline how someone should add our jar to their exsisting application</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_using_the_library"><a class="anchor" href="#_using_the_library"></a>3. Using the library</h2>
+<h2 id="_using_the_library"><a class="anchor" href="#_using_the_library"></a>4. Using the library</h2>
 <div class="sectionbody">
 <div class="paragraph text-right">
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/usingLibrary.adoc">Improve this doc</a></p>
@@ -335,13 +626,13 @@ TODO: outline how someone should add our jar to their exsisting application</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_components"><a class="anchor" href="#_components"></a>4. Components</h2>
+<h2 id="_components"><a class="anchor" href="#_components"></a>5. Components</h2>
 <div class="sectionbody">
 <div class="paragraph text-right">
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components.adoc">Improve this doc</a></p>
 </div>
 <div class="sect2">
-<h3 id="_communicating_with_a_hardware_component"><a class="anchor" href="#_communicating_with_a_hardware_component"></a>4.1. Communicating with a Hardware Component</h3>
+<h3 id="_communicating_with_a_hardware_component"><a class="anchor" href="#_communicating_with_a_hardware_component"></a>5.1. Communicating with a Hardware Component</h3>
 <div class="paragraph text-right">
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/commun_WithHardware.adoc">Improve this doc</a></p>
 </div>
@@ -350,7 +641,7 @@ TODO: outline how someone should add our jar to their exsisting application</p>
 TODO: Consolidate the format and include examples of how each comm type is used</p>
 </div>
 <div class="sect3">
-<h4 id="_digital_input"><a class="anchor" href="#_digital_input"></a>4.1.1. Digital Input</h4>
+<h4 id="_digital_input"><a class="anchor" href="#_digital_input"></a>5.1.1. Digital Input</h4>
 <div class="paragraph text-right">
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/commun_WithHardware/digitalInput.adoc">Improve this doc</a></p>
 </div>
@@ -417,7 +708,7 @@ Each component will need</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_digital_output"><a class="anchor" href="#_digital_output"></a>4.1.2. Digital Output</h4>
+<h4 id="_digital_output"><a class="anchor" href="#_digital_output"></a>5.1.2. Digital Output</h4>
 <div class="paragraph text-right">
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/commun_WithHardware/digitalOutput.adoc">Improve this doc</a></p>
 </div>
@@ -484,7 +775,7 @@ Each component will need</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_multipin_configurations"><a class="anchor" href="#_multipin_configurations"></a>4.1.3. Multipin Configurations</h4>
+<h4 id="_multipin_configurations"><a class="anchor" href="#_multipin_configurations"></a>5.1.3. Multipin Configurations</h4>
 <div class="paragraph text-right">
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/commun_WithHardware/multipinConfig.adoc">Improve this doc</a></p>
 </div>
@@ -597,7 +888,7 @@ Each class of multipin component (Digital Input, PWM), is declared slightly diff
 </div>
 </div>
 <div class="sect3">
-<h4 id="_pwm"><a class="anchor" href="#_pwm"></a>4.1.4. PWM</h4>
+<h4 id="_pwm"><a class="anchor" href="#_pwm"></a>5.1.4. PWM</h4>
 <div class="paragraph text-right">
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/commun_WithHardware/pwm.adoc">Improve this doc</a></p>
 </div>
@@ -666,7 +957,7 @@ Each component will need</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_spi"><a class="anchor" href="#_spi"></a>4.1.5. SPI</h4>
+<h4 id="_spi"><a class="anchor" href="#_spi"></a>5.1.5. SPI</h4>
 <div class="paragraph text-right">
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/commun_WithHardware/spi.adoc">Improve this doc</a></p>
 </div>
@@ -709,7 +1000,7 @@ Each component will need</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_i2c"><a class="anchor" href="#_i2c"></a>4.1.6. I2C</h4>
+<h4 id="_i2c"><a class="anchor" href="#_i2c"></a>5.1.6. I2C</h4>
 <div class="paragraph text-right">
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/commun_WithHardware/i2c.adoc">Improve this doc</a></p>
 </div>
@@ -747,12 +1038,12 @@ Each component will need</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_input_components"><a class="anchor" href="#_input_components"></a>4.2. Input Components</h3>
+<h3 id="_input_components"><a class="anchor" href="#_input_components"></a>5.2. Input Components</h3>
 <div class="paragraph text-right">
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/inputComponents.adoc">Improve this doc</a></p>
 </div>
 <div class="sect3">
-<h4 id="_push_button"><a class="anchor" href="#_push_button"></a>4.2.1. Push Button</h4>
+<h4 id="_push_button"><a class="anchor" href="#_push_button"></a>5.2.1. Push Button</h4>
 <div class="paragraph text-right">
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/inputComponents/pushButton.adoc">Improve this doc</a></p>
 </div>
@@ -915,7 +1206,7 @@ adjust according to your power source and LED specifications</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_slide_switch"><a class="anchor" href="#_slide_switch"></a>4.2.2. Slide Switch</h4>
+<h4 id="_slide_switch"><a class="anchor" href="#_slide_switch"></a>5.2.2. Slide Switch</h4>
 <div class="paragraph text-right">
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/inputComponents/slideSwitch.adoc">Improve this doc</a></p>
 </div>
@@ -1044,7 +1335,7 @@ adjust according to your power source and LED specifications</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_rotary_encoder"><a class="anchor" href="#_rotary_encoder"></a>4.2.3. Rotary Encoder</h4>
+<h4 id="_rotary_encoder"><a class="anchor" href="#_rotary_encoder"></a>5.2.3. Rotary Encoder</h4>
 <div class="paragraph text-right">
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/inputComponents/rotaryEncoder.adoc">Improve this doc</a></p>
 </div>
@@ -1112,7 +1403,7 @@ adjust according to your power source and LED specifications</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_rfid_scanner"><a class="anchor" href="#_rfid_scanner"></a>4.2.4. RFID Scanner</h4>
+<h4 id="_rfid_scanner"><a class="anchor" href="#_rfid_scanner"></a>5.2.4. RFID Scanner</h4>
 <div class="paragraph text-right">
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/inputComponents/rfidScanner.adoc">Improve this doc</a></p>
 </div>
@@ -1145,7 +1436,7 @@ adjust according to your power source and LED specifications</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_photosensor"><a class="anchor" href="#_photosensor"></a>4.2.5. Photosensor</h4>
+<h4 id="_photosensor"><a class="anchor" href="#_photosensor"></a>5.2.5. Photosensor</h4>
 <div class="paragraph text-right">
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/inputComponents/photosensor.adoc">Improve this doc</a></p>
 </div>
@@ -1155,12 +1446,12 @@ adjust according to your power source and LED specifications</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_output_components"><a class="anchor" href="#_output_components"></a>4.3. Output Components</h3>
+<h3 id="_output_components"><a class="anchor" href="#_output_components"></a>5.3. Output Components</h3>
 <div class="paragraph text-right">
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/outputComponents.adoc">Improve this doc</a></p>
 </div>
 <div class="sect3">
-<h4 id="_led"><a class="anchor" href="#_led"></a>4.3.1. LED</h4>
+<h4 id="_led"><a class="anchor" href="#_led"></a>5.3.1. LED</h4>
 <div class="paragraph text-right">
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/outputComponents/led.adoc">Improve this doc</a></p>
 </div>
@@ -1191,7 +1482,7 @@ adjust according to your power source and LED specifications</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_rgb_led"><a class="anchor" href="#_rgb_led"></a>4.3.2. RGB LED</h4>
+<h4 id="_rgb_led"><a class="anchor" href="#_rgb_led"></a>5.3.2. RGB LED</h4>
 <div class="paragraph text-right">
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/outputComponents/rgbLed.adoc">Improve this doc</a></p>
 </div>
@@ -1451,7 +1742,7 @@ adjust according to your power source and LED specifications</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_lcd"><a class="anchor" href="#_lcd"></a>4.3.3. LCD</h4>
+<h4 id="_lcd"><a class="anchor" href="#_lcd"></a>5.3.3. LCD</h4>
 <div class="paragraph text-right">
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/outputComponents/lcdScreen.adoc">Improve this doc</a></p>
 </div>
@@ -1520,123 +1811,11 @@ adjust according to your power source and LED specifications</p>
 </div>
 </div>
 </div>
-<div class="sect1">
-<h2 id="_contributing_to_the_library"><a class="anchor" href="#_contributing_to_the_library"></a>5. Contributing to the Library</h2>
-<div class="sectionbody">
-<div class="paragraph text-right">
-<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/howContribute.adoc">Improve this doc</a></p>
-</div>
-<div class="paragraph">
-<p>TODO: outline how someone can contribute to our library</p>
-</div>
-<div class="paragraph">
-<p>There are several ways to contribute to the Pi4Micronaut framework, such as, suggesting changes to the code or documentation, bug fixes, or adding new components. Familiarity with the Micronaut framework will greatly help potential contributors understanding of how the code base works or how to implement new components. If help is needed with Micronaut related issues, reference the <a href="https://micronaut-projects.github.io/micronaut-docs-mn3/3.8.1/guide/">Micronaut Documentation</a> and the <a href="https://github.com/micronaut-projects/micronaut-core">Micronaut GitHub</a>.</p>
-</div>
-<div class="sect2">
-<h3 id="_how_to_create_a_new_component"><a class="anchor" href="#_how_to_create_a_new_component"></a>5.1. How to Create a New Component</h3>
-<div class="paragraph text-right">
-<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/contribute/newComponent.adoc">Improve this doc</a></p>
-</div>
-<div class="paragraph">
-<p>If its compatible with a Raspberry Pi then it should work well with the Pi4Micronaut framework. The following steps should encompass how most components are added to the framework, but should more or different steps be needed, use the
-<a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/contribute/newComponent.adoc">Improve this doc</a> link to suggest changes.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Determine if the device is Input or Output</p>
-</li>
-<li>
-<p>Create a Controller:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Controllers define and handle interactions with a given component. The Controller of a component will have a <code>@Controller("/example")</code> right above the class declaration that acts as the endpoint for requests to the component. Instead of "example", you should name the endpoint something that is identifiable to the component. Each method of the Controller should have a <code>@Get("/examppleendpoint")</code> above the method declaration. The endpoint for the method should have the same name as the method and any parameters should be included in the endpoint <code>/examppleendpoint/{parameter1},{parameter2}</code>.</p>
-</li>
-<li>
-<p>See the <a href="https://github.com/oss-slu/Pi4Micronaut/blob/develop/components/src/main/java/com/opensourcewithslu/components/controllers/rgbController.java">RGB Controller</a> for an example of a Controller.</p>
-</li>
-<li>
-<p>Consult the <a href="https://micronaut-projects.github.io/micronaut-docs-mn3/3.8.1/guide/#creatingClient">Micronaut Documentation</a> for more explanation on Controllers.</p>
-</li>
-<li>
-<p>All Controllers should be kept here:
-<code>components\src\main\java\com\opensourcewithslu\components\controllers</code></p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Create a Helper:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>A Helper is what the Controller calls to do a action. For example, to change the color of an RGB LED the controller will take the request to change it. The Controller will then call the change color method in the helper. The helper then takes all the actions needed to change the color of the LED.</p>
-</li>
-<li>
-<p>See the <a href="https://github.com/oss-slu/Pi4Micronaut/blob/develop/micronautpi4j-utils/src/main/java/com/opensourcewithslu/outputdevices/RGBLEDHelper.java">RBG Helper</a> for an example of a Helper.</p>
-</li>
-<li>
-<p>All Helpers should be kept here: <code>micronautpi4j-utils\src\main\java\com\opensourcewithslu\(inputdevices or outputdevices)</code></p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Add Component to the Application yml</p>
-<div class="ulist">
-<ul>
-<li>
-<p>The new component will need to be added to the application yml found at <code>components/src/main/resources/application.yml</code>.</p>
-</li>
-<li>
-<p>More infomation on the <code>application.yml</code> found in <a href="#_communicating_with_a_hardware_component">Communicating with a Hardware Component</a></p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Thoroughly test:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Contributors should thoroughly test their integrations</p>
-</li>
-<li>
-<p>When submitting a pull request, make sure to include how you tested the component, any circuits that you may have used, and how to run any examples you may have created.</p>
-</li>
-<li>
-<p>It is important that reviewers are able to replicated your work in order to properly test the implementation.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Create documentation for the component:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Create an .adoc file with the component name as the file name.</p>
-</li>
-<li>
-<p>Make sure to include all the information that the other components. Simply copy/paste an existing components documentation and edit as needed.</p>
-</li>
-<li>
-<p>Add the file here: <code>micronautpi4j-utils/src/docs/asciidoc/components</code> under either input or output components.</p>
-</li>
-</ul>
-</div>
-</li>
-</ol>
-</div>
-</div>
-</div>
-</div>
 </div>
 <div id="footer">
 <div id="footer-text">
 Version v1.0.0<br>
-Last updated 2023-10-22 15:43:37 UTC
+Last updated 2023-11-02 21:55:51 UTC
 </div>
 </div>
 <style>

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>Contribute to the Pi4Micronaut Library</title>
+<style>
+body {
+	font-family: sans-serif;
+	line-height: 1.5;
+	padding: 0;
+	margin: 0;
+	overflow-y: hidden;
+}
+
+.anchor{
+	color: green;
+	text-decoration: none;
+}
+
+.article {
+	display: grid;
+	grid-template-areas: "nav content";
+	grid-template-columns: 20em 1fr;
+	grid-template-rows: auto;
+}
+
+a {
+	text-decoration: none;
+}
+
+#header {
+	background-color: #000;
+	grid-area: nav;
+	position: fixed;
+	width: 100%;
+	vertical-align: center;
+	max-height: 6%;
+	height: 100%;
+	display: inline-block;
+	z-index: 10;
+}
+
+#toc {
+	padding-top: 1em;
+	padding-left: 1em;
+	padding-right: 1em;
+	padding-bottom: 2em;
+	float: left;
+	max-height: 90%;
+	height: 100%;
+	overflow-y: auto;
+	position: fixed;
+	box-sizing: border-box;
+	background-color: lightgray;
+	max-width: 15%;
+	width: 100%;
+}
+
+#toc a {
+	color: cornflowerblue;
+}
+
+#toc li {
+	padding-bottom: .6em;
+}
+
+#toc ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+#toc ul ul {
+	padding-left: 1.4em;
+}
+
+#toctitle {
+	font-weight: bold;
+	color: black;
+}
+
+h1 {
+	font-size: 1.4em;
+	background-color: black;
+	padding: .6em;
+	margin: 0;
+	width: 100%;
+	color: red;
+	height: 100%;
+	vertical-align: center;
+}
+
+/*.toc2{*/
+/*	float: left;*/
+/*}*/
+
+#toc a:hover {
+	background-color: maroon;
+}
+
+#content {
+	background-color: white;
+	overflow-y: auto;
+	grid-area: content;
+	padding: 1em;
+	max-width: 84%;
+	width: 100%;
+	position: fixed;
+	z-index: 1;
+	max-height: 80%;
+	height: 100%;
+	margin-left: 15%;
+	margin-right: 0;
+	margin-bottom: 10%;
+	margin-top: 5%;
+	padding-bottom: 50px;
+}
+
+.hljs{
+	background: #cacbca !important;
+}
+
+#content img {
+	max-width: 100%;
+}
+
+.details{
+	float: right;
+	position: absolute;
+	bottom: 0px;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}
+
+pre {
+	background-color: #f7f7f8;
+	padding: 1em;
+	word-wrap: break-word;
+	white-space: pre-wrap;
+}
+
+table {
+	grid: none;
+	frame: none;
+}
+
+td, th {
+	border: 1px solid gray;
+	padding: .4em;
+}
+
+th {
+	background-color: #f9f9f9;
+	text-align: left;
+}
+
+#footer-text {
+	float: right;
+	position: absolute;
+	bottom: 0px;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}
+
+.title{
+	font-style: italic;
+	padding-top: 2em;
+}
+</style>
+</head>
+<body class="article">
+<div id="header">
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_contribute_to_the_pi4micronaut_library">Contribute to the Pi4Micronaut Library</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Get Familiar with the Library</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Before making contributions,understand the purpose and functionality of the Pi4Micronaut library.</p>
+</li>
+<li>
+<p>Review the library documentation, any related articles, or tutorials.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Set Up Your Development Environment</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Fork the library&#8217;s repository from the GitHub.</p>
+</li>
+<li>
+<p>Clone your fork locally.</p>
+</li>
+<li>
+<p>Follow setup instructions provided in the repository&#8217;s README or ADOC files.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Understand the Contribution Process</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Familiarize yourself with the library&#8217;s contribution guidelines.</p>
+</li>
+<li>
+<p>Understand the community guidelines.</p>
+</li>
+<li>
+<p>Find out the preferred method of communication (e.g., issues, mailing list, discord).</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Identify a Way to Contribute</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Bug fixes: Look for open issues tagged as 'bug' or report new ones.</p>
+</li>
+<li>
+<p>New features: Discuss new ideas before implementing, to gauge interest and get guidance.</p>
+</li>
+<li>
+<p>Documentation: Contribute to the README, ADOC or other documentation.</p>
+</li>
+<li>
+<p>Testing: Improve or expand the test suite.</p>
+</li>
+<li>
+<p>Refactoring: Optimize existing code or improve its readability.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Making Changes</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Always create a new branch for your changes.</p>
+</li>
+<li>
+<p>Follow the library&#8217;s coding style and standards.</p>
+</li>
+<li>
+<p>Write clean, well-documented code.</p>
+</li>
+<li>
+<p>Add or update tests for your changes, if necessary.</p>
+</li>
+<li>
+<p>Commit frequently with meaningful commit messages.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Test Your Changes</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Ensure that all tests pass.</p>
+</li>
+<li>
+<p>Manually test your changes for unforeseen issues.</p>
+</li>
+<li>
+<p>Ensure your changes do not introduce regressions.</p>
+</li>
+<li>
+<p>Use your own hardware to test the new component integration.</p>
+</li>
+<li>
+<p>Note: A test suite will be developed in future to test the components without the use of external hardware</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Signing the Contributor License Agreement</p>
+<div class="ulist">
+<ul>
+<li>
+<p>While creating a pull request, you&#8217;ll be prompted to sign a Contributor License Agreement. Please do so by logging in with your GitHub account.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Submit a Pull Request (PR)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Push your changes to your forked repository.
+Create a pull request from your branch to the main library&#8217;s main branch.</p>
+</li>
+<li>
+<p>In the PR description, explain your changes, motivations, and any decisions made.</p>
+</li>
+<li>
+<p>Link to any related issues or discussions.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Respond to Feedback</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Maintainers or other contributors might provide feedback.
+Be open to suggestions and make necessary revisions.</p>
+</li>
+<li>
+<p>Engage in a constructive dialogue to ensure the quality of the contribution.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Stay Updated</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Keep your fork synchronized with the main repository to ease future contributions.</p>
+</li>
+<li>
+<p>Regularly check for updates or changes in the library&#8217;s contribution guidelines.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Engage with the Community</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Attend community meetings or join chat groups.</p>
+</li>
+<li>
+<p>Help other contributors or users when you can.</p>
+</li>
+<li>
+<p>Note: While your contribution is highly valued, there&#8217;s no guarantee that all pull requests will be merged. It depends on the library&#8217;s direction, quality of the contribution, and decisions of the maintainers.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Thanks for considering a contribution to the Pi4Micronaut library! Your involvement helps make the project better for everyone.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version v1.0.0<br>
+Last updated 2023-11-02 21:55:51 UTC
+</div>
+</div>
+</body>
+</html>
