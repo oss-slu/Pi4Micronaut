@@ -17,10 +17,25 @@ including its components, assembly instructions, and functionality.
 
 - Note the resistor location at GPIO 27
 
-image::https://learn.sunfounder.com/wp-content/uploads/2020/11/image-767.png[]
+image::../../img/rotary_encoder_circuit.png[]
 
 ===== Functionality
-...
+Turning the shaft clockwise will increase the value returned, whereas, turning the
+knob counterclockwise will decrease the value returned.
+
+- Incremental Rotary Encoder: The output of an incremental encoder provides information about the motion of the shaft, such as
+speed, distance, and position, as it does not return the angular position of the shaft.
+
+- Absolute Rotary Encoder: The output of an absolute encoder is used to measure
+angular positions by returning the current position of the shaft.
+
+===== Testing the Circuit
+To return the value of the rotary encoder:
+
+[source, bash]
+----
+$ curl http://localhost:8080/rotaryEncoder/value
+----
 
 ===== Troubleshooting
 - Value not being returned: Make sure all pins on the encoder match up
