@@ -13,6 +13,19 @@ including its components, assembly instructions, and functionality.
 . Jumper wires
 . Power source
 
+===== Assembly Instructions
+Connect the 5 pins on the encoder to the breadboard along with the resistor as
+stated below and in the diagram.
+
+. Ground: Connect ground on the encoder to ground on the breadboard
+. Power: Connect the + on the encoder to the 3.3V on the breadboard
+. SW: Connect SW to GPIO 27 on the breadboard
+. DT: Connect DT to GPIO 17 on the breadboard
+. CLK: Connect CLK to GPIO 18 on the breadboard
+. Resistor: Place the resistor horizontally so that it is parallel
+  with GPIO 27, having one side on the red + with the other next to the wire on GPIO 27
+. Connect a wire from 3.3V to the red + in the same column as the resistor
+
 ===== Circuit Diagram
 
 - Note the resistor location at GPIO 27
@@ -23,11 +36,6 @@ image::../../img/rotary_encoder_circuit.png[]
 Turning the shaft clockwise will increase the value returned, whereas, turning the
 knob counterclockwise will decrease the value returned.
 
-- Incremental Rotary Encoder: The output of an incremental encoder provides information about the motion of the shaft, such as
-speed, distance, and position, as it does not return the angular position of the shaft.
-
-- Absolute Rotary Encoder: The output of an absolute encoder is used to measure
-angular positions by returning the current position of the shaft.
 
 ===== Testing the Circuit
 To return the value of the rotary encoder:
