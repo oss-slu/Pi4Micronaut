@@ -26,7 +26,7 @@ This section provides the details of the Slide Switch circuit, including its com
 ===== Circuit Diagram
 Model:
 
-image::../../images/slideSwitch_circuit.jpg[]
+image::../../img/slideSwitch_circuit.jpg[]
 
 ===== Functionality
 Making a request to the switch will return whether the switch is on or off, flip the switch to change the state.
