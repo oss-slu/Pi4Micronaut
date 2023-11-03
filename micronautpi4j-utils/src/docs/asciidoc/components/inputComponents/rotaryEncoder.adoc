@@ -33,9 +33,10 @@ stated below and in the diagram.
 image::../../img/rotary_encoder_circuit.png[]
 
 ===== Functionality
-Turning the shaft clockwise will increase the value returned, whereas, turning the
-knob counterclockwise will decrease the value returned.
-
+- The initial value returned is 0.
+- Turning the shaft one unit clockwise will increase the value returned by 1, whereas, turning the
+  knob counterclockwise by one unit will decrease the value returned by 1.
+- The value returned is an integer with a max value of 2147483647 and min of -2147483647.
 
 ===== Testing the Circuit
 To return the value of the rotary encoder:
