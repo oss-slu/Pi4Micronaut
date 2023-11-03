@@ -183,6 +183,125 @@ th {
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/inputComponents/rotaryEncoder.adoc">Improve this doc</a></p>
 </div>
 <div class="sect4">
+<h5 id="_overview">Overview</h5>
+<div class="paragraph">
+<p>This section provides details of the Rotary Encoder circuit,
+including its components, assembly instructions, and functionality.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_components">Components</h5>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Rotary encoder module</p>
+</li>
+<li>
+<p>1 x 10kΩ resistor</p>
+</li>
+<li>
+<p>Breadboard</p>
+</li>
+<li>
+<p>Jumper wires</p>
+</li>
+<li>
+<p>Power source</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_assembly_instructions">Assembly Instructions</h5>
+<div class="paragraph">
+<p>Connect the 5 pins on the encoder to the breadboard along with the resistor as
+stated below and in the diagram.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Ground: Connect ground on the encoder to ground on the breadboard</p>
+</li>
+<li>
+<p>Power: Connect the + on the encoder to the 3.3V on the breadboard</p>
+</li>
+<li>
+<p>SW: Connect SW to GPIO 27 on the breadboard</p>
+</li>
+<li>
+<p>DT: Connect DT to GPIO 17 on the breadboard</p>
+</li>
+<li>
+<p>CLK: Connect CLK to GPIO 18 on the breadboard</p>
+</li>
+<li>
+<p>Resistor: Place the resistor horizontally so that it is parallel
+with GPIO 27, having one side on the red + with the other next to the wire on GPIO 27</p>
+</li>
+<li>
+<p>Connect a wire from 3.3V to the red + in the same column as the resistor</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_circuit_diagram">Circuit Diagram</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Note the resistor location at GPIO 27</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../img/rotary_encoder_circuit.png" alt="rotary encoder circuit">
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_functionality">Functionality</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>The initial value returned is 0.</p>
+</li>
+<li>
+<p>Turning the shaft one unit clockwise will increase the value returned by 1, whereas, turning the
+knob counterclockwise by one unit will decrease the value returned by 1.</p>
+</li>
+<li>
+<p>The value returned is an integer with a max value of 2147483647 and min of -2147483647.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_testing_the_circuit">Testing the Circuit</h5>
+<div class="paragraph">
+<p>To return the value of the rotary encoder:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl http://localhost:8080/rotaryEncoder/value</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_troubleshooting">Troubleshooting</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Value not being returned: Make sure all pins on the encoder match up
+to the correct GPIO pins according to the YAML pin order below.</p>
+</li>
+<li>
+<p>Make sure that a 10k resistor is being used</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
 <h5 id="_yaml_pin_order">YAML Pin Order</h5>
 <div class="paragraph">
 <p>The order for declaring pins for a Rotary Encoder component in the application.yaml file is as follows</p>
@@ -201,7 +320,7 @@ th {
 </div>
 </div>
 <div class="paragraph">
-<p>the sw pin would be the one connected to GPIO 17, the clk pin would be connected to GPIO 18, and the dt pin would connect to GPIO 27. All lists of values for Rotray Encoder components will follow the same order.</p>
+<p>the sw pin would be the one connected to GPIO 27, the clk pin would be connected to GPIO 18, and the dt pin would connect to GPIO 17. All lists of values for Rotary Encoder components will follow the same order.</p>
 </div>
 </div>
 <div class="sect4">
@@ -236,7 +355,7 @@ th {
 <div id="footer">
 <div id="footer-text">
 Version v1.0.0<br>
-Last updated 2023-11-02 21:55:51 UTC
+Last updated 2023-11-03 21:16:57 UTC
 </div>
 </div>
 </body>
