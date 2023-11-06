@@ -1,7 +1,62 @@
-
 ==== LED
+
 [.text-right] 
 https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/outputComponents/led.adoc[Improve this doc]
+
+===== Overview
+This section provides details of the LED, including its components and assembly instructions.
+
+===== Components
+* 1 x RaspberryPi
+* 1 x Breadboard
+* 1 x T-Extension Board
+* 1 x LED
+* 2 x Jumper wires
+* 1 x Resistor (220Ω)
+* Power source (appropriate voltage, typically 3.3V)
+
+===== Assembly
+
+* Place a single LED onto the Breadboard.
+* The LED will have two pins, a cathode and an anode.
+* Connect the cathode (short pin) of the LED to GPIO 17.
+* Connect the anode (long pin) to a 220Ω resistor on the positive side of the Breadboard.
+* Connect the other end of the resistor to 3.3V
+* Connect a jumper wire from GPIO 17 to the cathode of the LED.
+* Connect another jumper wire from 3.3V to the positive side of the Breadboard.
+* Two jumper wires should be connected to separate positions on the Breadboard and T-Extension Board.
+
+
+===== Circuit Diagram
+
+image::../../img/LED_circuit.png[]
+
+===== Testing
+
+Use: `curl http://localhost:8080/LED/LEDOn` to test the component. This will cause the LED to light.
+
+===== Troubleshooting
+- LED not lighting: Check the connections, and ensure the LED is placed correctly. Double-check the power source.
+- LED is too dim: Resistor value may be too high. Verify you're using 220Ω or adjust according to the power source your using
+as well as the LED specifications.
+
+===== YAML
+[source, yaml]
+----
+led:                                    # <1>
+      name: LED Output                      # <2>
+      address: 17                           # <3>
+      shutdown: HIGH                        # <4>
+      initial: HIGH                         # <5>
+      provider: pigpio-digital-output       # <6>
+
+led2:
+      name: LED Output
+      address: 26
+      shutdown: HIGH
+      initial: HIGH
+      provider: pigpio-digital-output
+----
 
 ===== Constructors
 
@@ -19,6 +74,7 @@ include::../../../../../../micronautpi4j-utils/src/main/java/com/opensourcewiths
 
 ===== An Example Controller
 
-====== This controller turns the LED on and off
-
-TODO: Create an example LED Controller
+[source, java]
+----
+include:: ../../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/LEDController.java[tags=method]
+----
