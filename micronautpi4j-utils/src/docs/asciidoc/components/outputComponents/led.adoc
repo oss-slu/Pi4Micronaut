@@ -29,7 +29,7 @@ This section provides details of the LED, including its components and assembly 
 
 ===== Circuit Diagram
 
-image::/../../../../../asciidoc/img/LED_circuit.png[]
+image::../../img/LED_circuit.png[]
 
 ===== Testing
 
