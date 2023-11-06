@@ -1,5 +1,5 @@
 ==== LED
-:omega: //Attribute is needed for the Omega symbol
+
 [.text-right] 
 https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/outputComponents/led.adoc[Improve this doc]
 
@@ -29,7 +29,7 @@ This section provides details of the LED, including its components and assembly 
 
 ===== Circuit Diagram
 
-image::https://github.com/oss-slu/Pi4Micronaut/tree/main/micronautpi4j-utils/src/docs/asciidoc/LED_circuit.png
+image::/../../../../../asciidoc/img/LED_circuit.png[]
 
 ===== Testing
 
