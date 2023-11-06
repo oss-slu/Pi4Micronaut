@@ -19,6 +19,10 @@ include::Introduction/supportedHardware.adoc[]
 
 include::Introduction/exampleApplications.adoc[]
 
+include::contribute/contributingToLibrary.adoc[]
+
+include::contribute/newComponent.adoc[]
+
 include::adding_creating_App.adoc[]
 
 
@@ -61,43 +65,5 @@ include::components/outputComponents/led.adoc[]
 include::components/outputComponents/rgbLed.adoc[]
 
 include::components/outputComponents/lcdScreen.adoc[]
-
-include::howContribute.adoc[]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
