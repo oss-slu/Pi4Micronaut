@@ -1,10 +1,10 @@
 ==== LED
-:icons: //Icons attribute is needed for the Omega symbol
+:omega: //Attribute is needed for the Omega symbol
 [.text-right] 
 https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/outputComponents/led.adoc[Improve this doc]
 
 ===== Overview
-This document provides details of the LED, including its components and assembly instructions. 
+This section provides details of the LED, including its components and assembly instructions.
 
 ===== Components
 - 1 x RaspberryPi
@@ -18,7 +18,7 @@ This document provides details of the LED, including its components and assembly
 ===== Assembly
 - To assemble, place a single LED onto the Breadboard. The LED will have two pins, a cathode and an anode. Place a 220:omega: resistor on the positive side of the Breadboard to the anode (the long pin of the LED),
 then the resistor to 3.3V, and connect the cathode (the short pin) of the LED to GPIO 17 of the RaspberryPi. In addition, there need to be two jumper cables connected to
-separate positions on the Breadboard and T-Extension Board. The first will go from the GPIO17 pin to the cathode. Then place the second wire from the 3.3V pin to the positve side
+separate positions on the Breadboard and T-Extension Board. The first will go from the GPIO17 pin to the cathode. Then place the second wire from the 3.3V pin to the positive side
 of the Breadboard.
 
 
@@ -26,9 +26,12 @@ of the Breadboard.
 
 image::https://github.com/oss-slu/Pi4Micronaut/tree/main/micronautpi4j-utils/src/docs/asciidoc/image49.png
 
+===== Testing
+
+Use: `curl http://localhost:8080/LED/LEDOn` to test the component. This will cause the LED to light.
 
 ===== Troubleshooting
-- LED not lighting: Check the connections, and ensure the LED is placed correctly. Double check the power source.
+- LED not lighting: Check the connections, and ensure the LED is placed correctly. Double-check the power source.
 - LED is too dim: Resistor value may be too high. Verify you're using 220:omega: or adjust according to the power source your using
 as well as the LED specifications.
 
@@ -60,3 +63,6 @@ include::../../../../../../micronautpi4j-utils/src/main/java/com/opensourcewiths
 ===== An Example Controller
 
 [source, java]
+----
+include:: ../../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/LEDController.java[tags=method]
+----
