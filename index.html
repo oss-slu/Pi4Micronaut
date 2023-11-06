@@ -1575,6 +1575,119 @@ to the correct GPIO pins according to the YAML pin order below.</p>
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/outputComponents/led.adoc">Improve this doc</a></p>
 </div>
 <div class="sect4">
+<h5 id="_overview_4"><a class="anchor" href="#_overview_4"></a>Overview</h5>
+<div class="paragraph">
+<p>This section provides details of the LED, including its components and assembly instructions.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_components_5"><a class="anchor" href="#_components_5"></a>Components</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>1 x RaspberryPi</p>
+</li>
+<li>
+<p>1 x Breadboard</p>
+</li>
+<li>
+<p>1 x T-Extension Board</p>
+</li>
+<li>
+<p>1 x LED</p>
+</li>
+<li>
+<p>2 x Jumper wires</p>
+</li>
+<li>
+<p>1 x Resistor (220Ω)</p>
+</li>
+<li>
+<p>Power source (appropriate voltage, typically 3.3V)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_assembly"><a class="anchor" href="#_assembly"></a>Assembly</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Place a single LED onto the Breadboard.</p>
+</li>
+<li>
+<p>The LED will have two pins, a cathode and an anode.</p>
+</li>
+<li>
+<p>Connect the cathode (short pin) of the LED to GPIO 17.</p>
+</li>
+<li>
+<p>Connect the anode (long pin) to a 220Ω resistor on the positive side of the Breadboard.</p>
+</li>
+<li>
+<p>Connect the other end of the resistor to 3.3V</p>
+</li>
+<li>
+<p>Connect a jumper wire from GPIO 17 to the cathode of the LED.</p>
+</li>
+<li>
+<p>Connect another jumper wire from 3.3V to the positive side of the Breadboard.</p>
+</li>
+<li>
+<p>Two jumper wires should be connected to separate positions on the Breadboard and T-Extension Board.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_circuit_diagram_4"><a class="anchor" href="#_circuit_diagram_4"></a>Circuit Diagram</h5>
+<div class="imageblock">
+<div class="content">
+<img src="../../img/LED_circuit.png" alt="LED circuit">
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_testing"><a class="anchor" href="#_testing"></a>Testing</h5>
+<div class="paragraph">
+<p>Use: <code>curl <a href="http://localhost:8080/LED/LEDOn" class="bare">http://localhost:8080/LED/LEDOn</a></code> to test the component. This will cause the LED to light.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_troubleshooting_3"><a class="anchor" href="#_troubleshooting_3"></a>Troubleshooting</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>LED not lighting: Check the connections, and ensure the LED is placed correctly. Double-check the power source.</p>
+</li>
+<li>
+<p>LED is too dim: Resistor value may be too high. Verify you&#8217;re using 220Ω or adjust according to the power source your using
+as well as the LED specifications.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_yaml_2"><a class="anchor" href="#_yaml_2"></a>YAML</h5>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">led</span><span class="pi">:</span>                                    <i class="conum" data-value="1"></i><b>(1)</b>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">LED Output</span>                      <i class="conum" data-value="2"></i><b>(2)</b>
+      <span class="na">address</span><span class="pi">:</span> <span class="s">17</span>                           <i class="conum" data-value="3"></i><b>(3)</b>
+      <span class="na">shutdown</span><span class="pi">:</span> <span class="s">HIGH</span>                        <i class="conum" data-value="4"></i><b>(4)</b>
+      <span class="na">initial</span><span class="pi">:</span> <span class="s">HIGH</span>                         <i class="conum" data-value="5"></i><b>(5)</b>
+      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-digital-output</span>       <i class="conum" data-value="6"></i><b>(6)</b>
+
+<span class="na">led2</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">LED Output</span>
+      <span class="na">address</span><span class="pi">:</span> <span class="m">26</span>
+      <span class="na">shutdown</span><span class="pi">:</span> <span class="s">HIGH</span>
+      <span class="na">initial</span><span class="pi">:</span> <span class="s">HIGH</span>
+      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-digital-output</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
 <h5 id="_constructors_5"><a class="anchor" href="#_constructors_5"></a>Constructors</h5>
 <div class="listingblock">
 <div class="content">
@@ -1592,10 +1705,9 @@ to the correct GPIO pins according to the YAML pin order below.</p>
 </div>
 <div class="sect4">
 <h5 id="_an_example_controller_5"><a class="anchor" href="#_an_example_controller_5"></a>An Example Controller</h5>
-<div class="sect5">
-<h6 id="_this_controller_turns_the_led_on_and_off"><a class="anchor" href="#_this_controller_turns_the_led_on_and_off"></a>This controller turns the LED on and off</h6>
-<div class="paragraph">
-<p>TODO: Create an example LED Controller</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">outputComponents</span><span class="o">/</span><span class="n">led</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:</span> <span class="o">../../../../../../</span><span class="n">components</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">components</span><span class="o">/</span><span class="n">controllers</span><span class="o">/</span><span class="nc">LEDController</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tags</span><span class="o">=</span><span class="n">method</span><span class="o">]</span></code></pre>
 </div>
 </div>
 </div>
@@ -1606,14 +1718,14 @@ to the correct GPIO pins according to the YAML pin order below.</p>
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/outputComponents/rgbLed.adoc">Improve this doc</a></p>
 </div>
 <div class="sect4">
-<h5 id="_overview_4"><a class="anchor" href="#_overview_4"></a>Overview</h5>
+<h5 id="_overview_5"><a class="anchor" href="#_overview_5"></a>Overview</h5>
 <div class="paragraph">
 <p>This document provides details of the RGB (Red-Green-Blue) LED circuit,
 including its components, assembly instructions, and functionality.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_components_5"><a class="anchor" href="#_components_5"></a>Components</h5>
+<h5 id="_components_6"><a class="anchor" href="#_components_6"></a>Components</h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1667,7 +1779,7 @@ negative terminals (like GPIO pins set to OUTPUT and LOW on a microcontroller).<
 </div>
 </div>
 <div class="sect4">
-<h5 id="_circuit_diagram_4"><a class="anchor" href="#_circuit_diagram_4"></a>Circuit Diagram</h5>
+<h5 id="_circuit_diagram_5"><a class="anchor" href="#_circuit_diagram_5"></a>Circuit Diagram</h5>
 <div class="paragraph">
 <p>Model:</p>
 </div>
@@ -1719,7 +1831,7 @@ produced. For instance:</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_troubleshooting_3"><a class="anchor" href="#_troubleshooting_3"></a>Troubleshooting</h5>
+<h5 id="_troubleshooting_4"><a class="anchor" href="#_troubleshooting_4"></a>Troubleshooting</h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1934,7 +2046,7 @@ adjust according to your power source and LED specifications</p>
 <div id="footer">
 <div id="footer-text">
 Version v1.0.0<br>
-Last updated 2023-11-03 21:16:57 UTC
+Last updated 2023-11-06 21:43:03 UTC
 </div>
 </div>
 <style>
