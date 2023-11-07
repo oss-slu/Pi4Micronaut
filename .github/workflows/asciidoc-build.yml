@@ -18,13 +18,10 @@ jobs:
       uses: tonynv/asciidoctor-action@master
       with:
           program: "./gradlew asciidoctor"
-    - name: Copy images to build directory
-      run: cp -r ./micronautpi4j-utils/src/docs/asciidoc/img ./micronautpi4j-utils/build/docs/asciidoc/
     - name: Deploy docs to ghpages
       uses: peaceiris/actions-gh-pages@v3
       with: 
         deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
         publish_branch: gh-pages
         publish_dir: ./micronautpi4j-utils/build/docs/asciidoc/
-    - name: Copy images to build directory
-      run: cp -r .micronautpi4j-utils/build/docs/asciidoc/img .docs/asciidoc/img
+
