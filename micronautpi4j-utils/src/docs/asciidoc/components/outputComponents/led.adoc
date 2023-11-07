@@ -1,3 +1,13 @@
+:imagesdir: img/
+
+ifndef::rootpath[]
+:rootpath: ../../
+endif::rootpath[]
+
+ifdef::rootpath[]
+:imagesdir: {rootpath}{imagesdir}
+endif::rootpath[]
+
 ==== LED
 
 [.text-right] 
@@ -29,7 +39,7 @@ This section provides details of the LED, including its components and assembly 
 
 ===== Circuit Diagram
 
-image::../../img/LED_circuit.png[]
+image::LED_circuit.png[]
 
 ===== Testing
 

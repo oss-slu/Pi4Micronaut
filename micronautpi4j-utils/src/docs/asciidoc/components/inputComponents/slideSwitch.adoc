@@ -1,3 +1,15 @@
+:imagesdir: img/
+
+ifndef::rootpath[]
+:rootpath: ../../
+endif::rootpath[]
+
+ifdef::rootpath[]
+:imagesdir: {rootpath}{imagesdir}
+endif::rootpath[]
+
+
+
 ==== Slide Switch
 
 [.text-right]
@@ -26,7 +38,7 @@ This section provides the details of the Slide Switch circuit, including its com
 ===== Circuit Diagram
 Model:
 
-image::../../img/slideSwitch_circuit.jpg[]
+image::slideSwitch_circuit.jpg[]
 
 ===== Functionality
 Making a request to the switch will return whether the switch is on or off, flip the switch to change the state.

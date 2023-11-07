@@ -1,3 +1,13 @@
+:imagesdir: img/
+
+ifndef::rootpath[]
+:rootpath: ../../
+endif::rootpath[]
+
+ifdef::rootpath[]
+:imagesdir: {rootpath}{imagesdir}
+endif::rootpath[]
+
 ==== RFID Scanner
 [.text-right]
 https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/inputComponents/rfidScanner.adoc[Improve this doc]
@@ -27,7 +37,7 @@ This section provides information regarding the RFID scanner component and its c
 ===== Circuit Diagram
 Model:
 
-image::../../img/rfid_circuit.png[]
+image::rfid_circuit.png[]
 
 ===== Functionality
 The two main functions of the RFID scanner are to read RFIDs and to write to them. What is written to the RFID will vary depending on the intended use for the scanner.
