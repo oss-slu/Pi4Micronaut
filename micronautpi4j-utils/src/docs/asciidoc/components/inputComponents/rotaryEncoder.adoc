@@ -30,7 +30,7 @@ stated below and in the diagram.
 
 - Note the resistor location at GPIO 27
 
-image::img/rotary_encoder_circuit.png[]
+image::https://github.com/oss-slu/Pi4Micronaut/blob/main/micronautpi4j-utils/src/docs/asciidoc/img/rotary_encoder_circuit.png[]
 
 ===== Functionality
 - The initial value returned is 0.
