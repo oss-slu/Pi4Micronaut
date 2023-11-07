@@ -10,6 +10,8 @@
 :toclevels: 3
 :sectanchors:
 :sectnums:
+:rootpath:
+:imagesdir:img
 
 toc::[]
 

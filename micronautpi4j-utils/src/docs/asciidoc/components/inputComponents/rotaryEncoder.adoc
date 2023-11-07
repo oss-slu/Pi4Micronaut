@@ -1,3 +1,13 @@
+:imagesdir: img/
+
+ifndef::rootpath[]
+:rootpath: ../../
+endif::rootpath[]
+
+ifdef::rootpath[]
+:imagesdir: {rootpath}{imagesdir}
+endif::rootpath[]
+
 ==== Rotary Encoder
 [.text-right] 
 https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/inputComponents/rotaryEncoder.adoc[Improve this doc]
@@ -30,7 +40,7 @@ stated below and in the diagram.
 
 - Note the resistor location at GPIO 27
 
-image::https://github.com/oss-slu/Pi4Micronaut/blob/main/micronautpi4j-utils/src/docs/asciidoc/img/rotary_encoder_circuit.png[]
+image::rotary_encoder_circuit.png[]
 
 ===== Functionality
 - The initial value returned is 0.
