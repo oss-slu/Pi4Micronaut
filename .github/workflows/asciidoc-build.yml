@@ -24,4 +24,5 @@ jobs:
         deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
         publish_branch: gh-pages
         publish_dir: ./micronautpi4j-utils/build/docs/asciidoc/
-
+    - name: Copy images to build directory
+      run: cp -r .micronautpi4j-utils/build/docs/asciidoc/img .docs/asciidoc/img
