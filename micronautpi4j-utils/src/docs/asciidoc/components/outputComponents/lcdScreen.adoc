@@ -8,7 +8,7 @@ ifdef::rootpath[]
 :imagesdir: {rootpath}{imagesdir}
 endif::rootpath[]
 
-==== LCD
+== LCD
 [.text-right] 
 https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/outputComponents/lcdScreen.adoc[Improve this doc]
 
