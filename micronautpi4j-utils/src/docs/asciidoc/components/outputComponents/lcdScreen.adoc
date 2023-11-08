@@ -15,7 +15,7 @@ This section provides details of the LCD (Liquid Crystal Display) circuit, inclu
 
 ===== Circuit Diagram
 Model:
-
+image::lcd-circuit.png[]
 Circuit Diagram:
 
 ===== Functionality
