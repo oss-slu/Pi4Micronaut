@@ -24,6 +24,7 @@ This section provides details of the LCD (Liquid Crystal Display) circuit, inclu
 
 ===== Assembly Instructions
 Connect the 4 pins on the LCD screen to the breadboard as described below and in the diagram:
+
 . Ground: connect GND on the LCD to GND on the breadboard
 . Power: connect VCC on the LCD to 5V0 on the breadboard
 . SDA: connect SDA on the LCD to SDA1 on the breadboard
