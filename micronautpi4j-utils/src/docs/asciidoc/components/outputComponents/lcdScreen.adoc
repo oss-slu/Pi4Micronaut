@@ -13,7 +13,7 @@ endif::rootpath[]
 https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/outputComponents/lcdScreen.adoc[Improve this doc]
 
 ===== Overview
-This section provides details of the LCD (Liquid Crystal Display) circuit, including its components, assembly instructions, and functionality.
+This section provides details of the LCD (Liquid Crystal Display) circuit, including its components, assembly instructions, and functionality. The LCD is a M × N pixel screen that can be used to display different images or words.
 
 ===== Components
 . LCD
@@ -23,19 +23,18 @@ This section provides details of the LCD (Liquid Crystal Display) circuit, inclu
 . Power source (5V)
 
 ===== Assembly Instructions
+Connect the 4 pins on the LCD screen to the breadboard as described below and in the diagram:
+. Ground: connect GND on the LCD to GND on the breadboard
+. Power: connect VCC on the LCD to 5V0 on the breadboard
+. SDA: connect SDA on the LCD to SDA1 on the breadboard
+. SCL: connect SCL on the LCD to SCL1 on the breadboard
 
 ===== Circuit Diagram
-Model:
 
 image::lcd-circuit.png[]
 
-Circuit Diagram:
-
 ===== Functionality
-The LCD is a M × N pixel screen that can be used to display different images or words. The LCD screen will light up once connected to a power source.
-
-===== Troubleshooting
-1. LCD screen not turning on: Check all connections, ensure the LCD is placed correctly, and check the power source
+The LCD screen will light up once connected to a power source.
 
 ===== Testing the Circuit
 Write Hello to the LCD screen
@@ -56,7 +55,6 @@ Turn backlight on/off
 $ curl http://localhost:8080/lcd/backlight/on
 $ curl http://localhost:8080/lcd/backlight/off
 ----
-
 Clear entire LCD screen
 [source, bash]
 ----
@@ -68,6 +66,9 @@ Clear one line on LCD screen
 $ curl http://localhost:8080/lcd/clear/{line}
 $ curl http://localhost:8080/lcd/clear/2
 ----
+
+===== Troubleshooting
+1. LCD screen not turning on: Check all connections, ensure the LCD is placed correctly, and check the power source
 
 ===== Constructors
 
