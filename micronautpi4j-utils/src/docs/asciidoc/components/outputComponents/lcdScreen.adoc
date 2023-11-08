@@ -21,6 +21,7 @@ This section provides details of the LCD (Liquid Crystal Display) circuit, inclu
 . T-Extension Board
 . Jumper wires
 . Power source (5V)
+
 ===== Assembly Instructions
 
 ===== Circuit Diagram
@@ -31,10 +32,42 @@ image::lcd-circuit.png[]
 Circuit Diagram:
 
 ===== Functionality
-The LCD is a N × M pixel screen that can be used to display different images or words. 
+The LCD is a M × N pixel screen that can be used to display different images or words. The LCD screen will light up once connected to a power source.
 
 ===== Troubleshooting
 1. LCD screen not turning on: Check all connections, ensure the LCD is placed correctly, and check the power source
+
+===== Testing the Circuit
+Write Hello to the LCD screen
+[source, bash]
+----
+$ curl http://localhost:8080/lcd/write/{text}
+$ curl http://localhost:8080/lcd/write/Hello
+----
+Write World on line 2 of LCD screen
+[source, bash]
+----
+$ curl http://localhost:8080/lcd/write/{text}/{line}
+$ curl http://localhost:8080/lcd/write/World/2
+----
+Turn backlight on/off
+[source, bash]
+----
+$ curl http://localhost:8080/lcd/backlight/on
+$ curl http://localhost:8080/lcd/backlight/off
+----
+
+Clear entire LCD screen
+[source, bash]
+----
+$ curl http://localhost:8080/lcd/clear/all
+----
+Clear one line on LCD screen
+[source, bash]
+----
+$ curl http://localhost:8080/lcd/clear/{line}
+$ curl http://localhost:8080/lcd/clear/2
+----
 
 ===== Constructors
 
