@@ -1,0 +1,37 @@
+
+==== Rotary Encoder
+[.text-right]
+https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/inputComponents/thermistor.adoc[Improve this doc]
+
+===== Overview
+...
+
+===== Components
+...
+
+===== Assembly Instructions
+...
+
+===== Circuit Diagram
+...
+
+===== Functionality
+...
+
+===== Testing
+...
+
+===== Troubleshooting
+...
+
+===== YAML Pin Order
+...
+
+===== Constructors
+...
+
+===== Methods
+...
+
+===== An Example Controller
+...
