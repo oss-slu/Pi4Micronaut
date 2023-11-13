@@ -121,6 +121,9 @@ pi4j:
       shutdown: LOW
       initial: HIGH
       provider: pigpio-digital-input
+    thermistor:
+      name: Thermistor
+      addresses: 17, 18, 27
   # tag::multipwm[]
   multi-pwm:
     rgb-led:                                    # <.>
