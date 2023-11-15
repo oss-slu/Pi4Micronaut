@@ -72,11 +72,12 @@ $ curl http://localhost:8080/lcd/clear/2
 1. LCD screen not turning on: Check all connections, ensure the LCD is placed correctly, and check the power source
 2. Make sure I2C is enabled. To enable, follow these steps:
 
+[.indent]
 a. Type the following command:
-[source, bash]
-----
-$ sudo raspi-config
-----
+  [source, bash]
+  ----
+  $ sudo raspi-config
+  ----
 b. Use the arrow keys to navigate to "Interfacing Options" and press Enter.
 c. Scroll down and select "I2C" using the arrow keys and press Enter.
 d. When prompted whether to enable the ARM I2C interface, select "Yes."
