@@ -74,7 +74,7 @@ $ curl http://localhost:8080/lcd/clear/2
 
 [.indent]
 a. Type the following command:
-  [source, bash]
+  [source, bash, indent=1]
   ----
   $ sudo raspi-config
   ----
@@ -82,7 +82,7 @@ b. Use the arrow keys to navigate to "Interfacing Options" and press Enter.
 c. Scroll down and select "I2C" using the arrow keys and press Enter.
 d. When prompted whether to enable the ARM I2C interface, select "Yes."
 e. Exit the configuration tool and reboot the Raspberry Pi with the following command for the changes to take effect:
-[source, bash]
+[source, bash, indent=1]
 ----
 $ sudo reboot
 ----
