@@ -71,7 +71,7 @@ $ curl http://localhost:8080/lcd/clear/2
 ===== Troubleshooting
 1. LCD screen not turning on: Check all connections, ensure the LCD is placed correctly, and check the power source
 2. Make sure I2C is enabled. To enable, follow these steps:
-======
+-----
 1. Type the following command:
 [source, bash]
 ----
@@ -85,7 +85,7 @@ $ sudo raspi-config
 ----
 $ sudo reboot
 ----
-======
+-----
 
 
 ===== Constructors
