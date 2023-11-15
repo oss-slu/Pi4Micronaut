@@ -72,6 +72,7 @@ $ curl http://localhost:8080/lcd/clear/2
 ===== Troubleshooting
 1. LCD screen not turning on: Check all connections, ensure the LCD is placed correctly, and check the power source
 2. Make sure I2C is enabled. To enable, follow these steps:
+---
 a. Type the following command:
 
 [source, bash, indent=8]
@@ -88,6 +89,7 @@ e. Exit the configuration tool and reboot the Raspberry Pi with the following co
 ----
 $ sudo reboot
 ----
+---
 
 
 
