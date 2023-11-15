@@ -14,7 +14,7 @@ endif::rootpath[]
 == Subsection
 
 ====
-Indented content
++ Indented content
 ====
 
 ==== LCD
