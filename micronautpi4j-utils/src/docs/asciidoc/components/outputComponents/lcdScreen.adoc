@@ -9,14 +9,6 @@ ifdef::rootpath[]
 endif::rootpath[]
 
 
-= Main Section
-
-== Subsection
-
-====
-+ Indented content
-====
-
 ==== LCD
 [.text-right] 
 https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/outputComponents/lcdScreen.adoc[Improve this doc]
@@ -82,7 +74,7 @@ $ curl http://localhost:8080/lcd/clear/2
 2. Make sure I2C is enabled. To enable, follow these steps:
 -----
 1. Type the following command:
-[source, bash]
+[source, bash, indent=8]
 ----
 $ sudo raspi-config
 ----
@@ -90,7 +82,7 @@ $ sudo raspi-config
 3. Scroll down and select "I2C" using the arrow keys and press Enter.
 4. When prompted whether to enable the ARM I2C interface, select "Yes."
 5. Exit the configuration tool and reboot the Raspberry Pi with the following command for the changes to take effect:
-[source, bash]
+[source, bash, indent=8]
 ----
 $ sudo reboot
 ----
