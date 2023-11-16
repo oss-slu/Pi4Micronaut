@@ -1,3 +1,15 @@
+:imagesdir: img/
+
+ifndef::rootpath[]
+:rootpath: ../../
+endif::rootpath[]
+
+ifdef::rootpath[]
+:imagesdir: {rootpath}{imagesdir}
+endif::rootpath[]
+
+
+
 ==== Slide Switch
 
 [.text-right]
@@ -15,14 +27,29 @@ This section provides the details of the Slide Switch circuit, including its com
 * 7 x Jumper Wires
 * Power source (appropriate voltage, typically 3.3V or 5V)
 
+===== Assembly Instructions
+1. Place the slide switch and the capacitor vertically in the same column on the breadboard.
+2. Connect the middle pin of the slide switch to the bottom pin of the capacitor.
+3. Place the resistor so that one side is in the same row as the middle pin of the slide switch with the wire from step two between, and the other side to the top pin of the resistor.
+4. Power the slide switch by connecting the 5V pin from the pin to the positive column of the breadboard and connecting the bottom pin of the slide switch to that column.
+5. Connect the top pins of the slide switch and the capacitor to the negative column of the breadboard. Connect the GND pin of the Pi to that column.
+6. Connect the GPIO18 pin of the Pi to the middle pin of the slide switch so that the resistor and the connection to the capacitor are between.
+
 ===== Circuit Diagram
 Model:
 
-image::https://github.com/oss-slu/Pi4Micronaut/tree/main/micronautpi4j-utils/src/docs/asciidoc/img/slideSwitch_circuit.jpg[]
+image::slideSwitch_circuit.jpg[]
+
+===== Functionality
+Making a request to the switch will return whether the switch is on or off, flip the switch to change the state.
 
 ===== Testing the Circuit:
 
 Use: `curl http://localhost:8080/slideSwitch/switch1` to test the switch. This will either return true,if the switch is on, and false if the switch is off. Flip the switch and run the command again to see the opposite result of the first call.
+
+===== Troubleshooting
+
+Verify that all connections are correct and that the order of components in a row are correct. 
 
 ===== YAML
 The slide switch as it appears in the application.yml:
