@@ -80,6 +80,10 @@ pi4j:
       pull: PULL_DOWN
       debounce: 3000
       provider: pigpio-digital-input
+    thermistor-input:
+      name: Thermistor Input
+      address: 18
+      provider: pigpio-digital-input
   ### DIGITAL OUTPUTS
   digital-output:
     # tag::digitalOutput[]
@@ -98,6 +102,12 @@ pi4j:
       provider: pigpio-digital-output
     photo-resistor-output:
       name: Photo Resistor Output
+      address: 27
+      shutdown: LOW
+      initial: HIGH
+      provider: pigpio-digital-output
+    thermistor-output:
+      name: Thermistor Output
       address: 27
       shutdown: LOW
       initial: HIGH
@@ -121,9 +131,6 @@ pi4j:
       shutdown: LOW
       initial: HIGH
       provider: pigpio-digital-input
-    thermistor:
-      name: Thermistor
-      addresses: 17, 18, 27
   # tag::multipwm[]
   multi-pwm:
     rgb-led:                                    # <.>
