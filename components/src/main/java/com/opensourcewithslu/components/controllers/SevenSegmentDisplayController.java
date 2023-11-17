@@ -21,7 +21,7 @@ public class SevenSegmentDisplayController {
 
     private final SevenSegmentDisplayHelper sevensegmentdisplayHelper; //Why is this not initialized?
 
-    public SevenSegmentDisplayController(@Named("SevenSegmentDisplay") I2CConfig i2CConfig, Context pi4jContext){
+    public SevenSegmentDisplayController(@Named("seven-segment-display") I2CConfig i2CConfig, Context pi4jContext){
         this.sevensegmentdisplayHelper = new SevenSegmentDisplayHelper(i2CConfig,pi4jContext);
     }
 
