@@ -3,17 +3,16 @@ package com.opensourcewithslu.outputdevices;
 import com.pi4j.context.Context;
 import com.pi4j.crowpi.components.SevenSegmentComponent;
 import com.pi4j.io.gpio.digital.DigitalOutput;
+import com.pi4j.io.i2c.I2CConfig;
 
 import java.util.HashMap;
 
-//import java.time.LocalTime;
-//Basic helper class for the Seven Segment Display. Uses crowpi components.
 public class SevenSegmentDisplayHelper {
 
     private final SevenSegmentComponent segment;
 
-    public  SevenSegmentDisplayHelper (DigitalOutput seven, Context pi4j) {
-        segment = new SevenSegmentComponent(pi4j);
+    public  SevenSegmentDisplayHelper (I2CConfig i2CConfig, Context pi4j) {
+        segment = new SevenSegmentComponent(pi4j, i2CConfig.bus(), i2CConfig.device());
         segment.setEnabled(true);
 
         //Disable blinking

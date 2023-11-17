@@ -6,6 +6,7 @@ package com.opensourcewithslu.components.controllers;
  */
 //import com.pi4j.component.sevseg.SevenSegment;
 //import com.pi4j.crowpi.components.SevenSegmentComponent;
+import com.pi4j.io.i2c.I2CConfig;
 import com.opensourcewithslu.outputdevices.SevenSegmentDisplayHelper;
 import com.pi4j.context.Context;
 import com.pi4j.io.gpio.digital.DigitalOutput;
@@ -20,8 +21,8 @@ public class SevenSegmentDisplayController {
 
     private final SevenSegmentDisplayHelper sevensegmentdisplayHelper; //Why is this not initialized?
 
-    public SevenSegmentDisplayController(@Named("SevenSegmentDisplay")DigitalOutput sevsegdisplay, Context pi4jContext){
-        this.sevensegmentdisplayHelper = new SevenSegmentDisplayHelper(sevsegdisplay,pi4jContext);
+    public SevenSegmentDisplayController(@Named("SevenSegmentDisplay") I2CConfig i2CConfig, Context pi4jContext){
+        this.sevensegmentdisplayHelper = new SevenSegmentDisplayHelper(i2CConfig,pi4jContext);
     }
 
     @Get("/printInt/{i}")
