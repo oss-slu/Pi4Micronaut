@@ -102,6 +102,12 @@ pi4j:
       shutdown: LOW
       initial: HIGH
       provider: pigpio-digital-output
+    SevenSegmentDisplay:
+      name: Seven Segment Display
+      address: 28
+      shutdown: HIGH
+      intial: HIGH
+      provider: pigpio-digital-output
   # tag::multiInput[]
   multi-digital-input:                     # <.>
     rotary-encoder:                        # <.>
