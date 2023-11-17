@@ -15,19 +15,43 @@ import jakarta.inject.Named;
 
 
 
-@Controller("/7SegDisplay")
+@Controller("/7SegmentDisplay")
 public class SevenSegmentDisplayController {
 
     private final SevenSegmentDisplayHelper sevensegmentdisplayHelper; //Why is this not initialized?
 
-    public SevenSegmentDisplayController(@Named("7SegmentDisplay")DigitalOutput sevsegdisplay, Context pi4jContext){
+    public SevenSegmentDisplayController(@Named("SevenSegmentDisplay")DigitalOutput sevsegdisplay, Context pi4jContext){
         this.sevensegmentdisplayHelper = new SevenSegmentDisplayHelper(sevsegdisplay,pi4jContext);
     }
 
-    /* The following functions will be used here:
-        * print (int i)
-        * print (string s)
-        *
-     */
+    @Get("/printInt")
+    public void printInt(int i){
+        /*Outputs the desired integer value*/
+        sevensegmentdisplayHelper.printInteger(i);
+    }
+    @Get("/printStr")
+    public void printString(String s){
+        /*Outputs the desired string value*/
+        sevensegmentdisplayHelper.printString(s);
+    }
+
+    @Get("/countdown")
+    public void countdown(int val){
+        /*Outputs values in a countdown fashion, user defines the value to begin at*/
+        sevensegmentdisplayHelper.countdownTimer(val);
+    }
+
+    @Get("/numCtr")
+    public void numberCounter(int val){
+        /*Outputs even or odd values as specified by the user*/
+
+        sevensegmentdisplayHelper.numberCounter(val);
+    }
+
+    @Get("/dispAllVals")
+    public void displayAllValues(){
+        /*Outputs all values from 0-9 & A-F*/
+        sevensegmentdisplayHelper.showAllValues();
+    }
 
 }

@@ -10,8 +10,10 @@ import java.util.HashMap;
 //Basic helper class for the Seven Segment Display. Uses crowpi components.
 public class SevenSegmentDisplayHelper {
 
+    private final SevenSegmentComponent segment;
+
     public  SevenSegmentDisplayHelper (DigitalOutput seven, Context pi4j) {
-        final var segment = new SevenSegmentComponent(pi4j);
+        segment = new SevenSegmentComponent(pi4j);
         segment.setEnabled(true);
 
         //Disable blinking
@@ -62,6 +64,40 @@ public class SevenSegmentDisplayHelper {
             }
         }
 
+    }
+    public void printInteger(int i){
+        segment.print(i);
+    }
+
+    public void printString(String s){
+        segment.print(s);
+    }
+
+    public void countdownTimer(int value){
+        /*User can choose integer and function will countdown from the starting point*/
+
+        for (int i = value; i >= 0; i--){
+            printInteger(value);
+        }
+    }
+
+    public void numberCounter(int value){
+        /*Value should be 0 for even numbers to be output and 1 for odd numbers to be output*/
+
+            for (int i = value; i < 10; i += 2) {
+                printInteger(value);
+            }
+    }
+
+    public void showAllValues(){
+        /*Function will display all values 0-9 then A-F*/
+        for (int i = 0; i < 10; i ++) {
+            printInteger(i);
+        }
+
+        for (int j= 65; j< 71; j++){
+            printString(String.valueOf((char)j));
+        }
     }
 
 }
