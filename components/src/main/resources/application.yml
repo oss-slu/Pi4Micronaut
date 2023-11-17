@@ -106,7 +106,7 @@ pi4j:
       name: Seven Segment Display
       address: 28
       shutdown: HIGH
-      intial: HIGH
+      initial: HIGH
       provider: pigpio-digital-output
   # tag::multiInput[]
   multi-digital-input:                     # <.>
