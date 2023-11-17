@@ -16,12 +16,25 @@ public class LEDController {
         this.ledHelper = new LEDHelper(led);
     }
 
-    @Get("/LEDOn")
-    public void checkLed(){
+    @Get("/LedOn")
+    public void ledOn(){
         /*deviceOff method turns on the LED after checking the output. This
         will turn on the LED
         */
 
         ledHelper.deviceOff();
+    }
+
+    @Get("/LedOff")
+    public void ledOff(){
+
+        ledHelper.deviceOn();
+    }
+
+    @Get("/switchState")
+    public void switchState(){
+
+
+        ledHelper.switchState();
     }
 }
