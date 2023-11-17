@@ -24,24 +24,24 @@ public class SevenSegmentDisplayController {
         this.sevensegmentdisplayHelper = new SevenSegmentDisplayHelper(sevsegdisplay,pi4jContext);
     }
 
-    @Get("/printInt")
+    @Get("/printInt/{i}")
     public void printInt(int i){
         /*Outputs the desired integer value*/
         sevensegmentdisplayHelper.printInteger(i);
     }
-    @Get("/printStr")
+    @Get("/printStr/{s}")
     public void printString(String s){
         /*Outputs the desired string value*/
         sevensegmentdisplayHelper.printString(s);
     }
 
-    @Get("/countdown")
+    @Get("/countdown/{val}")
     public void countdown(int val){
         /*Outputs values in a countdown fashion, user defines the value to begin at*/
         sevensegmentdisplayHelper.countdownTimer(val);
     }
 
-    @Get("/numCtr")
+    @Get("/numCtr/{val}")
     public void numberCounter(int val){
         /*Outputs even or odd values as specified by the user*/
 
