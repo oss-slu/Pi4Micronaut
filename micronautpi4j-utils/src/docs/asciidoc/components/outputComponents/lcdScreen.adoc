@@ -43,18 +43,27 @@ Write Hello to the LCD1602 screen
 [source, bash]
 ----
 $ curl http://localhost:8080/lcd/write/{text}
+----
+[source, bash]
+----
 $ curl http://localhost:8080/lcd/write/Hello
 ----
 Write World on line 2 of LCD1602 screen
 [source, bash]
 ----
 $ curl http://localhost:8080/lcd/write/{text}/{line}
+----
+[source, bash]
+----
 $ curl http://localhost:8080/lcd/write/World/2
 ----
 Turn backlight on/off
 [source, bash]
 ----
 $ curl http://localhost:8080/lcd/backlight/on
+----
+[source, bash]
+----
 $ curl http://localhost:8080/lcd/backlight/off
 ----
 Clear entire LCD1602 screen
@@ -66,6 +75,9 @@ Clear one line on LCD1602 screen
 [source, bash]
 ----
 $ curl http://localhost:8080/lcd/clear/{line}
+----
+[source, bash]
+----
 $ curl http://localhost:8080/lcd/clear/2
 ----
 
