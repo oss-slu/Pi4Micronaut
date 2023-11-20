@@ -9,43 +9,43 @@ ifdef::rootpath[]
 endif::rootpath[]
 
 
-==== LCD
+==== LCD1602
 [.text-right] 
 https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/outputComponents/lcdScreen.adoc[Improve this doc]
 
 ===== Overview
-This section provides details of the LCD (Liquid Crystal Display) circuit, including its components, assembly instructions, and functionality. The LCD is a M × N pixel screen that can be used to display different images or words.
+This section provides details of the LCD1602 (Liquid Crystal Display) circuit, including its components, assembly instructions, and functionality. The LCD1602 is a kind of dot matrix module that can show letters, numbers, and other characters. The number 1602 describes the display: 2 rows with 16 characters per row.
 
 ===== Components
-. LCD
+. LCD1602
 . Breadboard
 . T-Extension Board
 . Jumper wires
 . Power source (5V)
 
 ===== Assembly Instructions
-Connect the 4 pins on the LCD screen to the breadboard as described below and in the diagram:
+Connect the 4 pins on the LCD1602 screen to the breadboard as described below and in the diagram:
 
-. Ground: connect GND on the LCD to GND on the breadboard
-. Power: connect VCC on the LCD to 5V0 on the breadboard
-. SDA: connect SDA on the LCD to SDA1 on the breadboard
-. SCL: connect SCL on the LCD to SCL1 on the breadboard
+. Ground: connect GND on the LCD1602 to GND on the breadboard
+. Power: connect VCC on the LCD1602 to 5V0 on the breadboard
+. SDA: connect SDA on the LCD1602 to SDA1 on the breadboard
+. SCL: connect SCL on the LCD1602 to SCL1 on the breadboard
 
 ===== Circuit Diagram
 
-image::lcd-circuit.png[]
+image::lcd1602-circuit.png[]
 
 ===== Functionality
-The LCD screen will light up once connected to a power source.
+The LCD1602 screen will light up once connected to a power source.
 
 ===== Testing the Circuit
-Write Hello to the LCD screen
+Write Hello to the LCD1602 screen
 [source, bash]
 ----
 $ curl http://localhost:8080/lcd/write/{text}
 $ curl http://localhost:8080/lcd/write/Hello
 ----
-Write World on line 2 of LCD screen
+Write World on line 2 of LCD1602 screen
 [source, bash]
 ----
 $ curl http://localhost:8080/lcd/write/{text}/{line}
@@ -57,12 +57,12 @@ Turn backlight on/off
 $ curl http://localhost:8080/lcd/backlight/on
 $ curl http://localhost:8080/lcd/backlight/off
 ----
-Clear entire LCD screen
+Clear entire LCD1602 screen
 [source, bash]
 ----
 $ curl http://localhost:8080/lcd/clear/all
 ----
-Clear one line on LCD screen
+Clear one line on LCD1602 screen
 [source, bash]
 ----
 $ curl http://localhost:8080/lcd/clear/{line}
@@ -70,7 +70,7 @@ $ curl http://localhost:8080/lcd/clear/2
 ----
 
 ===== Troubleshooting
-1. LCD screen not turning on: Check all connections, ensure the LCD is placed correctly, and check the power source
+1. LCD1602 screen not turning on: Check all connections, ensure the LCD1602 is placed correctly, and check the power source
 2. Make sure I2C is enabled. To enable, follow these steps:
 
 a. Type the following command:
