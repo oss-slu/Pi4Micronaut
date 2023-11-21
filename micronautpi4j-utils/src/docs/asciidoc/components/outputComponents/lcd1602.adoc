@@ -100,6 +100,16 @@ e. Exit the configuration tool and reboot the Raspberry Pi with the following co
 $ sudo reboot
 .................
 
+===== YAML
+LCD1602 uses I2C communication for this circuit and configuration in the application.yml file is as follows
+[source, yaml]
+----
+i2c:
+  lcd:
+    name: lcd
+    bus: 1
+    device: 0x27
+----
 
 ===== Constructors
 
