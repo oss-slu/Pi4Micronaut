@@ -34,7 +34,6 @@ public class Pi4JFactory {
         // Build Pi4J context with this platform and PiGPIO providers
         return Pi4J.newContextBuilder()
                 .noAutoDetect()
-                .add(new RaspberryPiPlatform())
                 .add(
                         PiGpioDigitalInputProvider.newInstance(piGpio),
                         PiGpioDigitalOutputProvider.newInstance(piGpio),
@@ -43,6 +42,12 @@ public class Pi4JFactory {
                         PiGpioSerialProvider.newInstance(piGpio),
                         PiGpioSpiProvider.newInstance(piGpio)
                 )
+                .add(new RaspberryPiPlatform(){
+                    @Override
+                    protected String[] getProviders() {
+                        return new String[]{};
+                    }
+                })
                 .build();
     }
 
