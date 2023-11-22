@@ -45,13 +45,13 @@ a {
 	overflow-y: auto;
 	position: fixed;
 	box-sizing: border-box;
-	background-color: lightgray;
+	background-color: gainsboro;		/*Previously lightgray*/
 	max-width: 15%;
 	width: 100%;
 }
 
 #toc a {
-	color: cornflowerblue;
+	color: royalblue;		/*Previously cornflowerblue*/
 }
 
 #toc li {
@@ -79,7 +79,7 @@ h1 {
 	padding: .6em;
 	margin: 0;
 	width: 100%;
-	color: red;
+	color: white;		/*Previously red*/
 	height: 100%;
 	vertical-align: center;
 }
@@ -89,7 +89,7 @@ h1 {
 /*}*/
 
 #toc a:hover {
-	background-color: maroon;
+	text-decoration: underline;		/*Previously background-color: maroon*/
 }
 
 #content {
