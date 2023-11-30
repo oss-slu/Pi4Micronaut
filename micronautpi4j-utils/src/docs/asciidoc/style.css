@@ -23,30 +23,35 @@ a {
 }
 
 #header {
-	background-color: #000;
+	background-color: black;
+	background-image: url('img/header-pi4micronaut.png');
+	background-size: contain;
+	background-position: left;
+	background-repeat: no-repeat;
 	grid-area: nav;
 	position: fixed;
 	width: 100%;
 	vertical-align: center;
-	max-height: 6%;
+	max-height:8%;
 	height: 100%;
 	display: inline-block;
 	z-index: 10;
+	margin-bottom: 0;
 }
 
 #toc {
 	padding-top: 1em;
 	padding-left: 1em;
 	padding-right: 1em;
-	padding-bottom: 2em;
+	padding-bottom: 1.5em;
 	float: left;
-	max-height: 90%;
+	max-height: 100%;
 	height: 100%;
 	overflow-y: auto;
 	position: fixed;
 	box-sizing: border-box;
 	background-color: gainsboro;
-	max-width: 15%;
+	max-width: 17%;
 	width: 100%;
 }
 
@@ -74,13 +79,14 @@ a {
 }
 
 h1 {
+	text-indent: -9999px;
 	font-size: 2em;
-	background-color: black;
+	background-color: transparent;
 	padding: .6em;
 	margin: 0;
 	width: 100%;
 	color: white;
-	height: 100%;
+	height: 50%;
 	vertical-align: center;
 }
 
@@ -103,10 +109,10 @@ h1 {
 	z-index: 1;
 	max-height: 80%;
 	height: 100%;
-	margin-left: 15%;
+	margin-left: 17%;
 	margin-right: 0;
 	margin-bottom: 10%;
-	margin-top: 5%;
+	margin-top: 2.5%;
 	padding-bottom: 50px;
 }
 
