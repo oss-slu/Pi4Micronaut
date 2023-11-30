@@ -35,12 +35,12 @@ a {
 
 #header {
 	background-color: black;
-	background-image: url('img/header-pi4micronaut_black_background.png');
+	background-image: url('img/Pi4Micronaut-RM.png');
 	background-size: contain;
 	background-position: left;
 	background-repeat: no-repeat;
 	grid-area: nav;
-	position: relative;
+	position: fixed;
 	width: 100%;
 	vertical-align: center;
 	max-height:100px;
@@ -70,12 +70,13 @@ a {
 }*/
 
 #toc {
+	margin-top: 13px;
 	padding-top: 1em;
 	padding-left: 1em;
 	padding-right: 1em;
-	padding-bottom: 1.5em;
+	padding-bottom: 2em;
 	float: left;
-	max-height: 100%;
+	max-height: 89.5%;
 	height: 100%;
 	overflow-y: auto;
 	position: fixed;
@@ -141,15 +142,15 @@ h2 {
 	padding: 1em;
 	max-width: 84%;
 	width: 100%;
-	position: absolute;
+	position: fixed;
 	z-index: 1;
-	max-height: 100%;
-	height: 80%;
+	max-height: 80%;
+	height: 100%;
 	margin-left: 15.5%;
 	margin-right: 0;
-	margin-bottom: 10%;
-	margin-top: .5px;
-	padding-bottom: 75px;
+	margin-bottom: 1%;
+	margin-top: 5%;
+	padding-bottom: 100px;
 }
 
 .hljs{
