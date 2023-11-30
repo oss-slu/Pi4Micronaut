@@ -4,7 +4,7 @@ body {
 	padding: 0;
 	margin: 0;
 	overflow-y: hidden;
-	overflow-x: auto;
+	overflow-x: hidden;
 }
 
 /*Needed to ensure that [.text-right] in the .adoc files align to the right. Otherwise they align
@@ -40,15 +40,34 @@ a {
 	background-position: left;
 	background-repeat: no-repeat;
 	grid-area: nav;
-	position: fixed;
+	position: relative;
 	width: 100%;
 	vertical-align: center;
-	max-height:8%;
+	max-height:100px;
 	height: 100%;
 	display: inline-block;
 	z-index: 10;
 	margin-bottom: 0;
 }
+
+#header a{
+	color:white;
+	margin-right: 20px;
+}
+/*.header-links{
+	display: flex;
+	justify-content: flex-end;
+	align-items: normal;
+	padding-bottom: 2em;
+	height: 15px;
+}
+
+.header-links a{
+	color: white;
+	margin-left: 10px;
+	font-weight: bold;
+	font-size: 1.1em;
+}*/
 
 #toc {
 	padding-top: 1em;
@@ -116,15 +135,15 @@ h1 {
 	padding: 1em;
 	max-width: 84%;
 	width: 100%;
-	position: fixed;
+	position: absolute;
 	z-index: 1;
 	max-height: 100%;
-	height: 100%;
+	height: 80%;
 	margin-left: 15.5%;
 	margin-right: 0;
 	margin-bottom: 10%;
-	margin-top: 2.5%;
-	padding-bottom: 50px;
+	margin-top: .5px;
+	padding-bottom: 75px;
 }
 
 .hljs{
