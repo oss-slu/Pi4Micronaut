@@ -4,6 +4,17 @@ body {
 	padding: 0;
 	margin: 0;
 	overflow-y: hidden;
+	overflow-x: auto;
+}
+
+/*Needed to ensure that [.text-right] in the .adoc files align to the right. Otherwise they align
+to the left of the doc.*/
+.text-right{
+	text-align: right;
+}
+
+.text-right:hover{
+	text-decoration: underline;
 }
 
 .anchor{
@@ -24,7 +35,7 @@ a {
 
 #header {
 	background-color: black;
-	background-image: url('img/header-pi4micronaut.png');
+	background-image: url('img/header-pi4micronaut_black_background.png');
 	background-size: contain;
 	background-position: left;
 	background-repeat: no-repeat;
@@ -51,7 +62,7 @@ a {
 	position: fixed;
 	box-sizing: border-box;
 	background-color: gainsboro;
-	max-width: 17%;
+	max-width: 15.5%;
 	width: 100%;
 }
 
@@ -107,9 +118,9 @@ h1 {
 	width: 100%;
 	position: fixed;
 	z-index: 1;
-	max-height: 80%;
+	max-height: 100%;
 	height: 100%;
-	margin-left: 17%;
+	margin-left: 15.5%;
 	margin-right: 0;
 	margin-bottom: 10%;
 	margin-top: 2.5%;
