@@ -13,6 +13,17 @@ body {
 	padding: 0;
 	margin: 0;
 	overflow-y: hidden;
+	overflow-x: hidden;
+}
+
+/*Needed to ensure that [.text-right] in the .adoc files align to the right. Otherwise they align
+to the left of the doc.*/
+.text-right{
+	text-align: right;
+}
+
+.text-right:hover{
+	text-decoration: underline;
 }
 
 .anchor{
@@ -32,30 +43,41 @@ a {
 }
 
 #header {
-	background-color: #000;
+	background-color: black;
+	background-image: url('img/Pi4Micronaut-RM.png');
+	background-size: contain;
+	background-position: left;
+	background-repeat: no-repeat;
 	grid-area: nav;
 	position: fixed;
 	width: 100%;
 	vertical-align: center;
-	max-height: 6%;
+	max-height:100px;
 	height: 100%;
 	display: inline-block;
 	z-index: 10;
+	margin-bottom: 0;
+}
+
+#header a{
+	color:white;
+	margin-right: 20px;
 }
 
 #toc {
+	margin-top: 13px;
 	padding-top: 1em;
 	padding-left: 1em;
 	padding-right: 1em;
 	padding-bottom: 2em;
 	float: left;
-	max-height: 90%;
+	max-height: 89.5%;
 	height: 100%;
 	overflow-y: auto;
 	position: fixed;
 	box-sizing: border-box;
 	background-color: gainsboro;
-	max-width: 15%;
+	max-width: 15.5%;
 	width: 100%;
 }
 
@@ -83,15 +105,22 @@ a {
 }
 
 h1 {
+	text-indent: -9999px;
 	font-size: 2em;
-	background-color: black;
+	background-color: transparent;
 	padding: .6em;
 	margin: 0;
 	width: 100%;
 	color: white;
-	height: 100%;
+	height: 50%;
 	vertical-align: center;
 }
+
+h2 {
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
+
 
 /*.toc2{*/
 /*	float: left;*/
@@ -112,11 +141,11 @@ h1 {
 	z-index: 1;
 	max-height: 80%;
 	height: 100%;
-	margin-left: 15%;
+	margin-left: 15.5%;
 	margin-right: 0;
-	margin-bottom: 10%;
-	margin-top: 5%;
-	padding-bottom: 50px;
+	margin-bottom: 1%;
+	margin-top: 8%;
+	padding-bottom: 100px;
 }
 
 .hljs{
@@ -324,7 +353,7 @@ led2:
 <div id="footer">
 <div id="footer-text">
 Version v1.0.0<br>
-Last updated 2023-11-29 01:27:33 UTC
+Last updated 2023-12-05 01:35:24 UTC
 </div>
 </div>
 </body>
