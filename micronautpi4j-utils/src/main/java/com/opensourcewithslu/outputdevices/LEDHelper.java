@@ -27,7 +27,7 @@ public class LEDHelper {
     //end::method[]
     {
         if (ledOutput.isLow()) {
-            log.trace("Turning off LED");
+            log.trace("Turning on LED");
             ledOutput.high();
         }
     }
@@ -37,7 +37,7 @@ public class LEDHelper {
     //end::method[]
     {
         if (ledOutput.isHigh()) {
-            log.trace("Turning on LED");
+            log.trace("Turning off LED");
             ledOutput.low();
         }
     }
