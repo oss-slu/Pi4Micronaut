@@ -9,16 +9,17 @@ import jakarta.inject.Singleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+@Singleton
 public class LEDHelper {
     private static final Logger log = LoggerFactory.getLogger(LEDHelper.class);
 
-    private DigitalOutput ledOutput;
+    private final DigitalOutput ledOutput;
 
     //tag::const[]
-    public LEDHelper(DigitalOutput ledOutput)
+    public LEDHelper(@Named("led")DigitalOutput led)
     //end::const[]
     {
-        this.ledOutput = ledOutput;
+        this.ledOutput = led;
     }
 
     //tag::method[]
