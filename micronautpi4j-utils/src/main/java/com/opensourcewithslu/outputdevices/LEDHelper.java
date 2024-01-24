@@ -9,11 +9,20 @@ import jakarta.inject.Singleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ *  The class LEDHelper contains methods that pertain to the control of a LED.
+ *
+ */
 public class LEDHelper {
     private static final Logger log = LoggerFactory.getLogger(LEDHelper.class);
 
     private DigitalOutput ledOutput;
 
+    /**
+     *
+     *
+     * @param ledOutput An instance of a DigitalOutput object. @see <a href="https://pi4j.com/documentation/io-examples/digital-output/">DigitalOutput</a>
+     */
     //tag::const[]
     public LEDHelper(DigitalOutput ledOutput)
     //end::const[]
@@ -21,26 +30,38 @@ public class LEDHelper {
         this.ledOutput = ledOutput;
     }
 
+    /**
+     * Turns on the LED by setting the DigitalOutput object to high.
+     *
+     */
     //tag::method[]
-    public void deviceOn() 
+    public void deviceOn()
     //end::method[]
     {
         if (ledOutput.isLow()) {
-            log.trace("Turning off LED");
+            log.debug("Turning on LED");
             ledOutput.high();
         }
     }
 
+    /**
+     *  Turns off the LED by setting the DigitalOutput object to low.
+     *
+     */
     //tag::method[]
-    public void deviceOff() 
+    public void deviceOff()
     //end::method[]
     {
         if (ledOutput.isHigh()) {
-            log.trace("Turning on LED");
+            log.debug("Turning off LED");
             ledOutput.low();
         }
     }
 
+    /**
+     * Switches the state of the LED. If the LED is on, the LED is turned off and vice versa.
+     *
+     */
     //tag::method[]
     public void switchState()
     //end::method[]
