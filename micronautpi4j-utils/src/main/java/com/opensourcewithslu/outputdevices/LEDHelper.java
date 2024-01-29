@@ -1,9 +1,5 @@
 package com.opensourcewithslu.outputdevices;
 import com.pi4j.io.gpio.digital.DigitalOutput;
-import io.micronaut.context.ApplicationContext;
-import io.micronaut.context.annotation.Prototype;
-import io.micronaut.inject.qualifiers.Qualifiers;
-import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import jakarta.inject.Singleton;
 import org.slf4j.Logger;
