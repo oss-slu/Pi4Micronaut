@@ -9,20 +9,34 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.pi4j.crowpi.components.LcdDisplayComponent;
 
+
+/**
+ * This helper class, LCD1602Helper, is for controlling and interacting with an I2C LCD1602 display.
+ */
 public class LCD1602Helper {
     private static final Logger log = LoggerFactory.getLogger(LEDHelper.class);
 
     private final LcdDisplay lcdDisplay;
 
+    /**
+     *
+     * @param i2CConfig Unused parameter.
+     * @param pi4jContext Context used to create LCD display object.
+     */
     //tag::const[]
     public LCD1602Helper(I2CConfig i2CConfig, Context pi4jContext)
     //end::const[]
     {
+        // The i2CConfig should be used to define the rows and columns, not hard coded.
         this.lcdDisplay = new LcdDisplay(pi4jContext, 4, 16);
         lcdDisplay.setDisplayBacklight(true);
         log.trace("LCD is set up with 4 rows and 16 columns. Backlight is on by default");
     }
 
+    /**
+     * Writes a String to the display.
+     * @param text String object.
+     */
     //tag::method[]
     public void writeText(String text)
     //end::method[]
@@ -31,6 +45,11 @@ public class LCD1602Helper {
         lcdDisplay.displayText(text);
     }
 
+    /**
+     *  Writes a String to the defined line.
+     * @param text String object to be displayed.
+     * @param line Line on which the String is written.
+     */
     //tag::method[]
     public void writeTextAtLine(String text, int line)
     //end::method[]
@@ -39,6 +58,10 @@ public class LCD1602Helper {
         lcdDisplay.displayText(text, line);
     }
 
+    /**
+     * Setting the backlight state of the LCD based off the boolean input. If true, then the backlight is set as on.
+     * @param state  Boolean input to determine backlight state.
+     */
     //tag::method[]
     public void setBackLight(boolean state)
     //end::method[]
@@ -54,6 +77,9 @@ public class LCD1602Helper {
         }
     }
 
+    /**
+     * Clears the display of text.
+     */
     //tag::method[]
     public void clearDisplay()
     //end::method[]
@@ -62,6 +88,11 @@ public class LCD1602Helper {
         lcdDisplay.clearDisplay();
     }
 
+
+    /**
+     * Clears the text of the specified line.
+     * @param line The line of which text will be cleared.
+     */
     //tag::method[]
     public void clearLine(int line)
     //end::method[]

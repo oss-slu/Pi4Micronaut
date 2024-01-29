@@ -21,7 +21,7 @@ public class LEDHelper {
     /**
      *
      *
-     * @param ledOutput An instance of a DigitalOutput object. @see <a href="https://pi4j.com/documentation/io-examples/digital-output/">DigitalOutput</a>
+     * @param ledOutput An instance of a Pi4J DigitalOutput object.
      */
     //tag::const[]
     public LEDHelper(DigitalOutput ledOutput)
