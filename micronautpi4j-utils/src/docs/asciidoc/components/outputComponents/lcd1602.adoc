@@ -11,7 +11,7 @@ endif::rootpath[]
 
 ==== LCD1602
 [.text-right] 
-https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/outputComponents/lcdScreen.adoc[Improve this doc]
+https://github.com/oss-slu/Pi4Micronaut/edit/main/micronautpi4j-utils/src/docs/asciidoc/components/outputComponents/lcd1602.adoc[Improve this doc]
 
 ===== Overview
 This section provides details of the LCD1602 (Liquid Crystal Display) circuit, including its components, assembly instructions, and functionality. The LCD1602 is a kind of dot matrix module that can show letters, numbers, and other characters. The number 1602 describes the display: 2 rows with 16 characters per row.

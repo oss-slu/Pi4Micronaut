@@ -10,7 +10,7 @@ endif::rootpath[]
 
 ==== RFID Scanner
 [.text-right]
-https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/inputComponents/rfidScanner.adoc[Improve this doc]
+https://github.com/oss-slu/Pi4Micronaut/edit/main/micronautpi4j-utils/src/docs/asciidoc/components/inputComponents/rfidScanner.adoc[Improve this doc]
 
 ===== Overview
 This section provides information regarding the RFID scanner component and its circuit, including assembly instructions.

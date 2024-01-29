@@ -1,4 +1,6 @@
 == Contribute to the Pi4Micronaut Library
+[.text-right]
+https://github.com/oss-slu/Pi4Micronaut/edit/main/micronautpi4j-utils/src/docs/asciidoc/contribute/contributingToLibrary.adoc[Improve this doc]
 
 1. Get Familiar with the Library
 

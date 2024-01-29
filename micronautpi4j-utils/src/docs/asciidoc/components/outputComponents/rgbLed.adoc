@@ -1,6 +1,6 @@
 ==== RGB LED
 [.text-right] 
-https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/outputComponents/rgbLed.adoc[Improve this doc]
+https://github.com/oss-slu/Pi4Micronaut/edit/main/micronautpi4j-utils/src/docs/asciidoc/components/outputComponents/rgbLed.adoc[Improve this doc]
 
 ===== Overview
 This document provides details of the RGB (Red-Green-Blue) LED circuit,

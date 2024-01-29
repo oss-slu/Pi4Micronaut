@@ -1,24 +1,24 @@
 === How to Create a New Component
 [.text-right] 
-https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/contribute/newComponent.adoc[Improve this doc]
+https://github.com/oss-slu/Pi4Micronaut/edit/main/micronautpi4j-utils/src/docs/asciidoc/contribute/newComponent.adoc[Improve this doc]
 
 
 If its compatible with a Raspberry Pi then it should work well with the Pi4Micronaut framework. The following steps should encompass how most components are added to the framework, but should more or different steps be needed, use the
-https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/contribute/newComponent.adoc[Improve this doc] link to suggest changes. 
+https://github.com/oss-slu/Pi4Micronaut/edit/main/micronautpi4j-utils/src/docs/asciidoc/contribute/newComponent.adoc[Improve this doc] link to suggest changes.
 
 
 1. Determine if the device is Input or Output
 
 2. Create a Controller:
 ** Controllers define and handle interactions with a given component. The Controller of a component will have a `@Controller("/example")` right above the class declaration that acts as the endpoint for requests to the component. Instead of "example", you should name the endpoint something that is identifiable to the component. Each method of the Controller should have a `@Get("/examppleendpoint")` above the method declaration. The endpoint for the method should have the same name as the method and any parameters should be included in the endpoint `/examppleendpoint/{parameter1},{parameter2}`.
-** See the https://github.com/oss-slu/Pi4Micronaut/blob/develop/components/src/main/java/com/opensourcewithslu/components/controllers/rgbController.java[RGB Controller] for an example of a Controller.
+** See the https://github.com/oss-slu/Pi4Micronaut/blob/main/components/src/main/java/com/opensourcewithslu/components/controllers/rgbController.java[RGB Controller] for an example of a Controller.
 ** Consult the https://micronaut-projects.github.io/micronaut-docs-mn3/3.8.1/guide/#creatingClient[Micronaut Documentation] for more explanation on Controllers.
 ** All Controllers should be kept here:
 `components\src\main\java\com\opensourcewithslu\components\controllers`
 
 3. Create a Helper: 
 ** A Helper is what the Controller calls to do a action. For example, to change the color of an RGB LED the controller will take the request to change it. The Controller will then call the change color method in the helper. The helper then takes all the actions needed to change the color of the LED.
-** See the https://github.com/oss-slu/Pi4Micronaut/blob/develop/micronautpi4j-utils/src/main/java/com/opensourcewithslu/outputdevices/RGBLEDHelper.java[RBG Helper] for an example of a Helper.
+** See the https://github.com/oss-slu/Pi4Micronaut/blob/main/micronautpi4j-utils/src/main/java/com/opensourcewithslu/outputdevices/RGBLEDHelper.java[RBG Helper] for an example of a Helper.
 
 ** All Helpers should be kept here: `micronautpi4j-utils\src\main\java\com\opensourcewithslu\(inputdevices or outputdevices)`
 
