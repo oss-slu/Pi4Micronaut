@@ -1,4 +1,5 @@
 package com.opensourcewithslu.components.controllers;
+
 import com.opensourcewithslu.outputdevices.LEDHelper;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;

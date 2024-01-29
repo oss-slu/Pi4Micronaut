@@ -1,11 +1,8 @@
 package com.opensourcewithslu.components.controllers;
 
 import com.opensourcewithslu.outputdevices.RGBLEDHelper;
-import com.opensourcewithslu.utilities.MultipinConfiguration;
-import com.pi4j.io.pwm.Pwm;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
-import jakarta.inject.Named;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,8 +12,8 @@ public class rgbController {
     private final RGBLEDHelper rgbledHelper;
     private static final Logger log = LoggerFactory.getLogger(rgbController.class);
 
-    public rgbController(@Named("rgb-led") MultipinConfiguration rgbLed){
-        this.rgbledHelper = new RGBLEDHelper(rgbLed);
+    public rgbController(RGBLEDHelper rgbLed){
+        this.rgbledHelper = rgbLed;
     }
 
     @Get("/setRed/{val}")

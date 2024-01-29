@@ -1,13 +1,13 @@
 package com.opensourcewithslu.outputdevices;
 
-import com.opensourcewithslu.inputdevices.PushButtonHelper;
 import com.opensourcewithslu.utilities.MultipinConfiguration;
 import com.pi4j.io.pwm.Pwm;
-import com.pi4j.io.pwm.PwmConfig;
-import io.micronaut.context.annotation.Prototype;
+import jakarta.inject.Named;
+import jakarta.inject.Singleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+@Singleton
 public class RGBLEDHelper {
     private static final Logger log = LoggerFactory.getLogger(RGBLEDHelper.class);
 
@@ -16,7 +16,7 @@ public class RGBLEDHelper {
     private final Pwm blue;
 
     //tag::const[]
-    public RGBLEDHelper(MultipinConfiguration pwm)
+    public RGBLEDHelper(@Named("rgb-led")MultipinConfiguration pwm)
     //end::const[]
     {
         log.trace("Init rgb");
@@ -49,7 +49,7 @@ public class RGBLEDHelper {
     public void setColorHex(String hex)
     //end::method[]
     {
-        log.trace("setting the color via hex");
+        log.info("setting the color via hex");
         // hex splitting into rbg int values
         int r = (Integer.decode(hex) & 0xFF0000) >> 16;
         int g = (Integer.decode(hex) & 0xFF00) >> 8;
@@ -64,7 +64,7 @@ public class RGBLEDHelper {
     public void setColorHex(String hex, int[] frequency)
     //end::method[]
     {
-        log.trace("setting the color and frequency via hex and int");
+        log.info("setting the color and frequency via hex and int");
         // hex splitting into rbg int values
         int r = (Integer.decode(hex) & 0xFF0000) >> 16;
         int g = (Integer.decode(hex) & 0xFF00) >> 8;
@@ -79,7 +79,7 @@ public class RGBLEDHelper {
     public void setRed(int red)
     //end::method[]
     {
-        log.trace("Set red");
+        log.info("Set red");
         this.red.on(red, 200);
     }
 
@@ -87,7 +87,7 @@ public class RGBLEDHelper {
     public void setRed(int red, int frequency)
     //end::method[]
     {
-        log.trace("set red and set frequency");
+        log.info("set red and set frequency");
         this.red.on(red, frequency);
     }
 
@@ -95,7 +95,7 @@ public class RGBLEDHelper {
     public void setBlue(int blue)
     //end::method[]
     {
-        log.trace("set blue");
+        log.info("set blue");
         this.blue.on(blue, 200);
     }
 
@@ -103,7 +103,7 @@ public class RGBLEDHelper {
     public void setBlue(int blue, int frequency)
     //end::method[]
     {
-        log.trace("set blue and set frequency");
+        log.info("set blue and set frequency");
         this.blue.on(blue, frequency);
     }
 
@@ -111,7 +111,7 @@ public class RGBLEDHelper {
     public void setGreen(int green)
     //end::method[]
     {
-        log.trace("set green");
+        log.info("set green");
         this.green.on(green, 200);
     }
 
@@ -119,7 +119,7 @@ public class RGBLEDHelper {
     public void setGreen(int green, int frequency)
     //end::method[]
     {
-        log.trace("set green and set frequency");
+        log.info("set green and set frequency");
         this.green.on(green, frequency);
     }
 
@@ -136,7 +136,7 @@ public class RGBLEDHelper {
     public void ledOn()
     //end::method[]
     {
-        log.trace("turning on each LED pin and setting to 100");
+        log.info("turning on each LED pin and setting to 100");
         this.red.on(100, 200);
         this.green.on(100, 200);
         this.blue.on(100, 200);

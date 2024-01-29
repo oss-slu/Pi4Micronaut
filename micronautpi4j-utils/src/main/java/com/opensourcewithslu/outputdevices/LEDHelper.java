@@ -1,4 +1,5 @@
 package com.opensourcewithslu.outputdevices;
+
 import com.pi4j.io.gpio.digital.DigitalOutput;
 import jakarta.inject.Named;
 import jakarta.inject.Singleton;
