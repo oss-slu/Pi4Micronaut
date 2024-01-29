@@ -23,21 +23,21 @@ public class LEDHelper {
     }
 
     //tag::method[]
-    public void deviceOn() 
+    public void ledOn()
     //end::method[]
     {
         if (ledOutput.isLow()) {
-            log.trace("Turning on LED");
+            log.info("Turning on LED");
             ledOutput.high();
         }
     }
 
     //tag::method[]
-    public void deviceOff() 
+    public void ledOff()
     //end::method[]
     {
         if (ledOutput.isHigh()) {
-            log.trace("Turning off LED");
+            log.info("Turning off LED");
             ledOutput.low();
         }
     }
@@ -47,10 +47,10 @@ public class LEDHelper {
     //end::method[]
     {
         if(ledOutput.isHigh()){
-            deviceOff();
+            ledOff();
         }
         else{
-            deviceOn();
+            ledOn();
         }
     }
 }

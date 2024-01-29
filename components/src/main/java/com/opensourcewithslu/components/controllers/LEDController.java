@@ -18,13 +18,13 @@ public class LEDController {
         will turn on the LED
         */
 
-        ledHelper.deviceOff();
+        ledHelper.ledOn();
     }
 
     @Get("/ledOff")
     public void ledOff(){
 
-        ledHelper.deviceOn();
+        ledHelper.ledOff();
     }
 
     @Get("/switchState")
