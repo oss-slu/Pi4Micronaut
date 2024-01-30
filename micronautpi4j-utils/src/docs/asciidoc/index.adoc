@@ -10,6 +10,8 @@
 :toclevels: 3
 :sectanchors:
 :sectnums:
+:rootpath:
+:imagesdir:img
 
 toc::[]
 
@@ -18,6 +20,10 @@ include::introduction.adoc[]
 include::Introduction/supportedHardware.adoc[]
 
 include::Introduction/exampleApplications.adoc[]
+
+include::contribute/contributingToLibrary.adoc[]
+
+include::contribute/newComponent.adoc[]
 
 include::adding_creating_App.adoc[]
 
@@ -60,44 +66,6 @@ include::components/outputComponents/led.adoc[]
 
 include::components/outputComponents/rgbLed.adoc[]
 
-include::components/outputComponents/lcdScreen.adoc[]
-
-include::howContribute.adoc[]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+include::components/outputComponents/lcd1602.adoc[]
 
 

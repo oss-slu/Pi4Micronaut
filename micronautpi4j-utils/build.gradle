@@ -37,9 +37,16 @@ java {
     withSourcesJar()
 }
 
-asciidoctor{
+
+
+asciidoctor {
     attributes 'stylesheet': "style.css"
     baseDirFollowsSourceDir()
+    resources {
+        from(sourceDir) {
+            include 'img/**'
+        }
+    }
 }
 
 /*
