@@ -9,6 +9,9 @@ import jakarta.inject.Singleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * The SlideSwitchHelper class is used to initialize a slide switch.
+ */
 public class SlideSwitchHelper {
 
     private static final Logger log = LoggerFactory.getLogger(SlideSwitchHelper.class);
@@ -17,6 +20,10 @@ public class SlideSwitchHelper {
 
     public boolean isOn;
 
+    /**
+     *
+     * @param slideSwitchInput A Pi4J DigitalInput Object.
+     */
     //tag::const[]
     public SlideSwitchHelper(DigitalInput slideSwitchInput) 
     //end::const[]
@@ -27,6 +34,9 @@ public class SlideSwitchHelper {
         initialize();
     }
 
+    /**
+     * Initializes the listener that keeps track of whether the slide switch is high/low. Automatically called when the SlideSwitchHelper is instantiated.
+     */
     //tag::method[]
     public void initialize()
     //end::method[]
@@ -39,6 +49,10 @@ public class SlideSwitchHelper {
 
     }
 
+    /**
+     * Adds an EvenListener to the slide switch.
+     * @param function A Pi4J DigitalStateChangeListener object.
+     */
     //tag::method[]
     public void addEventListener(DigitalStateChangeListener function) 
     //end::method[]
@@ -46,6 +60,10 @@ public class SlideSwitchHelper {
         slideSwitchInput.addListener(function);
     }
 
+    /**
+     * Removes the EventListener from the slide switch.
+     * @param function A Pi4J DigitalStateChangeListener object.
+     */
     //tag::method[]
     public void removeEventListener(DigitalStateChangeListener function) 
     //end::method[]
