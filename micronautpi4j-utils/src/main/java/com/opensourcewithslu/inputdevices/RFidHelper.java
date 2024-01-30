@@ -1,28 +1,30 @@
 package com.opensourcewithslu.inputdevices;
+
 import com.pi4j.crowpi.components.exceptions.RfidException;
 import com.pi4j.context.Context;
 import com.pi4j.io.spi.SpiConfig;
-import io.micronaut.context.annotation.Prototype;
+import jakarta.inject.Named;
+import jakarta.inject.Singleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.pi4j.crowpi.components.RfidComponent;
 
 import java.util.concurrent.atomic.AtomicReference;
 
-
+@Singleton
 public class RFidHelper {
     private static final Logger log = LoggerFactory.getLogger(RFidHelper.class);
-    private RfidComponent scanner;
+    private final RfidComponent scanner;
 
     //tag::const[]
-    public RFidHelper(SpiConfig config, int reset, Context pi4jContext)
+    public RFidHelper(@Named("rfid") SpiConfig config, int reset, Context pi4jContext)
     //end::const[]
     {
         this.scanner = new RfidComponent(pi4jContext, reset, config.getAddress(), config.getBaud());
     }
     
     //tag::const[]
-    public RFidHelper(SpiConfig config, Context pi4jContext)
+    public RFidHelper(@Named("rfid") SpiConfig config, Context pi4jContext)
     //end::const[]
     {
         this.scanner = new RfidComponent(pi4jContext, config.getAddress(), config.getBaud());
