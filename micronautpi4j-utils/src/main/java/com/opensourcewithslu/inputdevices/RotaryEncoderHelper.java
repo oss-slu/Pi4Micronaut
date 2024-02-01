@@ -1,24 +1,21 @@
 package com.opensourcewithslu.inputdevices;
-import com.opensourcewithslu.utilities.MultiPinConfigs.DigitalInputMultiPinConfiguration;
+
 import com.opensourcewithslu.utilities.MultipinConfiguration;
-import com.opensourcewithslu.utilities.Pi4JMultipinFactory;
 import com.pi4j.io.gpio.digital.DigitalInput;
-import com.pi4j.io.gpio.digital.DigitalListener;
-import com.pi4j.io.gpio.digital.DigitalStateChangeListener;
-import io.micronaut.context.annotation.Context;
-import io.micronaut.context.annotation.Prototype;
-import jakarta.annotation.PostConstruct;
-import jakarta.inject.Named;
-import jakarta.inject.Singleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class RotaryEncoderHelper {
     private static final Logger log = LoggerFactory.getLogger(RotaryEncoderHelper.class);
-    private DigitalInput clk;
-    private DigitalInput dt;
-    private DigitalInput sw;
-    private String helperName;
+
+    private final DigitalInput clk;
+
+    private final DigitalInput dt;
+
+    private final DigitalInput sw;
+
+    private final String helperName;
+
     private int globalCounter;
 
     //tag::const[]
@@ -38,7 +35,7 @@ public class RotaryEncoderHelper {
     public void initialize()
     //end::method[]
     {
-        log.trace("Initializing " + helperName);
+        log.info("Initializing " + helperName);
 
         String logInfo = helperName + " counter is {}";
 
@@ -59,7 +56,7 @@ public class RotaryEncoderHelper {
                     globalCounter--;
                 }
             }
-            log.trace(logInfo, globalCounter);
+            log.info(logInfo, globalCounter);
         });
 
         sw.addListener(e -> {
