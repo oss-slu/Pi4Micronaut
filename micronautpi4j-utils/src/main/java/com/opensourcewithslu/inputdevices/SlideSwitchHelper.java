@@ -28,10 +28,9 @@ public class SlideSwitchHelper {
     {
         log.info("Initializing Slide Switch");
 
-        slideSwitchInput.addListener(e->{
-            isOn = slideSwitchInput.isHigh();
-        });
-
+        slideSwitchInput.addListener(e->
+            isOn = slideSwitchInput.isHigh()
+        );
     }
 
     //tag::method[]

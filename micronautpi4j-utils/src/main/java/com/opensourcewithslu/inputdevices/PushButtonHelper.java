@@ -28,9 +28,9 @@ public class PushButtonHelper {
     {
         log.info("Initializing " + buttonInput.getName());
 
-        buttonInput.addListener(e->{
-           isPressed = buttonInput.isHigh();
-        });
+        buttonInput.addListener(e->
+           isPressed = buttonInput.isHigh()
+        );
     }
 
     //tag::method[]
