@@ -64,7 +64,7 @@ public class RGBLEDHelper {
     public void setColorHex(String hex, int[] frequency)
     //end::method[]
     {
-        log.info("setting the color and frequency via hex and int");
+        log.info("Setting the color via Hex and a list of frequencies(RGB)");
         // hex splitting into rbg int values
         int r = (Integer.decode(hex) & 0xFF0000) >> 16;
         int g = (Integer.decode(hex) & 0xFF00) >> 8;
@@ -119,7 +119,7 @@ public class RGBLEDHelper {
     public void setGreen(int green, int frequency)
     //end::method[]
     {
-        log.info("set green and set frequency");
+        log.info("Setting green color and its frequency");
         this.green.on(green, frequency);
     }
 
@@ -127,7 +127,7 @@ public class RGBLEDHelper {
     public void ledOff()
     //end::method[]
     {
-        log.info("turning off each LED pin");
+        log.info("Turning off RGB LED");
         this.red.off();
         this.green.off();
         this.blue.off();

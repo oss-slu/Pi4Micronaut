@@ -5,15 +5,11 @@ import com.opensourcewithslu.utilities.MultipinConfiguration;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import jakarta.inject.Named;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 //tag::ex[]
 @Controller("/rgb")
 public class rgbController {
     private final RGBLEDHelper rgbledHelper;
-
-    private static final Logger log = LoggerFactory.getLogger(rgbController.class);
 
     public rgbController(@Named("rgb-led") MultipinConfiguration rgbLed){
         this.rgbledHelper = new RGBLEDHelper(rgbLed);
