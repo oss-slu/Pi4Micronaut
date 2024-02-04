@@ -11,12 +11,8 @@ import jakarta.inject.Named;
 public class RotaryEncoderController {
     private final RotaryEncoderHelper encoderHelper;
 
-    private final RotaryEncoderHelper encoderHelper2;
-
-    public RotaryEncoderController(@Named("rotary-encoder")MultipinConfiguration rotaryEncoder,
-                                   @Named("rotary-encoder-2")MultipinConfiguration rotaryEncoder2){
+    public RotaryEncoderController(@Named("rotary-encoder")MultipinConfiguration rotaryEncoder){
         this.encoderHelper = new RotaryEncoderHelper(rotaryEncoder);
-        this.encoderHelper2 = new RotaryEncoderHelper(rotaryEncoder2);
     }
 
     @Get("/value")
