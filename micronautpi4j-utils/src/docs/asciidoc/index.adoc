@@ -1,7 +1,7 @@
-= Pi4Micronaut Documentation
+//= Pi4Micronaut Documentation
 :source-highlighter: rouge
 :rouge-style: thankful_eyes
-:stylesheet: style.css
+:stylesheet: draftStyleSheet.css
 :docinfo: shared
 :icons: font
 :doctype: book
@@ -12,6 +12,19 @@
 :sectnums:
 :rootpath:
 :imagesdir:img
+
+//HTML for the header links: #link should be replaced with appropriate link
+++++
+<div class="header">
+  <nav class="header-nav">
+    <a href="#link1">Java Docs</a>
+    <a href="#link2">API Reference</a>
+    <a href="#link3">Community Guidelines</a>
+    <a href="#link4">CLA</a>
+    <!-- More links as needed -->
+  </nav>
+</div>
+++++
 
 toc::[]
 
