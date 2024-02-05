@@ -1,0 +1,13 @@
+=== Getting Started With Pi4Micronaut!
+
+==== Build the Jar file
+. Open your terminal of choice
+. Navigate to the file directory containing the Pi4Micronaut library
+. Enter the following command into the terminal to build the jar file: "./gradlew"
+
+==== Install the Raspberry Pi Imager
+. To upload the Jar file onto your Raspberry Pi, you need to install the Raspberry Pi Imager
+. Go to the following link and download the correct version for your system: https://www.raspberrypi.com/software/
+
+==== Set up Raspberry Pi OS
+. 
