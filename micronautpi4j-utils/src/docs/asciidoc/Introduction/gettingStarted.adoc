@@ -10,4 +10,4 @@
 . Go to the following link and download the correct version for your system: https://www.raspberrypi.com/software/
 
 ==== Set up Raspberry Pi OS
-. 
+.
