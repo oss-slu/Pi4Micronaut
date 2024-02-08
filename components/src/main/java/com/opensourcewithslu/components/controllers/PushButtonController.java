@@ -11,13 +11,15 @@ import jakarta.inject.Named;
 //tag::ex[]
 @Controller("/pushButton")
 public class PushButtonController {
+
     private final PushButtonHelper pushButtonHelper;
+
     private final LEDHelper ledHelper;
 
-    public PushButtonController(@Named("button-input-3") DigitalInput pushButton1,
-                                @Named("led") DigitalOutput led1) {
-        this.pushButtonHelper = new PushButtonHelper(pushButton1);
-        this.ledHelper = new LEDHelper(led1);
+    public PushButtonController(@Named("button-input-3") DigitalInput pushButton,
+                                @Named("led") DigitalOutput led) {
+        this.pushButtonHelper = new PushButtonHelper(pushButton);
+        this.ledHelper = new LEDHelper(led);
     }
 
     @Get("/init")

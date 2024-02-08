@@ -6,35 +6,26 @@ import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import jakarta.inject.Named;
 
-
 @Controller("/led")
 public class LEDController {
     private final LEDHelper ledHelper;
 
-
-    public LEDController(@Named("Led")DigitalOutput led){
+    public LEDController(@Named("led")DigitalOutput led){
         this.ledHelper = new LEDHelper(led);
     }
 
-    @Get("/LedOn")
+    @Get("/ledOn")
     public void ledOn(){
-        /*deviceOff method turns on the LED after checking the output. This
-        will turn on the LED
-        */
-
-        ledHelper.deviceOff();
+        ledHelper.ledOn();
     }
 
-    @Get("/LedOff")
+    @Get("/ledOff")
     public void ledOff(){
-
-        ledHelper.deviceOn();
+        ledHelper.ledOff();
     }
 
     @Get("/switchState")
     public void switchState(){
-
-
         ledHelper.switchState();
     }
 }

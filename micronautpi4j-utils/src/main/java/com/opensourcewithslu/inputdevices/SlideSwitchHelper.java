@@ -1,19 +1,14 @@
 package com.opensourcewithslu.inputdevices;
+
 import com.pi4j.io.gpio.digital.DigitalInput;
 import com.pi4j.io.gpio.digital.DigitalStateChangeListener;
-import io.micronaut.context.annotation.Prototype;
-import jakarta.annotation.PostConstruct;
-import jakarta.inject.Named;
-import jakarta.inject.Singleton;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class SlideSwitchHelper {
-
     private static final Logger log = LoggerFactory.getLogger(SlideSwitchHelper.class);
 
-    private DigitalInput slideSwitchInput;
+    private final DigitalInput slideSwitchInput;
 
     public boolean isOn;
 
@@ -31,12 +26,11 @@ public class SlideSwitchHelper {
     public void initialize()
     //end::method[]
     {
-        log.trace("Initializing Slide Switch");
+        log.info("Initializing Slide Switch");
 
-        slideSwitchInput.addListener(e->{
-            isOn = slideSwitchInput.isHigh();
-        });
-
+        slideSwitchInput.addListener(e->
+            isOn = slideSwitchInput.isHigh()
+        );
     }
 
     //tag::method[]
