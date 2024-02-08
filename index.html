@@ -1213,13 +1213,15 @@ adjust according to your power source and LED specifications</p>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="nd">@Controller</span><span class="o">(</span><span class="s">"/pushButton"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">PushButtonController</span> <span class="o">{</span>
+
     <span class="kd">private</span> <span class="kd">final</span> <span class="nc">PushButtonHelper</span> <span class="n">pushButtonHelper</span><span class="o">;</span>
+
     <span class="kd">private</span> <span class="kd">final</span> <span class="nc">LEDHelper</span> <span class="n">ledHelper</span><span class="o">;</span>
 
-    <span class="kd">public</span> <span class="nf">PushButtonController</span><span class="o">(</span><span class="nd">@Named</span><span class="o">(</span><span class="s">"button-input-3"</span><span class="o">)</span> <span class="nc">DigitalInput</span> <span class="n">pushButton1</span><span class="o">,</span>
-                                <span class="nd">@Named</span><span class="o">(</span><span class="s">"led"</span><span class="o">)</span> <span class="nc">DigitalOutput</span> <span class="n">led1</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">pushButtonHelper</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PushButtonHelper</span><span class="o">(</span><span class="n">pushButton1</span><span class="o">);</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">ledHelper</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LEDHelper</span><span class="o">(</span><span class="n">led1</span><span class="o">);</span>
+    <span class="kd">public</span> <span class="nf">PushButtonController</span><span class="o">(</span><span class="nd">@Named</span><span class="o">(</span><span class="s">"button-input-3"</span><span class="o">)</span> <span class="nc">DigitalInput</span> <span class="n">pushButton</span><span class="o">,</span>
+                                <span class="nd">@Named</span><span class="o">(</span><span class="s">"led"</span><span class="o">)</span> <span class="nc">DigitalOutput</span> <span class="n">led</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">pushButtonHelper</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PushButtonHelper</span><span class="o">(</span><span class="n">pushButton</span><span class="o">);</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">ledHelper</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LEDHelper</span><span class="o">(</span><span class="n">led</span><span class="o">);</span>
     <span class="o">}</span>
 
     <span class="nd">@Get</span><span class="o">(</span><span class="s">"/init"</span><span class="o">)</span>
@@ -1395,7 +1397,6 @@ adjust according to your power source and LED specifications</p>
     <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">checkSwitch2</span><span class="o">(){</span>
         <span class="k">return</span> <span class="n">slideSwitchHelper2</span><span class="o">.</span><span class="na">isOn</span><span class="o">;</span>
     <span class="o">}</span>
-
 <span class="o">}</span></code></pre>
 </div>
 </div>
@@ -1572,13 +1573,10 @@ to the correct GPIO pins according to the YAML pin order below.</p>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="nd">@Controller</span><span class="o">(</span><span class="s">"/rotaryEncoder"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">RotaryEncoderController</span> <span class="o">{</span>
-
     <span class="kd">private</span> <span class="kd">final</span> <span class="nc">RotaryEncoderHelper</span> <span class="n">encoderHelper</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">RotaryEncoderHelper</span> <span class="n">encoderHelper2</span><span class="o">;</span>
 
-    <span class="kd">public</span> <span class="nf">RotaryEncoderController</span><span class="o">(</span><span class="nd">@Named</span><span class="o">(</span><span class="s">"rotary-encoder"</span><span class="o">)</span><span class="nc">MultipinConfiguration</span> <span class="n">rotaryEncoder</span><span class="o">,</span> <span class="nd">@Named</span><span class="o">(</span><span class="s">"rotary-encoder-2"</span><span class="o">)</span><span class="nc">MultipinConfiguration</span> <span class="n">rotaryEncoder2</span><span class="o">){</span>
+    <span class="kd">public</span> <span class="nf">RotaryEncoderController</span><span class="o">(</span><span class="nd">@Named</span><span class="o">(</span><span class="s">"rotary-encoder"</span><span class="o">)</span><span class="nc">MultipinConfiguration</span> <span class="n">rotaryEncoder</span><span class="o">){</span>
         <span class="k">this</span><span class="o">.</span><span class="na">encoderHelper</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">RotaryEncoderHelper</span><span class="o">(</span><span class="n">rotaryEncoder</span><span class="o">);</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">encoderHelper2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">RotaryEncoderHelper</span><span class="o">(</span><span class="n">rotaryEncoder2</span><span class="o">);</span>
     <span class="o">}</span>
 
     <span class="nd">@Get</span><span class="o">(</span><span class="s">"/value"</span><span class="o">)</span>
@@ -2085,7 +2083,6 @@ adjust according to your power source and LED specifications</p>
 <pre class="rouge highlight"><code data-lang="java"><span class="nd">@Controller</span><span class="o">(</span><span class="s">"/rgb"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">rgbController</span> <span class="o">{</span>
     <span class="kd">private</span> <span class="kd">final</span> <span class="nc">RGBLEDHelper</span> <span class="n">rgbledHelper</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Logger</span> <span class="n">log</span> <span class="o">=</span> <span class="nc">LoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="n">rgbController</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
 
     <span class="kd">public</span> <span class="nf">rgbController</span><span class="o">(</span><span class="nd">@Named</span><span class="o">(</span><span class="s">"rgb-led"</span><span class="o">)</span> <span class="nc">MultipinConfiguration</span> <span class="n">rgbLed</span><span class="o">){</span>
         <span class="k">this</span><span class="o">.</span><span class="na">rgbledHelper</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">RGBLEDHelper</span><span class="o">(</span><span class="n">rgbLed</span><span class="o">);</span>
@@ -2417,7 +2414,7 @@ adjust according to your power source and LED specifications</p>
 <div id="footer">
 <div id="footer-text">
 Version v1.0.0<br>
-Last updated 2024-01-23 19:34:51 UTC
+Last updated 2024-02-08 14:42:30 UTC
 </div>
 </div>
 <style>
