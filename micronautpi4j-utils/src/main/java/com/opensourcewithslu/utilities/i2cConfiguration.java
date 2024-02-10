@@ -18,7 +18,7 @@ public class i2cConfiguration {
     private int device;
 
     /**
-     *
+     * The i2cConfiguration constructor.
      * @param id The configuration id as defined in the application.yml
      */
     public i2cConfiguration(@Parameter String id) {

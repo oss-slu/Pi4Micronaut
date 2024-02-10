@@ -18,7 +18,7 @@ public class PwmConfiguration {
     private int shutdown;
 
     /**
-     *
+     * PwmConfiguration constructor.
      * @param id The configuration id as defined in the application.yml
      */
     public PwmConfiguration(@Parameter String id) {

@@ -17,7 +17,7 @@ public class RFidHelper {
     private RfidComponent scanner;
 
     /**
-     *
+     * The RFidHelper constructor WITH the reset pin as a parameter.
      * @param config A Pi4J SPIConfig object which holds the SPI address and SPI Baud rate for RFID scanner.
      * @param reset Defines the reset pin for the RFID scanner.
      * @param pi4jContext The Pi4J context object.
@@ -30,7 +30,7 @@ public class RFidHelper {
     }
 
     /**
-     *
+     * The RFidHelper constructor WITHOUT the reset pin as a parameter.
      * @param config A Pi4J SPIConfig object which holds the SPI address and SPI Baud rate for RFID scanner.
      * @param pi4jContext The Pi4J context object.
      */

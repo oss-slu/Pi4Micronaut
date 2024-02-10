@@ -19,7 +19,7 @@ public class RGBLEDHelper {
     private final Pwm blue;
 
     /**
-     *
+     * The RGBLEDHelper constructor.
      * @param pwm A {@link  com.opensourcewithslu.utilities.MultipinConfiguration} Object.
      */
     //tag::const[]

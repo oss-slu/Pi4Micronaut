@@ -25,7 +25,7 @@ public class RotaryEncoderHelper {
     private int globalCounter;
 
     /**
-     *
+     * The RotaryEncoderHelper constructor.
      * @param multiPin A {@link  com.opensourcewithslu.utilities.MultipinConfiguration} Object.
      */
     //tag::const[]
@@ -83,7 +83,7 @@ public class RotaryEncoderHelper {
     }
 
     /**
-     *
+     * Gets the value of the rotary encoder.
      * @return The value of the rotary encoder.
      */
     //tag::method[]

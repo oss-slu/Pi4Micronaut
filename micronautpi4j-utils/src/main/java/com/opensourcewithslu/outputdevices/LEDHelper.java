@@ -20,7 +20,7 @@ public class LEDHelper {
 
     /**
      *
-     *
+     * LEGHelper constructor.
      * @param ledOutput An instance of a Pi4J DigitalOutput object.
      */
     //tag::const[]

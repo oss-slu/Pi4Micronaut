@@ -18,7 +18,7 @@ public class DigitalInputConfiguration {
     private String provider;
 
     /**
-     *
+     * Constructor for the DigitalInputConfiguration.
      * @param id The configuration id as defined in the application.yml
      */
     public DigitalInputConfiguration(@Parameter String id) {

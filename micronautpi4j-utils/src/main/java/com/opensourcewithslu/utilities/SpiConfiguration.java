@@ -20,7 +20,7 @@ public class SpiConfiguration {
     private int baud;
 
     /**
-     *
+     * The SpiConfiguration constructor.
      * @param id The configuration id as defined in the application.yml
      */
     public SpiConfiguration(@Parameter String id) {

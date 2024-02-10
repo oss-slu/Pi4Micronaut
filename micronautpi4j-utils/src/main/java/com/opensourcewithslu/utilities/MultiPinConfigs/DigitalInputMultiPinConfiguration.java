@@ -19,7 +19,7 @@ public class DigitalInputMultiPinConfiguration {
     private String provider;
 
     /**
-     *
+     * The DigitalInputMultiPinConfiguration constructor.
      * @param id The configuration id as defined in the application.yml
      */
     public DigitalInputMultiPinConfiguration(@Parameter String id){

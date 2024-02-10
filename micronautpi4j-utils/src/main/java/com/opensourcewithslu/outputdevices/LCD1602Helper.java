@@ -19,7 +19,7 @@ public class LCD1602Helper {
     private final LcdDisplay lcdDisplay;
 
     /**
-     *
+     * The LCD1602Helper constructor.
      * @param i2CConfig Unused parameter.
      * @param pi4jContext Context used to create LCD display object.
      */

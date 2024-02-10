@@ -18,7 +18,7 @@ public class DigitalOutputConfiguration {
     private String provider;
 
     /**
-     *
+     * The DigitalOutputConfiguration constructor.
      * @param id The configuration id as defined in the application.yml.
      */
     public DigitalOutputConfiguration(@Parameter String id) {

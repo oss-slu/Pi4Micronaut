@@ -25,7 +25,7 @@ public class PwmMultiPinConfiguration {
     private String provider;
 
     /**
-     *
+     * The PwmMultiPinConfiguration constructor.
      * @param id The configuration id as defined in the application.yml
      */
     public PwmMultiPinConfiguration(@Parameter String id){

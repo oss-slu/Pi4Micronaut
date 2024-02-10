@@ -18,7 +18,7 @@ public class MultipinConfiguration {
     private final Object[] components;
 
     /**
-     *
+     * The MultipinConfiguration constructor. 
      * @param id The configuration id as defined in the application.yml
      * @param components The array of components that are a part of the multipin component.
      */

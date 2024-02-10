@@ -15,10 +15,14 @@ public class PushButtonHelper {
     private static final Logger log = LoggerFactory.getLogger(PushButtonHelper.class);
 
     private DigitalInput buttonInput;
+
+    /**
+     * Determines if the button is pressed.
+     */
     public Boolean isPressed;
 
     /**
-     *
+     * The PushButtonHelper constructor.
      * @param buttonInput A Pi4J DigitalInput Object.
      */
     //tag::const[]

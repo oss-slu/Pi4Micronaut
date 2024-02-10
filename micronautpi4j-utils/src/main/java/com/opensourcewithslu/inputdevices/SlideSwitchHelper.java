@@ -18,10 +18,13 @@ public class SlideSwitchHelper {
 
     private DigitalInput slideSwitchInput;
 
+    /**
+     * Shows if the slide switch is on.
+     */
     public boolean isOn;
 
     /**
-     *
+     * SlideSwitchHelper constructor.
      * @param slideSwitchInput A Pi4J DigitalInput Object.
      */
     //tag::const[]
