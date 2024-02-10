@@ -1,11 +1,6 @@
 package com.opensourcewithslu.outputdevices;
+
 import com.pi4j.io.gpio.digital.DigitalOutput;
-import io.micronaut.context.ApplicationContext;
-import io.micronaut.context.annotation.Prototype;
-import io.micronaut.inject.qualifiers.Qualifiers;
-import jakarta.inject.Inject;
-import jakarta.inject.Named;
-import jakarta.inject.Singleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,7 +11,7 @@ import org.slf4j.LoggerFactory;
 public class LEDHelper {
     private static final Logger log = LoggerFactory.getLogger(LEDHelper.class);
 
-    private DigitalOutput ledOutput;
+    private final DigitalOutput ledOutput;
 
     /**
      *
@@ -35,11 +30,11 @@ public class LEDHelper {
      *
      */
     //tag::method[]
-    public void deviceOn()
+    public void ledOn()
     //end::method[]
     {
         if (ledOutput.isLow()) {
-            log.debug("Turning on LED");
+            log.info("Turning on LED");
             ledOutput.high();
         }
     }
@@ -49,11 +44,11 @@ public class LEDHelper {
      *
      */
     //tag::method[]
-    public void deviceOff()
+    public void ledOff()
     //end::method[]
     {
         if (ledOutput.isHigh()) {
-            log.debug("Turning off LED");
+            log.info("Turning off LED");
             ledOutput.low();
         }
     }
@@ -67,10 +62,10 @@ public class LEDHelper {
     //end::method[]
     {
         if(ledOutput.isHigh()){
-            deviceOff();
+            ledOff();
         }
         else{
-            deviceOn();
+            ledOn();
         }
     }
 }
