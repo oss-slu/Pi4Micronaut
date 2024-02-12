@@ -31,17 +31,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Set up Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '17'
+
+      - name: Create Javadoc directory
+        run: mkdir -p ./gh-pages/javadocs
+
       - name: Generate JavaDocs
         run: |
           ./gradlew javadoc
           
 
-      - name: Create JavaDocs directory
-        run: mkdir -p ./javadoc
-
-      - name: Deploy javadoc to Github Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          publish_branch: gh-pages
-          publish_dir: ./micronautpi4j-utils/build/docs/javadoc/
+      - name: Copy Javadocs to gh-pages
+        run: cp -r ./build/docs/javadoc/* ./gh-pages/javadocs/
