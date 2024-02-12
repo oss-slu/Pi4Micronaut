@@ -26,7 +26,7 @@ jobs:
 
   javadoc_build:
     runs-on: ubuntu-latest
-    name: Generating and Organizing Javadocs
+    name: Generating Javadocs
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -40,7 +40,7 @@ jobs:
       - name: Create Javadoc directory
         run: mkdir -p ./gh-pages/javadocs
 
-      - name: Generate Javadocs
+      - name: Generate JavaDocs
         run: |
           ./gradlew javadoc
           
