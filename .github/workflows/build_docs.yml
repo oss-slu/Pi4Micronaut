@@ -46,4 +46,4 @@ jobs:
           
 
       - name: Copy Javadocs to gh-pages
-        run: cp -r ./build/docs/javadoc/* ./gh-pages/javadocs/
+        run: cp -r ./micronautpi4j-utils/build/docs/javadoc/* ./gh-pages/javadocs/
