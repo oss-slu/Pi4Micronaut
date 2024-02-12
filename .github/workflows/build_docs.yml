@@ -1,0 +1,47 @@
+name: build adocs and javadocs
+
+on:
+  push:
+    branches:
+    - main
+    - develop
+jobs:
+  adoc_build:
+    runs-on: ubuntu-latest
+    name: Building Asciidocs
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Get build container
+      id: adocbuild
+      uses: tonynv/asciidoctor-action@master
+      with:
+          program: "./gradlew asciidoctor"
+    - name: Deploy docs to ghpages
+      uses: peaceiris/actions-gh-pages@v3
+      with: 
+        deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+        publish_branch: gh-pages
+        publish_dir: ./micronautpi4j-utils/build/docs/asciidoc/
+
+  javadoc_build:
+    runs-on: ubuntu-latest
+    name: Generating Javadocs
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Generate JavaDocs
+        run: |
+          ./gradlew javadoc
+          
+
+      - name: Create JavaDocs directory
+        run: mkdir -p ./javadoc
+
+      - name: Deploy javadoc to Github Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          publish_branch: gh-pages
+          publish_dir: ./micronautpi4j-utils/build/docs/javadoc/
