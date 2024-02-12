@@ -8,8 +8,18 @@ import com.pi4j.io.pwm.Pwm;
 import io.micronaut.context.annotation.EachBean;
 import io.micronaut.context.annotation.Factory;
 
+/**
+ * The Pi4JMultipinFactory class is responsible for creating all the beans for all multi pin components that are being used.
+ */
 @Factory
 public class Pi4JMultipinFactory {
+
+    /**
+     * Creates a MultipinConfiguration object for a multi pin digital input component.
+     * @param config {@link DigitalInputMultiPinConfiguration} Object.
+     * @param pi4jContext The Pi4J {@link Context}.
+     * @return A MultipinConfiguration object.
+     */
     @EachBean(DigitalInputMultiPinConfiguration.class)
     public MultipinConfiguration multiPinInput(DigitalInputMultiPinConfiguration config, Context pi4jContext){
         int[] addresses = config.getAddresses();
@@ -30,6 +40,12 @@ public class Pi4JMultipinFactory {
         return new MultipinConfiguration(config.getId(), allInputs);
     }
 
+    /**
+     * Creates a MultipinConfiguration object for a multi pin pwm component.
+     * @param config {@link PwmMultiPinConfiguration} Object.
+     * @param pi4jContext The Pi4J {@link Context}.
+     * @return A MultipinConfiguration object.
+     */
     @EachBean(PwmMultiPinConfiguration.class)
     public MultipinConfiguration multiPinPwm(PwmMultiPinConfiguration config, Context pi4jContext){
         int[] addresses = config.getAddresses();

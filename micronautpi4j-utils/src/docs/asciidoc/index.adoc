@@ -15,6 +15,9 @@
 
 toc::[]
 
+[.text-right]
+https://github.com/oss-slu/Pi4Micronaut/edit/main/micronautpi4j-utils/src/docs/javadoc/index.html[API References]
+
 include::introduction.adoc[]
 
 include::Introduction/supportedHardware.adoc[]

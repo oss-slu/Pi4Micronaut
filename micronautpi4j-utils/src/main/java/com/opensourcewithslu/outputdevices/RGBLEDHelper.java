@@ -5,6 +5,9 @@ import com.pi4j.io.pwm.Pwm;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * The RBGLEDHelper class handles all interactions with a RGB LED.
+ */
 public class RGBLEDHelper {
     private static final Logger log = LoggerFactory.getLogger(RGBLEDHelper.class);
 
@@ -14,6 +17,10 @@ public class RGBLEDHelper {
 
     private final Pwm blue;
 
+    /**
+     * The RGBLEDHelper constructor.
+     * @param pwm A {@link  com.opensourcewithslu.utilities.MultipinConfiguration} Object.
+     */
     //tag::const[]
     public RGBLEDHelper(MultipinConfiguration pwm)
     //end::const[]
@@ -25,6 +32,10 @@ public class RGBLEDHelper {
         this.blue = pwms[2];
     }
 
+    /**
+     * Sets the color of the LED based of inputted RGB values. Set with a default frequency of 200 Hertz.
+     * @param colors RGB values in an array. [Red,Green,Blue].
+     */
     //tag::method[]
     public void setColor(int[] colors)
     //end::method[]
@@ -34,6 +45,11 @@ public class RGBLEDHelper {
         blue.on(colors[2], 200);
     }
 
+    /**
+     * Sets the color of the LED using the array of RGB values and an array of frequencies.
+     * @param colors RGB values in an array. [Red,Green,Blue].
+     * @param frequency Frequency values(in Hertz) for the corresponding RGB value. [Red frequency, Green frequency, Blue frequency]
+     */
     //tag::method[]
     public void setColor(int[] colors, int[] frequency)
     //end::method[]
@@ -44,6 +60,10 @@ public class RGBLEDHelper {
         blue.on(colors[2], frequency[2]);
     }
 
+    /**
+     * Setting the color of the LED using a hexadecimal value. Default frequency of 200 Hertz is used.
+     * @param hex Hexadecimal number optionally prefixed by 0x.
+     */
     //tag::method[]
     public void setColorHex(String hex)
     //end::method[]
@@ -60,6 +80,12 @@ public class RGBLEDHelper {
         blue.on(b, 200);
     }
 
+
+    /**
+     *  Setting the color of the LED using a hexadecimal value and an array of frequencies.
+     * @param hex Hexadecimal number optionally prefixed by 0x.
+     * @param frequency Frequency values(in Hertz) for the corresponding RGB value. [Red frequency, Green frequency, Blue frequency]
+     */
     //tag::method[]
     public void setColorHex(String hex, int[] frequency)
     //end::method[]
@@ -75,6 +101,10 @@ public class RGBLEDHelper {
         blue.on(b, frequency[2]);
     }
 
+    /**
+     * Sets the red value of the LED. Default 200 Hertz frequency used.
+     * @param red Integer value representing the red in the RGB value of the LED.
+     */
     //tag::method[]
     public void setRed(int red)
     //end::method[]
@@ -83,6 +113,11 @@ public class RGBLEDHelper {
         this.red.on(red, 200);
     }
 
+    /**
+     * Sets the red value and frequency of the LED.
+     * @param red Integer value representing the red in the RGB value of the LED.
+     * @param frequency Frequency of the red value in Hertz.
+     */
     //tag::method[]
     public void setRed(int red, int frequency)
     //end::method[]
@@ -91,6 +126,10 @@ public class RGBLEDHelper {
         this.red.on(red, frequency);
     }
 
+    /**
+     * Sets the blue value of the LED. Default 200 Hertz frequency used.
+     * @param blue Integer value representing the blue in the RGB value of the LED.
+     */
     //tag::method[]
     public void setBlue(int blue)
     //end::method[]
@@ -99,6 +138,11 @@ public class RGBLEDHelper {
         this.blue.on(blue, 200);
     }
 
+    /**
+     * Sets the blue value and frequency of the LED.
+     * @param blue Integer value representing the blue in the RGB value of the LED.
+     * @param frequency Frequency of the blue value in Hertz.
+     */
     //tag::method[]
     public void setBlue(int blue, int frequency)
     //end::method[]
@@ -107,6 +151,10 @@ public class RGBLEDHelper {
         this.blue.on(blue, frequency);
     }
 
+    /**
+     * Sets the green value of the LED. Default 200 Hertz frequency used.
+     * @param green Integer value representing the green in the RGB value of the LED.
+     */
     //tag::method[]
     public void setGreen(int green)
     //end::method[]
@@ -115,6 +163,11 @@ public class RGBLEDHelper {
         this.green.on(green, 200);
     }
 
+    /**
+     *  Sets the green value and frequency of the LED.
+     * @param green Integer value representing the green in the RGB value of the LED.
+     * @param frequency Frequency of the green value in Hertz.
+     */
     //tag::method[]
     public void setGreen(int green, int frequency)
     //end::method[]
@@ -123,6 +176,9 @@ public class RGBLEDHelper {
         this.green.on(green, frequency);
     }
 
+    /**
+     * Turns off the RGB LED.
+     */
     //tag::method[]
     public void ledOff()
     //end::method[]
@@ -133,6 +189,9 @@ public class RGBLEDHelper {
         this.blue.off();
     }
 
+    /**
+     * Turns on the RGB LED with default RGB values of 100,100,100 and frequencies of 200 Hertz.
+     */
     //tag::method[]
     public void ledOn()
     //end::method[]

@@ -5,6 +5,9 @@ import com.pi4j.io.gpio.digital.DigitalInput;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * The RotaryEncoderHelper class initializes a rotary encoder component and returns the value of the encoder when called upon.
+ */
 public class RotaryEncoderHelper {
     private static final Logger log = LoggerFactory.getLogger(RotaryEncoderHelper.class);
 
@@ -18,6 +21,10 @@ public class RotaryEncoderHelper {
 
     private int globalCounter;
 
+    /**
+     * The RotaryEncoderHelper constructor.
+     * @param multiPin A {@link  com.opensourcewithslu.utilities.MultipinConfiguration} Object.
+     */
     //tag::const[]
     public RotaryEncoderHelper(MultipinConfiguration multiPin)
     //end::const[]
@@ -31,6 +38,9 @@ public class RotaryEncoderHelper {
         initialize();
     }
 
+    /**
+     * Initializes the listener that keeps track of the rotary encoder's position. Automatically called when the RotaryEncoderHelper is instantiated.
+     */
     //tag::method[]
     public void initialize()
     //end::method[]
@@ -69,6 +79,10 @@ public class RotaryEncoderHelper {
         });
     }
 
+    /**
+     * Gets the value of the rotary encoder.
+     * @return The value of the rotary encoder.
+     */
     //tag::method[]
     public int getEncoderValue()
     //end::method[]
