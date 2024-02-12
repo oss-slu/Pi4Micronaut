@@ -1,10 +1,7 @@
 package com.opensourcewithslu.inputdevices;
+
 import com.pi4j.io.gpio.digital.DigitalInput;
 import com.pi4j.io.gpio.digital.DigitalStateChangeListener;
-import io.micronaut.context.annotation.Prototype;
-import jakarta.annotation.PostConstruct;
-import jakarta.inject.Named;
-import jakarta.inject.Singleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,7 +11,8 @@ import org.slf4j.LoggerFactory;
 public class PushButtonHelper {
     private static final Logger log = LoggerFactory.getLogger(PushButtonHelper.class);
 
-    private DigitalInput buttonInput;
+
+    private final DigitalInput buttonInput;
 
     /**
      * Determines if the button is pressed.
@@ -42,11 +40,11 @@ public class PushButtonHelper {
     public void initialize()
     //end::method[]
     {
-        log.trace("Initializing " + buttonInput.getName());
+        log.info("Initializing " + buttonInput.getName());
 
-        buttonInput.addListener(e->{
-           isPressed = buttonInput.isHigh();
-        });
+        buttonInput.addListener(e->
+           isPressed = buttonInput.isHigh()
+        );
     }
 
     /**

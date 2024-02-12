@@ -11,7 +11,6 @@ import jakarta.inject.Named;
 //tag::ex[]
 @Controller("/rfid")
 public class RfidController {
-
     private final RFidHelper rfidHelper;
 
     public RfidController(@Named("rfid") SpiConfig spi, Context pi4jContext){

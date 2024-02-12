@@ -1,20 +1,21 @@
 package com.opensourcewithslu.inputdevices;
+
 import com.pi4j.crowpi.components.exceptions.RfidException;
 import com.pi4j.context.Context;
 import com.pi4j.io.spi.SpiConfig;
-import io.micronaut.context.annotation.Prototype;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.pi4j.crowpi.components.RfidComponent;
-
 import java.util.concurrent.atomic.AtomicReference;
+
 
 /**
  *  The RFIDHelper class is for interacting with an RFID scanner.
  */
 public class RFidHelper {
     private static final Logger log = LoggerFactory.getLogger(RFidHelper.class);
-    private RfidComponent scanner;
+
+    private final RfidComponent scanner;
 
     /**
      * The RFidHelper constructor WITH the reset pin as a parameter.
