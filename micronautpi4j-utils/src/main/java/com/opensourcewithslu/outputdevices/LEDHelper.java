@@ -4,11 +4,20 @@ import com.pi4j.io.gpio.digital.DigitalOutput;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ *  The class LEDHelper contains methods that pertain to the control of a LED.
+ *
+ */
 public class LEDHelper {
     private static final Logger log = LoggerFactory.getLogger(LEDHelper.class);
 
     private final DigitalOutput ledOutput;
 
+    /**
+     *
+     * LEGHelper constructor.
+     * @param ledOutput An instance of a Pi4J DigitalOutput object.
+     */
     //tag::const[]
     public LEDHelper(DigitalOutput ledOutput)
     //end::const[]
@@ -16,6 +25,10 @@ public class LEDHelper {
         this.ledOutput = ledOutput;
     }
 
+    /**
+     * Turns on the LED by setting the DigitalOutput object to high.
+     *
+     */
     //tag::method[]
     public void ledOn()
     //end::method[]
@@ -26,6 +39,10 @@ public class LEDHelper {
         }
     }
 
+    /**
+     *  Turns off the LED by setting the DigitalOutput object to low.
+     *
+     */
     //tag::method[]
     public void ledOff()
     //end::method[]
@@ -36,6 +53,10 @@ public class LEDHelper {
         }
     }
 
+    /**
+     * Switches the state of the LED. If the LED is on, the LED is turned off and vice versa.
+     *
+     */
     //tag::method[]
     public void switchState()
     //end::method[]
