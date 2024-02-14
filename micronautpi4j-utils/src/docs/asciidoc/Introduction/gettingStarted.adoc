@@ -1,13 +1,88 @@
+:imagesdir: img/
+
+ifndef::rootpath[]
+:rootpath: ../
+endif::rootpath[]
+
+ifdef::rootpath[]
+:imagesdir: {rootpath}{imagesdir}
+endif::rootpath[]
+
 === Getting Started With Pi4Micronaut!
+
+==== Prerequisites
+. Before beginning the setup, ensure that your Raspberry Pi and your system are both connected to the same network
 
 ==== Build the Jar file
 . Open your terminal of choice
 . Navigate to the file directory containing the Pi4Micronaut library
 . Enter the following command into the terminal to build the jar file: "./gradlew"
+. The necessary components jar file can be found under "../Pi4Micronaut/components/build/libs/components-0.1-all.jar"
 
 ==== Install the Raspberry Pi Imager
 . To upload the Jar file onto your Raspberry Pi, you need to install the Raspberry Pi Imager
 . Go to the following link and download the correct version for your system: https://www.raspberrypi.com/software/
 
 ==== Set up Raspberry Pi OS
-.
+. Now, start up the Raspberry Pi Imager.
+. Grab an SD card and get it hooked up to your computer.
+. In the Imager app, click "*CHOOSE DEVICE*" and select your Pi device.
+. Next, click "*CHOOSE OS*" -> "*Raspberry Pi OS (other)*" -> "*Raspberry Pi OS (Legacy, 32-bit) Lite*"
+. For storage, choose the SD card and click Next.
+. Before clicking "*NEXT*," Press *Ctrl+Shift+X* to enter the Advanced Settings
+. Under the GENERAL tab:
+.. Set your hostname to whatever you choose
+.. Create username and password for your Raspberry Pi
+.. Check "Configure wireless LAN" and set your password to your networks password
++
+image::imager_settings1.png[]
++
+. Under the SERVICES tab:
+.. Check *Enable SSH* and use password authentication
++
+image::imager_settings2.png[]
++
+. Click save and write to the SD card
+
+
+==== Connecting to Raspberry Pi
+. Get your Raspberry Pi plugged into a power source.
+. Get the IP address of your Pi and SSH into it
+.. Follow the instructions outlined in this article: https://docs.sunfounder.com/projects/picar-s/en/latest/get_started_with_raspberry_pi.html#get-the-ip-address
+
+
+==== Installing Java
+. First, make sure your Raspberry Pi's package list is up-to-date by running the following commands in your Pi's terminal:
++
+[source, bash]
+----
+sudo apt update
+sudo apt upgrade -y
+----
+. Next, install Java onto your Pi by running the following command:
++
+[source, bash]
+----
+sudo apt install openjdk-17-jdk -y
+----
+To verify installation, run
++
+[source, bash]
+----
+java --version
+----
+
+==== Copy Over Jar File
+. Open a terminal and head to the directory containing the components jar file: "../Pi4Micronaut/components/build/libs/components-0.1-all.jar"
+. Enter the following command: "scp components-0.1-all.jar {username}"@{raspberry_pi_id}:~"
+.. Following our configuration from earlier, this would look like "scp components-0.1-all.jar test@raspberrypi-test:~"
+
+==== Almost Done!
+. To test if you've set up Pi4Micronaut correctly on your raspberry pi, we have some sample commands for you run.
+. Open a new Windows Powershell and ssh into your raspberry pi.
+. Enter the following command to test the turn on funcion for an LED light: "curl http://localhost:8080/led/LedOn"
+. If this command works, congratulations! You have successfully used our Pi4Micronaut library!
+
+==== Enabling Different Communication Protocols
+. If you need to enable different communcation protocols, such as I2C, SPI, etc., do the following:
+.. En
