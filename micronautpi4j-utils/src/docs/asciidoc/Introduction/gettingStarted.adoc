@@ -9,46 +9,52 @@ ifdef::rootpath[]
 endif::rootpath[]
 
 === Getting Started With Pi4Micronaut!
+This section describes how to build and run the jar file from the Pi4Micronaut project on your raspberry pi.
+
+Note: this is not a tutorial on how to use the Pi4Micronaut library, simply a setup guide.
 
 ==== Prerequisites
-. Before beginning the setup, ensure that your Raspberry Pi and your system are both connected to the same network
-
-==== Build the Jar file
-. Open your terminal of choice
-. Navigate to the file directory containing the Pi4Micronaut library
-. Enter the following command into the terminal to build the jar file: "./gradlew"
-. The necessary components jar file can be found under "../Pi4Micronaut/components/build/libs/components-0.1-all.jar"
-
-==== Install the Raspberry Pi Imager
-. To upload the Jar file onto your Raspberry Pi, you need to install the Raspberry Pi Imager
-. Go to the following link and download the correct version for your system: https://www.raspberrypi.com/software/
+. Clone our Github repo onto your system
++
+https://github.com/oss-slu/Pi4Micronaut/tree/main
 
 ==== Set up Raspberry Pi OS
-. Now, start up the Raspberry Pi Imager.
-. Grab an SD card and get it hooked up to your computer.
-. In the Imager app, click "*CHOOSE DEVICE*" and select your Pi device.
-. Next, click "*CHOOSE OS*" -> "*Raspberry Pi OS (other)*" -> "*Raspberry Pi OS (Legacy, 32-bit) Lite*"
-. For storage, choose the SD card and click Next.
-. Before clicking "*NEXT*," Press *Ctrl+Shift+X* to enter the Advanced Settings
-. Under the GENERAL tab:
-.. Set your hostname to whatever you choose
-.. Create username and password for your Raspberry Pi
-.. Check "Configure wireless LAN" and set your password to your networks password
+. Start by installing the Raspberry Pi Imager
+. To install the Imager, follow this guide by the Raspberry Pi Foundation:
++
+https://www.raspberrypi.com/documentation/computers/getting-started.html#install-using-imager
+. *IMPORTANT!!* When choosing the OS, click "*CHOOSE OS*" -> "*Raspberry Pi OS (other)*" -> "*Raspberry Pi OS (Legacy, 64-bit) Lite*"
++
+Note: use the same wifi network for your raspberry pi that your system is connected to
+. Your configuration should look something like this:
 +
 image::imager_settings1.png[]
 +
-. Under the SERVICES tab:
-.. Check *Enable SSH* and use password authentication
-+
 image::imager_settings2.png[]
-+
-. Click save and write to the SD card
 
 
 ==== Connecting to Raspberry Pi
 . Get your Raspberry Pi plugged into a power source.
-. Get the IP address of your Pi and SSH into it
-.. Follow the instructions outlined in this article: https://docs.sunfounder.com/projects/picar-s/en/latest/get_started_with_raspberry_pi.html#get-the-ip-address
+. You can connect to your Pi several different ways.
+.. Using the hostname, for example:
++
+[source, bash]
+----
+ssh {username}@{hostname}
+----
++
+Using our above example configuration:
++
+[source, bash]
+----
+ssh test@raspberrypi-test
+----
+
+.. Using the IP address of your Pi:
++
+Follow the instructions outlined in this article:
++
+https://docs.sunfounder.com/projects/picar-s/en/latest/get_started_with_raspberry_pi.html#get-the-ip-address
 
 
 ==== Installing Java
@@ -57,13 +63,13 @@ image::imager_settings2.png[]
 [source, bash]
 ----
 sudo apt update
-sudo apt upgrade -y
+sudo apt-get upgrade -y
 ----
 . Next, install Java onto your Pi by running the following command:
 +
 [source, bash]
 ----
-sudo apt install openjdk-17-jdk -y
+sudo apt-get install default-jdk -y
 ----
 To verify installation, run
 +
@@ -71,18 +77,66 @@ To verify installation, run
 ----
 java --version
 ----
++
+Finally, install pigpio
++
+[source, bash]
+----
+sudo apt-get install pigpio
+----
 
-==== Copy Over Jar File
-. Open a terminal and head to the directory containing the components jar file: "../Pi4Micronaut/components/build/libs/components-0.1-all.jar"
-. Enter the following command: "scp components-0.1-all.jar {username}"@{raspberry_pi_id}:~"
-.. Following our configuration from earlier, this would look like "scp components-0.1-all.jar test@raspberrypi-test:~"
+==== Build and Copy Over Jar File
+. Open your terminal of choice
+. Navigate to the Pi4Micronaut root directory
+. Enter the following command into the terminal to build the jar file: "./gradlew build"
+. The necessary components jar file can be found under "../Pi4Micronaut/components/build/libs/components-0.1-all.jar"
+. Enter the following command:
++
+[source, bash]
+----
+scp components-0.1-all.jar {username}@{hostname}:~
+----
++
+.. Following our configuration from earlier, this would look like
++
+[source, bash]
+----
+scp components-0.1-all.jar test@raspberrypi-test:~
+----
 
 ==== Almost Done!
 . To test if you've set up Pi4Micronaut correctly on your raspberry pi, we have some sample commands for you run.
 . Open a new Windows Powershell and ssh into your raspberry pi.
-. Enter the following command to test the turn on funcion for an LED light: "curl http://localhost:8080/led/LedOn"
-. If this command works, congratulations! You have successfully used our Pi4Micronaut library!
+. Enter the following command to run the jar file:
++
+[source, bash]
+----
+sudo java -jar components-0.1-all.jar
+----
++
+The output should look like this:
++
+image::running_jar.png[]
+
+
+. Let's test one of the components. Take a look at our documentation for setting up the LED component:
++
+https://oss-slu.github.io/Pi4Micronaut/#_led
+. After getting everything set up, open up a new PowerShell and ssh into your pi once more.
+. Enter the following command to test the turn on funcion for an LED light:
++
+"curl http://localhost:8080/led/LedOn"
+. If this command works and the LED has lit up, congratulations! You have successfully built and run one of our components!
 
 ==== Enabling Different Communication Protocols
 . If you need to enable different communcation protocols, such as I2C, SPI, etc., do the following:
-.. En
+.. Enter the following command:
++
+[source, bash]
+----
+sudo raspi-config
+----
++
+. Navigate to "*Interfacing Options*"
+. Choose your desired protocol
+. Reboot when prompted to
