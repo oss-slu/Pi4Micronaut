@@ -32,4 +32,16 @@ public class TouchSwitchController {
             }
         });
     }
+
+    @Get("/disable")
+    public void disableController() {
+        touchSwitchHelper.removeEventListener(e->{
+            if(touchSwitchHelper.isTouched){
+                ledHelper.ledOn();
+            }
+            else if(touchSwitchHelper.isReleased){
+                ledHelper.ledOff();
+            }
+        });
+    }
 }
