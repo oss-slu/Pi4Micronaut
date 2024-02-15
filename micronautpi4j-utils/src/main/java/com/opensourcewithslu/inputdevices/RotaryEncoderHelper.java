@@ -1,26 +1,30 @@
 package com.opensourcewithslu.inputdevices;
-import com.opensourcewithslu.utilities.MultiPinConfigs.DigitalInputMultiPinConfiguration;
+
 import com.opensourcewithslu.utilities.MultipinConfiguration;
-import com.opensourcewithslu.utilities.Pi4JMultipinFactory;
 import com.pi4j.io.gpio.digital.DigitalInput;
-import com.pi4j.io.gpio.digital.DigitalListener;
-import com.pi4j.io.gpio.digital.DigitalStateChangeListener;
-import io.micronaut.context.annotation.Context;
-import io.micronaut.context.annotation.Prototype;
-import jakarta.annotation.PostConstruct;
-import jakarta.inject.Named;
-import jakarta.inject.Singleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * The RotaryEncoderHelper class initializes a rotary encoder component and returns the value of the encoder when called upon.
+ */
 public class RotaryEncoderHelper {
     private static final Logger log = LoggerFactory.getLogger(RotaryEncoderHelper.class);
-    private DigitalInput clk;
-    private DigitalInput dt;
-    private DigitalInput sw;
-    private String helperName;
+
+    private final DigitalInput clk;
+
+    private final DigitalInput dt;
+
+    private final DigitalInput sw;
+
+    private final String helperName;
+
     private int globalCounter;
 
+    /**
+     * The RotaryEncoderHelper constructor.
+     * @param multiPin A {@link  com.opensourcewithslu.utilities.MultipinConfiguration} Object.
+     */
     //tag::const[]
     public RotaryEncoderHelper(MultipinConfiguration multiPin)
     //end::const[]
@@ -34,11 +38,14 @@ public class RotaryEncoderHelper {
         initialize();
     }
 
+    /**
+     * Initializes the listener that keeps track of the rotary encoder's position. Automatically called when the RotaryEncoderHelper is instantiated.
+     */
     //tag::method[]
     public void initialize()
     //end::method[]
     {
-        log.trace("Initializing " + helperName);
+        log.info("Initializing " + helperName);
 
         String logInfo = helperName + " counter is {}";
 
@@ -59,7 +66,7 @@ public class RotaryEncoderHelper {
                     globalCounter--;
                 }
             }
-            log.trace(logInfo, globalCounter);
+            log.info(logInfo, globalCounter);
         });
 
         sw.addListener(e -> {
@@ -72,6 +79,10 @@ public class RotaryEncoderHelper {
         });
     }
 
+    /**
+     * Gets the value of the rotary encoder.
+     * @return The value of the rotary encoder.
+     */
     //tag::method[]
     public int getEncoderValue()
     //end::method[]
