@@ -1,19 +1,23 @@
 package com.opensourcewithslu.outputdevices;
+
 import com.pi4j.io.gpio.digital.DigitalOutput;
-import io.micronaut.context.ApplicationContext;
-import io.micronaut.context.annotation.Prototype;
-import io.micronaut.inject.qualifiers.Qualifiers;
-import jakarta.inject.Inject;
-import jakarta.inject.Named;
-import jakarta.inject.Singleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ *  The class LEDHelper contains methods that pertain to the control of a LED.
+ *
+ */
 public class LEDHelper {
     private static final Logger log = LoggerFactory.getLogger(LEDHelper.class);
 
-    private DigitalOutput ledOutput;
+    private final DigitalOutput ledOutput;
 
+    /**
+     *
+     * LEGHelper constructor.
+     * @param ledOutput An instance of a Pi4J DigitalOutput object.
+     */
     //tag::const[]
     public LEDHelper(DigitalOutput ledOutput)
     //end::const[]
@@ -21,35 +25,47 @@ public class LEDHelper {
         this.ledOutput = ledOutput;
     }
 
+    /**
+     * Turns on the LED by setting the DigitalOutput object to high.
+     *
+     */
     //tag::method[]
-    public void deviceOn() 
+    public void ledOn()
     //end::method[]
     {
         if (ledOutput.isLow()) {
-            log.trace("Turning off LED");
+            log.info("Turning on LED");
             ledOutput.high();
         }
     }
 
+    /**
+     *  Turns off the LED by setting the DigitalOutput object to low.
+     *
+     */
     //tag::method[]
-    public void deviceOff() 
+    public void ledOff()
     //end::method[]
     {
         if (ledOutput.isHigh()) {
-            log.trace("Turning on LED");
+            log.info("Turning off LED");
             ledOutput.low();
         }
     }
 
+    /**
+     * Switches the state of the LED. If the LED is on, the LED is turned off and vice versa.
+     *
+     */
     //tag::method[]
     public void switchState()
     //end::method[]
     {
         if(ledOutput.isHigh()){
-            deviceOff();
+            ledOff();
         }
         else{
-            deviceOn();
+            ledOn();
         }
     }
 }

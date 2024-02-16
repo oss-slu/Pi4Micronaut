@@ -24,8 +24,15 @@ import io.micronaut.context.annotation.EachBean;
 import io.micronaut.context.annotation.Factory;
 import jakarta.inject.Singleton;
 
+/**
+ * The Pi4JFactory class is responsible for creating all the beans for components that are being used.
+ */
 @Factory
 public class Pi4JFactory {
+    /**
+     * This creates the Pi4J Context that is used to create all the beans for the individual components.
+     * @return A Pi4J Context
+     */
     @Singleton
     @Bean(preDestroy = "shutdown")
     public com.pi4j.context.Context createPi4jContext() {
@@ -51,6 +58,12 @@ public class Pi4JFactory {
                 .build();
     }
 
+    /**
+     * Creates a DigitalOutput object for digital output components.
+     * @param config {@link DigitalOutputConfiguration} Object.
+     * @param pi4jContext The Pi4J {@link Context}.
+     * @return A DigitalOutput Object.
+     */
     @EachBean(DigitalOutputConfiguration.class)
     public DigitalOutput createDigitalOutput(DigitalOutputConfiguration config, Context pi4jContext) {
         var outputConfigBuilder = DigitalOutput.newConfigBuilder(pi4jContext)
@@ -63,6 +76,12 @@ public class Pi4JFactory {
         return pi4jContext.create(outputConfigBuilder);
     }
 
+    /**
+     * Creates a DigitalInput object for digital input components.
+     * @param config {@link DigitalInputConfiguration} Object.
+     * @param pi4jContext The Pi4J {@link Context}.
+     * @return A DigitalInput Object.
+     */
     @EachBean(DigitalInputConfiguration.class)
     public DigitalInput createDigitalInput(DigitalInputConfiguration config, Context pi4jContext) {
         var inputConfigBuilder = DigitalInput.newConfigBuilder(pi4jContext)
@@ -75,6 +94,12 @@ public class Pi4JFactory {
         return pi4jContext.create(inputConfigBuilder);
     }
 
+    /**
+     * Creates a PWM object for components that are pwm.
+     * @param config {@link PwmConfiguration} Object.
+     * @param pi4jContext The Pi4J {@link Context}.
+     * @return A PWM Object.
+     */
     @EachBean(PwmConfiguration.class)
     public Pwm createPwm(PwmConfiguration config, Context pi4jContext) {
         var outputConfigBuilder = pi4jContext.create(
@@ -92,6 +117,12 @@ public class Pi4JFactory {
         return outputConfigBuilder;
     }
 
+    /**
+     * Creates an SpiConfigBuilder object for components that are SPI.
+     * @param config {@link SpiConfiguration} Object.
+     * @param pi4jContext The Pi4J {@link Context}.
+     * @return A SpiConfigBuilder Object.
+     */
     @EachBean(SpiConfiguration.class)
     public SpiConfig createSpi(SpiConfiguration config, Context pi4jContext) {
         var outputConfigBuilder = Spi.newConfigBuilder(pi4jContext)
@@ -103,6 +134,12 @@ public class Pi4JFactory {
         return outputConfigBuilder;
     }
 
+    /**
+     * Creates an I2CConfigBuilder Object for components that are I2C.
+     * @param config {@link i2cConfiguration} Object.
+     * @param pi4jContext The Pi4J {@link Context}.
+     * @return A I2CConfigBuilder Object.
+     */
     @EachBean(i2cConfiguration.class)
     public I2CConfig createI2C(i2cConfiguration config, Context pi4jContext) {
         var outputConfigBuilder = I2C.newConfigBuilder(pi4jContext)
