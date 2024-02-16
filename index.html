@@ -217,9 +217,20 @@ th {
 <li><a href="#_introduction">1. Introduction</a>
 <ul class="sectlevel2">
 <li><a href="#_currently_supported_hardware">1.1. Currently Supported Hardware</a></li>
-<li><a href="#_example_applications">1.2. Example Applications</a>
+<li><a href="#_getting_started_with_pi4micronaut">1.2. Getting Started With Pi4Micronaut!</a>
 <ul class="sectlevel3">
-<li><a href="#_remote_mointoring_check_in_system">1.2.1. Remote Mointoring Check-In System</a></li>
+<li><a href="#_prerequisites">1.2.1. Prerequisites</a></li>
+<li><a href="#_set_up_raspberry_pi_os">1.2.2. Set up Raspberry Pi OS</a></li>
+<li><a href="#_connecting_to_raspberry_pi">1.2.3. Connecting to Raspberry Pi</a></li>
+<li><a href="#_installing_java">1.2.4. Installing Java</a></li>
+<li><a href="#_build_and_copy_over_jar_file">1.2.5. Build and Copy Over Jar File</a></li>
+<li><a href="#_almost_done">1.2.6. Almost Done!</a></li>
+<li><a href="#_enabling_different_communication_protocols">1.2.7. Enabling Different Communication Protocols</a></li>
+</ul>
+</li>
+<li><a href="#_example_applications">1.3. Example Applications</a>
+<ul class="sectlevel3">
+<li><a href="#_remote_mointoring_check_in_system">1.3.1. Remote Mointoring Check-In System</a></li>
 </ul>
 </li>
 </ul>
@@ -329,7 +340,274 @@ th {
 </div>
 </div>
 <div class="sect2">
-<h3 id="_example_applications"><a class="anchor" href="#_example_applications"></a>1.2. Example Applications</h3>
+<h3 id="_getting_started_with_pi4micronaut"><a class="anchor" href="#_getting_started_with_pi4micronaut"></a>1.2. Getting Started With Pi4Micronaut!</h3>
+<div class="paragraph">
+<p>This section describes how to build and run the jar file from the Pi4Micronaut project on your raspberry pi.</p>
+</div>
+<div class="paragraph">
+<p>Note: this is not a tutorial on how to use the Pi4Micronaut library, simply a setup guide.</p>
+</div>
+<div class="sect3">
+<h4 id="_prerequisites"><a class="anchor" href="#_prerequisites"></a>1.2.1. Prerequisites</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Clone our Github repo onto your system</p>
+<div class="paragraph">
+<p><a href="https://github.com/oss-slu/Pi4Micronaut/tree/main" class="bare">https://github.com/oss-slu/Pi4Micronaut/tree/main</a></p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_set_up_raspberry_pi_os"><a class="anchor" href="#_set_up_raspberry_pi_os"></a>1.2.2. Set up Raspberry Pi OS</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Start by installing the Raspberry Pi Imager</p>
+</li>
+<li>
+<p>To install the Imager, follow this guide by the Raspberry Pi Foundation:</p>
+<div class="paragraph">
+<p><a href="https://www.raspberrypi.com/documentation/computers/getting-started.html#install-using-imager" class="bare">https://www.raspberrypi.com/documentation/computers/getting-started.html#install-using-imager</a></p>
+</div>
+<div class="paragraph">
+<p>Note: use the same wifi network for your raspberry pi that your system is connected to</p>
+</div>
+</li>
+<li>
+<p>Your configuration should look something like this:</p>
+<div class="imageblock">
+<div class="content">
+<img src="img/imager_settings1.png" alt="imager settings1">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/imager_settings2.png" alt="imager settings2">
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_connecting_to_raspberry_pi"><a class="anchor" href="#_connecting_to_raspberry_pi"></a>1.2.3. Connecting to Raspberry Pi</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Get your Raspberry Pi plugged into a power source.</p>
+</li>
+<li>
+<p>You can connect to your Pi several different ways.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Using the hostname, for example:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="bash">ssh <span class="o">{</span>username<span class="o">}</span>@<span class="o">{</span><span class="nb">hostname</span><span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Using our above example configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="bash">ssh <span class="nb">test</span>@raspberrypi-test</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Using the IP address of your Pi:</p>
+<div class="paragraph">
+<p>Follow the instructions outlined in this article:</p>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.sunfounder.com/projects/picar-s/en/latest/get_started_with_raspberry_pi.html#get-the-ip-address" class="bare">https://docs.sunfounder.com/projects/picar-s/en/latest/get_started_with_raspberry_pi.html#get-the-ip-address</a></p>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_installing_java"><a class="anchor" href="#_installing_java"></a>1.2.4. Installing Java</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>First, make sure your Raspberry Pi&#8217;s package list is up-to-date by running the following commands in your Pi&#8217;s terminal:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="bash"><span class="nb">sudo </span>apt update
+<span class="nb">sudo </span>apt-get upgrade <span class="nt">-y</span></code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Next, install Java onto your Pi by running the following command:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="bash"><span class="nb">sudo </span>apt-get <span class="nb">install </span>default-jdk <span class="nt">-y</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To verify installation, run</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="bash">java <span class="nt">--version</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Finally, install pigpio</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="bash"><span class="nb">sudo </span>apt-get <span class="nb">install </span>pigpio</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_build_and_copy_over_jar_file"><a class="anchor" href="#_build_and_copy_over_jar_file"></a>1.2.5. Build and Copy Over Jar File</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open your terminal of choice</p>
+</li>
+<li>
+<p>Navigate to the Pi4Micronaut root directory</p>
+</li>
+<li>
+<p>Enter the following command into the terminal to build the jar file:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="bash">./gradlew build</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>The necessary components jar file can be found under "../Pi4Micronaut/components/build/libs/"</p>
+</li>
+<li>
+<p>Once you have navigated to this directory, enter the following command:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="bash">scp components-0.1-all.jar <span class="o">{</span>username<span class="o">}</span>@<span class="o">{</span><span class="nb">hostname</span><span class="o">}</span>:~</code></pre>
+</div>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Following our configuration from earlier, this would look like</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="bash">scp components-0.1-all.jar <span class="nb">test</span>@raspberrypi-test:~</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_almost_done"><a class="anchor" href="#_almost_done"></a>1.2.6. Almost Done!</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>To test if you&#8217;ve set up Pi4Micronaut correctly on your raspberry pi, we have some sample commands for you run.</p>
+</li>
+<li>
+<p>Open a new Windows Powershell and ssh into your raspberry pi.</p>
+</li>
+<li>
+<p>Enter the following command to run the jar file:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="bash"><span class="nb">sudo </span>java <span class="nt">-jar</span> components-0.1-all.jar</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The output should look like this:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/running_jar.png" alt="running jar">
+</div>
+</div>
+<div class="paragraph">
+<p>With this, a Micronaut localhost server will start running on your machine</p>
+</div>
+</li>
+<li>
+<p>Let&#8217;s test one of the components. Take a look at our documentation for setting up the LED component:</p>
+<div class="paragraph">
+<p><a href="https://oss-slu.github.io/Pi4Micronaut/#_led" class="bare">https://oss-slu.github.io/Pi4Micronaut/#_led</a></p>
+</div>
+</li>
+<li>
+<p>After getting everything set up, open up a new PowerShell and ssh into your pi once more.</p>
+</li>
+<li>
+<p>Enter the following command to test the turn on function for an LED light:</p>
+<div class="paragraph">
+<p>"curl <a href="http://localhost:8080/led/ledOn"" class="bare">http://localhost:8080/led/ledOn"</a></p>
+</div>
+</li>
+<li>
+<p>If this command works and the LED has lit up, congratulations! You have successfully built and run one of our components!</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_enabling_different_communication_protocols"><a class="anchor" href="#_enabling_different_communication_protocols"></a>1.2.7. Enabling Different Communication Protocols</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>In the Pi4Micronaut library, we have used different communication protocols, such as I2C, SPI, etc.</p>
+</li>
+<li>
+<p>To enable any of these protocols when needed, enter the following command:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="bash"><span class="nb">sudo </span>raspi-config</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Navigate to "<strong>Interfacing Options</strong>"</p>
+<div class="imageblock">
+<div class="content">
+<img src="img/commProtocol1.png" alt="commProtocol1">
+</div>
+</div>
+</li>
+<li>
+<p>Choose your desired protocol</p>
+<div class="imageblock">
+<div class="content">
+<img src="img/commProtocol2.png" alt="commProtocol2">
+</div>
+</div>
+</li>
+<li>
+<p>Reboot when prompted to</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_example_applications"><a class="anchor" href="#_example_applications"></a>1.3. Example Applications</h3>
 <div class="paragraph text-right">
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/Introduction/exampleApplications.adoc">Improve this doc</a></p>
 </div>
@@ -337,7 +615,7 @@ th {
 <p>If you&#8217;re curious about what Pi4Micronaut is capable of, check out some of the working applications created using our library.</p>
 </div>
 <div class="sect3">
-<h4 id="_remote_mointoring_check_in_system"><a class="anchor" href="#_remote_mointoring_check_in_system"></a>1.2.1. Remote Mointoring Check-In System</h4>
+<h4 id="_remote_mointoring_check_in_system"><a class="anchor" href="#_remote_mointoring_check_in_system"></a>1.3.1. Remote Mointoring Check-In System</h4>
 <div class="paragraph">
 <p><a href="https://github.com/oss-slu/SLU_OSS_CheckIn" class="bare">https://github.com/oss-slu/SLU_OSS_CheckIn</a></p>
 </div>
@@ -2417,7 +2695,7 @@ adjust according to your power source and LED specifications</p>
 <div id="footer">
 <div id="footer-text">
 Version v1.0.0<br>
-Last updated 2024-02-12 20:57:47 UTC
+Last updated 2024-02-16 02:37:09 UTC
 </div>
 </div>
 <style>
