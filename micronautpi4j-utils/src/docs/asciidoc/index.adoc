@@ -22,6 +22,8 @@ include::introduction.adoc[]
 
 include::Introduction/supportedHardware.adoc[]
 
+include::Introduction/gettingStarted.adoc[]
+
 include::Introduction/exampleApplications.adoc[]
 
 include::contribute/contributingToLibrary.adoc[]
