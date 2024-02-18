@@ -84,7 +84,7 @@ pi4j:
       name: Touch Switch Input
       address: 17
       pull: PULL_DOWN
-      debounce: 30
+      debounce: 200000
       provider: pigpio-digital-input
   ### DIGITAL OUTPUTS
   digital-output:

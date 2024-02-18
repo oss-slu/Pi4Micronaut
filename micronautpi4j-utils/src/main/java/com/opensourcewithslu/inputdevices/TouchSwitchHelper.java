@@ -18,8 +18,6 @@ public class TouchSwitchHelper {
     public TouchSwitchHelper(DigitalInput touchSwitchInput)
     {
         this.touchSwitchInput = touchSwitchInput;
-        this.isTouched = touchSwitchInput.isHigh();
-        this.isReleased = touchSwitchInput.isLow();
 
         initialize();
     }

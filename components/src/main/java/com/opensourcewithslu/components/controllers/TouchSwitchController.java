@@ -16,7 +16,7 @@ public class TouchSwitchController {
     private final LEDHelper ledHelper;
 
     public TouchSwitchController(@Named("touch-switch-input") DigitalInput touchSwitch,
-                                 @Named("led") DigitalOutput led) {
+                                 @Named("led2") DigitalOutput led) {
         this.touchSwitchHelper = new TouchSwitchHelper(touchSwitch);
         this.ledHelper = new LEDHelper(led);
     }
@@ -36,12 +36,6 @@ public class TouchSwitchController {
     @Get("/disable")
     public void disableController() {
         touchSwitchHelper.removeEventListener(e->{
-            if(touchSwitchHelper.isTouched){
-                ledHelper.ledOn();
-            }
-            else if(touchSwitchHelper.isReleased){
-                ledHelper.ledOff();
-            }
         });
     }
 }
