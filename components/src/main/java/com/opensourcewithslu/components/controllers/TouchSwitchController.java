@@ -22,20 +22,19 @@ public class TouchSwitchController {
     }
 
     @Get("/enable")
-    public void initController() {
-        touchSwitchHelper.addEventListener(e->{
-            if(touchSwitchHelper.isTouched){
+    public void enableTouchSwitch() {
+        touchSwitchHelper.addEventListener(e -> {
+            if (touchSwitchHelper.isTouched) {
                 ledHelper.ledOn();
-            }
-            else if(touchSwitchHelper.isReleased){
+            } else {
                 ledHelper.ledOff();
             }
         });
     }
 
     @Get("/disable")
-    public void disableController() {
-        touchSwitchHelper.removeEventListener(e->{
-        });
+    public void disableTouchSwitch() {
+        touchSwitchHelper.removeEventListener();
     }
+
 }

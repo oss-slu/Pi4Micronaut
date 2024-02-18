@@ -11,14 +11,14 @@ public class TouchSwitchHelper {
 
     private final DigitalInput touchSwitchInput;
 
-    public boolean isTouched;
+    private DigitalStateChangeListener touchSwitchInputListener;
 
-    public boolean isReleased;
+    public boolean isTouched;
 
     public TouchSwitchHelper(DigitalInput touchSwitchInput)
     {
         this.touchSwitchInput = touchSwitchInput;
-
+        this.isTouched = touchSwitchInput.isHigh();
         initialize();
     }
 
@@ -26,19 +26,22 @@ public class TouchSwitchHelper {
     {
         log.info("Initializing Touch Switch");
 
-        touchSwitchInput.addListener(e-> {
-            isTouched = touchSwitchInput.isHigh();
-            isReleased = touchSwitchInput.isLow();
-        });
+        touchSwitchInputListener = e-> isTouched = touchSwitchInput.isHigh();
+        touchSwitchInput.addListener(touchSwitchInputListener);
     }
 
     public void addEventListener(DigitalStateChangeListener function)
     {
-        touchSwitchInput.addListener(function);
+        touchSwitchInputListener = function;
+        touchSwitchInput.addListener(touchSwitchInputListener);
     }
 
-    public void removeEventListener(DigitalStateChangeListener function)
+    public void removeEventListener()
     {
-        touchSwitchInput.removeListener(function);
+        if (touchSwitchInputListener != null) {
+            touchSwitchInput.removeListener(touchSwitchInputListener);
+            touchSwitchInputListener = null;
+        }
     }
+
 }
