@@ -26,7 +26,8 @@ public class TouchSwitchController {
         touchSwitchHelper.addEventListener(e -> {
             if (touchSwitchHelper.isTouched) {
                 ledHelper.ledOn();
-            } else {
+            }
+            else {
                 ledHelper.ledOff();
             }
         });
@@ -36,5 +37,4 @@ public class TouchSwitchController {
     public void disableTouchSwitch() {
         touchSwitchHelper.removeEventListener();
     }
-
 }
