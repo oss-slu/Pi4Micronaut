@@ -15,9 +15,14 @@
 
 toc::[]
 
+[.text-right]
+/javadoc/index.html[API References]
+
 include::introduction.adoc[]
 
 include::Introduction/supportedHardware.adoc[]
+
+include::Introduction/gettingStarted.adoc[]
 
 include::Introduction/exampleApplications.adoc[]
 
