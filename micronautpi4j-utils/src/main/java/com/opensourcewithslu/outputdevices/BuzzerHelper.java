@@ -37,7 +37,6 @@ public class BuzzerHelper {
         log.info("Initializing buzzer.");
 
         if (buzzerState){
-            turnOff();
             buzzerState = false;
         }
 
