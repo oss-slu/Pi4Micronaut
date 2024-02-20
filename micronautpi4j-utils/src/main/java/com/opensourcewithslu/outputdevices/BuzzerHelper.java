@@ -15,7 +15,7 @@ public class BuzzerHelper {
 
     private boolean buzzerState; //Determines the state of the buzzer
 
-    private int buzzerFrequency = 440 ; //440Hz is commonly used standard pitch frequency
+    private int passiveBuzzerFrequency = 440 ; //440Hz is commonly used standard pitch frequency
 
     /**
      * BuzzerHelper constructor
@@ -44,10 +44,10 @@ public class BuzzerHelper {
     }
 
     /**
-     * Turns the buzzer on by setting the output to on.
+     * Turns the buzzer passive buzzer on by setting the output to on.
      */
     //tag::method[]
-    public void turnOn(){
+    public void passiveBuzzerOn(){
     //end::method[]
         log.info("Buzzer is on.");
         if (!buzzerState){
@@ -57,10 +57,10 @@ public class BuzzerHelper {
     }
 
     /**
-     * Turns the buzzer off by setting the output to off.
+     * Turns the passive buzzer off by setting the output to off.
      */
     //tag::method[]
-    public void turnOff(){
+    public void passiveBuzzerOff(){
     //end::method[]
         log.info("Buzzer is off.");
 
@@ -70,16 +70,42 @@ public class BuzzerHelper {
         }
 
     }
+    /**
+     * Turns the active buzzer on by setting the output to low.
+     */
+    //tag::method[]
+    public void activeBuzzerOn(){
+    //end::method[]
+        log.info("Active buzzer is on.");
+
+        if (!buzzerState){
+            buzzerState = true;
+            buzzerOutput.isLow();
+        }
+    }
+    /**
+     * Turns the active buzzer off by setting the output to high.
+     */
+    //tag::method[]
+    public void activeBuzzerOff(){
+    //end::method[]
+        log.info("Active Buzzer is off.");
+
+        if (buzzerState){
+            buzzerState = false;
+            buzzerOutput.isHigh();
+        }
+    }
 
     /**
      *
-     * @param frequency Alters the frequency state of the buzzer (which is initalized to the standard 440Hz)
+     * @param frequency Alters the frequency state of the passive buzzer (which is initialized to the standard 440Hz)
      */
     //tag::method[]
     public void setFrequency(int frequency){
     //end::method[]
         if (frequency >= 20 && frequency <= 20000){ //Check to ensure the frequency is within human audible range
-            buzzerFrequency = frequency;
+            passiveBuzzerFrequency = frequency;
         } else {
             log.error("Frequency is out of range. Please choose a value between 20 Hz and 20 kHz");
         }
