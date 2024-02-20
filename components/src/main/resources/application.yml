@@ -1,4 +1,4 @@
-.micronaut:
+1.micronaut:
   application:
     name: components
 pi4j:
@@ -101,6 +101,18 @@ pi4j:
       address: 27
       shutdown: LOW
       initial: HIGH
+      provider: pigpio-digital-output
+    active-buzzer-output:
+      name: Active Buzzer
+      address: 17
+      shutdown: HIGH
+      initial: HIGH
+      provider: pigpio-digital-output
+    passive-buzzer-output:
+      name: Passive Buzzer
+      address: 17
+      shutdown: HIGH
+      Initial: HIGH
       provider: pigpio-digital-output
   # tag::multiInput[]
   multi-digital-input:                     # <.>

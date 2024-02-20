@@ -88,6 +88,7 @@ public class BuzzerController {
                 CM[5], CM[2], CM[3], CM[3], CL[6], CL[6], CL[6], CM[1],
                 CM[2], CM[3], CM[2], CL[7], CL[6], CM[1], CL[5]};
 
+        enablePassiveBuzzer();
         for (int tone : song_1){
             buzzerHelper.setFrequency(tone);
             try{
@@ -102,6 +103,7 @@ public class BuzzerController {
         } catch (InterruptedException e){
             Thread.currentThread().interrupt();
         }
+        disablePassiveBuzzer();
     }
 
     /**
@@ -110,7 +112,7 @@ public class BuzzerController {
     @Get("/testBuzzer-active")
     public void testBuzzer(){
 
-        int [] morseCodePi = {200,600,600,200,200,200}; // Durations for .--.. (pi in Morse)
+        int [] morseCodePi = {200,600,600,200,200,200}; // Durations for .--. .. (pi in Morse)
         int gapDuration = 200; //Gap between the signals
 
         for (int duration : morseCodePi){
