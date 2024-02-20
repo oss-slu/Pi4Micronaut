@@ -1,10 +1,9 @@
-name: build javadocs
+name: Build Javadoc
 
 on:
   push:
     branches:
       - main
-      - develop
       - yamlDocs
 jobs:
   javadoc_build:
@@ -13,14 +12,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-          #I think above and below are correct. The build container portion is what I need to figure out. 
-      #- name: Get build container
-       # id: adocbuild
-        #uses: tonynv/asciidoctor-action@master
-        #with:
-         # program: "./gradlew asciidoctor"
-      - name: Deploy docs to ghpages
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Deploy Javadoc
+        id: javadoc_build
+        uses: MathieuSoysal/Javadoc-publisher.yml@v2.5.0
         with:
           deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
           publish_branch: gh-pages
