@@ -11,28 +11,8 @@ public class BuzzerController {
 
     private final BuzzerHelper buzzerHelper;
 
-    public BuzzerController(@Named("buzzer-Output") DigitalOutput buzzerOutput){
-        this.buzzerHelper = new BuzzerHelper(buzzerOutput);
-    }
-
-    /**
-     * Enables the passive buzzer
-     */
-    @Get("/enable-passive")
-    public void enablePassiveBuzzer(){
-            buzzerHelper.passiveBuzzerOn();
-
-    }
-
-    /**
-     * Disables the passive buzzer.
-     */
-
-    @Get("/disable-passive")
-    public void disablePassiveBuzzer(){
-
-            buzzerHelper.passiveBuzzerOff();
-
+    public BuzzerController(@Named("active-buzzer") DigitalOutput activebuzzerOutput){
+        this.buzzerHelper = new BuzzerHelper(activebuzzerOutput);
     }
 
     /**
@@ -72,38 +52,11 @@ public class BuzzerController {
         disableActiveBuzzer();
     }
 
-    /**
-     * Plays a sequence of tones via a predefined array.
-     */
-    @Get("/toneSequence-passive")
-    public void sequenceOfTones(){
+    @Get("/constantTone")
+    public void playConstantTone(){
 
-        //Array can be moved or left in method
-        int [] CL = {0, 131, 147, 165, 175, 196, 211, 248};
-        int [] CM = {0, 262, 294, 330, 350, 393, 441, 495};
-        int [] CH = {0, 525, 589, 661, 700, 786, 882, 990};
+        buzzerHelper.constantTone();
 
-        int [] song_1 = {CM[3], CM[5], CM[6], CM[3], CM[2], CM[3], CM[5], CM[6],
-        CH[1], CM[6], CM[5], CM[1], CM[3], CM[2], CM[2], CM[3],
-                CM[5], CM[2], CM[3], CM[3], CL[6], CL[6], CL[6], CM[1],
-                CM[2], CM[3], CM[2], CL[7], CL[6], CM[1], CL[5]};
-
-        enablePassiveBuzzer();
-        for (int tone : song_1){
-            buzzerHelper.setFrequency(tone);
-            try{
-                Thread.sleep(500); //Delay for the beat
-            } catch (InterruptedException e){
-                Thread.currentThread().interrupt();
-            }
-        }
-
-        try{
-            Thread.sleep(1000); //Pause for 1 second after song concludes
-        } catch (InterruptedException e){
-            Thread.currentThread().interrupt();
-        }
-        disablePassiveBuzzer();
     }
 
     /**
@@ -130,4 +83,54 @@ public class BuzzerController {
             }
         }
     }
+
+    /**
+     * The following functions need to go into a separate passive buzzer controller:
+     * ----------------------------------------------------------------------------
+     *
+     *
+     *     public void enablePassiveBuzzer(){
+     *             buzzerHelper.passiveBuzzerOn();
+     *
+     *     }
+     *
+     *
+     *     public void disablePassiveBuzzer(){
+     *
+     *             buzzerHelper.passiveBuzzerOff();
+     *
+     *     }
+     *
+     *
+     *     public void sequenceOfTones(){
+     *
+     *         //Array can be moved or left in method
+     *         int [] CL = {0, 131, 147, 165, 175, 196, 211, 248};
+     *         int [] CM = {0, 262, 294, 330, 350, 393, 441, 495};
+     *         int [] CH = {0, 525, 589, 661, 700, 786, 882, 990};
+     *
+     *         int [] song_1 = {CM[3], CM[5], CM[6], CM[3], CM[2], CM[3], CM[5], CM[6],
+     *         CH[1], CM[6], CM[5], CM[1], CM[3], CM[2], CM[2], CM[3],
+     *                 CM[5], CM[2], CM[3], CM[3], CL[6], CL[6], CL[6], CM[1],
+     *                 CM[2], CM[3], CM[2], CL[7], CL[6], CM[1], CL[5]};
+     *
+     *         enablePassiveBuzzer();
+     *         for (int tone : song_1){
+     *             buzzerHelper.setFrequency(tone);
+     *             try{
+     *                 Thread.sleep(500); //Delay for the beat
+     *             } catch (InterruptedException e){
+     *                 Thread.currentThread().interrupt();
+     *             }
+     *         }
+     *
+     *         try{
+     *             Thread.sleep(1000); //Pause for 1 second after song concludes
+     *         } catch (InterruptedException e){
+     *             Thread.currentThread().interrupt();
+     *         }
+     *         disablePassiveBuzzer();
+     *     }
+     *
+     */
 }
