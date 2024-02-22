@@ -41,6 +41,13 @@ jobs:
           cache: 'gradle'
       - name: Change wrapper permissions
         run: chmod +x pi4micronaut-utils/gradlew
+      - name: Set up GPG key
+        run: |
+          echo "${{ secrets.GPG_KEY }}" | base64 --decode | gpg --import
+          echo "${{ secrets.GPG_PASSWORD }}" | gpg --passphrase-fd 0 --batch --yes --pinentry-mode loopback -a --export-secret-keys | gpg --import
+        env:
+          GPG_TTY: /dev/tty
+
       - name: Publish Library
         working-directory: pi4micronaut-utils
         env:
