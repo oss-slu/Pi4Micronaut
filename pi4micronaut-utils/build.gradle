@@ -1,0 +1,127 @@
+plugins {
+    id("com.github.johnrengelman.shadow") version "8.1.1"
+    id("io.micronaut.library") version "3.7.3"
+    id 'maven-publish'
+    id 'signing'
+    id 'org.asciidoctor.jvm.convert' version '4.0.2'
+}
+
+group = 'io.github.oss-slu'
+version = 'v0.1'
+
+apply plugin: 'maven-publish'
+apply plugin: 'signing'
+
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    annotationProcessor("io.micronaut:micronaut-validation")
+    implementation("io.micronaut:micronaut-http-client")
+    implementation("jakarta.annotation:jakarta.annotation-api")
+    runtimeOnly("ch.qos.logback:logback-classic")
+    implementation("io.micronaut:micronaut-jackson-databind")
+    implementation("io.micronaut:micronaut-validation")
+    implementation files("libs/crowpi.jar", "libs/components.jar")
+    api 'com.pi4j:pi4j-core:2.4.0'
+    api 'com.pi4j:pi4j-plugin-raspberrypi:2.4.0'
+    api 'com.pi4j:pi4j-plugin-pigpio:2.4.0'
+
+}
+
+
+
+java {
+    sourceCompatibility = JavaVersion.toVersion("17")
+    targetCompatibility = JavaVersion.toVersion("17")
+}
+
+
+
+asciidoctor {
+    attributes 'stylesheet': "style.css"
+    baseDirFollowsSourceDir()
+    resources {
+        from(sourceDir) {
+            include 'img/**'
+        }
+    }
+}
+
+tasks.register('sourcesJar', Jar) {
+    archiveClassifier = 'sources'
+    from sourceSets.main.allJava
+}
+
+tasks.register('javadocJar', Jar) {
+    archiveClassifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives sourcesJar, javadocJar
+}
+
+
+publishing {
+    repositories {
+        maven {  //only for users registered in Sonatype after 24 Feb 2021
+            name = "OSSRH"
+            credentials {
+                username = project.findProperty('sonatypeUsername') ?: System.getenv('sonatypeUsername')
+                password = project.findProperty('sonatypePassword') ?: System.getenv('sonatypePassword')
+            }
+            def releasesRepoUrl = uri('https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/')
+            def snapshotsRepoUrl = uri('https://s01.oss.sonatype.org/content/repositories/snapshots/')
+            url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+        }
+    }
+
+    publications {
+        mavenJava(MavenPublication) {
+            groupId = 'io.github.oss-slu'
+            artifactId = 'pi4micronaut-utils'
+            version = 'v0.1'
+            from components.java
+
+            artifact sourcesJar
+            artifact javadocJar
+
+            pom {
+                name = 'pi4micronaut-utils'
+                packaging = 'jar'
+                description = 'A Micronaut based library built to simplify using Micronaut with Raspberry Pi and external hardware components'
+                url = "https://github.com/oss-slu/Pi4Micronaut"
+
+                licenses {
+                    license {
+                        name = 'The Apache Licence, Version 2.0'
+                        url = 'https://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id = 'ruthvikm'
+                        name = 'Ruthvik Mannem'
+                    }
+
+                }
+
+                scm {
+                    url = 'https://github.com/oss-slu/Pi4Micronaut'
+                    connection = 'scm:https://github.com/oss-slu/Pi4Micronaut.git'
+                    developerConnection = 'scm:https://github.com/oss-slu/Pi4Micronaut.git'
+                }
+            }
+        }
+    }
+}
+
+signing {
+    useGpgCmd()
+    sign publishing.publications.mavenJava
+}
