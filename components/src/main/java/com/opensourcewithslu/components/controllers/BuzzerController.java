@@ -1,7 +1,7 @@
 package com.opensourcewithslu.components.controllers;
 
 import com.opensourcewithslu.outputdevices.BuzzerHelper;
-import com.pi4j.io.gpio.digital.DigitalOutput;
+import com.pi4j.io.pwm.Pwm;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import jakarta.inject.Named;
@@ -11,14 +11,14 @@ public class BuzzerController {
 
     private final BuzzerHelper buzzerHelper;
 
-    public BuzzerController(@Named("active-buzzer") DigitalOutput activebuzzerOutput){
-        this.buzzerHelper = new BuzzerHelper(activebuzzerOutput);
+    public BuzzerController(@Named("active-buzzer") Pwm activeBuzzerOutput){
+        this.buzzerHelper = new BuzzerHelper(activeBuzzerOutput);
     }
 
     /**
      * Enables the active buzzer
      */
-    @Get("/enable-active")
+    @Get("/enable")
     public void enableActiveBuzzer(){
 
             buzzerHelper.activeBuzzerOn();
@@ -29,7 +29,7 @@ public class BuzzerController {
      * Disables the active buzzer
      */
 
-    @Get("/disable-active")
+    @Get("/disable")
     public void disableActiveBuzzer(){
 
             buzzerHelper.activeBuzzerOff();
@@ -39,19 +39,17 @@ public class BuzzerController {
     /**
      * Emits an alert sound from the active buzzer.
      */
-    @Get("/alertTone-active")
+    @Get("/alertTone")
     public void playAlertTone(){
 
-        enableActiveBuzzer();
+        buzzerHelper.alertTone();
 
-        try{
-            Thread.sleep(2000); //Wait and alert for 2 seconds (2000 milliseconds)
-        } catch (InterruptedException e){
-            Thread.currentThread().interrupt();
-        }
-        disableActiveBuzzer();
     }
 
+    /**
+     * Emits a constant tone from the active buzzer for a duration of 20 seconds.
+     * 10 seconds of sound and 10 seconds of silence
+     */
     @Get("/constantTone")
     public void playConstantTone(){
 
@@ -65,23 +63,7 @@ public class BuzzerController {
     @Get("/testBuzzer-active")
     public void testBuzzer(){
 
-        int [] morseCodePi = {200,600,600,200,200,200}; // Durations for .--. .. (pi in Morse)
-        int gapDuration = 200; //Gap between the signals
-
-        for (int duration : morseCodePi){
-            enableActiveBuzzer();
-            try{
-                Thread.sleep(duration); //Play the tone
-            } catch (InterruptedException e){
-                Thread.currentThread().interrupt();
-            }
-            disableActiveBuzzer();
-            try{
-                Thread.sleep(gapDuration); //Pause between tones
-            } catch (InterruptedException e){
-                Thread.currentThread().interrupt();
-            }
-        }
+        buzzerHelper.buzzerTest();
     }
 
     /**

@@ -34,6 +34,13 @@ pi4j:
       provider: pigpio-pwm
       initial: 0
       shutdown: 0
+    active-buzzer:
+      name: active-buzzer
+      address: 17
+      pwmType: SOFTWARE
+      provider: pigpio-pwm
+      initial: 0
+      shutdown: 0
     passive-buzzer:
       name: passive-buzzer
       address: 17
@@ -107,12 +114,6 @@ pi4j:
       name: Photo Resistor Output
       address: 27
       shutdown: LOW
-      initial: HIGH
-      provider: pigpio-digital-output
-    active-buzzer:
-      name: Active Buzzer
-      address: 17
-      shutdown: HIGH
       initial: HIGH
       provider: pigpio-digital-output
   # tag::multiInput[]
