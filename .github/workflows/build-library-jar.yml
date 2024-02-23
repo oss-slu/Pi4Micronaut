@@ -2,10 +2,10 @@ name: Build and Release Library
 on: 
   push:
     branches:
-      -master
+      - main
   pull_request:
     branches: 
-      -master
+      - main
 jobs:
   build-library:
     runs-on: ubuntu-latest
@@ -14,16 +14,16 @@ jobs:
     - uses: actions/setup-java@v3
       with:
         distribution: temurin
-        java-version: 11
+        java-version: 17
     - name: Change wrapper permissions
-      run: chmod +x micronautpi4j-utils/gradlew
+      run: chmod +x pi4micronaut-utils/gradlew
     - name: Setup Gradle
       uses: gradle/gradle-build-action@v2
       with:
         arguments: build
-        build-root-directory: micronautpi4j-utils/
+        build-root-directory: pi4micronaut-utils/
     - name: Execute Gradle build
-      working-directory: micronautpi4j-utils
+      working-directory: pi4micronaut-utils
       run: ./gradlew shadowJar
   publish-jar:
       runs-on: ubuntu-latest
@@ -36,16 +36,16 @@ jobs:
       - name: Set up Java
         uses: actions/setup-java@v3
         with:
-          java-version: '11'
+          java-version: '17'
           distribution: 'adopt'
           cache: 'gradle'
       - name: Change wrapper permissions
-        run: chmod +x micronautpi4j-utils/gradlew
+        run: chmod +x pi4micronaut-utils/gradlew
       - name: Publish Library
-        working-directory: micronautpi4j-utils
+        working-directory: pi4micronaut-utils
         env:
-          ORG_GRADLE_PROJECT_sonatypePassword: ${{ secrets.SONATYPE_PASSWORD }}
-          ORG_GRADLE_PROJECT_sonatypeUsername: ${{ secrets.SONATYPE_USERNAME }}
-          ORG_GRADLE_PROJECT_signingKey: ${{ secrets.PGP_SECRET }}
-          ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.PGP_PASSPHRASE }}
-        run: ./gradlew publishToSonatype closeAndReleaseSonatypeStagingRepository --no-daemon
+          SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
+          SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
+          GPG_KEY: ${{ secrets.GPG_KEY }}
+          GPG_PASSWORD: ${{ secrets.GPG_PASSWORD }}
+        run: ./gradlew publish

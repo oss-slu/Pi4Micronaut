@@ -115,14 +115,14 @@ i2c:
 
 [source, java]
 ----
-include::../../../../../../micronautpi4j-utils/src/main/java/com/opensourcewithslu/outputDevices/LCD1602Helper.java[tag=const]
+include::../../../../../../pi4micronaut-utils/src/main/java/com/opensourcewithslu/outputDevices/LCD1602Helper.java[tag=const]
 ----
 
 ===== Methods
 
 [source, java]
 ----
-include::../../../../../../micronautpi4j-utils/src/main/java/com/opensourcewithslu/outputDevices/LCD1602Helper.java[tags=method]
+include::../../../../../../pi4micronaut-utils/src/main/java/com/opensourcewithslu/outputDevices/LCD1602Helper.java[tags=method]
 ----
 
 ===== An Example Controller

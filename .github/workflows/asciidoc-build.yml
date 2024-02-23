@@ -5,7 +5,7 @@ on:
     branches:
     - main
     - develop
-    - yamlDocs
+
 jobs:
   adoc_build:
     runs-on: ubuntu-latest
@@ -23,5 +23,5 @@ jobs:
       with: 
         deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
         publish_branch: gh-pages
-        publish_dir: ./micronautpi4j-utils/build/docs/asciidoc/
+        publish_dir: ./pi4jmicronaut-utils/build/docs/asciidoc/
 

@@ -1,4 +1,4 @@
-package com.opensourcewithslu.micronautpi4j;
+package com.opensourcewithslu.pi4micronaut;
 
 import io.micronaut.runtime.Micronaut;
 

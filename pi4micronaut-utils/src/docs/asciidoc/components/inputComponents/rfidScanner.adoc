@@ -80,14 +80,14 @@ include::../../../../../../components/src/main/resources/application.yml[tag=spi
 
 [source, java]
 ----
-include::../../../../../../micronautpi4j-utils/src/main/java/com/opensourcewithslu/inputDevices/RFidHelper.java[tag=const]
+include::../../../../../../pi4micronaut-utils/src/main/java/com/opensourcewithslu/inputDevices/RFidHelper.java[tag=const]
 ----
 
 ===== Methods
 
 [source, java]
 ----
-include::../../../../../../micronautpi4j-utils/src/main/java/com/opensourcewithslu/inputDevices/RFidHelper.java[tag=method]
+include::../../../../../../pi4micronaut-utils/src/main/java/com/opensourcewithslu/inputDevices/RFidHelper.java[tag=method]
 ----
 
 ===== An Example Controller
