@@ -33,6 +33,8 @@ jobs:
       needs: build-library
       steps:
       - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.sha }}
       - name: Set up Java
         uses: actions/setup-java@v3
         with:
