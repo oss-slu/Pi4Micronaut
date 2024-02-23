@@ -5,11 +5,11 @@ on:
     branches:
     - main
     - develop
-    - yamlDocs
+
 jobs:
   adoc_build:
     runs-on: ubuntu-latest
-    name: Asciidoctoring the docs to pretty HTML!
+    name: ASCII DOC build
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
@@ -23,5 +23,5 @@ jobs:
       with: 
         deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
         publish_branch: gh-pages
-        publish_dir: ./micronautpi4j-utils/build/docs/asciidoc/
+        publish_dir: ./pi4micronaut-utils/build/docs/asciidoc/
 

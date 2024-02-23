@@ -72,14 +72,14 @@ led2:
 
 [source, java]
 ----
-include::../../../../../../micronautpi4j-utils/src/main/java/com/opensourcewithslu/outputDevices/LEDHelper.java[tag=const]
+include::../../../../../../pi4micronaut-utils/src/main/java/com/opensourcewithslu/outputDevices/LEDHelper.java[tag=const]
 ----
 
 ===== Methods
 
 [source, java]
 ----
-include::../../../../../../micronautpi4j-utils/src/main/java/com/opensourcewithslu/outputDevices/LEDHelper.java[tags=method]
+include::../../../../../../pi4micronaut-utils/src/main/java/com/opensourcewithslu/outputDevices/LEDHelper.java[tags=method]
 ----
 
 ===== An Example Controller
