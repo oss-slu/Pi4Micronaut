@@ -71,8 +71,8 @@ publishing {
         maven {  //only for users registered in Sonatype after 24 Feb 2021
             name = "OSSRH"
             credentials {
-                username = project.findProperty('SONATYPE_USERNAME') ?: System.getenv('SONATYPE_USERNAME')
-                password = project.findProperty('SONATYPE_PASSWORD') ?: System.getenv('SONATYPE_PASSWORD')
+                username = System.getenv('SONATYPE_USERNAME')
+                password = System.getenv('SONATYPE_PASSWORD')
             }
             def releasesRepoUrl = uri('https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/')
             def snapshotsRepoUrl = uri('https://s01.oss.sonatype.org/content/repositories/snapshots/')
@@ -155,8 +155,8 @@ publishing {
 
 signing {
     required {
-        def signingKey = project.findProperty('GPG_KEY') ?: System.getenv('GPG_KEY')
-        def signingPassword = project.findProperty('GPG_PASSPHRASE') ?: System.getenv('GPG_PASSPHRASE')
+        def signingKey = System.getenv('GPG_KEY')
+        def signingPassword = System.getenv('GPG_PASSPHRASE')
         useInMemoryPgpKeys(signingKey, signingPassword)
         sign publishing.publications.mavenJava
     }
