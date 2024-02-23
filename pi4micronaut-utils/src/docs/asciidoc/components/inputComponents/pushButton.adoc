@@ -62,14 +62,14 @@ So the push button would be connected to GPIO 18.
 
 [source, java]
 ----
-include::../../../../../../micronautpi4j-utils/src/main/java/com/opensourcewithslu/inputDevices/PushButtonHelper.java[tag=const]
+include::../../../../../../pi4micronaut-utils/src/main/java/com/opensourcewithslu/inputDevices/PushButtonHelper.java[tag=const]
 ----
 
 ===== Methods
 
 [source, java]
 ----
-include::../../../../../../micronautpi4j-utils/src/main/java/com/opensourcewithslu/inputDevices/PushButtonHelper.java[tags=method]
+include::../../../../../../pi4micronaut-utils/src/main/java/com/opensourcewithslu/inputDevices/PushButtonHelper.java[tags=method]
 ----
 
 ===== An Example Controller
