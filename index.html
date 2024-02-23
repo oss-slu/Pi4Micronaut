@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="">
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.10">
+<meta name="generator" content="Asciidoctor 2.0.18">
 <meta name="author" content=":imagesdir:img">
 <title>Pi4Micronaut Documentation</title>
 <style>
@@ -203,13 +203,191 @@ th {
 }
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+pre.rouge table td { padding: 5px; }
+pre.rouge table pre { margin: 0; }
+pre.rouge {
+  color: #faf6e4;
+  background-color: #122b3b;
+}
+pre.rouge .gl {
+  color: #dee5e7;
+  background-color: #4e5d62;
+}
+pre.rouge .gp {
+  color: #a8e1fe;
+  font-weight: bold;
+}
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cm, pre.rouge .cpf, pre.rouge .c1, pre.rouge .cs {
+  color: #6c8b9f;
+  font-style: italic;
+}
+pre.rouge .cp {
+  color: #b2fd6d;
+  font-weight: bold;
+}
+pre.rouge .err {
+  color: #fefeec;
+  background-color: #cc0000;
+}
+pre.rouge .gr {
+  color: #cc0000;
+  font-weight: bold;
+  font-style: italic;
+}
+pre.rouge .k, pre.rouge .kd, pre.rouge .kv {
+  color: #f6dd62;
+  font-weight: bold;
+}
+pre.rouge .o, pre.rouge .ow {
+  color: #4df4ff;
+  font-weight: bold;
+}
+pre.rouge .p, pre.rouge .pi {
+  color: #4df4ff;
+}
+pre.rouge .gd {
+  color: #cc0000;
+}
+pre.rouge .gi {
+  color: #b2fd6d;
+}
+pre.rouge .ge {
+  font-style: italic;
+}
+pre.rouge .gs {
+  font-weight: bold;
+}
+pre.rouge .gt {
+  color: #dee5e7;
+  background-color: #4e5d62;
+}
+pre.rouge .kc {
+  color: #f696db;
+  font-weight: bold;
+}
+pre.rouge .kn {
+  color: #ffb000;
+  font-weight: bold;
+}
+pre.rouge .kp {
+  color: #ffb000;
+  font-weight: bold;
+}
+pre.rouge .kr {
+  color: #ffb000;
+  font-weight: bold;
+}
+pre.rouge .gh {
+  color: #ffb000;
+  font-weight: bold;
+}
+pre.rouge .gu {
+  color: #ffb000;
+  font-weight: bold;
+}
+pre.rouge .kt {
+  color: #b2fd6d;
+  font-weight: bold;
+}
+pre.rouge .no {
+  color: #b2fd6d;
+  font-weight: bold;
+}
+pre.rouge .nc {
+  color: #b2fd6d;
+  font-weight: bold;
+}
+pre.rouge .nd {
+  color: #b2fd6d;
+  font-weight: bold;
+}
+pre.rouge .nn {
+  color: #b2fd6d;
+  font-weight: bold;
+}
+pre.rouge .bp {
+  color: #b2fd6d;
+  font-weight: bold;
+}
+pre.rouge .ne {
+  color: #b2fd6d;
+  font-weight: bold;
+}
+pre.rouge .nl {
+  color: #ffb000;
+  font-weight: bold;
+}
+pre.rouge .nt {
+  color: #ffb000;
+  font-weight: bold;
+}
+pre.rouge .m, pre.rouge .mb, pre.rouge .mf, pre.rouge .mh, pre.rouge .mi, pre.rouge .il, pre.rouge .mo, pre.rouge .mx {
+  color: #f696db;
+  font-weight: bold;
+}
+pre.rouge .ld {
+  color: #f696db;
+  font-weight: bold;
+}
+pre.rouge .ss {
+  color: #f696db;
+  font-weight: bold;
+}
+pre.rouge .s, pre.rouge .sb, pre.rouge .dl, pre.rouge .sd, pre.rouge .s2, pre.rouge .sh, pre.rouge .sx, pre.rouge .sr, pre.rouge .s1 {
+  color: #fff0a6;
+  font-weight: bold;
+}
+pre.rouge .sa {
+  color: #f6dd62;
+  font-weight: bold;
+}
+pre.rouge .se {
+  color: #4df4ff;
+  font-weight: bold;
+}
+pre.rouge .sc {
+  color: #4df4ff;
+  font-weight: bold;
+}
+pre.rouge .si {
+  color: #4df4ff;
+  font-weight: bold;
+}
+pre.rouge .nb {
+  font-weight: bold;
+}
+pre.rouge .ni {
+  color: #999999;
+  font-weight: bold;
+}
+pre.rouge .w {
+  color: #BBBBBB;
+}
+pre.rouge .go {
+  color: #BBBBBB;
+}
+pre.rouge .nf, pre.rouge .fm {
+  color: #a8e1fe;
+}
+pre.rouge .py {
+  color: #a8e1fe;
+}
+pre.rouge .na {
+  color: #a8e1fe;
+}
+pre.rouge .nv, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi, pre.rouge .vm {
+  color: #a8e1fe;
+  font-weight: bold;
+}
+</style>
 </head>
 <body class="book toc2 toc-left">
 <div id="header">
 <h1>Pi4Micronaut Documentation</h1>
 <div class="details">
 <span id="author" class="author">:imagesdir:img</span><br>
-<span id="revnumber">version v1.0.0</span>
+<span id="revnumber">version v1.0</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -1474,7 +1652,7 @@ adjust according to your power source and LED specifications</p>
 <h5 id="_constructors"><a class="anchor" href="#_constructors"></a>Constructors</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">inputComponents</span><span class="o">/</span><span class="n">pushButton</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../../../../</span><span class="n">micronautpi4j</span><span class="o">-</span><span class="n">utils</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">inputDevices</span><span class="o">/</span><span class="nc">PushButtonHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tag</span><span class="o">=</span><span class="kd">const</span><span class="o">]</span></code></pre>
+<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">inputComponents</span><span class="o">/</span><span class="n">pushButton</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../../../../</span><span class="n">pi4micronaut</span><span class="o">-</span><span class="n">utils</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">inputDevices</span><span class="o">/</span><span class="nc">PushButtonHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tag</span><span class="o">=</span><span class="kd">const</span><span class="o">]</span></code></pre>
 </div>
 </div>
 </div>
@@ -1482,7 +1660,7 @@ adjust according to your power source and LED specifications</p>
 <h5 id="_methods"><a class="anchor" href="#_methods"></a>Methods</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">inputComponents</span><span class="o">/</span><span class="n">pushButton</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../../../../</span><span class="n">micronautpi4j</span><span class="o">-</span><span class="n">utils</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">inputDevices</span><span class="o">/</span><span class="nc">PushButtonHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tags</span><span class="o">=</span><span class="n">method</span><span class="o">]</span></code></pre>
+<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">inputComponents</span><span class="o">/</span><span class="n">pushButton</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../../../../</span><span class="n">pi4micronaut</span><span class="o">-</span><span class="n">utils</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">inputDevices</span><span class="o">/</span><span class="nc">PushButtonHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tags</span><span class="o">=</span><span class="n">method</span><span class="o">]</span></code></pre>
 </div>
 </div>
 </div>
@@ -1663,7 +1841,7 @@ adjust according to your power source and LED specifications</p>
 
     <span class="kd">private</span> <span class="kd">final</span> <span class="nc">SlideSwitchHelper</span> <span class="n">slideSwitchHelper2</span><span class="o">;</span>
 
-    <span class="kd">public</span> <span class="nf">SlideSwitchController</span><span class="o">(</span><span class="nd">@Named</span><span class="o">(</span><span class="s">"slide-switch-input"</span><span class="o">)</span><span class="nc">DigitalInput</span> <span class="n">slideSwitch</span><span class="o">,</span>
+    <span class="kd">public</span> <span class="nf">SlideSwitchController</span><span class="o">(</span><span class="nd">@Named</span><span class="o">(</span><span class="s">"slide-switch-input"</span><span class="o">)</span><span class="nc">DigitalInput</span> <span class="n">slideSwitch</span><span class="o">,</span> 
                                     <span class="nd">@Named</span><span class="o">(</span><span class="s">"slide-switch-input-2"</span><span class="o">)</span><span class="nc">DigitalInput</span> <span class="n">slideSwitch2</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">this</span><span class="o">.</span><span class="na">slideSwitchHelper</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">SlideSwitchHelper</span><span class="o">(</span><span class="n">slideSwitch</span><span class="o">);</span>
         <span class="k">this</span><span class="o">.</span><span class="na">slideSwitchHelper2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">SlideSwitchHelper</span><span class="o">(</span><span class="n">slideSwitch2</span><span class="o">);</span>
@@ -1834,7 +2012,7 @@ to the correct GPIO pins according to the YAML pin order below.</p>
 <h5 id="_constructors_3"><a class="anchor" href="#_constructors_3"></a>Constructors</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">inputComponents</span><span class="o">/</span><span class="n">rotaryEncoder</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../../../../</span><span class="n">micronautpi4j</span><span class="o">-</span><span class="n">utils</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">inputDevices</span><span class="o">/</span><span class="nc">RotaryEncoderHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tag</span><span class="o">=</span><span class="kd">const</span><span class="o">]</span></code></pre>
+<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">inputComponents</span><span class="o">/</span><span class="n">rotaryEncoder</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../../../../</span><span class="n">pi4micronaut</span><span class="o">-</span><span class="n">utils</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">inputDevices</span><span class="o">/</span><span class="nc">RotaryEncoderHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tag</span><span class="o">=</span><span class="kd">const</span><span class="o">]</span></code></pre>
 </div>
 </div>
 </div>
@@ -1842,7 +2020,7 @@ to the correct GPIO pins according to the YAML pin order below.</p>
 <h5 id="_methods_3"><a class="anchor" href="#_methods_3"></a>Methods</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">inputComponents</span><span class="o">/</span><span class="n">rotaryEncoder</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../../../../</span><span class="n">micronautpi4j</span><span class="o">-</span><span class="n">utils</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">inputDevices</span><span class="o">/</span><span class="nc">RotaryEncoderHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tags</span><span class="o">=</span><span class="n">method</span><span class="o">]</span></code></pre>
+<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">inputComponents</span><span class="o">/</span><span class="n">rotaryEncoder</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../../../../</span><span class="n">pi4micronaut</span><span class="o">-</span><span class="n">utils</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">inputDevices</span><span class="o">/</span><span class="nc">RotaryEncoderHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tags</span><span class="o">=</span><span class="n">method</span><span class="o">]</span></code></pre>
 </div>
 </div>
 </div>
@@ -1996,7 +2174,7 @@ to the correct GPIO pins according to the YAML pin order below.</p>
 <h5 id="_constructors_4"><a class="anchor" href="#_constructors_4"></a>Constructors</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">inputComponents</span><span class="o">/</span><span class="n">rfidScanner</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../../../../</span><span class="n">micronautpi4j</span><span class="o">-</span><span class="n">utils</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">inputDevices</span><span class="o">/</span><span class="nc">RFidHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tag</span><span class="o">=</span><span class="kd">const</span><span class="o">]</span></code></pre>
+<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">inputComponents</span><span class="o">/</span><span class="n">rfidScanner</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../../../../</span><span class="n">pi4micronaut</span><span class="o">-</span><span class="n">utils</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">inputDevices</span><span class="o">/</span><span class="nc">RFidHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tag</span><span class="o">=</span><span class="kd">const</span><span class="o">]</span></code></pre>
 </div>
 </div>
 </div>
@@ -2004,7 +2182,7 @@ to the correct GPIO pins according to the YAML pin order below.</p>
 <h5 id="_methods_4"><a class="anchor" href="#_methods_4"></a>Methods</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">inputComponents</span><span class="o">/</span><span class="n">rfidScanner</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../../../../</span><span class="n">micronautpi4j</span><span class="o">-</span><span class="n">utils</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">inputDevices</span><span class="o">/</span><span class="nc">RFidHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tag</span><span class="o">=</span><span class="n">method</span><span class="o">]</span></code></pre>
+<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">inputComponents</span><span class="o">/</span><span class="n">rfidScanner</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../../../../</span><span class="n">pi4micronaut</span><span class="o">-</span><span class="n">utils</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">inputDevices</span><span class="o">/</span><span class="nc">RFidHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tag</span><span class="o">=</span><span class="n">method</span><span class="o">]</span></code></pre>
 </div>
 </div>
 </div>
@@ -2157,7 +2335,7 @@ as well as the LED specifications.</p>
 <h5 id="_constructors_5"><a class="anchor" href="#_constructors_5"></a>Constructors</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">outputComponents</span><span class="o">/</span><span class="n">led</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../../../../</span><span class="n">micronautpi4j</span><span class="o">-</span><span class="n">utils</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">outputDevices</span><span class="o">/</span><span class="nc">LEDHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tag</span><span class="o">=</span><span class="kd">const</span><span class="o">]</span></code></pre>
+<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">outputComponents</span><span class="o">/</span><span class="n">led</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../../../../</span><span class="n">pi4micronaut</span><span class="o">-</span><span class="n">utils</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">outputDevices</span><span class="o">/</span><span class="nc">LEDHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tag</span><span class="o">=</span><span class="kd">const</span><span class="o">]</span></code></pre>
 </div>
 </div>
 </div>
@@ -2165,7 +2343,7 @@ as well as the LED specifications.</p>
 <h5 id="_methods_5"><a class="anchor" href="#_methods_5"></a>Methods</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">outputComponents</span><span class="o">/</span><span class="n">led</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../../../../</span><span class="n">micronautpi4j</span><span class="o">-</span><span class="n">utils</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">outputDevices</span><span class="o">/</span><span class="nc">LEDHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tags</span><span class="o">=</span><span class="n">method</span><span class="o">]</span></code></pre>
+<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">outputComponents</span><span class="o">/</span><span class="n">led</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../../../../</span><span class="n">pi4micronaut</span><span class="o">-</span><span class="n">utils</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">outputDevices</span><span class="o">/</span><span class="nc">LEDHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tags</span><span class="o">=</span><span class="n">method</span><span class="o">]</span></code></pre>
 </div>
 </div>
 </div>
@@ -2345,7 +2523,7 @@ adjust according to your power source and LED specifications</p>
 <h5 id="_constructors_6"><a class="anchor" href="#_constructors_6"></a>Constructors</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">outputComponents</span><span class="o">/</span><span class="n">rgbLed</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../../../../</span><span class="n">micronautpi4j</span><span class="o">-</span><span class="n">utils</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">outputDevices</span><span class="o">/</span><span class="nc">RGBLEDHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tag</span><span class="o">=</span><span class="kd">const</span><span class="o">]</span></code></pre>
+<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">outputComponents</span><span class="o">/</span><span class="n">rgbLed</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../../../../</span><span class="n">pi4micronaut</span><span class="o">-</span><span class="n">utils</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">outputDevices</span><span class="o">/</span><span class="nc">RGBLEDHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tag</span><span class="o">=</span><span class="kd">const</span><span class="o">]</span></code></pre>
 </div>
 </div>
 </div>
@@ -2353,7 +2531,7 @@ adjust according to your power source and LED specifications</p>
 <h5 id="_methods_6"><a class="anchor" href="#_methods_6"></a>Methods</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">outputComponents</span><span class="o">/</span><span class="n">rgbLed</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../../../../</span><span class="n">micronautpi4j</span><span class="o">-</span><span class="n">utils</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">outputDevices</span><span class="o">/</span><span class="nc">RGBLEDHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tags</span><span class="o">=</span><span class="n">method</span><span class="o">]</span></code></pre>
+<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">outputComponents</span><span class="o">/</span><span class="n">rgbLed</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../../../../</span><span class="n">pi4micronaut</span><span class="o">-</span><span class="n">utils</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">outputDevices</span><span class="o">/</span><span class="nc">RGBLEDHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tags</span><span class="o">=</span><span class="n">method</span><span class="o">]</span></code></pre>
 </div>
 </div>
 </div>
@@ -2630,7 +2808,7 @@ adjust according to your power source and LED specifications</p>
 <h5 id="_constructors_7"><a class="anchor" href="#_constructors_7"></a>Constructors</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">outputComponents</span><span class="o">/</span><span class="n">lcd1602</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../../../../</span><span class="n">micronautpi4j</span><span class="o">-</span><span class="n">utils</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">outputDevices</span><span class="o">/</span><span class="nc">LCD1602Helper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tag</span><span class="o">=</span><span class="kd">const</span><span class="o">]</span></code></pre>
+<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">outputComponents</span><span class="o">/</span><span class="n">lcd1602</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../../../../</span><span class="n">pi4micronaut</span><span class="o">-</span><span class="n">utils</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">outputDevices</span><span class="o">/</span><span class="nc">LCD1602Helper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tag</span><span class="o">=</span><span class="kd">const</span><span class="o">]</span></code></pre>
 </div>
 </div>
 </div>
@@ -2638,7 +2816,7 @@ adjust according to your power source and LED specifications</p>
 <h5 id="_methods_7"><a class="anchor" href="#_methods_7"></a>Methods</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">outputComponents</span><span class="o">/</span><span class="n">lcd1602</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../../../../</span><span class="n">micronautpi4j</span><span class="o">-</span><span class="n">utils</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">outputDevices</span><span class="o">/</span><span class="nc">LCD1602Helper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tags</span><span class="o">=</span><span class="n">method</span><span class="o">]</span></code></pre>
+<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">outputComponents</span><span class="o">/</span><span class="n">lcd1602</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../../../../</span><span class="n">pi4micronaut</span><span class="o">-</span><span class="n">utils</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">outputDevices</span><span class="o">/</span><span class="nc">LCD1602Helper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tags</span><span class="o">=</span><span class="n">method</span><span class="o">]</span></code></pre>
 </div>
 </div>
 </div>
@@ -2694,183 +2872,9 @@ adjust according to your power source and LED specifications</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version v1.0.0<br>
-Last updated 2024-02-19 20:34:51 UTC
+Version v1.0<br>
+Last updated 2024-02-23 20:30:22 UTC
 </div>
 </div>
-<style>
-pre.rouge table td { padding: 5px; }
-pre.rouge table pre { margin: 0; }
-pre.rouge {
-  color: #faf6e4;
-  background-color: #122b3b;
-}
-pre.rouge .gl {
-  color: #dee5e7;
-  background-color: #4e5d62;
-}
-pre.rouge .gp {
-  color: #a8e1fe;
-  font-weight: bold;
-}
-pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cm, pre.rouge .cpf, pre.rouge .c1, pre.rouge .cs {
-  color: #6c8b9f;
-  font-style: italic;
-}
-pre.rouge .cp {
-  color: #b2fd6d;
-  font-weight: bold;
-}
-pre.rouge .err {
-  color: #fefeec;
-  background-color: #cc0000;
-}
-pre.rouge .gr {
-  color: #cc0000;
-  font-weight: bold;
-  font-style: italic;
-}
-pre.rouge .k, pre.rouge .kd, pre.rouge .kv {
-  color: #f6dd62;
-  font-weight: bold;
-}
-pre.rouge .o, pre.rouge .ow {
-  color: #4df4ff;
-  font-weight: bold;
-}
-pre.rouge .p, pre.rouge .pi {
-  color: #4df4ff;
-}
-pre.rouge .gd {
-  color: #cc0000;
-}
-pre.rouge .gi {
-  color: #b2fd6d;
-}
-pre.rouge .ge {
-  font-style: italic;
-}
-pre.rouge .gs {
-  font-weight: bold;
-}
-pre.rouge .gt {
-  color: #dee5e7;
-  background-color: #4e5d62;
-}
-pre.rouge .kc {
-  color: #f696db;
-  font-weight: bold;
-}
-pre.rouge .kn {
-  color: #ffb000;
-  font-weight: bold;
-}
-pre.rouge .kp {
-  color: #ffb000;
-  font-weight: bold;
-}
-pre.rouge .kr {
-  color: #ffb000;
-  font-weight: bold;
-}
-pre.rouge .gh {
-  color: #ffb000;
-  font-weight: bold;
-}
-pre.rouge .gu {
-  color: #ffb000;
-  font-weight: bold;
-}
-pre.rouge .kt {
-  color: #b2fd6d;
-  font-weight: bold;
-}
-pre.rouge .no {
-  color: #b2fd6d;
-  font-weight: bold;
-}
-pre.rouge .nc {
-  color: #b2fd6d;
-  font-weight: bold;
-}
-pre.rouge .nd {
-  color: #b2fd6d;
-  font-weight: bold;
-}
-pre.rouge .nn {
-  color: #b2fd6d;
-  font-weight: bold;
-}
-pre.rouge .bp {
-  color: #b2fd6d;
-  font-weight: bold;
-}
-pre.rouge .ne {
-  color: #b2fd6d;
-  font-weight: bold;
-}
-pre.rouge .nl {
-  color: #ffb000;
-  font-weight: bold;
-}
-pre.rouge .nt {
-  color: #ffb000;
-  font-weight: bold;
-}
-pre.rouge .m, pre.rouge .mb, pre.rouge .mf, pre.rouge .mh, pre.rouge .mi, pre.rouge .il, pre.rouge .mo, pre.rouge .mx {
-  color: #f696db;
-  font-weight: bold;
-}
-pre.rouge .ld {
-  color: #f696db;
-  font-weight: bold;
-}
-pre.rouge .ss {
-  color: #f696db;
-  font-weight: bold;
-}
-pre.rouge .s, pre.rouge .sa, pre.rouge .sb, pre.rouge .dl, pre.rouge .sd, pre.rouge .s2, pre.rouge .sh, pre.rouge .sx, pre.rouge .sr, pre.rouge .s1 {
-  color: #fff0a6;
-  font-weight: bold;
-}
-pre.rouge .se {
-  color: #4df4ff;
-  font-weight: bold;
-}
-pre.rouge .sc {
-  color: #4df4ff;
-  font-weight: bold;
-}
-pre.rouge .si {
-  color: #4df4ff;
-  font-weight: bold;
-}
-pre.rouge .nb {
-  font-weight: bold;
-}
-pre.rouge .ni {
-  color: #999999;
-  font-weight: bold;
-}
-pre.rouge .w {
-  color: #BBBBBB;
-}
-pre.rouge .go {
-  color: #BBBBBB;
-}
-pre.rouge .nf, pre.rouge .fm {
-  color: #a8e1fe;
-}
-pre.rouge .py {
-  color: #a8e1fe;
-}
-pre.rouge .na {
-  color: #a8e1fe;
-}
-pre.rouge .nv, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi, pre.rouge .vm {
-  color: #a8e1fe;
-  font-weight: bold;
-}
-</style>
 </body>
 </html>
