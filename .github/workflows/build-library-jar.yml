@@ -48,4 +48,4 @@ jobs:
           SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
           GPG_KEY: ${{ secrets.GPG_KEY }}
           GPG_PASSWORD: ${{ secrets.GPG_PASSWORD }}
-        run: ./gradlew publish
+        run: ./gradlew publish --info
