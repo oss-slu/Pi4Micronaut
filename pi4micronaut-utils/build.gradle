@@ -108,6 +108,38 @@ publishing {
                         id = 'ruthvikm'
                         name = 'Ruthvik Mannem'
                     }
+                    developer{
+                        id = 'SwindleA'
+                        name = 'Adrian Swindle'
+                    }
+                    developer{
+                        id = 'joefol'
+                        name = 'Joe Folen'
+                    }
+                    developer{
+                        id = 'adelgadoj3'
+                        name = 'Alex Delgado'
+                    }
+                    developer{
+                        id = 'jyanev'
+                        name = 'John Yanev'
+                    }
+                    developer{
+                        id = 'MurrayG'
+                        name = 'Greih Murray'
+                    }
+                    developer{
+                        id = 'TraisonD'
+                        name = 'Traison Diedrich'
+                    }
+                    developer{
+                        id = 'AustinH'
+                        name = 'Austin Howard'
+                    }
+                    developer{
+                        id = 'SinuoL'
+                        name = 'Sinuo Liu'
+                    }
 
                 }
 
