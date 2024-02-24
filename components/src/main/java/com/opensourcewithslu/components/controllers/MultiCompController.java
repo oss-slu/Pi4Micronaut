@@ -1,7 +1,6 @@
 package com.opensourcewithslu.components.controllers;
 
 import com.opensourcewithslu.inputdevices.PushButtonHelper;
-import com.opensourcewithslu.inputdevices.RotaryEncoderHelper;
 import com.opensourcewithslu.outputdevices.LEDHelper;
 import com.pi4j.io.gpio.digital.DigitalInput;
 import com.pi4j.io.gpio.digital.DigitalOutput;
@@ -15,11 +14,14 @@ import org.slf4j.LoggerFactory;
 @Controller("/multi")
 public class MultiCompController {
     private static final Logger log = LoggerFactory.getLogger(MultiCompController.class);
-    private LEDHelper ledHelper;
 
-    private LEDHelper ledHelper2;
-    private PushButtonHelper button1;
-    private PushButtonHelper button2;
+    private final LEDHelper ledHelper;
+
+    private final LEDHelper ledHelper2;
+
+    private final PushButtonHelper button1;
+
+    private final PushButtonHelper button2;
 
     public MultiCompController(@Named("led") DigitalOutput led1,
                                @Named("led2") DigitalOutput led2,
@@ -41,7 +43,7 @@ public class MultiCompController {
         ledHelper2.switchState();
     }
 
-    @Get("/but1")
+    @Get("/button1")
     public void button1(){
         button1.addEventListener(e ->{
             log.info(String.valueOf(button1.isPressed));
@@ -51,7 +53,7 @@ public class MultiCompController {
         });
     }
 
-    @Get("/but2")
+    @Get("/button2")
     public void button2(){
         button2.addEventListener(e ->{
             if(button2.isPressed){
