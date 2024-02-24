@@ -1,7 +1,6 @@
 package com.opensourcewithslu.components.controllers;
 
 import com.opensourcewithslu.outputdevices.ActiveBuzzerHelper;
-//import com.pi4j.io.gpio.digital.DigitalOutput;
 import com.pi4j.io.pwm.Pwm;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
@@ -40,10 +39,10 @@ public class ActiveBuzzerController {
     /**
      * Emits an alert sound from the active buzzer.
      */
-    @Get("/alertTone")
-    public void playAlertTone(){
+    @Get("/beepTone")
+    public void playBeepTone(){
 
-        activeBuzzerHelper.alertTone();
+        activeBuzzerHelper.beep();
 
     }
 
@@ -51,19 +50,19 @@ public class ActiveBuzzerController {
      * Emits a constant tone from the active buzzer for a duration of 20 seconds.
      * 10 seconds of sound and 10 seconds of silence
      */
-    @Get("/constantTone")
-    public void playConstantTone(){
+    @Get("/intermittentTone")
+    public void playIntermittentTone(){
 
-        activeBuzzerHelper.constantTone();
+        activeBuzzerHelper.intermittentTone();
 
     }
 
     /**
      * Tests the active buzzer by emitting the word "pi" in morse code.
      */
-    @Get("/testBuzzer-active")
-    public void testBuzzer(){
+    @Get("/morseCode")
+    public void morseCodeTest(){
 
-        activeBuzzerHelper.buzzerTest();
+        activeBuzzerHelper.morseCodeTone();
     }
 }
