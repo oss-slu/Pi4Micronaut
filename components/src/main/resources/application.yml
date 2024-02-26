@@ -34,6 +34,13 @@ pi4j:
       provider: pigpio-pwm
       initial: 0
       shutdown: 0
+    active-buzzer:
+      name: active-buzzer
+      address: 17
+      pwmType: SOFTWARE
+      provider: pigpio-pwm
+      initial: 0
+      shutdown: 0
   i2c:
     # tag::i2c[]
     lcd:                                  # <1>
