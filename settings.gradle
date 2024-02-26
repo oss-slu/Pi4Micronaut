@@ -1,3 +1,3 @@
-rootProject.name = "Pi4Micronaut"
-include 'components', 'pi4micronaut-utils'
+rootProject.name = "micronaut-pi4j"
+include 'components', 'micronautpi4j-utils'
 

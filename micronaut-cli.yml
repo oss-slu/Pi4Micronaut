@@ -1,5 +1,5 @@
 applicationType: default
-defaultPackage: com.opensourcewithslu.pi4micronaut
+defaultPackage: com.opensourcewithslu.micronautpi4j
 testFramework: junit
 sourceLanguage: java
 buildTool: gradle

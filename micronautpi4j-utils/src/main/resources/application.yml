@@ -1,6 +1,6 @@
 micronaut:
   application:
-    name: micronautPi4j
+    name: micronautpi4jUtils
 netty:
   default:
     allocator:
