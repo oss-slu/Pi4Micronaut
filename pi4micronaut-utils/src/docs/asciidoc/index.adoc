@@ -16,7 +16,7 @@
 toc::[]
 
 [.text-right]
-https://oss-slu.github.io/Pi4Micronaut/javadoc/index.html[API References]
+ ../javadoc/index.html[API References]
 
 include::introduction.adoc[]
 
