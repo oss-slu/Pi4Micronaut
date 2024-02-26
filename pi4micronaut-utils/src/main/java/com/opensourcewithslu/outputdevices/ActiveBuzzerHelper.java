@@ -7,7 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /*
- * The BuzzerHelper class contains methods that pertain to the control of the active and passive buzzers.
+ * The ActiveBuzzerHelper class contains methods that pertain to the control of the active buzzer.
  *
  * IMPORTANT NOTE: WIRING MUST BE DIRECT. USAGE OF TRANSISTOR ALTERS THE FUNCTIONALITIES OF THE HELPER.
  */

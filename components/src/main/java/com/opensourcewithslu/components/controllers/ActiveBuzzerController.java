@@ -37,7 +37,7 @@ public class ActiveBuzzerController {
     }
 
     /**
-     * Emits an alert sound from the active buzzer.
+     * Emits an beep sound from the active buzzer.
      */
     @Get("/beepTone")
     public void playBeepTone(){
@@ -47,7 +47,7 @@ public class ActiveBuzzerController {
     }
 
     /**
-     * Emits a constant tone from the active buzzer for a duration of 20 seconds.
+     * Emits an intermittent tone from the active buzzer for a duration of 20 seconds.
      * 10 seconds of sound and 10 seconds of silence
      */
     @Get("/intermittentTone")
