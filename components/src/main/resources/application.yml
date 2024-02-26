@@ -34,6 +34,13 @@ pi4j:
       provider: pigpio-pwm
       initial: 0
       shutdown: 0
+    active-buzzer:
+      name: active-buzzer
+      address: 17
+      pwmType: SOFTWARE
+      provider: pigpio-pwm
+      initial: 0
+      shutdown: 0
   i2c:
     # tag::i2c[]
     lcd:                                  # <1>
@@ -62,6 +69,12 @@ pi4j:
       pull: PULL_DOWN
       debounce: 30
       provider: pigpio-digital-input
+    button-input-3:
+      name: Push Button Input
+      address: 18
+      pull: PULL_DOWN
+      debounce: 30
+      provider: pigpio-digital-input
     slide-switch-input:
       name: Slide Switch Input
       address: 18
@@ -74,14 +87,20 @@ pi4j:
       pull: PULL_DOWN
       debounce: 3000
       provider: pigpio-digital-input
+    touch-switch-input:
+      name: Touch Switch Input
+      address: 17
+      pull: PULL_DOWN
+      debounce: 200000
+      provider: pigpio-digital-input
   ### DIGITAL OUTPUTS
   digital-output:
     # tag::digitalOutput[]
     led:                                    # <1>
       name: LED Output                      # <2>
       address: 17                           # <3>
-      shutdown: HIGH                        # <4>
-      initial: HIGH                         # <5>
+      shutdown: LOW                        # <4>
+      initial: LOW                         # <5>
       provider: pigpio-digital-output       # <6>
     # end::digitalOutput[]
     led2:

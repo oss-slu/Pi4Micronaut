@@ -1,0 +1,76 @@
+= Pi4Micronaut Documentation
+:source-highlighter: rouge
+:rouge-style: thankful_eyes
+:stylesheet: style.css
+:docinfo: shared
+:icons: font
+:doctype: book
+:title: Pi4Micronaut Documentation
+:toc: left
+:toclevels: 3
+:sectanchors:
+:sectnums:
+:rootpath:
+:imagesdir:img
+
+toc::[]
+
+[.text-right]
+link:javadoc/index.html[API References]
+
+include::introduction.adoc[]
+
+include::Introduction/supportedHardware.adoc[]
+
+include::Introduction/gettingStarted.adoc[]
+
+include::Introduction/exampleApplications.adoc[]
+
+include::contribute/contributingToLibrary.adoc[]
+
+include::contribute/newComponent.adoc[]
+
+include::adding_creating_App.adoc[]
+
+
+include::usingLibrary.adoc[]
+
+include::components.adoc[]
+
+include::components/commun_WithHardware.adoc[]
+
+include::components/commun_WithHardware/digitalInput.adoc[]
+
+include::components/commun_WithHardware/digitalOutput.adoc[]
+
+include::components/commun_WithHardware/multipinConfig.adoc[]
+
+include::components/commun_WithHardware/pwm.adoc[]
+
+include::components/commun_WithHardware/spi.adoc[]
+
+
+include::components/commun_WithHardware/i2c.adoc[]
+
+include::components/inputComponents.adoc[]
+
+include::components/inputComponents/pushButton.adoc[]
+
+include::components/inputComponents/slideSwitch.adoc[]
+
+include::components/inputComponents/rotaryEncoder.adoc[]
+
+include::components/inputComponents/rfidScanner.adoc[]
+
+include::components/inputComponents/photosensor.adoc[]
+
+
+include::components/outputComponents.adoc[]
+
+include::components/outputComponents/led.adoc[]
+
+include::components/outputComponents/rgbLed.adoc[]
+
+include::components/outputComponents/lcd1602.adoc[]
+
+

@@ -1,5 +1,0 @@
-== Contributing to the Library
-[.text-right] 
-https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/howContribute.adoc[Improve this doc]
-
-TODO: outline how someone can contribute to our library
