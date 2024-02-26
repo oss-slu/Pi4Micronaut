@@ -42,9 +42,6 @@ asciidoctor {
         from(sourceDir) {
             include 'img/**'
         }
-        from("${sourceDir}/../") {
-            include 'javadoc/**'
-        }
     }
 }
 
