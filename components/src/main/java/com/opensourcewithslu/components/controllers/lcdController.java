@@ -5,6 +5,7 @@ import com.pi4j.context.Context;
 import com.pi4j.io.i2c.I2CConfig;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
+import io.micronaut.http.annotation.Post;
 import jakarta.inject.Named;
 
 //tag::ex[]

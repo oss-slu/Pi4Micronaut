@@ -1,7 +1,0 @@
-micronaut:
-  application:
-    name: pi4micronaut-utils
-netty:
-  default:
-    allocator:
-      max-order: 3
