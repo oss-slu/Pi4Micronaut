@@ -16,7 +16,7 @@
 toc::[]
 
 [.text-right]
- ../javadoc/index.html[API References]
+/javadoc/index.html[API References]
 
 include::introduction.adoc[]
 
