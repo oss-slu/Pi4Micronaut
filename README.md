@@ -14,18 +14,18 @@ The existence of Pi4Micronaut is justified by the need for a robust, scalable, a
 
 ### Information
 
-- **Source Code:** <https://github.com/oss-slu/Pi4Micronaut/> [<img src="/img/git-alt.svg" alt="git" width="25" height="25" />](https://github.com/oss-slu/Pi4Micronaut/)
+- **Source Code:** <https://github.com/oss-slu/Pi4Micronaut/> 
 - **Client** Jeff Brown - Unity Foundation
-- **Current Tech Lead:** Ruthvik Mannem [<img src="/img/github.svg" alt="github" width="25" height="25" />](https://github.com/ruthvikm)
+- **Current Tech Lead:** [Ruthvik Mannem](https://github.com/ruthvikm)
 - **Developers:**
-    - Adrian Swindle (capstone) [<img src="/img/github.svg" alt="github" width="25" height="25" />](https://github.com/SwindleA)
-    - Alex Delgado (capstone) [<img src="/img/github.svg" alt="github" width="25" height="25" />](https://github.com/adelgadoj3)
-    - Joe Folen (capstone) [<img src="/img/github.svg" alt="github" width="25" height="25" />](https://github.com/joefol)
-    - John Yanev (capstone) [<img src="/img/github.svg" alt="github" width="25" height="25" />](https://github.com/jyanev)
-    - Greih Murray (alumni) [<img src="/img/github.svg" alt="github" width="25" height="25" />](https://github.com/GreihMurray)
-    - Austin Howard (alumni) [<img src="/img/github.svg" alt="github" width="25" height="25" />](https://github.com/austinjhoward)
-    - Traison Diedrich  (alumni) [<img src="/img/github.svg" alt="github" width="25" height="25" />](https://github.com/traison-diedrich)
-    - Sinuo Liu (alumni) [<img src="/img/github.svg" alt="github" width="25" height="25" />](https://github.com/liusinuo2000)
+    - [Adrian Swindle](https://github.com/SwindleA) (capstone)
+    - [Alex Delgado](https://github.com/adelgadoj3) (capstone)
+    - [Joe Folen](https://github.com/joefol) (capstone)
+    - [John Yanev](https://github.com/jyanev) (capstone)
+    - [Greih Murray](https://github.com/GreihMurray) (alumni)
+    - [Austin Howard](https://github.com/austinjhoward) (alumni)
+    - [Traison Diedrich](https://github.com/traison-diedrich) (alumni)
+    - [Sinuo Liu](https://github.com/liusinuo2000) (alumni)
 
 - **Start Date:** August 2022
 - **Adoption Date:** August 2022
