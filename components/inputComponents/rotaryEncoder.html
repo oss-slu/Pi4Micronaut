@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.18">
+<meta name="generator" content="Asciidoctor 2.0.10">
 <title>Rotary Encoder</title>
 <style>
 body {
@@ -13,17 +13,6 @@ body {
 	padding: 0;
 	margin: 0;
 	overflow-y: hidden;
-	overflow-x: hidden;
-}
-
-/*Needed to ensure that [.text-right] in the .adoc files align to the right. Otherwise they align
-to the left of the doc.*/
-.text-right{
-	text-align: right;
-}
-
-.text-right:hover{
-	text-decoration: underline;
 }
 
 .anchor{
@@ -43,46 +32,35 @@ a {
 }
 
 #header {
-	background-color: black;
-	background-image: url('img/Pi4Micronaut-RM.png');
-	background-size: contain;
-	background-position: left;
-	background-repeat: no-repeat;
+	background-color: #000;
 	grid-area: nav;
 	position: fixed;
 	width: 100%;
 	vertical-align: center;
-	max-height:100px;
+	max-height: 6%;
 	height: 100%;
 	display: inline-block;
 	z-index: 10;
-	margin-bottom: 0;
-}
-
-#header a{
-	color:white;
-	margin-right: 20px;
 }
 
 #toc {
-	margin-top: 13px;
 	padding-top: 1em;
 	padding-left: 1em;
 	padding-right: 1em;
 	padding-bottom: 2em;
 	float: left;
-	max-height: 89.5%;
+	max-height: 90%;
 	height: 100%;
 	overflow-y: auto;
 	position: fixed;
 	box-sizing: border-box;
-	background-color: gainsboro;
-	max-width: 15.5%;
+	background-color: lightgray;
+	max-width: 15%;
 	width: 100%;
 }
 
 #toc a {
-	color: royalblue;
+	color: cornflowerblue;
 }
 
 #toc li {
@@ -105,29 +83,22 @@ a {
 }
 
 h1 {
-	text-indent: -9999px;
-	font-size: 2em;
-	background-color: transparent;
+	font-size: 1.4em;
+	background-color: black;
 	padding: .6em;
 	margin: 0;
 	width: 100%;
-	color: white;
-	height: 50%;
+	color: red;
+	height: 100%;
 	vertical-align: center;
 }
-
-h2 {
-	margin-top: 2px;
-	margin-bottom: 2px;
-}
-
 
 /*.toc2{*/
 /*	float: left;*/
 /*}*/
 
 #toc a:hover {
-	text-decoration: underline;
+	background-color: maroon;
 }
 
 #content {
@@ -141,11 +112,11 @@ h2 {
 	z-index: 1;
 	max-height: 80%;
 	height: 100%;
-	margin-left: 15.5%;
+	margin-left: 15%;
 	margin-right: 0;
-	margin-bottom: 1%;
-	margin-top: 8%;
-	padding-bottom: 100px;
+	margin-bottom: 10%;
+	margin-top: 5%;
+	padding-bottom: 50px;
 }
 
 .hljs{
@@ -212,125 +183,6 @@ th {
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/inputComponents/rotaryEncoder.adoc">Improve this doc</a></p>
 </div>
 <div class="sect4">
-<h5 id="_overview">Overview</h5>
-<div class="paragraph">
-<p>This section provides details of the Rotary Encoder circuit,
-including its components, assembly instructions, and functionality.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_components">Components</h5>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Rotary encoder module</p>
-</li>
-<li>
-<p>1 x 10kΩ resistor</p>
-</li>
-<li>
-<p>Breadboard</p>
-</li>
-<li>
-<p>Jumper wires</p>
-</li>
-<li>
-<p>Power source</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_assembly_instructions">Assembly Instructions</h5>
-<div class="paragraph">
-<p>Connect the 5 pins on the encoder to the breadboard along with the resistor as
-stated below and in the diagram.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Ground: Connect ground on the encoder to ground on the breadboard</p>
-</li>
-<li>
-<p>Power: Connect the + on the encoder to the 3.3V on the breadboard</p>
-</li>
-<li>
-<p>SW: Connect SW to GPIO 27 on the breadboard</p>
-</li>
-<li>
-<p>DT: Connect DT to GPIO 17 on the breadboard</p>
-</li>
-<li>
-<p>CLK: Connect CLK to GPIO 18 on the breadboard</p>
-</li>
-<li>
-<p>Resistor: Place the resistor horizontally so that it is parallel
-with GPIO 27, having one side on the red + with the other next to the wire on GPIO 27</p>
-</li>
-<li>
-<p>Connect a wire from 3.3V to the red + in the same column as the resistor</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_circuit_diagram">Circuit Diagram</h5>
-<div class="ulist">
-<ul>
-<li>
-<p>Note the resistor location at GPIO 27</p>
-</li>
-</ul>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../../img/rotary_encoder_circuit.png" alt="rotary encoder circuit">
-</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_functionality">Functionality</h5>
-<div class="ulist">
-<ul>
-<li>
-<p>The initial value returned is 0.</p>
-</li>
-<li>
-<p>Turning the shaft one unit clockwise will increase the value returned by 1, whereas, turning the
-knob counterclockwise by one unit will decrease the value returned by 1.</p>
-</li>
-<li>
-<p>The value returned is an integer with a max value of 2147483647 and min of -2147483647.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_testing_the_circuit">Testing the Circuit</h5>
-<div class="paragraph">
-<p>To return the value of the rotary encoder:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl http://localhost:8080/rotaryEncoder/value</code></pre>
-</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_troubleshooting">Troubleshooting</h5>
-<div class="ulist">
-<ul>
-<li>
-<p>Value not being returned: Make sure all pins on the encoder match up
-to the correct GPIO pins according to the YAML pin order below.</p>
-</li>
-<li>
-<p>Make sure that a 10k resistor is being used</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
 <h5 id="_yaml_pin_order">YAML Pin Order</h5>
 <div class="paragraph">
 <p>The order for declaring pins for a Rotary Encoder component in the application.yaml file is as follows</p>
@@ -349,14 +201,14 @@ to the correct GPIO pins according to the YAML pin order below.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>the sw pin would be the one connected to GPIO 27, the clk pin would be connected to GPIO 18, and the dt pin would connect to GPIO 17. All lists of values for Rotary Encoder components will follow the same order.</p>
+<p>the sw pin would be the one connected to GPIO 17, the clk pin would be connected to GPIO 18, and the dt pin would connect to GPIO 27. All lists of values for Rotray Encoder components will follow the same order.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_constructors">Constructors</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">Unresolved directive in rotaryEncoder.adoc - include::../../../../../../pi4micronaut-utils/src/main/java/com/opensourcewithslu/inputDevices/RotaryEncoderHelper.java[tag=const]</code></pre>
+<pre class="highlight"><code class="language-java" data-lang="java">Unresolved directive in rotaryEncoder.adoc - include::../../../../main/java/com/opensourcewithslu/inputDevices/RotaryEncoderHelper.java[tag=const]</code></pre>
 </div>
 </div>
 </div>
@@ -364,7 +216,7 @@ to the correct GPIO pins according to the YAML pin order below.</p>
 <h5 id="_methods">Methods</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">Unresolved directive in rotaryEncoder.adoc - include::../../../../../../pi4micronaut-utils/src/main/java/com/opensourcewithslu/inputDevices/RotaryEncoderHelper.java[tags=method]</code></pre>
+<pre class="highlight"><code class="language-java" data-lang="java">Unresolved directive in rotaryEncoder.adoc - include::../../../../main/java/com/opensourcewithslu/inputDevices/RotaryEncoderHelper.java[tags=method]</code></pre>
 </div>
 </div>
 </div>
@@ -383,8 +235,8 @@ to the correct GPIO pins according to the YAML pin order below.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version v1.0<br>
-Last updated 2024-02-26 22:00:39 UTC
+Version v1.0.0<br>
+Last updated 2024-02-26 22:16:07 UTC
 </div>
 </div>
 </body>
