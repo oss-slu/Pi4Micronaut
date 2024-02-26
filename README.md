@@ -1,9 +1,3 @@
----
-id: about
-title: Pi4Micronaut
-custom_edit_url: null
----
-
 ![Pi4Micronaut-Header](header-pi4micronaut.png)
 
 ## Overview
