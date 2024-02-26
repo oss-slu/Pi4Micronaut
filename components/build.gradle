@@ -1,6 +1,6 @@
 plugins {
     id("com.github.johnrengelman.shadow") version "7.1.2"
-    id("io.micronaut.application") version "3.0.2"
+    id("io.micronaut.application") version "3.7.3"
 }
 
 version = "0.1"
@@ -14,7 +14,7 @@ dependencies {
     annotationProcessor "io.micronaut:micronaut-inject-java"
     annotationProcessor "io.micronaut:micronaut-validation"
     implementation("io.micronaut:micronaut-validation")
-    implementation project(":micronautpi4j-utils")
+    implementation project(":pi4micronaut-utils")
 }
 
 
@@ -22,8 +22,8 @@ application {
     mainClass.set("com.opensourcewithslu.components.Application")
 }
 java {
-    sourceCompatibility = JavaVersion.toVersion("11")
-    targetCompatibility = JavaVersion.toVersion("11")
+    sourceCompatibility = JavaVersion.toVersion("17")
+    targetCompatibility = JavaVersion.toVersion("17")
 }
 
 micronaut {
