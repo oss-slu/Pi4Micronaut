@@ -99,8 +99,8 @@ pi4j:
     led:                                    # <1>
       name: LED Output                      # <2>
       address: 17                           # <3>
-      shutdown: HIGH                        # <4>
-      initial: HIGH                         # <5>
+      shutdown: LOW                        # <4>
+      initial: LOW                         # <5>
       provider: pigpio-digital-output       # <6>
     # end::digitalOutput[]
     led2:
