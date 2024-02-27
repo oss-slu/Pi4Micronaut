@@ -1,4 +1,4 @@
-![Pi4Micronaut-Header](header-pi4micronaut.png)
+![Pi4Micronaut-Header](Pi4Micronaut_logo.png)
 
 ## Overview
 
@@ -36,7 +36,7 @@ The existence of Pi4Micronaut is justified by the need for a robust, scalable, a
 - [API Reference](https://oss-slu.github.io/Pi4Micronaut/javadoc/index.html)
 
 ### Architecture Diagram
-![Pi4Micronaut.png](Pi4Micronaut.png)
+![Pi4Micronaut.png](Workflow.png)
 
 ## Micronaut 3.7.3
 - [Micronaut 3.7.3 User Guide](https://micronaut-projects.github.io/micronaut-docs-mn3/3.7.3/guide/index.html)
