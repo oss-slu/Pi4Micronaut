@@ -35,6 +35,14 @@ java {
     targetCompatibility = JavaVersion.toVersion("17")
 }
 
+tasks.named('build').configure {
+    dependsOn 'javadoc'
+    copy {
+        from tasks.javadoc.destinationDir
+        into "src/docs/javadoc"
+    }
+}
+
 asciidoctor {
     attributes 'stylesheet': "style.css"
     baseDirFollowsSourceDir()
@@ -57,6 +65,11 @@ tasks.register('javadocJar', Jar) {
     archiveClassifier = 'javadoc'
     from javadoc.destinationDir
 }
+
+tasks.named('javadocJar').configure {
+    dependsOn 'javadoc'
+}
+
 
 artifacts {
     archives sourcesJar, javadocJar
