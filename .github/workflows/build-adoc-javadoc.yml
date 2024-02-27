@@ -17,10 +17,8 @@ jobs:
       id: adocbuild
       uses: tonynv/asciidoctor-action@master
       with:
-          program: "./gradlew asciidoctor"
-    - name: Build Javadocs
-      run: |
-        ./gradlew javadoc
+          program: "./gradlew asciidoctor javadoc"
+
     - name: Deploy docs to ghpages
       uses: peaceiris/actions-gh-pages@v3
       with: 
