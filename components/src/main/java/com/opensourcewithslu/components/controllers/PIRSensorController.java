@@ -16,9 +16,9 @@ public class PIRSensorController {
     private final RGBLEDHelper rgbledHelper;
 
     public PIRSensorController(@Named("pir-sensor-output")DigitalOutput pirSensor,
-                               @Named("rgb-led-2")MultipinConfiguration rgbled) {
+                               @Named("rgb-led-2")MultipinConfiguration rgbLed) {
         this.pirSensorHelper = new PIRSensorHelper(pirSensor);
-        this.rgbledHelper = new RGBLEDHelper(rgbled);
+        this.rgbledHelper = new RGBLEDHelper(rgbLed);
     }
 
     @Get("/enable")
