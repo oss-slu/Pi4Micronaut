@@ -64,24 +64,54 @@ public class PassiveBuzzerHelper {
         }
     }
 
+    /**
+     * Functionality test emits a 1 - second buzz to ensure functionality
+     */
+    public void functionalityTest(){
+        passiveBuzzerOn();
+
+        try{
+            Thread.sleep(1000); // Buzz for 1 second
+        } catch (InterruptedException e){
+            Thread.currentThread().interrupt();
+        }
+        passiveBuzzerOff();
+    }
+
+    /**
+     * freChangeTest cycles through frequencies to verify that frequencies are changing
+     */
+    public void freqChangeTest(){
+        int [] frequencies  = { 880, 1760, 3520}; //Can add more frequencies to test
+        for (int freq : frequencies){
+            passiveBuzzer.setFrequency(freq);
+            passiveBuzzerOn();
+            try{
+                Thread.sleep(1000); //Play each frequency for a full second
+            } catch (InterruptedException e){
+                Thread.currentThread().interrupt();
+            }
+            passiveBuzzerOff();
+        }
+    }
+
+    /**
+     * Tone sequence cycles through array's containing the frequencies of the first
+     * then digits of pi.
+     */
+
     //tag::method[]
-    public void toneSequence(){
+    public void piToneSequence(){
     //end::method[]
 
-        //Array of frequencies for CMajor
-        int [] CL = {0, 131, 147, 165, 175, 196, 211, 248};
-        int [] CM = {0, 262, 294, 330, 350, 393, 441, 495};
-        int [] CH = {0, 525, 589, 661, 700, 786, 882, 990};
-
-        int [] song_1 = {CM[3], CM[5], CM[6], CM[3], CM[2], CM[3], CM[5], CM[6],
-                CH[1], CM[6], CM[5], CM[1], CM[3], CM[2], CM[2], CM[3],
-                CM[5], CM[2], CM[3], CM[3], CL[6], CL[6], CL[6], CM[1],
-                CM[2], CM[3], CM[2], CL[7], CL[6], CM[1], CL[5]};
+        int [] digitsOfPi = {3, 1, 4, 1, 5, 9, 2, 6, 5};
+        int [] frequencies = {261, 293, 329, 349, 392, 440, 493, 523, 587, 659};
 
         passiveBuzzerOn();
 
-        for (int tone : song_1){
-            passiveBuzzer.setFrequency(tone); //There is a pwm frequency method that can be used.
+        for (int digit : digitsOfPi){
+            int freq = frequencies[digit];
+            passiveBuzzer.setFrequency(freq); //There is a pwm frequency method that can be used.
             try{
                 Thread.sleep(500); //Pause for beat
             } catch (InterruptedException e){
@@ -96,4 +126,6 @@ public class PassiveBuzzerHelper {
         }
         passiveBuzzerOff();
     }
+
+
 }

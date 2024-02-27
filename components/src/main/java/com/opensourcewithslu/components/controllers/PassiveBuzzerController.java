@@ -61,12 +61,28 @@ public class PassiveBuzzerController {
     }
 
     /**
+     * Validates the functionality of the passive buzzer
+     */
+    @Get("/funcTest")
+    public void passiveFuncTest(){
+        passiveBuzzerHelper.functionalityTest();
+    }
+
+    /**
+     * Ensures that the passive buzzer can cycle through different frequencies
+     */
+    @Get("/freqTest")
+    public void passiveFreqTest(){
+        passiveBuzzerHelper.freqChangeTest();
+    }
+
+    /**
      * Calls toneSequence function to play a pre-defined song.
      */
-    @Get("/playSeqOfTones")
-    public void playSequence(){
+    @Get("/playPiSeq")
+    public void playPiTone(){
 
-        passiveBuzzerHelper.toneSequence();
+        passiveBuzzerHelper.piToneSequence();
 
     }
 }
