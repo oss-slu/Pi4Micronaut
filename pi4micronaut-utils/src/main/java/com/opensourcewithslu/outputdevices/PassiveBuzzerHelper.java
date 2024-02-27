@@ -9,7 +9,7 @@ public class PassiveBuzzerHelper {
 
     private final Pwm passiveBuzzer;
 
-    protected int passiveBuzzerFreq = 3000;
+    protected int passiveBuzzerFreq = 440;
 
     public PassiveBuzzerHelper( Pwm passiveBuzzer){
 
