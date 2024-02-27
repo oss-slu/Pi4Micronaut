@@ -16,7 +16,9 @@ public class ActiveBuzzerHelper {
     private static final Logger log = LoggerFactory.getLogger(ActiveBuzzerHelper.class);
 
     private final Pwm activeBuzzer;
-
+    /**
+     * To check if the buzzer is active or not
+     */
     protected boolean actBuzzCheck;
 
 
