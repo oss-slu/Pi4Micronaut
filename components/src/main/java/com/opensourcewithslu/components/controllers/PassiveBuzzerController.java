@@ -2,16 +2,17 @@ package com.opensourcewithslu.components.controllers;
 
 import com.opensourcewithslu.outputdevices.PassiveBuzzerHelper;
 import com.pi4j.io.pwm.Pwm;
-import io.micronaut.http.annotation.Controller;
-import io.micronaut.http.annotation.Get;
-import io.micronaut.http.annotation.Post;
-import io.micronaut.http.annotation.PathVariable;
+import io.micronaut.http.annotation.*;
 import jakarta.inject.Named;
 
 @Controller("/passive-buzzer")
 public class PassiveBuzzerController {
 
     private final PassiveBuzzerHelper passiveBuzzerHelper;
+
+    protected int passBuzzFreq = 440;
+
+    protected int passBuzzDC = 50;
 
     public PassiveBuzzerController(@Named("passive-buzzer") Pwm passiveBuzzerOutput){
         this.passiveBuzzerHelper = new PassiveBuzzerHelper(passiveBuzzerOutput);
@@ -24,7 +25,7 @@ public class PassiveBuzzerController {
     @Get("/enable")
     public void enablePassiveBuzzer(){
 
-        passiveBuzzerHelper.passiveBuzzerOn();
+        passiveBuzzerHelper.passiveBuzzerOn(passBuzzDC, passBuzzFreq);
 
     }
 
@@ -52,12 +53,12 @@ public class PassiveBuzzerController {
 
     /**
      *
-     * @param i will set frequency to given integer
+     *  Set frequency to given integer; FUNCTION STILL NEEDS WORK, NON-FUNCTIONAL CURRENTLY
      */
 
-    @Post("/setFreq/{i}")
-    public void defineFrequency(@PathVariable int i){
-        passiveBuzzerHelper.setFrequency(i);
+    @Post("/setFreq/{frequencies},{duration}")
+    public void defineFrequency(int[] frequencies, int duration){
+        passiveBuzzerHelper.setFrequencies(frequencies,duration);
     }
 
     /**

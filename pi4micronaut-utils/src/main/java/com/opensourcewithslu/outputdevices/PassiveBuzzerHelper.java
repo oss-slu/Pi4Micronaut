@@ -11,6 +11,8 @@ public class PassiveBuzzerHelper {
 
     protected int passiveBuzzerFreq = 440;
 
+    protected int passBuzzDC = 50; //50 represents a 50% duty cycle. Where the buzzer is in a half on half off state
+
     public PassiveBuzzerHelper( Pwm passiveBuzzer){
 
         this.passiveBuzzer = passiveBuzzer;
@@ -21,11 +23,11 @@ public class PassiveBuzzerHelper {
      * Initializes passive buzzer to a 50% duty cycle and frequency of 440Hz
      */
     //tag::method[]
-    public void passiveBuzzerOn(){
+    public void passiveBuzzerOn(int passBuzzDC, int passiveBuzzerFreq){
     //end::method[]
         log.info("Initializing passive buzzer.");
 
-        this.passiveBuzzer.on(100, passiveBuzzerFreq);
+        this.passiveBuzzer.on(passBuzzDC, passiveBuzzerFreq);
     }
 
     /**
@@ -34,6 +36,9 @@ public class PassiveBuzzerHelper {
     //tag::method[]
     public void passiveBuzzerOff(){
     //end::method[]
+
+        log.info("Powering passive buzzer off.");
+
         this.passiveBuzzer.off();
     }
 
@@ -52,15 +57,24 @@ public class PassiveBuzzerHelper {
 
     /**
      *
-     * @param frequency allows the user to change the frequency
+     * allows the user to change the frequency | CONTROLLER FUNC NEEDS WORK
      */
     //tag::method[]
-    public void setFrequency(int frequency){
+    public void setFrequencies(int[] frequencies, int duration){
     //end::method[]
-        if (frequency >= 20 && frequency <= 20000) {
-            passiveBuzzerFreq = frequency;
-        } else {
-            log.error("Frequency is out of range. Please choose a value between 20 Hz and 20 Khz.");
+        for (int frequency : frequencies){
+            if (frequency >= 20 && frequency <= 20000) {
+                log.info("Setting frequency to" + frequency + " Hz.");
+                passiveBuzzerOn(passBuzzDC, frequency);
+                try{
+                    Thread.sleep(duration); //Play each frequency for a full second
+                } catch (InterruptedException e){
+                    Thread.currentThread().interrupt();
+                }
+                passiveBuzzerOff();
+            } else {
+                log.error("Frequency is out of range. Please choose a value between 20 Hz and 20 Khz.");
+            }
         }
     }
 
@@ -68,7 +82,7 @@ public class PassiveBuzzerHelper {
      * Functionality test emits a 1 - second buzz to ensure functionality
      */
     public void functionalityTest(){
-        passiveBuzzerOn();
+        passiveBuzzerOn(passBuzzDC, passiveBuzzerFreq);
 
         try{
             Thread.sleep(1000); // Buzz for 1 second
@@ -82,10 +96,11 @@ public class PassiveBuzzerHelper {
      * freChangeTest cycles through frequencies to verify that frequencies are changing
      */
     public void freqChangeTest(){
-        int [] frequencies  = { 880, 1760, 3520}; //Can add more frequencies to test
+        int [] frequencies  = { 880, 1760, 3520,9000,15000}; //Can add more frequencies to test
         for (int freq : frequencies){
-            passiveBuzzer.setFrequency(freq);
-            passiveBuzzerOn();
+            //passiveBuzzer.setFrequency(freq);
+            log.info(String.valueOf(freq));
+            passiveBuzzerOn(passBuzzDC, freq);
             try{
                 Thread.sleep(1000); //Play each frequency for a full second
             } catch (InterruptedException e){
@@ -107,11 +122,12 @@ public class PassiveBuzzerHelper {
         int [] digitsOfPi = {3, 1, 4, 1, 5, 9, 2, 6, 5};
         int [] frequencies = {261, 293, 329, 349, 392, 440, 493, 523, 587, 659};
 
-        passiveBuzzerOn();
+        passiveBuzzerOn(passBuzzDC, passiveBuzzerFreq);
 
         for (int digit : digitsOfPi){
             int freq = frequencies[digit];
-            passiveBuzzer.setFrequency(freq); //There is a pwm frequency method that can be used.
+            passiveBuzzerOn(passBuzzDC, freq);
+            //passiveBuzzer.setFrequency(freq); This is no longer needed.
             try{
                 Thread.sleep(500); //Pause for beat
             } catch (InterruptedException e){
