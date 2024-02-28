@@ -1,6 +1,6 @@
 package com.opensourcewithslu.components.controllers;
 
-import com.opensourcewithslu.outputdevices.PIRSensorHelper;
+import com.opensourcewithslu.inputdevices.PIRSensorHelper;
 import com.opensourcewithslu.outputdevices.RGBLEDHelper;
 import com.opensourcewithslu.utilities.MultipinConfiguration;
 import com.pi4j.io.gpio.digital.DigitalInput;

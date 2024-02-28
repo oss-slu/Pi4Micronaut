@@ -1,4 +1,4 @@
-package com.opensourcewithslu.outputdevices;
+package com.opensourcewithslu.inputdevices;
 
 import com.pi4j.io.gpio.digital.DigitalInput;
 import com.pi4j.io.gpio.digital.DigitalStateChangeListener;
