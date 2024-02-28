@@ -93,6 +93,12 @@ pi4j:
       pull: PULL_DOWN
       debounce: 200000
       provider: pigpio-digital-input
+    pir-sensor-input:
+      name: PIR Sensor Input
+      address: 17
+      pull: PULL_DOWN
+      debounce: 30000
+      provider: pigpio-digital-input
   ### DIGITAL OUTPUTS
   digital-output:
     # tag::digitalOutput[]
@@ -112,12 +118,6 @@ pi4j:
     photo-resistor-output:
       name: Photo Resistor Output
       address: 27
-      shutdown: LOW
-      initial: HIGH
-      provider: pigpio-digital-output
-    pir-sensor-output:
-      name: PIR Sensor Output
-      address: 17
       shutdown: LOW
       initial: HIGH
       provider: pigpio-digital-output
