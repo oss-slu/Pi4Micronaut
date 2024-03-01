@@ -24,15 +24,15 @@ public class PIRSensorController {
     @Get("/enable")
     public void enablePIRSensor() {
 
-        int[] yellow = {255,255,0};
-        int[] blue = {0,0,255};
+        int[] red = {255,0,0};
+        int[] green = {0,255,0};
 
         pirSensorHelper.addEventListener(e -> {
             if (pirSensorHelper.isMoving) {
-                rgbledHelper.setColor(yellow);
+                rgbledHelper.setColor(red);
             }
             else {
-                rgbledHelper.setColor(blue);
+                rgbledHelper.setColor(green);
             }
         });
     }
