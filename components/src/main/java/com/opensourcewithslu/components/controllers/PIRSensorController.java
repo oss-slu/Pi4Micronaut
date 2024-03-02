@@ -8,6 +8,9 @@ import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import jakarta.inject.Named;
 
+/**
+ * The PIRSensorController class is used with the PIRSensorHelper to implement a PIR motion sensor.
+ */
 @Controller("/pirSensor")
 public class PIRSensorController {
 
@@ -15,12 +18,20 @@ public class PIRSensorController {
 
     private final RGBLEDHelper rgbledHelper;
 
-    public PIRSensorController(@Named("pir-sensor-input")DigitalInput pirSensor,
+    /**
+     * The PirSensorController constructor.
+     * @param pirSensor A Pi4J DigitalInput object.
+     * @param rgbLed A MultiPinConfiguration object.
+     */
+    public PIRSensorController(@Named("pir-sensor")DigitalInput pirSensor,
                                @Named("rgb-led-2")MultipinConfiguration rgbLed) {
         this.pirSensorHelper = new PIRSensorHelper(pirSensor);
         this.rgbledHelper = new RGBLEDHelper(rgbLed);
     }
 
+    /**
+     * Enables the PIR sensor by adding an event listener set the RGB LED to red when movement is detected and green otherwise.
+     */
     @Get("/enable")
     public void enablePIRSensor() {
 
@@ -37,6 +48,9 @@ public class PIRSensorController {
         });
     }
 
+    /**
+     * Disables the controller by removing the event listener and turning off the RGB LED.
+     */
     @Get("/disable")
     public void disablePIRSensor() {
         pirSensorHelper.removeEventListener();
