@@ -93,6 +93,12 @@ pi4j:
       pull: PULL_DOWN
       debounce: 200000
       provider: pigpio-digital-input
+    ultrasound-input:
+      name: Ultrasound Sensor Input
+      address: 23
+      pull: PULL_DOWN
+      debounce: 3000
+      provider: pigpio-digital-input
   ### DIGITAL OUTPUTS
   digital-output:
     # tag::digitalOutput[]
@@ -112,6 +118,12 @@ pi4j:
     photo-resistor-output:
       name: Photo Resistor Output
       address: 27
+      shutdown: LOW
+      initial: HIGH
+      provider: pigpio-digital-output
+    ultrasound-output:
+      name: Ultrasound Sensor Output
+      address: 24
       shutdown: LOW
       initial: HIGH
       provider: pigpio-digital-output
