@@ -3,6 +3,10 @@ package com.opensourcewithslu.outputdevices;
 import com.pi4j.io.pwm.Pwm;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.File;
+import java.util.Scanner;
+import java.io.FileNotFoundException;
 public class PassiveBuzzerHelper {
 
     private static final Logger log = LoggerFactory.getLogger(PassiveBuzzerHelper.class);
@@ -57,25 +61,44 @@ public class PassiveBuzzerHelper {
 
     /**
      *
-     * allows the user to change the frequency | CONTROLLER FUNC NEEDS WORK
+     * @param frequenciesFile Allows users to pipe in text file of frequencies
+     *                        that are separated by commas to play on the passive buzzer.
+     * @param duration Allows users to define the duration for which the frequency
+     *                 will be played
      */
     //tag::method[]
-    public void setFrequencies(int[] frequencies, int duration){
+    public void setFrequencies(File frequenciesFile, int duration){
     //end::method[]
-        for (int frequency : frequencies){
-            if (frequency >= 20 && frequency <= 20000) {
-                log.info("Setting frequency to" + frequency + " Hz.");
-                passiveBuzzerOn(passBuzzDC, frequency);
-                try{
-                    Thread.sleep(duration); //Play each frequency for a full second
-                } catch (InterruptedException e){
-                    Thread.currentThread().interrupt();
-                }
-                passiveBuzzerOff();
-            } else {
-                log.error("Frequency is out of range. Please choose a value between 20 Hz and 20 Khz.");
-            }
-        }
+       try {
+           Scanner scanner = new Scanner(frequenciesFile);
+
+           String frequenciesStr = scanner.nextLine();
+           String[] frequenciesArr = frequenciesStr.split(",");
+           int[] frequencies = new int[frequenciesArr.length];
+
+           for (int i = 0; i < frequenciesArr.length; i++) {
+               frequencies[i] = Integer.parseInt(frequenciesArr[i].trim());
+           }
+
+           scanner.close();
+
+           for (int frequency : frequencies) {
+               if (frequency >= 20 && frequency <= 20000) {
+                   log.info("Setting frequency to " + frequency + " Hz.");
+                   passiveBuzzerOn(passBuzzDC, frequency);
+                   try {
+                       Thread.sleep(duration); // Play each frequency for the specified duration
+                   } catch (InterruptedException e) {
+                       Thread.currentThread().interrupt();
+                   }
+                   passiveBuzzerOff();
+               } else {
+                   log.error("Frequency is out of range. Please choose a value between 20 Hz and 20 kHz.");
+               }
+           }
+       } catch (FileNotFoundException e) {
+           log.error("Frequencies file not found: " + frequenciesFile.getAbsolutePath());
+       }
     }
 
     /**

@@ -4,6 +4,7 @@ import com.opensourcewithslu.outputdevices.PassiveBuzzerHelper;
 import com.pi4j.io.pwm.Pwm;
 import io.micronaut.http.annotation.*;
 import jakarta.inject.Named;
+import java.io.File;
 
 @Controller("/passive-buzzer")
 public class PassiveBuzzerController {
@@ -53,12 +54,13 @@ public class PassiveBuzzerController {
 
     /**
      *
-     *  Set frequency to given integer; FUNCTION STILL NEEDS WORK, NON-FUNCTIONAL CURRENTLY
+     *  Taking the two args, function will allow use to set their own frequencies
+     *  to be played by the passive buzzer.
      */
 
-    @Post("/setFreq/{frequencies},{duration}")
-    public void defineFrequency(int[] frequencies, int duration){
-        passiveBuzzerHelper.setFrequencies(frequencies,duration);
+    @Post("/setFreq/{frequenciesFile},{duration}")
+    public void defineFrequency(File frequenciesFile, int duration){
+        passiveBuzzerHelper.setFrequencies(frequenciesFile,duration);
     }
 
     /**
