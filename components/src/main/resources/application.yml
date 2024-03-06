@@ -93,6 +93,12 @@ pi4j:
       pull: PULL_DOWN
       debounce: 200000
       provider: pigpio-digital-input
+    pir-sensor:
+      name: PIR Sensor
+      address: 13
+      pull: PULL_DOWN
+      debounce: 30000
+      provider: pigpio-digital-input
   ### DIGITAL OUTPUTS
   digital-output:
     # tag::digitalOutput[]
@@ -144,6 +150,13 @@ pi4j:
       initials: 0, 0, 0                         # <.>
       shutdowns: 0, 0, 0                        # <.>
     # end::multipwm[]
+    rgb-led-2:
+      name: RGB LED 2
+      addresses: 18, 27, 22
+      pwmTypes: SOFTWARE, SOFTWARE, SOFTWARE
+      provider: pigpio-pwm
+      initials: 0, 0, 0
+      shutdowns: 0, 0, 0
 #  clk:
 #    name: CLK Output
 #    address: 23
