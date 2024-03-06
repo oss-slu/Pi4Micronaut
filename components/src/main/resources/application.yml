@@ -93,6 +93,12 @@ pi4j:
       pull: PULL_DOWN
       debounce: 200000
       provider: pigpio-digital-input
+    dht11-sensor-input:
+      name: DHT11 Input
+      address: 17
+      pull: PULL_DOWN
+      debounce: 20000
+      provider: pigpio-digital-output
   ### DIGITAL OUTPUTS
   digital-output:
     # tag::digitalOutput[]
@@ -112,12 +118,6 @@ pi4j:
     photo-resistor-output:
       name: Photo Resistor Output
       address: 27
-      shutdown: LOW
-      initial: HIGH
-      provider: pigpio-digital-output
-    dht11-sensor-output:
-      name: DHT11 Output
-      address: 17
       shutdown: LOW
       initial: HIGH
       provider: pigpio-digital-output
