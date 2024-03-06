@@ -9,7 +9,7 @@ import io.micronaut.http.annotation.Get;
 import jakarta.inject.Named;
 
 /**
- * The PIRSensorController class is used with the PIRSensorHelper to implement a PIR motion sensor.
+ * The PIRSensorController class is used with the PIRSensorHelper class and RGBHelper class to implement a PIR motion sensor with an RGB LED light.
  */
 @Controller("/pirSensor")
 public class PIRSensorController {
@@ -30,7 +30,7 @@ public class PIRSensorController {
     }
 
     /**
-     * Enables the PIR sensor by adding an event listener set the RGB LED to red when movement is detected and green otherwise.
+     * Enables the PIR sensor by adding an event listener which sets the RGB LED to red when movement is detected and green otherwise.
      */
     @Get("/enable")
     public void enablePIRSensor() {
