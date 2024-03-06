@@ -115,6 +115,12 @@ pi4j:
       shutdown: LOW
       initial: HIGH
       provider: pigpio-digital-output
+    dht11-sensor-output:
+      name: DHT11 Output
+      address: 17
+      shutdown: LOW
+      initial: HIGH
+      provider: pigpio-digital-output
   # tag::multiInput[]
   multi-digital-input:                     # <.>
     rotary-encoder:                        # <.>
