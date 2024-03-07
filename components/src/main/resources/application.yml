@@ -99,6 +99,12 @@ pi4j:
       pull: PULL_DOWN
       debounce: 30000
       provider: pigpio-digital-input
+    dht11-sensor:
+      name: DHT11 Sensor
+      address: 17
+      pull: PULL_DOWN
+      debounce: 10000
+      provider: pigpio-digital-input
   ### DIGITAL OUTPUTS
   digital-output:
     # tag::digitalOutput[]

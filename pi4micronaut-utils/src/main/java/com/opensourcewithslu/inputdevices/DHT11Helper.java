@@ -10,8 +10,28 @@ public class DHT11Helper {
 
     private final DigitalInput dht11Input;
 
+    private int[] byteStream;
+
     public DHT11Helper(DigitalInput sensorInput)
     {
         this.dht11Input = sensorInput;
+
+        initialize();
+    }
+
+    public void initialize()
+    {
+        log.info("Initializing DHT11 Sensor");
+        //TODO
+    }
+
+    public float readTemp()
+    {
+        return 0; //TODO
+    }
+
+    public float readHumidity()
+    {
+        return 0; //TODO
     }
 }
