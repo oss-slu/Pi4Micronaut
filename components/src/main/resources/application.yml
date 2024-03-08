@@ -93,9 +93,9 @@ pi4j:
       pull: PULL_DOWN
       debounce: 200000
       provider: pigpio-digital-input
-    ultrasound-input:
-      name: Ultrasound Sensor Input
-      address: 23
+    ultra-sonic-echo:
+      name: UltraSonic Sensor Input
+      address: 24
       pull: PULL_DOWN
       debounce: 3000
       provider: pigpio-digital-input
@@ -121,11 +121,11 @@ pi4j:
       shutdown: LOW
       initial: HIGH
       provider: pigpio-digital-output
-    ultrasound-output:
-      name: Ultrasound Sensor Output
-      address: 24
+    ultra-sonic-trig:
+      name: UltraSonic Sensor Output
+      address: 23
       shutdown: LOW
-      initial: HIGH
+      initial: LOW
       provider: pigpio-digital-output
   # tag::multiInput[]
   multi-digital-input:                     # <.>
