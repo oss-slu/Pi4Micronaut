@@ -15,13 +15,11 @@ public class DHT11Controller {
         this.dht11Helper = new DHT11Helper(dht11In);
     }
 
-    @Get("/getTemp")
-    public float getTemp(){
-        return dht11Helper.readTemp();
-    }
+    @Get("/getData")
+    public String getData() {
+        float temperature = dht11Helper.temperature;
+        float humidity = dht11Helper.humidity;
 
-    @Get("/getHumidity")
-    public float getHumidity() {
-        return dht11Helper.readHumidity();
+        return("Temperature: " + temperature + "\nHumidity: " + humidity);
     }
 }

@@ -1,6 +1,7 @@
 package com.opensourcewithslu.inputdevices;
 
 import com.pi4j.io.gpio.digital.DigitalInput;
+import com.pi4j.io.gpio.digital.DigitalStateChangeListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -10,7 +11,13 @@ public class DHT11Helper {
 
     private final DigitalInput dht11Input;
 
-    private int[] byteStream;
+    private DigitalStateChangeListener dht11InputListener;
+
+    public float temperature;
+
+    public float humidity;
+
+    private int[] byteStream = new int[5];
 
     public DHT11Helper(DigitalInput sensorInput)
     {
@@ -23,15 +30,5 @@ public class DHT11Helper {
     {
         log.info("Initializing DHT11 Sensor");
         //TODO
-    }
-
-    public float readTemp()
-    {
-        return 0; //TODO
-    }
-
-    public float readHumidity()
-    {
-        return 0; //TODO
     }
 }
