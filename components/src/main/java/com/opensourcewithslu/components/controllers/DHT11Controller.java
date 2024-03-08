@@ -20,6 +20,6 @@ public class DHT11Controller {
         float temperature = dht11Helper.temperature;
         float humidity = dht11Helper.humidity;
 
-        return("Temperature: " + temperature + "\nHumidity: " + humidity);
+        return("Temperature: " + temperature + ", Humidity: " + humidity);
     }
 }
