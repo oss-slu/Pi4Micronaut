@@ -24,8 +24,8 @@ public class LCD1602Helper {
     public LCD1602Helper(I2CConfig i2CConfig, Context pi4jContext)
     //end::const[]
     {
-        // The i2CConfig should be used to define the rows and columns, not hard coded.
-        this.lcdDisplay = new LcdDisplay(pi4jContext, 2, 16,1, 39);
+        
+        this.lcdDisplay = new LcdDisplay(pi4jContext, 2, 16, i2CConfig.bus(), i2CConfig.device());
         lcdDisplay.setDisplayBacklight(true);
         log.info("LCD is set up with 2 rows and 16 columns. Backlight is on by default");
     }
