@@ -63,12 +63,13 @@ public class PassiveBuzzerHelper {
      *
      * @param frequenciesFile Allows users to pipe in text file of frequencies
      *                        that are separated by commas to play on the passive buzzer.
-     * @param duration Allows users to define the duration for which the frequency
-     *                 will be played
+     *
      */
     //tag::method[]
-    public void setFrequencies(File frequenciesFile, int duration){
+    public void setFrequencies(File frequenciesFile){
     //end::method[]
+
+        int duration = 1000; //Pre-defined duration length of 1-sec
        try {
            Scanner scanner = new Scanner(frequenciesFile);
 

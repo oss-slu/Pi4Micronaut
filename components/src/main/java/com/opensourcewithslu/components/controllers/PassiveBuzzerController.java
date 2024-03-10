@@ -54,13 +54,19 @@ public class PassiveBuzzerController {
 
     /**
      *
-     *  Taking the two args, function will allow use to set their own frequencies
-     *  to be played by the passive buzzer.
+     *  Takes one file arg, function will allow use to set their own frequencies
+     *  to be played by the passive buzzer. In order for the frequencies to be played
+     *  the user must do the following:
+     *  - Place their frequencies into a text file with the frequencies separated by commas
+     *  - use the scp command to copy the file over to the raspberrypi
+     *    - (i.e.: scp C:\Users\CompName\filename.txt name@raspberrypiname.local:/home/CompName)
+     *  - Once file is copied over to the pi use the curl -X POST command to play the file
+     *    - (i.e.: curl -X POST "http://localhost:8080/passive-buzzer/setFreq/filename.txt"
      */
 
-    @Post("/setFreq/{frequenciesFile},{duration}")
-    public void defineFrequency(File frequenciesFile, int duration){
-        passiveBuzzerHelper.setFrequencies(frequenciesFile,duration);
+    @Post("/setFreq/{frequenciesFile}")
+    public void defineFrequency(String frequenciesFile){
+        passiveBuzzerHelper.setFrequencies(new File(frequenciesFile));
     }
 
     /**
