@@ -7,6 +7,10 @@ import org.slf4j.LoggerFactory;
 import java.io.File;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
+
+/**
+ * The PassiveBuzzerHelper class contains methods that pertain to the control of the passive buzzer.
+ */
 public class PassiveBuzzerHelper {
 
     private static final Logger log = LoggerFactory.getLogger(PassiveBuzzerHelper.class);
@@ -24,7 +28,9 @@ public class PassiveBuzzerHelper {
     }
 
     /**
-     * Initializes passive buzzer to a 50% duty cycle and frequency of 440Hz
+     * @param passBuzzDC sets the passive buzzer to the desired duty cycle
+     *
+     * @param passiveBuzzerFreq sets the passive buzzer to the desired frequency
      */
     //tag::method[]
     public void passiveBuzzerOn(int passBuzzDC, int passiveBuzzerFreq){
