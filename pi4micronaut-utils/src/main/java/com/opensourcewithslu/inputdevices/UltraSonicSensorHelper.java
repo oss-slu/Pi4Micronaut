@@ -5,6 +5,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.util.concurrent.*;
 
+/**
+ * The UltraSonicSensorHelper class initializes the Ultra Sonic Sensor and provides component functionality
+ */
 public class UltraSonicSensorHelper {
 
     private static final Logger log = LoggerFactory.getLogger(UltraSonicSensorHelper.class);
@@ -20,6 +23,9 @@ public class UltraSonicSensorHelper {
         initialize();
     }
 
+    /**
+     * Initializes the Ultrasonic Sensor
+     */
     public void initialize() {
         log.info("Ultrasonic Sensor Initialized");
         sensorActive = true;
@@ -27,6 +33,9 @@ public class UltraSonicSensorHelper {
         triggerPin.low();
     }
 
+    /**
+     * Begins measuring distance from sensor calling triggerAndMeasureDistance function every 100 milliseconds
+     */
     public void startMeasuring() {
         if (!sensorActive) {
             return;
@@ -34,6 +43,9 @@ public class UltraSonicSensorHelper {
         executorService.scheduleAtFixedRate(this::triggerAndMeasureDistance, 0, 100, TimeUnit.MILLISECONDS);
     }
 
+    /**
+     * Measures distance from ultrasonic sensor to a surface
+     */
     private void triggerAndMeasureDistance() {
         try {
             // Trigger pin is low for a short period before sending the pulse
@@ -75,6 +87,10 @@ public class UltraSonicSensorHelper {
         }
     }
 
+    /**
+     * Calculates distance between sensor and surface
+     * @param durationInNano - time between sound wave leaving the sensor bouncing back; type: long
+     */
     private void calculateDistance(long durationInNano) {
         // Converting nanoseconds to microseconds for distance calculation
         double durationInMicroseconds = TimeUnit.NANOSECONDS.toMicros(durationInNano);
@@ -83,14 +99,23 @@ public class UltraSonicSensorHelper {
         log.info("Distance measured: {} cm", distance);
     }
 
+    /**
+     * Returns distance in centimeters
+     */
     public double getDistanceInCentimeter() {
         return distance;
     }
 
+    /**
+     * Returns distance in meters
+     */
     public double getDistanceInMeters() {
         return distance/100;
     }
 
+    /**
+     * Shuts down ultrasonic sensor
+     */
     public void stopMeasuring() {
         sensorActive = false;
         if (!executorService.isShutdown()) {

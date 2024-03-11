@@ -21,22 +21,34 @@ public class UltraSonicSensorController {
     }
 
 
+    /**
+     * Enables the ultrasonic sensor
+     */
     @Get("/enable")
     public String enableUltraSonicSensor() {
         this.ultraSonicSensorHelper.startMeasuring();
         return "Ultra Sonic Sensor Enabled \nIf the distance is constantly Zero, make sure the sensor field of view is clear \n";
     }
 
+    /**
+     * Returns distance from object in centimeters
+     */
     @Get("/distance/cm")
     public String getDistanceInCentimeter() {
         return this.ultraSonicSensorHelper.getDistanceInCentimeter() + " cm\n";
     }
 
+    /**
+     * Returns distance from object in meters
+     */
     @Get("/distance/m")
     public String getDistanceInMeter() {
         return this.ultraSonicSensorHelper.getDistanceInMeters() + " m\n";
     }
 
+    /**
+     * Disables ultrasonic sensor
+     */
     @Get("/disable")
     public String disableUltrasoundSensor() {
         this.ultraSonicSensorHelper.stopMeasuring();
