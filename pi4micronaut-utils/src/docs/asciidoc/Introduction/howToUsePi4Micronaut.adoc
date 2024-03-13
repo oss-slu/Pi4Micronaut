@@ -1,0 +1,16 @@
+:imagesdir: img/
+
+ifndef::rootpath[]
+:rootpath: ../
+endif::rootpath[]
+
+ifdef::rootpath[]
+:imagesdir: {rootpath}{imagesdir}
+endif::rootpath[]
+
+
+=== How To Use Pi4Micronaut Library
+This section will walk you through the process of creating a basic
+Micronaut application and the configuration for developing
+with Pi4Micronaut.
+
