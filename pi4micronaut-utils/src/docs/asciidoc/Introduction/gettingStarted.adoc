@@ -8,15 +8,10 @@ ifdef::rootpath[]
 :imagesdir: {rootpath}{imagesdir}
 endif::rootpath[]
 
-=== Getting Started With Pi4Micronaut!
+=== Building and Running the Jar File with Pi4Micronaut
 This section describes how to build and run the jar file from the Pi4Micronaut project on your raspberry pi.
 
 Note: this is not a tutorial on how to use the Pi4Micronaut library, simply a setup guide.
-
-==== Prerequisites
-. Clone our Github repo onto your system
-+
-https://github.com/oss-slu/Pi4Micronaut/tree/main
 
 ==== Set up Raspberry Pi OS
 . Start by installing the Raspberry Pi Imager

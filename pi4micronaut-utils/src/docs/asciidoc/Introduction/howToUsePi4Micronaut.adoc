@@ -16,7 +16,7 @@ Micronaut application and the configuration for developing
 with Pi4Micronaut. As a demo, this will include the configuration and code for
 implementing a LED light.
 
-==== Creating Micronaut Project
+==== Creating A Micronaut Project
 . Go to https://micronaut.io/launch/[Micronaut's website] and launch a new project.
 . Make sure you have selected Micronaut version 3.10.1 or lower with Java version 17.
 . Click Generate Project and download the zip.
