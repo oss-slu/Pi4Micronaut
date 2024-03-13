@@ -3,10 +3,12 @@ package com.opensourcewithslu.utilities;
 import com.pi4j.io.gpio.digital.PullResistance;
 import io.micronaut.context.annotation.EachProperty;
 import io.micronaut.context.annotation.Parameter;
+import io.micronaut.context.annotation.Prototype;
 
 /**
  * This class handles the configuration of a digital input component.
  */
+@Prototype
 @EachProperty("pi4j.digital-input")
 public class DigitalInputConfiguration {
 
