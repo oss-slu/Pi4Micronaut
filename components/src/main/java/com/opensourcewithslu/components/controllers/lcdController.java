@@ -26,6 +26,9 @@ public class lcdController {
         lcdHelper.writeTextAtLine(text, line);
     }
 
+    @Get("/write/character/{charvalue}")
+    public void writeCharacter(char charvalue){lcdHelper.writeCharacter(charvalue);}
+
     @Get("/backlight/on")
     public void backlightOn(){
         lcdHelper.setBackLight(true);
@@ -50,36 +53,6 @@ public class lcdController {
     public void turnOff(){
         lcdHelper.turnOff();
     }
-
-    @Get("/cursor/show/{show}")
-    public void setCursorVisibility(boolean show){lcdHelper.setCursorVisibility(show);}
-
-    @Get("/cursor/setblinking/{blink}")
-    public void setCursorBlinking(boolean blink){lcdHelper.setCursorBlinking(blink);}
-
-    @Get("/cursor/move/home")
-    public void moveCursorHome(){lcdHelper.moveCursorHome();}
-
-    @Get("/cursor/move/left")
-    public void moveCursorLeft(){lcdHelper.moveCursorLeft();}
-
-    @Get("/cursor/move/right")
-    public void moveCursorRight(){lcdHelper.moveCursorRight();}
-
-    @Get("/cursor/move/line/{line}")
-    public void setCursorToLine(int line){lcdHelper.setCursorToLine(line);}
-
-    @Get("/cursor/move/position/{line}/{digit}")
-    public void setCursorToPosition(int line, int digit){lcdHelper.setCursorToPosition(digit,line);}
-
-    @Get("/display/move/right")
-    public void moveDisplayRight(){lcdHelper.moveDisplayRight();}
-
-    @Get("/display/move/left")
-    public void moveDisplayLeft(){lcdHelper.moveDisplayLeft();}
-
-//    @Get("/character/{location}/{character}")
-//    public void createCharacter(int location, byte[] character){lcdHelper.createCharacter(location,character);}
 
 
 
