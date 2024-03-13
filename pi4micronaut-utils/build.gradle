@@ -7,7 +7,7 @@ plugins {
 }
 
 group = 'io.github.oss-slu'
-version = 'v1.0'
+version = '1.0'
 
 apply plugin: 'maven-publish'
 apply plugin: 'signing'
@@ -34,6 +34,8 @@ java {
     sourceCompatibility = JavaVersion.toVersion("17")
     targetCompatibility = JavaVersion.toVersion("17")
 }
+
+tasks.build.dependsOn {tasks.javadoc; tasks.shadowJar}
 
 tasks.named('build').configure {
     dependsOn 'javadoc'
@@ -77,7 +79,7 @@ artifacts {
 
 publishing {
     repositories {
-        maven {  //only for users registered in Sonatype after 24 Feb 2021
+        maven {
             name = "OSSRH"
             credentials {
                 username = project.findProperty('SONATYPE_USERNAME') ?: System.getenv('SONATYPE_USERNAME')
@@ -93,7 +95,7 @@ publishing {
         mavenJava(MavenPublication) {
             groupId = 'io.github.oss-slu'
             artifactId = 'pi4micronaut-utils'
-            version = 'v0.1'
+            version = '1.0'
             from components.java
 
             artifact sourcesJar

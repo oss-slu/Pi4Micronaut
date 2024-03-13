@@ -5,6 +5,7 @@ bin/
 build/
 target/
 out/
+src/docs/javadoc
 .micronaut/
 .idea
 *.iml

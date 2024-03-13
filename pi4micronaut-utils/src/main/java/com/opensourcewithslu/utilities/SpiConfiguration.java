@@ -3,10 +3,12 @@ package com.opensourcewithslu.utilities;
 import com.pi4j.io.spi.SpiMode;
 import io.micronaut.context.annotation.EachProperty;
 import io.micronaut.context.annotation.Parameter;
+import io.micronaut.context.annotation.Prototype;
 
 /**
  * This class handles the configuration of a SPI component.
  */
+@Prototype
 @EachProperty("pi4j.spi")
 public class SpiConfiguration {
     private final String id;
