@@ -43,7 +43,9 @@ public class PhotoResistorHelper {
         this.isDark = photoResistorInput.isHigh();
     }
     /**
-     * @return current darknessValue.
+     * Returns the current value of the darknessValue variable.
+     *
+     * @return The current value of darknessValue.
      */
     public int getDark() {
         return darknessValue;

@@ -16,7 +16,9 @@ public class PassiveBuzzerHelper {
     private static final Logger log = LoggerFactory.getLogger(PassiveBuzzerHelper.class);
 
     private final Pwm passiveBuzzer;
-
+    /**
+     * passiveBuzzerFreq is a protected integer variable that defines the default frequency for the buzzer.
+     */
     protected int passiveBuzzerFreq = 440;
 
     /**
@@ -24,7 +26,10 @@ public class PassiveBuzzerHelper {
      * on and half off state.
      */
     protected int passBuzzDC = 50;
-
+    /**
+     * The PassiveBuzzerHelper constructor.
+     * @param passiveBuzzer A {@link  com.opensourcewithslu.utilities.PwmConfiguration} Object.
+     */
     public PassiveBuzzerHelper( Pwm passiveBuzzer){
 
         this.passiveBuzzer = passiveBuzzer;
@@ -32,9 +37,9 @@ public class PassiveBuzzerHelper {
     }
 
     /**
-     * @param passBuzzDC sets the passive buzzer to the desired duty cycle
-     *
-     * @param passiveBuzzerFreq sets the passive buzzer to the desired frequency
+     * Sets the passive buzzer to the desired duty cycle and frequency.
+     * @param passBuzzDC sets the passive buzzer to the desired duty cycle.
+     * @param passiveBuzzerFreq sets the passive buzzer to the desired frequency.
      */
     //tag::method[]
     public void passiveBuzzerOn(int passBuzzDC, int passiveBuzzerFreq){
@@ -70,10 +75,9 @@ public class PassiveBuzzerHelper {
     }
 
     /**
+     * Allows users to pipe in a text file of frequencies separated by commas to play on the passive buzzer.
      *
-     * @param frequenciesFile Allows users to pipe in text file of frequencies
-     *                        that are separated by commas to play on the passive buzzer.
-     *
+     * @param frequenciesFile The file containing the frequencies to be played
      */
     //tag::method[]
     public void setFrequencies(File frequenciesFile){

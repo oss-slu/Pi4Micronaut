@@ -15,6 +15,12 @@ import io.micronaut.context.annotation.Factory;
 public class Pi4JMultipinFactory {
 
     /**
+     * Default constructor for Pi4JMultipinFactory.
+     */
+    public Pi4JMultipinFactory() { }
+
+
+    /**
      * Creates a MultipinConfiguration object for a multi pin digital input component.
      * @param config {@link DigitalInputMultiPinConfiguration} Object.
      * @param pi4jContext The Pi4J {@link Context}.
