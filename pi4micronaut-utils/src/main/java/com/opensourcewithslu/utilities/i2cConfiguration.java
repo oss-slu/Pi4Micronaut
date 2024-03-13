@@ -2,10 +2,12 @@ package com.opensourcewithslu.utilities;
 
 import io.micronaut.context.annotation.EachProperty;
 import io.micronaut.context.annotation.Parameter;
+import io.micronaut.context.annotation.Prototype;
 
 /**
  * This class handles the configuration of an I2C components.
  */
+@Prototype
 @EachProperty("pi4j.i2c")
 public class i2cConfiguration {
 
