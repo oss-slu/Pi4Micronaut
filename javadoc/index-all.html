@@ -97,7 +97,9 @@ loadScripts(document, 'script');</script>
 <div class="block">Runs the Micronaut framework in the Pi4Micronaut framework.</div>
 </dd>
 <dt><a href="com/opensourcewithslu/Application.html#%3Cinit%3E()" class="member-name-link">Application()</a> - Constructor for class com.opensourcewithslu.<a href="com/opensourcewithslu/Application.html" title="class in com.opensourcewithslu">Application</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">This is the default constructor for the Application class.</div>
+</dd>
 </dl>
 <h2 class="title" id="I:B">B</h2>
 <dl class="index">
@@ -217,7 +219,9 @@ loadScripts(document, 'script');</script>
 <div class="block">Gets the components that are part of the overall component.</div>
 </dd>
 <dt><a href="com/opensourcewithslu/inputdevices/PhotoResistorHelper.html#getDark()" class="member-name-link">getDark()</a> - Method in class com.opensourcewithslu.inputdevices.<a href="com/opensourcewithslu/inputdevices/PhotoResistorHelper.html" title="class in com.opensourcewithslu.inputdevices">PhotoResistorHelper</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the current value of the darknessValue variable.</div>
+</dd>
 <dt><a href="com/opensourcewithslu/utilities/DigitalInputConfiguration.html#getDebounce()" class="member-name-link">getDebounce()</a> - Method in class com.opensourcewithslu.utilities.<a href="com/opensourcewithslu/utilities/DigitalInputConfiguration.html" title="class in com.opensourcewithslu.utilities">DigitalInputConfiguration</a></dt>
 <dd>
 <div class="block">Gets the current debounce value for the component.</div>
@@ -233,6 +237,10 @@ loadScripts(document, 'script');</script>
 <dt><a href="com/opensourcewithslu/inputdevices/RotaryEncoderHelper.html#getEncoderValue()" class="member-name-link">getEncoderValue()</a> - Method in class com.opensourcewithslu.inputdevices.<a href="com/opensourcewithslu/inputdevices/RotaryEncoderHelper.html" title="class in com.opensourcewithslu.inputdevices">RotaryEncoderHelper</a></dt>
 <dd>
 <div class="block">Gets the value of the rotary encoder.</div>
+</dd>
+<dt><a href="com/opensourcewithslu/outputdevices/PassiveBuzzerHelper.html#getFrequency()" class="member-name-link">getFrequency()</a> - Method in class com.opensourcewithslu.outputdevices.<a href="com/opensourcewithslu/outputdevices/PassiveBuzzerHelper.html" title="class in com.opensourcewithslu.outputdevices">PassiveBuzzerHelper</a></dt>
+<dd>
+<div class="block">Logs the passiveBuzzerFreq to the console</div>
 </dd>
 <dt><a href="com/opensourcewithslu/utilities/DigitalInputConfiguration.html#getId()" class="member-name-link">getId()</a> - Method in class com.opensourcewithslu.utilities.<a href="com/opensourcewithslu/utilities/DigitalInputConfiguration.html" title="class in com.opensourcewithslu.utilities">DigitalInputConfiguration</a></dt>
 <dd>
@@ -457,7 +465,7 @@ loadScripts(document, 'script');</script>
 <dl class="index">
 <dt><a href="com/opensourcewithslu/Application.html#main(java.lang.String%5B%5D)" class="member-name-link">main(String[])</a> - Static method in class com.opensourcewithslu.<a href="com/opensourcewithslu/Application.html" title="class in com.opensourcewithslu">Application</a></dt>
 <dd>
-<div class="block">constructor</div>
+<div class="block">The main entry point of the application.</div>
 </dd>
 <dt><a href="com/opensourcewithslu/outputdevices/ActiveBuzzerHelper.html#morseCodeTone()" class="member-name-link">morseCodeTone()</a> - Method in class com.opensourcewithslu.outputdevices.<a href="com/opensourcewithslu/outputdevices/ActiveBuzzerHelper.html" title="class in com.opensourcewithslu.outputdevices">ActiveBuzzerHelper</a></dt>
 <dd>
@@ -482,6 +490,34 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:P">P</h2>
 <dl class="index">
+<dt><a href="com/opensourcewithslu/outputdevices/PassiveBuzzerHelper.html#passBuzzDC" class="member-name-link">passBuzzDC</a> - Variable in class com.opensourcewithslu.outputdevices.<a href="com/opensourcewithslu/outputdevices/PassiveBuzzerHelper.html" title="class in com.opensourcewithslu.outputdevices">PassiveBuzzerHelper</a></dt>
+<dd>
+<div class="block">passBuzzDC is a protected integer variable that defines the duty cycle.</div>
+</dd>
+<dt><a href="com/opensourcewithslu/outputdevices/PassiveBuzzerHelper.html#passiveBuzzerFreq" class="member-name-link">passiveBuzzerFreq</a> - Variable in class com.opensourcewithslu.outputdevices.<a href="com/opensourcewithslu/outputdevices/PassiveBuzzerHelper.html" title="class in com.opensourcewithslu.outputdevices">PassiveBuzzerHelper</a></dt>
+<dd>
+<div class="block">passiveBuzzerFreq is a protected integer variable that defines the default frequency for the buzzer.</div>
+</dd>
+<dt><a href="com/opensourcewithslu/outputdevices/PassiveBuzzerHelper.html" class="type-name-link" title="class in com.opensourcewithslu.outputdevices">PassiveBuzzerHelper</a> - Class in <a href="com/opensourcewithslu/outputdevices/package-summary.html">com.opensourcewithslu.outputdevices</a></dt>
+<dd>
+<div class="block">The PassiveBuzzerHelper class contains methods that pertain to the control of the passive buzzer.</div>
+</dd>
+<dt><a href="com/opensourcewithslu/outputdevices/PassiveBuzzerHelper.html#%3Cinit%3E(com.pi4j.io.pwm.Pwm)" class="member-name-link">PassiveBuzzerHelper(Pwm)</a> - Constructor for class com.opensourcewithslu.outputdevices.<a href="com/opensourcewithslu/outputdevices/PassiveBuzzerHelper.html" title="class in com.opensourcewithslu.outputdevices">PassiveBuzzerHelper</a></dt>
+<dd>
+<div class="block">The PassiveBuzzerHelper constructor.</div>
+</dd>
+<dt><a href="com/opensourcewithslu/outputdevices/PassiveBuzzerHelper.html#passiveBuzzerOff()" class="member-name-link">passiveBuzzerOff()</a> - Method in class com.opensourcewithslu.outputdevices.<a href="com/opensourcewithslu/outputdevices/PassiveBuzzerHelper.html" title="class in com.opensourcewithslu.outputdevices">PassiveBuzzerHelper</a></dt>
+<dd>
+<div class="block">Disables the passive buzzer.</div>
+</dd>
+<dt><a href="com/opensourcewithslu/outputdevices/PassiveBuzzerHelper.html#passiveBuzzerOn(int,int)" class="member-name-link">passiveBuzzerOn(int, int)</a> - Method in class com.opensourcewithslu.outputdevices.<a href="com/opensourcewithslu/outputdevices/PassiveBuzzerHelper.html" title="class in com.opensourcewithslu.outputdevices">PassiveBuzzerHelper</a></dt>
+<dd>
+<div class="block">Sets the passive buzzer to the desired duty cycle and frequency.</div>
+</dd>
+<dt><a href="com/opensourcewithslu/outputdevices/PassiveBuzzerHelper.html#passiveBuzzTone()" class="member-name-link">passiveBuzzTone()</a> - Method in class com.opensourcewithslu.outputdevices.<a href="com/opensourcewithslu/outputdevices/PassiveBuzzerHelper.html" title="class in com.opensourcewithslu.outputdevices">PassiveBuzzerHelper</a></dt>
+<dd>
+<div class="block">passiveBuzzTone emits a 1 - second buzz to ensure functionality</div>
+</dd>
 <dt><a href="com/opensourcewithslu/inputdevices/PhotoResistorHelper.html" class="type-name-link" title="class in com.opensourcewithslu.inputdevices">PhotoResistorHelper</a> - Class in <a href="com/opensourcewithslu/inputdevices/package-summary.html">com.opensourcewithslu.inputdevices</a></dt>
 <dd>
 <div class="block">The PhotoResistorHelper class is used to work with the functionalities of a Photo Resistor.</div>
@@ -495,13 +531,17 @@ loadScripts(document, 'script');</script>
 <div class="block">The Pi4JFactory class is responsible for creating all the beans for components that are being used.</div>
 </dd>
 <dt><a href="com/opensourcewithslu/utilities/Pi4JFactory.html#%3Cinit%3E()" class="member-name-link">Pi4JFactory()</a> - Constructor for class com.opensourcewithslu.utilities.<a href="com/opensourcewithslu/utilities/Pi4JFactory.html" title="class in com.opensourcewithslu.utilities">Pi4JFactory</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Default constructor for Pi4JFactory.</div>
+</dd>
 <dt><a href="com/opensourcewithslu/utilities/Pi4JMultipinFactory.html" class="type-name-link" title="class in com.opensourcewithslu.utilities">Pi4JMultipinFactory</a> - Class in <a href="com/opensourcewithslu/utilities/package-summary.html">com.opensourcewithslu.utilities</a></dt>
 <dd>
 <div class="block">The Pi4JMultipinFactory class is responsible for creating all the beans for all multi pin components that are being used.</div>
 </dd>
 <dt><a href="com/opensourcewithslu/utilities/Pi4JMultipinFactory.html#%3Cinit%3E()" class="member-name-link">Pi4JMultipinFactory()</a> - Constructor for class com.opensourcewithslu.utilities.<a href="com/opensourcewithslu/utilities/Pi4JMultipinFactory.html" title="class in com.opensourcewithslu.utilities">Pi4JMultipinFactory</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Default constructor for Pi4JMultipinFactory.</div>
+</dd>
 <dt><a href="com/opensourcewithslu/inputdevices/PIRSensorHelper.html" class="type-name-link" title="class in com.opensourcewithslu.inputdevices">PIRSensorHelper</a> - Class in <a href="com/opensourcewithslu/inputdevices/package-summary.html">com.opensourcewithslu.inputdevices</a></dt>
 <dd>
 <div class="block">The PIRSensorHelper class is used to initialize a PIR motion sensor.</div>
@@ -509,6 +549,11 @@ loadScripts(document, 'script');</script>
 <dt><a href="com/opensourcewithslu/inputdevices/PIRSensorHelper.html#%3Cinit%3E(com.pi4j.io.gpio.digital.DigitalInput)" class="member-name-link">PIRSensorHelper(DigitalInput)</a> - Constructor for class com.opensourcewithslu.inputdevices.<a href="com/opensourcewithslu/inputdevices/PIRSensorHelper.html" title="class in com.opensourcewithslu.inputdevices">PIRSensorHelper</a></dt>
 <dd>
 <div class="block">PIRSensorHelper constructor</div>
+</dd>
+<dt><a href="com/opensourcewithslu/outputdevices/PassiveBuzzerHelper.html#piToneSequence()" class="member-name-link">piToneSequence()</a> - Method in class com.opensourcewithslu.outputdevices.<a href="com/opensourcewithslu/outputdevices/PassiveBuzzerHelper.html" title="class in com.opensourcewithslu.outputdevices">PassiveBuzzerHelper</a></dt>
+<dd>
+<div class="block">Tone sequence cycles through array's containing the frequencies of the first
+ then digits of pi.</div>
 </dd>
 <dt><a href="com/opensourcewithslu/inputdevices/PushButtonHelper.html" class="type-name-link" title="class in com.opensourcewithslu.inputdevices">PushButtonHelper</a> - Class in <a href="com/opensourcewithslu/inputdevices/package-summary.html">com.opensourcewithslu.inputdevices</a></dt>
 <dd>
@@ -672,6 +717,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Sets the device</div>
 </dd>
+<dt><a href="com/opensourcewithslu/outputdevices/PassiveBuzzerHelper.html#setFrequencies(java.io.File)" class="member-name-link">setFrequencies(File)</a> - Method in class com.opensourcewithslu.outputdevices.<a href="com/opensourcewithslu/outputdevices/PassiveBuzzerHelper.html" title="class in com.opensourcewithslu.outputdevices">PassiveBuzzerHelper</a></dt>
+<dd>
+<div class="block">Allows users to pipe in a text file of frequencies separated by commas to play on the passive buzzer.</div>
+</dd>
 <dt><a href="com/opensourcewithslu/outputdevices/RGBLEDHelper.html#setGreen(int)" class="member-name-link">setGreen(int)</a> - Method in class com.opensourcewithslu.outputdevices.<a href="com/opensourcewithslu/outputdevices/RGBLEDHelper.html" title="class in com.opensourcewithslu.outputdevices">RGBLEDHelper</a></dt>
 <dd>
 <div class="block">Sets the green value of the LED.</div>
@@ -807,6 +856,10 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:T">T</h2>
 <dl class="index">
+<dt><a href="com/opensourcewithslu/outputdevices/PassiveBuzzerHelper.html#toneIterator()" class="member-name-link">toneIterator()</a> - Method in class com.opensourcewithslu.outputdevices.<a href="com/opensourcewithslu/outputdevices/PassiveBuzzerHelper.html" title="class in com.opensourcewithslu.outputdevices">PassiveBuzzerHelper</a></dt>
+<dd>
+<div class="block">freChangeTest cycles through frequencies to verify that frequencies are changing</div>
+</dd>
 <dt><a href="com/opensourcewithslu/inputdevices/TouchSwitchHelper.html" class="type-name-link" title="class in com.opensourcewithslu.inputdevices">TouchSwitchHelper</a> - Class in <a href="com/opensourcewithslu/inputdevices/package-summary.html">com.opensourcewithslu.inputdevices</a></dt>
 <dd>
 <div class="block">The TouchSwitchHelper class is used to initialize a touch switch.</div>
