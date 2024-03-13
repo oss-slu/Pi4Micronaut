@@ -72,17 +72,17 @@ public class PassiveBuzzerController {
     /**
      * Validates the functionality of the passive buzzer
      */
-    @Get("/funcTest")
-    public void passiveFuncTest(){
-        passiveBuzzerHelper.functionalityTest();
+    @Get("/passBuzz")
+    public void singlePassiveBuzz(){
+        passiveBuzzerHelper.passiveBuzzTone();
     }
 
     /**
      * Ensures that the passive buzzer can cycle through different frequencies
      */
-    @Get("/freqTest")
-    public void passiveFreqTest(){
-        passiveBuzzerHelper.freqChangeTest();
+    @Get("/freqIter")
+    public void passiveFreqIter(){
+        passiveBuzzerHelper.toneIterator();
     }
 
     /**

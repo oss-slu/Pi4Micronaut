@@ -19,7 +19,11 @@ public class PassiveBuzzerHelper {
 
     protected int passiveBuzzerFreq = 440;
 
-    protected int passBuzzDC = 50; //50 represents a 50% duty cycle. Where the buzzer is in a half on half off state
+    /**
+     * passBuzzDC is a protected integer variable that defines the duty cycle. When set at 50% the buzzer is in a half
+     * on and half off state.
+     */
+    protected int passBuzzDC = 50;
 
     public PassiveBuzzerHelper( Pwm passiveBuzzer){
 
@@ -109,9 +113,9 @@ public class PassiveBuzzerHelper {
     }
 
     /**
-     * Functionality test emits a 1 - second buzz to ensure functionality
+     * passiveBuzzTone emits a 1 - second buzz to ensure functionality
      */
-    public void functionalityTest(){
+    public void passiveBuzzTone(){
         passiveBuzzerOn(passBuzzDC, passiveBuzzerFreq);
 
         try{
@@ -125,7 +129,7 @@ public class PassiveBuzzerHelper {
     /**
      * freChangeTest cycles through frequencies to verify that frequencies are changing
      */
-    public void freqChangeTest(){
+    public void toneIterator(){
         int [] frequencies  = { 880, 1760, 3520,9000,15000}; //Can add more frequencies to test
         for (int freq : frequencies){
             //passiveBuzzer.setFrequency(freq);
