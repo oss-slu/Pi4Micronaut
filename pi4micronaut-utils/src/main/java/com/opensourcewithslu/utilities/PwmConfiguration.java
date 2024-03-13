@@ -3,10 +3,12 @@ package com.opensourcewithslu.utilities;
 import com.pi4j.io.pwm.PwmType;
 import io.micronaut.context.annotation.EachProperty;
 import io.micronaut.context.annotation.Parameter;
+import io.micronaut.context.annotation.Prototype;
 
 /**
  * The PwmConfiguration class handles the configuration of a pwm component.
  */
+@Prototype
 @EachProperty("pi4j.pwm")
 public class PwmConfiguration {
     private final String id;

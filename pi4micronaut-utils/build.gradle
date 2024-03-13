@@ -35,6 +35,8 @@ java {
     targetCompatibility = JavaVersion.toVersion("17")
 }
 
+tasks.build.dependsOn tasks.shadowJar
+
 tasks.named('build').configure {
     dependsOn 'javadoc'
     copy {
@@ -77,7 +79,7 @@ artifacts {
 
 publishing {
     repositories {
-        maven {  //only for users registered in Sonatype after 24 Feb 2021
+        maven {
             name = "OSSRH"
             credentials {
                 username = project.findProperty('SONATYPE_USERNAME') ?: System.getenv('SONATYPE_USERNAME')
@@ -93,7 +95,7 @@ publishing {
         mavenJava(MavenPublication) {
             groupId = 'io.github.oss-slu'
             artifactId = 'pi4micronaut-utils'
-            version = 'v0.1'
+            version = 'v1.0'
             from components.java
 
             artifact sourcesJar
