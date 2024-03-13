@@ -7,7 +7,7 @@ plugins {
 }
 
 group = 'io.github.oss-slu'
-version = '1.0'
+version = 'v1.0'
 
 apply plugin: 'maven-publish'
 apply plugin: 'signing'
@@ -35,7 +35,7 @@ java {
     targetCompatibility = JavaVersion.toVersion("17")
 }
 
-tasks.build.dependsOn {tasks.javadoc; tasks.shadowJar}
+tasks.build.dependsOn tasks.shadowJar
 
 tasks.named('build').configure {
     dependsOn 'javadoc'
