@@ -22,7 +22,7 @@ include::introduction.adoc[]
 
 include::Introduction/howToUsePi4Micronaut.adoc[]
 
-include::Introduction/gettingStarted.adoc[]
+include::Introduction/build_and_run_jar.adoc[]
 
 include::Introduction/exampleApplications.adoc[]
 
