@@ -7,8 +7,15 @@ import io.micronaut.runtime.Micronaut;
  */
 public class Application {
     /**
-     * constructor
-     * @param args None
+     * This is the default constructor for the Application class.
+     * It initializes the application with default settings.
+     */
+    public Application() { }
+
+    /**
+     * The main entry point of the application.
+     *
+     * @param args The command-line arguments passed to the application.
      */
     public static void main(String[] args) {
         Micronaut.run(Application.class, args);

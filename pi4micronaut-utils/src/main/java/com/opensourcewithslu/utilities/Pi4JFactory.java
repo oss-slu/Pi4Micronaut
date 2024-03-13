@@ -29,6 +29,11 @@ import jakarta.inject.Singleton;
 @Factory
 public class Pi4JFactory {
     /**
+     * Default constructor for Pi4JFactory.
+     */
+    public Pi4JFactory() { }
+
+    /**
      * This creates the Pi4J Context that is used to create all the beans for the individual components.
      * @return A Pi4J Context
      */
