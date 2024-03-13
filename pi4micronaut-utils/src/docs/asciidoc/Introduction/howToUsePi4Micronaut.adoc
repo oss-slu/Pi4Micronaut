@@ -28,12 +28,11 @@ image:Using_Micronaut.png[]
 ==== Add Dependency
 . Go to the build.gradle file and find the dependencies.
 . Add the Pi4Micronaut dependency to the list.
-
++
 [source, gradle]
 ----
 implementation("io.github.oss-slu:pi4micronaut-utils:1.0:all")
 ----
-
 +
 It should look like:
 image:Adding_Dependency.png[]
