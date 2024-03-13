@@ -9,8 +9,68 @@ ifdef::rootpath[]
 endif::rootpath[]
 
 
-=== How To Use Pi4Micronaut Library
+=== How to use the Pi4Micronaut library
+
 This section will walk you through the process of creating a basic
 Micronaut application and the configuration for developing
-with Pi4Micronaut.
+with Pi4Micronaut. As a demo, this will include the configuration and code for
+implementing a LED light.
 
+==== Creating Micronaut Project
+. Go to https://micronaut.io/launch/[Micronaut's website] and launch a new project.
+. Make sure you have selected Micronaut version 3.10.1 or lower with Java version 17.
+. Click Generate Project and download the zip.
+. Export the contents of the zip file and open it in IntelliJ or any IDE of your choice.
++
+It should look like:
+image:Using_Micronaut.png[]
+
+==== Add Dependency
+. Go to the build.gradle file and find the dependencies.
+. Add the Pi4Micronaut dependency to the list.
+
+[source, gradle]
+----
+implementation("io.github.oss-slu:pi4micronaut-utils:1.0:all")
+----
+
++
+It should look like:
+image:Adding_Dependency.png[]
+
+==== Setup Configuration
+. Go to the configuration file:
++
+path: Demo_Pi4Micronaut/src/main/resources/application.yml
+. Create a new tree in the yml file as shown below.
++
+[source, yaml]
+----
+pi4j:
+    digital-output:
+        led:
+            name: LED
+            address: 17
+            shutdown: LOW
+            initial: LOW
+            provider: pigpio-digital-output
+----
++
+Here we are specifying a led as a digital output type with name LED, address 17, etc.
++
+It should look like:
+image:Add_Configuration.png[]
+
+==== Creating Component Class
+. Create a new class in the com.demoPi4Micronaut directory
++
+path: Demo_Pi4Micronaut/src/main/java/com.demoPi4Micronaut
++
+This is where code will be written to implement a LED light using the Pi4Micronaut library.
+
+. Our example code is:
++
+image:Add_Class.png[]
+
+. Now that the code for the LED has been written, see our other documentation on building and running
+the jar file on a RaspberryPi.
