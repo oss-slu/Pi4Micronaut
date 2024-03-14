@@ -123,4 +123,15 @@ public class LCD1602Helper {
         lcdDisplay.off();
     }
 
+    /**
+     * Displays text at a specific line and position.
+     * @param text The text to display.
+     * @param line The line number.
+     * @param position The column number to start from.
+     */
+    public void displayTextAtPos(String text, int line, int position) {
+        log.info("Displaying text at line {}, position {}: {}", line, position, text);
+        lcdDisplay.displayText(text, line, position);
+    }
+
 }
