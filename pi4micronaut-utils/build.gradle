@@ -167,7 +167,7 @@ signing {
     required {
         def signingKey = project.findProperty('GPG_KEY') ?: System.getenv('GPG_KEY')
         def signingPassword = project.findProperty('GPG_PASSWORD') ?: System.getenv('GPG_PASSWORD')
-        useInMemoryPgpKeys(signingKey, signingPassword)
-        sign publishing.publications.mavenJava
+        useInMemoryPgpKeys(signingKey as String, signingPassword as String)
+        sign publishing.publications
     }
 }
