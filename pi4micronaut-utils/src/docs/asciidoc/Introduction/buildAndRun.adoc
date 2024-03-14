@@ -79,41 +79,48 @@ sudo apt-get install pigpio
 
 ==== Build and Copy Over Jar File
 . Open your terminal of choice
-. Navigate to the Pi4Micronaut root directory
+. Navigate to the project root directory
 . Enter the following command into the terminal to build the jar file:
 +
 [source, bash]
 ----
 ./gradlew build
 ----
-. The necessary components jar file can be found under "../Pi4Micronaut/components/build/libs/"
++
+image:build.png[]
+. The necessary components jar file can be found under "Demo_Pi4Micronaut/build/libs/Demo_Pi4Micronaut-0.1-all.jar"
++
+image:Locate_Jar_File.png[]
 . Once you have navigated to this directory, enter the following command:
 +
 [source, bash]
 ----
-scp components-0.1-all.jar {username}@{hostname}:~
+scp Demo_Pi4Micronaut-0.1-all.jar {username}@{hostname}:~
 ----
 +
 .. Following our configuration from earlier, this would look like
 +
 [source, bash]
 ----
-scp components-0.1-all.jar test@raspberrypi-test:~
+scp Demo_Pi4Micronaut-0.1-all.jar test@raspberrypi-test:~
 ----
 
++
+image:Copying_Jar_File_To_Pi.png[]
+
 ==== Almost Done!
-. To test if you've set up Pi4Micronaut correctly on your raspberry pi, we have some sample commands for you run.
-. Open a new Windows Powershell and ssh into your raspberry pi.
+. To test if you've set up everything correctly on your raspberry pi, we have some sample commands for you run.
+. Open a new terminal and ssh into your raspberry pi.
 . Enter the following command to run the jar file:
 +
 [source, bash]
 ----
-sudo java -jar components-0.1-all.jar
+sudo java -jar Demo_Pi4Micronaut-0.1-all.jar
 ----
 +
 The output should look like this:
 +
-image::running_jar.png[]
+image:SSH_to_Pi_And_Run_Jar_File.png[]
 +
 With this, a Micronaut localhost server will start running on your machine
 

@@ -55,7 +55,7 @@ pi4j:
 ----
 +
 Here we are specifying a led as a digital output type with name LED, address 17, etc.
-For more information on the LED setup guide, see our documentation link:{rootpath}/components/outputComponents/led.adoc[here].
+For more information on the LED setup guide, see our documentation https://oss-slu.github.io/Pi4Micronaut/#_led[here].
 +
 It should look like:
 image:Add_Configuration.png[]
