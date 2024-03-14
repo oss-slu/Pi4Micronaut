@@ -7,8 +7,6 @@ import com.pi4j.io.gpio.digital.DigitalOutput;
 import com.pi4j.io.i2c.I2C;
 import com.pi4j.io.i2c.I2CConfig;
 import com.pi4j.io.pwm.Pwm;
-import com.pi4j.io.pwm.PwmConfig;
-import com.pi4j.io.pwm.PwmType;
 import com.pi4j.io.spi.Spi;
 import com.pi4j.io.spi.SpiConfig;
 import com.pi4j.library.pigpio.PiGpio;
@@ -27,8 +25,14 @@ import jakarta.inject.Singleton;
 /**
  * The Pi4JFactory class is responsible for creating all the beans for components that are being used.
  */
+
 @Factory
 public class Pi4JFactory {
+    /**
+     * Default constructor for Pi4JFactory.
+     */
+    public Pi4JFactory() { }
+
     /**
      * This creates the Pi4J Context that is used to create all the beans for the individual components.
      * @return A Pi4J Context
@@ -64,6 +68,7 @@ public class Pi4JFactory {
      * @param pi4jContext The Pi4J {@link Context}.
      * @return A DigitalOutput Object.
      */
+    @Singleton
     @EachBean(DigitalOutputConfiguration.class)
     public DigitalOutput createDigitalOutput(DigitalOutputConfiguration config, Context pi4jContext) {
         var outputConfigBuilder = DigitalOutput.newConfigBuilder(pi4jContext)
@@ -82,6 +87,7 @@ public class Pi4JFactory {
      * @param pi4jContext The Pi4J {@link Context}.
      * @return A DigitalInput Object.
      */
+    @Singleton
     @EachBean(DigitalInputConfiguration.class)
     public DigitalInput createDigitalInput(DigitalInputConfiguration config, Context pi4jContext) {
         var inputConfigBuilder = DigitalInput.newConfigBuilder(pi4jContext)
@@ -100,9 +106,11 @@ public class Pi4JFactory {
      * @param pi4jContext The Pi4J {@link Context}.
      * @return A PWM Object.
      */
+    @Singleton
     @EachBean(PwmConfiguration.class)
     public Pwm createPwm(PwmConfiguration config, Context pi4jContext) {
-        var outputConfigBuilder = pi4jContext.create(
+
+        return pi4jContext.create(
                 Pwm.newConfigBuilder(pi4jContext)
                     .id(config.getId())
                     .name(config.getName())
@@ -113,8 +121,6 @@ public class Pi4JFactory {
                     .shutdown(config.getShutdown())
                     .build()
             );
-
-        return outputConfigBuilder;
     }
 
     /**
@@ -123,15 +129,15 @@ public class Pi4JFactory {
      * @param pi4jContext The Pi4J {@link Context}.
      * @return A SpiConfigBuilder Object.
      */
+    @Singleton
     @EachBean(SpiConfiguration.class)
     public SpiConfig createSpi(SpiConfiguration config, Context pi4jContext) {
-        var outputConfigBuilder = Spi.newConfigBuilder(pi4jContext)
+        return Spi.newConfigBuilder(pi4jContext)
                 .id(config.getId())
                 .name(config.getName())
                 .address(config.getChannel())
                 .baud(config.getBaud())
                 .build();
-        return outputConfigBuilder;
     }
 
     /**
@@ -140,14 +146,14 @@ public class Pi4JFactory {
      * @param pi4jContext The Pi4J {@link Context}.
      * @return A I2CConfigBuilder Object.
      */
+    @Singleton
     @EachBean(i2cConfiguration.class)
     public I2CConfig createI2C(i2cConfiguration config, Context pi4jContext) {
-        var outputConfigBuilder = I2C.newConfigBuilder(pi4jContext)
+        return I2C.newConfigBuilder(pi4jContext)
                 .id(config.getId())
                 .name(config.getName())
                 .bus(config.getBus())
                 .device(config.getDevice())
                 .build();
-        return outputConfigBuilder;
     }
 }

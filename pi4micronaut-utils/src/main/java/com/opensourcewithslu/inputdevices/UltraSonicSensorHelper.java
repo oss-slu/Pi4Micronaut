@@ -17,6 +17,12 @@ public class UltraSonicSensorHelper {
     private volatile double distance;
     private final ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
 
+    /**
+     * Constructs a new UltraSonicSensorHelper instance.
+     *
+     * @param triggerPin The DigitalOutput pin for triggering the ultrasonic sensor.
+     * @param echoPin The DigitalInput pin for receiving the echo from the ultrasonic sensor.
+     */
     public UltraSonicSensorHelper(DigitalOutput triggerPin, DigitalInput echoPin) {
         this.triggerPin = triggerPin;
         this.echoPin = echoPin;
@@ -100,14 +106,18 @@ public class UltraSonicSensorHelper {
     }
 
     /**
-     * Returns distance in centimeters
+     * Returns the distance in centimeters.
+     *
+     * @return The distance value in centimeters.
      */
     public double getDistanceInCentimeter() {
         return distance;
     }
 
     /**
-     * Returns distance in meters
+     * Returns the distance in meters.
+     *
+     * @return The distance value in meters.
      */
     public double getDistanceInMeters() {
         return distance/100;
