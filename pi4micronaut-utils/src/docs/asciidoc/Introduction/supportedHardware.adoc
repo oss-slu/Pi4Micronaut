@@ -1,4 +1,4 @@
-=== Currently Supported Hardware
+== Currently Supported Hardware
 [.text-right]
 https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/Introduction/supportedHardware.adoc[Improve this doc]
 
@@ -10,7 +10,12 @@ We plan on offering support for many more hardware components in the future. If 
 * Slide Switch
 * Rotary Encoder
 * RFID Scanner
-* LEDs
-* RGB LEDs
-* LCDs
-* Photosensors
+* LED
+* RGB LED
+* LCD Screen
+* Photosensor
+* Touch Switch Sensor
+* Active Buzzer
+* Passive Buzzer
+* PIR Motion Sensor
+* Ultrasonic Sensor

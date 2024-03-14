@@ -7,12 +7,20 @@ import com.pi4j.io.gpio.digital.DigitalInput;
 import com.pi4j.io.pwm.Pwm;
 import io.micronaut.context.annotation.EachBean;
 import io.micronaut.context.annotation.Factory;
+import io.micronaut.context.annotation.Prototype;
 
 /**
  * The Pi4JMultipinFactory class is responsible for creating all the beans for all multi pin components that are being used.
  */
+@Prototype
 @Factory
 public class Pi4JMultipinFactory {
+
+    /**
+     * Default constructor for Pi4JMultipinFactory.
+     */
+    public Pi4JMultipinFactory() { }
+
 
     /**
      * Creates a MultipinConfiguration object for a multi pin digital input component.

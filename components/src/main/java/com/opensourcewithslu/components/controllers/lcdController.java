@@ -5,45 +5,66 @@ import com.pi4j.context.Context;
 import com.pi4j.io.i2c.I2CConfig;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
+import io.micronaut.http.annotation.PathVariable;
 import jakarta.inject.Named;
 
-//tag::ex[]
+/**
+ * Controller for managing LCD1602 display operations via HTTP requests.
+ */
 @Controller("/lcd")
 public class lcdController {
     private final LCD1602Helper lcdHelper;
 
-    public lcdController(@Named("lcd")I2CConfig i2cConfig, Context pi4jContext){
+    public lcdController(@Named("lcd") I2CConfig i2cConfig, Context pi4jContext) {
         this.lcdHelper = new LCD1602Helper(i2cConfig, pi4jContext);
     }
 
     @Get("/write/{text}")
-    public void writeData(String text){
+    public String writeData(@PathVariable String text) {
         lcdHelper.writeText(text);
+        return "Text written to LCD: " + text + "\n";
     }
 
     @Get("/write/{text}/{line}")
-    public void writeDataAtLine(String text, int line){
+    public String writeDataAtLine(@PathVariable String text, @PathVariable int line) {
         lcdHelper.writeTextAtLine(text, line);
+        return "Text written to line " + line + ": " + text + "\n";
     }
 
-    @Get("/backlight/on")
-    public void backlightOn(){
-        lcdHelper.setBackLight(true);
+    @Get("/write/{text}/{line}/{pos}")
+    public String writeDataAtPos(@PathVariable String text, @PathVariable int line, @PathVariable int pos) {
+        lcdHelper.displayTextAtPos(text, line, pos);
+        return "Text written at line " + line + ", position " + pos + ": " + text + "\n";
     }
 
-    @Get("/backlight/off")
-    public void backlightOff(){
-        lcdHelper.setBackLight(false);
+    @Get("/write/character/{charvalue}")
+    public String writeCharacter(@PathVariable char charvalue) {
+        lcdHelper.writeCharacter(charvalue);
+        return "Character '" + charvalue + "' written to LCD\n";
+    }
+
+    @Get("/backlight/{state}")
+    public String setBacklight(@PathVariable String state) {
+        boolean isOn = "on".equalsIgnoreCase(state);
+        lcdHelper.setBackLight(isOn);
+        return "Backlight turned " + (isOn ? "on" : "off") + "\n";
     }
 
     @Get("/clear/all")
-    public void clearDisplay(){
+    public String clearDisplay() {
         lcdHelper.clearDisplay();
+        return "Display cleared\n";
     }
 
     @Get("/clear/{line}")
-    public void clearLine(int line){
+    public String clearLine(@PathVariable int line) {
         lcdHelper.clearLine(line);
+        return "Line " + line + " cleared\n";
+    }
+
+    @Get("/turnOff")
+    public String turnOff() {
+        lcdHelper.turnOff();
+        return "Display turned off\n";
     }
 }
-//end::ex[]
