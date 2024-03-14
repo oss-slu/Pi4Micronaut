@@ -2744,7 +2744,7 @@ adjust according to your power source and LED specifications</p>
 <div class="sect4">
 <h5 id="_overview_7"><a class="anchor" href="#_overview_7"></a>Overview</h5>
 <div class="paragraph">
-<p>This section provides details of the LCD1602 (Liquid Crystal Display) circuit, including its components, assembly instructions, and functionality. The LCD1602 is a kind of dot matrix module that can show letters, numbers, and other characters. The number 1602 describes the display: 2 rows with 16 characters per row.</p>
+<p>This section provides details of the LCD1602 (Liquid Crystal Display) circuit, including its components, assembly instructions, and functionality. The LCD1602 is a kind of dot matrix module that can show letters, numbers, and other characters. The number 1602 describes the display: 2 rows with 16 characters per row. NOTE: The LCD display only works on the 32 bit version of Raspberry Pi OS.</p>
 </div>
 </div>
 <div class="sect4">
@@ -2907,7 +2907,15 @@ adjust according to your power source and LED specifications</p>
 </ol>
 </div>
 </li>
+<li>
+<p>Make sure you are using the 32 bit version of Raspberry Pi OS. The below command should return <code>armv71</code> if running the 32 bit OS.</p>
+</li>
 </ol>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ uname -m</pre>
+</div>
 </div>
 </div>
 <div class="sect4">
@@ -2945,44 +2953,7 @@ adjust according to your power source and LED specifications</p>
 <h5 id="_an_example_controller_7"><a class="anchor" href="#_an_example_controller_7"></a>An Example Controller</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="java"><span class="nd">@Controller</span><span class="o">(</span><span class="s">"/lcd"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">lcdController</span> <span class="o">{</span>
-    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">LCD1602Helper</span> <span class="n">lcdHelper</span><span class="o">;</span>
-
-    <span class="kd">public</span> <span class="nf">lcdController</span><span class="o">(</span><span class="nd">@Named</span><span class="o">(</span><span class="s">"lcd"</span><span class="o">)</span><span class="nc">I2CConfig</span> <span class="n">i2cConfig</span><span class="o">,</span> <span class="nc">Context</span> <span class="n">pi4jContext</span><span class="o">){</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">lcdHelper</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LCD1602Helper</span><span class="o">(</span><span class="n">i2cConfig</span><span class="o">,</span> <span class="n">pi4jContext</span><span class="o">);</span>
-    <span class="o">}</span>
-
-    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/write/{text}"</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">writeData</span><span class="o">(</span><span class="nc">String</span> <span class="n">text</span><span class="o">){</span>
-        <span class="n">lcdHelper</span><span class="o">.</span><span class="na">writeText</span><span class="o">(</span><span class="n">text</span><span class="o">);</span>
-    <span class="o">}</span>
-
-    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/write/{text}/{line}"</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">writeDataAtLine</span><span class="o">(</span><span class="nc">String</span> <span class="n">text</span><span class="o">,</span> <span class="kt">int</span> <span class="n">line</span><span class="o">){</span>
-        <span class="n">lcdHelper</span><span class="o">.</span><span class="na">writeTextAtLine</span><span class="o">(</span><span class="n">text</span><span class="o">,</span> <span class="n">line</span><span class="o">);</span>
-    <span class="o">}</span>
-
-    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/backlight/on"</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">backlightOn</span><span class="o">(){</span>
-        <span class="n">lcdHelper</span><span class="o">.</span><span class="na">setBackLight</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
-    <span class="o">}</span>
-
-    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/backlight/off"</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">backlightOff</span><span class="o">(){</span>
-        <span class="n">lcdHelper</span><span class="o">.</span><span class="na">setBackLight</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
-    <span class="o">}</span>
-
-    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/clear/all"</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">clearDisplay</span><span class="o">(){</span>
-        <span class="n">lcdHelper</span><span class="o">.</span><span class="na">clearDisplay</span><span class="o">();</span>
-    <span class="o">}</span>
-
-    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/clear/{line}"</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">clearLine</span><span class="o">(</span><span class="kt">int</span> <span class="n">line</span><span class="o">){</span>
-        <span class="n">lcdHelper</span><span class="o">.</span><span class="na">clearLine</span><span class="o">(</span><span class="n">line</span><span class="o">);</span>
-    <span class="o">}</span>
-<span class="o">}</span></code></pre>
+<pre class="rouge highlight"><code data-lang="java"></code></pre>
 </div>
 </div>
 </div>
@@ -2994,7 +2965,7 @@ adjust according to your power source and LED specifications</p>
 <div id="footer">
 <div id="footer-text">
 Version v1.0<br>
-Last updated 2024-03-14 03:39:19 UTC
+Last updated 2024-03-14 04:25:45 UTC
 </div>
 </div>
 </body>

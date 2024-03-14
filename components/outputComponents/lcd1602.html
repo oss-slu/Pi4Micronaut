@@ -214,7 +214,7 @@ th {
 <div class="sect4">
 <h5 id="_overview">Overview</h5>
 <div class="paragraph">
-<p>This section provides details of the LCD1602 (Liquid Crystal Display) circuit, including its components, assembly instructions, and functionality. The LCD1602 is a kind of dot matrix module that can show letters, numbers, and other characters. The number 1602 describes the display: 2 rows with 16 characters per row.</p>
+<p>This section provides details of the LCD1602 (Liquid Crystal Display) circuit, including its components, assembly instructions, and functionality. The LCD1602 is a kind of dot matrix module that can show letters, numbers, and other characters. The number 1602 describes the display: 2 rows with 16 characters per row. NOTE: The LCD display only works on the 32 bit version of Raspberry Pi OS.</p>
 </div>
 </div>
 <div class="sect4">
@@ -377,7 +377,15 @@ th {
 </ol>
 </div>
 </li>
+<li>
+<p>Make sure you are using the 32 bit version of Raspberry Pi OS. The below command should return <code>armv71</code> if running the 32 bit OS.</p>
+</li>
 </ol>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ uname -m</pre>
+</div>
 </div>
 </div>
 <div class="sect4">
@@ -424,7 +432,7 @@ th {
 <div id="footer">
 <div id="footer-text">
 Version v1.0<br>
-Last updated 2024-03-14 03:39:19 UTC
+Last updated 2024-03-14 04:25:45 UTC
 </div>
 </div>
 </body>
