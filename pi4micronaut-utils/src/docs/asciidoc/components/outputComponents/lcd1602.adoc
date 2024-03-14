@@ -14,7 +14,7 @@ endif::rootpath[]
 https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/outputComponents/lcdScreen.adoc[Improve this doc]
 
 ===== Overview
-This section provides details of the LCD1602 (Liquid Crystal Display) circuit, including its components, assembly instructions, and functionality. The LCD1602 is a kind of dot matrix module that can show letters, numbers, and other characters. The number 1602 describes the display: 2 rows with 16 characters per row.
+This section provides details of the LCD1602 (Liquid Crystal Display) circuit, including its components, assembly instructions, and functionality. The LCD1602 is a kind of dot matrix module that can show letters, numbers, and other characters. The number 1602 describes the display: 2 rows with 16 characters per row. NOTE: The LCD display only works on the 32 bit version of Raspberry Pi OS.
 
 ===== Components
 . LCD1602
@@ -98,6 +98,11 @@ e. Exit the configuration tool and reboot the Raspberry Pi with the following co
 +
 .................
 $ sudo reboot
+.................
+
+3. Make sure you are using the 32 bit version of Raspberry Pi OS. The below command should return `armv71` if running the 32 bit OS.
+.................
+$ uname -m
 .................
 
 ===== YAML

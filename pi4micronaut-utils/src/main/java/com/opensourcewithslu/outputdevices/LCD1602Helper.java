@@ -24,10 +24,10 @@ public class LCD1602Helper {
     public LCD1602Helper(I2CConfig i2CConfig, Context pi4jContext)
     //end::const[]
     {
-        // The i2CConfig should be used to define the rows and columns, not hard coded.
-        this.lcdDisplay = new LcdDisplay(pi4jContext, 4, 16);
+
+        this.lcdDisplay = new LcdDisplay(pi4jContext, 2, 16, i2CConfig.bus(), i2CConfig.device());
         lcdDisplay.setDisplayBacklight(true);
-        log.info("LCD is set up with 4 rows and 16 columns. Backlight is on by default");
+        log.info("LCD is set up with 2 rows and 16 columns. Backlight is on by default");
     }
 
     /**
@@ -51,9 +51,23 @@ public class LCD1602Helper {
     public void writeTextAtLine(String text, int line)
     //end::method[]
     {
-        log.info("writing on " + line + "line");
+        log.info("writing on line: "+line);
         lcdDisplay.displayText(text, line);
     }
+
+    /**
+     * Writes a character to the text displayed.
+     * @param charvalue A single character.
+     */
+    //tag::method[]
+    public void writeCharacter(char charvalue)
+    //end::method[]
+    {
+
+        log.info("writing character");
+        lcdDisplay.writeCharacter(charvalue);
+    }
+
 
     /**
      * Setting the backlight state of the LCD based off the boolean input. If true, then the backlight is set as on.
@@ -94,6 +108,30 @@ public class LCD1602Helper {
     public void clearLine(int line)
     //end::method[]
     {
+        log.info("clearing line: "+line);
         lcdDisplay.clearLine(line);
     }
+
+    /**
+     * Turns off LCD Display. Works the same as backlight off, but a write or clear command will turn the display back on.
+     */
+    //tag::method[]
+    public void turnOff()
+    //end::method[]
+    {
+        log.info("turning off display");
+        lcdDisplay.off();
+    }
+
+    /**
+     * Displays text at a specific line and position.
+     * @param text The text to display.
+     * @param line The line number.
+     * @param position The column number to start from.
+     */
+    public void displayTextAtPos(String text, int line, int position) {
+        log.info("Displaying text at line {}, position {}: {}", line, position, text);
+        lcdDisplay.displayText(text, line, position);
+    }
+
 }
