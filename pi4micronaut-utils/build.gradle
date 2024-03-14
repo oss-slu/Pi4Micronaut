@@ -161,13 +161,13 @@ publishing {
             }
         }
     }
-}
 
-signing {
-    required {
+    signing {
         def signingKey = project.findProperty('GPG_KEY') ?: System.getenv('GPG_KEY')
         def signingPassword = project.findProperty('GPG_PASSWORD') ?: System.getenv('GPG_PASSWORD')
         useInMemoryPgpKeys(signingKey as String, signingPassword as String)
-        sign publishing.publications
+        sign publishing.publications.mavenJava
     }
 }
+
+
