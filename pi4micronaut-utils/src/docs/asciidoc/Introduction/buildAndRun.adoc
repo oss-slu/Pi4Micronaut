@@ -120,11 +120,10 @@ image:SSH_to_Pi_And_Run_Jar_File.png[]
 +
 With this, a Micronaut localhost server will start running on your machine
 
-
-. Let's test one of the components. Take a look at our documentation for setting up the LED component
-https://oss-slu.github.io/Pi4Micronaut/#_led[here].
+.  Let's test the https://oss-slu.github.io/Pi4Micronaut/#_led[LED] component which you have setup.
 
 . After getting everything set up, open up a new PowerShell and ssh into your pi once more.
+
 . Enter the following command to test the turn on function for an LED light:
 +
 [source, bash]
