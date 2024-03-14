@@ -1281,12 +1281,61 @@ Each component will need</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="yaml">    <span class="na">photo-resistor-input</span><span class="pi">:</span>                 <i class="conum" data-value="1"></i><b>(1)</b>
+<pre class="rouge highlight"><code data-lang="yaml">  <span class="na">digital-input</span><span class="pi">:</span>
+    <span class="na">photo-resistor-input</span><span class="pi">:</span>                 <i class="conum" data-value="1"></i><b>(1)</b>
       <span class="na">name</span><span class="pi">:</span> <span class="s">Photo Resistor Input</span>          <i class="conum" data-value="2"></i><b>(2)</b>
       <span class="na">address</span><span class="pi">:</span> <span class="s">4</span>                          <i class="conum" data-value="3"></i><b>(3)</b>
       <span class="na">debounce</span><span class="pi">:</span> <span class="s">100000</span>                    <i class="conum" data-value="4"></i><b>(4)</b>
       <span class="na">pull</span><span class="pi">:</span> <span class="s">PULL_DOWN</span>                     <i class="conum" data-value="5"></i><b>(5)</b>
-      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-digital-input</span>      <i class="conum" data-value="6"></i><b>(6)</b></code></pre>
+      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-digital-input</span>      <i class="conum" data-value="6"></i><b>(6)</b>
+    <span class="na">button-input-1</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">Push Button Input</span>
+      <span class="na">address</span><span class="pi">:</span> <span class="m">16</span>
+      <span class="na">pull</span><span class="pi">:</span> <span class="s">PULL_DOWN</span>
+      <span class="na">debounce</span><span class="pi">:</span> <span class="m">30</span>
+      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-digital-input</span>
+    <span class="na">button-input-2</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">Push Button Input</span>
+      <span class="na">address</span><span class="pi">:</span> <span class="m">21</span>
+      <span class="na">pull</span><span class="pi">:</span> <span class="s">PULL_DOWN</span>
+      <span class="na">debounce</span><span class="pi">:</span> <span class="m">30</span>
+      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-digital-input</span>
+    <span class="na">button-input-3</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">Push Button Input</span>
+      <span class="na">address</span><span class="pi">:</span> <span class="m">18</span>
+      <span class="na">pull</span><span class="pi">:</span> <span class="s">PULL_DOWN</span>
+      <span class="na">debounce</span><span class="pi">:</span> <span class="m">30</span>
+      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-digital-input</span>
+    <span class="na">slide-switch-input</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">Slide Switch Input</span>
+      <span class="na">address</span><span class="pi">:</span> <span class="m">18</span>
+      <span class="na">pull</span><span class="pi">:</span> <span class="s">PULL_DOWN</span>
+      <span class="na">debounce</span><span class="pi">:</span> <span class="m">3000</span>
+      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-digital-input</span>
+    <span class="na">slide-switch-input-2</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">Slide Switch Input</span>
+      <span class="na">address</span><span class="pi">:</span> <span class="m">22</span>
+      <span class="na">pull</span><span class="pi">:</span> <span class="s">PULL_DOWN</span>
+      <span class="na">debounce</span><span class="pi">:</span> <span class="m">3000</span>
+      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-digital-input</span>
+    <span class="na">touch-switch-input</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">Touch Switch Input</span>
+      <span class="na">address</span><span class="pi">:</span> <span class="m">17</span>
+      <span class="na">pull</span><span class="pi">:</span> <span class="s">PULL_DOWN</span>
+      <span class="na">debounce</span><span class="pi">:</span> <span class="m">200000</span>
+      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-digital-input</span>
+    <span class="na">pir-sensor</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">PIR Sensor</span>
+      <span class="na">address</span><span class="pi">:</span> <span class="m">13</span>
+      <span class="na">pull</span><span class="pi">:</span> <span class="s">PULL_DOWN</span>
+      <span class="na">debounce</span><span class="pi">:</span> <span class="m">30000</span>
+      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-digital-input</span>
+    <span class="na">ultra-sonic-echo</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">UltraSonic Sensor Input</span>
+      <span class="na">address</span><span class="pi">:</span> <span class="m">24</span>
+      <span class="na">pull</span><span class="pi">:</span> <span class="s">PULL_DOWN</span>
+      <span class="na">debounce</span><span class="pi">:</span> <span class="m">3000</span>
+      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-digital-input</span></code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -1348,12 +1397,31 @@ Each component will need</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="yaml">    <span class="na">led</span><span class="pi">:</span>                                    <i class="conum" data-value="1"></i><b>(1)</b>
+<pre class="rouge highlight"><code data-lang="yaml">  <span class="na">digital-output</span><span class="pi">:</span>
+    <span class="na">led</span><span class="pi">:</span>                                    <i class="conum" data-value="1"></i><b>(1)</b>
       <span class="na">name</span><span class="pi">:</span> <span class="s">LED Output</span>                      <i class="conum" data-value="2"></i><b>(2)</b>
       <span class="na">address</span><span class="pi">:</span> <span class="s">17</span>                           <i class="conum" data-value="3"></i><b>(3)</b>
       <span class="na">shutdown</span><span class="pi">:</span> <span class="s">LOW</span>                        <i class="conum" data-value="4"></i><b>(4)</b>
       <span class="na">initial</span><span class="pi">:</span> <span class="s">LOW</span>                         <i class="conum" data-value="5"></i><b>(5)</b>
-      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-digital-output</span>       <i class="conum" data-value="6"></i><b>(6)</b></code></pre>
+      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-digital-output</span>       <i class="conum" data-value="6"></i><b>(6)</b>
+    <span class="na">led2</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">LED Output</span>
+      <span class="na">address</span><span class="pi">:</span> <span class="m">26</span>
+      <span class="na">shutdown</span><span class="pi">:</span> <span class="s">HIGH</span>
+      <span class="na">initial</span><span class="pi">:</span> <span class="s">HIGH</span>
+      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-digital-output</span>
+    <span class="na">photo-resistor-output</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">Photo Resistor Output</span>
+      <span class="na">address</span><span class="pi">:</span> <span class="m">27</span>
+      <span class="na">shutdown</span><span class="pi">:</span> <span class="s">LOW</span>
+      <span class="na">initial</span><span class="pi">:</span> <span class="s">HIGH</span>
+      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-digital-output</span>
+    <span class="na">ultra-sonic-trig</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">UltraSonic Sensor Output</span>
+      <span class="na">address</span><span class="pi">:</span> <span class="m">23</span>
+      <span class="na">shutdown</span><span class="pi">:</span> <span class="s">LOW</span>
+      <span class="na">initial</span><span class="pi">:</span> <span class="s">LOW</span>
+      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-digital-output</span></code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -1405,7 +1473,15 @@ Each class of multipin component (Digital Input, PWM), is declared slightly diff
       <span class="na">pulls</span><span class="pi">:</span> <span class="s">PULL_DOWN,PULL_UP,PULL_UP</span>     <i class="conum" data-value="6"></i><b>(6)</b>
       <span class="na">shutdown</span><span class="pi">:</span> <span class="s">LOW</span>                        <i class="conum" data-value="7"></i><b>(7)</b>
       <span class="na">initial</span><span class="pi">:</span> <span class="s">HIGH</span>                        <i class="conum" data-value="8"></i><b>(8)</b>
-      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-digital-input</span>       <i class="conum" data-value="9"></i><b>(9)</b></code></pre>
+      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-digital-input</span>       <i class="conum" data-value="9"></i><b>(9)</b>
+    <span class="na">rotary-encoder-2</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">Rotary Encoder </span><span class="m">2</span>
+      <span class="na">addresses</span><span class="pi">:</span> <span class="s">12, 16, </span><span class="m">20</span>
+      <span class="na">debounces</span><span class="pi">:</span> <span class="s">6000, 500, </span><span class="m">500</span>
+      <span class="na">pulls</span><span class="pi">:</span> <span class="s">PULL_DOWN, PULL_UP, PULL_UP</span>
+      <span class="na">shutdown</span><span class="pi">:</span> <span class="s">LOW</span>
+      <span class="na">initial</span><span class="pi">:</span> <span class="s">HIGH</span>
+      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-digital-input</span></code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -1458,7 +1534,14 @@ Each class of multipin component (Digital Input, PWM), is declared slightly diff
       <span class="na">pwmTypes</span><span class="pi">:</span> <span class="s">SOFTWARE, SOFTWARE, SOFTWARE</span>    <i class="conum" data-value="4"></i><b>(4)</b>
       <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-pwm</span>                      <i class="conum" data-value="5"></i><b>(5)</b>
       <span class="na">initials</span><span class="pi">:</span> <span class="s">0, 0, 0</span>                         <i class="conum" data-value="6"></i><b>(6)</b>
-      <span class="na">shutdowns</span><span class="pi">:</span> <span class="s">0, 0, 0</span>                        <i class="conum" data-value="7"></i><b>(7)</b></code></pre>
+      <span class="na">shutdowns</span><span class="pi">:</span> <span class="s">0, 0, 0</span>                        <i class="conum" data-value="7"></i><b>(7)</b>
+    <span class="na">rgb-led-2</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">RGB LED </span><span class="m">2</span>
+      <span class="na">addresses</span><span class="pi">:</span> <span class="s">18, 27, </span><span class="m">22</span>
+      <span class="na">pwmTypes</span><span class="pi">:</span> <span class="s">SOFTWARE, SOFTWARE, SOFTWARE</span>
+      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-pwm</span>
+      <span class="na">initials</span><span class="pi">:</span> <span class="s">0, 0, </span><span class="m">0</span>
+      <span class="na">shutdowns</span><span class="pi">:</span> <span class="s">0, 0, 0</span></code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -1525,13 +1608,42 @@ Each component will need</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="yaml">    <span class="na">red-pwm</span><span class="pi">:</span>                  <i class="conum" data-value="1"></i><b>(1)</b>
+<pre class="rouge highlight"><code data-lang="yaml">  <span class="na">pwm</span><span class="pi">:</span>
+    <span class="na">red-pwm</span><span class="pi">:</span>                  <i class="conum" data-value="1"></i><b>(1)</b>
       <span class="na">name</span><span class="pi">:</span> <span class="s">red</span>               <i class="conum" data-value="2"></i><b>(2)</b>
       <span class="na">address</span><span class="pi">:</span> <span class="s">17</span>             <i class="conum" data-value="3"></i><b>(3)</b>
       <span class="na">pwmType</span><span class="pi">:</span> <span class="s">SOFTWARE</span>       <i class="conum" data-value="4"></i><b>(4)</b>
       <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-pwm</span>    <i class="conum" data-value="5"></i><b>(5)</b>
       <span class="na">initial</span><span class="pi">:</span> <span class="s">0</span>              <i class="conum" data-value="6"></i><b>(6)</b>
-      <span class="na">shutdown</span><span class="pi">:</span> <span class="s">0</span>             <i class="conum" data-value="7"></i><b>(7)</b></code></pre>
+      <span class="na">shutdown</span><span class="pi">:</span> <span class="s">0</span>             <i class="conum" data-value="7"></i><b>(7)</b>
+    <span class="na">blue-pwm</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">blue</span>
+      <span class="na">address</span><span class="pi">:</span> <span class="m">18</span>
+      <span class="na">pwmType</span><span class="pi">:</span> <span class="s">SOFTWARE</span>
+      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-pwm</span>
+      <span class="na">initial</span><span class="pi">:</span> <span class="m">0</span>
+      <span class="na">shutdown</span><span class="pi">:</span> <span class="m">0</span>
+    <span class="na">green-pwm</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">green</span>
+      <span class="na">address</span><span class="pi">:</span> <span class="m">27</span>
+      <span class="na">pwmType</span><span class="pi">:</span> <span class="s">SOFTWARE</span>
+      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-pwm</span>
+      <span class="na">initial</span><span class="pi">:</span> <span class="m">0</span>
+      <span class="na">shutdown</span><span class="pi">:</span> <span class="m">0</span>
+    <span class="na">active-buzzer</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">active-buzzer</span>
+      <span class="na">address</span><span class="pi">:</span> <span class="m">17</span>
+      <span class="na">pwmType</span><span class="pi">:</span> <span class="s">SOFTWARE</span>
+      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-pwm</span>
+      <span class="na">initial</span><span class="pi">:</span> <span class="m">0</span>
+      <span class="na">shutdown</span><span class="pi">:</span> <span class="m">0</span>
+    <span class="na">passive-buzzer</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">passive-buzzer</span>
+      <span class="na">address</span><span class="pi">:</span> <span class="m">17</span>
+      <span class="na">pwmType</span><span class="pi">:</span> <span class="s">SOFTWARE</span>
+      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-pwm</span>
+      <span class="na">initial</span><span class="pi">:</span> <span class="m">0</span>
+      <span class="na">shutdown</span><span class="pi">:</span> <span class="s">0</span></code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -1617,7 +1729,8 @@ Each component will need</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="yaml">    <span class="na">lcd</span><span class="pi">:</span>                                  <i class="conum" data-value="1"></i><b>(1)</b>
+<pre class="rouge highlight"><code data-lang="yaml">  <span class="na">i2c</span><span class="pi">:</span>
+    <span class="na">lcd</span><span class="pi">:</span>                                  <i class="conum" data-value="1"></i><b>(1)</b>
       <span class="na">name</span><span class="pi">:</span> <span class="s">lcd</span>                           <i class="conum" data-value="2"></i><b>(2)</b>
       <span class="na">bus</span><span class="pi">:</span> <span class="s">1</span>                              <i class="conum" data-value="3"></i><b>(3)</b>
       <span class="na">device</span><span class="pi">:</span> <span class="s">0x27</span>                        <i class="conum" data-value="4"></i><b>(4)</b></code></pre>
@@ -2965,7 +3078,7 @@ adjust according to your power source and LED specifications</p>
 <div id="footer">
 <div id="footer-text">
 Version v1.0<br>
-Last updated 2024-03-14 04:25:45 UTC
+Last updated 2024-03-14 04:28:18 UTC
 </div>
 </div>
 </body>
