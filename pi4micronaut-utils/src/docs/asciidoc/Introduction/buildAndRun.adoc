@@ -13,9 +13,8 @@ This section describes how to build and run the jar file from the Pi4Micronaut p
 
 ==== Set up Raspberry Pi OS
 . Start by installing the Raspberry Pi Imager
-. To install the Imager, follow this guide by the Raspberry Pi Foundation:
-+
-https://www.raspberrypi.com/documentation/computers/getting-started.html#install-using-imager
+. To install the Imager, follow this guide by the Raspberry Pi Foundation
+https://www.raspberrypi.com/documentation/computers/getting-started.html#install-using-imager[here].
 +
 Note: use the same wifi network for your raspberry pi that your system is connected to
 . Your configuration should look something like this:
@@ -44,10 +43,8 @@ ssh test@raspberrypi-test
 
 .. Using the IP address of your Pi:
 +
-Follow the instructions outlined in this article:
-+
-https://docs.sunfounder.com/projects/picar-s/en/latest/get_started_with_raspberry_pi.html#get-the-ip-address
-
+Follow the instructions outlined in this article
+https://docs.sunfounder.com/projects/picar-s/en/latest/get_started_with_raspberry_pi.html#get-the-ip-address[here].
 
 ==== Installing Java
 . First, make sure your Raspberry Pi's package list is up-to-date by running the following commands in your Pi's terminal:
@@ -125,13 +122,17 @@ image:SSH_to_Pi_And_Run_Jar_File.png[]
 With this, a Micronaut localhost server will start running on your machine
 
 
-. Let's test one of the components. Take a look at our documentation for setting up the LED component:
-+
-https://oss-slu.github.io/Pi4Micronaut/#_led
+. Let's test one of the components. Take a look at our documentation for setting up the LED component
+https://oss-slu.github.io/Pi4Micronaut/#_led[here].
+
 . After getting everything set up, open up a new PowerShell and ssh into your pi once more.
 . Enter the following command to test the turn on function for an LED light:
 +
-"curl http://localhost:8080/led/ledOn"
+[source, bash]
+----
+curl http://localhost:8080/led/ledOn
+----
+
 . If this command works and the LED has lit up, congratulations! You have successfully built and run one of our components!
 
 ==== Enabling Different Communication Protocols
