@@ -101,7 +101,6 @@ scp Demo_Pi4Micronaut-0.1-all.jar {username}@{hostname}:~
 ----
 scp Demo_Pi4Micronaut-0.1-all.jar test@raspberrypi-test:~
 ----
-
 +
 image:Copying_Jar_File_To_Pi.png[]
 
