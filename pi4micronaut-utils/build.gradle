@@ -35,7 +35,6 @@ java {
     targetCompatibility = JavaVersion.toVersion("17")
 }
 
-tasks.build.dependsOn tasks.shadowJar
 
 tasks.named('build').configure {
     dependsOn 'javadoc'
