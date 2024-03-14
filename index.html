@@ -394,16 +394,22 @@ pre.rouge .nv, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi, pre.rouge .vm {
 <ul class="sectlevel1">
 <li><a href="#_introduction">1. Introduction</a>
 <ul class="sectlevel2">
-<li><a href="#_currently_supported_hardware">1.1. Currently Supported Hardware</a></li>
-<li><a href="#_getting_started_with_pi4micronaut">1.2. Getting Started With Pi4Micronaut!</a>
+<li><a href="#_how_to_use_the_pi4micronaut_library">1.1. How to use the Pi4Micronaut library</a>
 <ul class="sectlevel3">
-<li><a href="#_prerequisites">1.2.1. Prerequisites</a></li>
-<li><a href="#_set_up_raspberry_pi_os">1.2.2. Set up Raspberry Pi OS</a></li>
-<li><a href="#_connecting_to_raspberry_pi">1.2.3. Connecting to Raspberry Pi</a></li>
-<li><a href="#_installing_java">1.2.4. Installing Java</a></li>
-<li><a href="#_build_and_copy_over_jar_file">1.2.5. Build and Copy Over Jar File</a></li>
-<li><a href="#_almost_done">1.2.6. Almost Done!</a></li>
-<li><a href="#_enabling_different_communication_protocols">1.2.7. Enabling Different Communication Protocols</a></li>
+<li><a href="#_creating_a_micronaut_project">1.1.1. Creating A Micronaut Project</a></li>
+<li><a href="#_add_dependency">1.1.2. Add Dependency</a></li>
+<li><a href="#_setup_configuration">1.1.3. Setup Configuration</a></li>
+<li><a href="#_creating_component_class">1.1.4. Creating Component Class</a></li>
+</ul>
+</li>
+<li><a href="#_build_and_run_the_jar_file_on_raspberry_pi">1.2. Build and Run the Jar File on Raspberry Pi</a>
+<ul class="sectlevel3">
+<li><a href="#_set_up_raspberry_pi_os">1.2.1. Set up Raspberry Pi OS</a></li>
+<li><a href="#_connecting_to_raspberry_pi">1.2.2. Connecting to Raspberry Pi</a></li>
+<li><a href="#_installing_java">1.2.3. Installing Java</a></li>
+<li><a href="#_build_and_copy_over_jar_file">1.2.4. Build and Copy Over Jar File</a></li>
+<li><a href="#_almost_done">1.2.5. Almost Done!</a></li>
+<li><a href="#_enabling_different_communication_protocols">1.2.6. Enabling Different Communication Protocols</a></li>
 </ul>
 </li>
 <li><a href="#_example_applications">1.3. Example Applications</a>
@@ -413,39 +419,40 @@ pre.rouge .nv, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi, pre.rouge .vm {
 </li>
 </ul>
 </li>
-<li><a href="#_contribute_to_the_pi4micronaut_library">2. Contribute to the Pi4Micronaut Library</a>
+<li><a href="#_currently_supported_hardware">2. Currently Supported Hardware</a></li>
+<li><a href="#_contribute_to_the_pi4micronaut_library">3. Contribute to the Pi4Micronaut Library</a>
 <ul class="sectlevel2">
-<li><a href="#_how_to_create_a_new_component">2.1. How to Create a New Component</a></li>
+<li><a href="#_how_to_create_a_new_component">3.1. How to Create a New Component</a></li>
 </ul>
 </li>
-<li><a href="#_adding_tocreating_an_application">3. Adding to/Creating an Application</a></li>
-<li><a href="#_using_the_library">4. Using the library</a></li>
-<li><a href="#_components">5. Components</a>
+<li><a href="#_adding_tocreating_an_application">4. Adding to/Creating an Application</a></li>
+<li><a href="#_using_the_library">5. Using the library</a></li>
+<li><a href="#_components">6. Components</a>
 <ul class="sectlevel2">
-<li><a href="#_communicating_with_a_hardware_component">5.1. Communicating with a Hardware Component</a>
+<li><a href="#_communicating_with_a_hardware_component">6.1. Communicating with a Hardware Component</a>
 <ul class="sectlevel3">
-<li><a href="#_digital_input">5.1.1. Digital Input</a></li>
-<li><a href="#_digital_output">5.1.2. Digital Output</a></li>
-<li><a href="#_multipin_configurations">5.1.3. Multipin Configurations</a></li>
-<li><a href="#_pwm">5.1.4. PWM</a></li>
-<li><a href="#_spi">5.1.5. SPI</a></li>
-<li><a href="#_i2c">5.1.6. I2C</a></li>
+<li><a href="#_digital_input">6.1.1. Digital Input</a></li>
+<li><a href="#_digital_output">6.1.2. Digital Output</a></li>
+<li><a href="#_multipin_configurations">6.1.3. Multipin Configurations</a></li>
+<li><a href="#_pwm">6.1.4. PWM</a></li>
+<li><a href="#_spi">6.1.5. SPI</a></li>
+<li><a href="#_i2c">6.1.6. I2C</a></li>
 </ul>
 </li>
-<li><a href="#_input_components">5.2. Input Components</a>
+<li><a href="#_input_components">6.2. Input Components</a>
 <ul class="sectlevel3">
-<li><a href="#_push_button">5.2.1. Push Button</a></li>
-<li><a href="#_slide_switch">5.2.2. Slide Switch</a></li>
-<li><a href="#_rotary_encoder">5.2.3. Rotary Encoder</a></li>
-<li><a href="#_rfid_scanner">5.2.4. RFID Scanner</a></li>
-<li><a href="#_photosensor">5.2.5. Photosensor</a></li>
+<li><a href="#_push_button">6.2.1. Push Button</a></li>
+<li><a href="#_slide_switch">6.2.2. Slide Switch</a></li>
+<li><a href="#_rotary_encoder">6.2.3. Rotary Encoder</a></li>
+<li><a href="#_rfid_scanner">6.2.4. RFID Scanner</a></li>
+<li><a href="#_photosensor">6.2.5. Photosensor</a></li>
 </ul>
 </li>
-<li><a href="#_output_components">5.3. Output Components</a>
+<li><a href="#_output_components">6.3. Output Components</a>
 <ul class="sectlevel3">
-<li><a href="#_led">5.3.1. LED</a></li>
-<li><a href="#_rgb_led">5.3.2. RGB LED</a></li>
-<li><a href="#_lcd1602">5.3.3. LCD1602</a></li>
+<li><a href="#_led">6.3.1. LED</a></li>
+<li><a href="#_rgb_led">6.3.2. RGB LED</a></li>
+<li><a href="#_lcd1602">6.3.3. LCD1602</a></li>
 </ul>
 </li>
 </ul>
@@ -478,78 +485,131 @@ pre.rouge .nv, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi, pre.rouge .vm {
 <p>By reading through our documentation, you will learn how to implement our library into your application.</p>
 </div>
 <div class="sect2">
-<h3 id="_currently_supported_hardware"><a class="anchor" href="#_currently_supported_hardware"></a>1.1. Currently Supported Hardware</h3>
-<div class="paragraph text-right">
-<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/Introduction/supportedHardware.adoc">Improve this doc</a></p>
-</div>
+<h3 id="_how_to_use_the_pi4micronaut_library"><a class="anchor" href="#_how_to_use_the_pi4micronaut_library"></a>1.1. How to use the Pi4Micronaut library</h3>
 <div class="paragraph">
-<p>If you plan on creating an application using any of the hardware components listed below, then our library is perfect for you!</p>
-</div>
-<div class="paragraph">
-<p>We plan on offering support for many more hardware components in the future. If you have a hardware component you would like to use but can&#8217;t find, feel free to checkout how you can add support for it under "Contributing to the Library"</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Push Button</p>
-</li>
-<li>
-<p>Slide Switch</p>
-</li>
-<li>
-<p>Rotary Encoder</p>
-</li>
-<li>
-<p>RFID Scanner</p>
-</li>
-<li>
-<p>LEDs</p>
-</li>
-<li>
-<p>RGB LEDs</p>
-</li>
-<li>
-<p>LCDs</p>
-</li>
-<li>
-<p>Photosensors</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_getting_started_with_pi4micronaut"><a class="anchor" href="#_getting_started_with_pi4micronaut"></a>1.2. Getting Started With Pi4Micronaut!</h3>
-<div class="paragraph">
-<p>This section describes how to build and run the jar file from the Pi4Micronaut project on your raspberry pi.</p>
-</div>
-<div class="paragraph">
-<p>Note: this is not a tutorial on how to use the Pi4Micronaut library, simply a setup guide.</p>
+<p>This section will walk you through the process of creating a basic
+Micronaut application and the configuration for developing
+with Pi4Micronaut. As a demo, this will include the configuration and sample code.</p>
 </div>
 <div class="sect3">
-<h4 id="_prerequisites"><a class="anchor" href="#_prerequisites"></a>1.2.1. Prerequisites</h4>
+<h4 id="_creating_a_micronaut_project"><a class="anchor" href="#_creating_a_micronaut_project"></a>1.1.1. Creating A Micronaut Project</h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Clone our Github repo onto your system</p>
+<p>Go to Micronaut&#8217;s website <a href="https://micronaut.io/launch/">here</a>.</p>
+</li>
+<li>
+<p>Make sure you have selected Micronaut version 3.10.1 or lower with Java version 17.</p>
+</li>
+<li>
+<p>Click Generate Project and download the zip.</p>
+</li>
+<li>
+<p>Export the contents of the zip file and open it in IntelliJ or any IDE of your choice.</p>
 <div class="paragraph">
-<p><a href="https://github.com/oss-slu/Pi4Micronaut/tree/main" class="bare">https://github.com/oss-slu/Pi4Micronaut/tree/main</a></p>
+<p>It should look like:
+<span class="image"><img src="img/Using_Micronaut.png" alt="Using Micronaut"></span></p>
 </div>
 </li>
 </ol>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_set_up_raspberry_pi_os"><a class="anchor" href="#_set_up_raspberry_pi_os"></a>1.2.2. Set up Raspberry Pi OS</h4>
+<h4 id="_add_dependency"><a class="anchor" href="#_add_dependency"></a>1.1.2. Add Dependency</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Go to the build.gradle file and find the dependencies.</p>
+</li>
+<li>
+<p>Add the Pi4Micronaut dependency to the list.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="gradle"><span class="n">implementation</span><span class="o">(</span><span class="s2">"io.github.oss-slu:pi4micronaut-utils:v1.0:all"</span><span class="o">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It should look like:
+<span class="image"><img src="img/Adding_Dependency.png" alt="Adding Dependency"></span></p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_setup_configuration"><a class="anchor" href="#_setup_configuration"></a>1.1.3. Setup Configuration</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Go to the application.yml file and add the configuration of your circuit setup:</p>
+<div class="paragraph">
+<p>path: Demo_Pi4Micronaut/src/main/resources/application.yml</p>
+</div>
+</li>
+<li>
+<p>Create a new tree in the yml file as shown below.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">pi4j</span><span class="pi">:</span>
+    <span class="na">digital-output</span><span class="pi">:</span>
+        <span class="na">led</span><span class="pi">:</span>
+            <span class="na">name</span><span class="pi">:</span> <span class="s">LED</span>
+            <span class="na">address</span><span class="pi">:</span> <span class="m">17</span>
+            <span class="na">shutdown</span><span class="pi">:</span> <span class="s">LOW</span>
+            <span class="na">initial</span><span class="pi">:</span> <span class="s">LOW</span>
+            <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-digital-output</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here we are specifying a led as a digital output type with name LED, address 17, etc.
+For more information on the LED setup guide, see our documentation <a href="https://oss-slu.github.io/Pi4Micronaut/#_led">here</a>.</p>
+</div>
+<div class="paragraph">
+<p>It should look like:
+<span class="image"><img src="img/Add_Configuration.png" alt="Add Configuration"></span></p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_creating_component_class"><a class="anchor" href="#_creating_component_class"></a>1.1.4. Creating Component Class</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create a new class in the project&#8217;s src directory as shown below.</p>
+<div class="paragraph">
+<p>path: Demo_Pi4Micronaut/src/main/java/com.demoPi4Micronaut</p>
+</div>
+<div class="paragraph">
+<p>This is where you use the implemented LED functions from Pi4Micronaut library.</p>
+</div>
+</li>
+<li>
+<p>Our example code is:</p>
+<div class="paragraph">
+<p><span class="image"><img src="img/Add_Class.png" alt="Add Class"></span></p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_build_and_run_the_jar_file_on_raspberry_pi"><a class="anchor" href="#_build_and_run_the_jar_file_on_raspberry_pi"></a>1.2. Build and Run the Jar File on Raspberry Pi</h3>
+<div class="paragraph">
+<p>This section describes how to build and run the jar file from the Pi4Micronaut project demo on your raspberry pi.</p>
+</div>
+<div class="sect3">
+<h4 id="_set_up_raspberry_pi_os"><a class="anchor" href="#_set_up_raspberry_pi_os"></a>1.2.1. Set up Raspberry Pi OS</h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
 <p>Start by installing the Raspberry Pi Imager</p>
 </li>
 <li>
-<p>To install the Imager, follow this guide by the Raspberry Pi Foundation:</p>
-<div class="paragraph">
-<p><a href="https://www.raspberrypi.com/documentation/computers/getting-started.html#install-using-imager" class="bare">https://www.raspberrypi.com/documentation/computers/getting-started.html#install-using-imager</a></p>
-</div>
+<p>To install the Imager, follow this guide by the Raspberry Pi Foundation
+<a href="https://www.raspberrypi.com/documentation/computers/getting-started.html#install-using-imager">here</a>.</p>
 <div class="paragraph">
 <p>Note: use the same wifi network for your raspberry pi that your system is connected to</p>
 </div>
@@ -571,7 +631,7 @@ pre.rouge .nv, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi, pre.rouge .vm {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_connecting_to_raspberry_pi"><a class="anchor" href="#_connecting_to_raspberry_pi"></a>1.2.3. Connecting to Raspberry Pi</h4>
+<h4 id="_connecting_to_raspberry_pi"><a class="anchor" href="#_connecting_to_raspberry_pi"></a>1.2.2. Connecting to Raspberry Pi</h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -600,10 +660,8 @@ pre.rouge .nv, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi, pre.rouge .vm {
 <li>
 <p>Using the IP address of your Pi:</p>
 <div class="paragraph">
-<p>Follow the instructions outlined in this article:</p>
-</div>
-<div class="paragraph">
-<p><a href="https://docs.sunfounder.com/projects/picar-s/en/latest/get_started_with_raspberry_pi.html#get-the-ip-address" class="bare">https://docs.sunfounder.com/projects/picar-s/en/latest/get_started_with_raspberry_pi.html#get-the-ip-address</a></p>
+<p>Follow the instructions outlined in this article
+<a href="https://docs.sunfounder.com/projects/picar-s/en/latest/get_started_with_raspberry_pi.html#get-the-ip-address">here</a>.</p>
 </div>
 </li>
 </ol>
@@ -613,7 +671,7 @@ pre.rouge .nv, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi, pre.rouge .vm {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_installing_java"><a class="anchor" href="#_installing_java"></a>1.2.4. Installing Java</h4>
+<h4 id="_installing_java"><a class="anchor" href="#_installing_java"></a>1.2.3. Installing Java</h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -653,14 +711,14 @@ pre.rouge .nv, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi, pre.rouge .vm {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_build_and_copy_over_jar_file"><a class="anchor" href="#_build_and_copy_over_jar_file"></a>1.2.5. Build and Copy Over Jar File</h4>
+<h4 id="_build_and_copy_over_jar_file"><a class="anchor" href="#_build_and_copy_over_jar_file"></a>1.2.4. Build and Copy Over Jar File</h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
 <p>Open your terminal of choice</p>
 </li>
 <li>
-<p>Navigate to the Pi4Micronaut root directory</p>
+<p>Navigate to the project root directory</p>
 </li>
 <li>
 <p>Enter the following command into the terminal to build the jar file:</p>
@@ -669,25 +727,34 @@ pre.rouge .nv, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi, pre.rouge .vm {
 <pre class="rouge highlight"><code data-lang="bash">./gradlew build</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p><span class="image"><img src="img/build.png" alt="build"></span></p>
+</div>
 </li>
 <li>
-<p>The necessary components jar file can be found under "../Pi4Micronaut/components/build/libs/"</p>
+<p>The necessary jar file can be found under "Demo_Pi4Micronaut/build/libs/Demo_Pi4Micronaut-0.1-all.jar"</p>
+<div class="paragraph">
+<p><span class="image"><img src="img/Locate_Jar_File.png" alt="Locate Jar File"></span></p>
+</div>
 </li>
 <li>
 <p>Once you have navigated to this directory, enter the following command:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="bash">scp components-0.1-all.jar <span class="o">{</span>username<span class="o">}</span>@<span class="o">{</span><span class="nb">hostname</span><span class="o">}</span>:~</code></pre>
+<pre class="rouge highlight"><code data-lang="bash">scp Demo_Pi4Micronaut-0.1-all.jar <span class="o">{</span>username<span class="o">}</span>@<span class="o">{</span><span class="nb">hostname</span><span class="o">}</span>:~</code></pre>
 </div>
 </div>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Following our configuration from earlier, this would look like</p>
+<p>Here is an example command, that looks like</p>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="bash">scp components-0.1-all.jar <span class="nb">test</span>@raspberrypi-test:~</code></pre>
+<pre class="rouge highlight"><code data-lang="bash">scp Demo_Pi4Micronaut-0.1-all.jar <span class="nb">test</span>@raspberrypi-test:~</code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="img/Copying_Jar_File_To_Pi.png" alt="Copying Jar File To Pi"></span></p>
 </div>
 </li>
 </ol>
@@ -697,57 +764,54 @@ pre.rouge .nv, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi, pre.rouge .vm {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_almost_done"><a class="anchor" href="#_almost_done"></a>1.2.6. Almost Done!</h4>
+<h4 id="_almost_done"><a class="anchor" href="#_almost_done"></a>1.2.5. Almost Done!</h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>To test if you&#8217;ve set up Pi4Micronaut correctly on your raspberry pi, we have some sample commands for you run.</p>
+<p>To test if you&#8217;ve set up everything correctly on your raspberry pi, we have some sample commands for you to run.</p>
 </li>
 <li>
-<p>Open a new Windows Powershell and ssh into your raspberry pi.</p>
+<p>Open a new terminal and ssh into your raspberry pi.</p>
 </li>
 <li>
 <p>Enter the following command to run the jar file:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="bash"><span class="nb">sudo </span>java <span class="nt">-jar</span> components-0.1-all.jar</code></pre>
+<pre class="rouge highlight"><code data-lang="bash"><span class="nb">sudo </span>java <span class="nt">-jar</span> Demo_Pi4Micronaut-0.1-all.jar</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>The output should look like this:</p>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="img/running_jar.png" alt="running jar">
-</div>
+<div class="paragraph">
+<p><span class="image"><img src="img/SSH_to_Pi_And_Run_Jar_File.png" alt="SSH to Pi And Run Jar File"></span></p>
 </div>
 <div class="paragraph">
 <p>With this, a Micronaut localhost server will start running on your machine</p>
 </div>
 </li>
 <li>
-<p>Let&#8217;s test one of the components. Take a look at our documentation for setting up the LED component:</p>
-<div class="paragraph">
-<p><a href="https://oss-slu.github.io/Pi4Micronaut/#_led" class="bare">https://oss-slu.github.io/Pi4Micronaut/#_led</a></p>
-</div>
+<p>Let&#8217;s test the <a href="https://oss-slu.github.io/Pi4Micronaut/#_led">LED</a> component which you have setup.</p>
 </li>
 <li>
-<p>After getting everything set up, open up a new PowerShell and ssh into your pi once more.</p>
+<p>After getting everything set up, open up a new terminal and ssh into your pi once more.</p>
 </li>
 <li>
 <p>Enter the following command to test the turn on function for an LED light:</p>
-<div class="paragraph">
-<p>"curl <a href="http://localhost:8080/led/ledOn"" class="bare">http://localhost:8080/led/ledOn"</a></p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="bash">curl http://localhost:8080/led/ledOn</code></pre>
+</div>
 </div>
 </li>
 <li>
-<p>If this command works and the LED has lit up, congratulations! You have successfully built and run one of our components!</p>
+<p>If this command works and the LED has lit up, congratulations! You have successfully built and ran one of our components!</p>
 </li>
 </ol>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_enabling_different_communication_protocols"><a class="anchor" href="#_enabling_different_communication_protocols"></a>1.2.7. Enabling Different Communication Protocols</h4>
+<h4 id="_enabling_different_communication_protocols"><a class="anchor" href="#_enabling_different_communication_protocols"></a>1.2.6. Enabling Different Communication Protocols</h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -802,7 +866,64 @@ pre.rouge .nv, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi, pre.rouge .vm {
 </div>
 </div>
 <div class="sect1">
-<h2 id="_contribute_to_the_pi4micronaut_library"><a class="anchor" href="#_contribute_to_the_pi4micronaut_library"></a>2. Contribute to the Pi4Micronaut Library</h2>
+<h2 id="_currently_supported_hardware"><a class="anchor" href="#_currently_supported_hardware"></a>2. Currently Supported Hardware</h2>
+<div class="sectionbody">
+<div class="paragraph text-right">
+<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/Introduction/supportedHardware.adoc">Improve this doc</a></p>
+</div>
+<div class="paragraph">
+<p>If you plan on creating an application using any of the hardware components listed below, then our library is perfect for you!</p>
+</div>
+<div class="paragraph">
+<p>We plan on offering support for many more hardware components in the future. If you have a hardware component you would like to use but can&#8217;t find, feel free to checkout how you can add support for it under "Contributing to the Library"</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Push Button</p>
+</li>
+<li>
+<p>Slide Switch</p>
+</li>
+<li>
+<p>Rotary Encoder</p>
+</li>
+<li>
+<p>RFID Scanner</p>
+</li>
+<li>
+<p>LED</p>
+</li>
+<li>
+<p>RGB LED</p>
+</li>
+<li>
+<p>LCD Screen</p>
+</li>
+<li>
+<p>Photosensor</p>
+</li>
+<li>
+<p>Touch Switch Sensor</p>
+</li>
+<li>
+<p>Active Buzzer</p>
+</li>
+<li>
+<p>Passive Buzzer</p>
+</li>
+<li>
+<p>PIR Motion Sensor</p>
+</li>
+<li>
+<p>Ultrasonic Sensor</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_contribute_to_the_pi4micronaut_library"><a class="anchor" href="#_contribute_to_the_pi4micronaut_library"></a>3. Contribute to the Pi4Micronaut Library</h2>
 <div class="sectionbody">
 <div class="olist arabic">
 <ol class="arabic">
@@ -993,7 +1114,7 @@ Be open to suggestions and make necessary revisions.</p>
 <p>Thanks for considering a contribution to the Pi4Micronaut library! Your involvement helps make the project better for everyone.</p>
 </div>
 <div class="sect2">
-<h3 id="_how_to_create_a_new_component"><a class="anchor" href="#_how_to_create_a_new_component"></a>2.1. How to Create a New Component</h3>
+<h3 id="_how_to_create_a_new_component"><a class="anchor" href="#_how_to_create_a_new_component"></a>3.1. How to Create a New Component</h3>
 <div class="paragraph text-right">
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/contribute/newComponent.adoc">Improve this doc</a></p>
 </div>
@@ -1093,7 +1214,7 @@ Be open to suggestions and make necessary revisions.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_adding_tocreating_an_application"><a class="anchor" href="#_adding_tocreating_an_application"></a>3. Adding to/Creating an Application</h2>
+<h2 id="_adding_tocreating_an_application"><a class="anchor" href="#_adding_tocreating_an_application"></a>4. Adding to/Creating an Application</h2>
 <div class="sectionbody">
 <div class="paragraph text-right">
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/adding_creating_App.adoc">Improve this doc</a></p>
@@ -1105,7 +1226,7 @@ TODO: outline how someone should add our jar to their exsisting application</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_using_the_library"><a class="anchor" href="#_using_the_library"></a>4. Using the library</h2>
+<h2 id="_using_the_library"><a class="anchor" href="#_using_the_library"></a>5. Using the library</h2>
 <div class="sectionbody">
 <div class="paragraph text-right">
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/usingLibrary.adoc">Improve this doc</a></p>
@@ -1116,13 +1237,13 @@ TODO: outline how someone should add our jar to their exsisting application</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_components"><a class="anchor" href="#_components"></a>5. Components</h2>
+<h2 id="_components"><a class="anchor" href="#_components"></a>6. Components</h2>
 <div class="sectionbody">
 <div class="paragraph text-right">
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components.adoc">Improve this doc</a></p>
 </div>
 <div class="sect2">
-<h3 id="_communicating_with_a_hardware_component"><a class="anchor" href="#_communicating_with_a_hardware_component"></a>5.1. Communicating with a Hardware Component</h3>
+<h3 id="_communicating_with_a_hardware_component"><a class="anchor" href="#_communicating_with_a_hardware_component"></a>6.1. Communicating with a Hardware Component</h3>
 <div class="paragraph text-right">
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/commun_WithHardware.adoc">Improve this doc</a></p>
 </div>
@@ -1131,7 +1252,7 @@ TODO: outline how someone should add our jar to their exsisting application</p>
 TODO: Consolidate the format and include examples of how each comm type is used</p>
 </div>
 <div class="sect3">
-<h4 id="_digital_input"><a class="anchor" href="#_digital_input"></a>5.1.1. Digital Input</h4>
+<h4 id="_digital_input"><a class="anchor" href="#_digital_input"></a>6.1.1. Digital Input</h4>
 <div class="paragraph text-right">
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/commun_WithHardware/digitalInput.adoc">Improve this doc</a></p>
 </div>
@@ -1198,7 +1319,7 @@ Each component will need</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_digital_output"><a class="anchor" href="#_digital_output"></a>5.1.2. Digital Output</h4>
+<h4 id="_digital_output"><a class="anchor" href="#_digital_output"></a>6.1.2. Digital Output</h4>
 <div class="paragraph text-right">
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/commun_WithHardware/digitalOutput.adoc">Improve this doc</a></p>
 </div>
@@ -1265,7 +1386,7 @@ Each component will need</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_multipin_configurations"><a class="anchor" href="#_multipin_configurations"></a>5.1.3. Multipin Configurations</h4>
+<h4 id="_multipin_configurations"><a class="anchor" href="#_multipin_configurations"></a>6.1.3. Multipin Configurations</h4>
 <div class="paragraph text-right">
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/commun_WithHardware/multipinConfig.adoc">Improve this doc</a></p>
 </div>
@@ -1378,7 +1499,7 @@ Each class of multipin component (Digital Input, PWM), is declared slightly diff
 </div>
 </div>
 <div class="sect3">
-<h4 id="_pwm"><a class="anchor" href="#_pwm"></a>5.1.4. PWM</h4>
+<h4 id="_pwm"><a class="anchor" href="#_pwm"></a>6.1.4. PWM</h4>
 <div class="paragraph text-right">
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/commun_WithHardware/pwm.adoc">Improve this doc</a></p>
 </div>
@@ -1447,7 +1568,7 @@ Each component will need</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_spi"><a class="anchor" href="#_spi"></a>5.1.5. SPI</h4>
+<h4 id="_spi"><a class="anchor" href="#_spi"></a>6.1.5. SPI</h4>
 <div class="paragraph text-right">
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/commun_WithHardware/spi.adoc">Improve this doc</a></p>
 </div>
@@ -1490,7 +1611,7 @@ Each component will need</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_i2c"><a class="anchor" href="#_i2c"></a>5.1.6. I2C</h4>
+<h4 id="_i2c"><a class="anchor" href="#_i2c"></a>6.1.6. I2C</h4>
 <div class="paragraph text-right">
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/commun_WithHardware/i2c.adoc">Improve this doc</a></p>
 </div>
@@ -1528,12 +1649,12 @@ Each component will need</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_input_components"><a class="anchor" href="#_input_components"></a>5.2. Input Components</h3>
+<h3 id="_input_components"><a class="anchor" href="#_input_components"></a>6.2. Input Components</h3>
 <div class="paragraph text-right">
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/inputComponents.adoc">Improve this doc</a></p>
 </div>
 <div class="sect3">
-<h4 id="_push_button"><a class="anchor" href="#_push_button"></a>5.2.1. Push Button</h4>
+<h4 id="_push_button"><a class="anchor" href="#_push_button"></a>6.2.1. Push Button</h4>
 <div class="paragraph text-right">
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/inputComponents/pushButton.adoc">Improve this doc</a></p>
 </div>
@@ -1698,7 +1819,7 @@ adjust according to your power source and LED specifications</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_slide_switch"><a class="anchor" href="#_slide_switch"></a>5.2.2. Slide Switch</h4>
+<h4 id="_slide_switch"><a class="anchor" href="#_slide_switch"></a>6.2.2. Slide Switch</h4>
 <div class="paragraph text-right">
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/inputComponents/slideSwitch.adoc">Improve this doc</a></p>
 </div>
@@ -1863,7 +1984,7 @@ adjust according to your power source and LED specifications</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_rotary_encoder"><a class="anchor" href="#_rotary_encoder"></a>5.2.3. Rotary Encoder</h4>
+<h4 id="_rotary_encoder"><a class="anchor" href="#_rotary_encoder"></a>6.2.3. Rotary Encoder</h4>
 <div class="paragraph text-right">
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/inputComponents/rotaryEncoder.adoc">Improve this doc</a></p>
 </div>
@@ -2047,7 +2168,7 @@ to the correct GPIO pins according to the YAML pin order below.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_rfid_scanner"><a class="anchor" href="#_rfid_scanner"></a>5.2.4. RFID Scanner</h4>
+<h4 id="_rfid_scanner"><a class="anchor" href="#_rfid_scanner"></a>6.2.4. RFID Scanner</h4>
 <div class="paragraph text-right">
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/inputComponents/rfidScanner.adoc">Improve this doc</a></p>
 </div>
@@ -2199,7 +2320,7 @@ to the correct GPIO pins according to the YAML pin order below.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_photosensor"><a class="anchor" href="#_photosensor"></a>5.2.5. Photosensor</h4>
+<h4 id="_photosensor"><a class="anchor" href="#_photosensor"></a>6.2.5. Photosensor</h4>
 <div class="paragraph text-right">
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/inputComponents/photosensor.adoc">Improve this doc</a></p>
 </div>
@@ -2209,12 +2330,12 @@ to the correct GPIO pins according to the YAML pin order below.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_output_components"><a class="anchor" href="#_output_components"></a>5.3. Output Components</h3>
+<h3 id="_output_components"><a class="anchor" href="#_output_components"></a>6.3. Output Components</h3>
 <div class="paragraph text-right">
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/outputComponents.adoc">Improve this doc</a></p>
 </div>
 <div class="sect3">
-<h4 id="_led"><a class="anchor" href="#_led"></a>5.3.1. LED</h4>
+<h4 id="_led"><a class="anchor" href="#_led"></a>6.3.1. LED</h4>
 <div class="paragraph text-right">
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/outputComponents/led.adoc">Improve this doc</a></p>
 </div>
@@ -2357,7 +2478,7 @@ as well as the LED specifications.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_rgb_led"><a class="anchor" href="#_rgb_led"></a>5.3.2. RGB LED</h4>
+<h4 id="_rgb_led"><a class="anchor" href="#_rgb_led"></a>6.3.2. RGB LED</h4>
 <div class="paragraph text-right">
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/outputComponents/rgbLed.adoc">Improve this doc</a></p>
 </div>
@@ -2616,7 +2737,7 @@ adjust according to your power source and LED specifications</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_lcd1602"><a class="anchor" href="#_lcd1602"></a>5.3.3. LCD1602</h4>
+<h4 id="_lcd1602"><a class="anchor" href="#_lcd1602"></a>6.3.3. LCD1602</h4>
 <div class="paragraph text-right">
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/outputComponents/lcdScreen.adoc">Improve this doc</a></p>
 </div>
@@ -2873,7 +2994,7 @@ adjust according to your power source and LED specifications</p>
 <div id="footer">
 <div id="footer-text">
 Version v1.0<br>
-Last updated 2024-03-13 23:39:04 UTC
+Last updated 2024-03-14 03:39:19 UTC
 </div>
 </div>
 </body>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.18">
-<title>Getting Started With Pi4Micronaut!</title>
+<title>Build and Run the Jar File on Raspberry Pi</title>
 <style>
 body {
 	font-family: sans-serif;
@@ -207,25 +207,9 @@ th {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="_getting_started_with_pi4micronaut">Getting Started With Pi4Micronaut!</h3>
+<h3 id="_build_and_run_the_jar_file_on_raspberry_pi">Build and Run the Jar File on Raspberry Pi</h3>
 <div class="paragraph">
-<p>This section describes how to build and run the jar file from the Pi4Micronaut project on your raspberry pi.</p>
-</div>
-<div class="paragraph">
-<p>Note: this is not a tutorial on how to use the Pi4Micronaut library, simply a setup guide.</p>
-</div>
-<div class="sect3">
-<h4 id="_prerequisites">Prerequisites</h4>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Clone our Github repo onto your system</p>
-<div class="paragraph">
-<p><a href="https://github.com/oss-slu/Pi4Micronaut/tree/main" class="bare">https://github.com/oss-slu/Pi4Micronaut/tree/main</a></p>
-</div>
-</li>
-</ol>
-</div>
+<p>This section describes how to build and run the jar file from the Pi4Micronaut project demo on your raspberry pi.</p>
 </div>
 <div class="sect3">
 <h4 id="_set_up_raspberry_pi_os">Set up Raspberry Pi OS</h4>
@@ -235,10 +219,8 @@ th {
 <p>Start by installing the Raspberry Pi Imager</p>
 </li>
 <li>
-<p>To install the Imager, follow this guide by the Raspberry Pi Foundation:</p>
-<div class="paragraph">
-<p><a href="https://www.raspberrypi.com/documentation/computers/getting-started.html#install-using-imager" class="bare">https://www.raspberrypi.com/documentation/computers/getting-started.html#install-using-imager</a></p>
-</div>
+<p>To install the Imager, follow this guide by the Raspberry Pi Foundation
+<a href="https://www.raspberrypi.com/documentation/computers/getting-started.html#install-using-imager">here</a>.</p>
 <div class="paragraph">
 <p>Note: use the same wifi network for your raspberry pi that your system is connected to</p>
 </div>
@@ -289,10 +271,8 @@ th {
 <li>
 <p>Using the IP address of your Pi:</p>
 <div class="paragraph">
-<p>Follow the instructions outlined in this article:</p>
-</div>
-<div class="paragraph">
-<p><a href="https://docs.sunfounder.com/projects/picar-s/en/latest/get_started_with_raspberry_pi.html#get-the-ip-address" class="bare">https://docs.sunfounder.com/projects/picar-s/en/latest/get_started_with_raspberry_pi.html#get-the-ip-address</a></p>
+<p>Follow the instructions outlined in this article
+<a href="https://docs.sunfounder.com/projects/picar-s/en/latest/get_started_with_raspberry_pi.html#get-the-ip-address">here</a>.</p>
 </div>
 </li>
 </ol>
@@ -349,7 +329,7 @@ sudo apt-get upgrade -y</code></pre>
 <p>Open your terminal of choice</p>
 </li>
 <li>
-<p>Navigate to the Pi4Micronaut root directory</p>
+<p>Navigate to the project root directory</p>
 </li>
 <li>
 <p>Enter the following command into the terminal to build the jar file:</p>
@@ -358,25 +338,34 @@ sudo apt-get upgrade -y</code></pre>
 <pre class="highlight"><code class="language-bash" data-lang="bash">./gradlew build</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/build.png" alt="build"></span></p>
+</div>
 </li>
 <li>
-<p>The necessary components jar file can be found under "../Pi4Micronaut/components/build/libs/"</p>
+<p>The necessary jar file can be found under "Demo_Pi4Micronaut/build/libs/Demo_Pi4Micronaut-0.1-all.jar"</p>
+<div class="paragraph">
+<p><span class="image"><img src="../img/Locate_Jar_File.png" alt="Locate Jar File"></span></p>
+</div>
 </li>
 <li>
 <p>Once you have navigated to this directory, enter the following command:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">scp components-0.1-all.jar {username}@{hostname}:~</code></pre>
+<pre class="highlight"><code class="language-bash" data-lang="bash">scp Demo_Pi4Micronaut-0.1-all.jar {username}@{hostname}:~</code></pre>
 </div>
 </div>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Following our configuration from earlier, this would look like</p>
+<p>Here is an example command, that looks like</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">scp components-0.1-all.jar test@raspberrypi-test:~</code></pre>
+<pre class="highlight"><code class="language-bash" data-lang="bash">scp Demo_Pi4Micronaut-0.1-all.jar test@raspberrypi-test:~</code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/Copying_Jar_File_To_Pi.png" alt="Copying Jar File To Pi"></span></p>
 </div>
 </li>
 </ol>
@@ -390,47 +379,44 @@ sudo apt-get upgrade -y</code></pre>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>To test if you&#8217;ve set up Pi4Micronaut correctly on your raspberry pi, we have some sample commands for you run.</p>
+<p>To test if you&#8217;ve set up everything correctly on your raspberry pi, we have some sample commands for you to run.</p>
 </li>
 <li>
-<p>Open a new Windows Powershell and ssh into your raspberry pi.</p>
+<p>Open a new terminal and ssh into your raspberry pi.</p>
 </li>
 <li>
 <p>Enter the following command to run the jar file:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">sudo java -jar components-0.1-all.jar</code></pre>
+<pre class="highlight"><code class="language-bash" data-lang="bash">sudo java -jar Demo_Pi4Micronaut-0.1-all.jar</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>The output should look like this:</p>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="../img/running_jar.png" alt="running jar">
-</div>
+<div class="paragraph">
+<p><span class="image"><img src="../img/SSH_to_Pi_And_Run_Jar_File.png" alt="SSH to Pi And Run Jar File"></span></p>
 </div>
 <div class="paragraph">
 <p>With this, a Micronaut localhost server will start running on your machine</p>
 </div>
 </li>
 <li>
-<p>Let&#8217;s test one of the components. Take a look at our documentation for setting up the LED component:</p>
-<div class="paragraph">
-<p><a href="https://oss-slu.github.io/Pi4Micronaut/#_led" class="bare">https://oss-slu.github.io/Pi4Micronaut/#_led</a></p>
-</div>
+<p>Let&#8217;s test the <a href="https://oss-slu.github.io/Pi4Micronaut/#_led">LED</a> component which you have setup.</p>
 </li>
 <li>
-<p>After getting everything set up, open up a new PowerShell and ssh into your pi once more.</p>
+<p>After getting everything set up, open up a new terminal and ssh into your pi once more.</p>
 </li>
 <li>
 <p>Enter the following command to test the turn on function for an LED light:</p>
-<div class="paragraph">
-<p>"curl <a href="http://localhost:8080/led/ledOn"" class="bare">http://localhost:8080/led/ledOn"</a></p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">curl http://localhost:8080/led/ledOn</code></pre>
+</div>
 </div>
 </li>
 <li>
-<p>If this command works and the LED has lit up, congratulations! You have successfully built and run one of our components!</p>
+<p>If this command works and the LED has lit up, congratulations! You have successfully built and ran one of our components!</p>
 </li>
 </ol>
 </div>
@@ -477,7 +463,7 @@ sudo apt-get upgrade -y</code></pre>
 <div id="footer">
 <div id="footer-text">
 Version v1.0<br>
-Last updated 2024-03-13 23:39:04 UTC
+Last updated 2024-03-14 03:39:19 UTC
 </div>
 </div>
 </body>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.18">
-<title>Digital Input</title>
+<title>How to use the Pi4Micronaut library</title>
 <style>
 body {
 	font-family: sans-serif;
@@ -206,60 +206,115 @@ th {
 <div id="header">
 </div>
 <div id="content">
-<div class="sect3">
-<h4 id="_digital_input">Digital Input</h4>
-<div class="paragraph text-right">
-<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/commun_WithHardware/digitalInput.adoc">Improve this doc</a></p>
-</div>
+<div class="sect2">
+<h3 id="_how_to_use_the_pi4micronaut_library">How to use the Pi4Micronaut library</h3>
 <div class="paragraph">
-<p>To define in application.yaml add digital-input as a field under pi4j, then add each component under digital-input
-Each component will need</p>
+<p>This section will walk you through the process of creating a basic
+Micronaut application and the configuration for developing
+with Pi4Micronaut. As a demo, this will include the configuration and sample code.</p>
 </div>
-<div class="ulist">
-<ul>
+<div class="sect3">
+<h4 id="_creating_a_micronaut_project">Creating A Micronaut Project</h4>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p>name: Name of the component</p>
+<p>Go to Micronaut&#8217;s website <a href="https://micronaut.io/launch/">here</a>.</p>
 </li>
 <li>
-<p>address: GPIO pin associated with component</p>
+<p>Make sure you have selected Micronaut version 3.10.1 or lower with Java version 17.</p>
 </li>
 <li>
-<p>debounce:</p>
+<p>Click Generate Project and download the zip.</p>
 </li>
 <li>
-<p>pull: Either PULL_UP or PULL_DOWN depending on component</p>
-</li>
-<li>
-<p>provider: pigpio-digital-input</p>
-</li>
-</ul>
+<p>Export the contents of the zip file and open it in IntelliJ or any IDE of your choice.</p>
+<div class="paragraph">
+<p>It should look like:
+<span class="image"><img src="../img/Using_Micronaut.png" alt="Using Micronaut"></span></p>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-yaml" data-lang="yaml">Unresolved directive in digitalInput.adoc - include::../../../../../../components/src/main/resources/application.yml[tags=digitalInput]</code></pre>
-</div>
-</div>
-<div class="colist arabic">
-<ol>
-<li>
-<p>Component Identifier (Used in @Named annotations)</p>
-</li>
-<li>
-<p>Component Name</p>
-</li>
-<li>
-<p>Address of connected GPIO pin</p>
-</li>
-<li>
-<p>Debounce value</p>
-</li>
-<li>
-<p>Pull value (PULL_UP or PULL_DOWN)</p>
-</li>
-<li>
-<p>Provider (pigpio-digital-input)</p>
 </li>
 </ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_add_dependency">Add Dependency</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Go to the build.gradle file and find the dependencies.</p>
+</li>
+<li>
+<p>Add the Pi4Micronaut dependency to the list.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-gradle" data-lang="gradle">implementation("io.github.oss-slu:pi4micronaut-utils:v1.0:all")</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It should look like:
+<span class="image"><img src="../img/Adding_Dependency.png" alt="Adding Dependency"></span></p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_setup_configuration">Setup Configuration</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Go to the application.yml file and add the configuration of your circuit setup:</p>
+<div class="paragraph">
+<p>path: Demo_Pi4Micronaut/src/main/resources/application.yml</p>
+</div>
+</li>
+<li>
+<p>Create a new tree in the yml file as shown below.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">pi4j:
+    digital-output:
+        led:
+            name: LED
+            address: 17
+            shutdown: LOW
+            initial: LOW
+            provider: pigpio-digital-output</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here we are specifying a led as a digital output type with name LED, address 17, etc.
+For more information on the LED setup guide, see our documentation <a href="https://oss-slu.github.io/Pi4Micronaut/#_led">here</a>.</p>
+</div>
+<div class="paragraph">
+<p>It should look like:
+<span class="image"><img src="../img/Add_Configuration.png" alt="Add Configuration"></span></p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_creating_component_class">Creating Component Class</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create a new class in the project&#8217;s src directory as shown below.</p>
+<div class="paragraph">
+<p>path: Demo_Pi4Micronaut/src/main/java/com.demoPi4Micronaut</p>
+</div>
+<div class="paragraph">
+<p>This is where you use the implemented LED functions from Pi4Micronaut library.</p>
+</div>
+</li>
+<li>
+<p>Our example code is:</p>
+<div class="paragraph">
+<p><span class="image"><img src="../img/Add_Class.png" alt="Add Class"></span></p>
+</div>
+</li>
+</ol>
+</div>
 </div>
 </div>
 </div>
