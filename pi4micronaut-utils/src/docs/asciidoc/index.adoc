@@ -20,11 +20,13 @@ link:javadoc/index.html[API References]
 
 include::introduction.adoc[]
 
-include::Introduction/supportedHardware.adoc[]
+include::Introduction/howToUsePi4Micronaut.adoc[]
 
-include::Introduction/gettingStarted.adoc[]
+include::Introduction/buildAndRun.adoc[]
 
 include::Introduction/exampleApplications.adoc[]
+
+include::Introduction/supportedHardware.adoc[]
 
 include::contribute/contributingToLibrary.adoc[]
 
