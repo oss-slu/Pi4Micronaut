@@ -40,6 +40,7 @@ public class PhotoResistorHelper {
         this.photoResistorInput = sensorInput;
         this.photoResistorOutput = sensorOutput;
         photoResistorOutput.high();
+        sensorActive = true;
         this.isDark = photoResistorInput.isHigh();
     }
     /**
@@ -55,7 +56,6 @@ public class PhotoResistorHelper {
      */
     public void initialize() {
         log.info("Photo Resistor Initialized");
-        sensorActive = true;
         if (sensorActive) {
             ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1);
             executorService.scheduleAtFixedRate(this::updateDark, 0, 500, TimeUnit.MILLISECONDS);

@@ -1,6 +1,7 @@
 .micronaut:
   application:
     name: components
+
 pi4j:
   # tag::spi[]
   spi:
@@ -10,8 +11,9 @@ pi4j:
       baud: 500000          # <4>
       reset-pin: 25         # <5>
   # end::spi[]
+
+  # tag::pwm[]
   pwm:
-    # tag::pwm[]
     red-pwm:                  # <1>
       name: red               # <2>
       address: 17             # <3>
@@ -19,7 +21,6 @@ pi4j:
       provider: pigpio-pwm    # <5>
       initial: 0              # <6>
       shutdown: 0             # <7>
-    # end::pwm[]
     blue-pwm:
       name: blue
       address: 18
@@ -48,22 +49,24 @@ pi4j:
       provider: pigpio-pwm
       initial: 0
       shutdown: 0
+  # end::pwm[]
+
+  # tag::i2c[]
   i2c:
-    # tag::i2c[]
     lcd:                                  # <1>
       name: lcd                           # <2>
       bus: 1                              # <3>
       device: 0x27                        # <4>
-    # end::i2c[]
+  # end::i2c[]
+
+  # tag::digitalInput[]
   digital-input:
-    # tag::digitalInput[]
     photo-resistor-input:                 # <.>
       name: Photo Resistor Input          # <.>
       address: 4                          # <.>
       debounce: 100000                    # <.>
       pull: PULL_DOWN                     # <.>
       provider: pigpio-digital-input      # <.>
-    # end::digitalInput[]
     button-input-1:
       name: Push Button Input
       address: 16
@@ -106,16 +109,22 @@ pi4j:
       pull: PULL_DOWN
       debounce: 30000
       provider: pigpio-digital-input
-  ### DIGITAL OUTPUTS
+    ultra-sonic-echo:
+      name: UltraSonic Sensor Input
+      address: 24
+      pull: PULL_DOWN
+      debounce: 3000
+      provider: pigpio-digital-input
+  # end::digitalInput[]
+
+  # tag::digitalOutput[]
   digital-output:
-    # tag::digitalOutput[]
     led:                                    # <1>
       name: LED Output                      # <2>
       address: 17                           # <3>
       shutdown: LOW                        # <4>
       initial: LOW                         # <5>
       provider: pigpio-digital-output       # <6>
-    # end::digitalOutput[]
     led2:
       name: LED Output
       address: 26
@@ -128,6 +137,14 @@ pi4j:
       shutdown: LOW
       initial: HIGH
       provider: pigpio-digital-output
+    ultra-sonic-trig:
+      name: UltraSonic Sensor Output
+      address: 23
+      shutdown: LOW
+      initial: LOW
+      provider: pigpio-digital-output
+  # end::digitalOutput[]
+
   # tag::multiInput[]
   multi-digital-input:                     # <.>
     rotary-encoder:                        # <.>
@@ -138,7 +155,6 @@ pi4j:
       shutdown: LOW                        # <.>
       initial: HIGH                        # <.>
       provider: pigpio-digital-input       # <.>
-    # end::multiInput[]
     rotary-encoder-2:
       name: Rotary Encoder 2
       addresses: 12, 16, 20
@@ -147,6 +163,8 @@ pi4j:
       shutdown: LOW
       initial: HIGH
       provider: pigpio-digital-input
+  # end::multiInput[]
+
   # tag::multipwm[]
   multi-pwm:
     rgb-led:                                    # <.>
@@ -156,7 +174,6 @@ pi4j:
       provider: pigpio-pwm                      # <.>
       initials: 0, 0, 0                         # <.>
       shutdowns: 0, 0, 0                        # <.>
-    # end::multipwm[]
     rgb-led-2:
       name: RGB LED 2
       addresses: 18, 27, 22
@@ -164,6 +181,9 @@ pi4j:
       provider: pigpio-pwm
       initials: 0, 0, 0
       shutdowns: 0, 0, 0
+  # end::multipwm[]
+
+
 #  clk:
 #    name: CLK Output
 #    address: 23
