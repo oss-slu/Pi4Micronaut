@@ -30,7 +30,7 @@ image:Using_Micronaut.png[]
 +
 [source, gradle]
 ----
-implementation("io.github.oss-slu:pi4micronaut-utils:1.0:all")
+implementation("io.github.oss-slu:pi4micronaut-utils:v1.0:all")
 ----
 +
 It should look like:

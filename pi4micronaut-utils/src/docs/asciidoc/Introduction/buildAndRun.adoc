@@ -85,7 +85,7 @@ sudo apt-get install pigpio
 ----
 +
 image:build.png[]
-. The necessary components jar file can be found under "Demo_Pi4Micronaut/build/libs/Demo_Pi4Micronaut-0.1-all.jar"
+. The necessary jar file can be found under "Demo_Pi4Micronaut/build/libs/Demo_Pi4Micronaut-0.1-all.jar"
 +
 image:Locate_Jar_File.png[]
 . Once you have navigated to this directory, enter the following command:
@@ -95,7 +95,7 @@ image:Locate_Jar_File.png[]
 scp Demo_Pi4Micronaut-0.1-all.jar {username}@{hostname}:~
 ----
 +
-.. Following our configuration from earlier, this would look like
+.. Here is an example command, that looks like
 +
 [source, bash]
 ----
@@ -105,7 +105,7 @@ scp Demo_Pi4Micronaut-0.1-all.jar test@raspberrypi-test:~
 image:Copying_Jar_File_To_Pi.png[]
 
 ==== Almost Done!
-. To test if you've set up everything correctly on your raspberry pi, we have some sample commands for you run.
+. To test if you've set up everything correctly on your raspberry pi, we have some sample commands for you to run.
 . Open a new terminal and ssh into your raspberry pi.
 . Enter the following command to run the jar file:
 +
@@ -122,7 +122,7 @@ With this, a Micronaut localhost server will start running on your machine
 
 .  Let's test the https://oss-slu.github.io/Pi4Micronaut/#_led[LED] component which you have setup.
 
-. After getting everything set up, open up a new PowerShell and ssh into your pi once more.
+. After getting everything set up, open up a new terminal and ssh into your pi once more.
 
 . Enter the following command to test the turn on function for an LED light:
 +
@@ -131,7 +131,7 @@ With this, a Micronaut localhost server will start running on your machine
 curl http://localhost:8080/led/ledOn
 ----
 
-. If this command works and the LED has lit up, congratulations! You have successfully built and run one of our components!
+. If this command works and the LED has lit up, congratulations! You have successfully built and ran one of our components!
 
 ==== Enabling Different Communication Protocols
 . In the Pi4Micronaut library, we have used different communication protocols, such as I2C, SPI, etc.
