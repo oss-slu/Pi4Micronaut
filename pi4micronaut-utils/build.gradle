@@ -35,6 +35,8 @@ java {
     targetCompatibility = JavaVersion.toVersion("17")
 }
 
+tasks.build.dependsOn tasks.shadowJar
+
 tasks.named('build').configure {
     dependsOn 'javadoc'
     copy {
@@ -102,7 +104,7 @@ publishing {
             pom {
                 name = 'pi4micronaut-utils'
                 packaging = 'jar'
-                description = 'A Java-based library that uses the Micronaut framework and Pi4J to simplify the use of electronic components connected to a Raspberry Pi through GPIO '
+                description = 'A Micronaut based library built to simplify using Micronaut with Raspberry Pi and external hardware components'
                 url = "https://github.com/oss-slu/Pi4Micronaut"
 
                 licenses {
@@ -160,11 +162,13 @@ publishing {
             }
         }
     }
+}
 
-    signing {
-        useInMemoryPgpKeys(System.getenv('GPG_KEY'), System.getenv('GPG_PASSWORD'))
+signing {
+    required {
+        def signingKey = project.findProperty('GPG_KEY') ?: System.getenv('GPG_KEY')
+        def signingPassword = project.findProperty('GPG_PASSWORD') ?: System.getenv('GPG_PASSWORD')
+        useInMemoryPgpKeys(signingKey, signingPassword)
         sign publishing.publications.mavenJava
     }
 }
-
-
