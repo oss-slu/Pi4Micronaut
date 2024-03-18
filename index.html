@@ -446,6 +446,7 @@ pre.rouge .nv, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi, pre.rouge .vm {
 <li><a href="#_rotary_encoder">6.2.3. Rotary Encoder</a></li>
 <li><a href="#_rfid_scanner">6.2.4. RFID Scanner</a></li>
 <li><a href="#_photosensor">6.2.5. Photosensor</a></li>
+<li><a href="#_ultrasonic_sensor">6.2.6. Ultrasonic Sensor</a></li>
 </ul>
 </li>
 <li><a href="#_output_components">6.3. Output Components</a>
@@ -2441,6 +2442,195 @@ to the correct GPIO pins according to the YAML pin order below.</p>
 <p>TODO: add in photosensor support docs</p>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_ultrasonic_sensor"><a class="anchor" href="#_ultrasonic_sensor"></a>6.2.6. Ultrasonic Sensor</h4>
+<div class="paragraph text-right">
+<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/inputComponents/ultraSonicSensor.adoc">Improve this doc</a></p>
+</div>
+<div class="sect4">
+<h5 id="_overview_5"><a class="anchor" href="#_overview_5"></a>Overview</h5>
+<div class="paragraph">
+<p>This document provides details of the Ultrasonic Sensor circuit,
+including its components, assembly instructions, and functionality.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_components_6"><a class="anchor" href="#_components_6"></a>Components</h5>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>HC SR04</p>
+</li>
+<li>
+<p>T-Extension Board</p>
+</li>
+<li>
+<p>Breadboard</p>
+</li>
+<li>
+<p>Jumper wires</p>
+</li>
+<li>
+<p>Power source</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_circuit_diagram_5"><a class="anchor" href="#_circuit_diagram_5"></a>Circuit Diagram</h5>
+<div class="paragraph">
+<p>Model:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/ultrasonic_sensor_model.png" alt="ultrasonic sensor model">
+</div>
+</div>
+<div class="paragraph">
+<p>Circuit Diagram:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/ultrasonic_sensor_circuit.png" alt="ultrasonic sensor circuit">
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_functionality_5"><a class="anchor" href="#_functionality_5"></a>Functionality</h5>
+<div class="paragraph">
+<p>The Ultrasonic Sensor uses sound waves to calculate the distance from itself to the surface it is pointed at.
+The resulting measurement is accurate within a range of 3mm of the true measurement.
+The Ultrasonic Sensor&#8217;s signal is stable within 5m of the sensor, gradually weakening until the signal fully disappears at 7m.</p>
+</div>
+<div class="paragraph">
+<p>Some information about the trigger and echo signals (from the sunfounder docs):
+The timing diagram is shown below. You only need to supply a short 10us pulse for the trigger input to start the ranging,
+and then the module will send out an 8 cycle burst of ultrasound at 40 kHz and raise its echo.
+You can calculate the range through the time interval between sending trigger signal and receiving echo signal.</p>
+</div>
+<div class="paragraph">
+<p>Formula: us / 58 = centimeters or us / 148 =inch; or: the range = high level time * velocity (340M/S) / 2;
+you are suggested to use measurement cycle over 60ms in order to prevent signal collisions of trigger signal and the echo signal.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/ultrasonic_sensor_timing_diagram.png" alt="ultrasonic sensor timing diagram">
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_troubleshooting_5"><a class="anchor" href="#_troubleshooting_5"></a>Troubleshooting</h5>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Distance measurements not showing: Check all connections, ensure the sensor is placed correctly,
+and check the power source.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_yaml_pin_order_3"><a class="anchor" href="#_yaml_pin_order_3"></a>YAML Pin Order</h5>
+<div class="paragraph">
+<p>The order for declaring the Trigger Pin for the Ultrasonic Sensor is as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">digital-input</span><span class="pi">:</span>
+  <span class="na">ultra-sonic-trig</span><span class="pi">:</span>
+    <span class="na">address</span><span class="pi">:</span> <span class="s">23</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So the Trigger Pin would be connected to GPIO 23.</p>
+</div>
+<div class="paragraph">
+<p>The order for declaring the Echo Pin for the Ultrasonic Sensor is as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">digital-output</span><span class="pi">:</span>
+  <span class="na">ultra-sonic-echo</span><span class="pi">:</span>
+    <span class="na">address</span><span class="pi">:</span> <span class="s">24</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So the Echo Pin would be connected to GPIO 24.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_constructors_5"><a class="anchor" href="#_constructors_5"></a>Constructors</h5>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">inputComponents</span><span class="o">/</span><span class="n">ultraSonicSensor</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../../../../</span><span class="n">pi4micronaut</span><span class="o">-</span><span class="n">utils</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">inputDevices</span><span class="o">/</span><span class="nc">UltraSonicSensorHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tag</span><span class="o">=</span><span class="kd">const</span><span class="o">]</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_methods_5"><a class="anchor" href="#_methods_5"></a>Methods</h5>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">inputComponents</span><span class="o">/</span><span class="n">ultraSonicSensor</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../../../../</span><span class="n">pi4micronaut</span><span class="o">-</span><span class="n">utils</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">inputDevices</span><span class="o">/</span><span class="nc">UltraSonicSensorHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tags</span><span class="o">=</span><span class="n">method</span><span class="o">]</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_an_example_controller_5"><a class="anchor" href="#_an_example_controller_5"></a>An Example Controller</h5>
+<div class="sect5">
+<h6 id="_this_controller_uses_the_ultrasonic_sensor_to_calculate_distance_from_the_sensor_to_a_surface"><a class="anchor" href="#_this_controller_uses_the_ultrasonic_sensor_to_calculate_distance_from_the_sensor_to_a_surface"></a>This controller uses the Ultrasonic Sensor to calculate distance from the sensor to a surface</h6>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="nd">@Controller</span><span class="o">(</span><span class="s">"/ultraSound"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">UltraSonicSensorController</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">UltraSonicSensorHelper</span> <span class="n">ultraSonicSensorHelper</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">UltraSonicSensorController</span><span class="o">(</span><span class="nd">@Named</span><span class="o">(</span><span class="s">"ultra-sonic-trig"</span><span class="o">)</span> <span class="nc">DigitalOutput</span> <span class="n">trig</span><span class="o">,</span>
+                                      <span class="nd">@Named</span><span class="o">(</span><span class="s">"ultra-sonic-echo"</span><span class="o">)</span> <span class="nc">DigitalInput</span> <span class="n">echo</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">ultraSonicSensorHelper</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">UltraSonicSensorHelper</span><span class="o">(</span><span class="n">trig</span><span class="o">,</span><span class="n">echo</span><span class="o">);</span>
+
+    <span class="o">}</span>
+
+
+    <span class="cm">/**
+     * Enables the ultrasonic sensor
+     */</span>
+    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/enable"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">enableUltraSonicSensor</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">ultraSonicSensorHelper</span><span class="o">.</span><span class="na">startMeasuring</span><span class="o">();</span>
+        <span class="k">return</span> <span class="s">"Ultra Sonic Sensor Enabled \nIf the distance is constantly Zero, make sure the sensor field of view is clear \n"</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+     * Returns distance from object in centimeters
+     */</span>
+    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/distance/cm"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getDistanceInCentimeter</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">ultraSonicSensorHelper</span><span class="o">.</span><span class="na">getDistanceInCentimeter</span><span class="o">()</span> <span class="o">+</span> <span class="s">" cm\n"</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+     * Returns distance from object in meters
+     */</span>
+    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/distance/m"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getDistanceInMeter</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">ultraSonicSensorHelper</span><span class="o">.</span><span class="na">getDistanceInMeters</span><span class="o">()</span> <span class="o">+</span> <span class="s">" m\n"</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+     * Disables ultrasonic sensor
+     */</span>
+    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/disable"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">disableUltrasoundSensor</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">ultraSonicSensorHelper</span><span class="o">.</span><span class="na">stopMeasuring</span><span class="o">();</span>
+        <span class="k">return</span> <span class="s">"Ultra Sonic Sensor Disabled"</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_output_components"><a class="anchor" href="#_output_components"></a>6.3. Output Components</h3>
@@ -2453,13 +2643,13 @@ to the correct GPIO pins according to the YAML pin order below.</p>
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/outputComponents/led.adoc">Improve this doc</a></p>
 </div>
 <div class="sect4">
-<h5 id="_overview_5"><a class="anchor" href="#_overview_5"></a>Overview</h5>
+<h5 id="_overview_6"><a class="anchor" href="#_overview_6"></a>Overview</h5>
 <div class="paragraph">
 <p>This section provides details of the LED, including its components and assembly instructions.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_components_6"><a class="anchor" href="#_components_6"></a>Components</h5>
+<h5 id="_components_7"><a class="anchor" href="#_components_7"></a>Components</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -2518,7 +2708,7 @@ to the correct GPIO pins according to the YAML pin order below.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_circuit_diagram_5"><a class="anchor" href="#_circuit_diagram_5"></a>Circuit Diagram</h5>
+<h5 id="_circuit_diagram_6"><a class="anchor" href="#_circuit_diagram_6"></a>Circuit Diagram</h5>
 <div class="imageblock">
 <div class="content">
 <img src="img/LED_circuit.png" alt="LED circuit">
@@ -2532,7 +2722,7 @@ to the correct GPIO pins according to the YAML pin order below.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_troubleshooting_5"><a class="anchor" href="#_troubleshooting_5"></a>Troubleshooting</h5>
+<h5 id="_troubleshooting_6"><a class="anchor" href="#_troubleshooting_6"></a>Troubleshooting</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -2566,7 +2756,7 @@ as well as the LED specifications.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_constructors_5"><a class="anchor" href="#_constructors_5"></a>Constructors</h5>
+<h5 id="_constructors_6"><a class="anchor" href="#_constructors_6"></a>Constructors</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">outputComponents</span><span class="o">/</span><span class="n">led</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../../../../</span><span class="n">pi4micronaut</span><span class="o">-</span><span class="n">utils</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">outputDevices</span><span class="o">/</span><span class="nc">LEDHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tag</span><span class="o">=</span><span class="kd">const</span><span class="o">]</span></code></pre>
@@ -2574,7 +2764,7 @@ as well as the LED specifications.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_methods_5"><a class="anchor" href="#_methods_5"></a>Methods</h5>
+<h5 id="_methods_6"><a class="anchor" href="#_methods_6"></a>Methods</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">outputComponents</span><span class="o">/</span><span class="n">led</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../../../../</span><span class="n">pi4micronaut</span><span class="o">-</span><span class="n">utils</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">outputDevices</span><span class="o">/</span><span class="nc">LEDHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tags</span><span class="o">=</span><span class="n">method</span><span class="o">]</span></code></pre>
@@ -2582,7 +2772,7 @@ as well as the LED specifications.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_an_example_controller_5"><a class="anchor" href="#_an_example_controller_5"></a>An Example Controller</h5>
+<h5 id="_an_example_controller_6"><a class="anchor" href="#_an_example_controller_6"></a>An Example Controller</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">outputComponents</span><span class="o">/</span><span class="n">led</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:</span> <span class="o">../../../../../../</span><span class="n">components</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">components</span><span class="o">/</span><span class="n">controllers</span><span class="o">/</span><span class="nc">LEDController</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tags</span><span class="o">=</span><span class="n">method</span><span class="o">]</span></code></pre>
@@ -2596,14 +2786,14 @@ as well as the LED specifications.</p>
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/outputComponents/rgbLed.adoc">Improve this doc</a></p>
 </div>
 <div class="sect4">
-<h5 id="_overview_6"><a class="anchor" href="#_overview_6"></a>Overview</h5>
+<h5 id="_overview_7"><a class="anchor" href="#_overview_7"></a>Overview</h5>
 <div class="paragraph">
 <p>This document provides details of the RGB (Red-Green-Blue) LED circuit,
 including its components, assembly instructions, and functionality.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_components_7"><a class="anchor" href="#_components_7"></a>Components</h5>
+<h5 id="_components_8"><a class="anchor" href="#_components_8"></a>Components</h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2657,7 +2847,7 @@ negative terminals (like GPIO pins set to OUTPUT and LOW on a microcontroller).<
 </div>
 </div>
 <div class="sect4">
-<h5 id="_circuit_diagram_6"><a class="anchor" href="#_circuit_diagram_6"></a>Circuit Diagram</h5>
+<h5 id="_circuit_diagram_7"><a class="anchor" href="#_circuit_diagram_7"></a>Circuit Diagram</h5>
 <div class="paragraph">
 <p>Model:</p>
 </div>
@@ -2676,7 +2866,7 @@ negative terminals (like GPIO pins set to OUTPUT and LOW on a microcontroller).<
 </div>
 </div>
 <div class="sect4">
-<h5 id="_functionality_5"><a class="anchor" href="#_functionality_5"></a>Functionality</h5>
+<h5 id="_functionality_6"><a class="anchor" href="#_functionality_6"></a>Functionality</h5>
 <div class="paragraph">
 <p>The RGB LED can produce a wide range of colors by mixing different intensities of
 Red, Green, and Blue. By adjusting the power to each pin, various colors can be
@@ -2709,7 +2899,7 @@ produced. For instance:</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_troubleshooting_6"><a class="anchor" href="#_troubleshooting_6"></a>Troubleshooting</h5>
+<h5 id="_troubleshooting_7"><a class="anchor" href="#_troubleshooting_7"></a>Troubleshooting</h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2732,7 +2922,7 @@ adjust according to your power source and LED specifications</p>
 
 </div>
 <div class="sect4">
-<h5 id="_yaml_pin_order_3"><a class="anchor" href="#_yaml_pin_order_3"></a>YAML Pin Order</h5>
+<h5 id="_yaml_pin_order_4"><a class="anchor" href="#_yaml_pin_order_4"></a>YAML Pin Order</h5>
 <div class="paragraph">
 <p>The order for declaring pins for a RGB LED component in the application.yaml file is as follows</p>
 </div>
@@ -2754,7 +2944,7 @@ adjust according to your power source and LED specifications</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_constructors_6"><a class="anchor" href="#_constructors_6"></a>Constructors</h5>
+<h5 id="_constructors_7"><a class="anchor" href="#_constructors_7"></a>Constructors</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">outputComponents</span><span class="o">/</span><span class="n">rgbLed</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../../../../</span><span class="n">pi4micronaut</span><span class="o">-</span><span class="n">utils</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">outputDevices</span><span class="o">/</span><span class="nc">RGBLEDHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tag</span><span class="o">=</span><span class="kd">const</span><span class="o">]</span></code></pre>
@@ -2762,7 +2952,7 @@ adjust according to your power source and LED specifications</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_methods_6"><a class="anchor" href="#_methods_6"></a>Methods</h5>
+<h5 id="_methods_7"><a class="anchor" href="#_methods_7"></a>Methods</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">outputComponents</span><span class="o">/</span><span class="n">rgbLed</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../../../../</span><span class="n">pi4micronaut</span><span class="o">-</span><span class="n">utils</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">outputDevices</span><span class="o">/</span><span class="nc">RGBLEDHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tags</span><span class="o">=</span><span class="n">method</span><span class="o">]</span></code></pre>
@@ -2770,7 +2960,7 @@ adjust according to your power source and LED specifications</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_an_example_controller_6"><a class="anchor" href="#_an_example_controller_6"></a>An Example Controller</h5>
+<h5 id="_an_example_controller_7"><a class="anchor" href="#_an_example_controller_7"></a>An Example Controller</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="nd">@Controller</span><span class="o">(</span><span class="s">"/rgb"</span><span class="o">)</span>
@@ -2855,13 +3045,13 @@ adjust according to your power source and LED specifications</p>
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/outputComponents/lcdScreen.adoc">Improve this doc</a></p>
 </div>
 <div class="sect4">
-<h5 id="_overview_7"><a class="anchor" href="#_overview_7"></a>Overview</h5>
+<h5 id="_overview_8"><a class="anchor" href="#_overview_8"></a>Overview</h5>
 <div class="paragraph">
 <p>This section provides details of the LCD1602 (Liquid Crystal Display) circuit, including its components, assembly instructions, and functionality. The LCD1602 is a kind of dot matrix module that can show letters, numbers, and other characters. The number 1602 describes the display: 2 rows with 16 characters per row. NOTE: The LCD display only works on the 32 bit version of Raspberry Pi OS.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_components_8"><a class="anchor" href="#_components_8"></a>Components</h5>
+<h5 id="_components_9"><a class="anchor" href="#_components_9"></a>Components</h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2905,7 +3095,7 @@ adjust according to your power source and LED specifications</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_circuit_diagram_7"><a class="anchor" href="#_circuit_diagram_7"></a>Circuit Diagram</h5>
+<h5 id="_circuit_diagram_8"><a class="anchor" href="#_circuit_diagram_8"></a>Circuit Diagram</h5>
 <div class="imageblock">
 <div class="content">
 <img src="img/lcd1602-circuit.png" alt="lcd1602 circuit">
@@ -2913,7 +3103,7 @@ adjust according to your power source and LED specifications</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_functionality_6"><a class="anchor" href="#_functionality_6"></a>Functionality</h5>
+<h5 id="_functionality_7"><a class="anchor" href="#_functionality_7"></a>Functionality</h5>
 <div class="paragraph">
 <p>The LCD1602 screen will light up once connected to a power source.</p>
 </div>
@@ -2982,7 +3172,7 @@ adjust according to your power source and LED specifications</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_troubleshooting_7"><a class="anchor" href="#_troubleshooting_7"></a>Troubleshooting</h5>
+<h5 id="_troubleshooting_8"><a class="anchor" href="#_troubleshooting_8"></a>Troubleshooting</h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3047,7 +3237,7 @@ adjust according to your power source and LED specifications</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_constructors_7"><a class="anchor" href="#_constructors_7"></a>Constructors</h5>
+<h5 id="_constructors_8"><a class="anchor" href="#_constructors_8"></a>Constructors</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">outputComponents</span><span class="o">/</span><span class="n">lcd1602</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../../../../</span><span class="n">pi4micronaut</span><span class="o">-</span><span class="n">utils</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">outputDevices</span><span class="o">/</span><span class="nc">LCD1602Helper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tag</span><span class="o">=</span><span class="kd">const</span><span class="o">]</span></code></pre>
@@ -3055,7 +3245,7 @@ adjust according to your power source and LED specifications</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_methods_7"><a class="anchor" href="#_methods_7"></a>Methods</h5>
+<h5 id="_methods_8"><a class="anchor" href="#_methods_8"></a>Methods</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">outputComponents</span><span class="o">/</span><span class="n">lcd1602</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../../../../</span><span class="n">pi4micronaut</span><span class="o">-</span><span class="n">utils</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">outputDevices</span><span class="o">/</span><span class="nc">LCD1602Helper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tags</span><span class="o">=</span><span class="n">method</span><span class="o">]</span></code></pre>
@@ -3063,7 +3253,7 @@ adjust according to your power source and LED specifications</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_an_example_controller_7"><a class="anchor" href="#_an_example_controller_7"></a>An Example Controller</h5>
+<h5 id="_an_example_controller_8"><a class="anchor" href="#_an_example_controller_8"></a>An Example Controller</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"></code></pre>
@@ -3078,7 +3268,7 @@ adjust according to your power source and LED specifications</p>
 <div id="footer">
 <div id="footer-text">
 Version v1.0<br>
-Last updated 2024-03-14 08:54:11 UTC
+Last updated 2024-03-18 21:41:29 UTC
 </div>
 </div>
 </body>

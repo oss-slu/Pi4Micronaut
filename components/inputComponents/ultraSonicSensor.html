@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.18">
-<title>RGB LED</title>
+<title>Ultrasonic Sensor</title>
 <style>
 body {
 	font-family: sans-serif;
@@ -207,14 +207,14 @@ th {
 </div>
 <div id="content">
 <div class="sect3">
-<h4 id="_rgb_led">RGB LED</h4>
+<h4 id="_ultrasonic_sensor">Ultrasonic Sensor</h4>
 <div class="paragraph text-right">
-<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/outputComponents/rgbLed.adoc">Improve this doc</a></p>
+<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/inputComponents/ultraSonicSensor.adoc">Improve this doc</a></p>
 </div>
 <div class="sect4">
 <h5 id="_overview">Overview</h5>
 <div class="paragraph">
-<p>This document provides details of the RGB (Red-Green-Blue) LED circuit,
+<p>This document provides details of the Ultrasonic Sensor circuit,
 including its components, assembly instructions, and functionality.</p>
 </div>
 </div>
@@ -223,10 +223,10 @@ including its components, assembly instructions, and functionality.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>RGB LED</p>
+<p>HC SR04</p>
 </li>
 <li>
-<p>3 x 220Ω resistors (for current limiting)</p>
+<p>T-Extension Board</p>
 </li>
 <li>
 <p>Breadboard</p>
@@ -235,39 +235,7 @@ including its components, assembly instructions, and functionality.</p>
 <p>Jumper wires</p>
 </li>
 <li>
-<p>Power source (appropriate voltage, typically 3.3V or 5V)</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_assembly_instructions">Assembly Instructions</h5>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Place the RGB LED on the Breadboard. The LED has four pins - one for each of the
-colors (Red, Green, and Blue) and one common pin (either cathode or anode).</p>
-</li>
-<li>
-<p>Connect the Resistors. Attach a 220Ω resistor to each of the RGB pins of the LED.
-This is to limit the current and protect the LED.</p>
-</li>
-<li>
-<p>Power Connections:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>If using a common cathode RGB LED, connect the common pin directly to the
-ground (GND) and the other ends of the resistors to the respective positive
-terminals (like GPIO pins of a microcontroller or direct power source).</p>
-</li>
-<li>
-<p>If using a common anode RGB LED, connect the common pin directly to the
-positive voltage source (VCC) and the other ends of the resistors to the respective
-negative terminals (like GPIO pins set to OUTPUT and LOW on a microcontroller).</p>
-</li>
-</ul>
-</div>
+<p>Power source</p>
 </li>
 </ol>
 </div>
@@ -279,7 +247,7 @@ negative terminals (like GPIO pins set to OUTPUT and LOW on a microcontroller).<
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="https://docs.sunfounder.com/projects/raphael-kit/en/latest/_images/image61.png" alt="image61">
+<img src="../../img/ultrasonic_sensor_model.png" alt="ultrasonic sensor model">
 </div>
 </div>
 <div class="paragraph">
@@ -287,41 +255,31 @@ negative terminals (like GPIO pins set to OUTPUT and LOW on a microcontroller).<
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="https://docs.sunfounder.com/projects/raphael-kit/en/latest/_images/rgb_led_schematic.png" alt="rgb led schematic">
+<img src="../../img/ultrasonic_sensor_circuit.png" alt="ultrasonic sensor circuit">
 </div>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_functionality">Functionality</h5>
 <div class="paragraph">
-<p>The RGB LED can produce a wide range of colors by mixing different intensities of
-Red, Green, and Blue. By adjusting the power to each pin, various colors can be
-produced. For instance:</p>
+<p>The Ultrasonic Sensor uses sound waves to calculate the distance from itself to the surface it is pointed at.
+The resulting measurement is accurate within a range of 3mm of the true measurement.
+The Ultrasonic Sensor&#8217;s signal is stable within 5m of the sensor, gradually weakening until the signal fully disappears at 7m.</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>Red: Power the Red pin while keeping Green and Blue off.</p>
-</li>
-<li>
-<p>Green: Power the Green pin while keeping Red and Blue off.</p>
-</li>
-<li>
-<p>Blue: Power the Blue pin while keeping Red and Green off.</p>
-</li>
-<li>
-<p>Yellow: Power both Red and Green pins while keeping Blue off.</p>
-</li>
-<li>
-<p>Cyan: Power both Green and Blue pins while keeping Red off.</p>
-</li>
-<li>
-<p>Magenta: Power both Red and Blue pins while keeping Green off.</p>
-</li>
-<li>
-<p>White: Power all three pins</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>Some information about the trigger and echo signals (from the sunfounder docs):
+The timing diagram is shown below. You only need to supply a short 10us pulse for the trigger input to start the ranging,
+and then the module will send out an 8 cycle burst of ultrasound at 40 kHz and raise its echo.
+You can calculate the range through the time interval between sending trigger signal and receiving echo signal.</p>
+</div>
+<div class="paragraph">
+<p>Formula: us / 58 = centimeters or us / 148 =inch; or: the range = high level time * velocity (340M/S) / 2;
+you are suggested to use measurement cycle over 60ms in order to prevent signal collisions of trigger signal and the echo signal.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../img/ultrasonic_sensor_timing_diagram.png" alt="ultrasonic sensor timing diagram">
+</div>
 </div>
 </div>
 <div class="sect4">
@@ -329,51 +287,46 @@ produced. For instance:</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>LED not lighting up: Check all connections, ensure the LED is placed correctly,
+<p>Distance measurements not showing: Check all connections, ensure the sensor is placed correctly,
 and check the power source.</p>
-</li>
-<li>
-<p>Only one color is working: One of the pins might have a loose connection. Verify
-each color pin&#8217;s connection.</p>
-</li>
-<li>
-<p>LED is too dim: The resistor value might be too high. Ensure you&#8217;re using 220Ω or
-adjust according to your power source and LED specifications</p>
 </li>
 </ol>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_note_the_hex_value_format_must_start_with_0x_not_while_passing_it_as_a_parameter_of_setcolorhex_method_for_example_use_0x0000ff_for_blue">Note: The Hex value format must start with "0x" not "#" while passing it as a parameter of "setColorHex()" method. For example, use "0x0000ff" for blue.</h5>
-
-</div>
-<div class="sect4">
 <h5 id="_yaml_pin_order">YAML Pin Order</h5>
 <div class="paragraph">
-<p>The order for declaring pins for a RGB LED component in the application.yaml file is as follows</p>
-</div>
-<div class="paragraph">
-<p><strong>RED-PIN-INFO, GREEN-PIN-INFO, BLUE-PIN-INFO</strong></p>
-</div>
-<div class="paragraph">
-<p>So in the case of</p>
+<p>The order for declaring the Trigger Pin for the Ultrasonic Sensor is as follows:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-yaml" data-lang="yaml">multi-pwm:
-  rgb-led:
-    addresses: 17, 18, 27</code></pre>
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">digital-input:
+  ultra-sonic-trig:
+    address: 23</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>the red pin would be the one connected to GPIO 17, green to GPIO 18, and blue to GPIO 27. All lists of values for RGB LED components will follow the same order.</p>
+<p>So the Trigger Pin would be connected to GPIO 23.</p>
+</div>
+<div class="paragraph">
+<p>The order for declaring the Echo Pin for the Ultrasonic Sensor is as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">digital-output:
+  ultra-sonic-echo:
+    address: 24</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So the Echo Pin would be connected to GPIO 24.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_constructors">Constructors</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">Unresolved directive in rgbLed.adoc - include::../../../../../../pi4micronaut-utils/src/main/java/com/opensourcewithslu/outputDevices/RGBLEDHelper.java[tag=const]</code></pre>
+<pre class="highlight"><code class="language-java" data-lang="java">Unresolved directive in ultraSonicSensor.adoc - include::../../../../../../pi4micronaut-utils/src/main/java/com/opensourcewithslu/inputDevices/UltraSonicSensorHelper.java[tag=const]</code></pre>
 </div>
 </div>
 </div>
@@ -381,15 +334,18 @@ adjust according to your power source and LED specifications</p>
 <h5 id="_methods">Methods</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">Unresolved directive in rgbLed.adoc - include::../../../../../../pi4micronaut-utils/src/main/java/com/opensourcewithslu/outputDevices/RGBLEDHelper.java[tags=method]</code></pre>
+<pre class="highlight"><code class="language-java" data-lang="java">Unresolved directive in ultraSonicSensor.adoc - include::../../../../../../pi4micronaut-utils/src/main/java/com/opensourcewithslu/inputDevices/UltraSonicSensorHelper.java[tags=method]</code></pre>
 </div>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_an_example_controller">An Example Controller</h5>
+<div class="sect5">
+<h6 id="_this_controller_uses_the_ultrasonic_sensor_to_calculate_distance_from_the_sensor_to_a_surface">This controller uses the Ultrasonic Sensor to calculate distance from the sensor to a surface</h6>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">Unresolved directive in rgbLed.adoc - include::../../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/rgbController.java[tag=ex]</code></pre>
+<pre class="highlight"><code class="language-java" data-lang="java">Unresolved directive in ultraSonicSensor.adoc - include::../../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/UltraSonicSensorController.java[tag=ex]</code></pre>
+</div>
 </div>
 </div>
 </div>
