@@ -1,0 +1,50 @@
+:imagesdir: img/
+
+ifndef::rootpath[]
+:rootpath: ../../
+endif::rootpath[]
+
+ifdef::rootpath[]
+:imagesdir: {rootpath}{imagesdir}
+endif::rootpath[]
+
+
+==== Touch Switch
+
+[.text-right]
+https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/inputComponents/touchSwitch.adoc[Improve this doc]
+
+===== Overview
+...
+
+===== Components
+...
+
+===== Assembly Instructions
+...
+
+===== Circuit Diagram
+image:touchSwitch.png[]
+
+===== Functionality
+...
+
+===== Testing the Circuit
+...
+
+===== Troubleshooting
+...
+
+===== YAML Pin Order
+...
+
+===== Constructor
+...
+
+===== Methods
+...
+
+===== An Example Controller
+
+====== This controller uses the touch switch to light up a LED light once touched
+...
