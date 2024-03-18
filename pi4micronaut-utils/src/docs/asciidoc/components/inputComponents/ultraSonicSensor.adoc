@@ -1,0 +1,78 @@
+==== Ultrasonic Sensor
+[.text-right]
+https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/inputComponents/ultraSonicSensor.adoc[Improve this doc]
+
+===== Overview
+This document provides details of the Ultrasonic Sensor circuit,
+including its components, assembly instructions, and functionality.
+
+===== Components
+. HC SR04
+. T-Extension Board
+. Breadboard
+. Jumper wires
+. Power source
+
+===== Circuit Diagram
+Model:
+
+image::https://docs.sunfounder.com/projects/davinci-kit/en/latest/_images/image220.png[]
+
+
+
+Circuit Diagram:
+
+image::https://docs.sunfounder.com/projects/davinci-kit/en/latest/_images/image329.png[]
+
+===== Functionality
+The Ultrasonic Sensor uses sound waves to calculate the distance from itself to the surface it is pointed at.
+The resulting measurement is accurate within 3mm and has a stable signal within 5m of the sensor,
+gradually weakening until fully it fully disappears at 7m.
+
+===== Troubleshooting
+. Distance measurements not showing: Check all connections, ensure the sensor is placed correctly,
+and check the power source.
+
+===== YAML Pin Order
+The order for declaring the Trigger Pin for the Ultrasonic Sensor is as follows:
+
+[source, yaml]
+----
+digital-input:
+  ultra-sonic-trig:
+    address: 23
+----
+So the Trigger Pin would be connected to GPIO 23.
+
+The order for declaring the Echo Pin for the Ultrasonic Sensor is as follows:
+
+[source, yaml]
+----
+digital-output:
+  ultra-sonic-echo:
+    address: 24
+----
+So the Echo Pin would be connected to GPIO 24.
+
+===== Constructors
+
+[source, java]
+----
+include::../../../../../../pi4micronaut-utils/src/main/java/com/opensourcewithslu/inputDevices/UltraSonicSensorHelper.java[tag=const]
+----
+
+===== Methods
+
+[source, java]
+----
+include::../../../../../../pi4micronaut-utils/src/main/java/com/opensourcewithslu/inputDevices/UltraSonicSensorHelper.java[tags=method]
+----
+
+===== An Example Controller
+
+====== This controller uses the push button to turn an LED on and off
+
+[source, java]
+----
+include::../../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/UltraSonicSensorController.java[tag=ex]
+----
