@@ -8,7 +8,7 @@ import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import jakarta.inject.Named;
 
-
+//tag::ex[]
 @Controller("/ultraSound")
 public class UltraSonicSensorController {
 
@@ -55,3 +55,4 @@ public class UltraSonicSensorController {
         return "Ultra Sonic Sensor Disabled";
     }
 }
+//end::ex[]

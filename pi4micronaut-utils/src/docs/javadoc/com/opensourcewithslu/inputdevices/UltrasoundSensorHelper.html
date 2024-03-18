@@ -88,8 +88,8 @@ loadScripts(document, 'script');</script>
 <div class="summary-table two-column-summary">
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
-<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(com.pi4j.io.gpio.digital.DigitalOutput,com.pi4j.io.gpio.digital.DigitalInput)" class="member-name-link">UltrasoundSensorHelper</a><wbr>(com.pi4j.io.gpio.digital.DigitalOutput&nbsp;triggerPin,
- com.pi4j.io.gpio.digital.DigitalInput&nbsp;echoPin)</code></div>
+<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(com.pi4j.io.gpio.digital.DigitalInput,com.pi4j.io.gpio.digital.DigitalOutput)" class="member-name-link">UltrasoundSensorHelper</a><wbr>(com.pi4j.io.gpio.digital.DigitalInput&nbsp;ultraSoundInput,
+ com.pi4j.io.gpio.digital.DigitalOutput&nbsp;ultraSoundOutput)</code></div>
 <div class="col-last even-row-color">&nbsp;</div>
 </div>
 </section>
@@ -105,21 +105,12 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>double</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getDistanceInCentimeter()" class="member-name-link">getDistanceInCentimeter</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>double</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getDistanceInMeters()" class="member-name-link">getDistanceInMeters</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#initialize()" class="member-name-link">initialize</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#startMeasuring()" class="member-name-link">startMeasuring</a>()</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#updateDistance()" class="member-name-link">updateDistance</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#stopMeasuring()" class="member-name-link">stopMeasuring</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 </div>
 </div>
 </div>
@@ -138,10 +129,10 @@ loadScripts(document, 'script');</script>
 <h2>Constructor Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="&lt;init&gt;(com.pi4j.io.gpio.digital.DigitalOutput,com.pi4j.io.gpio.digital.DigitalInput)">
+<section class="detail" id="&lt;init&gt;(com.pi4j.io.gpio.digital.DigitalInput,com.pi4j.io.gpio.digital.DigitalOutput)">
 <h3>UltrasoundSensorHelper</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">UltrasoundSensorHelper</span><wbr><span class="parameters">(com.pi4j.io.gpio.digital.DigitalOutput&nbsp;triggerPin,
- com.pi4j.io.gpio.digital.DigitalInput&nbsp;echoPin)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">UltrasoundSensorHelper</span><wbr><span class="parameters">(com.pi4j.io.gpio.digital.DigitalInput&nbsp;ultraSoundInput,
+ com.pi4j.io.gpio.digital.DigitalOutput&nbsp;ultraSoundOutput)</span></div>
 </section>
 </li>
 </ul>
@@ -159,27 +150,9 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="startMeasuring()">
-<h3>startMeasuring</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">startMeasuring</span>()</div>
-</section>
-</li>
-<li>
-<section class="detail" id="getDistanceInCentimeter()">
-<h3>getDistanceInCentimeter</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">getDistanceInCentimeter</span>()</div>
-</section>
-</li>
-<li>
-<section class="detail" id="getDistanceInMeters()">
-<h3>getDistanceInMeters</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">getDistanceInMeters</span>()</div>
-</section>
-</li>
-<li>
-<section class="detail" id="stopMeasuring()">
-<h3>stopMeasuring</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">stopMeasuring</span>()</div>
+<section class="detail" id="updateDistance()">
+<h3>updateDistance</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">updateDistance</span>()</div>
 </section>
 </li>
 </ul>
