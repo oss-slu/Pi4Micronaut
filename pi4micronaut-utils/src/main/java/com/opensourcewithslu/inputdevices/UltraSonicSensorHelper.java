@@ -23,7 +23,10 @@ public class UltraSonicSensorHelper {
      * @param triggerPin The DigitalOutput pin for triggering the ultrasonic sensor.
      * @param echoPin The DigitalInput pin for receiving the echo from the ultrasonic sensor.
      */
-    public UltraSonicSensorHelper(DigitalOutput triggerPin, DigitalInput echoPin) {
+    //tag::const[]
+    public UltraSonicSensorHelper(DigitalOutput triggerPin, DigitalInput echoPin)
+    //end::const[]
+    {
         this.triggerPin = triggerPin;
         this.echoPin = echoPin;
         initialize();
@@ -32,7 +35,10 @@ public class UltraSonicSensorHelper {
     /**
      * Initializes the Ultrasonic Sensor
      */
-    public void initialize() {
+    //tag::method[]
+    public void initialize()
+    //end::method[]
+    {
         log.info("Ultrasonic Sensor Initialized");
         sensorActive = true;
         // TriggerPin is low initially
@@ -42,7 +48,10 @@ public class UltraSonicSensorHelper {
     /**
      * Begins measuring distance from sensor calling triggerAndMeasureDistance function every 100 milliseconds
      */
-    public void startMeasuring() {
+    //tag::method[]
+    public void startMeasuring()
+    //end::method[]
+    {
         if (!sensorActive) {
             return;
         }
@@ -110,7 +119,10 @@ public class UltraSonicSensorHelper {
      *
      * @return The distance value in centimeters.
      */
-    public double getDistanceInCentimeter() {
+    //tag::method[]
+    public double getDistanceInCentimeter()
+    //end::method[]
+    {
         return distance;
     }
 
@@ -119,14 +131,20 @@ public class UltraSonicSensorHelper {
      *
      * @return The distance value in meters.
      */
-    public double getDistanceInMeters() {
+    //tag::method[]
+    public double getDistanceInMeters()
+    //end::method[]
+    {
         return distance/100;
     }
 
     /**
      * Shuts down ultrasonic sensor
      */
-    public void stopMeasuring() {
+    //tag::method[]
+    public void stopMeasuring()
+    //end::method[]
+    {
         sensorActive = false;
         if (!executorService.isShutdown()) {
             executorService.shutdownNow();

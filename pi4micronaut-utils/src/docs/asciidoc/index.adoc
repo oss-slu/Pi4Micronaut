@@ -66,6 +66,8 @@ include::components/inputComponents/rfidScanner.adoc[]
 
 include::components/inputComponents/photosensor.adoc[]
 
+include::components/inputComponents/ultraSonicSensor.adoc[]
+
 
 include::components/outputComponents.adoc[]
 
