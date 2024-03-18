@@ -15,10 +15,17 @@ endif::rootpath[]
 https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/inputComponents/touchSwitch.adoc[Improve this doc]
 
 ===== Overview
-...
+This section provides details of a touch switch sensor implementation,
+including its circuit diagram, required hardware components,
+assembly instructions, and functionality.
 
 ===== Components
-...
+. Touch switch module
+. LED light
+. 1 x 220Ω resistor
+. Breadboard
+. Jumper wires
+. Power source
 
 ===== Assembly Instructions
 ...
@@ -31,7 +38,8 @@ Circuit Diagram:
 image:touchSwitch.png[]
 
 ===== Functionality
-...
+Once the sensor has been enabled, touching the sensor will turn the LED light on
+and removing your finger from the sensor will turn the LED light off.
 
 ===== Testing the Circuit
 ...
@@ -40,15 +48,45 @@ image:touchSwitch.png[]
 ...
 
 ===== YAML Pin Order
+The order for declaring the pin for the LED is as follows:
+
+[source, yaml]
+----
+digital-output:
+  led2:
+    address: 26
+----
+...
+
+The order for declaring the pin for the push button is as follows:
+
+[source, yaml]
+----
+digital-input:
+  touch-switch-input:
+    address: 17
+----
 ...
 
 ===== Constructor
-...
+
+[source, java]
+----
+include::../../../../../../pi4micronaut-utils/src/main/java/com/opensourcewithslu/inputDevices/TouchSwitchHelper.java[tag=const]
+----
 
 ===== Methods
-...
+
+[source, java]
+----
+include::../../../../../../pi4micronaut-utils/src/main/java/com/opensourcewithslu/inputDevices/TouchSwitchHelper.java[tags=method]
+----
 
 ===== An Example Controller
 
 ====== This controller uses the touch switch to light up a LED light once touched
-...
+
+[source, java]
+----
+include::../../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/TouchSwitchController.java[tag=ex]
+----
