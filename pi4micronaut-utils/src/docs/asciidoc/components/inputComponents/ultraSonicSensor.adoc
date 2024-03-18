@@ -1,3 +1,14 @@
+:imagesdir: img/
+
+ifndef::rootpath[]
+:rootpath: ../../
+endif::rootpath[]
+
+ifdef::rootpath[]
+:imagesdir: {rootpath}{imagesdir}
+endif::rootpath[]
+
+
 ==== Ultrasonic Sensor
 [.text-right]
 https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/inputComponents/ultraSonicSensor.adoc[Improve this doc]
@@ -16,18 +27,30 @@ including its components, assembly instructions, and functionality.
 ===== Circuit Diagram
 Model:
 
-image::https://docs.sunfounder.com/projects/davinci-kit/en/latest/_images/image220.png[]
+image::ultrasonic_sensor_model.png[]
 
 
 
 Circuit Diagram:
 
-image::https://docs.sunfounder.com/projects/davinci-kit/en/latest/_images/image329.png[]
+image::ultrasonic_sensor_circuit.png[]
 
 ===== Functionality
 The Ultrasonic Sensor uses sound waves to calculate the distance from itself to the surface it is pointed at.
-The resulting measurement is accurate within 3mm and has a stable signal within 5m of the sensor,
-gradually weakening until fully it fully disappears at 7m.
+The resulting measurement is accurate within a range of 3mm of the true measurement.
+The Ultrasonic Sensor's signal is stable within 5m of the sensor, gradually weakening until the signal fully disappears at 7m.
+
+Some information about the trigger and echo signals (from the sunfounder docs):
+The timing diagram is shown below. You only need to supply a short 10us pulse for the trigger input to start the ranging,
+and then the module will send out an 8 cycle burst of ultrasound at 40 kHz and raise its echo.
+You can calculate the range through the time interval between sending trigger signal and receiving echo signal.
+
+Formula: us / 58 = centimeters or us / 148 =inch; or: the range = high level time * velocity (340M/S) / 2;
+you are suggested to use measurement cycle over 60ms in order to prevent signal collisions of trigger signal and the echo signal.
+
+image::ultrasonic_sensor_timing_diagram.png[]
+
+
 
 ===== Troubleshooting
 . Distance measurements not showing: Check all connections, ensure the sensor is placed correctly,
@@ -70,7 +93,7 @@ include::../../../../../../pi4micronaut-utils/src/main/java/com/opensourcewithsl
 
 ===== An Example Controller
 
-====== This controller uses the push button to turn an LED on and off
+====== This controller uses the Ultrasonic Sensor to calculate distance from the sensor to a surface
 
 [source, java]
 ----
