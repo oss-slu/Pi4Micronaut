@@ -24,6 +24,10 @@ https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/doc
 ...
 
 ===== Circuit Diagram
+Model:
+image:touchSwitchDiagram.png[]
+
+Circuit Diagram:
 image:touchSwitch.png[]
 
 ===== Functionality
