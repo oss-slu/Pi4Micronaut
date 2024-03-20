@@ -1,0 +1,30 @@
+Manifest-Version: 1.0
+Class-Path: resources/ classes/ libs/pi4micronaut-utils-v1.0-all.jar lib
+ s/micronaut-http-client-3.10.1.jar libs/micronaut-http-server-netty-3.1
+ 0.1.jar libs/micronaut-http-netty-3.10.1.jar libs/micronaut-http-server
+ -3.10.1.jar libs/micronaut-websocket-3.10.1.jar libs/micronaut-http-cli
+ ent-core-3.10.1.jar libs/micronaut-runtime-3.10.1.jar libs/micronaut-ja
+ ckson-databind-3.10.1.jar libs/micronaut-validation-3.10.1.jar libs/mic
+ ronaut-jackson-core-3.10.1.jar libs/micronaut-json-core-3.10.1.jar libs
+ /micronaut-router-3.10.1.jar libs/micronaut-http-3.10.1.jar libs/micron
+ aut-buffer-netty-3.10.1.jar libs/micronaut-context-3.10.1.jar libs/micr
+ onaut-aop-3.10.1.jar libs/micronaut-inject-3.10.1.jar libs/jakarta.anno
+ tation-api-2.1.1.jar libs/logback-classic-1.2.11.jar libs/jackson-datat
+ ype-jdk8-2.15.0.jar libs/jackson-datatype-jsr310-2.15.0.jar libs/jackso
+ n-databind-2.15.0.jar libs/jackson-core-2.15.0.jar libs/jackson-annotat
+ ions-2.15.0.jar libs/javax.annotation-api-1.3.2.jar libs/logback-core-1
+ .2.11.jar libs/netty-handler-proxy-4.1.94.Final.jar libs/netty-codec-ht
+ tp2-4.1.94.Final.jar libs/netty-codec-http-4.1.94.Final.jar libs/netty-
+ handler-4.1.94.Final.jar libs/netty-codec-socks-4.1.94.Final.jar libs/n
+ etty-codec-4.1.94.Final.jar libs/netty-transport-native-unix-common-4.1
+ .94.Final.jar libs/netty-transport-4.1.94.Final.jar libs/netty-buffer-4
+ .1.94.Final.jar libs/reactor-core-3.5.0.jar libs/micronaut-core-reactiv
+ e-3.10.1.jar libs/reactive-streams-1.0.4.jar libs/pi4j-plugin-raspberry
+ pi-2.4.0.jar libs/pi4j-plugin-pigpio-2.4.0.jar libs/pi4j-library-pigpio
+ -2.4.0.jar libs/pi4j-core-2.4.0.jar libs/micronaut-core-3.10.1.jar libs
+ /slf4j-api-1.7.36.jar libs/snakeyaml-2.0.jar libs/validation-api-2.0.1.
+ Final.jar libs/jakarta.inject-api-2.0.1.jar libs/netty-resolver-4.1.94.
+ Final.jar libs/netty-common-4.1.94.Final.jar libs/fastdoubleparser-0.8.
+ 0.jar
+Main-Class: com.example.pi4micronaut.Application
+

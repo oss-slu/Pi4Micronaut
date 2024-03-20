@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.pi4micronaut.Home_AutomationTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-03-20T21:16:45" hostname="RUTHVIK-PRECISI" time="0.019">
+  <properties/>
+  <testcase name="testItWorks()" classname="com.example.pi4micronaut.Home_AutomationTest" time="0.019"/>
+  <system-out><![CDATA[16:16:43,910 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Could NOT find resource [logback-test.xml]
+16:16:43,910 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Found resource [logback.xml] at [file:/C:/Users/ruthv/OneDrive/Desktop/Home_Automation/Pi4Micronaut/build/resources/main/logback.xml]
+16:16:43,910 |-WARN in ch.qos.logback.classic.LoggerContext[default] - Resource [logback.xml] occurs multiple times on the classpath.
+16:16:43,910 |-WARN in ch.qos.logback.classic.LoggerContext[default] - Resource [logback.xml] occurs at [jar:file:/C:/Users/ruthv/.gradle/caches/modules-2/files-2.1/io.github.oss-slu/pi4micronaut-utils/v1.0/1896fd75fdcd0e0a2bee342d2701ce348008de96/pi4micronaut-utils-v1.0-all.jar!/logback.xml]
+16:16:43,910 |-WARN in ch.qos.logback.classic.LoggerContext[default] - Resource [logback.xml] occurs at [file:/C:/Users/ruthv/OneDrive/Desktop/Home_Automation/Pi4Micronaut/build/resources/main/logback.xml]
+16:16:43,956 |-INFO in ch.qos.logback.classic.joran.action.ConfigurationAction - debug attribute not set
+16:16:43,957 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - About to instantiate appender of type [ch.qos.logback.core.ConsoleAppender]
+16:16:43,960 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - Naming appender as [STDOUT]
+16:16:43,967 |-INFO in ch.qos.logback.core.joran.action.NestedComplexPropertyIA - Assuming default type [ch.qos.logback.classic.encoder.PatternLayoutEncoder] for [encoder] property
+16:16:43,998 |-INFO in ch.qos.logback.classic.joran.action.RootLoggerAction - Setting level of ROOT logger to INFO
+16:16:43,998 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [STDOUT] to Logger[ROOT]
+16:16:43,999 |-INFO in ch.qos.logback.classic.joran.action.ConfigurationAction - End of configuration.
+16:16:44,001 |-INFO in ch.qos.logback.classic.joran.JoranConfigurator@52de51b6 - Registering current configuration as safe fallback point
+
+16:16:44.705 [Test worker] INFO  i.m.context.env.DefaultEnvironment - Established active environments: [test]
+]]></system-out>
+  <system-err><![CDATA[SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/C:/Users/ruthv/.gradle/caches/modules-2/files-2.1/io.github.oss-slu/pi4micronaut-utils/v1.0/1896fd75fdcd0e0a2bee342d2701ce348008de96/pi4micronaut-utils-v1.0-all.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/C:/Users/ruthv/.gradle/caches/modules-2/files-2.1/ch.qos.logback/logback-classic/1.2.11/4741689214e9d1e8408b206506cbe76d1c6a7d60/logback-classic-1.2.11.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [ch.qos.logback.classic.util.ContextSelectorStaticBinder]
+]]></system-err>
+</testsuite>

@@ -1,5 +1,0 @@
-==== Photosensor
-[.text-right] 
-https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/inputComponents/photosensor.adoc[Improve this doc]
-
-TODO: add in photosensor support docs
