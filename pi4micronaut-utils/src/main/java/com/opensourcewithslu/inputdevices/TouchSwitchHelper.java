@@ -25,9 +25,7 @@ public class TouchSwitchHelper {
      * TouchSwitchHelper constructor.
      * @param touchSwitchInput A Pi4J DigitalInput object.
      */
-    //tag::const[]
     public TouchSwitchHelper(DigitalInput touchSwitchInput)
-    //end::const[]
     {
         this.touchSwitchInput = touchSwitchInput;
         this.isTouched = touchSwitchInput.isHigh();
@@ -38,9 +36,7 @@ public class TouchSwitchHelper {
     /**
      * Initializes the listener that keeps track of if the touch switch has been touched or not. It is automatically called when the TouchSwitchHelper is instantiated.
      */
-    //tag::method[]
     public void initialize()
-    //end::method[]
     {
         log.info("Initializing Touch Switch");
 
@@ -52,9 +48,7 @@ public class TouchSwitchHelper {
      * Adds an event listener to the touch switch.
      * @param function A Pi4J DigitalStateChangeListener object.
      */
-    //tag::method[]
     public void addEventListener(DigitalStateChangeListener function)
-    //end::method[]
     {
         touchSwitchInputListener = function;
         touchSwitchInput.addListener(touchSwitchInputListener);
@@ -63,9 +57,7 @@ public class TouchSwitchHelper {
     /**
      * Removes the event listener from the touch switch.
      */
-    //tag::method[]
     public void removeEventListener()
-    //end::method[]
     {
         if (touchSwitchInputListener != null) {
             touchSwitchInput.removeListener(touchSwitchInputListener);
