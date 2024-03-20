@@ -77,4 +77,6 @@ include::components/outputComponents/rgbLed.adoc[]
 
 include::components/outputComponents/lcd1602.adoc[]
 
+include :: components/outputComponents/passivebuzzer.adoc[]
+
 
