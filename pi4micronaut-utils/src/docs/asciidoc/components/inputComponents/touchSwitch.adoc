@@ -29,7 +29,17 @@ assembly instructions, and functionality.
 . Power source
 
 ===== Assembly Instructions
-...
+
+Connect the 3 pins on the touch switch to the breadboard as well as the LED and resistor
+making sure the LED has power.
+
+. Ground: connect the ground on the touch switch to the ground on the breadboard
+. Power: Connect the VCC on the touch switch to the 3.3V on the breadboard
+.. You will want to have a wire connecting 3.3V and ground to the bottom of the board
+so that power can be supplied to the LED and touch switch as shown in the diagram below
+. IO: Connect the IO on the touch switch to GPIO 17 on the breadboard which is the digital input
+. Resistor: Place the resistor vertically so that it can connect the LED light to power
+. Connect a wire from GPIO26 to the LED which is its digital output
 
 ===== Circuit Diagram
 
@@ -47,10 +57,27 @@ Once the touch switch has been enabled, touching the sensor will turn the LED li
 and removing your finger from the sensor will turn the LED light off.
 
 ===== Testing the Circuit
-...
+
+To enable the touch switch:
+
+[source, bash]
+----
+curl http://localhost:8080/touchSwitch/enable
+----
+
+To disable the touch switch:
+
+[source, bash]
+----
+curl http://localhost:8080/touchSwitch/disable
+----
 
 ===== Troubleshooting
-...
+
+- LED not lighting up once it has been enabled and is being touched:
+Make sure that all the pins on the touch switch are in the right spot and that everything is receiving power.
+Also make sure that everything is properly secured to the breadboard.
+- Ensure a 220Ω resistor is being used
 
 ===== YAML Pin Order
 
@@ -78,14 +105,16 @@ So, the input of the touch switch is connected to GPIO 17.
 
 [source, java]
 ----
-include::../../../../../../pi4micronaut-utils/src/main/java/com/opensourcewithslu/inputDevices/TouchSwitchHelper.java[tag=const]
+public TouchSwitchHelper(DigitalInput touchSwitchInput)
 ----
 
 ===== Methods
 
 [source, java]
 ----
-include::../../../../../../pi4micronaut-utils/src/main/java/com/opensourcewithslu/inputDevices/TouchSwitchHelper.java[tags=method]
+public void initialize()
+public void addEventListener(DigitalStateChangeListener function)
+public void removeEventListener()
 ----
 
 ===== An Example Controller
