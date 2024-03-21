@@ -35,7 +35,7 @@ This section provides details of the Passive Buzzer, including the components an
 * Place the Passive Buzzer onto the Breadboard.
 * Place the 1KΩ resistor onto the Breadboard, must be inline with base pin of S8550 PNP Transistor.
 * Place the S8550 PNP Transistor onto the BreadBoard.
-* The Passive Buzzer will have two pins of the same length.
+* The Passive Buzzer will have two pins of the same length. The anode is (+) while the cathode is (-).
 * Connect a jumper wire from GND to (-) negative side
 * Connect a jumper wire from 3.3V to (+) positive side.
 * Connect a jumper wire from GPIO 17 to the 1KΩ resistor
@@ -45,11 +45,16 @@ This section provides details of the Passive Buzzer, including the components an
 
 
 ===== Circuit Diagram
+Schematic Diagram
+
+image::buzzer-SD.png[]
+
+Circuit Diagram
 
 image::passive_buzzer-CD.png[]
 
 ===== Functionality
-Use: `curl http://localhost:8080/passive-buzzer` to test the component.  The constructor and the methods these commands call within the PassiveBuzzerHelper class can be seen in our javadoc link:https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/outputdevices/PassiveBuzzerHelper.html[here]. These following commands will test the component:
+Use: `curl http://localhost:8080/passive-buzzer` to test the component. These following commands will test the component:
 
 * `/enable`  - Turns the Passive Buzzer on.
 * `/disable` - Turns the Passive Buzzer off.
@@ -80,6 +85,10 @@ Use: `curl http://localhost:8080/passive-buzzer` to test the component.  The con
       initial: 0
       shutdown: 0
 ----
+
+===== Constructors and Methods
+The constructor and the methods within the PassiveBuzzerHelper class can be seen in our javadoc link:https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/outputdevices/PassiveBuzzerHelper.html[here].
+
 
 ===== Example Controller
 

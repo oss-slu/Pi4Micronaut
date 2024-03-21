@@ -6,6 +6,7 @@ import io.micronaut.http.annotation.*;
 import jakarta.inject.Named;
 import java.io.File;
 
+//tag::ex[]
 @Controller("/passive-buzzer")
 public class PassiveBuzzerController {
 
@@ -95,3 +96,4 @@ public class PassiveBuzzerController {
 
     }
 }
+//end::ex[]
