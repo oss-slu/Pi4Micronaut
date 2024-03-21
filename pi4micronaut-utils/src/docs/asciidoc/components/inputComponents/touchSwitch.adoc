@@ -81,23 +81,31 @@ Also make sure that everything is properly secured to the breadboard.
 
 ===== YAML Pin Order
 
-The order for declaring the pin for the LED is as follows:
+The YAML configuration for the LED is as follows:
 
 [source, yaml]
 ----
 digital-output:
   led2:
-    address: 26
+  name: LED Output
+  address: 26
+  shutdown: HIGH
+  initial: HIGH
+  provider: pigpio-digital-output
 ----
 So, the output of the LED is connected to GPIO 26.
 
-The order for declaring the pin for the touch switch is as follows:
+The YAML configuration for the touch switch is as follows:
 
 [source, yaml]
 ----
 digital-input:
   touch-switch-input:
-    address: 17
+  name: Touch Switch Input
+  address: 17
+  pull: PULL_DOWN
+  debounce: 200000
+  provider: pigpio-digital-input
 ----
 So, the input of the touch switch is connected to GPIO 17.
 
