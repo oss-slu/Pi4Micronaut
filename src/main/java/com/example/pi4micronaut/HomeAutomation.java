@@ -3,7 +3,7 @@ package com.example.pi4micronaut;
 import com.opensourcewithslu.inputdevices.*;
 import com.opensourcewithslu.outputdevices.*;
 
-import com.opensourcewithslu.utilities.MultipinConfiguration;
+import com.opensourcewithslu.utilities.MultiPinConfiguration;
 import com.opensourcewithslu.utilities.PwmConfiguration;
 import com.pi4j.context.Context;
 import com.pi4j.io.*;
@@ -22,6 +22,7 @@ public class HomeAutomation {
     private final LCD1602Helper lcd;
     private final RFidHelper rfid;
     private final LEDHelper led;
+    private final RGBLEDHelper rgb;
     private final PIRSensorHelper pirSensor;
     private final TouchSwitchHelper touchSwitch;
     private final ActiveBuzzerHelper activeBuzzer;
@@ -31,6 +32,7 @@ public class HomeAutomation {
             @Named("lcd") I2CConfig lcd,
             @Named("rfid") SpiConfig rfid,
             @Named("led") DigitalOutput led,
+            @Named("rgb-led") MultiPinConfiguration rgb,
             @Named("pir-sensor")DigitalInput pirSensor,
             @Named("active-buzzer") Pwm activeBuzzer,
             @Named("touch-switch") DigitalInput touchSwitch,
@@ -41,6 +43,7 @@ public class HomeAutomation {
         this.lcd = new LCD1602Helper(lcd,pi4j);
         this.rfid = new RFidHelper(rfid,pi4j);
         this.led = new LEDHelper(led);
+        this.rgb = new RGBLEDHelper(rgb);
         this.pirSensor = new PIRSensorHelper(pirSensor);
         this.touchSwitch = new TouchSwitchHelper(touchSwitch);
         this.activeBuzzer = new ActiveBuzzerHelper(activeBuzzer);
