@@ -49,7 +49,7 @@ This section provides details of the Passive Buzzer, including the components an
 image::passive_buzzer-CD.png[]
 
 ===== Functionality
-Use: `curl http://localhost:8080/passive-buzzer` to test the component. These following commands will test the component:
+Use: `curl http://localhost:8080/passive-buzzer` to test the component.  The constructor and the methods these commands call within the PassiveBuzzerHelper class can be seen in our javadoc link:https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/outputdevices/PassiveBuzzerHelper.html[here]. These following commands will test the component:
 
 * `/enable`  - Turns the Passive Buzzer on.
 * `/disable` - Turns the Passive Buzzer off.
@@ -57,7 +57,9 @@ Use: `curl http://localhost:8080/passive-buzzer` to test the component. These fo
 * `/setFreq/{frequenciesFile}` - Plays a series of frequencies from a file specified by the user.
 * `/passBuzz` - Plays a 1 - second buzz.
 * `/freqIter` - Cycles through different frequencies.
-* `/playPiSeq` - Plays an array containing the first ten digits of pi
+* `/playPiSeq` - Plays an array containing the first ten digits of pi.
+
+
 
 ===== Troubleshooting
 - Passive Buzzer not creating sound:
@@ -77,4 +79,14 @@ Use: `curl http://localhost:8080/passive-buzzer` to test the component. These fo
       provider: pigpio-pwm
       initial: 0
       shutdown: 0
+----
+
+===== Example Controller
+
+====== This controller uses the Passive Buzzer to emit sound once prompted by the commands
+
+[source, java]
+----
+include::../../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/PassiveBuzzerController.java[tag=ex]
+
 ----
