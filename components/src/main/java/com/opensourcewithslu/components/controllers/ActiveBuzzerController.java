@@ -6,6 +6,7 @@ import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import jakarta.inject.Named;
 
+//tag::ex[]
 @Controller("/active-buzzer")
 public class ActiveBuzzerController {
 
@@ -66,3 +67,4 @@ public class ActiveBuzzerController {
         activeBuzzerHelper.morseCodeTone();
     }
 }
+//end::ex[]
