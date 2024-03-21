@@ -31,7 +31,7 @@ This section provides details of the Active Buzzer, including the components and
 * Place the Active Buzzer onto the Breadboard.
 * Place the 1KΩ resistor onto the Breadboard, must be inline with base pin of S8550 PNP Transistor.
 * Place the S8550 PNP Transistor onto the BreadBoard.
-* The Passive Buzzer will have two pins of the same length.
+* The Active Buzzer will have two pins. The longer pin is the anode (+) while the shorter is the cathode(-).
 * Connect a jumper wire from GND to (-) negative side
 * Connect a jumper wire from 3.3V to (+) positive side.
 * Connect a jumper wire from GPIO 17 to the 1KΩ resistor
