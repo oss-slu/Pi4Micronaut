@@ -53,12 +53,12 @@ public class DigitalInputConfiguration {
 
     /**
      * Gets the current debounce value for the component.
-     * @return Long type representing to debounce of the component.
+     * @return Long type representing debounce of the component.
      */
     public Long getDebounce() { return debounce; }
 
     /**
-     * Sets to debounce of the component. Replaces existing debounce.
+     * Sets debounce of the component. Replaces existing debounce.
      * @param debounce New debounce of type Long,
      */
     public void setDebounce(Long debounce) { this.debounce = debounce; }
