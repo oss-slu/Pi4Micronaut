@@ -1,7 +1,7 @@
 package com.opensourcewithslu.components.controllers;
 
 import com.opensourcewithslu.inputdevices.RotaryEncoderHelper;
-import com.opensourcewithslu.utilities.MultipinConfiguration;
+import com.opensourcewithslu.utilities.MultiPinConfiguration;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import jakarta.inject.Named;
@@ -11,7 +11,7 @@ import jakarta.inject.Named;
 public class RotaryEncoderController {
     private final RotaryEncoderHelper encoderHelper;
 
-    public RotaryEncoderController(@Named("rotary-encoder")MultipinConfiguration rotaryEncoder){
+    public RotaryEncoderController(@Named("rotary-encoder") MultiPinConfiguration rotaryEncoder){
         this.encoderHelper = new RotaryEncoderHelper(rotaryEncoder);
     }
 

@@ -1,21 +1,17 @@
 package com.opensourcewithslu.utilities.MultiPinConfigs;
 
-import com.opensourcewithslu.utilities.Pi4JMultipinFactory;
-import com.pi4j.io.gpio.digital.PullResistance;
 import com.pi4j.io.pwm.PwmType;
 import io.micronaut.context.annotation.EachProperty;
 import io.micronaut.context.annotation.Parameter;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
+import io.micronaut.context.annotation.Prototype;
 import java.util.Arrays;
 
 /**
  * This class handles the configuration of a PWM device that has multiple pins.
  */
+@Prototype
 @EachProperty("pi4j.multi-pwm")
 public class PwmMultiPinConfiguration {
-    private static final Logger log = LoggerFactory.getLogger(PwmMultiPinConfiguration.class);
     private final String id;
     private String name;
     private int[] addresses;
@@ -29,7 +25,7 @@ public class PwmMultiPinConfiguration {
      * @param id The configuration id as defined in the application.yml
      */
     public PwmMultiPinConfiguration(@Parameter String id){
-        this.id = id + "Multipin";
+        this.id = id + "MultiPin";
     }
 
     /**
@@ -86,26 +82,26 @@ public class PwmMultiPinConfiguration {
      * @param pwmTypes String of PWM types separated by commas. Software should be formatted as SOFTWARE. Hardware as HARDWARE.
      */
     public void setPwmTypes(String pwmTypes) {
-        String[] pwms = pwmTypes.split(",");
-        PwmType[] all_pwms = new PwmType[pwms.length];
+        String[] PWMs = pwmTypes.split(",");
+        PwmType[] all_PWMs = new PwmType[PWMs.length];
 
-        for(int i = 0; i < pwms.length; i++){
-            if(pwms[i].trim().equals("SOFTWARE")){
-                all_pwms[i] = PwmType.SOFTWARE;
+        for(int i = 0; i < PWMs.length; i++){
+            if(PWMs[i].trim().equals("SOFTWARE")){
+                all_PWMs[i] = PwmType.SOFTWARE;
             }
             else{
-                all_pwms[i] = PwmType.HARDWARE;
+                all_PWMs[i] = PwmType.HARDWARE;
             }
         }
 
-        this.pwmTypes = all_pwms;
+        this.pwmTypes = all_PWMs;
     }
 
     /**
      * Gets the initial states that the component is in when first initialized.
      * @return Array of integers representing the initial state for each pin.
      */
-    public int[] getInitals() {
+    public int[] getInitials() {
         return initials;
     }
 
