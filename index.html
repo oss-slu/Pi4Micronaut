@@ -387,7 +387,7 @@ pre.rouge .nv, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi, pre.rouge .vm {
 <h1>Pi4Micronaut Documentation</h1>
 <div class="details">
 <span id="author" class="author">:imagesdir:img</span><br>
-<span id="revnumber">version v1.1</span>
+<span id="revnumber">version v1.0</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -1529,7 +1529,21 @@ Each class of multipin component (Digital Input, PWM), is declared slightly diff
 <div class="listingblock">
 <div class="title">Example Multipin PWM declaration</div>
 <div class="content">
-<pre class="rouge highlight"><code data-lang="yaml"></code></pre>
+<pre class="rouge highlight"><code data-lang="yaml">  <span class="na">multi-pwm</span><span class="pi">:</span>
+    <span class="na">rgb-led</span><span class="pi">:</span>                                    <i class="conum" data-value="1"></i><b>(1)</b>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">RGB LED</span>                             <i class="conum" data-value="2"></i><b>(2)</b>
+      <span class="na">addresses</span><span class="pi">:</span> <span class="s">17, 18, 27</span>                     <i class="conum" data-value="3"></i><b>(3)</b>
+      <span class="na">pwmTypes</span><span class="pi">:</span> <span class="s">SOFTWARE, SOFTWARE, SOFTWARE</span>    <i class="conum" data-value="4"></i><b>(4)</b>
+      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-pwm</span>                      <i class="conum" data-value="5"></i><b>(5)</b>
+      <span class="na">initials</span><span class="pi">:</span> <span class="s">0, 0, 0</span>                         <i class="conum" data-value="6"></i><b>(6)</b>
+      <span class="na">shutdowns</span><span class="pi">:</span> <span class="s">0, 0, 0</span>                        <i class="conum" data-value="7"></i><b>(7)</b>
+    <span class="na">rgb-led-2</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">RGB LED </span><span class="m">2</span>
+      <span class="na">addresses</span><span class="pi">:</span> <span class="s">18, 27, </span><span class="m">22</span>
+      <span class="na">pwmTypes</span><span class="pi">:</span> <span class="s">SOFTWARE, SOFTWARE, SOFTWARE</span>
+      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-pwm</span>
+      <span class="na">initials</span><span class="pi">:</span> <span class="s">0, 0, </span><span class="m">0</span>
+      <span class="na">shutdowns</span><span class="pi">:</span> <span class="s">0, 0, 0</span></code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -1597,6 +1611,27 @@ Each component will need</p>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="yaml">  <span class="na">pwm</span><span class="pi">:</span>
+    <span class="na">red-pwm</span><span class="pi">:</span>                  <i class="conum" data-value="1"></i><b>(1)</b>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">red</span>               <i class="conum" data-value="2"></i><b>(2)</b>
+      <span class="na">address</span><span class="pi">:</span> <span class="s">17</span>             <i class="conum" data-value="3"></i><b>(3)</b>
+      <span class="na">pwmType</span><span class="pi">:</span> <span class="s">SOFTWARE</span>       <i class="conum" data-value="4"></i><b>(4)</b>
+      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-pwm</span>    <i class="conum" data-value="5"></i><b>(5)</b>
+      <span class="na">initial</span><span class="pi">:</span> <span class="s">0</span>              <i class="conum" data-value="6"></i><b>(6)</b>
+      <span class="na">shutdown</span><span class="pi">:</span> <span class="s">0</span>             <i class="conum" data-value="7"></i><b>(7)</b>
+    <span class="na">blue-pwm</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">blue</span>
+      <span class="na">address</span><span class="pi">:</span> <span class="m">18</span>
+      <span class="na">pwmType</span><span class="pi">:</span> <span class="s">SOFTWARE</span>
+      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-pwm</span>
+      <span class="na">initial</span><span class="pi">:</span> <span class="m">0</span>
+      <span class="na">shutdown</span><span class="pi">:</span> <span class="m">0</span>
+    <span class="na">green-pwm</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">green</span>
+      <span class="na">address</span><span class="pi">:</span> <span class="m">27</span>
+      <span class="na">pwmType</span><span class="pi">:</span> <span class="s">SOFTWARE</span>
+      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-pwm</span>
+      <span class="na">initial</span><span class="pi">:</span> <span class="m">0</span>
+      <span class="na">shutdown</span><span class="pi">:</span> <span class="m">0</span>
     <span class="na">active-buzzer</span><span class="pi">:</span>
       <span class="na">name</span><span class="pi">:</span> <span class="s">active-buzzer</span>
       <span class="na">address</span><span class="pi">:</span> <span class="m">17</span>
@@ -2235,7 +2270,7 @@ to the correct GPIO pins according to the YAML pin order below.</p>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">RotaryEncoderController</span> <span class="o">{</span>
     <span class="kd">private</span> <span class="kd">final</span> <span class="nc">RotaryEncoderHelper</span> <span class="n">encoderHelper</span><span class="o">;</span>
 
-    <span class="kd">public</span> <span class="nf">RotaryEncoderController</span><span class="o">(</span><span class="nd">@Named</span><span class="o">(</span><span class="s">"rotary-encoder"</span><span class="o">)</span> <span class="nc">MultiPinConfiguration</span> <span class="n">rotaryEncoder</span><span class="o">){</span>
+    <span class="kd">public</span> <span class="nf">RotaryEncoderController</span><span class="o">(</span><span class="nd">@Named</span><span class="o">(</span><span class="s">"rotary-encoder"</span><span class="o">)</span><span class="nc">MultipinConfiguration</span> <span class="n">rotaryEncoder</span><span class="o">){</span>
         <span class="k">this</span><span class="o">.</span><span class="na">encoderHelper</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">RotaryEncoderHelper</span><span class="o">(</span><span class="n">rotaryEncoder</span><span class="o">);</span>
     <span class="o">}</span>
 
@@ -3146,7 +3181,7 @@ adjust according to your power source and LED specifications</p>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">rgbController</span> <span class="o">{</span>
     <span class="kd">private</span> <span class="kd">final</span> <span class="nc">RGBLEDHelper</span> <span class="n">rgbledHelper</span><span class="o">;</span>
 
-    <span class="kd">public</span> <span class="nf">rgbController</span><span class="o">(</span><span class="nd">@Named</span><span class="o">(</span><span class="s">"rgb-led"</span><span class="o">)</span> <span class="nc">MultiPinConfiguration</span> <span class="n">rgbLed</span><span class="o">){</span>
+    <span class="kd">public</span> <span class="nf">rgbController</span><span class="o">(</span><span class="nd">@Named</span><span class="o">(</span><span class="s">"rgb-led"</span><span class="o">)</span> <span class="nc">MultipinConfiguration</span> <span class="n">rgbLed</span><span class="o">){</span>
         <span class="k">this</span><span class="o">.</span><span class="na">rgbledHelper</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">RGBLEDHelper</span><span class="o">(</span><span class="n">rgbLed</span><span class="o">);</span>
     <span class="o">}</span>
 
@@ -3446,8 +3481,8 @@ adjust according to your power source and LED specifications</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version v1.1<br>
-Last updated 2024-03-21 19:32:04 UTC
+Version v1.0<br>
+Last updated 2024-03-21 19:54:55 UTC
 </div>
 </div>
 </body>
