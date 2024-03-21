@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.18">
-<title>RFID Scanner</title>
+<title>Touch Switch</title>
 <style>
 body {
 	font-family: sans-serif;
@@ -207,52 +207,75 @@ th {
 </div>
 <div id="content">
 <div class="sect3">
-<h4 id="_rfid_scanner">RFID Scanner</h4>
+<h4 id="_touch_switch">Touch Switch</h4>
 <div class="paragraph text-right">
-<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/inputComponents/rfidScanner.adoc">Improve this doc</a></p>
+<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/inputComponents/touchSwitch.adoc">Improve this doc</a></p>
 </div>
 <div class="sect4">
 <h5 id="_overview">Overview</h5>
 <div class="paragraph">
-<p>This section provides information regarding the RFID scanner component and its circuit, including assembly instructions.</p>
+<p>This section provides details of a touch switch sensor implementation,
+including its circuit diagram, required hardware components,
+assembly instructions, and functionality.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_components">Components</h5>
-<div class="ulist">
-<ul>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p>RFID-RC522</p>
+<p>Touch switch module</p>
 </li>
 <li>
-<p>RFID key fob</p>
+<p>LED light</p>
 </li>
 <li>
-<p>9 x Jumper Wires</p>
+<p>1 x 220Ω resistor</p>
 </li>
 <li>
 <p>Breadboard</p>
 </li>
 <li>
-<p>Power source (3.3V)</p>
+<p>Jumper wires</p>
 </li>
-</ul>
+<li>
+<p>Power source</p>
+</li>
+</ol>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_assembly_instructions">Assembly Instructions</h5>
-<div class="ulist">
-<ul>
+<div class="paragraph">
+<p>Connect the 3 pins on the touch switch to the breadboard as well as the LED and resistor
+making sure the LED has power.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p>Put RFID scanner on breadboard as shown in the diagram below.</p>
+<p>Ground: connect the ground on the touch switch to the ground on the breadboard</p>
 </li>
 <li>
-<p>Connect the RFID ground to the ground on the Pi, and connect the 3.3V pin of the RFID scanner to the 3V3 pin of the Pi.</p>
+<p>Power: Connect the VCC on the touch switch to the 3.3V on the breadboard</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>You will want to have a wire connecting 3.3V and ground to the bottom of the board
+so that power can be supplied to the LED and touch switch as shown in the diagram below</p>
+</li>
+</ol>
+</div>
 </li>
 <li>
-<p>Connect the rest of the RFID pins to the corresponding pins on the Pi.</p>
+<p>IO: Connect the IO on the touch switch to GPIO 17 on the breadboard which is the digital input</p>
 </li>
-</ul>
+<li>
+<p>Resistor: Place the resistor vertically so that it can connect the LED light to power</p>
+</li>
+<li>
+<p>Connect a wire from GPIO26 to the LED which is its digital output</p>
+</li>
+</ol>
 </div>
 </div>
 <div class="sect4">
@@ -260,92 +283,108 @@ th {
 <div class="paragraph">
 <p>Model:</p>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="../../img/rfid_circuit.png" alt="rfid circuit">
+<div class="paragraph">
+<p><span class="image"><img src="../../img/touchSwitchDiagram.png" alt="touchSwitchDiagram"></span></p>
 </div>
+<div class="paragraph">
+<p>Circuit Diagram:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../../img/touchSwitch.png" alt="touchSwitch"></span></p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_functionality">Functionality</h5>
 <div class="paragraph">
-<p>The two main functions of the RFID scanner are to read RFIDs and to write to them. What is written to the RFID will vary depending on the intended use for the scanner.</p>
+<p>Once the touch switch has been enabled, touching the sensor will turn the LED light on
+and removing your finger from the sensor will turn the LED light off.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_testing_the_circuit">Testing the Circuit</h5>
+<div class="paragraph">
+<p>To enable the touch switch:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">curl http://localhost:8080/touchSwitch/enable</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To disable the touch switch:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">curl http://localhost:8080/touchSwitch/disable</code></pre>
+</div>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_troubleshooting">Troubleshooting</h5>
-<div class="paragraph">
-<p>Make sure everything is connected to the correct pins.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>LED not lighting up once it has been enabled and is being touched:
+Make sure that all the pins on the touch switch are in the right spot and that everything is receiving power.
+Also make sure that everything is properly secured to the breadboard.</p>
+</li>
+<li>
+<p>Ensure a 220Ω resistor is being used</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_testing_the_circuit">Testing the Circuit:</h5>
+<h5 id="_yaml_pin_order">YAML Pin Order</h5>
 <div class="paragraph">
-<p>To write to the RFID fob: <code>curl -X POST <a href="http://localhost:8080/rfid/write/{message}" class="bare">http://localhost:8080/rfid/write/{message}</a></code></p>
-</div>
-<div class="paragraph">
-<p>Example:</p>
+<p>The YAML configuration for the LED is as follows:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>$ curl -X POST http://localhost:8080/rfid/write/HelloThere</code></pre>
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">digital-output:
+  led2:
+  name: LED Output
+  address: 26
+  shutdown: HIGH
+  initial: HIGH
+  provider: pigpio-digital-output</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Scan the key fob to write the message to the fob.</p>
+<p>So, the output of the LED is connected to GPIO 26.</p>
 </div>
 <div class="paragraph">
-<p>To read from the RFID fob: <code>curl <a href="http://localhost:8080/rfid/read" class="bare">http://localhost:8080/rfid/read</a></code></p>
-</div>
-<div class="paragraph">
-<p>Example:</p>
+<p>The YAML configuration for the touch switch is as follows:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>$ curl http://localhost:8080/rfid/read</code></pre>
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">digital-input:
+  touch-switch-input:
+  name: Touch Switch Input
+  address: 17
+  pull: PULL_DOWN
+  debounce: 200000
+  provider: pigpio-digital-input</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Scan the key fob and the message on the fob will be printed.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>HelloThere</code></pre>
-</div>
+<p>So, the input of the touch switch is connected to GPIO 17.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_yaml">YAML</h5>
+<h5 id="_constructor_and_methods">Constructor and Methods</h5>
 <div class="paragraph">
-<p>The RFID scanner as it appears in the application.yml:</p>
-</div>
-<div class="paragraph">
-<p>Unresolved directive in rfidScanner.adoc - include::../../../../../../components/src/main/resources/application.yml[tag=spi]</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_constructors">Constructors</h5>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">Unresolved directive in rfidScanner.adoc - include::../../../../../../pi4micronaut-utils/src/main/java/com/opensourcewithslu/inputDevices/RFidHelper.java[tag=const]</code></pre>
-</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_methods">Methods</h5>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">Unresolved directive in rfidScanner.adoc - include::../../../../../../pi4micronaut-utils/src/main/java/com/opensourcewithslu/inputDevices/RFidHelper.java[tag=method]</code></pre>
-</div>
+<p>To see the constructor and methods of our TouchSwitchHelper class see our javadoc <a href="https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/inputdevices/TouchSwitchHelper.html">here</a>
+for more details.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_an_example_controller">An Example Controller</h5>
 <div class="sect5">
-<h6 id="_this_controller_uses_the_rfid_scanner_to_write_and_read_to_a_card">This controller uses the RFID scanner to write and read to a card</h6>
+<h6 id="_this_controller_uses_the_touch_switch_to_light_up_a_led_light_once_touched">This controller uses the touch switch to light up a LED light once touched</h6>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">Unresolved directive in rfidScanner.adoc - include::../../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/RFidController.java[tag=ex]</code></pre>
+<pre class="highlight"><code class="language-java" data-lang="java">Unresolved directive in touchSwitch.adoc - include::../../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/TouchSwitchController.java[tag=ex]</code></pre>
 </div>
 </div>
 </div>

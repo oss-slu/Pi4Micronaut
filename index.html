@@ -387,7 +387,7 @@ pre.rouge .nv, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi, pre.rouge .vm {
 <h1>Pi4Micronaut Documentation</h1>
 <div class="details">
 <span id="author" class="author">:imagesdir:img</span><br>
-<span id="revnumber">version v1.0</span>
+<span id="revnumber">version v1.1</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -447,6 +447,7 @@ pre.rouge .nv, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi, pre.rouge .vm {
 <li><a href="#_rfid_scanner">6.2.4. RFID Scanner</a></li>
 <li><a href="#_photosensor">6.2.5. Photosensor</a></li>
 <li><a href="#_ultrasonic_sensor">6.2.6. Ultrasonic Sensor</a></li>
+<li><a href="#_touch_switch">6.2.7. Touch Switch</a></li>
 </ul>
 </li>
 <li><a href="#_output_components">6.3. Output Components</a>
@@ -1528,21 +1529,7 @@ Each class of multipin component (Digital Input, PWM), is declared slightly diff
 <div class="listingblock">
 <div class="title">Example Multipin PWM declaration</div>
 <div class="content">
-<pre class="rouge highlight"><code data-lang="yaml">  <span class="na">multi-pwm</span><span class="pi">:</span>
-    <span class="na">rgb-led</span><span class="pi">:</span>                                    <i class="conum" data-value="1"></i><b>(1)</b>
-      <span class="na">name</span><span class="pi">:</span> <span class="s">RGB LED</span>                             <i class="conum" data-value="2"></i><b>(2)</b>
-      <span class="na">addresses</span><span class="pi">:</span> <span class="s">17, 18, 27</span>                     <i class="conum" data-value="3"></i><b>(3)</b>
-      <span class="na">pwmTypes</span><span class="pi">:</span> <span class="s">SOFTWARE, SOFTWARE, SOFTWARE</span>    <i class="conum" data-value="4"></i><b>(4)</b>
-      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-pwm</span>                      <i class="conum" data-value="5"></i><b>(5)</b>
-      <span class="na">initials</span><span class="pi">:</span> <span class="s">0, 0, 0</span>                         <i class="conum" data-value="6"></i><b>(6)</b>
-      <span class="na">shutdowns</span><span class="pi">:</span> <span class="s">0, 0, 0</span>                        <i class="conum" data-value="7"></i><b>(7)</b>
-    <span class="na">rgb-led-2</span><span class="pi">:</span>
-      <span class="na">name</span><span class="pi">:</span> <span class="s">RGB LED </span><span class="m">2</span>
-      <span class="na">addresses</span><span class="pi">:</span> <span class="s">18, 27, </span><span class="m">22</span>
-      <span class="na">pwmTypes</span><span class="pi">:</span> <span class="s">SOFTWARE, SOFTWARE, SOFTWARE</span>
-      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-pwm</span>
-      <span class="na">initials</span><span class="pi">:</span> <span class="s">0, 0, </span><span class="m">0</span>
-      <span class="na">shutdowns</span><span class="pi">:</span> <span class="s">0, 0, 0</span></code></pre>
+<pre class="rouge highlight"><code data-lang="yaml"></code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -1610,27 +1597,6 @@ Each component will need</p>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="yaml">  <span class="na">pwm</span><span class="pi">:</span>
-    <span class="na">red-pwm</span><span class="pi">:</span>                  <i class="conum" data-value="1"></i><b>(1)</b>
-      <span class="na">name</span><span class="pi">:</span> <span class="s">red</span>               <i class="conum" data-value="2"></i><b>(2)</b>
-      <span class="na">address</span><span class="pi">:</span> <span class="s">17</span>             <i class="conum" data-value="3"></i><b>(3)</b>
-      <span class="na">pwmType</span><span class="pi">:</span> <span class="s">SOFTWARE</span>       <i class="conum" data-value="4"></i><b>(4)</b>
-      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-pwm</span>    <i class="conum" data-value="5"></i><b>(5)</b>
-      <span class="na">initial</span><span class="pi">:</span> <span class="s">0</span>              <i class="conum" data-value="6"></i><b>(6)</b>
-      <span class="na">shutdown</span><span class="pi">:</span> <span class="s">0</span>             <i class="conum" data-value="7"></i><b>(7)</b>
-    <span class="na">blue-pwm</span><span class="pi">:</span>
-      <span class="na">name</span><span class="pi">:</span> <span class="s">blue</span>
-      <span class="na">address</span><span class="pi">:</span> <span class="m">18</span>
-      <span class="na">pwmType</span><span class="pi">:</span> <span class="s">SOFTWARE</span>
-      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-pwm</span>
-      <span class="na">initial</span><span class="pi">:</span> <span class="m">0</span>
-      <span class="na">shutdown</span><span class="pi">:</span> <span class="m">0</span>
-    <span class="na">green-pwm</span><span class="pi">:</span>
-      <span class="na">name</span><span class="pi">:</span> <span class="s">green</span>
-      <span class="na">address</span><span class="pi">:</span> <span class="m">27</span>
-      <span class="na">pwmType</span><span class="pi">:</span> <span class="s">SOFTWARE</span>
-      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-pwm</span>
-      <span class="na">initial</span><span class="pi">:</span> <span class="m">0</span>
-      <span class="na">shutdown</span><span class="pi">:</span> <span class="m">0</span>
     <span class="na">active-buzzer</span><span class="pi">:</span>
       <span class="na">name</span><span class="pi">:</span> <span class="s">active-buzzer</span>
       <span class="na">address</span><span class="pi">:</span> <span class="m">17</span>
@@ -2269,7 +2235,7 @@ to the correct GPIO pins according to the YAML pin order below.</p>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">RotaryEncoderController</span> <span class="o">{</span>
     <span class="kd">private</span> <span class="kd">final</span> <span class="nc">RotaryEncoderHelper</span> <span class="n">encoderHelper</span><span class="o">;</span>
 
-    <span class="kd">public</span> <span class="nf">RotaryEncoderController</span><span class="o">(</span><span class="nd">@Named</span><span class="o">(</span><span class="s">"rotary-encoder"</span><span class="o">)</span><span class="nc">MultipinConfiguration</span> <span class="n">rotaryEncoder</span><span class="o">){</span>
+    <span class="kd">public</span> <span class="nf">RotaryEncoderController</span><span class="o">(</span><span class="nd">@Named</span><span class="o">(</span><span class="s">"rotary-encoder"</span><span class="o">)</span> <span class="nc">MultiPinConfiguration</span> <span class="n">rotaryEncoder</span><span class="o">){</span>
         <span class="k">this</span><span class="o">.</span><span class="na">encoderHelper</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">RotaryEncoderHelper</span><span class="o">(</span><span class="n">rotaryEncoder</span><span class="o">);</span>
     <span class="o">}</span>
 
@@ -2631,6 +2597,219 @@ and check the power source.</p>
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_touch_switch"><a class="anchor" href="#_touch_switch"></a>6.2.7. Touch Switch</h4>
+<div class="paragraph text-right">
+<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/inputComponents/touchSwitch.adoc">Improve this doc</a></p>
+</div>
+<div class="sect4">
+<h5 id="_overview_6"><a class="anchor" href="#_overview_6"></a>Overview</h5>
+<div class="paragraph">
+<p>This section provides details of a touch switch sensor implementation,
+including its circuit diagram, required hardware components,
+assembly instructions, and functionality.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_components_7"><a class="anchor" href="#_components_7"></a>Components</h5>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Touch switch module</p>
+</li>
+<li>
+<p>LED light</p>
+</li>
+<li>
+<p>1 x 220Ω resistor</p>
+</li>
+<li>
+<p>Breadboard</p>
+</li>
+<li>
+<p>Jumper wires</p>
+</li>
+<li>
+<p>Power source</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_assembly_instructions_4"><a class="anchor" href="#_assembly_instructions_4"></a>Assembly Instructions</h5>
+<div class="paragraph">
+<p>Connect the 3 pins on the touch switch to the breadboard as well as the LED and resistor
+making sure the LED has power.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Ground: connect the ground on the touch switch to the ground on the breadboard</p>
+</li>
+<li>
+<p>Power: Connect the VCC on the touch switch to the 3.3V on the breadboard</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>You will want to have a wire connecting 3.3V and ground to the bottom of the board
+so that power can be supplied to the LED and touch switch as shown in the diagram below</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>IO: Connect the IO on the touch switch to GPIO 17 on the breadboard which is the digital input</p>
+</li>
+<li>
+<p>Resistor: Place the resistor vertically so that it can connect the LED light to power</p>
+</li>
+<li>
+<p>Connect a wire from GPIO26 to the LED which is its digital output</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_circuit_diagram_6"><a class="anchor" href="#_circuit_diagram_6"></a>Circuit Diagram</h5>
+<div class="paragraph">
+<p>Model:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="img/touchSwitchDiagram.png" alt="touchSwitchDiagram"></span></p>
+</div>
+<div class="paragraph">
+<p>Circuit Diagram:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="img/touchSwitch.png" alt="touchSwitch"></span></p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_functionality_6"><a class="anchor" href="#_functionality_6"></a>Functionality</h5>
+<div class="paragraph">
+<p>Once the touch switch has been enabled, touching the sensor will turn the LED light on
+and removing your finger from the sensor will turn the LED light off.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_testing_the_circuit_4"><a class="anchor" href="#_testing_the_circuit_4"></a>Testing the Circuit</h5>
+<div class="paragraph">
+<p>To enable the touch switch:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="bash">curl http://localhost:8080/touchSwitch/enable</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To disable the touch switch:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="bash">curl http://localhost:8080/touchSwitch/disable</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_troubleshooting_6"><a class="anchor" href="#_troubleshooting_6"></a>Troubleshooting</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>LED not lighting up once it has been enabled and is being touched:
+Make sure that all the pins on the touch switch are in the right spot and that everything is receiving power.
+Also make sure that everything is properly secured to the breadboard.</p>
+</li>
+<li>
+<p>Ensure a 220Ω resistor is being used</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_yaml_pin_order_4"><a class="anchor" href="#_yaml_pin_order_4"></a>YAML Pin Order</h5>
+<div class="paragraph">
+<p>The YAML configuration for the LED is as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">digital-output</span><span class="pi">:</span>
+  <span class="na">led2</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">LED Output</span>
+  <span class="na">address</span><span class="pi">:</span> <span class="m">26</span>
+  <span class="na">shutdown</span><span class="pi">:</span> <span class="s">HIGH</span>
+  <span class="na">initial</span><span class="pi">:</span> <span class="s">HIGH</span>
+  <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-digital-output</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So, the output of the LED is connected to GPIO 26.</p>
+</div>
+<div class="paragraph">
+<p>The YAML configuration for the touch switch is as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">digital-input</span><span class="pi">:</span>
+  <span class="na">touch-switch-input</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">Touch Switch Input</span>
+  <span class="na">address</span><span class="pi">:</span> <span class="m">17</span>
+  <span class="na">pull</span><span class="pi">:</span> <span class="s">PULL_DOWN</span>
+  <span class="na">debounce</span><span class="pi">:</span> <span class="m">200000</span>
+  <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-digital-input</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So, the input of the touch switch is connected to GPIO 17.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_constructor_and_methods"><a class="anchor" href="#_constructor_and_methods"></a>Constructor and Methods</h5>
+<div class="paragraph">
+<p>To see the constructor and methods of our TouchSwitchHelper class see our javadoc <a href="https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/inputdevices/TouchSwitchHelper.html">here</a>
+for more details.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_an_example_controller_6"><a class="anchor" href="#_an_example_controller_6"></a>An Example Controller</h5>
+<div class="sect5">
+<h6 id="_this_controller_uses_the_touch_switch_to_light_up_a_led_light_once_touched"><a class="anchor" href="#_this_controller_uses_the_touch_switch_to_light_up_a_led_light_once_touched"></a>This controller uses the touch switch to light up a LED light once touched</h6>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="nd">@Controller</span><span class="o">(</span><span class="s">"/touchSwitch"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TouchSwitchController</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">TouchSwitchHelper</span> <span class="n">touchSwitchHelper</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">LEDHelper</span> <span class="n">ledHelper</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">TouchSwitchController</span><span class="o">(</span><span class="nd">@Named</span><span class="o">(</span><span class="s">"touch-switch-input"</span><span class="o">)</span> <span class="nc">DigitalInput</span> <span class="n">touchSwitch</span><span class="o">,</span>
+                                 <span class="nd">@Named</span><span class="o">(</span><span class="s">"led2"</span><span class="o">)</span> <span class="nc">DigitalOutput</span> <span class="n">led</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">touchSwitchHelper</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TouchSwitchHelper</span><span class="o">(</span><span class="n">touchSwitch</span><span class="o">);</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">ledHelper</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LEDHelper</span><span class="o">(</span><span class="n">led</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/enable"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">enableTouchSwitch</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">touchSwitchHelper</span><span class="o">.</span><span class="na">addEventListener</span><span class="o">(</span><span class="n">e</span> <span class="o">-&gt;</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">touchSwitchHelper</span><span class="o">.</span><span class="na">isTouched</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">ledHelper</span><span class="o">.</span><span class="na">ledOn</span><span class="o">();</span>
+            <span class="o">}</span>
+            <span class="k">else</span> <span class="o">{</span>
+                <span class="n">ledHelper</span><span class="o">.</span><span class="na">ledOff</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/disable"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">disableTouchSwitch</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">touchSwitchHelper</span><span class="o">.</span><span class="na">removeEventListener</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_output_components"><a class="anchor" href="#_output_components"></a>6.3. Output Components</h3>
@@ -2643,13 +2822,13 @@ and check the power source.</p>
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/outputComponents/led.adoc">Improve this doc</a></p>
 </div>
 <div class="sect4">
-<h5 id="_overview_6"><a class="anchor" href="#_overview_6"></a>Overview</h5>
+<h5 id="_overview_7"><a class="anchor" href="#_overview_7"></a>Overview</h5>
 <div class="paragraph">
 <p>This section provides details of the LED, including its components and assembly instructions.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_components_7"><a class="anchor" href="#_components_7"></a>Components</h5>
+<h5 id="_components_8"><a class="anchor" href="#_components_8"></a>Components</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -2708,7 +2887,7 @@ and check the power source.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_circuit_diagram_6"><a class="anchor" href="#_circuit_diagram_6"></a>Circuit Diagram</h5>
+<h5 id="_circuit_diagram_7"><a class="anchor" href="#_circuit_diagram_7"></a>Circuit Diagram</h5>
 <div class="imageblock">
 <div class="content">
 <img src="img/LED_circuit.png" alt="LED circuit">
@@ -2722,7 +2901,7 @@ and check the power source.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_troubleshooting_6"><a class="anchor" href="#_troubleshooting_6"></a>Troubleshooting</h5>
+<h5 id="_troubleshooting_7"><a class="anchor" href="#_troubleshooting_7"></a>Troubleshooting</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -2772,7 +2951,7 @@ as well as the LED specifications.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_an_example_controller_6"><a class="anchor" href="#_an_example_controller_6"></a>An Example Controller</h5>
+<h5 id="_an_example_controller_7"><a class="anchor" href="#_an_example_controller_7"></a>An Example Controller</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">outputComponents</span><span class="o">/</span><span class="n">led</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:</span> <span class="o">../../../../../../</span><span class="n">components</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">components</span><span class="o">/</span><span class="n">controllers</span><span class="o">/</span><span class="nc">LEDController</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tags</span><span class="o">=</span><span class="n">method</span><span class="o">]</span></code></pre>
@@ -2786,14 +2965,14 @@ as well as the LED specifications.</p>
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/outputComponents/rgbLed.adoc">Improve this doc</a></p>
 </div>
 <div class="sect4">
-<h5 id="_overview_7"><a class="anchor" href="#_overview_7"></a>Overview</h5>
+<h5 id="_overview_8"><a class="anchor" href="#_overview_8"></a>Overview</h5>
 <div class="paragraph">
 <p>This document provides details of the RGB (Red-Green-Blue) LED circuit,
 including its components, assembly instructions, and functionality.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_components_8"><a class="anchor" href="#_components_8"></a>Components</h5>
+<h5 id="_components_9"><a class="anchor" href="#_components_9"></a>Components</h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2815,7 +2994,7 @@ including its components, assembly instructions, and functionality.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_assembly_instructions_4"><a class="anchor" href="#_assembly_instructions_4"></a>Assembly Instructions</h5>
+<h5 id="_assembly_instructions_5"><a class="anchor" href="#_assembly_instructions_5"></a>Assembly Instructions</h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2847,7 +3026,7 @@ negative terminals (like GPIO pins set to OUTPUT and LOW on a microcontroller).<
 </div>
 </div>
 <div class="sect4">
-<h5 id="_circuit_diagram_7"><a class="anchor" href="#_circuit_diagram_7"></a>Circuit Diagram</h5>
+<h5 id="_circuit_diagram_8"><a class="anchor" href="#_circuit_diagram_8"></a>Circuit Diagram</h5>
 <div class="paragraph">
 <p>Model:</p>
 </div>
@@ -2866,7 +3045,7 @@ negative terminals (like GPIO pins set to OUTPUT and LOW on a microcontroller).<
 </div>
 </div>
 <div class="sect4">
-<h5 id="_functionality_6"><a class="anchor" href="#_functionality_6"></a>Functionality</h5>
+<h5 id="_functionality_7"><a class="anchor" href="#_functionality_7"></a>Functionality</h5>
 <div class="paragraph">
 <p>The RGB LED can produce a wide range of colors by mixing different intensities of
 Red, Green, and Blue. By adjusting the power to each pin, various colors can be
@@ -2899,7 +3078,7 @@ produced. For instance:</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_troubleshooting_7"><a class="anchor" href="#_troubleshooting_7"></a>Troubleshooting</h5>
+<h5 id="_troubleshooting_8"><a class="anchor" href="#_troubleshooting_8"></a>Troubleshooting</h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2922,7 +3101,7 @@ adjust according to your power source and LED specifications</p>
 
 </div>
 <div class="sect4">
-<h5 id="_yaml_pin_order_4"><a class="anchor" href="#_yaml_pin_order_4"></a>YAML Pin Order</h5>
+<h5 id="_yaml_pin_order_5"><a class="anchor" href="#_yaml_pin_order_5"></a>YAML Pin Order</h5>
 <div class="paragraph">
 <p>The order for declaring pins for a RGB LED component in the application.yaml file is as follows</p>
 </div>
@@ -2960,14 +3139,14 @@ adjust according to your power source and LED specifications</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_an_example_controller_7"><a class="anchor" href="#_an_example_controller_7"></a>An Example Controller</h5>
+<h5 id="_an_example_controller_8"><a class="anchor" href="#_an_example_controller_8"></a>An Example Controller</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="nd">@Controller</span><span class="o">(</span><span class="s">"/rgb"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">rgbController</span> <span class="o">{</span>
     <span class="kd">private</span> <span class="kd">final</span> <span class="nc">RGBLEDHelper</span> <span class="n">rgbledHelper</span><span class="o">;</span>
 
-    <span class="kd">public</span> <span class="nf">rgbController</span><span class="o">(</span><span class="nd">@Named</span><span class="o">(</span><span class="s">"rgb-led"</span><span class="o">)</span> <span class="nc">MultipinConfiguration</span> <span class="n">rgbLed</span><span class="o">){</span>
+    <span class="kd">public</span> <span class="nf">rgbController</span><span class="o">(</span><span class="nd">@Named</span><span class="o">(</span><span class="s">"rgb-led"</span><span class="o">)</span> <span class="nc">MultiPinConfiguration</span> <span class="n">rgbLed</span><span class="o">){</span>
         <span class="k">this</span><span class="o">.</span><span class="na">rgbledHelper</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">RGBLEDHelper</span><span class="o">(</span><span class="n">rgbLed</span><span class="o">);</span>
     <span class="o">}</span>
 
@@ -3045,13 +3224,13 @@ adjust according to your power source and LED specifications</p>
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/outputComponents/lcdScreen.adoc">Improve this doc</a></p>
 </div>
 <div class="sect4">
-<h5 id="_overview_8"><a class="anchor" href="#_overview_8"></a>Overview</h5>
+<h5 id="_overview_9"><a class="anchor" href="#_overview_9"></a>Overview</h5>
 <div class="paragraph">
 <p>This section provides details of the LCD1602 (Liquid Crystal Display) circuit, including its components, assembly instructions, and functionality. The LCD1602 is a kind of dot matrix module that can show letters, numbers, and other characters. The number 1602 describes the display: 2 rows with 16 characters per row. NOTE: The LCD display only works on the 32 bit version of Raspberry Pi OS.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_components_9"><a class="anchor" href="#_components_9"></a>Components</h5>
+<h5 id="_components_10"><a class="anchor" href="#_components_10"></a>Components</h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3073,7 +3252,7 @@ adjust according to your power source and LED specifications</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_assembly_instructions_5"><a class="anchor" href="#_assembly_instructions_5"></a>Assembly Instructions</h5>
+<h5 id="_assembly_instructions_6"><a class="anchor" href="#_assembly_instructions_6"></a>Assembly Instructions</h5>
 <div class="paragraph">
 <p>Connect the 4 pins on the LCD1602 screen to the breadboard as described below and in the diagram:</p>
 </div>
@@ -3095,7 +3274,7 @@ adjust according to your power source and LED specifications</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_circuit_diagram_8"><a class="anchor" href="#_circuit_diagram_8"></a>Circuit Diagram</h5>
+<h5 id="_circuit_diagram_9"><a class="anchor" href="#_circuit_diagram_9"></a>Circuit Diagram</h5>
 <div class="imageblock">
 <div class="content">
 <img src="img/lcd1602-circuit.png" alt="lcd1602 circuit">
@@ -3103,13 +3282,13 @@ adjust according to your power source and LED specifications</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_functionality_7"><a class="anchor" href="#_functionality_7"></a>Functionality</h5>
+<h5 id="_functionality_8"><a class="anchor" href="#_functionality_8"></a>Functionality</h5>
 <div class="paragraph">
 <p>The LCD1602 screen will light up once connected to a power source.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_testing_the_circuit_4"><a class="anchor" href="#_testing_the_circuit_4"></a>Testing the Circuit</h5>
+<h5 id="_testing_the_circuit_5"><a class="anchor" href="#_testing_the_circuit_5"></a>Testing the Circuit</h5>
 <div class="paragraph">
 <p>Write Hello to the LCD1602 screen</p>
 </div>
@@ -3172,7 +3351,7 @@ adjust according to your power source and LED specifications</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_troubleshooting_8"><a class="anchor" href="#_troubleshooting_8"></a>Troubleshooting</h5>
+<h5 id="_troubleshooting_9"><a class="anchor" href="#_troubleshooting_9"></a>Troubleshooting</h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3253,7 +3432,7 @@ adjust according to your power source and LED specifications</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_an_example_controller_8"><a class="anchor" href="#_an_example_controller_8"></a>An Example Controller</h5>
+<h5 id="_an_example_controller_9"><a class="anchor" href="#_an_example_controller_9"></a>An Example Controller</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"></code></pre>
@@ -3267,8 +3446,8 @@ adjust according to your power source and LED specifications</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version v1.0<br>
-Last updated 2024-03-18 21:41:29 UTC
+Version v1.1<br>
+Last updated 2024-03-21 19:32:04 UTC
 </div>
 </div>
 </body>
