@@ -117,7 +117,7 @@ public class Pi4JFactory {
                     .address(config.getAddress())
                     .pwmType(config.getPwmType())
                     .provider(config.getProvider())
-                    .initial(config.getInital())
+                    .initial(config.getInitial())
                     .shutdown(config.getShutdown())
                     .build()
             );

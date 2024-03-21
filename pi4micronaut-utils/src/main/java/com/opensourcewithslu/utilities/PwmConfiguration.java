@@ -16,7 +16,7 @@ public class PwmConfiguration {
     private int address;
     private PwmType pwmType;
     private String provider;
-    private int inital;
+    private int initial;
     private int shutdown;
 
     /**
@@ -71,16 +71,16 @@ public class PwmConfiguration {
      * Gets the initial state that the component is in when first initialized.
      * @return The state as an integer.
      */
-    public int getInital() {
-        return inital;
+    public int getInitial() {
+        return initial;
     }
 
     /**
      * Sets the initial state that the component will be in when first initialized.
-     * @param inital The startup state as an integer.
+     * @param initial The startup state as an integer.
      */
-    public void setInital(int inital) {
-        this.inital = inital;
+    public void setInitial(int initial) {
+        this.initial = initial;
     }
 
     /**

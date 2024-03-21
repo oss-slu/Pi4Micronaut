@@ -1,7 +1,7 @@
 package com.opensourcewithslu.components.controllers;
 
 import com.opensourcewithslu.outputdevices.RGBLEDHelper;
-import com.opensourcewithslu.utilities.MultipinConfiguration;
+import com.opensourcewithslu.utilities.MultiPinConfiguration;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import jakarta.inject.Named;
@@ -11,7 +11,7 @@ import jakarta.inject.Named;
 public class rgbController {
     private final RGBLEDHelper rgbledHelper;
 
-    public rgbController(@Named("rgb-led") MultipinConfiguration rgbLed){
+    public rgbController(@Named("rgb-led") MultiPinConfiguration rgbLed){
         this.rgbledHelper = new RGBLEDHelper(rgbLed);
     }
 

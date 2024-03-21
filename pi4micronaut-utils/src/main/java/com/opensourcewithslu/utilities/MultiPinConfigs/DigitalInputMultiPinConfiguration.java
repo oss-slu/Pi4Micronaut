@@ -3,12 +3,14 @@ package com.opensourcewithslu.utilities.MultiPinConfigs;
 import com.pi4j.io.gpio.digital.PullResistance;
 import io.micronaut.context.annotation.EachProperty;
 import io.micronaut.context.annotation.Parameter;
+import io.micronaut.context.annotation.Prototype;
 
 import java.util.Arrays;
 
 /**
  * This class handles the configuration of a digital input component that has multiple pins.
  */
+@Prototype
 @EachProperty("pi4j.multi-digital-input")
 public class DigitalInputMultiPinConfiguration {
     private final String id;
@@ -23,7 +25,7 @@ public class DigitalInputMultiPinConfiguration {
      * @param id The configuration id as defined in the application.yml
      */
     public DigitalInputMultiPinConfiguration(@Parameter String id){
-        this.id = id + "Multipin";
+        this.id = id + "MultiPin";
     }
 
     /**
@@ -106,7 +108,7 @@ public class DigitalInputMultiPinConfiguration {
 
     /**
      * Sets the debounces for the component. Replaces all the existing debounces.
-     * @param debounces String representing the dounces for the component. Each debounce seperated by a comma.
+     * @param debounces String representing the debounces for the component. Each debounce seperated by a comma.
      */
     public void setDebounces(String debounces) {
         debounces = debounces.replaceAll("\\s", "");
