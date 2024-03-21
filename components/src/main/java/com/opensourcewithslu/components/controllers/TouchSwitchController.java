@@ -8,6 +8,7 @@ import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import jakarta.inject.Named;
 
+//tag::ex[]
 @Controller("/touchSwitch")
 public class TouchSwitchController {
 
@@ -38,3 +39,4 @@ public class TouchSwitchController {
         touchSwitchHelper.removeEventListener();
     }
 }
+//end::ex[]
