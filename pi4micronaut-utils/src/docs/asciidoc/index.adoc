@@ -68,6 +68,7 @@ include::components/inputComponents/photosensor.adoc[]
 
 include::components/inputComponents/ultraSonicSensor.adoc[]
 
+include::components/inputComponents/touchSwitch.adoc[]
 
 include::components/outputComponents.adoc[]
 
