@@ -2,7 +2,7 @@ package com.opensourcewithslu.components.controllers;
 
 import com.opensourcewithslu.inputdevices.PIRSensorHelper;
 import com.opensourcewithslu.outputdevices.RGBLEDHelper;
-import com.opensourcewithslu.utilities.MultipinConfiguration;
+import com.opensourcewithslu.utilities.MultiPinConfiguration;
 import com.pi4j.io.gpio.digital.DigitalInput;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
@@ -24,7 +24,7 @@ public class PIRSensorController {
      * @param rgbLed A MultiPinConfiguration object.
      */
     public PIRSensorController(@Named("pir-sensor")DigitalInput pirSensor,
-                               @Named("rgb-led-2")MultipinConfiguration rgbLed) {
+                               @Named("rgb-led-2") MultiPinConfiguration rgbLed) {
         this.pirSensorHelper = new PIRSensorHelper(pirSensor);
         this.rgbledHelper = new RGBLEDHelper(rgbLed);
     }

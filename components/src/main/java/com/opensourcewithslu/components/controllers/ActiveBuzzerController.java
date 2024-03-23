@@ -37,7 +37,7 @@ public class ActiveBuzzerController {
     }
 
     /**
-     * Emits an beep sound from the active buzzer.
+     * Emits a beep sound from the active buzzer.
      */
     @Get("/beepTone")
     public void playBeepTone(){

@@ -37,10 +37,10 @@ public class lcdController {
         return "Text written at line " + line + ", position " + pos + ": " + text + "\n";
     }
 
-    @Get("/write/character/{charvalue}")
-    public String writeCharacter(@PathVariable char charvalue) {
-        lcdHelper.writeCharacter(charvalue);
-        return "Character '" + charvalue + "' written to LCD\n";
+    @Get("/write/character/{charValue}")
+    public String writeCharacter(@PathVariable char charValue) {
+        lcdHelper.writeCharacter(charValue);
+        return "Character '" + charValue + "' written to LCD\n";
     }
 
     @Get("/backlight/{state}")

@@ -14,27 +14,6 @@ pi4j:
 
   # tag::pwm[]
   pwm:
-    red-pwm:                  # <1>
-      name: red               # <2>
-      address: 17             # <3>
-      pwmType: SOFTWARE       # <4>
-      provider: pigpio-pwm    # <5>
-      initial: 0              # <6>
-      shutdown: 0             # <7>
-    blue-pwm:
-      name: blue
-      address: 18
-      pwmType: SOFTWARE
-      provider: pigpio-pwm
-      initial: 0
-      shutdown: 0
-    green-pwm:
-      name: green
-      address: 27
-      pwmType: SOFTWARE
-      provider: pigpio-pwm
-      initial: 0
-      shutdown: 0
     active-buzzer:
       name: active-buzzer
       address: 17
@@ -165,7 +144,7 @@ pi4j:
       provider: pigpio-digital-input
   # end::multiInput[]
 
-  # tag::multipwm[]
+  # tag::multiPWM[]
   multi-pwm:
     rgb-led:                                    # <.>
       name: RGB LED                             # <.>
@@ -181,22 +160,5 @@ pi4j:
       provider: pigpio-pwm
       initials: 0, 0, 0
       shutdowns: 0, 0, 0
-  # end::multipwm[]
+  # end::multiPWM[]
 
-
-#  clk:
-#    name: CLK Output
-#    address: 23
-#    debounce: 500
-#    pull: PULL_UP
-#    shutdown: LOW
-#    initial: HIGH
-#    provider: pigpio-digital-input
-#  dt:
-#    name: DT Output
-#    address: 24
-#    debounce: 500
-#    pull: PULL_UP
-#    shutdown: LOW
-#    initial: HIGH
-#    provider: pigpio-digital-input

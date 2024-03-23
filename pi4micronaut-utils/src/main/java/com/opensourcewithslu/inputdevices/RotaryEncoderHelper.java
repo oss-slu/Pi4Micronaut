@@ -1,6 +1,6 @@
 package com.opensourcewithslu.inputdevices;
 
-import com.opensourcewithslu.utilities.MultipinConfiguration;
+import com.opensourcewithslu.utilities.MultiPinConfiguration;
 import com.pi4j.io.gpio.digital.DigitalInput;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,10 +23,10 @@ public class RotaryEncoderHelper {
 
     /**
      * The RotaryEncoderHelper constructor.
-     * @param multiPin A {@link  com.opensourcewithslu.utilities.MultipinConfiguration} Object.
+     * @param multiPin A {@link  com.opensourcewithslu.utilities.MultiPinConfiguration} Object.
      */
     //tag::const[]
-    public RotaryEncoderHelper(MultipinConfiguration multiPin)
+    public RotaryEncoderHelper(MultiPinConfiguration multiPin)
     //end::const[]
     {
         DigitalInput[] allPins = (DigitalInput[]) multiPin.getComponents();

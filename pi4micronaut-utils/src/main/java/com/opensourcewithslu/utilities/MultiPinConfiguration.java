@@ -1,28 +1,22 @@
 package com.opensourcewithslu.utilities;
 
-import com.pi4j.io.gpio.digital.DigitalState;
-import com.pi4j.io.gpio.digital.PullResistance;
-import io.micronaut.context.annotation.EachProperty;
 import io.micronaut.context.annotation.Parameter;
 import io.micronaut.context.annotation.Prototype;
 
-import java.util.Arrays;
-import java.util.List;
-
 /**
- * Class for configuring multipin components.
+ * Class for configuring multiPin components.
  */
 @Prototype
-public class MultipinConfiguration {
+public class MultiPinConfiguration {
     private final String id;
     private final Object[] components;
 
     /**
-     * The MultipinConfiguration constructor. 
+     * The MultiPinConfiguration constructor.
      * @param id The configuration id as defined in the application.yml
-     * @param components The array of components that are a part of the multipin component.
+     * @param components The array of components that are a part of the multiPin component.
      */
-    public MultipinConfiguration(String id, Object[] components){
+    public MultiPinConfiguration(@Parameter String id, Object[] components){
         this.id = id;
         this.components = components;
     }
