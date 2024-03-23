@@ -32,10 +32,7 @@ include::contribute/contributingToLibrary.adoc[]
 
 include::contribute/newComponent.adoc[]
 
-include::adding_creating_App.adoc[]
 
-
-include::usingLibrary.adoc[]
 
 include::components.adoc[]
 
