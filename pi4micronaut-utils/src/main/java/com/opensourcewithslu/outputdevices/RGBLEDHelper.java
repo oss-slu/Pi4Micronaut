@@ -1,6 +1,6 @@
 package com.opensourcewithslu.outputdevices;
 
-import com.opensourcewithslu.utilities.MultipinConfiguration;
+import com.opensourcewithslu.utilities.MultiPinConfiguration;
 import com.pi4j.io.pwm.Pwm;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,10 +19,10 @@ public class RGBLEDHelper {
 
     /**
      * The RGBLEDHelper constructor.
-     * @param pwm A {@link  com.opensourcewithslu.utilities.MultipinConfiguration} Object.
+     * @param pwm A {@link  com.opensourcewithslu.utilities.MultiPinConfiguration} Object.
      */
     //tag::const[]
-    public RGBLEDHelper(MultipinConfiguration pwm)
+    public RGBLEDHelper(MultiPinConfiguration pwm)
     //end::const[]
     {
         log.info("Init rgb");

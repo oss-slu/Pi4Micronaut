@@ -36,7 +36,7 @@ The existence of Pi4Micronaut is justified by the need for a robust, scalable, a
 - [API Reference](https://oss-slu.github.io/Pi4Micronaut/javadoc/index.html)
 
 ### Architecture Diagram
-![Pi4Micronaut.png](Workflow.png)
+![Pi4Micronaut.png](Workflow_Diagram.png)
 
 ## Micronaut 3.7.3
 - [Micronaut 3.7.3 User Guide](https://micronaut-projects.github.io/micronaut-docs-mn3/3.7.3/guide/index.html)

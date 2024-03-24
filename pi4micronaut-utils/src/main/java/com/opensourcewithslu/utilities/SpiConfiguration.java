@@ -6,7 +6,7 @@ import io.micronaut.context.annotation.Parameter;
 import io.micronaut.context.annotation.Prototype;
 
 /**
- * This class handles the configuration of a SPI component.
+ * This class handles the configuration of an SPI component.
  */
 @Prototype
 @EachProperty("pi4j.spi")

@@ -68,6 +68,8 @@ include::components/inputComponents/photosensor.adoc[]
 
 include::components/inputComponents/ultraSonicSensor.adoc[]
 
+include::components/inputComponents/touchSwitch.adoc[]
+
 
 include::components/outputComponents.adoc[]
 
@@ -76,5 +78,7 @@ include::components/outputComponents/led.adoc[]
 include::components/outputComponents/rgbLed.adoc[]
 
 include::components/outputComponents/lcd1602.adoc[]
+
+
 
 include::components/outputComponents/activebuzzer.adoc[]
