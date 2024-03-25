@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.18">
-<title>LED</title>
+<title>Active Buzzer</title>
 <style>
 body {
 	font-family: sans-serif;
@@ -207,14 +207,14 @@ th {
 </div>
 <div id="content">
 <div class="sect3">
-<h4 id="_led">LED</h4>
+<h4 id="_active_buzzer">Active Buzzer</h4>
 <div class="paragraph text-right">
-<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/outputComponents/led.adoc">Improve this doc</a></p>
+<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/outputComponents/activebuzzer.adoc">Improve this doc</a></p>
 </div>
 <div class="sect4">
 <h5 id="_overview">Overview</h5>
 <div class="paragraph">
-<p>This section provides details of the LED, including its components and assembly instructions.</p>
+<p>This section provides details of the Active Buzzer, including the components and assembly instructions. The Active Buzzer only emits one frequency, as described in the code, to play various sounds.</p>
 </div>
 </div>
 <div class="sect4">
@@ -228,16 +228,19 @@ th {
 <p>1 x Breadboard</p>
 </li>
 <li>
-<p>1 x T-Extension Board</p>
+<p>1 x T-extension Board</p>
 </li>
 <li>
-<p>1 x LED</p>
+<p>1 x Active Buzzer</p>
 </li>
 <li>
-<p>2 x Jumper wires</p>
+<p>6 x Jumper wires</p>
 </li>
 <li>
-<p>1 x Resistor (220Ω)</p>
+<p>1 x Resistor (1KΩ)</p>
+</li>
+<li>
+<p>1 x S8550 PNP Transistor</p>
 </li>
 <li>
 <p>Power source (appropriate voltage, typically 3.3V)</p>
@@ -246,48 +249,84 @@ th {
 </div>
 </div>
 <div class="sect4">
-<h5 id="_assembly">Assembly</h5>
+<h5 id="_assembly_instructions">Assembly Instructions</h5>
 <div class="ulist">
 <ul>
 <li>
-<p>Place a single LED onto the Breadboard.</p>
+<p>Place the Active Buzzer onto the Breadboard.</p>
 </li>
 <li>
-<p>The LED will have two pins, a cathode and an anode.</p>
+<p>Place the 1KΩ resistor onto the Breadboard, must be inline with base pin of S8550 PNP Transistor.</p>
 </li>
 <li>
-<p>Connect the cathode (short pin) of the LED to GPIO 17.</p>
+<p>Place the S8550 PNP Transistor onto the BreadBoard.</p>
 </li>
 <li>
-<p>Connect the anode (long pin) to a 220Ω resistor on the positive side of the Breadboard.</p>
+<p>The Active Buzzer will have two pins. The longer pin is the anode (+) while the shorter is the cathode(-).</p>
 </li>
 <li>
-<p>Connect the other end of the resistor to 3.3V</p>
+<p>Connect a jumper wire from GND to (-) negative side</p>
 </li>
 <li>
-<p>Connect a jumper wire from GPIO 17 to the cathode of the LED.</p>
+<p>Connect a jumper wire from 3.3V to (+) positive side.</p>
 </li>
 <li>
-<p>Connect another jumper wire from 3.3V to the positive side of the Breadboard.</p>
+<p>Connect a jumper wire from GPIO 17 to the 1KΩ resistor</p>
 </li>
 <li>
-<p>Two jumper wires should be connected to separate positions on the Breadboard and T-Extension Board.</p>
+<p>Connect jumper wire from positive side to positive end of Active Buzzer.</p>
+</li>
+<li>
+<p>Connect jumper wire from negative end of Active Buzzer to emitter pin of S8550 PNP Transistor.</p>
+</li>
+<li>
+<p>Connect jumper wire from negative side to collector pin of S8550 PNP Transistor.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_circuit_diagram">Circuit Diagram</h5>
+<div class="paragraph">
+<p>Schematic Diagram</p>
+</div>
 <div class="imageblock">
 <div class="content">
-<img src="../../img/LED_circuit.png" alt="LED circuit">
+<img src="../../img/buzzer-SD.png" alt="buzzer SD">
+</div>
+</div>
+<div class="paragraph">
+<p>Circuit Diagram</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../img/active_buzzer-CD.png" alt="active buzzer CD">
 </div>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_testing">Testing</h5>
+<h5 id="_functionality">Functionality</h5>
 <div class="paragraph">
-<p>Use: <code>curl <a href="http://localhost:8080/LED/LEDOn" class="bare">http://localhost:8080/LED/LEDOn</a></code> to test the component. This will cause the LED to light.</p>
+<p>Use: <code>curl <a href="http://localhost:8080/active-buzzer" class="bare">http://localhost:8080/active-buzzer</a></code> to test the component. These following commands will test the component:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>/enable</code>  - Turns the Active Buzzer on.</p>
+</li>
+<li>
+<p><code>/disable</code> - Turns the Active Buzzer off.</p>
+</li>
+<li>
+<p><code>/beepTone</code> - Emits a beep sound from the Active Buzzer.</p>
+</li>
+<li>
+<p><code>/intermittentTone</code> - Emits an intermittent tone from the Active Buzzer. The total duration is twenty seconds: ten seconds of sound and ten seconds of silence.</p>
+</li>
+<li>
+<p><code>/morseCode</code> - Emits the word "pi" in morse code.</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect4">
@@ -295,11 +334,20 @@ th {
 <div class="ulist">
 <ul>
 <li>
-<p>LED not lighting: Check the connections, and ensure the LED is placed correctly. Double-check the power source.</p>
+<p>Active Buzzer not creating sound:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Double check power source</p>
 </li>
 <li>
-<p>LED is too dim: Resistor value may be too high. Verify you&#8217;re using 220Ω or adjust according to the power source your using
-as well as the LED specifications.</p>
+<p>Verify that 1K resistor is used</p>
+</li>
+<li>
+<p>Verify all wires are in appropriate slots.</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -308,43 +356,30 @@ as well as the LED specifications.</p>
 <h5 id="_yaml">YAML</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-yaml" data-lang="yaml">led:                                    # <b class="conum">(1)</b>
-      name: LED Output                      # <b class="conum">(2)</b>
-      address: 17                           # <b class="conum">(3)</b>
-      shutdown: HIGH                        # <b class="conum">(4)</b>
-      initial: HIGH                         # <b class="conum">(5)</b>
-      provider: pigpio-digital-output       # <b class="conum">(6)</b>
-
-led2:
-      name: LED Output
-      address: 26
-      shutdown: HIGH
-      initial: HIGH
-      provider: pigpio-digital-output</code></pre>
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">    active-buzzer:
+      name: active-buzzer
+      address: 17
+      pwmType: SOFTWARE
+      provider: pigpio-pwm
+      initial: 0
+      shutdown: 0</code></pre>
 </div>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_constructors">Constructors</h5>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">Unresolved directive in led.adoc - include::../../../../../../pi4micronaut-utils/src/main/java/com/opensourcewithslu/outputDevices/LEDHelper.java[tag=const]</code></pre>
-</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_methods">Methods</h5>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">Unresolved directive in led.adoc - include::../../../../../../pi4micronaut-utils/src/main/java/com/opensourcewithslu/outputDevices/LEDHelper.java[tags=method]</code></pre>
-</div>
+<h5 id="_constructor_and_methods">Constructor and Methods</h5>
+<div class="paragraph">
+<p>The constructor and the methods within the ActiveBuzzerHelper class can be seen in our javadoc <a href="https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/outputdevices/ActiveBuzzerHelper.html">here</a>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_an_example_controller">An Example Controller</h5>
+<h5 id="_example_controller">Example Controller</h5>
+<div class="sect5">
+<h6 id="_this_controller_uses_the_active_buzzer_to_emit_sound_once_prompted_by_the_commands">This controller uses the Active Buzzer to emit sound once prompted by the commands</h6>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java"></code></pre>
+<pre class="highlight"><code class="language-java" data-lang="java">Unresolved directive in activebuzzer.adoc - include::../../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/ActiveBuzzerController.java[tag=ex]</code></pre>
+</div>
 </div>
 </div>
 </div>

@@ -455,6 +455,7 @@ pre.rouge .nv, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi, pre.rouge .vm {
 <li><a href="#_led">6.3.1. LED</a></li>
 <li><a href="#_rgb_led">6.3.2. RGB LED</a></li>
 <li><a href="#_lcd1602">6.3.3. LCD1602</a></li>
+<li><a href="#_active_buzzer">6.3.4. Active Buzzer</a></li>
 </ul>
 </li>
 </ul>
@@ -3440,6 +3441,243 @@ adjust according to your power source and LED specifications</p>
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_active_buzzer"><a class="anchor" href="#_active_buzzer"></a>6.3.4. Active Buzzer</h4>
+<div class="paragraph text-right">
+<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/outputComponents/activebuzzer.adoc">Improve this doc</a></p>
+</div>
+<div class="sect4">
+<h5 id="_overview_10"><a class="anchor" href="#_overview_10"></a>Overview</h5>
+<div class="paragraph">
+<p>This section provides details of the Active Buzzer, including the components and assembly instructions. The Active Buzzer only emits one frequency, as described in the code, to play various sounds.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_components_11"><a class="anchor" href="#_components_11"></a>Components</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>1 x RaspberryPi</p>
+</li>
+<li>
+<p>1 x Breadboard</p>
+</li>
+<li>
+<p>1 x T-extension Board</p>
+</li>
+<li>
+<p>1 x Active Buzzer</p>
+</li>
+<li>
+<p>6 x Jumper wires</p>
+</li>
+<li>
+<p>1 x Resistor (1KΩ)</p>
+</li>
+<li>
+<p>1 x S8550 PNP Transistor</p>
+</li>
+<li>
+<p>Power source (appropriate voltage, typically 3.3V)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_assembly_instructions_7"><a class="anchor" href="#_assembly_instructions_7"></a>Assembly Instructions</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Place the Active Buzzer onto the Breadboard.</p>
+</li>
+<li>
+<p>Place the 1KΩ resistor onto the Breadboard, must be inline with base pin of S8550 PNP Transistor.</p>
+</li>
+<li>
+<p>Place the S8550 PNP Transistor onto the BreadBoard.</p>
+</li>
+<li>
+<p>The Active Buzzer will have two pins. The longer pin is the anode (+) while the shorter is the cathode(-).</p>
+</li>
+<li>
+<p>Connect a jumper wire from GND to (-) negative side</p>
+</li>
+<li>
+<p>Connect a jumper wire from 3.3V to (+) positive side.</p>
+</li>
+<li>
+<p>Connect a jumper wire from GPIO 17 to the 1KΩ resistor</p>
+</li>
+<li>
+<p>Connect jumper wire from positive side to positive end of Active Buzzer.</p>
+</li>
+<li>
+<p>Connect jumper wire from negative end of Active Buzzer to emitter pin of S8550 PNP Transistor.</p>
+</li>
+<li>
+<p>Connect jumper wire from negative side to collector pin of S8550 PNP Transistor.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_circuit_diagram_10"><a class="anchor" href="#_circuit_diagram_10"></a>Circuit Diagram</h5>
+<div class="paragraph">
+<p>Schematic Diagram</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/buzzer-SD.png" alt="buzzer SD">
+</div>
+</div>
+<div class="paragraph">
+<p>Circuit Diagram</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/active_buzzer-CD.png" alt="active buzzer CD">
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_functionality_9"><a class="anchor" href="#_functionality_9"></a>Functionality</h5>
+<div class="paragraph">
+<p>Use: <code>curl <a href="http://localhost:8080/active-buzzer" class="bare">http://localhost:8080/active-buzzer</a></code> to test the component. These following commands will test the component:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>/enable</code>  - Turns the Active Buzzer on.</p>
+</li>
+<li>
+<p><code>/disable</code> - Turns the Active Buzzer off.</p>
+</li>
+<li>
+<p><code>/beepTone</code> - Emits a beep sound from the Active Buzzer.</p>
+</li>
+<li>
+<p><code>/intermittentTone</code> - Emits an intermittent tone from the Active Buzzer. The total duration is twenty seconds: ten seconds of sound and ten seconds of silence.</p>
+</li>
+<li>
+<p><code>/morseCode</code> - Emits the word "pi" in morse code.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_troubleshooting_10"><a class="anchor" href="#_troubleshooting_10"></a>Troubleshooting</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Active Buzzer not creating sound:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Double check power source</p>
+</li>
+<li>
+<p>Verify that 1K resistor is used</p>
+</li>
+<li>
+<p>Verify all wires are in appropriate slots.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_yaml_5"><a class="anchor" href="#_yaml_5"></a>YAML</h5>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml">    <span class="na">active-buzzer</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">active-buzzer</span>
+      <span class="na">address</span><span class="pi">:</span> <span class="m">17</span>
+      <span class="na">pwmType</span><span class="pi">:</span> <span class="s">SOFTWARE</span>
+      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-pwm</span>
+      <span class="na">initial</span><span class="pi">:</span> <span class="m">0</span>
+      <span class="na">shutdown</span><span class="pi">:</span> <span class="s">0</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_constructor_and_methods_2"><a class="anchor" href="#_constructor_and_methods_2"></a>Constructor and Methods</h5>
+<div class="paragraph">
+<p>The constructor and the methods within the ActiveBuzzerHelper class can be seen in our javadoc <a href="https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/outputdevices/ActiveBuzzerHelper.html">here</a>.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_example_controller"><a class="anchor" href="#_example_controller"></a>Example Controller</h5>
+<div class="sect5">
+<h6 id="_this_controller_uses_the_active_buzzer_to_emit_sound_once_prompted_by_the_commands"><a class="anchor" href="#_this_controller_uses_the_active_buzzer_to_emit_sound_once_prompted_by_the_commands"></a>This controller uses the Active Buzzer to emit sound once prompted by the commands</h6>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="nd">@Controller</span><span class="o">(</span><span class="s">"/active-buzzer"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ActiveBuzzerController</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">ActiveBuzzerHelper</span> <span class="n">activeBuzzerHelper</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">ActiveBuzzerController</span><span class="o">(</span><span class="nd">@Named</span><span class="o">(</span><span class="s">"active-buzzer"</span><span class="o">)</span> <span class="nc">Pwm</span> <span class="n">activeBuzzerOutput</span><span class="o">){</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">activeBuzzerHelper</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ActiveBuzzerHelper</span><span class="o">(</span><span class="n">activeBuzzerOutput</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+     * Enables the active buzzer
+     */</span>
+    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/enable"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">enableActiveBuzzer</span><span class="o">(){</span>
+
+        <span class="n">activeBuzzerHelper</span><span class="o">.</span><span class="na">activeBuzzerOn</span><span class="o">();</span>
+
+    <span class="o">}</span>
+
+    <span class="cm">/**
+     * Disables the active buzzer
+     */</span>
+
+    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/disable"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">disableActiveBuzzer</span><span class="o">(){</span>
+
+        <span class="n">activeBuzzerHelper</span><span class="o">.</span><span class="na">activeBuzzerOff</span><span class="o">();</span>
+
+    <span class="o">}</span>
+
+    <span class="cm">/**
+     * Emits a beep sound from the active buzzer.
+     */</span>
+    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/beepTone"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">playBeepTone</span><span class="o">(){</span>
+
+        <span class="n">activeBuzzerHelper</span><span class="o">.</span><span class="na">beep</span><span class="o">();</span>
+
+    <span class="o">}</span>
+
+    <span class="cm">/**
+     * Emits an intermittent tone from the active buzzer for a duration of 20 seconds.
+     * 10 seconds of sound and 10 seconds of silence
+     */</span>
+    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/intermittentTone"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">playIntermittentTone</span><span class="o">(){</span>
+
+        <span class="n">activeBuzzerHelper</span><span class="o">.</span><span class="na">intermittentTone</span><span class="o">();</span>
+
+    <span class="o">}</span>
+
+    <span class="cm">/**
+     * Tests the active buzzer by emitting the word "pi" in morse code.
+     */</span>
+    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/morseCode"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">morseCodeTest</span><span class="o">(){</span>
+
+        <span class="n">activeBuzzerHelper</span><span class="o">.</span><span class="na">morseCodeTone</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -3447,7 +3685,7 @@ adjust according to your power source and LED specifications</p>
 <div id="footer">
 <div id="footer-text">
 Version v1.1<br>
-Last updated 2024-03-23 00:53:27 UTC
+Last updated 2024-03-25 00:09:39 UTC
 </div>
 </div>
 </body>
