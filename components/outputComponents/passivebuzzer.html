@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.18">
-<title>Rotary Encoder</title>
+<title>Passive Buzzer</title>
 <style>
 body {
 	font-family: sans-serif;
@@ -207,113 +207,132 @@ th {
 </div>
 <div id="content">
 <div class="sect3">
-<h4 id="_rotary_encoder">Rotary Encoder</h4>
+<h4 id="_passive_buzzer">Passive Buzzer</h4>
 <div class="paragraph text-right">
-<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/inputComponents/rotaryEncoder.adoc">Improve this doc</a></p>
+<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/outputComponents/passivebuzzer.adoc">Improve this doc</a></p>
 </div>
 <div class="sect4">
 <h5 id="_overview">Overview</h5>
 <div class="paragraph">
-<p>This section provides details of the Rotary Encoder circuit,
-including its components, assembly instructions, and functionality.</p>
+<p>This section provides details of the Passive Buzzer, including the components and assembly instructions. The Passive Buzzer emits various frequencies, as described by the code, to play music or many other frequencies.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_components">Components</h5>
-<div class="olist arabic">
-<ol class="arabic">
+<div class="ulist">
+<ul>
 <li>
-<p>Rotary encoder module</p>
+<p>1 x RaspberryPi</p>
 </li>
 <li>
-<p>1 x 10kΩ resistor</p>
+<p>1 x Breadboard</p>
 </li>
 <li>
-<p>Breadboard</p>
+<p>1 x T-extension Board</p>
 </li>
 <li>
-<p>Jumper wires</p>
+<p>1 x Passive Buzzer</p>
 </li>
 <li>
-<p>Power source</p>
+<p>6 x Jumper wires</p>
 </li>
-</ol>
+<li>
+<p>1 x Resistor (1KΩ)</p>
+</li>
+<li>
+<p>1 x S8550 PNP Transistor</p>
+</li>
+<li>
+<p>Power source (appropriate voltage, typically 3.3V)</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_assembly_instructions">Assembly Instructions</h5>
-<div class="paragraph">
-<p>Connect the 5 pins on the encoder to the breadboard along with the resistor as
-stated below and in the diagram.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
+<div class="ulist">
+<ul>
 <li>
-<p>Ground: Connect ground on the encoder to ground on the breadboard</p>
+<p>Place the Passive Buzzer onto the Breadboard.</p>
 </li>
 <li>
-<p>Power: Connect the + on the encoder to the 3.3V on the breadboard</p>
+<p>Place the 1KΩ resistor onto the Breadboard, must be inline with base pin of S8550 PNP Transistor.</p>
 </li>
 <li>
-<p>SW: Connect SW to GPIO 27 on the breadboard</p>
+<p>Place the S8550 PNP Transistor onto the BreadBoard.</p>
 </li>
 <li>
-<p>DT: Connect DT to GPIO 17 on the breadboard</p>
+<p>The Passive Buzzer will have two pins of the same length. The anode is (+) while the cathode is (-).</p>
 </li>
 <li>
-<p>CLK: Connect CLK to GPIO 18 on the breadboard</p>
+<p>Connect a jumper wire from GND to (-) negative side</p>
 </li>
 <li>
-<p>Resistor: Place the resistor horizontally so that it is parallel
-with GPIO 27, having one side on the red + with the other next to the wire on GPIO 27</p>
+<p>Connect a jumper wire from 3.3V to (+) positive side.</p>
 </li>
 <li>
-<p>Connect a wire from 3.3V to the red + in the same column as the resistor</p>
+<p>Connect a jumper wire from GPIO 17 to the 1KΩ resistor</p>
 </li>
-</ol>
+<li>
+<p>Connect jumper wire from positive side to positive end of Passive Buzzer.</p>
+</li>
+<li>
+<p>Connect jumper wire from negative end of Passive Buzzer to emitter pin of S8550 PNP Transistor.</p>
+</li>
+<li>
+<p>Connect jumper wire from negative side to collector pin of S8550 PNP Transistor.</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_circuit_diagram">Circuit Diagram</h5>
-<div class="ulist">
-<ul>
-<li>
-<p>Note the resistor location at GPIO 27</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>Schematic Diagram</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../../img/rotary_encoder_circuit.png" alt="rotary encoder circuit">
+<img src="../../img/buzzer-SD.png" alt="buzzer SD">
+</div>
+</div>
+<div class="paragraph">
+<p>Circuit Diagram</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../img/passive_buzzer-CD.png" alt="passive buzzer CD">
 </div>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_functionality">Functionality</h5>
+<div class="paragraph">
+<p>Use: <code>curl <a href="http://localhost:8080/passive-buzzer" class="bare">http://localhost:8080/passive-buzzer</a></code> to test the component. These following commands will test the component:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>The initial value returned is 0.</p>
+<p><code>/enable</code>  - Turns the Passive Buzzer on.</p>
 </li>
 <li>
-<p>Turning the shaft one unit clockwise will increase the value returned by 1, whereas, turning the
-knob counterclockwise by one unit will decrease the value returned by 1.</p>
+<p><code>/disable</code> - Turns the Passive Buzzer off.</p>
 </li>
 <li>
-<p>The value returned is an integer with a max value of 2147483647 and min of -2147483647.</p>
+<p><code>/showFreq</code> - Displays the current frequency of the Passive Buzzer.</p>
+</li>
+<li>
+<p><code>/setFreq/{frequenciesFile}</code> - Plays a series of frequencies from a file specified by the user.</p>
+</li>
+<li>
+<p><code>/passBuzz</code> - Plays a 1 - second buzz.</p>
+</li>
+<li>
+<p><code>/freqIter</code> - Cycles through different frequencies.</p>
+</li>
+<li>
+<p><code>/playPiSeq</code> - Plays an array containing the first ten digits of pi.</p>
 </li>
 </ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_testing_the_circuit">Testing the Circuit</h5>
-<div class="paragraph">
-<p>To return the value of the rotary encoder:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl http://localhost:8080/rotaryEncoder/value</code></pre>
-</div>
 </div>
 </div>
 <div class="sect4">
@@ -321,60 +340,54 @@ knob counterclockwise by one unit will decrease the value returned by 1.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Value not being returned: Make sure all pins on the encoder match up
-to the correct GPIO pins according to the YAML pin order below.</p>
+<p>Passive Buzzer not creating sound:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Double check power source</p>
 </li>
 <li>
-<p>Make sure that a 10k resistor is being used</p>
+<p>Verify that 1K resistor is used</p>
+</li>
+<li>
+<p>Verify all wires are in appropriate slots.</p>
+</li>
+<li>
+<p>When using a file, verify that the file itself is scp&#8217;d to the raspberrypi (see PassiveBuzzerController for full information).</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_yaml_pin_order">YAML Pin Order</h5>
-<div class="paragraph">
-<p>The order for declaring pins for a Rotary Encoder component in the application.yaml file is as follows</p>
-</div>
-<div class="paragraph">
-<p><strong>SW-PIN-INFO, CLK-PIN-INFO, DT-PIN-INFO</strong></p>
-</div>
-<div class="paragraph">
-<p>So in the case of</p>
-</div>
+<h5 id="_yaml">YAML</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-yaml" data-lang="yaml">multi-digital-input:
-  rot-encoder:
-    addresses: 17, 18, 27</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>the sw pin would be the one connected to GPIO 27, the clk pin would be connected to GPIO 18, and the dt pin would connect to GPIO 17. All lists of values for Rotary Encoder components will follow the same order.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_constructors">Constructors</h5>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">Unresolved directive in rotaryEncoder.adoc - include::../../../../../../pi4micronaut-utils/src/main/java/com/opensourcewithslu/inputDevices/RotaryEncoderHelper.java[tag=const]</code></pre>
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">    passive-buzzer:
+      name: passive-buzzer
+      address: 17
+      pwmType: SOFTWARE
+      provider: pigpio-pwm
+      initial: 0
+      shutdown: 0</code></pre>
 </div>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_methods">Methods</h5>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">Unresolved directive in rotaryEncoder.adoc - include::../../../../../../pi4micronaut-utils/src/main/java/com/opensourcewithslu/inputDevices/RotaryEncoderHelper.java[tags=method]</code></pre>
-</div>
+<h5 id="_constructors_and_methods">Constructors and Methods</h5>
+<div class="paragraph">
+<p>The constructor and the methods within the PassiveBuzzerHelper class can be seen in our javadoc <a href="https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/outputdevices/PassiveBuzzerHelper.html">here</a>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_an_example_controller">An Example Controller</h5>
+<h5 id="_example_controller">Example Controller</h5>
 <div class="sect5">
-<h6 id="_this_controller_sets_up_two_rotary_encoders">This controller sets up two rotary encoders</h6>
+<h6 id="_this_controller_uses_the_passive_buzzer_to_emit_sound_once_prompted_by_the_commands">This controller uses the Passive Buzzer to emit sound once prompted by the commands</h6>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">Unresolved directive in rotaryEncoder.adoc - include::../../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/RotaryEncoderController.java[tag=ex]</code></pre>
+<pre class="highlight"><code class="language-java" data-lang="java">Unresolved directive in passivebuzzer.adoc - include::../../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/PassiveBuzzerController.java[tag=ex]</code></pre>
 </div>
 </div>
 </div>
