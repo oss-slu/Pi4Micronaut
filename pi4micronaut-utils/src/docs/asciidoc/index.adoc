@@ -81,3 +81,4 @@ include::components/outputComponents/lcd1602.adoc[]
 
 include::components/outputComponents/passivebuzzer.adoc[]
 
+include::components/outputComponents/activebuzzer.adoc[]
