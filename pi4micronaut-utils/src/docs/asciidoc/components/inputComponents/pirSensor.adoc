@@ -49,7 +49,7 @@ Use `curl http://localhost:8080/pirSensor/disable` to disable the sensor.
 
 ===== Troubleshooting
 - Sensor not detecting something:
-    * Make sure the object is moving. The sensor only detects movement. Once an object stops moving, it is no longer detected. 
+    * Make sure the object is moving. The sensor only detects movement. Once an object stops moving, it is no longer detected.
 
 
 ===== YAML
@@ -63,3 +63,12 @@ Use `curl http://localhost:8080/pirSensor/disable` to disable the sensor.
       debounce: 30000
       provider: pigpio-digital-input
 ----
+
+===== Constructor and Methods
+The constructor and the methods within the PIRSensorHelper class can be seen in our javadoc link:https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/inputdevices/PIRSensorHelper.html[here].
+
+===== Example Controller
+
+====== This controller uses the PIR Sensor to turn an RGB LED red if motion is detected, green otherwise
+[source, java]
+include::../../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/PIRSensorController.java[tag=ex]
