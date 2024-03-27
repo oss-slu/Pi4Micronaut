@@ -2,6 +2,8 @@
 [.text-right]
 https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/commun_WithHardware/pwm.adoc[Improve this doc]
 
+Pulse width modulation (PWM) is a powerful digital technique for controlling analog circuits with a microprocessor’s digital outputs. (https://https://www.embedded.com/introduction-to-pulse-width-modulation/[Source: Embedded.com])
+
 To define in application.yaml add digital-input as a field under pi4j, then add each component under digital-input
 Each component will need
 
