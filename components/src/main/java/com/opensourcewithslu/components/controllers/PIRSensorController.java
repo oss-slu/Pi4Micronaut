@@ -22,7 +22,7 @@ public class PIRSensorController {
      * @param pirSensor A Pi4J DigitalInput object.
      * @param rgbLed A MultiPinConfiguration object.
      */
-    public PIRSensorController(@Named("pir-sensor")DigitalInput pirSensor,@Named("rgb-led-2") MultiPinConfiguration rgbLed) {
+    public PIRSensorController(@Named("pir-sensor") DigitalInput pirSensor, @Named("rgb-led-2") MultiPinConfiguration rgbLed) {
         this.pirSensorHelper = new PIRSensorHelper(pirSensor);
         this.rgbledHelper = new RGBLEDHelper(rgbLed);
     }
