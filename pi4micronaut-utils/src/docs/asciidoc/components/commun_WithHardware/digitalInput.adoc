@@ -8,7 +8,7 @@ Each component will need
 
 * name: Name of the component
 * address: GPIO pin associated with component
-* debounce:
+* debounce: value that determines the threshold for noise from the component
 * pull: Either PULL_UP or PULL_DOWN depending on component
 * provider: pigpio-digital-input
 
