@@ -41,7 +41,7 @@ pi4j:
       shutdown: 0
     active-buzzer:
       name: active-buzzer
-      address: 17
+      address: 26
       pwmType: SOFTWARE
       provider: pigpio-pwm
       initial: 0
@@ -103,7 +103,7 @@ pi4j:
       provider: pigpio-digital-input
     touch-switch:
       name: Touch Switch Input
-      address: 17
+      address: 19
       pull: PULL_DOWN
       debounce: 200000
       provider: pigpio-digital-input

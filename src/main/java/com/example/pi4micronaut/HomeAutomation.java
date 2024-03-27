@@ -20,6 +20,10 @@ import jakarta.inject.Named;
 import java.util.ArrayList;
 import java.lang.Thread;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+
 @Controller("/HomeAutomation")
 public class HomeAutomation {
     private final LCD1602Helper lcd;
@@ -34,6 +38,8 @@ public class HomeAutomation {
     private boolean isSystemOn;
     private boolean alarmOn;
     private boolean authorized;
+
+    private static final Logger log = LoggerFactory.getLogger(HomeAutomation.class);
 
     public HomeAutomation(
             @Named("lcd") I2CConfig lcd,
@@ -68,7 +74,7 @@ public class HomeAutomation {
                     // Checks if active buzzer is on (if someone is within 1m of sensor)
                     if ( alarmOn ) {
                         // Read data from RFID scanner
-                        String data = this.rfidHelper.readFromCard().toString();
+                        String data = this.rfid.readFromCard().toString();
 
                         // If authorized user, then turn off alarm welcome the user, and
                         // allow for the system to be turned off from touch sensor
@@ -90,7 +96,7 @@ public class HomeAutomation {
 
                 } catch (InterruptedException e) {
                     log.error("Ultrasonic sensor measurement interrupted", e);
-                    Thread.stop();
+                    Thread.currentThread().interrupt();
                 }
             }
 
@@ -108,14 +114,14 @@ public class HomeAutomation {
                     if (this.authorized) {
                         this.isSystemOn = false;
                         this.pirSensor.removeEventListener();
-                        this.threadUltraSonicSensor.stop();
+                        this.threadUltraSonicSensor.interrupt(); ;
                     }
                 // If system is off, turn on system
                 } else {
                     this.isSystemOn = true;
                     this.authorized = false;
                     // Adds listener for pir sensor
-                    this.pirSensor.addEventListener((e) -> {
+                    this.pirSensor.addEventListener((event) -> {
                         // If sensor senses motion, turn on led and ultrasonic sensor
                         if (this.pirSensor.isMoving) {
                             this.led.ledOn();
@@ -125,7 +131,7 @@ public class HomeAutomation {
                         } else {
                             this.led.ledOff();
                             this.ultraSonicSensor.stopMeasuring();
-                            this.threadUltraSonicSensor.stop();
+                            this.threadUltraSonicSensor.interrupt();
                         }
                     });
                     //this.threadUltraSonicSensor.start();
@@ -135,15 +141,15 @@ public class HomeAutomation {
     }
 
     // Adds new authorized user to home automation system
-    @Post("/addUser/{value}")
+    @Get("/addUser/{value}")
     public void addUser(String value) {
 
         this.users.add(value);
-        this.rfidHelper.writeToCard(value);
+        this.rfid.writeToCard(value);
     }
 
     // Removes user from home automation system
-    @Post("/removeUser/{value}")
+    @Get("/removeUser/{value}")
     public void removeUser(String value) {
         this.users.remove(value);
     }
