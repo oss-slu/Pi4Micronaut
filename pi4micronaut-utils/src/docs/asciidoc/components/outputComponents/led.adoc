@@ -43,7 +43,15 @@ image::LED_circuit.png[]
 
 ===== Testing
 
-Use: `curl http://localhost:8080/LED/LEDOn` to test the component. This will cause the LED to light.
+Use: `curl http://localhost:8080/led/ledOn` to test the component. This will cause the LED to light.
+
+===== Functionality
+Use: `curl http://localhost:8080/led` to test the component. The following commands will test the component:
+
+* `/ledOn` - Turns the led on.
+* `/ledOff` - Turns the led off.
+* `/switchState` - Switches the state of the led.
+* `/blink/{duration}/` - Causes the led to blink for the desired duration.
 
 ===== Troubleshooting
 - LED not lighting: Check the connections, and ensure the LED is placed correctly. Double-check the power source.

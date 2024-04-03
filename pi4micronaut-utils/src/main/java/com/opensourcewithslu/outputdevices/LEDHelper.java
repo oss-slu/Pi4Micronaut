@@ -4,6 +4,8 @@ import com.pi4j.io.gpio.digital.DigitalOutput;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  *  The class LEDHelper contains methods that pertain to the control of a LED.
  *
@@ -67,5 +69,17 @@ public class LEDHelper {
         else{
             ledOn();
         }
+    }
+
+    /**
+     *
+     * @param duration blink will take the duration parameter and have the led
+     *                 blink for that duration.
+     *
+     */
+
+    public void blink (int duration) {
+
+        ledOutput.blink(duration, TimeUnit.MILLISECONDS);
     }
 }
