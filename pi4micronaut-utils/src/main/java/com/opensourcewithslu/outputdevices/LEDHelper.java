@@ -74,8 +74,7 @@ public class LEDHelper {
     /**
      *
      * @param duration blink will take the duration parameter and have the led
-     *                 blink for that duration. TimeUnit is currently set to MILLISECONDS
-     *                 ,but can be changed to desired TimeUnit.
+     *                 blink for that duration.
      *
      */
 

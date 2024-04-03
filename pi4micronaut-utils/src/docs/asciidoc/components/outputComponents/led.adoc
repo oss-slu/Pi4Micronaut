@@ -51,7 +51,7 @@ Use: `curl http://localhost:8080/led` to test the component. The following comma
 * `/ledOn` - Turns the led on.
 * `/ledOff` - Turns the led off.
 * `/switchState` - Switches the state of the led.
-* `/blink/{duration}/` - Causes the led to blink for the desired duration and TimeUnit.
+* `/blink/{duration}/` - Causes the led to blink for the desired duration.
 
 ===== Troubleshooting
 - LED not lighting: Check the connections, and ensure the LED is placed correctly. Double-check the power source.
