@@ -28,4 +28,9 @@ public class LEDController {
     public void switchState(){
         ledHelper.switchState();
     }
+
+    @Get("/blink/{duration}/")
+    public void blink(int duration){
+        ledHelper.blink(duration);
+    }
 }
