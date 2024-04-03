@@ -10,13 +10,23 @@ endif::rootpath[]
 
 === Communicating with a Hardware Component
 [.text-right]
-https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/commun_WithHardware.adoc[Improve this doc]
+https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/commun_WithHardware.adoc[Improve this doc]
 
-TODO: outline the use and access of application.yaml for an app +
-TODO: Consolidate the format and include examples of how each comm type is used
+Interacting with a hardware component is done through its communication type which determines
+its circuit setup and configuration.
+
+For example, the LCD1602 component uses an I2C communication type
+which determines how the circuit is created by using the I2C pins of the GPIO.
+
+Based on the pins and communication type, you have to define the configuration in the yml file accordingly.
 
 ==== YAML Configuration Workflow:
 
-TODO: Provide description
+- The specifications in the yml file are given to the component in the controller through the use of the @Named() annotation.
+- The controller passes on the configuration to the helper through the object.
+- The communication types are initialized in the Pi4JFactory and Pi4JMultiPinFactory as beans.
+- Add utilities
+- The factory classes create a context with all the beans which can be used by the different hardware components.
+- When the JAR file is ran on the RaspberryPi, the beans interact with the pigpio library to communicate with the GPIO pins.
 
 image:Config_Workflow.png[]
