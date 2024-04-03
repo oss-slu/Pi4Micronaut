@@ -53,7 +53,8 @@ public class HomeAutomation {
             Context pi4j)
     {
         this.lcd = new LCD1602Helper(lcd,pi4j);
-        this.rfid = new RFidHelper(rfid,pi4j);
+
+        this.rfid = new RFidHelper(rfid,25,pi4j);
         this.led = new LEDHelper(led);
         this.pirSensor = new PIRSensorHelper(pirSensor);
         this.touchSwitch = new TouchSwitchHelper(touchSwitch);
@@ -105,7 +106,9 @@ public class HomeAutomation {
 
     // Enables the home automation system.
     @Get("/enable")
-    public void enableHomeAutomation() {
+    public String enableHomeAutomation() {
+
+
         // Add listener to touch switch to start/stop home automation system
         this.touchSwitch.addEventListener((e) -> {
             if (this.touchSwitch.isTouched) {
@@ -138,6 +141,7 @@ public class HomeAutomation {
                 }
             }
         });
+       return "enabled";
     }
 
     // Adds new authorized user to home automation system
