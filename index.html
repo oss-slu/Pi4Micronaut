@@ -3063,7 +3063,29 @@ for more details.</p>
 <div class="sect4">
 <h5 id="_testing"><a class="anchor" href="#_testing"></a>Testing</h5>
 <div class="paragraph">
-<p>Use: <code>curl <a href="http://localhost:8080/LED/LEDOn" class="bare">http://localhost:8080/LED/LEDOn</a></code> to test the component. This will cause the LED to light.</p>
+<p>Use: <code>curl <a href="http://localhost:8080/led/ledOn" class="bare">http://localhost:8080/led/ledOn</a></code> to test the component. This will cause the LED to light.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_functionality_8"><a class="anchor" href="#_functionality_8"></a>Functionality</h5>
+<div class="paragraph">
+<p>Use: <code>curl <a href="http://localhost:8080/led" class="bare">http://localhost:8080/led</a></code> to test the component. The following commands will test the component:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>/ledOn</code> - Turns the led on.</p>
+</li>
+<li>
+<p><code>/ledOff</code> - Turns the led off.</p>
+</li>
+<li>
+<p><code>/switchState</code> - Switches the state of the led.</p>
+</li>
+<li>
+<p><code>/blink/{duration}/</code> - Causes the led to blink for the desired duration.</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect4">
@@ -3211,7 +3233,7 @@ negative terminals (like GPIO pins set to OUTPUT and LOW on a microcontroller).<
 </div>
 </div>
 <div class="sect4">
-<h5 id="_functionality_8"><a class="anchor" href="#_functionality_8"></a>Functionality</h5>
+<h5 id="_functionality_9"><a class="anchor" href="#_functionality_9"></a>Functionality</h5>
 <div class="paragraph">
 <p>The RGB LED can produce a wide range of colors by mixing different intensities of
 Red, Green, and Blue. By adjusting the power to each pin, various colors can be
@@ -3448,7 +3470,7 @@ adjust according to your power source and LED specifications</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_functionality_9"><a class="anchor" href="#_functionality_9"></a>Functionality</h5>
+<h5 id="_functionality_10"><a class="anchor" href="#_functionality_10"></a>Functionality</h5>
 <div class="paragraph">
 <p>The LCD1602 screen will light up once connected to a power source.</p>
 </div>
@@ -3705,7 +3727,7 @@ adjust according to your power source and LED specifications</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_functionality_10"><a class="anchor" href="#_functionality_10"></a>Functionality</h5>
+<h5 id="_functionality_11"><a class="anchor" href="#_functionality_11"></a>Functionality</h5>
 <div class="paragraph">
 <p>Use: <code>curl <a href="http://localhost:8080/passive-buzzer" class="bare">http://localhost:8080/passive-buzzer</a></code> to test the component. These following commands will test the component:</p>
 </div>
@@ -3980,7 +4002,7 @@ adjust according to your power source and LED specifications</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_functionality_11"><a class="anchor" href="#_functionality_11"></a>Functionality</h5>
+<h5 id="_functionality_12"><a class="anchor" href="#_functionality_12"></a>Functionality</h5>
 <div class="paragraph">
 <p>Use: <code>curl <a href="http://localhost:8080/active-buzzer" class="bare">http://localhost:8080/active-buzzer</a></code> to test the component. These following commands will test the component:</p>
 </div>
@@ -4125,7 +4147,7 @@ adjust according to your power source and LED specifications</p>
 <div id="footer">
 <div id="footer-text">
 Version v1.1<br>
-Last updated 2024-03-27 21:06:24 UTC
+Last updated 2024-04-03 21:31:41 UTC
 </div>
 </div>
 </body>
