@@ -14,13 +14,13 @@ pi4j:
 
   # tag::pwm[]
   pwm:
-    active-buzzer:
-      name: active-buzzer
-      address: 17
-      pwmType: SOFTWARE
-      provider: pigpio-pwm
-      initial: 0
-      shutdown: 0
+    active-buzzer:               # <1>
+      name: active-buzzer        # <2>
+      address: 17                # <3>
+      pwmType: SOFTWARE          # <4>
+      provider: pigpio-pwm       # <5>
+      initial: 0                 # <6>
+      shutdown: 0                # <7>
     passive-buzzer:
       name: passive-buzzer
       address: 17

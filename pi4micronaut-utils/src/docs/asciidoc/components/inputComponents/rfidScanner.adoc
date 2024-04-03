@@ -75,20 +75,22 @@ The RFID scanner as it appears in the application.yml:
 
 include::../../../../../../components/src/main/resources/application.yml[tag=spi]
 
+===== Constructors and Methods
+To see the constructor and methods of our RFidHelper class see our javadoc link:https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/inputdevices/RFidHelper.html[here]
+for more details.
+//===== Constructors
 
-===== Constructors
+//[source, java]
+//----
+//include::../../../../../../pi4micronaut-utils/src/main/java/com/opensourcewithslu/inputDevices/RFidHelper.java[tag=const]
+//----
 
-[source, java]
-----
-include::../../../../../../pi4micronaut-utils/src/main/java/com/opensourcewithslu/inputDevices/RFidHelper.java[tag=const]
-----
+//===== Methods
 
-===== Methods
-
-[source, java]
-----
-include::../../../../../../pi4micronaut-utils/src/main/java/com/opensourcewithslu/inputDevices/RFidHelper.java[tag=method]
-----
+//[source, java]
+//----
+//include::../../../../../../pi4micronaut-utils/src/main/java/com/opensourcewithslu/inputDevices/RFidHelper.java[tag=method]
+//----
 
 ===== An Example Controller
 

@@ -77,19 +77,22 @@ multi-digital-input:
 
 the sw pin would be the one connected to GPIO 27, the clk pin would be connected to GPIO 18, and the dt pin would connect to GPIO 17. All lists of values for Rotary Encoder components will follow the same order.
 
-===== Constructors
+//===== Constructors
 
-[source, java]
-----
-include::../../../../../../pi4micronaut-utils/src/main/java/com/opensourcewithslu/inputDevices/RotaryEncoderHelper.java[tag=const]
-----
+//[source, java]
+//----
+//include::../../../../../../pi4micronaut-utils/src/main/java/com/opensourcewithslu/inputDevices/RotaryEncoderHelper.java[tag=const]
+//----
 
-===== Methods
+//===== Methods
 
-[source, java]
-----
-include::../../../../../../pi4micronaut-utils/src/main/java/com/opensourcewithslu/inputDevices/RotaryEncoderHelper.java[tags=method]
-----
+//[source, java]
+//----
+//include::../../../../../../pi4micronaut-utils/src/main/java/com/opensourcewithslu/inputDevices/RotaryEncoderHelper.java[tags=method]
+//----
+===== Constructors and Methods
+To see the constructor and methods of our RotaryEncoderHelper class see our javadoc link:https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/inputdevices/RotaryEncoderHelper.html[here]
+for more details.
 
 ===== An Example Controller
 

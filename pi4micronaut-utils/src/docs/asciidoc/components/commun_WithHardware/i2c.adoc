@@ -2,7 +2,7 @@
 [.text-right]
 https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/commun_WithHardware/i2c.adoc[Improve this doc]
 
-I2C stands for **Inter-Integrated Circuit**. It is a bus interface connection protocol incorporated into devices for serial communication. (https://geeksforgeeks.org/i2c-communication-protocol/[Source: GeeksForGeeks.com])
+I2C stands for **Inter-Integrated Circuit**. It is a bus interface connection protocol incorporated into devices for serial communication. (https://geeksforgeeks.org/i2c-communication-protocol/[Source: geeksforgeeks.com])
 
 The I2C protocol uses two wired: SDA (serial data) and SCL (serial clock). This protocol allows for communication between
 multiple devices using only two wires and unique addresses.
@@ -16,7 +16,7 @@ To define in application.yaml add i2c as a field under pi4j, then add each compo
 Each component will need:
 
 * name: Name of the component
-* bus:
+* bus: Bus address of device
 * device: Address of device
 
 [source,yaml]
