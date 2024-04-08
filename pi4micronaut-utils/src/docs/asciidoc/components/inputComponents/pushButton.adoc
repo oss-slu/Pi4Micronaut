@@ -58,20 +58,6 @@ digital-input:
 ----
 So the push button would be connected to GPIO 18.
 
-
-//===== Constructors
-
-//[source, java]
-//----
-//include::../../../../../../pi4micronaut-utils/src/main/java/com/opensourcewithslu/inputDevices/PushButtonHelper.java[tag=const]
-//----
-
-//===== Methods
-
-//[source, java]
-//----
-//include::../../../../../../pi4micronaut-utils/src/main/java/com/opensourcewithslu/inputDevices/PushButtonHelper.java[tags=method]
-//----
 ===== Constructor and Methods
 
 To see the constructor and methods of our TouchSwitchHelper class see our javadoc link:https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/inputdevices/PushButtonHelper.html[here]
