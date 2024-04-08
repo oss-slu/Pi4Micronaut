@@ -122,7 +122,3 @@ for more details.
 ----
 include::../../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/TouchSwitchController.java[tag=ex]
 ----
-
-===== Link to Javadoc
-====== Touch Switch javadocs include methods for the touch switch component
-https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/inputdevices/TouchSwitchHelper.html[Touch Switch]

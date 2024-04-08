@@ -118,7 +118,7 @@ i2c:
 
 ===== Constructor and Methods
 
-To see the constructor and methods of our UltraSonicSensor class see our javadoc link:https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/outputdevices/LCD1602Helper.html[here]
+To see the constructor and methods of our LCD1602Helper class see our javadoc link:https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/outputdevices/LCD1602Helper.html[here]
 for more details.
 
 ===== An Example Controller
