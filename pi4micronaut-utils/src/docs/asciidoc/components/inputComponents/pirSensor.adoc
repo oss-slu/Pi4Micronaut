@@ -1,0 +1,74 @@
+:imagesdir: img/
+
+ifndef::rootpath[]
+:rootpath: ../../
+endif::rootpath[]
+
+ifdef::rootpath[]
+:imagesdir: {rootpath}{imagesdir}
+endif::rootpath[]
+
+==== PIR Sensor
+[.text-right]
+https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/inputComponents/pirSensor.adoc[Improve this doc]
+
+
+===== Overview
+
+This section provides details of the PIR Sensor, including the components and assembly instructions. A Passive Infrared Sensor measures infrared light radiating from objects to detect motion.
+
+===== Components
+
+* PIR Sensor
+* Breadboard
+* T-Extension Board
+* Jumper wires x 3
+* Power source (5V)
+* 3 x 220Ω resistors
+* RGB LED
+
+===== Assembly Instructions
+When looking at the bottom of PIR, the pins from left to right are:
+
+. Power: connect the left pin on the PIR to 5V0 on the breadboard
+. I/O: connect the middle pin on the PIR to GPIO 13 on the breadboard
+. Ground: connect right pin on the PIR to GND on the breadboard
+. Set up the RGB LED
+
+===== Circuit Diagram
+
+image::PIR_Sensor_Circuit.png[]
+
+
+===== Functionality
+
+Use `curl http://localhost:8080/pirSensor/enable` to enable the sensor. Once the sensor is enabled, anytime the sensor detects motion, the RGB LED will turn red. If no motion is detected, the RGB LED will be green.
+
+Use `curl http://localhost:8080/pirSensor/disable` to disable the sensor.
+
+
+===== Troubleshooting
+- Sensor not detecting something:
+    * Make sure the object is moving. The sensor only detects movement. Once an object stops moving, it is no longer detected.
+
+
+===== YAML
+[source, yaml]
+
+----
+    pir-sensor:
+      name: PIR Sensor
+      address: 13
+      pull: PULL_DOWN
+      debounce: 30000
+      provider: pigpio-digital-input
+----
+
+===== Constructor and Methods
+The constructor and the methods within the PIRSensorHelper class can be seen in our javadoc link:https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/inputdevices/PIRSensorHelper.html[here].
+
+===== Example Controller
+
+====== This controller uses the PIR Sensor to turn an RGB LED red if motion is detected, green otherwise
+[source, java]
+include::../../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/PIRSensorController.java[tag=ex]
