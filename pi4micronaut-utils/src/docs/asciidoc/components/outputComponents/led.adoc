@@ -70,7 +70,7 @@ led2:
 
 ===== Constructor and Methods
 
-To see the constructor and methods of our UltraSonicSensor class see our javadoc link:https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/outputdevices/LEDHelper.html[here]
+To see the constructor and methods of our LEDHelper class see our javadoc link:https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/outputdevices/LEDHelper.html[here]
 for more details.
 
 ===== An Example Controller

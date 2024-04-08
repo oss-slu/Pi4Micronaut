@@ -4,11 +4,11 @@ https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/doc
 
 I2C stands for **Inter-Integrated Circuit**. It is a bus interface connection protocol incorporated into devices for serial communication. (https://geeksforgeeks.org/i2c-communication-protocol/[Source: geeksforgeeks.com])
 
-The I2C protocol uses two wired: SDA (serial data) and SCL (serial clock). This protocol allows for communication between
+The I2C protocol uses two wires: SDA (serial data) and SCL (serial clock). This protocol allows for communication between
 multiple devices using only two wires and unique addresses.
 
 The I2C LCD1602 consists of a normal LCD1602 and an I2C module that is attached to the back of the LCD.
-The I2C module is a chip that can expand the I/O ports of the Adruino using the I2C protocol.
+The I2C module is a chip that can expand the I/O ports of the LCD1602 using the I2C protocol.
 It converts the signals from the Arduino into commands for the LCD
 
 To define in application.yaml add i2c as a field under pi4j, then add each component under i2c.
