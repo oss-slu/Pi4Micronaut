@@ -19,6 +19,7 @@ For example, the LCD1602 component uses an I2C communication type
 which determines how the circuit is created by utilizing the I2C pins of the GPIO.
 
 Based on the pins and communication type, you have to define the configuration in the yml file accordingly.
+If a user wants to implement multiple hardware components then the configuration should be defined in the snake yml structure.
 
 ==== YAML Configuration Workflow:
 
