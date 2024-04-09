@@ -8,7 +8,7 @@ The duration of “on time” is called the pulse width. To get varying analog v
 the result is as if the signal is a steady voltage between 0 and 5V controlling the brightness of the LED.
 (https://learn.sunfounder.com/lesson-2-controlling-led-by-pwm-3/[Source: sunfounder.com])
 
-To define in application.yaml add digital-input as a field under pi4j, then add each component under digital-input. Each component will need:
+To define in application.yaml add pwm as a field under pi4j, then add each component under digital-input. Each component will need:
 
 * name: Name of the component
 * address: GPIO pin associated with component
