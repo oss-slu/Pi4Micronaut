@@ -3,11 +3,11 @@
 [.text-right]
 https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/commun_WithHardware/spi.adoc[Improve this doc]
 
-The Serial Peripheral Interface (SPI) is a communication protocol used to transfer data between micro-computers like the Raspberry Pi and peripheral devices. These peripheral devices may be either sensors or actuators.
+The Serial Peripheral Interface (SPI) is a communication protocol used to transfer data between the Raspberry Pi and peripheral devices. These peripheral devices may be either sensors or actuators.
 
 (https://raspberrypi-aa.github.io/session3/spi.html[Source: raspberrypi-aa.github.io])
 
-Many different devices use the SPI protocol, such as SD card reader modules, RFID card reader modules, and 2.4 GHz wireless transmitter/receivers all use SPI to communicate with microcontrollers.
+Many different devices use the SPI protocol, such as SD card reader modules, RFID card reader modules, and 2.4 GHz wireless transmitter/receivers all use SPI to communicate with the Raspberry Pi.
 
 (https://www.circuitbasics.com/basics-of-the-spi-communication-protocol/[Source: circuitbasics.com])
 
@@ -30,7 +30,7 @@ Controller/Peripheral is formerly referred to as Master/Slave. In order to move 
 ====
 
 
-To define in application.yaml add spi as a field under pi4j, then add each component under digital-input. Each component will need:
+To define in application.yaml add spi as a field under pi4j, then add each component under spi. Each component will need:
 
 * name: Name of the component
 * address: Address for Controller/Peripheral
