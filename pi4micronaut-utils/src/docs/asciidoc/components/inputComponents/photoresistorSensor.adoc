@@ -42,8 +42,27 @@ This section provides the details of the PhotoResistor Sensor, also known as the
 
 
 ===== Testing
+Use the below command to test the component.
 
+[source, bash]
+----
+$curl http://localhost:8080/photoResistor/enable
+----
 
+[source, bash]
+----
+$curl http://localhost:8080/photoResistor/getDarkness
+----
+
+[source, bash]
+----
+$curl http://localhost:8080/photoResistor/disable
+----
+
+[source, bash]
+----
+$curl http://localhost:8080/photoResistor/threshold/i
+----
 
 ===== Troubleshooting
 
