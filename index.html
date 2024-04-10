@@ -78,9 +78,10 @@ a {
 	position: fixed;
 	box-sizing: border-box;
 	background-color: gainsboro;
-	max-width: 15.5%;
-	width: 100%;
+	max-width: 20%;
+	width: 20%;
 }
+
 
 #toc a {
 	color: royalblue;
@@ -136,18 +137,19 @@ h2 {
 	overflow-y: auto;
 	grid-area: content;
 	padding: 1em;
-	max-width: 84%;
+	max-width: 80%;
 	width: 100%;
 	position: fixed;
 	z-index: 1;
 	max-height: 80%;
 	height: 100%;
-	margin-left: 15.5%;
+	margin-left: 20%;
 	margin-right: 0;
 	margin-bottom: 1%;
 	margin-top: 8%;
 	padding-bottom: 100px;
 }
+
 
 .hljs{
 	background: #cacbca !important;
@@ -407,14 +409,15 @@ pre.rouge .nv, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi, pre.rouge .vm {
 <li><a href="#_set_up_raspberry_pi_os">1.2.1. Set up Raspberry Pi OS</a></li>
 <li><a href="#_connecting_to_raspberry_pi">1.2.2. Connecting to Raspberry Pi</a></li>
 <li><a href="#_installing_java">1.2.3. Installing Java</a></li>
-<li><a href="#_build_and_copy_over_jar_file">1.2.4. Build and Copy Over Jar File</a></li>
-<li><a href="#_almost_done">1.2.5. Almost Done!</a></li>
-<li><a href="#_enabling_different_communication_protocols">1.2.6. Enabling Different Communication Protocols</a></li>
+<li><a href="#_enabling_different_communication_protocols">1.2.4. Enabling Different Communication Protocols</a></li>
+<li><a href="#_build_and_copy_over_jar_file">1.2.5. Build and Copy Over Jar File</a></li>
+<li><a href="#_run_jar_file_on_pi_and_test_the_application">1.2.6. Run Jar file on Pi and Test the Application</a></li>
 </ul>
 </li>
 <li><a href="#_example_applications">1.3. Example Applications</a>
 <ul class="sectlevel3">
-<li><a href="#_remote_mointoring_check_in_system">1.3.1. Remote Mointoring Check-In System</a></li>
+<li><a href="#_remote_monitoring_check_in_system">1.3.1. Remote Monitoring Check-In System</a></li>
+<li><a href="#_home_automation">1.3.2. Home Automation</a></li>
 </ul>
 </li>
 </ul>
@@ -425,40 +428,38 @@ pre.rouge .nv, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi, pre.rouge .vm {
 <li><a href="#_how_to_create_a_new_component">3.1. How to Create a New Component</a></li>
 </ul>
 </li>
-<li><a href="#_adding_tocreating_an_application">4. Adding to/Creating an Application</a></li>
-<li><a href="#_using_the_library">5. Using the library</a></li>
-<li><a href="#_components">6. Components</a>
+<li><a href="#_components">4. Components</a>
 <ul class="sectlevel2">
-<li><a href="#_communicating_with_a_hardware_component">6.1. Communicating with a Hardware Component</a>
+<li><a href="#_communicating_with_a_hardware_component">4.1. Communicating with a Hardware Component</a>
 <ul class="sectlevel3">
-<li><a href="#_yaml_configuration_workflow">6.1.1. YAML Configuration Workflow:</a></li>
-<li><a href="#_digital_input">6.1.2. Digital Input</a></li>
-<li><a href="#_digital_output">6.1.3. Digital Output</a></li>
-<li><a href="#_multipin_configurations">6.1.4. Multipin Configurations</a></li>
-<li><a href="#_pwm">6.1.5. PWM</a></li>
-<li><a href="#_spi">6.1.6. SPI</a></li>
-<li><a href="#_i2c">6.1.7. I2C</a></li>
+<li><a href="#_yaml_configuration_workflow">4.1.1. YAML Configuration Workflow:</a></li>
+<li><a href="#_digital_input">4.1.2. Digital Input</a></li>
+<li><a href="#_digital_output">4.1.3. Digital Output</a></li>
+<li><a href="#_multipin_configurations">4.1.4. MultiPin Configurations</a></li>
+<li><a href="#_pwm">4.1.5. PWM</a></li>
+<li><a href="#_spi">4.1.6. SPI</a></li>
+<li><a href="#_i2c">4.1.7. I2C</a></li>
 </ul>
 </li>
-<li><a href="#_input_components">6.2. Input Components</a>
+<li><a href="#_input_components">4.2. Input Components</a>
 <ul class="sectlevel3">
-<li><a href="#_push_button">6.2.1. Push Button</a></li>
-<li><a href="#_slide_switch">6.2.2. Slide Switch</a></li>
-<li><a href="#_rotary_encoder">6.2.3. Rotary Encoder</a></li>
-<li><a href="#_rfid_scanner">6.2.4. RFID Scanner</a></li>
-<li><a href="#_photosensor">6.2.5. Photosensor</a></li>
-<li><a href="#_ultrasonic_sensor">6.2.6. Ultrasonic Sensor</a></li>
-<li><a href="#_touch_switch">6.2.7. Touch Switch</a></li>
-<li><a href="#_pir_sensor">6.2.8. PIR Sensor</a></li>
+<li><a href="#_push_button">4.2.1. Push Button</a></li>
+<li><a href="#_slide_switch">4.2.2. Slide Switch</a></li>
+<li><a href="#_rotary_encoder">4.2.3. Rotary Encoder</a></li>
+<li><a href="#_rfid_scanner">4.2.4. RFID Scanner</a></li>
+<li><a href="#_photosensor">4.2.5. Photosensor</a></li>
+<li><a href="#_ultrasonic_sensor">4.2.6. Ultrasonic Sensor</a></li>
+<li><a href="#_touch_switch">4.2.7. Touch Switch</a></li>
+<li><a href="#_pir_sensor">4.2.8. PIR Sensor</a></li>
 </ul>
 </li>
-<li><a href="#_output_components">6.3. Output Components</a>
+<li><a href="#_output_components">4.3. Output Components</a>
 <ul class="sectlevel3">
-<li><a href="#_led">6.3.1. LED</a></li>
-<li><a href="#_rgb_led">6.3.2. RGB LED</a></li>
-<li><a href="#_lcd1602">6.3.3. LCD1602</a></li>
-<li><a href="#_passive_buzzer">6.3.4. Passive Buzzer</a></li>
-<li><a href="#_active_buzzer">6.3.5. Active Buzzer</a></li>
+<li><a href="#_led">4.3.1. LED</a></li>
+<li><a href="#_rgb_led">4.3.2. RGB LED</a></li>
+<li><a href="#_lcd1602">4.3.3. LCD1602</a></li>
+<li><a href="#_passive_buzzer">4.3.4. Passive Buzzer</a></li>
+<li><a href="#_active_buzzer">4.3.5. Active Buzzer</a></li>
 </ul>
 </li>
 </ul>
@@ -479,7 +480,7 @@ pre.rouge .nv, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi, pre.rouge .vm {
 <h2 id="_introduction"><a class="anchor" href="#_introduction"></a>1. Introduction</h2>
 <div class="sectionbody">
 <div class="paragraph text-right">
-<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/introduction.adoc">Improve this doc</a></p>
+<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/introduction.adoc">Improve this doc</a></p>
 </div>
 <div class="paragraph">
 <p>Welcome to the <strong>Pi4Micronaut Documentation</strong>!</p>
@@ -717,7 +718,44 @@ For more information on the LED setup guide, see our documentation <a href="http
 </div>
 </div>
 <div class="sect3">
-<h4 id="_build_and_copy_over_jar_file"><a class="anchor" href="#_build_and_copy_over_jar_file"></a>1.2.4. Build and Copy Over Jar File</h4>
+<h4 id="_enabling_different_communication_protocols"><a class="anchor" href="#_enabling_different_communication_protocols"></a>1.2.4. Enabling Different Communication Protocols</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>In the Pi4Micronaut library, we have used different communication protocols, such as I2C, SPI, etc.</p>
+</li>
+<li>
+<p>To enable any of these protocols when needed, enter the following command:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="bash"><span class="nb">sudo </span>raspi-config</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Navigate to "<strong>Interfacing Options</strong>"</p>
+<div class="imageblock">
+<div class="content">
+<img src="img/commProtocol1.png" alt="commProtocol1">
+</div>
+</div>
+</li>
+<li>
+<p>Choose your desired protocol.</p>
+<div class="imageblock">
+<div class="content">
+<img src="img/commProtocol2.png" alt="commProtocol2">
+</div>
+</div>
+</li>
+<li>
+<p>Reboot when prompted.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_build_and_copy_over_jar_file"><a class="anchor" href="#_build_and_copy_over_jar_file"></a>1.2.5. Build and Copy Over Jar File</h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -770,7 +808,7 @@ For more information on the LED setup guide, see our documentation <a href="http
 </div>
 </div>
 <div class="sect3">
-<h4 id="_almost_done"><a class="anchor" href="#_almost_done"></a>1.2.5. Almost Done!</h4>
+<h4 id="_run_jar_file_on_pi_and_test_the_application"><a class="anchor" href="#_run_jar_file_on_pi_and_test_the_application"></a>1.2.6. Run Jar file on Pi and Test the Application</h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -816,56 +854,25 @@ For more information on the LED setup guide, see our documentation <a href="http
 </ol>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_enabling_different_communication_protocols"><a class="anchor" href="#_enabling_different_communication_protocols"></a>1.2.6. Enabling Different Communication Protocols</h4>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>In the Pi4Micronaut library, we have used different communication protocols, such as I2C, SPI, etc.</p>
-</li>
-<li>
-<p>To enable any of these protocols when needed, enter the following command:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="bash"><span class="nb">sudo </span>raspi-config</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Navigate to "<strong>Interfacing Options</strong>"</p>
-<div class="imageblock">
-<div class="content">
-<img src="img/commProtocol1.png" alt="commProtocol1">
-</div>
-</div>
-</li>
-<li>
-<p>Choose your desired protocol</p>
-<div class="imageblock">
-<div class="content">
-<img src="img/commProtocol2.png" alt="commProtocol2">
-</div>
-</div>
-</li>
-<li>
-<p>Reboot when prompted to</p>
-</li>
-</ol>
-</div>
-</div>
 </div>
 <div class="sect2">
 <h3 id="_example_applications"><a class="anchor" href="#_example_applications"></a>1.3. Example Applications</h3>
 <div class="paragraph text-right">
-<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/Introduction/exampleApplications.adoc">Improve this doc</a></p>
+<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/Introduction/exampleApplications.adoc">Improve this doc</a></p>
 </div>
 <div class="paragraph">
 <p>If you&#8217;re curious about what Pi4Micronaut is capable of, check out some of the working applications created using our library.</p>
 </div>
 <div class="sect3">
-<h4 id="_remote_mointoring_check_in_system"><a class="anchor" href="#_remote_mointoring_check_in_system"></a>1.3.1. Remote Mointoring Check-In System</h4>
+<h4 id="_remote_monitoring_check_in_system"><a class="anchor" href="#_remote_monitoring_check_in_system"></a>1.3.1. Remote Monitoring Check-In System</h4>
 <div class="paragraph">
 <p><a href="https://github.com/oss-slu/SLU_OSS_CheckIn" class="bare">https://github.com/oss-slu/SLU_OSS_CheckIn</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_home_automation"><a class="anchor" href="#_home_automation"></a>1.3.2. Home Automation</h4>
+<div class="paragraph">
+<p><a href="https://github.com/oss-slu/Pi4Micronaut/tree/Home_Automation" class="bare">https://github.com/oss-slu/Pi4Micronaut/tree/Home_Automation</a></p>
 </div>
 </div>
 </div>
@@ -875,7 +882,7 @@ For more information on the LED setup guide, see our documentation <a href="http
 <h2 id="_currently_supported_hardware"><a class="anchor" href="#_currently_supported_hardware"></a>2. Currently Supported Hardware</h2>
 <div class="sectionbody">
 <div class="paragraph text-right">
-<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/Introduction/supportedHardware.adoc">Improve this doc</a></p>
+<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/Introduction/supportedHardware.adoc">Improve this doc</a></p>
 </div>
 <div class="paragraph">
 <p>If you plan on creating an application using any of the hardware components listed below, then our library is perfect for you!</p>
@@ -907,7 +914,7 @@ For more information on the LED setup guide, see our documentation <a href="http
 <p>LCD Screen</p>
 </li>
 <li>
-<p>Photosensor</p>
+<p>Photo Sensor</p>
 </li>
 <li>
 <p>Touch Switch Sensor</p>
@@ -931,6 +938,9 @@ For more information on the LED setup guide, see our documentation <a href="http
 <div class="sect1">
 <h2 id="_contribute_to_the_pi4micronaut_library"><a class="anchor" href="#_contribute_to_the_pi4micronaut_library"></a>3. Contribute to the Pi4Micronaut Library</h2>
 <div class="sectionbody">
+<div class="paragraph text-right">
+<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/contribute/contributingToLibrary.adoc">Improve this doc</a></p>
+</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1122,23 +1132,55 @@ Be open to suggestions and make necessary revisions.</p>
 <div class="sect2">
 <h3 id="_how_to_create_a_new_component"><a class="anchor" href="#_how_to_create_a_new_component"></a>3.1. How to Create a New Component</h3>
 <div class="paragraph text-right">
-<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/contribute/newComponent.adoc">Improve this doc</a></p>
+<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/contribute/newComponent.adoc">Improve this doc</a></p>
 </div>
 <div class="paragraph">
-<p>If its compatible with a Raspberry Pi then it should work well with the Pi4Micronaut framework. The following steps should encompass how most components are added to the framework, but should more or different steps be needed, use the
-<a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/contribute/newComponent.adoc">Improve this doc</a> link to suggest changes.</p>
+<p>If its compatible with a Raspberry Pi then it should work well with the Pi4Micronaut. The following steps should encompass how most components are added to the library. Start by creating a new
+<a href="https://github.com/oss-slu/Pi4Micronaut/issues/new/choose">Issue</a> to suggest changes.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Determine if the device is Input or Output</p>
+<p>Determine the communication type for the component which you want to use. For example, Buzzer works with PWM and LCD1602 works with I2C.</p>
+</li>
+<li>
+<p>Setup the circuit.</p>
+</li>
+<li>
+<p>Add Component to the Application yml</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The new component will need to be added to the application yml found at <code>components/src/main/resources/application.yml</code>.</p>
+</li>
+<li>
+<p>More information on the <code>application.yml</code> found in <a href="#_communicating_with_a_hardware_component">Communicating with a Hardware Component</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Create a Helper:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>A Helper is what the Controller calls to do an action. For example, to change the color of an RGB LED the controller will take the request to change it. The Controller will then call the change color method in the helper. The helper then takes all the actions needed to change the color of the LED.</p>
+</li>
+<li>
+<p>See the <a href="https://github.com/oss-slu/Pi4Micronaut/blob/develop/pi4micronaut-utils/src/main/java/com/opensourcewithslu/outputdevices/RGBLEDHelper.java">RBG Helper</a> for an example of a Helper.</p>
+</li>
+<li>
+<p>All Helpers should be kept here: <code>pi4micronaut-utils\src\main\java\com\opensourcewithslu\(inputdevices or outputdevices)</code></p>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p>Create a Controller:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Controllers define and handle interactions with a given component. The Controller of a component will have a <code>@Controller("/example")</code> right above the class declaration that acts as the endpoint for requests to the component. Instead of "example", you should name the endpoint something that is identifiable to the component. Each method of the Controller should have a <code>@Get("/examppleendpoint")</code> above the method declaration. The endpoint for the method should have the same name as the method and any parameters should be included in the endpoint <code>/examppleendpoint/{parameter1},{parameter2}</code>.</p>
+<p>Controllers define and handle interactions with a given component. The Controller of a component will have a <code>@Controller("/example")</code> right above the class declaration that acts as the endpoint for requests to the component. Instead of "example", you should name the endpoint something that is identifiable to the component. Each method of the Controller should have a <code>@Get("/exampleEndPoint")</code> above the method declaration. The endpoint for the method should have the same name as the method and any parameters should be included in the endpoint <code>/exampleEndPoint/{parameter1},{parameter2}</code>.</p>
 </li>
 <li>
 <p>See the <a href="https://github.com/oss-slu/Pi4Micronaut/blob/develop/components/src/main/java/com/opensourcewithslu/components/controllers/rgbController.java">RGB Controller</a> for an example of a Controller.</p>
@@ -1149,35 +1191,6 @@ Be open to suggestions and make necessary revisions.</p>
 <li>
 <p>All Controllers should be kept here:
 <code>components\src\main\java\com\opensourcewithslu\components\controllers</code></p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Create a Helper:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>A Helper is what the Controller calls to do a action. For example, to change the color of an RGB LED the controller will take the request to change it. The Controller will then call the change color method in the helper. The helper then takes all the actions needed to change the color of the LED.</p>
-</li>
-<li>
-<p>See the <a href="https://github.com/oss-slu/Pi4Micronaut/blob/develop/micronautpi4j-utils/src/main/java/com/opensourcewithslu/outputdevices/RGBLEDHelper.java">RBG Helper</a> for an example of a Helper.</p>
-</li>
-<li>
-<p>All Helpers should be kept here: <code>micronautpi4j-utils\src\main\java\com\opensourcewithslu\(inputdevices or outputdevices)</code></p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Add Component to the Application yml</p>
-<div class="ulist">
-<ul>
-<li>
-<p>The new component will need to be added to the application yml found at <code>components/src/main/resources/application.yml</code>.</p>
-</li>
-<li>
-<p>More infomation on the <code>application.yml</code> found in <a href="#_communicating_with_a_hardware_component">Communicating with a Hardware Component</a></p>
 </li>
 </ul>
 </div>
@@ -1209,7 +1222,7 @@ Be open to suggestions and make necessary revisions.</p>
 <p>Make sure to include all the information that the other components. Simply copy/paste an existing components documentation and edit as needed.</p>
 </li>
 <li>
-<p>Add the file here: <code>micronautpi4j-utils/src/docs/asciidoc/components</code> under either input or output components.</p>
+<p>Add the file here: <code>pi4micronaut-utils/src/docs/asciidoc/components</code> under either input or output components.</p>
 </li>
 </ul>
 </div>
@@ -1220,36 +1233,10 @@ Be open to suggestions and make necessary revisions.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_adding_tocreating_an_application"><a class="anchor" href="#_adding_tocreating_an_application"></a>4. Adding to/Creating an Application</h2>
+<h2 id="_components"><a class="anchor" href="#_components"></a>4. Components</h2>
 <div class="sectionbody">
-<div class="paragraph text-right">
-<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/adding_creating_App.adoc">Improve this doc</a></p>
-</div>
-<div class="paragraph">
-<p>TODO: outline how to create a basic applicaton like we did for the start of the check-in system<br>
-TODO: outline how someone should add our jar to their exsisting application</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_using_the_library"><a class="anchor" href="#_using_the_library"></a>5. Using the library</h2>
-<div class="sectionbody">
-<div class="paragraph text-right">
-<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/usingLibrary.adoc">Improve this doc</a></p>
-</div>
-<div class="paragraph">
-<p>TODO: outline the most basic use cases of the library, tbh now sure how this differs from the section above</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_components"><a class="anchor" href="#_components"></a>6. Components</h2>
-<div class="sectionbody">
-<div class="paragraph text-right">
-<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components.adoc">Improve this doc</a></p>
-</div>
 <div class="sect2">
-<h3 id="_communicating_with_a_hardware_component"><a class="anchor" href="#_communicating_with_a_hardware_component"></a>6.1. Communicating with a Hardware Component</h3>
+<h3 id="_communicating_with_a_hardware_component"><a class="anchor" href="#_communicating_with_a_hardware_component"></a>4.1. Communicating with a Hardware Component</h3>
 <div class="paragraph text-right">
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/commun_WithHardware.adoc">Improve this doc</a></p>
 </div>
@@ -1266,7 +1253,7 @@ which determines how the circuit is created by utilizing the I2C pins of the GPI
 If a user wants to implement multiple hardware components then the configuration should be defined in the snake yml structure.</p>
 </div>
 <div class="sect3">
-<h4 id="_yaml_configuration_workflow"><a class="anchor" href="#_yaml_configuration_workflow"></a>6.1.1. YAML Configuration Workflow:</h4>
+<h4 id="_yaml_configuration_workflow"><a class="anchor" href="#_yaml_configuration_workflow"></a>4.1.1. YAML Configuration Workflow:</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1295,13 +1282,18 @@ to apply the specifics listed in the yml file.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_digital_input"><a class="anchor" href="#_digital_input"></a>6.1.2. Digital Input</h4>
+<h4 id="_digital_input"><a class="anchor" href="#_digital_input"></a>4.1.2. Digital Input</h4>
 <div class="paragraph text-right">
-<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/commun_WithHardware/digitalInput.adoc">Improve this doc</a></p>
+<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/commun_WithHardware/digitalInput.adoc">Improve this doc</a></p>
 </div>
 <div class="paragraph">
-<p>To define in application.yaml add digital-input as a field under pi4j, then add each component under digital-input
-Each component will need</p>
+<p>"Digital Input" refers to a type of electronic signal or data that can be read by the Raspberry Pi&#8217;s GPIO pins. These signals are binary, meaning they can only be in one of two states: HIGH (1) or LOW (0).</p>
+</div>
+<div class="paragraph">
+<p>To define in application.yaml add digital-input as a field under Pi4J, then add each component under digital-input.</p>
+</div>
+<div class="paragraph">
+<p>Each component will need</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1312,7 +1304,7 @@ Each component will need</p>
 <p>address: GPIO pin associated with component</p>
 </li>
 <li>
-<p>debounce:</p>
+<p>debounce: value that determines the threshold for noise from the component</p>
 </li>
 <li>
 <p>pull: Either PULL_UP or PULL_DOWN depending on component</p>
@@ -1323,6 +1315,7 @@ Each component will need</p>
 </ul>
 </div>
 <div class="listingblock">
+<div class="title">Example Digital Input declaration</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="yaml">  <span class="na">digital-input</span><span class="pi">:</span>
     <span class="na">photo-resistor-input</span><span class="pi">:</span>                 <i class="conum" data-value="1"></i><b>(1)</b>
@@ -1411,13 +1404,21 @@ Each component will need</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_digital_output"><a class="anchor" href="#_digital_output"></a>6.1.3. Digital Output</h4>
+<h4 id="_digital_output"><a class="anchor" href="#_digital_output"></a>4.1.3. Digital Output</h4>
 <div class="paragraph text-right">
-<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/commun_WithHardware/digitalOutput.adoc">Improve this doc</a></p>
+<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/commun_WithHardware/digitalOutput.adoc">Improve this doc</a></p>
 </div>
 <div class="paragraph">
-<p>To define in application.yaml add digital-output as a field under pi4j, then add each component under digital-input
-Each component will need</p>
+<p>"Digital Output" refers to a signal sent from the Raspberry Pi&#8217;s GPIO pins to another device or circuit. Unlike digital input, which the Raspberry Pi reads, digital output is a signal that the Raspberry Pi sends out.</p>
+</div>
+<div class="paragraph">
+<p>Digital outputs are also binary, meaning they can only have two states: HIGH (1) or LOW (0). These states correspond to different voltage levels, typically 3.3V for high and 0V (ground) for low on a Raspberry Pi.</p>
+</div>
+<div class="paragraph">
+<p>To define in application.yaml, add digital-output as a field under Pi4J, then add each component under digital-output.</p>
+</div>
+<div class="paragraph">
+<p>Each component will need</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1439,6 +1440,7 @@ Each component will need</p>
 </ul>
 </div>
 <div class="listingblock">
+<div class="title">Example Digital Output declaration</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="yaml">  <span class="na">digital-output</span><span class="pi">:</span>
     <span class="na">led</span><span class="pi">:</span>                                    <i class="conum" data-value="1"></i><b>(1)</b>
@@ -1497,16 +1499,16 @@ Each component will need</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_multipin_configurations"><a class="anchor" href="#_multipin_configurations"></a>6.1.4. Multipin Configurations</h4>
+<h4 id="_multipin_configurations"><a class="anchor" href="#_multipin_configurations"></a>4.1.4. MultiPin Configurations</h4>
 <div class="paragraph text-right">
-<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/commun_WithHardware/multipinConfig.adoc">Improve this doc</a></p>
+<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/commun_WithHardware/multipinConfig.adoc">Improve this doc</a></p>
 </div>
 <div class="paragraph">
-<p>Multipin components are unique in that they require several of the same type of pin in order to function properly.
-Each class of multipin component (Digital Input, PWM), is declared slightly differently in the application.yaml file</p>
+<p>MultiPin components are unique in that they require several of the same type of pin in order to function properly.
+Each class of multi-pin component (Digital Input, PWM), is declared slightly differently in the application.yaml file</p>
 </div>
 <div class="listingblock">
-<div class="title">Example Multipin Digital Input declaration</div>
+<div class="title">Example MultiPin Digital Input declaration</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="yaml">  <span class="na">multi-digital-input</span><span class="pi">:</span>                     <i class="conum" data-value="1"></i><b>(1)</b>
     <span class="na">rotary-encoder</span><span class="pi">:</span>                        <i class="conum" data-value="2"></i><b>(2)</b>
@@ -1531,7 +1533,7 @@ Each class of multipin component (Digital Input, PWM), is declared slightly diff
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Top level field for multipin digital inputs (equivlent of digital-output declaration)</td>
+<td>Top level field for multi-pin digital inputs (equivalent of digital-output declaration)</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
@@ -1559,7 +1561,7 @@ Each class of multipin component (Digital Input, PWM), is declared slightly diff
 </tr>
 <tr>
 <td><i class="conum" data-value="8"></i><b>8</b></td>
-<td>Startup value (All pins have the same start up)</td>
+<td>Startup value (All pins have the same start-up)</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="9"></i><b>9</b></td>
@@ -1568,16 +1570,30 @@ Each class of multipin component (Digital Input, PWM), is declared slightly diff
 </table>
 </div>
 <div class="listingblock">
-<div class="title">Example Multipin PWM declaration</div>
+<div class="title">Example MultiPin PWM declaration</div>
 <div class="content">
-<pre class="rouge highlight"><code data-lang="yaml"></code></pre>
+<pre class="rouge highlight"><code data-lang="yaml">  <span class="na">multi-pwm</span><span class="pi">:</span>
+    <span class="na">rgb-led</span><span class="pi">:</span>                                    <i class="conum" data-value="1"></i><b>(1)</b>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">RGB LED</span>                             <i class="conum" data-value="2"></i><b>(2)</b>
+      <span class="na">addresses</span><span class="pi">:</span> <span class="s">17, 18, 27</span>                     <i class="conum" data-value="3"></i><b>(3)</b>
+      <span class="na">pwmTypes</span><span class="pi">:</span> <span class="s">SOFTWARE, SOFTWARE, SOFTWARE</span>    <i class="conum" data-value="4"></i><b>(4)</b>
+      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-pwm</span>                      <i class="conum" data-value="5"></i><b>(5)</b>
+      <span class="na">initials</span><span class="pi">:</span> <span class="s">0, 0, 0</span>                         <i class="conum" data-value="6"></i><b>(6)</b>
+      <span class="na">shutdowns</span><span class="pi">:</span> <span class="s">0, 0, 0</span>                        <i class="conum" data-value="7"></i><b>(7)</b>
+    <span class="na">rgb-led-2</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">RGB LED </span><span class="m">2</span>
+      <span class="na">addresses</span><span class="pi">:</span> <span class="s">18, 27, </span><span class="m">22</span>
+      <span class="na">pwmTypes</span><span class="pi">:</span> <span class="s">SOFTWARE, SOFTWARE, SOFTWARE</span>
+      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-pwm</span>
+      <span class="na">initials</span><span class="pi">:</span> <span class="s">0, 0, </span><span class="m">0</span>
+      <span class="na">shutdowns</span><span class="pi">:</span> <span class="s">0, 0, 0</span></code></pre>
 </div>
 </div>
 <div class="colist arabic">
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Top level field for multipin PWMs (equivlent of digital-output declaration)</td>
+<td>Top level field for multi-pin PWMs</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
@@ -1611,13 +1627,21 @@ Each class of multipin component (Digital Input, PWM), is declared slightly diff
 </div>
 </div>
 <div class="sect3">
-<h4 id="_pwm"><a class="anchor" href="#_pwm"></a>6.1.5. PWM</h4>
+<h4 id="_pwm"><a class="anchor" href="#_pwm"></a>4.1.5. PWM</h4>
 <div class="paragraph text-right">
-<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/commun_WithHardware/pwm.adoc">Improve this doc</a></p>
+<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/commun_WithHardware/pwm.adoc">Improve this doc</a></p>
 </div>
 <div class="paragraph">
-<p>To define in application.yaml add digital-input as a field under pi4j, then add each component under digital-input
-Each component will need</p>
+<p>Pulse width modulation, or PWM, is a technique for getting analog results with digital means. Digital control is used to create a square wave, a signal switched between on and off.
+This on-off pattern can simulate voltages in between full on (5 Volts) and off (0 Volts) by changing the portion of the time the signal spends on versus the time that the signal spends off.
+The duration of “on time” is called the pulse width. To get varying analog values, you change, or modulate, that pulse width (<a href="https://learn.sunfounder.com/lesson-2-controlling-led-by-pwm-3/">Source: sunfounder.com</a>).
+In our library, our Active Buzzer component uses PWM. Once fully activated at 5 Volts, the buzzer will go off, creating a tone.</p>
+</div>
+<div class="paragraph">
+<p>To define in application.yaml add pwm as a field under pi4j, then add each component under pwm.</p>
+</div>
+<div class="paragraph">
+<p>Each component will need:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1633,18 +1657,25 @@ Each component will need</p>
 <li>
 <p>provider: pigpio-pwm</p>
 </li>
+<li>
+<p>initial: Initial value on startup</p>
+</li>
+<li>
+<p>shutdown: Final value at shut down</p>
+</li>
 </ul>
 </div>
 <div class="listingblock">
+<div class="title">Example PWM declaration</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="yaml">  <span class="na">pwm</span><span class="pi">:</span>
-    <span class="na">active-buzzer</span><span class="pi">:</span>
-      <span class="na">name</span><span class="pi">:</span> <span class="s">active-buzzer</span>
-      <span class="na">address</span><span class="pi">:</span> <span class="m">17</span>
-      <span class="na">pwmType</span><span class="pi">:</span> <span class="s">SOFTWARE</span>
-      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-pwm</span>
-      <span class="na">initial</span><span class="pi">:</span> <span class="m">0</span>
-      <span class="na">shutdown</span><span class="pi">:</span> <span class="m">0</span>
+    <span class="na">active-buzzer</span><span class="pi">:</span>               <i class="conum" data-value="1"></i><b>(1)</b>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">active-buzzer</span>        <i class="conum" data-value="2"></i><b>(2)</b>
+      <span class="na">address</span><span class="pi">:</span> <span class="s">17</span>                <i class="conum" data-value="3"></i><b>(3)</b>
+      <span class="na">pwmType</span><span class="pi">:</span> <span class="s">SOFTWARE</span>          <i class="conum" data-value="4"></i><b>(4)</b>
+      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-pwm</span>       <i class="conum" data-value="5"></i><b>(5)</b>
+      <span class="na">initial</span><span class="pi">:</span> <span class="s">0</span>                 <i class="conum" data-value="6"></i><b>(6)</b>
+      <span class="na">shutdown</span><span class="pi">:</span> <span class="s">0</span>                <i class="conum" data-value="7"></i><b>(7)</b>
     <span class="na">passive-buzzer</span><span class="pi">:</span>
       <span class="na">name</span><span class="pi">:</span> <span class="s">passive-buzzer</span>
       <span class="na">address</span><span class="pi">:</span> <span class="m">17</span>
@@ -1688,11 +1719,72 @@ Each component will need</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_spi"><a class="anchor" href="#_spi"></a>6.1.6. SPI</h4>
+<h4 id="_spi"><a class="anchor" href="#_spi"></a>4.1.6. SPI</h4>
 <div class="paragraph text-right">
-<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/commun_WithHardware/spi.adoc">Improve this doc</a></p>
+<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/commun_WithHardware/spi.adoc">Improve this doc</a></p>
+</div>
+<div class="paragraph">
+<p>The Serial Peripheral Interface (SPI) is a communication protocol used to transfer data between the Raspberry Pi and peripheral devices. These peripheral devices may be either sensors or actuators.</p>
+</div>
+<div class="paragraph">
+<p>(<a href="https://raspberrypi-aa.github.io/session3/spi.html">Source: raspberrypi-aa.github.io</a>)</p>
+</div>
+<div class="paragraph">
+<p>Many different devices use the SPI protocol, such as SD card reader modules, RFID card reader modules, and 2.4 GHz wireless transmitter/receivers all use SPI to communicate with the Raspberry Pi.</p>
+</div>
+<div class="paragraph">
+<p>(<a href="https://www.circuitbasics.com/basics-of-the-spi-communication-protocol/">Source: circuitbasics.com</a>)</p>
+</div>
+<div class="paragraph">
+<p>SPI uses 4 separate connections to communicate with the target device:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>COPI (Controller Output/Peripheral Input) – Line for the Controller to send data to the Peripherals.</p>
+</li>
+<li>
+<p>CIPO (Controller Input/Peripheral Output) – Line for the Peripherals to send data to the Controller.</p>
+</li>
+<li>
+<p>SCLK (Clock) – Line for the clock signal.</p>
+</li>
+<li>
+<p>PS/CS (Peripheral Select/Chip Select) – Line for the Controller to select which Peripheral to send data to.</p>
+</li>
+</ul>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Note:</strong> Controller/Peripheral is formerly referred to as Master/Slave. In order to move away from the use of such terminology, we have opted to use the term Controller in place of Master, and Peripheral in place of Slave.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>To define in application.yaml add spi as a field under pi4j, then add each component under spi.</p>
+</div>
+<div class="paragraph">
+<p>Each component will need:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>name: Name of the component</p>
+</li>
+<li>
+<p>address: Address for Controller/Peripheral</p>
+</li>
+<li>
+<p>baud: Baud rate/data rate</p>
+</li>
+<li>
+<p>reset-pin: Address of GPIO reset pin</p>
+</li>
+</ul>
 </div>
 <div class="listingblock">
+<div class="title">Example SPI declaration</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="yaml">  <span class="na">spi</span><span class="pi">:</span>
     <span class="na">rfid</span><span class="pi">:</span>                   <i class="conum" data-value="1"></i><b>(1)</b>
@@ -1726,16 +1818,46 @@ Each component will need</p>
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p>TODO: add SPI information</p>
-</div>
 </div>
 <div class="sect3">
-<h4 id="_i2c"><a class="anchor" href="#_i2c"></a>6.1.7. I2C</h4>
+<h4 id="_i2c"><a class="anchor" href="#_i2c"></a>4.1.7. I2C</h4>
 <div class="paragraph text-right">
-<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/commun_WithHardware/i2c.adoc">Improve this doc</a></p>
+<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/commun_WithHardware/i2c.adoc">Improve this doc</a></p>
+</div>
+<div class="paragraph">
+<p>I2C stands for <strong>Inter-Integrated Circuit</strong>. It is a bus interface connection protocol incorporated into devices for serial communication. (<a href="https://geeksforgeeks.org/i2c-communication-protocol/">Source: geeksforgeeks.com</a>)
+The I2C protocol uses two wires: SDA (serial data) and SCL (serial clock). This protocol allows for communication between
+multiple devices using only two wires and unique addresses.</p>
+</div>
+<div class="paragraph">
+<p>The I2C LCD1602 consists of a normal LCD1602 and an I2C module that is attached to the back of the LCD.
+The I2C module is a chip that can expand the I/O ports of the LCD1602 using the I2C protocol.
+It converts the signals from the Raspberry Pi into commands for the LCD.</p>
+</div>
+<div class="paragraph">
+<p>(<a href="https://docs.sunfounder.com/projects/umsk/en/latest/01_components_basic/26-component_i2c_lcd1602.html">Source: docs.sunfounder.com</a>)</p>
+</div>
+<div class="paragraph">
+<p>To define in application.yaml add i2c as a field under pi4j, then add each component under i2c.</p>
+</div>
+<div class="paragraph">
+<p>Each component will need:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>name: Name of the component</p>
+</li>
+<li>
+<p>bus: Bus address of device</p>
+</li>
+<li>
+<p>device: Address of device</p>
+</li>
+</ul>
 </div>
 <div class="listingblock">
+<div class="title">Example I2C declaration</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="yaml">  <span class="na">i2c</span><span class="pi">:</span>
     <span class="na">lcd</span><span class="pi">:</span>                                  <i class="conum" data-value="1"></i><b>(1)</b>
@@ -1764,20 +1886,20 @@ Each component will need</p>
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p>TODO: add I2C information</p>
-</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_input_components"><a class="anchor" href="#_input_components"></a>6.2. Input Components</h3>
+<h3 id="_input_components"><a class="anchor" href="#_input_components"></a>4.2. Input Components</h3>
 <div class="paragraph text-right">
-<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/inputComponents.adoc">Improve this doc</a></p>
+<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/inputComponents.adoc">Improve this doc</a></p>
+</div>
+<div class="paragraph">
+<p>The Components that provide input signal or data to the application from Raspberry Pi GPIO pins.</p>
 </div>
 <div class="sect3">
-<h4 id="_push_button"><a class="anchor" href="#_push_button"></a>6.2.1. Push Button</h4>
+<h4 id="_push_button"><a class="anchor" href="#_push_button"></a>4.2.1. Push Button</h4>
 <div class="paragraph text-right">
-<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/inputComponents/pushButton.adoc">Improve this doc</a></p>
+<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/inputComponents/pushButton.adoc">Improve this doc</a></p>
 </div>
 <div class="sect4">
 <h5 id="_overview"><a class="anchor" href="#_overview"></a>Overview</h5>
@@ -1816,23 +1938,14 @@ including its components, assembly instructions, and functionality.</p>
 </div>
 <div class="sect4">
 <h5 id="_circuit_diagram"><a class="anchor" href="#_circuit_diagram"></a>Circuit Diagram</h5>
-<div class="paragraph">
-<p>Model:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Note the 220Ω resistor is for the LED and the 10Ω for the button.</p>
-</li>
-</ul>
-</div>
 <div class="imageblock">
 <div class="content">
 <img src="https://docs.sunfounder.com/projects/raphael-kit/en/latest/_images/image152.png" alt="image152">
 </div>
 </div>
 <div class="paragraph">
-<p>Circuit Diagram:</p>
+<div class="title"><strong>Note:</strong> The 220Ω resistor is for the LED and the 10Ω for the button.</div>
+<p><strong>Schematic Diagram:</strong></p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1843,7 +1956,25 @@ including its components, assembly instructions, and functionality.</p>
 <div class="sect4">
 <h5 id="_functionality"><a class="anchor" href="#_functionality"></a>Functionality</h5>
 <div class="paragraph">
-<p>A push of the button turns the LED light on and another push turns it off.</p>
+<p>On click of a button can either open or close the circuit based on its current state.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_testing"><a class="anchor" href="#_testing"></a>Testing</h5>
+<div class="paragraph">
+<p>Use below command to test the component.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="bash"><span class="nv">$ </span>curl http://localhost:8080/pushButton/init</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>/init</code>  - Initializes the Push Button for use.</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect4">
@@ -1862,7 +1993,7 @@ adjust according to your power source and LED specifications</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_yaml_pin_order"><a class="anchor" href="#_yaml_pin_order"></a>YAML Pin Order</h5>
+<h5 id="_yaml_configuration"><a class="anchor" href="#_yaml_configuration"></a>YAML Configuration</h5>
 <div class="paragraph">
 <p>The order for declaring the pin for the LED is as follows:</p>
 </div>
@@ -1870,7 +2001,11 @@ adjust according to your power source and LED specifications</p>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="yaml"><span class="na">digital-output</span><span class="pi">:</span>
   <span class="na">led</span><span class="pi">:</span>
-    <span class="na">address</span><span class="pi">:</span> <span class="s">17</span></code></pre>
+    <span class="na">name</span><span class="pi">:</span> <span class="s">LED Output</span>
+    <span class="na">address</span><span class="pi">:</span> <span class="m">17</span>
+    <span class="na">shutdown</span><span class="pi">:</span> <span class="s">LOW</span>
+    <span class="na">initial</span><span class="pi">:</span> <span class="s">LOW</span>
+    <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-digital-output</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1882,8 +2017,12 @@ adjust according to your power source and LED specifications</p>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="yaml"><span class="na">digital-input</span><span class="pi">:</span>
-  <span class="na">button-input-3</span><span class="pi">:</span>
-    <span class="na">address</span><span class="pi">:</span> <span class="s">18</span></code></pre>
+    <span class="na">button-input-3</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">Push Button Input</span>
+      <span class="na">address</span><span class="pi">:</span> <span class="m">18</span>
+      <span class="na">pull</span><span class="pi">:</span> <span class="s">PULL_DOWN</span>
+      <span class="na">debounce</span><span class="pi">:</span> <span class="m">30</span>
+      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-digital-input</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1891,19 +2030,10 @@ adjust according to your power source and LED specifications</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_constructors"><a class="anchor" href="#_constructors"></a>Constructors</h5>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">inputComponents</span><span class="o">/</span><span class="n">pushButton</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../../../../</span><span class="n">pi4micronaut</span><span class="o">-</span><span class="n">utils</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">inputDevices</span><span class="o">/</span><span class="nc">PushButtonHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tag</span><span class="o">=</span><span class="kd">const</span><span class="o">]</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_methods"><a class="anchor" href="#_methods"></a>Methods</h5>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">inputComponents</span><span class="o">/</span><span class="n">pushButton</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../../../../</span><span class="n">pi4micronaut</span><span class="o">-</span><span class="n">utils</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">inputDevices</span><span class="o">/</span><span class="nc">PushButtonHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tags</span><span class="o">=</span><span class="n">method</span><span class="o">]</span></code></pre>
-</div>
+<h5 id="_constructor_and_methods"><a class="anchor" href="#_constructor_and_methods"></a>Constructor and Methods</h5>
+<div class="paragraph">
+<p>To see the constructor and methods of our PushButtonHelper class see our javadoc <a href="https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/inputdevices/PushButtonHelper.html">here</a>
+for more details.</p>
 </div>
 </div>
 <div class="sect4">
@@ -1940,9 +2070,9 @@ adjust according to your power source and LED specifications</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_slide_switch"><a class="anchor" href="#_slide_switch"></a>6.2.2. Slide Switch</h4>
+<h4 id="_slide_switch"><a class="anchor" href="#_slide_switch"></a>4.2.2. Slide Switch</h4>
 <div class="paragraph text-right">
-<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/inputComponents/slideSwitch.adoc">Improve this doc</a></p>
+<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/inputComponents/slideSwitch.adoc">Improve this doc</a></p>
 </div>
 <div class="sect4">
 <h5 id="_overview_2"><a class="anchor" href="#_overview_2"></a>Overview</h5>
@@ -2002,9 +2132,6 @@ adjust according to your power source and LED specifications</p>
 </div>
 <div class="sect4">
 <h5 id="_circuit_diagram_2"><a class="anchor" href="#_circuit_diagram_2"></a>Circuit Diagram</h5>
-<div class="paragraph">
-<p>Model:</p>
-</div>
 <div class="imageblock">
 <div class="content">
 <img src="img/slideSwitch_circuit.jpg" alt="slideSwitch circuit">
@@ -2020,7 +2147,15 @@ adjust according to your power source and LED specifications</p>
 <div class="sect4">
 <h5 id="_testing_the_circuit"><a class="anchor" href="#_testing_the_circuit"></a>Testing the Circuit:</h5>
 <div class="paragraph">
-<p>Use: <code>curl <a href="http://localhost:8080/slideSwitch/switch1" class="bare">http://localhost:8080/slideSwitch/switch1</a></code> to test the switch. This will either return true,if the switch is on, and false if the switch is off. Flip the switch and run the command again to see the opposite result of the first call.</p>
+<p>Use the below command to test the switch.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="bash"><span class="nv">$ </span>curl http://localhost:8080/slideSwitch/switch1</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This will either return true,if the switch is on, and false if the switch is off. Flip the switch and run the command again to see the opposite result of the first call.</p>
 </div>
 </div>
 <div class="sect4">
@@ -2030,13 +2165,14 @@ adjust according to your power source and LED specifications</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_yaml"><a class="anchor" href="#_yaml"></a>YAML</h5>
+<h5 id="_yaml_configuration_2"><a class="anchor" href="#_yaml_configuration_2"></a>YAML Configuration</h5>
 <div class="paragraph">
 <p>The slide switch as it appears in the application.yml:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="yaml">    <span class="na">slide-switch-input</span><span class="pi">:</span>
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">digital-input</span><span class="pi">:</span>
+    <span class="na">slide-switch-input</span><span class="pi">:</span>
       <span class="na">name</span><span class="pi">:</span> <span class="s">Slide Switch Input</span>
       <span class="na">address</span><span class="pi">:</span> <span class="m">18</span>
       <span class="na">pull</span><span class="pi">:</span> <span class="s">PULL_DOWN</span>
@@ -2052,23 +2188,14 @@ adjust according to your power source and LED specifications</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Note that there are two slide switches, one that uses GPIO 18 and the other uses GPIO 22.</p>
+<p><strong>Note:</strong> There are two slide switches, one that uses GPIO 18 and the other uses GPIO 22.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_constructors_2"><a class="anchor" href="#_constructors_2"></a>Constructors</h5>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">inputComponents</span><span class="o">/</span><span class="n">slideSwitch</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../../</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">inputDevices</span><span class="o">/</span><span class="nc">SlideSwitchHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tag</span><span class="o">=</span><span class="kd">const</span><span class="o">]</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_methods_2"><a class="anchor" href="#_methods_2"></a>Methods</h5>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">inputComponents</span><span class="o">/</span><span class="n">slideSwitch</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../../</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">inputDevices</span><span class="o">/</span><span class="nc">SlideSwitchHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tags</span><span class="o">=</span><span class="n">method</span><span class="o">]</span></code></pre>
-</div>
+<h5 id="_constructors_and_methods"><a class="anchor" href="#_constructors_and_methods"></a>Constructors and Methods</h5>
+<div class="paragraph">
+<p>To see the constructor and methods of our SlideSwitchHelper class see our javadoc <a href="https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/inputdevices/SlideSwitchHelper.html">here</a>
+for more details.</p>
 </div>
 </div>
 <div class="sect4">
@@ -2105,9 +2232,9 @@ adjust according to your power source and LED specifications</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_rotary_encoder"><a class="anchor" href="#_rotary_encoder"></a>6.2.3. Rotary Encoder</h4>
+<h4 id="_rotary_encoder"><a class="anchor" href="#_rotary_encoder"></a>4.2.3. Rotary Encoder</h4>
 <div class="paragraph text-right">
-<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/inputComponents/rotaryEncoder.adoc">Improve this doc</a></p>
+<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/inputComponents/rotaryEncoder.adoc">Improve this doc</a></p>
 </div>
 <div class="sect4">
 <h5 id="_overview_3"><a class="anchor" href="#_overview_3"></a>Overview</h5>
@@ -2173,34 +2300,19 @@ with GPIO 27, having one side on the red + with the other next to the wire on GP
 </div>
 <div class="sect4">
 <h5 id="_circuit_diagram_3"><a class="anchor" href="#_circuit_diagram_3"></a>Circuit Diagram</h5>
-<div class="ulist">
-<ul>
-<li>
-<p>Note the resistor location at GPIO 27</p>
-</li>
-</ul>
-</div>
 <div class="imageblock">
 <div class="content">
 <img src="img/rotary_encoder_circuit.png" alt="rotary encoder circuit">
 </div>
 </div>
+<div class="paragraph">
+<p><strong>Note:</strong> The resistor location at GPIO 27.</p>
+</div>
 </div>
 <div class="sect4">
 <h5 id="_functionality_3"><a class="anchor" href="#_functionality_3"></a>Functionality</h5>
-<div class="ulist">
-<ul>
-<li>
-<p>The initial value returned is 0.</p>
-</li>
-<li>
-<p>Turning the shaft one unit clockwise will increase the value returned by 1, whereas, turning the
-knob counterclockwise by one unit will decrease the value returned by 1.</p>
-</li>
-<li>
-<p>The value returned is an integer with a max value of 2147483647 and min of -2147483647.</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>The rotary encoder returns the value as you rotate the knob.</p>
 </div>
 </div>
 <div class="sect4">
@@ -2212,6 +2324,13 @@ knob counterclockwise by one unit will decrease the value returned by 1.</p>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="bash"><span class="nv">$ </span>curl http://localhost:8080/rotaryEncoder/value</code></pre>
 </div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>/value</code>  - returns the current value of the rotary encoder</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect4">
@@ -2229,7 +2348,7 @@ to the correct GPIO pins according to the YAML pin order below.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_yaml_pin_order_2"><a class="anchor" href="#_yaml_pin_order_2"></a>YAML Pin Order</h5>
+<h5 id="_yaml_configuration_3"><a class="anchor" href="#_yaml_configuration_3"></a>YAML Configuration</h5>
 <div class="paragraph">
 <p>The order for declaring pins for a Rotary Encoder component in the application.yaml file is as follows</p>
 </div>
@@ -2242,8 +2361,14 @@ to the correct GPIO pins according to the YAML pin order below.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="yaml"><span class="na">multi-digital-input</span><span class="pi">:</span>
-  <span class="na">rot-encoder</span><span class="pi">:</span>
-    <span class="na">addresses</span><span class="pi">:</span> <span class="s">17, 18, 27</span></code></pre>
+  <span class="na">rotary-encoder</span><span class="pi">:</span>
+    <span class="na">name</span><span class="pi">:</span> <span class="s">Rotary Encoder</span>
+    <span class="na">addresses</span><span class="pi">:</span> <span class="s">27,18,17</span>
+    <span class="na">debounces</span><span class="pi">:</span> <span class="s">6000,500,500</span>
+    <span class="na">pulls</span><span class="pi">:</span> <span class="s">PULL_DOWN,PULL_UP,PULL_UP</span>
+    <span class="na">shutdown</span><span class="pi">:</span> <span class="s">LOW</span>
+    <span class="na">initial</span><span class="pi">:</span> <span class="s">HIGH</span>
+    <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-digital-input</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2251,25 +2376,16 @@ to the correct GPIO pins according to the YAML pin order below.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_constructors_3"><a class="anchor" href="#_constructors_3"></a>Constructors</h5>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">inputComponents</span><span class="o">/</span><span class="n">rotaryEncoder</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../../../../</span><span class="n">pi4micronaut</span><span class="o">-</span><span class="n">utils</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">inputDevices</span><span class="o">/</span><span class="nc">RotaryEncoderHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tag</span><span class="o">=</span><span class="kd">const</span><span class="o">]</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_methods_3"><a class="anchor" href="#_methods_3"></a>Methods</h5>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">inputComponents</span><span class="o">/</span><span class="n">rotaryEncoder</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../../../../</span><span class="n">pi4micronaut</span><span class="o">-</span><span class="n">utils</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">inputDevices</span><span class="o">/</span><span class="nc">RotaryEncoderHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tags</span><span class="o">=</span><span class="n">method</span><span class="o">]</span></code></pre>
-</div>
+<h5 id="_constructors_and_methods_2"><a class="anchor" href="#_constructors_and_methods_2"></a>Constructors and Methods</h5>
+<div class="paragraph">
+<p>To see the constructor and methods of our RotaryEncoderHelper class see our javadoc <a href="https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/inputdevices/RotaryEncoderHelper.html">here</a>
+for more details.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_an_example_controller_3"><a class="anchor" href="#_an_example_controller_3"></a>An Example Controller</h5>
 <div class="sect5">
-<h6 id="_this_controller_sets_up_two_rotary_encoders"><a class="anchor" href="#_this_controller_sets_up_two_rotary_encoders"></a>This controller sets up two rotary encoders</h6>
+<h6 id="_this_controller_uses_a_rotary_encoder"><a class="anchor" href="#_this_controller_uses_a_rotary_encoder"></a>This controller uses a rotary encoder</h6>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="nd">@Controller</span><span class="o">(</span><span class="s">"/rotaryEncoder"</span><span class="o">)</span>
@@ -2289,9 +2405,9 @@ to the correct GPIO pins according to the YAML pin order below.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_rfid_scanner"><a class="anchor" href="#_rfid_scanner"></a>6.2.4. RFID Scanner</h4>
+<h4 id="_rfid_scanner"><a class="anchor" href="#_rfid_scanner"></a>4.2.4. RFID Scanner</h4>
 <div class="paragraph text-right">
-<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/inputComponents/rfidScanner.adoc">Improve this doc</a></p>
+<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/inputComponents/rfidScanner.adoc">Improve this doc</a></p>
 </div>
 <div class="sect4">
 <h5 id="_overview_4"><a class="anchor" href="#_overview_4"></a>Overview</h5>
@@ -2339,9 +2455,6 @@ to the correct GPIO pins according to the YAML pin order below.</p>
 </div>
 <div class="sect4">
 <h5 id="_circuit_diagram_4"><a class="anchor" href="#_circuit_diagram_4"></a>Circuit Diagram</h5>
-<div class="paragraph">
-<p>Model:</p>
-</div>
 <div class="imageblock">
 <div class="content">
 <img src="img/rfid_circuit.png" alt="rfid circuit">
@@ -2351,22 +2464,23 @@ to the correct GPIO pins according to the YAML pin order below.</p>
 <div class="sect4">
 <h5 id="_functionality_4"><a class="anchor" href="#_functionality_4"></a>Functionality</h5>
 <div class="paragraph">
-<p>The two main functions of the RFID scanner are to read RFIDs and to write to them. What is written to the RFID will vary depending on the intended use for the scanner.</p>
+<p>RFID Scanner requires RFID tags to work with. We can read/write the data on to the tags using the scanner.</p>
 </div>
-</div>
-<div class="sect4">
-<h5 id="_troubleshooting_4"><a class="anchor" href="#_troubleshooting_4"></a>Troubleshooting</h5>
-<div class="paragraph">
-<p>Make sure everything is connected to the correct pins.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>/write/{value}</code>  - Writes {value} to the RFID key fob</p>
+</li>
+<li>
+<p><code>/read</code>           - Scanner will be ready to read the key fob</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_testing_the_circuit_3"><a class="anchor" href="#_testing_the_circuit_3"></a>Testing the Circuit:</h5>
 <div class="paragraph">
-<p>To write to the RFID fob: <code>curl -X POST <a href="http://localhost:8080/rfid/write/{message}" class="bare">http://localhost:8080/rfid/write/{message}</a></code></p>
-</div>
-<div class="paragraph">
-<p>Example:</p>
+<p>To write to the RFID fob:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2377,10 +2491,7 @@ to the correct GPIO pins according to the YAML pin order below.</p>
 <p>Scan the key fob to write the message to the fob.</p>
 </div>
 <div class="paragraph">
-<p>To read from the RFID fob: <code>curl <a href="http://localhost:8080/rfid/read" class="bare">http://localhost:8080/rfid/read</a></code></p>
-</div>
-<div class="paragraph">
-<p>Example:</p>
+<p>To read from the RFID fob:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2397,35 +2508,32 @@ to the correct GPIO pins according to the YAML pin order below.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_yaml_2"><a class="anchor" href="#_yaml_2"></a>YAML</h5>
+<h5 id="_troubleshooting_4"><a class="anchor" href="#_troubleshooting_4"></a>Troubleshooting</h5>
 <div class="paragraph">
-<p>The RFID scanner as it appears in the application.yml:</p>
+<p>Make sure everything is connected to the correct pins.</p>
 </div>
-<div class="literalblock">
+</div>
+<div class="sect4">
+<h5 id="_yaml_configuration_4"><a class="anchor" href="#_yaml_configuration_4"></a>YAML Configuration</h5>
+<div class="paragraph">
+<p>The RFID scanner configuration as it appears in the application.yml:</p>
+</div>
+<div class="listingblock">
 <div class="content">
-<pre>spi:
-  rfid:                   <i class="conum" data-value="1"></i><b>(1)</b>
-    name: MFRC522         <i class="conum" data-value="2"></i><b>(2)</b>
-    address: 8            <i class="conum" data-value="3"></i><b>(3)</b>
-    baud: 500000          <i class="conum" data-value="4"></i><b>(4)</b>
-    reset-pin: 25         <i class="conum" data-value="5"></i><b>(5)</b></pre>
+<pre class="rouge highlight"><code>spi:
+   rfid:
+      name: MFRC522
+      address: 8
+      baud: 500000
+      reset-pin: 25</code></pre>
 </div>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_constructors_4"><a class="anchor" href="#_constructors_4"></a>Constructors</h5>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">inputComponents</span><span class="o">/</span><span class="n">rfidScanner</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../../../../</span><span class="n">pi4micronaut</span><span class="o">-</span><span class="n">utils</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">inputDevices</span><span class="o">/</span><span class="nc">RFidHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tag</span><span class="o">=</span><span class="kd">const</span><span class="o">]</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_methods_4"><a class="anchor" href="#_methods_4"></a>Methods</h5>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">inputComponents</span><span class="o">/</span><span class="n">rfidScanner</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../../../../</span><span class="n">pi4micronaut</span><span class="o">-</span><span class="n">utils</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">inputDevices</span><span class="o">/</span><span class="nc">RFidHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tag</span><span class="o">=</span><span class="n">method</span><span class="o">]</span></code></pre>
-</div>
+<h5 id="_constructors_and_methods_3"><a class="anchor" href="#_constructors_and_methods_3"></a>Constructors and Methods</h5>
+<div class="paragraph">
+<p>To see the constructor and methods of our RFidHelper class see our javadoc <a href="https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/inputdevices/RFidHelper.html">here</a>
+for more details.</p>
 </div>
 </div>
 <div class="sect4">
@@ -2441,18 +2549,18 @@ to the correct GPIO pins according to the YAML pin order below.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_photosensor"><a class="anchor" href="#_photosensor"></a>6.2.5. Photosensor</h4>
+<h4 id="_photosensor"><a class="anchor" href="#_photosensor"></a>4.2.5. Photosensor</h4>
 <div class="paragraph text-right">
-<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/inputComponents/photosensor.adoc">Improve this doc</a></p>
+<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/inputComponents/photosensor.adoc">Improve this doc</a></p>
 </div>
 <div class="paragraph">
 <p>TODO: add in photosensor support docs</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_ultrasonic_sensor"><a class="anchor" href="#_ultrasonic_sensor"></a>6.2.6. Ultrasonic Sensor</h4>
+<h4 id="_ultrasonic_sensor"><a class="anchor" href="#_ultrasonic_sensor"></a>4.2.6. Ultrasonic Sensor</h4>
 <div class="paragraph text-right">
-<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/inputComponents/ultraSonicSensor.adoc">Improve this doc</a></p>
+<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/inputComponents/ultraSonicSensor.adoc">Improve this doc</a></p>
 </div>
 <div class="sect4">
 <h5 id="_overview_5"><a class="anchor" href="#_overview_5"></a>Overview</h5>
@@ -2485,16 +2593,13 @@ including its components, assembly instructions, and functionality.</p>
 </div>
 <div class="sect4">
 <h5 id="_circuit_diagram_5"><a class="anchor" href="#_circuit_diagram_5"></a>Circuit Diagram</h5>
-<div class="paragraph">
-<p>Model:</p>
-</div>
 <div class="imageblock">
 <div class="content">
 <img src="img/ultrasonic_sensor_model.png" alt="ultrasonic sensor model">
 </div>
 </div>
 <div class="paragraph">
-<p>Circuit Diagram:</p>
+<p><strong>Schematic Diagram:</strong></p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -2509,20 +2614,32 @@ including its components, assembly instructions, and functionality.</p>
 The resulting measurement is accurate within a range of 3mm of the true measurement.
 The Ultrasonic Sensor&#8217;s signal is stable within 5m of the sensor, gradually weakening until the signal fully disappears at 7m.</p>
 </div>
-<div class="paragraph">
-<p>Some information about the trigger and echo signals (from the sunfounder docs):
-The timing diagram is shown below. You only need to supply a short 10us pulse for the trigger input to start the ranging,
-and then the module will send out an 8 cycle burst of ultrasound at 40 kHz and raise its echo.
-You can calculate the range through the time interval between sending trigger signal and receiving echo signal.</p>
 </div>
+<div class="sect4">
+<h5 id="_testing_2"><a class="anchor" href="#_testing_2"></a>Testing</h5>
 <div class="paragraph">
-<p>Formula: us / 58 = centimeters or us / 148 =inch; or: the range = high level time * velocity (340M/S) / 2;
-you are suggested to use measurement cycle over 60ms in order to prevent signal collisions of trigger signal and the echo signal.</p>
+<p>Use the below commands to test the component.</p>
 </div>
-<div class="imageblock">
+<div class="listingblock">
 <div class="content">
-<img src="img/ultrasonic_sensor_timing_diagram.png" alt="ultrasonic sensor timing diagram">
+<pre class="rouge highlight"><code data-lang="bash"><span class="nv">$curl</span> http://localhost:8080/ultraSound/enable</code></pre>
 </div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>/enable</code>      - turns on ultrasonic sensor, starts measuring distance</p>
+</li>
+<li>
+<p><code>/distance/cm</code> - returns distance to nearest object in centimeters</p>
+</li>
+<li>
+<p><code>/distance/m</code>  - returns distance to nearest object in meters</p>
+</li>
+<li>
+<p><code>/disable</code>     - turns off ultrasonic sensor</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect4">
@@ -2537,48 +2654,38 @@ and check the power source.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_yaml_pin_order_3"><a class="anchor" href="#_yaml_pin_order_3"></a>YAML Pin Order</h5>
+<h5 id="_yaml_configuration_5"><a class="anchor" href="#_yaml_configuration_5"></a>YAML Configuration</h5>
 <div class="paragraph">
-<p>The order for declaring the Trigger Pin for the Ultrasonic Sensor is as follows:</p>
+<p>The order for declaring the Trigger and Echo Pins of the Ultrasonic Sensor is as follows:</p>
+</div>
+<div class="paragraph">
+<p>So the Trigger Pin would be connected to GPIO 23 and the Echo Pin would be connected to GPIO 24.</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="yaml"><span class="na">digital-input</span><span class="pi">:</span>
-  <span class="na">ultra-sonic-trig</span><span class="pi">:</span>
-    <span class="na">address</span><span class="pi">:</span> <span class="s">23</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>So the Trigger Pin would be connected to GPIO 23.</p>
-</div>
-<div class="paragraph">
-<p>The order for declaring the Echo Pin for the Ultrasonic Sensor is as follows:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="yaml"><span class="na">digital-output</span><span class="pi">:</span>
   <span class="na">ultra-sonic-echo</span><span class="pi">:</span>
-    <span class="na">address</span><span class="pi">:</span> <span class="s">24</span></code></pre>
+    <span class="na">name</span><span class="pi">:</span> <span class="s">UltraSonic Sensor Input</span>
+    <span class="na">address</span><span class="pi">:</span> <span class="m">24</span>
+    <span class="na">pull</span><span class="pi">:</span> <span class="s">PULL_DOWN</span>
+    <span class="na">debounce</span><span class="pi">:</span> <span class="m">3000</span>
+    <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-digital-input</span>
+
+<span class="na">digital-output</span><span class="pi">:</span>
+  <span class="na">ultra-sonic-trig</span><span class="pi">:</span>
+    <span class="na">name</span><span class="pi">:</span> <span class="s">UltraSonic Sensor Output</span>
+    <span class="na">address</span><span class="pi">:</span> <span class="m">23</span>
+    <span class="na">shutdown</span><span class="pi">:</span> <span class="s">LOW</span>
+    <span class="na">initial</span><span class="pi">:</span> <span class="s">LOW</span>
+    <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-digital-output</span></code></pre>
 </div>
 </div>
+</div>
+<div class="sect4">
+<h5 id="_constructor_and_methods_2"><a class="anchor" href="#_constructor_and_methods_2"></a>Constructor and Methods</h5>
 <div class="paragraph">
-<p>So the Echo Pin would be connected to GPIO 24.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_constructors_5"><a class="anchor" href="#_constructors_5"></a>Constructors</h5>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">inputComponents</span><span class="o">/</span><span class="n">ultraSonicSensor</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../../../../</span><span class="n">pi4micronaut</span><span class="o">-</span><span class="n">utils</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">inputDevices</span><span class="o">/</span><span class="nc">UltraSonicSensorHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tag</span><span class="o">=</span><span class="kd">const</span><span class="o">]</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_methods_5"><a class="anchor" href="#_methods_5"></a>Methods</h5>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">inputComponents</span><span class="o">/</span><span class="n">ultraSonicSensor</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../../../../</span><span class="n">pi4micronaut</span><span class="o">-</span><span class="n">utils</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">inputDevices</span><span class="o">/</span><span class="nc">UltraSonicSensorHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tags</span><span class="o">=</span><span class="n">method</span><span class="o">]</span></code></pre>
-</div>
+<p>To see the constructor and methods of our UltraSonicSensor class see our javadoc <a href="https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/inputdevices/UltraSonicSensorHelper.html">here</a>
+for more details.</p>
 </div>
 </div>
 <div class="sect4">
@@ -2639,9 +2746,9 @@ and check the power source.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_touch_switch"><a class="anchor" href="#_touch_switch"></a>6.2.7. Touch Switch</h4>
+<h4 id="_touch_switch"><a class="anchor" href="#_touch_switch"></a>4.2.7. Touch Switch</h4>
 <div class="paragraph text-right">
-<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/inputComponents/touchSwitch.adoc">Improve this doc</a></p>
+<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/inputComponents/touchSwitch.adoc">Improve this doc</a></p>
 </div>
 <div class="sect4">
 <h5 id="_overview_6"><a class="anchor" href="#_overview_6"></a>Overview</h5>
@@ -2713,13 +2820,10 @@ so that power can be supplied to the LED and touch switch as shown in the diagra
 <div class="sect4">
 <h5 id="_circuit_diagram_6"><a class="anchor" href="#_circuit_diagram_6"></a>Circuit Diagram</h5>
 <div class="paragraph">
-<p>Model:</p>
-</div>
-<div class="paragraph">
 <p><span class="image"><img src="img/touchSwitchDiagram.png" alt="touchSwitchDiagram"></span></p>
 </div>
 <div class="paragraph">
-<p>Circuit Diagram:</p>
+<p><strong>Schematic Diagram:</strong></p>
 </div>
 <div class="paragraph">
 <p><span class="image"><img src="img/touchSwitch.png" alt="touchSwitch"></span></p>
@@ -2728,26 +2832,36 @@ so that power can be supplied to the LED and touch switch as shown in the diagra
 <div class="sect4">
 <h5 id="_functionality_6"><a class="anchor" href="#_functionality_6"></a>Functionality</h5>
 <div class="paragraph">
-<p>Once the touch switch has been enabled, touching the sensor will turn the LED light on
-and removing your finger from the sensor will turn the LED light off.</p>
+<p>We can either open or close a circuit using touch switch when you touch it.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_testing_the_circuit_4"><a class="anchor" href="#_testing_the_circuit_4"></a>Testing the Circuit</h5>
 <div class="paragraph">
-<p>To enable the touch switch:</p>
+<p>Use the below commands to test the touch switch.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>/enable</code>  - turns on touch switch</p>
+</li>
+</ul>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="bash">curl http://localhost:8080/touchSwitch/enable</code></pre>
+<pre>$ curl http://localhost:8080/touchSwitch/enable</pre>
 </div>
 </div>
-<div class="paragraph">
-<p>To disable the touch switch:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>/disable</code> - turns off touch switch</p>
+</li>
+</ul>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="bash">curl http://localhost:8080/touchSwitch/disable</code></pre>
+<pre>$ curl http://localhost:8080/touchSwitch/disable</pre>
 </div>
 </div>
 </div>
@@ -2767,7 +2881,7 @@ Also make sure that everything is properly secured to the breadboard.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_yaml_pin_order_4"><a class="anchor" href="#_yaml_pin_order_4"></a>YAML Pin Order</h5>
+<h5 id="_yaml_configuration_6"><a class="anchor" href="#_yaml_configuration_6"></a>YAML Configuration</h5>
 <div class="paragraph">
 <p>The YAML configuration for the LED is as follows:</p>
 </div>
@@ -2804,7 +2918,7 @@ Also make sure that everything is properly secured to the breadboard.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_constructor_and_methods"><a class="anchor" href="#_constructor_and_methods"></a>Constructor and Methods</h5>
+<h5 id="_constructor_and_methods_3"><a class="anchor" href="#_constructor_and_methods_3"></a>Constructor and Methods</h5>
 <div class="paragraph">
 <p>To see the constructor and methods of our TouchSwitchHelper class see our javadoc <a href="https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/inputdevices/TouchSwitchHelper.html">here</a>
 for more details.</p>
@@ -2852,7 +2966,7 @@ for more details.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_pir_sensor"><a class="anchor" href="#_pir_sensor"></a>6.2.8. PIR Sensor</h4>
+<h4 id="_pir_sensor"><a class="anchor" href="#_pir_sensor"></a>4.2.8. PIR Sensor</h4>
 <div class="paragraph text-right">
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/inputComponents/pirSensor.adoc">Improve this doc</a></p>
 </div>
@@ -2923,10 +3037,32 @@ for more details.</p>
 <div class="sect4">
 <h5 id="_functionality_7"><a class="anchor" href="#_functionality_7"></a>Functionality</h5>
 <div class="paragraph">
-<p>Use <code>curl <a href="http://localhost:8080/pirSensor/enable" class="bare">http://localhost:8080/pirSensor/enable</a></code> to enable the sensor. Once the sensor is enabled, anytime the sensor detects motion, the RGB LED will turn red. If no motion is detected, the RGB LED will be green.</p>
+<p>A PIR - Passive Infrared sensor detects motion by sensing changes in the infrared light emitted by objects in its environment. It works passively, meaning it does not emit any infrared light itself, but rather detects the infrared radiation coming from warm objects, such as humans or animals. The sensor has two sensitive slots that detect infrared radiation.</p>
 </div>
 <div class="paragraph">
-<p>Use <code>curl <a href="http://localhost:8080/pirSensor/disable" class="bare">http://localhost:8080/pirSensor/disable</a></code> to disable the sensor.</p>
+<p>As a warm object moves across its field of view, the amount of infrared radiation reaching each slot changes, creating a detectable change in the radiation pattern. This change triggers the sensor to send an electrical signal, which can then be used to activate alarms, lights, or other devices, making PIR sensors widely used in security systems and automated lighting controls due to their efficiency and effectiveness in detecting motion.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_testing_3"><a class="anchor" href="#_testing_3"></a>Testing</h5>
+<div class="paragraph">
+<p>Use the below command to enable the sensor.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="bash"><span class="nv">$ </span>curl http://localhost:8080/pirSensor/enable</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once the sensor is enabled, anytime the sensor detects motion, the RGB LED will turn red. If no motion is detected, the RGB LED will be green.</p>
+</div>
+<div class="paragraph">
+<p>Use the below command to disable the sensor.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="bash"><span class="nv">$ </span>curl http://localhost:8080/pirSensor/disable</code></pre>
+</div>
 </div>
 </div>
 <div class="sect4">
@@ -2947,10 +3083,11 @@ for more details.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_yaml_3"><a class="anchor" href="#_yaml_3"></a>YAML</h5>
+<h5 id="_yaml_configuration_7"><a class="anchor" href="#_yaml_configuration_7"></a>YAML Configuration</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="yaml">    <span class="na">pir-sensor</span><span class="pi">:</span>
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">digital-input</span><span class="pi">:</span>
+    <span class="na">pir-sensor</span><span class="pi">:</span>
       <span class="na">name</span><span class="pi">:</span> <span class="s">PIR Sensor</span>
       <span class="na">address</span><span class="pi">:</span> <span class="m">13</span>
       <span class="na">pull</span><span class="pi">:</span> <span class="s">PULL_DOWN</span>
@@ -2960,7 +3097,7 @@ for more details.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_constructor_and_methods_2"><a class="anchor" href="#_constructor_and_methods_2"></a>Constructor and Methods</h5>
+<h5 id="_constructor_and_methods_4"><a class="anchor" href="#_constructor_and_methods_4"></a>Constructor and Methods</h5>
 <div class="paragraph">
 <p>The constructor and the methods within the PIRSensorHelper class can be seen in our javadoc <a href="https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/inputdevices/PIRSensorHelper.html">here</a>.</p>
 </div>
@@ -3016,14 +3153,17 @@ for more details.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_output_components"><a class="anchor" href="#_output_components"></a>6.3. Output Components</h3>
+<h3 id="_output_components"><a class="anchor" href="#_output_components"></a>4.3. Output Components</h3>
 <div class="paragraph text-right">
-<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/outputComponents.adoc">Improve this doc</a></p>
+<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/outputComponents.adoc">Improve this doc</a></p>
+</div>
+<div class="paragraph">
+<p>The Components that provide output signal either by emitting, displaying, lighting, etc. through Raspberry Pi GPIO pins.</p>
 </div>
 <div class="sect3">
-<h4 id="_led"><a class="anchor" href="#_led"></a>6.3.1. LED</h4>
+<h4 id="_led"><a class="anchor" href="#_led"></a>4.3.1. LED</h4>
 <div class="paragraph text-right">
-<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/outputComponents/led.adoc">Improve this doc</a></p>
+<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/outputComponents/led.adoc">Improve this doc</a></p>
 </div>
 <div class="sect4">
 <h5 id="_overview_8"><a class="anchor" href="#_overview_8"></a>Overview</h5>
@@ -3060,7 +3200,7 @@ for more details.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_assembly"><a class="anchor" href="#_assembly"></a>Assembly</h5>
+<h5 id="_assembly_instructions_6"><a class="anchor" href="#_assembly_instructions_6"></a>Assembly Instructions</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -3099,15 +3239,20 @@ for more details.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_testing"><a class="anchor" href="#_testing"></a>Testing</h5>
+<h5 id="_functionality_8"><a class="anchor" href="#_functionality_8"></a>Functionality</h5>
 <div class="paragraph">
-<p>Use: <code>curl <a href="http://localhost:8080/led/ledOn" class="bare">http://localhost:8080/led/ledOn</a></code> to test the component. This will cause the LED to light.</p>
+<p>LED can be turned on or off, switch state and set to blink for the provided  duration in milliseconds.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_functionality_8"><a class="anchor" href="#_functionality_8"></a>Functionality</h5>
+<h5 id="_testing_4"><a class="anchor" href="#_testing_4"></a>Testing</h5>
 <div class="paragraph">
-<p>Use: <code>curl <a href="http://localhost:8080/led" class="bare">http://localhost:8080/led</a></code> to test the component. The following commands will test the component:</p>
+<p>Use the below commands to test the component. This will cause the LED to light.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="bash"><span class="nv">$ </span>curl http://localhost:8080/led/ledOn</code></pre>
+</div>
 </div>
 <div class="ulist">
 <ul>
@@ -3121,7 +3266,7 @@ for more details.</p>
 <p><code>/switchState</code> - Switches the state of the led.</p>
 </li>
 <li>
-<p><code>/blink/{duration}/</code> - Causes the led to blink for the desired duration.</p>
+<p><code>/blink/{duration}/</code> - Causes the led to blink for the desired duration(milliseconds).</p>
 </li>
 </ul>
 </div>
@@ -3141,54 +3286,72 @@ as well as the LED specifications.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_yaml_4"><a class="anchor" href="#_yaml_4"></a>YAML</h5>
+<h5 id="_yaml_configuration_8"><a class="anchor" href="#_yaml_configuration_8"></a>YAML Configuration</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="yaml"><span class="na">led</span><span class="pi">:</span>                                    <i class="conum" data-value="1"></i><b>(1)</b>
-      <span class="na">name</span><span class="pi">:</span> <span class="s">LED Output</span>                      <i class="conum" data-value="2"></i><b>(2)</b>
-      <span class="na">address</span><span class="pi">:</span> <span class="s">17</span>                           <i class="conum" data-value="3"></i><b>(3)</b>
-      <span class="na">shutdown</span><span class="pi">:</span> <span class="s">HIGH</span>                        <i class="conum" data-value="4"></i><b>(4)</b>
-      <span class="na">initial</span><span class="pi">:</span> <span class="s">HIGH</span>                         <i class="conum" data-value="5"></i><b>(5)</b>
-      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-digital-output</span>       <i class="conum" data-value="6"></i><b>(6)</b>
-
-<span class="na">led2</span><span class="pi">:</span>
-      <span class="na">name</span><span class="pi">:</span> <span class="s">LED Output</span>
-      <span class="na">address</span><span class="pi">:</span> <span class="m">26</span>
-      <span class="na">shutdown</span><span class="pi">:</span> <span class="s">HIGH</span>
-      <span class="na">initial</span><span class="pi">:</span> <span class="s">HIGH</span>
-      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-digital-output</span></code></pre>
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">digital-output</span><span class="pi">:</span>
+  <span class="na">led</span><span class="pi">:</span>
+    <span class="na">name</span><span class="pi">:</span> <span class="s">LED Output</span>
+    <span class="na">address</span><span class="pi">:</span> <span class="m">17</span>
+    <span class="na">shutdown</span><span class="pi">:</span> <span class="s">LOW</span>
+    <span class="na">initial</span><span class="pi">:</span> <span class="s">LOW</span>
+    <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-digital-output</span>
+  <span class="na">led2</span><span class="pi">:</span>
+    <span class="na">name</span><span class="pi">:</span> <span class="s">LED Output</span>
+    <span class="na">address</span><span class="pi">:</span> <span class="m">26</span>
+    <span class="na">shutdown</span><span class="pi">:</span> <span class="s">HIGH</span>
+    <span class="na">initial</span><span class="pi">:</span> <span class="s">HIGH</span>
+    <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-digital-output</span></code></pre>
 </div>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_constructors_6"><a class="anchor" href="#_constructors_6"></a>Constructors</h5>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">outputComponents</span><span class="o">/</span><span class="n">led</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../../../../</span><span class="n">pi4micronaut</span><span class="o">-</span><span class="n">utils</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">outputDevices</span><span class="o">/</span><span class="nc">LEDHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tag</span><span class="o">=</span><span class="kd">const</span><span class="o">]</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_methods_6"><a class="anchor" href="#_methods_6"></a>Methods</h5>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">outputComponents</span><span class="o">/</span><span class="n">led</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../../../../</span><span class="n">pi4micronaut</span><span class="o">-</span><span class="n">utils</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">outputDevices</span><span class="o">/</span><span class="nc">LEDHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tags</span><span class="o">=</span><span class="n">method</span><span class="o">]</span></code></pre>
-</div>
+<h5 id="_constructor_and_methods_5"><a class="anchor" href="#_constructor_and_methods_5"></a>Constructor and Methods</h5>
+<div class="paragraph">
+<p>To see the constructor and methods of our LEDHelper class see our javadoc <a href="https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/outputdevices/LEDHelper.html">here</a>
+for more details.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_an_example_controller_7"><a class="anchor" href="#_an_example_controller_7"></a>An Example Controller</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">outputComponents</span><span class="o">/</span><span class="n">led</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:</span> <span class="o">../../../../../../</span><span class="n">components</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">components</span><span class="o">/</span><span class="n">controllers</span><span class="o">/</span><span class="nc">LEDController</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tags</span><span class="o">=</span><span class="n">method</span><span class="o">]</span></code></pre>
+<pre class="rouge highlight"><code data-lang="java"><span class="nd">@Controller</span><span class="o">(</span><span class="s">"/led"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">LEDController</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">LEDHelper</span> <span class="n">ledHelper</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">LEDController</span><span class="o">(</span><span class="nd">@Named</span><span class="o">(</span><span class="s">"led"</span><span class="o">)</span><span class="nc">DigitalOutput</span> <span class="n">led</span><span class="o">){</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">ledHelper</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LEDHelper</span><span class="o">(</span><span class="n">led</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/ledOn"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">ledOn</span><span class="o">(){</span>
+        <span class="n">ledHelper</span><span class="o">.</span><span class="na">ledOn</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/ledOff"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">ledOff</span><span class="o">(){</span>
+        <span class="n">ledHelper</span><span class="o">.</span><span class="na">ledOff</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/switchState"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">switchState</span><span class="o">(){</span>
+        <span class="n">ledHelper</span><span class="o">.</span><span class="na">switchState</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/blink/{duration}/"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">blink</span><span class="o">(</span><span class="kt">int</span> <span class="n">duration</span><span class="o">){</span>
+        <span class="n">ledHelper</span><span class="o">.</span><span class="na">blink</span><span class="o">(</span><span class="n">duration</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
 </div>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_rgb_led"><a class="anchor" href="#_rgb_led"></a>6.3.2. RGB LED</h4>
+<h4 id="_rgb_led"><a class="anchor" href="#_rgb_led"></a>4.3.2. RGB LED</h4>
 <div class="paragraph text-right">
-<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/outputComponents/rgbLed.adoc">Improve this doc</a></p>
+<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/outputComponents/rgbLed.adoc">Improve this doc</a></p>
 </div>
 <div class="sect4">
 <h5 id="_overview_9"><a class="anchor" href="#_overview_9"></a>Overview</h5>
@@ -3220,11 +3383,11 @@ including its components, assembly instructions, and functionality.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_assembly_instructions_6"><a class="anchor" href="#_assembly_instructions_6"></a>Assembly Instructions</h5>
+<h5 id="_assembly_instructions_7"><a class="anchor" href="#_assembly_instructions_7"></a>Assembly Instructions</h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Place the RGB LED on the Breadboard. The LED has four pins - one for each of the
+<p>Place the RGB LED on the Breadboard. The LED has four pins—one for each of the
 colors (Red, Green, and Blue) and one common pin (either cathode or anode).</p>
 </li>
 <li>
@@ -3253,16 +3416,13 @@ negative terminals (like GPIO pins set to OUTPUT and LOW on a microcontroller).<
 </div>
 <div class="sect4">
 <h5 id="_circuit_diagram_9"><a class="anchor" href="#_circuit_diagram_9"></a>Circuit Diagram</h5>
-<div class="paragraph">
-<p>Model:</p>
-</div>
 <div class="imageblock">
 <div class="content">
 <img src="https://docs.sunfounder.com/projects/raphael-kit/en/latest/_images/image61.png" alt="image61">
 </div>
 </div>
 <div class="paragraph">
-<p>Circuit Diagram:</p>
+<p><strong>Schematic Diagram:</strong></p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -3304,6 +3464,80 @@ produced. For instance:</p>
 </div>
 </div>
 <div class="sect4">
+<h5 id="_testing_5"><a class="anchor" href="#_testing_5"></a>Testing</h5>
+<div class="paragraph">
+<p>Use the below commands to test the component.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="bash"><span class="nv">$ </span>curl http://localhost:8080/rgb/ledOn</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>/ledOn</code>                        - turns on RGB LED</p>
+</li>
+<li>
+<p><code>/ledOff</code>                       - turns off RGB LED</p>
+</li>
+<li>
+<p><code>/setRed/{val}</code>                 - sets value of red to <strong>{val}</strong></p>
+</li>
+<li>
+<p><code>/setRed/{val},{frequency}</code>     - sets value of red to <strong>{val}</strong> and frequency to <strong>{frequency}</strong></p>
+</li>
+<li>
+<p><code>/setGreen/{val}</code>               - sets value of green to <strong>{val}</strong></p>
+</li>
+<li>
+<p><code>/setGreen/{val},{frequency}</code>   - sets value of green to <strong>{val}</strong> and frequency to <strong>{frequency}</strong></p>
+</li>
+<li>
+<p><code>/setBlue/{val}</code>                - sets value of blue to <strong>{val}</strong></p>
+</li>
+<li>
+<p><code>/setBlue/{val},{frequency}</code>    - sets value of blue to <strong>{val}</strong> and frequency to <strong>{frequency}</strong></p>
+</li>
+<li>
+<p><code>/setColor/{redVal},{greenVal},{blueVal}</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>sets values of red <strong>{redVal}</strong>, green <strong>{greenVal}</strong>, and blue <strong>{blueVal}</strong></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>/setColor/{redVal},{greenVal},{blueVal},{frequency1},{frequency2},{frequency3}</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>sets values of red <strong>{redVal}</strong>, green <strong>{greenVal}</strong>, and blue <strong>{blueVal}</strong>,
+and frequencies of red <strong>{frequency1}</strong>, green <strong>{frequency2}</strong>, and <strong>{frequency3}</strong></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>/setColorHex/{hexValue}</code>       - sets color value using its hex value <strong>{hexValue}</strong></p>
+</li>
+<li>
+<p><code>/setColorHex/{hexValue},{frequency1},{frequency2},{frequency3}</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>sets color value using its hex value <strong>{hexValue}</strong>
+and frequencies of red <strong>{frequency1}</strong>, green <strong>{frequency2}</strong>, and <strong>{frequency3}</strong></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
 <h5 id="_troubleshooting_9"><a class="anchor" href="#_troubleshooting_9"></a>Troubleshooting</h5>
 <div class="olist arabic">
 <ol class="arabic">
@@ -3316,18 +3550,16 @@ and check the power source.</p>
 each color pin&#8217;s connection.</p>
 </li>
 <li>
-<p>LED is too dim: The resistor value might be too high. Ensure you&#8217;re using 220Ω or
-adjust according to your power source and LED specifications</p>
+<p>LED is too dim: The resistor value might be too high. Ensure you&#8217;re using 220Ω or adjust according to your power source and LED specifications</p>
 </li>
 </ol>
 </div>
+<div class="paragraph">
+<p><strong>Note:</strong> The Hex value format must start with "0x" not "#" while passing it as a parameter of "setColorHex()" method. For example, use "0x0000ff" for blue.</p>
+</div>
 </div>
 <div class="sect4">
-<h5 id="_note_the_hex_value_format_must_start_with_0x_not_while_passing_it_as_a_parameter_of_setcolorhex_method_for_example_use_0x0000ff_for_blue"><a class="anchor" href="#_note_the_hex_value_format_must_start_with_0x_not_while_passing_it_as_a_parameter_of_setcolorhex_method_for_example_use_0x0000ff_for_blue"></a>Note: The Hex value format must start with "0x" not "#" while passing it as a parameter of "setColorHex()" method. For example, use "0x0000ff" for blue.</h5>
-
-</div>
-<div class="sect4">
-<h5 id="_yaml_pin_order_5"><a class="anchor" href="#_yaml_pin_order_5"></a>YAML Pin Order</h5>
+<h5 id="_yaml_configuration_9"><a class="anchor" href="#_yaml_configuration_9"></a>YAML Configuration</h5>
 <div class="paragraph">
 <p>The order for declaring pins for a RGB LED component in the application.yaml file is as follows</p>
 </div>
@@ -3341,7 +3573,19 @@ adjust according to your power source and LED specifications</p>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="yaml"><span class="na">multi-pwm</span><span class="pi">:</span>
   <span class="na">rgb-led</span><span class="pi">:</span>
-    <span class="na">addresses</span><span class="pi">:</span> <span class="s">17, 18, 27</span></code></pre>
+    <span class="na">name</span><span class="pi">:</span> <span class="s">RGB LED</span>
+    <span class="na">addresses</span><span class="pi">:</span> <span class="s">17, 18, </span><span class="m">27</span>
+    <span class="na">pwmTypes</span><span class="pi">:</span> <span class="s">SOFTWARE, SOFTWARE, SOFTWARE</span>
+    <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-pwm</span>
+    <span class="na">initials</span><span class="pi">:</span> <span class="s">0, 0, </span><span class="m">0</span>
+    <span class="na">shutdowns</span><span class="pi">:</span> <span class="s">0, 0, </span><span class="m">0</span>
+  <span class="na">rgb-led-2</span><span class="pi">:</span>
+    <span class="na">name</span><span class="pi">:</span> <span class="s">RGB LED </span><span class="m">2</span>
+    <span class="na">addresses</span><span class="pi">:</span> <span class="s">18, 27, </span><span class="m">22</span>
+    <span class="na">pwmTypes</span><span class="pi">:</span> <span class="s">SOFTWARE, SOFTWARE, SOFTWARE</span>
+    <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-pwm</span>
+    <span class="na">initials</span><span class="pi">:</span> <span class="s">0, 0, </span><span class="m">0</span>
+    <span class="na">shutdowns</span><span class="pi">:</span> <span class="s">0, 0, 0</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3349,19 +3593,10 @@ adjust according to your power source and LED specifications</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_constructors_7"><a class="anchor" href="#_constructors_7"></a>Constructors</h5>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">outputComponents</span><span class="o">/</span><span class="n">rgbLed</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../../../../</span><span class="n">pi4micronaut</span><span class="o">-</span><span class="n">utils</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">outputDevices</span><span class="o">/</span><span class="nc">RGBLEDHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tag</span><span class="o">=</span><span class="kd">const</span><span class="o">]</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_methods_7"><a class="anchor" href="#_methods_7"></a>Methods</h5>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">outputComponents</span><span class="o">/</span><span class="n">rgbLed</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../../../../</span><span class="n">pi4micronaut</span><span class="o">-</span><span class="n">utils</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">outputDevices</span><span class="o">/</span><span class="nc">RGBLEDHelper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tags</span><span class="o">=</span><span class="n">method</span><span class="o">]</span></code></pre>
-</div>
+<h5 id="_constructor_and_methods_6"><a class="anchor" href="#_constructor_and_methods_6"></a>Constructor and Methods</h5>
+<div class="paragraph">
+<p>To see the constructor and methods of our RGBLEDHelper class see our javadoc <a href="https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/outputdevices/RGBLEDHelper.html">here</a>
+for more details.</p>
 </div>
 </div>
 <div class="sect4">
@@ -3445,19 +3680,21 @@ adjust according to your power source and LED specifications</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_lcd1602"><a class="anchor" href="#_lcd1602"></a>6.3.3. LCD1602</h4>
+<h4 id="_lcd1602"><a class="anchor" href="#_lcd1602"></a>4.3.3. LCD1602</h4>
 <div class="paragraph text-right">
-<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/outputComponents/lcdScreen.adoc">Improve this doc</a></p>
+<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/outputComponents/lcdScreen.adoc">Improve this doc</a></p>
 </div>
 <div class="sect4">
 <h5 id="_overview_10"><a class="anchor" href="#_overview_10"></a>Overview</h5>
 <div class="paragraph">
-<p>This section provides details of the LCD1602 (Liquid Crystal Display) circuit, including its components, assembly instructions, and functionality. The LCD1602 is a kind of dot matrix module that can show letters, numbers, and other characters. The number 1602 describes the display: 2 rows with 16 characters per row. NOTE: The LCD display only works on the 32 bit version of Raspberry Pi OS.</p>
+<p>This section provides details of the LCD1602 (Liquid Crystal Display) circuit,
+including its components, assembly instructions, and functionality.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_components_11"><a class="anchor" href="#_components_11"></a>Components</h5>
 <div class="olist arabic">
+<div class="title">Note: The LCD1602 only works on the 32-bit version of Raspberry Pi OS.</div>
 <ol class="arabic">
 <li>
 <p>LCD1602</p>
@@ -3478,7 +3715,7 @@ adjust according to your power source and LED specifications</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_assembly_instructions_7"><a class="anchor" href="#_assembly_instructions_7"></a>Assembly Instructions</h5>
+<h5 id="_assembly_instructions_8"><a class="anchor" href="#_assembly_instructions_8"></a>Assembly Instructions</h5>
 <div class="paragraph">
 <p>Connect the 4 pins on the LCD1602 screen to the breadboard as described below and in the diagram:</p>
 </div>
@@ -3510,7 +3747,39 @@ adjust according to your power source and LED specifications</p>
 <div class="sect4">
 <h5 id="_functionality_10"><a class="anchor" href="#_functionality_10"></a>Functionality</h5>
 <div class="paragraph">
-<p>The LCD1602 screen will light up once connected to a power source.</p>
+<p>The LCD1602 is a kind of dot matrix module that can show letters, numbers, and other characters.
+The number 1602 describes the display: 2 rows with 16 characters per row.</p>
+</div>
+<div class="paragraph">
+<p>Use: <code>curl <a href="http://localhost:8080/lcd" class="bare">http://localhost:8080/lcd</a></code> to test the component. These following commands will test the component:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>/write/{text}</code>                 - writes <strong>{text}</strong> to lcd screen</p>
+</li>
+<li>
+<p><code>/write/{text}/{line}</code>          - writes <strong>{text}</strong> to lcd screen on line number <strong>{line}</strong></p>
+</li>
+<li>
+<p><code>/write/{text}/{line}/{pos}</code>    - writes <strong>{text}</strong> to lcd screen on line number <strong>{line}</strong> at pos <strong>{pos}</strong></p>
+</li>
+<li>
+<p><code>/write/character/{charValue}</code>  - writes character <strong>{charValue}</strong> to lcd screen</p>
+</li>
+<li>
+<p><code>/backlight/{state}</code>            - sets backlight to <strong>{state}</strong> (state must be set to <strong>"on"</strong> or <strong>"off"</strong>)</p>
+</li>
+<li>
+<p><code>/clear/all</code>                    - clears lcd screen</p>
+</li>
+<li>
+<p><code>/clear/{line}</code>                 - clears line number {line} of lcd screen</p>
+</li>
+<li>
+<p><code>/turnOff</code>                      - turns off lcd screen</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect4">
@@ -3627,7 +3896,7 @@ adjust according to your power source and LED specifications</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_yaml_5"><a class="anchor" href="#_yaml_5"></a>YAML</h5>
+<h5 id="_yaml_configuration_10"><a class="anchor" href="#_yaml_configuration_10"></a>YAML Configuration</h5>
 <div class="paragraph">
 <p>LCD1602 uses I2C communication for this circuit and configuration in the application.yml file is as follows</p>
 </div>
@@ -3642,32 +3911,79 @@ adjust according to your power source and LED specifications</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_constructors_8"><a class="anchor" href="#_constructors_8"></a>Constructors</h5>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">outputComponents</span><span class="o">/</span><span class="n">lcd1602</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../../../../</span><span class="n">pi4micronaut</span><span class="o">-</span><span class="n">utils</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">outputDevices</span><span class="o">/</span><span class="nc">LCD1602Helper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tag</span><span class="o">=</span><span class="kd">const</span><span class="o">]</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_methods_8"><a class="anchor" href="#_methods_8"></a>Methods</h5>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">outputComponents</span><span class="o">/</span><span class="n">lcd1602</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../../../../</span><span class="n">pi4micronaut</span><span class="o">-</span><span class="n">utils</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">outputDevices</span><span class="o">/</span><span class="nc">LCD1602Helper</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tags</span><span class="o">=</span><span class="n">method</span><span class="o">]</span></code></pre>
-</div>
+<h5 id="_constructor_and_methods_7"><a class="anchor" href="#_constructor_and_methods_7"></a>Constructor and Methods</h5>
+<div class="paragraph">
+<p>To see the constructor and methods of our LCD1602Helper class, see our javadoc <a href="https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/outputdevices/LCD1602Helper.html">here</a>
+for more details.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_an_example_controller_9"><a class="anchor" href="#_an_example_controller_9"></a>An Example Controller</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="java"></code></pre>
+<pre class="rouge highlight"><code data-lang="java"><span class="nd">@Controller</span><span class="o">(</span><span class="s">"/lcd"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">lcdController</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">LCD1602Helper</span> <span class="n">lcdHelper</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">lcdController</span><span class="o">(</span><span class="nd">@Named</span><span class="o">(</span><span class="s">"lcd"</span><span class="o">)</span> <span class="nc">I2CConfig</span> <span class="n">i2cConfig</span><span class="o">,</span> <span class="nc">Context</span> <span class="n">pi4jContext</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">lcdHelper</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LCD1602Helper</span><span class="o">(</span><span class="n">i2cConfig</span><span class="o">,</span> <span class="n">pi4jContext</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/write/{text}"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">writeData</span><span class="o">(</span><span class="nd">@PathVariable</span> <span class="nc">String</span> <span class="n">text</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">lcdHelper</span><span class="o">.</span><span class="na">writeText</span><span class="o">(</span><span class="n">text</span><span class="o">);</span>
+        <span class="k">return</span> <span class="s">"Text written to LCD: "</span> <span class="o">+</span> <span class="n">text</span> <span class="o">+</span> <span class="s">"\n"</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/write/{text}/{line}"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">writeDataAtLine</span><span class="o">(</span><span class="nd">@PathVariable</span> <span class="nc">String</span> <span class="n">text</span><span class="o">,</span> <span class="nd">@PathVariable</span> <span class="kt">int</span> <span class="n">line</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">lcdHelper</span><span class="o">.</span><span class="na">writeTextAtLine</span><span class="o">(</span><span class="n">text</span><span class="o">,</span> <span class="n">line</span><span class="o">);</span>
+        <span class="k">return</span> <span class="s">"Text written to line "</span> <span class="o">+</span> <span class="n">line</span> <span class="o">+</span> <span class="s">": "</span> <span class="o">+</span> <span class="n">text</span> <span class="o">+</span> <span class="s">"\n"</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/write/{text}/{line}/{pos}"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">writeDataAtPos</span><span class="o">(</span><span class="nd">@PathVariable</span> <span class="nc">String</span> <span class="n">text</span><span class="o">,</span> <span class="nd">@PathVariable</span> <span class="kt">int</span> <span class="n">line</span><span class="o">,</span> <span class="nd">@PathVariable</span> <span class="kt">int</span> <span class="n">pos</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">lcdHelper</span><span class="o">.</span><span class="na">displayTextAtPos</span><span class="o">(</span><span class="n">text</span><span class="o">,</span> <span class="n">line</span><span class="o">,</span> <span class="n">pos</span><span class="o">);</span>
+        <span class="k">return</span> <span class="s">"Text written at line "</span> <span class="o">+</span> <span class="n">line</span> <span class="o">+</span> <span class="s">", position "</span> <span class="o">+</span> <span class="n">pos</span> <span class="o">+</span> <span class="s">": "</span> <span class="o">+</span> <span class="n">text</span> <span class="o">+</span> <span class="s">"\n"</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/write/character/{charValue}"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">writeCharacter</span><span class="o">(</span><span class="nd">@PathVariable</span> <span class="kt">char</span> <span class="n">charValue</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">lcdHelper</span><span class="o">.</span><span class="na">writeCharacter</span><span class="o">(</span><span class="n">charValue</span><span class="o">);</span>
+        <span class="k">return</span> <span class="s">"Character '"</span> <span class="o">+</span> <span class="n">charValue</span> <span class="o">+</span> <span class="s">"' written to LCD\n"</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/backlight/{state}"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">setBacklight</span><span class="o">(</span><span class="nd">@PathVariable</span> <span class="nc">String</span> <span class="n">state</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">boolean</span> <span class="n">isOn</span> <span class="o">=</span> <span class="s">"on"</span><span class="o">.</span><span class="na">equalsIgnoreCase</span><span class="o">(</span><span class="n">state</span><span class="o">);</span>
+        <span class="n">lcdHelper</span><span class="o">.</span><span class="na">setBackLight</span><span class="o">(</span><span class="n">isOn</span><span class="o">);</span>
+        <span class="k">return</span> <span class="s">"Backlight turned "</span> <span class="o">+</span> <span class="o">(</span><span class="n">isOn</span> <span class="o">?</span> <span class="s">"on"</span> <span class="o">:</span> <span class="s">"off"</span><span class="o">)</span> <span class="o">+</span> <span class="s">"\n"</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/clear/all"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">clearDisplay</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">lcdHelper</span><span class="o">.</span><span class="na">clearDisplay</span><span class="o">();</span>
+        <span class="k">return</span> <span class="s">"Display cleared\n"</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/clear/{line}"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">clearLine</span><span class="o">(</span><span class="nd">@PathVariable</span> <span class="kt">int</span> <span class="n">line</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">lcdHelper</span><span class="o">.</span><span class="na">clearLine</span><span class="o">(</span><span class="n">line</span><span class="o">);</span>
+        <span class="k">return</span> <span class="s">"Line "</span> <span class="o">+</span> <span class="n">line</span> <span class="o">+</span> <span class="s">" cleared\n"</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/turnOff"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">turnOff</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">lcdHelper</span><span class="o">.</span><span class="na">turnOff</span><span class="o">();</span>
+        <span class="k">return</span> <span class="s">"Display turned off\n"</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
 </div>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_passive_buzzer"><a class="anchor" href="#_passive_buzzer"></a>6.3.4. Passive Buzzer</h4>
+<h4 id="_passive_buzzer"><a class="anchor" href="#_passive_buzzer"></a>4.3.4. Passive Buzzer</h4>
 <div class="paragraph text-right">
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/outputComponents/passivebuzzer.adoc">Improve this doc</a></p>
 </div>
@@ -3709,7 +4025,7 @@ adjust according to your power source and LED specifications</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_assembly_instructions_8"><a class="anchor" href="#_assembly_instructions_8"></a>Assembly Instructions</h5>
+<h5 id="_assembly_instructions_9"><a class="anchor" href="#_assembly_instructions_9"></a>Assembly Instructions</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -3747,27 +4063,39 @@ adjust according to your power source and LED specifications</p>
 </div>
 <div class="sect4">
 <h5 id="_circuit_diagram_11"><a class="anchor" href="#_circuit_diagram_11"></a>Circuit Diagram</h5>
+<div class="imageblock">
+<div class="content">
+<img src="img/passive_buzzer-CD.png" alt="passive buzzer CD">
+</div>
+</div>
 <div class="paragraph">
-<p>Schematic Diagram</p>
+<p><strong>Schematic Diagram</strong></p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="img/buzzer-SD.png" alt="buzzer SD">
 </div>
 </div>
-<div class="paragraph">
-<p>Circuit Diagram</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="img/passive_buzzer-CD.png" alt="passive buzzer CD">
-</div>
-</div>
 </div>
 <div class="sect4">
 <h5 id="_functionality_11"><a class="anchor" href="#_functionality_11"></a>Functionality</h5>
 <div class="paragraph">
-<p>Use: <code>curl <a href="http://localhost:8080/passive-buzzer" class="bare">http://localhost:8080/passive-buzzer</a></code> to test the component. These following commands will test the component:</p>
+<p>A passive buzzer is an electronic component that produces sound by using an external oscillation source.
+To produce sound, a passive buzzer needs an external PWM signal supplied by Raspberry Pi. This signal controls the frequency of the sound produced, allowing for different tones or beeps. You can program specific melodies or sequences of beeps by changing the frequency of the PWM signal over time.</p>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong> If you use transistor in the circuit, it swaps the functionalities of the buzzer i.e., if you enable the buzzer, it actually disables it and vice versa.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_testing_6"><a class="anchor" href="#_testing_6"></a>Testing</h5>
+<div class="paragraph">
+<p>Use the below commands to test the component.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="bash"><span class="nv">$ </span>curl http://localhost:8080/passive-buzzer/enable</code></pre>
+</div>
 </div>
 <div class="ulist">
 <ul>
@@ -3822,21 +4150,22 @@ adjust according to your power source and LED specifications</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_yaml_6"><a class="anchor" href="#_yaml_6"></a>YAML</h5>
+<h5 id="_yaml_configuration_11"><a class="anchor" href="#_yaml_configuration_11"></a>YAML Configuration</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="yaml">    <span class="na">passive-buzzer</span><span class="pi">:</span>
-      <span class="na">name</span><span class="pi">:</span> <span class="s">passive-buzzer</span>
-      <span class="na">address</span><span class="pi">:</span> <span class="m">17</span>
-      <span class="na">pwmType</span><span class="pi">:</span> <span class="s">SOFTWARE</span>
-      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-pwm</span>
-      <span class="na">initial</span><span class="pi">:</span> <span class="m">0</span>
-      <span class="na">shutdown</span><span class="pi">:</span> <span class="s">0</span></code></pre>
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">pwm</span><span class="pi">:</span>
+  <span class="na">passive-buzzer</span><span class="pi">:</span>
+    <span class="na">name</span><span class="pi">:</span> <span class="s">passive-buzzer</span>
+    <span class="na">address</span><span class="pi">:</span> <span class="m">17</span>
+    <span class="na">pwmType</span><span class="pi">:</span> <span class="s">SOFTWARE</span>
+    <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-pwm</span>
+    <span class="na">initial</span><span class="pi">:</span> <span class="m">0</span>
+    <span class="na">shutdown</span><span class="pi">:</span> <span class="s">0</span></code></pre>
 </div>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_constructors_and_methods"><a class="anchor" href="#_constructors_and_methods"></a>Constructors and Methods</h5>
+<h5 id="_constructors_and_methods_4"><a class="anchor" href="#_constructors_and_methods_4"></a>Constructors and Methods</h5>
 <div class="paragraph">
 <p>The constructor and the methods within the PassiveBuzzerHelper class can be seen in our javadoc <a href="https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/outputdevices/PassiveBuzzerHelper.html">here</a>.</p>
 </div>
@@ -3942,7 +4271,7 @@ adjust according to your power source and LED specifications</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_active_buzzer"><a class="anchor" href="#_active_buzzer"></a>6.3.5. Active Buzzer</h4>
+<h4 id="_active_buzzer"><a class="anchor" href="#_active_buzzer"></a>4.3.5. Active Buzzer</h4>
 <div class="paragraph text-right">
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/outputComponents/activebuzzer.adoc">Improve this doc</a></p>
 </div>
@@ -3984,7 +4313,7 @@ adjust according to your power source and LED specifications</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_assembly_instructions_9"><a class="anchor" href="#_assembly_instructions_9"></a>Assembly Instructions</h5>
+<h5 id="_assembly_instructions_10"><a class="anchor" href="#_assembly_instructions_10"></a>Assembly Instructions</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -4022,42 +4351,89 @@ adjust according to your power source and LED specifications</p>
 </div>
 <div class="sect4">
 <h5 id="_circuit_diagram_12"><a class="anchor" href="#_circuit_diagram_12"></a>Circuit Diagram</h5>
+<div class="imageblock">
+<div class="content">
+<img src="img/active_buzzer-CD.png" alt="active buzzer CD">
+</div>
+</div>
 <div class="paragraph">
-<p>Schematic Diagram</p>
+<p><strong>Schematic Diagram</strong></p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="img/buzzer-SD.png" alt="buzzer SD">
 </div>
 </div>
-<div class="paragraph">
-<p>Circuit Diagram</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="img/active_buzzer-CD.png" alt="active buzzer CD">
-</div>
-</div>
 </div>
 <div class="sect4">
 <h5 id="_functionality_12"><a class="anchor" href="#_functionality_12"></a>Functionality</h5>
 <div class="paragraph">
-<p>Use: <code>curl <a href="http://localhost:8080/active-buzzer" class="bare">http://localhost:8080/active-buzzer</a></code> to test the component. These following commands will test the component:</p>
+<p>Active Buzzer is PWM type and emits a beep tone, intermittent tone and a morseCode tone based on the frequency and the time interval.</p>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong> If you use transistor in the circuit, it swaps the functionalities of the buzzer i.e., if you enable the buzzer, it actually disables it and vice versa.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_testing_the_circuit_6"><a class="anchor" href="#_testing_the_circuit_6"></a>Testing the circuit</h5>
+<div class="paragraph">
+<p>Use the below command to test the component.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="bash"><span class="nv">$curl</span> http://localhost:8080/active-buzzer/enable</code></pre>
+</div>
 </div>
 <div class="ulist">
 <ul>
 <li>
 <p><code>/enable</code>  - Turns the Active Buzzer on.</p>
 </li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="bash"><span class="nv">$curl</span> http://localhost:8080/active-buzzer/disable</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p><code>/disable</code> - Turns the Active Buzzer off.</p>
 </li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="bash"><span class="nv">$curl</span> http://localhost:8080/active-buzzer/beepTone</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p><code>/beepTone</code> - Emits a beep sound from the Active Buzzer.</p>
 </li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="bash"><span class="nv">$curl</span> http://localhost:8080/active-buzzer/intermittentTone</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p><code>/intermittentTone</code> - Emits an intermittent tone from the Active Buzzer. The total duration is twenty seconds: ten seconds of sound and ten seconds of silence.</p>
 </li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="bash"><span class="nv">$curl</span> http://localhost:8080/active-buzzer/morseCode</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p><code>/morseCode</code> - Emits the word "pi" in morse code.</p>
 </li>
@@ -4088,21 +4464,22 @@ adjust according to your power source and LED specifications</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_yaml_7"><a class="anchor" href="#_yaml_7"></a>YAML</h5>
+<h5 id="_yaml_configuration_12"><a class="anchor" href="#_yaml_configuration_12"></a>YAML Configuration</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="yaml">    <span class="na">active-buzzer</span><span class="pi">:</span>
-      <span class="na">name</span><span class="pi">:</span> <span class="s">active-buzzer</span>
-      <span class="na">address</span><span class="pi">:</span> <span class="m">17</span>
-      <span class="na">pwmType</span><span class="pi">:</span> <span class="s">SOFTWARE</span>
-      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-pwm</span>
-      <span class="na">initial</span><span class="pi">:</span> <span class="m">0</span>
-      <span class="na">shutdown</span><span class="pi">:</span> <span class="s">0</span></code></pre>
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">pwm</span><span class="pi">:</span>
+  <span class="na">active-buzzer</span><span class="pi">:</span>
+    <span class="na">name</span><span class="pi">:</span> <span class="s">active-buzzer</span>
+    <span class="na">address</span><span class="pi">:</span> <span class="m">17</span>
+    <span class="na">pwmType</span><span class="pi">:</span> <span class="s">SOFTWARE</span>
+    <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-pwm</span>
+    <span class="na">initial</span><span class="pi">:</span> <span class="m">0</span>
+    <span class="na">shutdown</span><span class="pi">:</span> <span class="s">0</span></code></pre>
 </div>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_constructor_and_methods_3"><a class="anchor" href="#_constructor_and_methods_3"></a>Constructor and Methods</h5>
+<h5 id="_constructor_and_methods_8"><a class="anchor" href="#_constructor_and_methods_8"></a>Constructor and Methods</h5>
 <div class="paragraph">
 <p>The constructor and the methods within the ActiveBuzzerHelper class can be seen in our javadoc <a href="https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/outputdevices/ActiveBuzzerHelper.html">here</a>.</p>
 </div>
@@ -4185,7 +4562,7 @@ adjust according to your power source and LED specifications</p>
 <div id="footer">
 <div id="footer-text">
 Version v1.1<br>
-Last updated 2024-04-10 00:17:48 UTC
+Last updated 2024-04-10 20:47:51 UTC
 </div>
 </div>
 </body>

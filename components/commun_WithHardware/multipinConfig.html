@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.18">
-<title>Multipin Configurations</title>
+<title>MultiPin Configurations</title>
 <style>
 body {
 	font-family: sans-serif;
@@ -77,9 +77,10 @@ a {
 	position: fixed;
 	box-sizing: border-box;
 	background-color: gainsboro;
-	max-width: 15.5%;
-	width: 100%;
+	max-width: 20%;
+	width: 20%;
 }
+
 
 #toc a {
 	color: royalblue;
@@ -135,18 +136,19 @@ h2 {
 	overflow-y: auto;
 	grid-area: content;
 	padding: 1em;
-	max-width: 84%;
+	max-width: 80%;
 	width: 100%;
 	position: fixed;
 	z-index: 1;
 	max-height: 80%;
 	height: 100%;
-	margin-left: 15.5%;
+	margin-left: 20%;
 	margin-right: 0;
 	margin-bottom: 1%;
 	margin-top: 8%;
 	padding-bottom: 100px;
 }
+
 
 .hljs{
 	background: #cacbca !important;
@@ -207,16 +209,16 @@ th {
 </div>
 <div id="content">
 <div class="sect3">
-<h4 id="_multipin_configurations">Multipin Configurations</h4>
+<h4 id="_multipin_configurations">MultiPin Configurations</h4>
 <div class="paragraph text-right">
-<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/commun_WithHardware/multipinConfig.adoc">Improve this doc</a></p>
+<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/commun_WithHardware/multipinConfig.adoc">Improve this doc</a></p>
 </div>
 <div class="paragraph">
-<p>Multipin components are unique in that they require several of the same type of pin in order to function properly.
-Each class of multipin component (Digital Input, PWM), is declared slightly differently in the application.yaml file</p>
+<p>MultiPin components are unique in that they require several of the same type of pin in order to function properly.
+Each class of multi-pin component (Digital Input, PWM), is declared slightly differently in the application.yaml file</p>
 </div>
 <div class="listingblock">
-<div class="title">Example Multipin Digital Input declaration</div>
+<div class="title">Example MultiPin Digital Input declaration</div>
 <div class="content">
 <pre class="highlight"><code class="language-yaml" data-lang="yaml">Unresolved directive in multipinConfig.adoc - include::../../../../../../components/src/main/resources/application.yml[tags=multiInput]</code></pre>
 </div>
@@ -224,7 +226,7 @@ Each class of multipin component (Digital Input, PWM), is declared slightly diff
 <div class="colist arabic">
 <ol>
 <li>
-<p>Top level field for multipin digital inputs (equivlent of digital-output declaration)</p>
+<p>Top level field for multi-pin digital inputs (equivalent of digital-output declaration)</p>
 </li>
 <li>
 <p>Component Identifier (Used in @Named annotations)</p>
@@ -245,7 +247,7 @@ Each class of multipin component (Digital Input, PWM), is declared slightly diff
 <p>Shutdown value (All pins have the same shut down)</p>
 </li>
 <li>
-<p>Startup value (All pins have the same start up)</p>
+<p>Startup value (All pins have the same start-up)</p>
 </li>
 <li>
 <p>Provider (All pins have the same provider)</p>
@@ -253,15 +255,15 @@ Each class of multipin component (Digital Input, PWM), is declared slightly diff
 </ol>
 </div>
 <div class="listingblock">
-<div class="title">Example Multipin PWM declaration</div>
+<div class="title">Example MultiPin PWM declaration</div>
 <div class="content">
-<pre class="highlight"><code class="language-yaml" data-lang="yaml">Unresolved directive in multipinConfig.adoc - include::../../../../../../components/src/main/resources/application.yml[tags=multipwm]</code></pre>
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">Unresolved directive in multipinConfig.adoc - include::../../../../../../components/src/main/resources/application.yml[tags=multiPWM]</code></pre>
 </div>
 </div>
 <div class="colist arabic">
 <ol>
 <li>
-<p>Top level field for multipin PWMs (equivlent of digital-output declaration)</p>
+<p>Top level field for multi-pin PWMs</p>
 </li>
 <li>
 <p>Component Identifier (Used in @Named annotations)</p>
@@ -291,7 +293,7 @@ Each class of multipin component (Digital Input, PWM), is declared slightly diff
 <div id="footer">
 <div id="footer-text">
 Version v1.1<br>
-Last updated 2024-04-10 00:17:48 UTC
+Last updated 2024-04-10 20:47:51 UTC
 </div>
 </div>
 </body>

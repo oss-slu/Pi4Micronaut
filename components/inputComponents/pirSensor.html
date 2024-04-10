@@ -77,9 +77,10 @@ a {
 	position: fixed;
 	box-sizing: border-box;
 	background-color: gainsboro;
-	max-width: 15.5%;
-	width: 100%;
+	max-width: 20%;
+	width: 20%;
 }
+
 
 #toc a {
 	color: royalblue;
@@ -135,18 +136,19 @@ h2 {
 	overflow-y: auto;
 	grid-area: content;
 	padding: 1em;
-	max-width: 84%;
+	max-width: 80%;
 	width: 100%;
 	position: fixed;
 	z-index: 1;
 	max-height: 80%;
 	height: 100%;
-	margin-left: 15.5%;
+	margin-left: 20%;
 	margin-right: 0;
 	margin-bottom: 1%;
 	margin-top: 8%;
 	padding-bottom: 100px;
 }
+
 
 .hljs{
 	background: #cacbca !important;
@@ -278,10 +280,32 @@ th {
 <div class="sect4">
 <h5 id="_functionality">Functionality</h5>
 <div class="paragraph">
-<p>Use <code>curl <a href="http://localhost:8080/pirSensor/enable" class="bare">http://localhost:8080/pirSensor/enable</a></code> to enable the sensor. Once the sensor is enabled, anytime the sensor detects motion, the RGB LED will turn red. If no motion is detected, the RGB LED will be green.</p>
+<p>A PIR - Passive Infrared sensor detects motion by sensing changes in the infrared light emitted by objects in its environment. It works passively, meaning it does not emit any infrared light itself, but rather detects the infrared radiation coming from warm objects, such as humans or animals. The sensor has two sensitive slots that detect infrared radiation.</p>
 </div>
 <div class="paragraph">
-<p>Use <code>curl <a href="http://localhost:8080/pirSensor/disable" class="bare">http://localhost:8080/pirSensor/disable</a></code> to disable the sensor.</p>
+<p>As a warm object moves across its field of view, the amount of infrared radiation reaching each slot changes, creating a detectable change in the radiation pattern. This change triggers the sensor to send an electrical signal, which can then be used to activate alarms, lights, or other devices, making PIR sensors widely used in security systems and automated lighting controls due to their efficiency and effectiveness in detecting motion.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_testing">Testing</h5>
+<div class="paragraph">
+<p>Use the below command to enable the sensor.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl http://localhost:8080/pirSensor/enable</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once the sensor is enabled, anytime the sensor detects motion, the RGB LED will turn red. If no motion is detected, the RGB LED will be green.</p>
+</div>
+<div class="paragraph">
+<p>Use the below command to disable the sensor.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl http://localhost:8080/pirSensor/disable</code></pre>
+</div>
 </div>
 </div>
 <div class="sect4">
@@ -302,10 +326,11 @@ th {
 </div>
 </div>
 <div class="sect4">
-<h5 id="_yaml">YAML</h5>
+<h5 id="_yaml_configuration">YAML Configuration</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-yaml" data-lang="yaml">    pir-sensor:
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">digital-input:
+    pir-sensor:
       name: PIR Sensor
       address: 13
       pull: PULL_DOWN
@@ -336,7 +361,7 @@ th {
 <div id="footer">
 <div id="footer-text">
 Version v1.1<br>
-Last updated 2024-04-10 00:17:48 UTC
+Last updated 2024-04-10 20:47:51 UTC
 </div>
 </div>
 </body>

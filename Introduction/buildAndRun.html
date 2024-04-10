@@ -77,9 +77,10 @@ a {
 	position: fixed;
 	box-sizing: border-box;
 	background-color: gainsboro;
-	max-width: 15.5%;
-	width: 100%;
+	max-width: 20%;
+	width: 20%;
 }
+
 
 #toc a {
 	color: royalblue;
@@ -135,18 +136,19 @@ h2 {
 	overflow-y: auto;
 	grid-area: content;
 	padding: 1em;
-	max-width: 84%;
+	max-width: 80%;
 	width: 100%;
 	position: fixed;
 	z-index: 1;
 	max-height: 80%;
 	height: 100%;
-	margin-left: 15.5%;
+	margin-left: 20%;
 	margin-right: 0;
 	margin-bottom: 1%;
 	margin-top: 8%;
 	padding-bottom: 100px;
 }
+
 
 .hljs{
 	background: #cacbca !important;
@@ -322,6 +324,43 @@ sudo apt-get upgrade -y</code></pre>
 </div>
 </div>
 <div class="sect3">
+<h4 id="_enabling_different_communication_protocols">Enabling Different Communication Protocols</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>In the Pi4Micronaut library, we have used different communication protocols, such as I2C, SPI, etc.</p>
+</li>
+<li>
+<p>To enable any of these protocols when needed, enter the following command:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">sudo raspi-config</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Navigate to "<strong>Interfacing Options</strong>"</p>
+<div class="imageblock">
+<div class="content">
+<img src="../img/commProtocol1.png" alt="commProtocol1">
+</div>
+</div>
+</li>
+<li>
+<p>Choose your desired protocol.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../img/commProtocol2.png" alt="commProtocol2">
+</div>
+</div>
+</li>
+<li>
+<p>Reboot when prompted.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
 <h4 id="_build_and_copy_over_jar_file">Build and Copy Over Jar File</h4>
 <div class="olist arabic">
 <ol class="arabic">
@@ -375,7 +414,7 @@ sudo apt-get upgrade -y</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_almost_done">Almost Done!</h4>
+<h4 id="_run_jar_file_on_pi_and_test_the_application">Run Jar file on Pi and Test the Application</h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -421,49 +460,12 @@ sudo apt-get upgrade -y</code></pre>
 </ol>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_enabling_different_communication_protocols">Enabling Different Communication Protocols</h4>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>In the Pi4Micronaut library, we have used different communication protocols, such as I2C, SPI, etc.</p>
-</li>
-<li>
-<p>To enable any of these protocols when needed, enter the following command:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">sudo raspi-config</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Navigate to "<strong>Interfacing Options</strong>"</p>
-<div class="imageblock">
-<div class="content">
-<img src="../img/commProtocol1.png" alt="commProtocol1">
-</div>
-</div>
-</li>
-<li>
-<p>Choose your desired protocol</p>
-<div class="imageblock">
-<div class="content">
-<img src="../img/commProtocol2.png" alt="commProtocol2">
-</div>
-</div>
-</li>
-<li>
-<p>Reboot when prompted to</p>
-</li>
-</ol>
-</div>
-</div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
 Version v1.1<br>
-Last updated 2024-04-10 00:17:48 UTC
+Last updated 2024-04-10 20:47:51 UTC
 </div>
 </div>
 </body>

@@ -77,9 +77,10 @@ a {
 	position: fixed;
 	box-sizing: border-box;
 	background-color: gainsboro;
-	max-width: 15.5%;
-	width: 100%;
+	max-width: 20%;
+	width: 20%;
 }
+
 
 #toc a {
 	color: royalblue;
@@ -135,18 +136,19 @@ h2 {
 	overflow-y: auto;
 	grid-area: content;
 	padding: 1em;
-	max-width: 84%;
+	max-width: 80%;
 	width: 100%;
 	position: fixed;
 	z-index: 1;
 	max-height: 80%;
 	height: 100%;
-	margin-left: 15.5%;
+	margin-left: 20%;
 	margin-right: 0;
 	margin-bottom: 1%;
 	margin-top: 8%;
 	padding-bottom: 100px;
 }
+
 
 .hljs{
 	background: #cacbca !important;
@@ -287,27 +289,39 @@ th {
 </div>
 <div class="sect4">
 <h5 id="_circuit_diagram">Circuit Diagram</h5>
+<div class="imageblock">
+<div class="content">
+<img src="../../img/passive_buzzer-CD.png" alt="passive buzzer CD">
+</div>
+</div>
 <div class="paragraph">
-<p>Schematic Diagram</p>
+<p><strong>Schematic Diagram</strong></p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="../../img/buzzer-SD.png" alt="buzzer SD">
 </div>
 </div>
-<div class="paragraph">
-<p>Circuit Diagram</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../../img/passive_buzzer-CD.png" alt="passive buzzer CD">
-</div>
-</div>
 </div>
 <div class="sect4">
 <h5 id="_functionality">Functionality</h5>
 <div class="paragraph">
-<p>Use: <code>curl <a href="http://localhost:8080/passive-buzzer" class="bare">http://localhost:8080/passive-buzzer</a></code> to test the component. These following commands will test the component:</p>
+<p>A passive buzzer is an electronic component that produces sound by using an external oscillation source.
+To produce sound, a passive buzzer needs an external PWM signal supplied by Raspberry Pi. This signal controls the frequency of the sound produced, allowing for different tones or beeps. You can program specific melodies or sequences of beeps by changing the frequency of the PWM signal over time.</p>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong> If you use transistor in the circuit, it swaps the functionalities of the buzzer i.e., if you enable the buzzer, it actually disables it and vice versa.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_testing">Testing</h5>
+<div class="paragraph">
+<p>Use the below commands to test the component.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl http://localhost:8080/passive-buzzer/enable</code></pre>
+</div>
 </div>
 <div class="ulist">
 <ul>
@@ -362,16 +376,17 @@ th {
 </div>
 </div>
 <div class="sect4">
-<h5 id="_yaml">YAML</h5>
+<h5 id="_yaml_configuration">YAML Configuration</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-yaml" data-lang="yaml">    passive-buzzer:
-      name: passive-buzzer
-      address: 17
-      pwmType: SOFTWARE
-      provider: pigpio-pwm
-      initial: 0
-      shutdown: 0</code></pre>
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">pwm:
+  passive-buzzer:
+    name: passive-buzzer
+    address: 17
+    pwmType: SOFTWARE
+    provider: pigpio-pwm
+    initial: 0
+    shutdown: 0</code></pre>
 </div>
 </div>
 </div>
@@ -397,7 +412,7 @@ th {
 <div id="footer">
 <div id="footer-text">
 Version v1.1<br>
-Last updated 2024-04-10 00:17:48 UTC
+Last updated 2024-04-10 20:47:51 UTC
 </div>
 </div>
 </body>

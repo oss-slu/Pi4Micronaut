@@ -77,9 +77,10 @@ a {
 	position: fixed;
 	box-sizing: border-box;
 	background-color: gainsboro;
-	max-width: 15.5%;
-	width: 100%;
+	max-width: 20%;
+	width: 20%;
 }
+
 
 #toc a {
 	color: royalblue;
@@ -135,18 +136,19 @@ h2 {
 	overflow-y: auto;
 	grid-area: content;
 	padding: 1em;
-	max-width: 84%;
+	max-width: 80%;
 	width: 100%;
 	position: fixed;
 	z-index: 1;
 	max-height: 80%;
 	height: 100%;
-	margin-left: 15.5%;
+	margin-left: 20%;
 	margin-right: 0;
 	margin-bottom: 1%;
 	margin-top: 8%;
 	padding-bottom: 100px;
 }
+
 
 .hljs{
 	background: #cacbca !important;
@@ -209,7 +211,7 @@ th {
 <div class="sect3">
 <h4 id="_rotary_encoder">Rotary Encoder</h4>
 <div class="paragraph text-right">
-<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/inputComponents/rotaryEncoder.adoc">Improve this doc</a></p>
+<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/inputComponents/rotaryEncoder.adoc">Improve this doc</a></p>
 </div>
 <div class="sect4">
 <h5 id="_overview">Overview</h5>
@@ -275,34 +277,19 @@ with GPIO 27, having one side on the red + with the other next to the wire on GP
 </div>
 <div class="sect4">
 <h5 id="_circuit_diagram">Circuit Diagram</h5>
-<div class="ulist">
-<ul>
-<li>
-<p>Note the resistor location at GPIO 27</p>
-</li>
-</ul>
-</div>
 <div class="imageblock">
 <div class="content">
 <img src="../../img/rotary_encoder_circuit.png" alt="rotary encoder circuit">
 </div>
 </div>
+<div class="paragraph">
+<p><strong>Note:</strong> The resistor location at GPIO 27.</p>
+</div>
 </div>
 <div class="sect4">
 <h5 id="_functionality">Functionality</h5>
-<div class="ulist">
-<ul>
-<li>
-<p>The initial value returned is 0.</p>
-</li>
-<li>
-<p>Turning the shaft one unit clockwise will increase the value returned by 1, whereas, turning the
-knob counterclockwise by one unit will decrease the value returned by 1.</p>
-</li>
-<li>
-<p>The value returned is an integer with a max value of 2147483647 and min of -2147483647.</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>The rotary encoder returns the value as you rotate the knob.</p>
 </div>
 </div>
 <div class="sect4">
@@ -314,6 +301,13 @@ knob counterclockwise by one unit will decrease the value returned by 1.</p>
 <div class="content">
 <pre class="highlight"><code class="language-bash" data-lang="bash">$ curl http://localhost:8080/rotaryEncoder/value</code></pre>
 </div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>/value</code>  - returns the current value of the rotary encoder</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect4">
@@ -331,7 +325,7 @@ to the correct GPIO pins according to the YAML pin order below.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_yaml_pin_order">YAML Pin Order</h5>
+<h5 id="_yaml_configuration">YAML Configuration</h5>
 <div class="paragraph">
 <p>The order for declaring pins for a Rotary Encoder component in the application.yaml file is as follows</p>
 </div>
@@ -344,8 +338,14 @@ to the correct GPIO pins according to the YAML pin order below.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-yaml" data-lang="yaml">multi-digital-input:
-  rot-encoder:
-    addresses: 17, 18, 27</code></pre>
+  rotary-encoder:
+    name: Rotary Encoder
+    addresses: 27,18,17
+    debounces: 6000,500,500
+    pulls: PULL_DOWN,PULL_UP,PULL_UP
+    shutdown: LOW
+    initial: HIGH
+    provider: pigpio-digital-input</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -353,25 +353,16 @@ to the correct GPIO pins according to the YAML pin order below.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_constructors">Constructors</h5>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">Unresolved directive in rotaryEncoder.adoc - include::../../../../../../pi4micronaut-utils/src/main/java/com/opensourcewithslu/inputDevices/RotaryEncoderHelper.java[tag=const]</code></pre>
-</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_methods">Methods</h5>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">Unresolved directive in rotaryEncoder.adoc - include::../../../../../../pi4micronaut-utils/src/main/java/com/opensourcewithslu/inputDevices/RotaryEncoderHelper.java[tags=method]</code></pre>
-</div>
+<h5 id="_constructors_and_methods">Constructors and Methods</h5>
+<div class="paragraph">
+<p>To see the constructor and methods of our RotaryEncoderHelper class see our javadoc <a href="https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/inputdevices/RotaryEncoderHelper.html">here</a>
+for more details.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_an_example_controller">An Example Controller</h5>
 <div class="sect5">
-<h6 id="_this_controller_sets_up_two_rotary_encoders">This controller sets up two rotary encoders</h6>
+<h6 id="_this_controller_uses_a_rotary_encoder">This controller uses a rotary encoder</h6>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-java" data-lang="java">Unresolved directive in rotaryEncoder.adoc - include::../../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/RotaryEncoderController.java[tag=ex]</code></pre>
@@ -384,7 +375,7 @@ to the correct GPIO pins according to the YAML pin order below.</p>
 <div id="footer">
 <div id="footer-text">
 Version v1.1<br>
-Last updated 2024-04-10 00:17:48 UTC
+Last updated 2024-04-10 20:47:51 UTC
 </div>
 </div>
 </body>
