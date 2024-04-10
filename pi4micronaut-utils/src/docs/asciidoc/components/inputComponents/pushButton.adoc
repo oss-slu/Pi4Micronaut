@@ -19,9 +19,9 @@ including its components, assembly instructions, and functionality.
 
 image::https://docs.sunfounder.com/projects/raphael-kit/en/latest/_images/image152.png[]
 
-.Note: The 220Ω resistor is for the LED and the 10Ω for the button.
+.*Note:* The 220Ω resistor is for the LED and the 10Ω for the button.
 
-Schematic Diagram:
+*Schematic Diagram:*
 
 image::https://docs.sunfounder.com/projects/raphael-kit/en/latest/_images/image303.png[]
 

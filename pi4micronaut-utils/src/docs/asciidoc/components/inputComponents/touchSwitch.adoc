@@ -46,7 +46,7 @@ so that power can be supplied to the LED and touch switch as shown in the diagra
 
 image:touchSwitchDiagram.png[]
 
-Schematic Diagram:
+*Schematic Diagram:*
 
 image:touchSwitch.png[]
 
@@ -61,13 +61,13 @@ Use the below commands to test the touch switch.
 * `/enable`  - turns on touch switch
 [source, bash]
 ----
-curl http://localhost:8080/touchSwitch/enable
+$ curl http://localhost:8080/touchSwitch/enable
 ----
 
 * `/disable` - turns off touch switch
 [source, bash]
 ----
-curl http://localhost:8080/touchSwitch/disable
+$ curl http://localhost:8080/touchSwitch/disable
 ----
 
 ===== Troubleshooting

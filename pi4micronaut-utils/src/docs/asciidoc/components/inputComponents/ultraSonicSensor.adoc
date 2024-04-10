@@ -28,7 +28,7 @@ including its components, assembly instructions, and functionality.
 
 image::ultrasonic_sensor_model.png[]
 
-Schematic Diagram:
+*Schematic Diagram:*
 
 image::ultrasonic_sensor_circuit.png[]
 

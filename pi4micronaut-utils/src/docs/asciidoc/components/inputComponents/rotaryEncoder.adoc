@@ -38,9 +38,9 @@ stated below and in the diagram.
 
 ===== Circuit Diagram
 
-- Note the resistor location at GPIO 27
-
 image::rotary_encoder_circuit.png[]
+
+*Note:* The resistor location at GPIO 27.
 
 ===== Functionality
 The rotary encoder returns the value as you rotate the knob.
@@ -88,7 +88,7 @@ for more details.
 
 ===== An Example Controller
 
-====== This controller sets up two rotary encoders
+====== This controller uses a rotary encoder
 
 [source, java]
 ----

@@ -33,8 +33,7 @@ include::contribute/contributingToLibrary.adoc[]
 include::contribute/newComponent.adoc[]
 
 
-
-include::components.adoc[]
+== Components
 
 include::components/commun_WithHardware.adoc[]
 
