@@ -43,14 +43,14 @@ This section provides details of the Active Buzzer, including the components and
 
 image::active_buzzer-CD.png[]
 
-Schematic Diagram
+*Schematic Diagram*
 
 image::buzzer-SD.png[]
 
 ===== Functionality
 Active Buzzer is PWM type and emits a beep tone, intermittent tone and a morseCode tone based on the frequency and the time interval.
 
-.Note: If you use transistor in the circuit, it swaps the functionalities of the buzzer i.e., if you enable the buzzer, it actually disables it and vice versa.
+*Note:* If you use transistor in the circuit, it swaps the functionalities of the buzzer i.e., if you enable the buzzer, it actually disables it and vice versa.
 
 ===== Testing the circuit
 Use the below command to test the component.

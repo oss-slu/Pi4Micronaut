@@ -76,7 +76,7 @@ digital-input:
       provider: pigpio-digital-input
 ----
 
-Note that there are two slide switches, one that uses GPIO 18 and the other uses GPIO 22.
+*Note:* There are two slide switches, one that uses GPIO 18 and the other uses GPIO 22.
 
 ===== Constructors and Methods
 To see the constructor and methods of our SlideSwitchHelper class see our javadoc link:https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/inputdevices/SlideSwitchHelper.html[here]

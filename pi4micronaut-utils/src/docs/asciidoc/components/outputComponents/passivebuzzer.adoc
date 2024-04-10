@@ -48,12 +48,24 @@ This section provides details of the Passive Buzzer, including the components an
 
 image::passive_buzzer-CD.png[]
 
-Schematic Diagram
+*Schematic Diagram*
 
 image::buzzer-SD.png[]
 
 ===== Functionality
-Use: `curl http://localhost:8080/passive-buzzer` to test the component. These following commands will test the component:
+
+A passive buzzer is an electronic component that produces sound by using an external oscillation source.
+To produce sound, a passive buzzer needs an external PWM signal supplied by Raspberry Pi. This signal controls the frequency of the sound produced, allowing for different tones or beeps. You can program specific melodies or sequences of beeps by changing the frequency of the PWM signal over time.
+
+*Note:* If you use transistor in the circuit, it swaps the functionalities of the buzzer i.e., if you enable the buzzer, it actually disables it and vice versa.
+
+===== Testing
+Use the below commands to test the component.
+
+[source, bash]
+----
+$ curl http://localhost:8080/passive-buzzer/enable
+----
 
 * `/enable`  - Turns the Passive Buzzer on.
 * `/disable` - Turns the Passive Buzzer off.

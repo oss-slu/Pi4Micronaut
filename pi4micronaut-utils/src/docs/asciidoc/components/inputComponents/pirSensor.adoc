@@ -42,6 +42,11 @@ image::PIR_Sensor_Circuit.png[]
 
 ===== Functionality
 
+A PIR - Passive Infrared sensor detects motion by sensing changes in the infrared light emitted by objects in its environment. It works passively, meaning it does not emit any infrared light itself, but rather detects the infrared radiation coming from warm objects, such as humans or animals. The sensor has two sensitive slots that detect infrared radiation.
+
+As a warm object moves across its field of view, the amount of infrared radiation reaching each slot changes, creating a detectable change in the radiation pattern. This change triggers the sensor to send an electrical signal, which can then be used to activate alarms, lights, or other devices, making PIR sensors widely used in security systems and automated lighting controls due to their efficiency and effectiveness in detecting motion.
+
+===== Testing
 Use the below command to enable the sensor.
 [source, bash]
 ----

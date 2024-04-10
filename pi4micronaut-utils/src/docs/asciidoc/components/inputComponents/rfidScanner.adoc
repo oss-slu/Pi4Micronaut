@@ -40,10 +40,6 @@ RFID Scanner requires RFID tags to work with. We can read/write the data on to t
 * `/write/{value}`  - Writes {value} to the RFID key fob
 * `/read`           - Scanner will be ready to read the key fob
 
-===== Troubleshooting
-
-Make sure everything is connected to the correct pins.
-
 ===== Testing the Circuit:
 
 To write to the RFID fob:
@@ -63,6 +59,10 @@ Scan the key fob and the message on the fob will be printed.
 ----
 HelloThere
 ----
+
+===== Troubleshooting
+
+Make sure everything is connected to the correct pins.
 
 ===== YAML Configuration
 The RFID scanner configuration as it appears in the application.yml:

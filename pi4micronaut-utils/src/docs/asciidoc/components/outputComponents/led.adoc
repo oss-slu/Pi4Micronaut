@@ -42,17 +42,19 @@ This section provides details of the LED, including its components and assembly 
 image::LED_circuit.png[]
 
 ===== Functionality
-Use: `curl http://localhost:8080/led` to test the component. The following commands will test the component:
-
-* `/ledOn` - Turns the led on.
-* `/ledOff` - Turns the led off.
-* `/switchState` - Switches the state of the led.
-* `/blink/{duration}/` - Causes the led to blink for the desired duration.
+LED can be turned on or off, switch state and set to blink for the provided  duration in milliseconds.
 
 ===== Testing
 
-Use: `curl http://localhost:8080/led/ledOn` to test the component. This will cause the LED to light.
-
+Use the below commands to test the component. This will cause the LED to light.
+[source, bash]
+----
+$ curl http://localhost:8080/led/ledOn
+----
+* `/ledOn` - Turns the led on.
+* `/ledOff` - Turns the led off.
+* `/switchState` - Switches the state of the led.
+* `/blink/{duration}/` - Causes the led to blink for the desired duration(milliseconds).
 
 ===== Troubleshooting
 - LED not lighting: Check the connections, and ensure the LED is placed correctly. Double-check the power source.

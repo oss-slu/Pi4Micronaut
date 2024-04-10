@@ -30,7 +30,7 @@ negative terminals (like GPIO pins set to OUTPUT and LOW on a microcontroller).
 
 image::https://docs.sunfounder.com/projects/raphael-kit/en/latest/_images/image61.png[]
 
-Schematic Diagram:
+*Schematic Diagram:*
 
 image::https://docs.sunfounder.com/projects/raphael-kit/en/latest/_images/rgb_led_schematic.png[]
 
@@ -81,10 +81,9 @@ $ curl http://localhost:8080/rgb/ledOn
 and check the power source.
 . Only one color is working: One of the pins might have a loose connection. Verify
 each color pin's connection.
-. LED is too dim: The resistor value might be too high. Ensure you're using 220Ω or
-adjust according to your power source and LED specifications
+. LED is too dim: The resistor value might be too high. Ensure you're using 220Ω or adjust according to your power source and LED specifications
 
-NOTE: The Hex value format must start with "0x" not "#" while passing it as a parameter of "setColorHex()" method. For example, use "0x0000ff" for blue.
+*Note:* The Hex value format must start with "0x" not "#" while passing it as a parameter of "setColorHex()" method. For example, use "0x0000ff" for blue.
 
 ===== YAML Configuration
 The order for declaring pins for a RGB LED component in the application.yaml file is as follows
