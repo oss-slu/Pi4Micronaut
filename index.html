@@ -2542,7 +2542,25 @@ for more details.</p>
 <h6 id="_this_controller_uses_the_rfid_scanner_to_write_and_read_to_a_card"><a class="anchor" href="#_this_controller_uses_the_rfid_scanner_to_write_and_read_to_a_card"></a>This controller uses the RFID scanner to write and read to a card</h6>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="java"><span class="nc">Unresolved</span> <span class="n">directive</span> <span class="n">in</span> <span class="n">components</span><span class="o">/</span><span class="n">inputComponents</span><span class="o">/</span><span class="n">rfidScanner</span><span class="o">.</span><span class="na">adoc</span> <span class="o">-</span> <span class="nl">include:</span><span class="o">:../../../../../../</span><span class="n">components</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">opensourcewithslu</span><span class="o">/</span><span class="n">components</span><span class="o">/</span><span class="n">controllers</span><span class="o">/</span><span class="nc">RFidController</span><span class="o">.</span><span class="na">java</span><span class="o">[</span><span class="n">tag</span><span class="o">=</span><span class="n">ex</span><span class="o">]</span></code></pre>
+<pre class="rouge highlight"><code data-lang="java"><span class="nd">@Controller</span><span class="o">(</span><span class="s">"/rfid"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">RfidController</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">RFidHelper</span> <span class="n">rfidHelper</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">RfidController</span><span class="o">(</span><span class="nd">@Named</span><span class="o">(</span><span class="s">"rfid"</span><span class="o">)</span> <span class="nc">SpiConfig</span> <span class="n">spi</span><span class="o">,</span> <span class="nc">Context</span> <span class="n">pi4jContext</span><span class="o">){</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">rfidHelper</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">RFidHelper</span><span class="o">(</span><span class="n">spi</span><span class="o">,</span> <span class="mi">25</span><span class="o">,</span> <span class="n">pi4jContext</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Post</span><span class="o">(</span><span class="s">"/write/{value}"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">writeToCard</span><span class="o">(</span><span class="nc">String</span> <span class="n">value</span><span class="o">){</span>
+        <span class="n">rfidHelper</span><span class="o">.</span><span class="na">writeToCard</span><span class="o">(</span><span class="n">value</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/read"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">readFromCard</span><span class="o">(){</span>
+        <span class="nc">Object</span> <span class="n">data</span> <span class="o">=</span> <span class="n">rfidHelper</span><span class="o">.</span><span class="na">readFromCard</span><span class="o">();</span>
+        <span class="k">return</span> <span class="n">data</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
 </div>
 </div>
 </div>
@@ -4562,7 +4580,7 @@ To produce sound, a passive buzzer needs an external PWM signal supplied by Rasp
 <div id="footer">
 <div id="footer-text">
 Version v1.1<br>
-Last updated 2024-04-10 20:47:51 UTC
+Last updated 2024-04-10 21:49:53 UTC
 </div>
 </div>
 </body>
