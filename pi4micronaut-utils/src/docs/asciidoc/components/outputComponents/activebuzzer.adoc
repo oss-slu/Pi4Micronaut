@@ -41,24 +41,50 @@ This section provides details of the Active Buzzer, including the components and
 
 ===== Circuit Diagram
 
-Schematic Diagram
+image::active_buzzer-CD.png[]
+
+*Schematic Diagram*
 
 image::buzzer-SD.png[]
 
-
-Circuit Diagram
-
-image::active_buzzer-CD.png[]
-
 ===== Functionality
-Use: `curl http://localhost:8080/active-buzzer` to test the component. These following commands will test the component:
+Active Buzzer is PWM type and emits a beep tone, intermittent tone and a morseCode tone based on the frequency and the time interval.
+
+*Note:* If you use transistor in the circuit, it swaps the functionalities of the buzzer i.e., if you enable the buzzer, it actually disables it and vice versa.
+
+===== Testing the circuit
+Use the below command to test the component.
+
+[source, bash]
+----
+$curl http://localhost:8080/active-buzzer/enable
+----
 
 * `/enable`  - Turns the Active Buzzer on.
-* `/disable` - Turns the Active Buzzer off.
-* `/beepTone` - Emits a beep sound from the Active Buzzer.
-* `/intermittentTone` - Emits an intermittent tone from the Active Buzzer. The total duration is twenty seconds: ten seconds of sound and ten seconds of silence.
-* `/morseCode` - Emits the word "pi" in morse code.
 
+[source, bash]
+----
+$curl http://localhost:8080/active-buzzer/disable
+----
+* `/disable` - Turns the Active Buzzer off.
+
+[source, bash]
+----
+$curl http://localhost:8080/active-buzzer/beepTone
+----
+* `/beepTone` - Emits a beep sound from the Active Buzzer.
+
+[source, bash]
+----
+$curl http://localhost:8080/active-buzzer/intermittentTone
+----
+* `/intermittentTone` - Emits an intermittent tone from the Active Buzzer. The total duration is twenty seconds: ten seconds of sound and ten seconds of silence.
+
+[source, bash]
+----
+$curl http://localhost:8080/active-buzzer/morseCode
+----
+* `/morseCode` - Emits the word "pi" in morse code.
 
 
 ===== Troubleshooting
@@ -67,17 +93,17 @@ Use: `curl http://localhost:8080/active-buzzer` to test the component. These fol
     * Verify that 1K resistor is used
     * Verify all wires are in appropriate slots.
 
-===== YAML
+===== YAML Configuration
 [source, yaml]
-
 ----
-    active-buzzer:
-      name: active-buzzer
-      address: 17
-      pwmType: SOFTWARE
-      provider: pigpio-pwm
-      initial: 0
-      shutdown: 0
+pwm:
+  active-buzzer:
+    name: active-buzzer
+    address: 17
+    pwmType: SOFTWARE
+    provider: pigpio-pwm
+    initial: 0
+    shutdown: 0
 ----
 
 ===== Constructor and Methods
