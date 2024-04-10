@@ -45,13 +45,12 @@ This section provides details of the Passive Buzzer, including the components an
 
 
 ===== Circuit Diagram
+
+image::passive_buzzer-CD.png[]
+
 Schematic Diagram
 
 image::buzzer-SD.png[]
-
-Circuit Diagram
-
-image::passive_buzzer-CD.png[]
 
 ===== Functionality
 Use: `curl http://localhost:8080/passive-buzzer` to test the component. These following commands will test the component:
@@ -73,7 +72,7 @@ Use: `curl http://localhost:8080/passive-buzzer` to test the component. These fo
     * Verify all wires are in appropriate slots.
     * When using a file, verify that the file itself is scp'd to the raspberrypi (see PassiveBuzzerController for full information).
 
-===== YAML
+===== YAML Configuration
 [source, yaml]
 
 ----

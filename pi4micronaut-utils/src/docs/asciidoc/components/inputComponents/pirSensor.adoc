@@ -42,20 +42,28 @@ image::PIR_Sensor_Circuit.png[]
 
 ===== Functionality
 
-Use `curl http://localhost:8080/pirSensor/enable` to enable the sensor. Once the sensor is enabled, anytime the sensor detects motion, the RGB LED will turn red. If no motion is detected, the RGB LED will be green.
+Use the below command to enable the sensor.
+[source, bash]
+----
+$ curl http://localhost:8080/pirSensor/enable
+----
+Once the sensor is enabled, anytime the sensor detects motion, the RGB LED will turn red. If no motion is detected, the RGB LED will be green.
 
-Use `curl http://localhost:8080/pirSensor/disable` to disable the sensor.
-
+Use the below command to disable the sensor.
+[source, bash]
+----
+$ curl http://localhost:8080/pirSensor/disable
+----
 
 ===== Troubleshooting
 - Sensor not detecting something:
     * Make sure the object is moving. The sensor only detects movement. Once an object stops moving, it is no longer detected.
 
 
-===== YAML
+===== YAML Configuration
 [source, yaml]
-
 ----
+digital-input:
     pir-sensor:
       name: PIR Sensor
       address: 13
