@@ -29,7 +29,9 @@ Circuit Diagram:
 image::https://docs.sunfounder.com/projects/raphael-kit/en/latest/_images/image303.png[]
 
 ===== Functionality
-A push of the button turns the LED light on and another push turns it off.
+Use: `curl http://localhost:8080/pushButton` to test the component. These following commands will test the component:
+
+* `/init`  - Initializes the Push Button for use.
 
 ===== Troubleshooting
 . LED not lighting up: Check all connections, ensure the LED is placed correctly,

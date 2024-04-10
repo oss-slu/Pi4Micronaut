@@ -53,8 +53,10 @@ image:touchSwitch.png[]
 
 ===== Functionality
 
-Once the touch switch has been enabled, touching the sensor will turn the LED light on
-and removing your finger from the sensor will turn the LED light off.
+Use: `curl http://localhost:8080/touchSwitch` to test the component. These following commands will test the component:
+
+* `/enable`  - turns on touch switch
+* `/disable` - turns off touch switch
 
 ===== Testing the Circuit
 

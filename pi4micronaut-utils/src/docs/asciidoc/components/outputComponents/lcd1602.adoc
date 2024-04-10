@@ -36,7 +36,18 @@ Connect the 4 pins on the LCD1602 screen to the breadboard as described below an
 image::lcd1602-circuit.png[]
 
 ===== Functionality
-The LCD1602 screen will light up once connected to a power source.
+Use: `curl http://localhost:8080/lcd` to test the component. These following commands will test the component:
+
+* `/write/{text}`                 - writes *{text}* to lcd screen
+* `/write/{text}/{line}`          - writes *{text}* to lcd screen on line number *{line}*
+* `/write/{text}/{line}/{pos}`    - writes *{text}* to lcd screen on line number *{line}* at pos *{pos}*
+* `/write/character/{charValue}`  - writes character *{charValue}* to lcd screen
+* `/backlight/{state}`            - sets backlight to *{state}* (state must be set to *"on"* or *"off"*)
+* `/clear/all`                    - clears lcd screen
+* `/clear/{line}`                 - clears line number {line} of lcd screen
+* `/turnOff`                      - turns off lcd screen
+
+
 
 ===== Testing the Circuit
 Write Hello to the LCD1602 screen

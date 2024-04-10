@@ -40,7 +40,10 @@ Model:
 image::rfid_circuit.png[]
 
 ===== Functionality
-The two main functions of the RFID scanner are to read RFIDs and to write to them. What is written to the RFID will vary depending on the intended use for the scanner.
+Use: `curl http://localhost:8080/rfid` to test the component. These following commands will test the component:
+
+* `/write/{value}`  - Writes {value} to the RFID key fob
+* `/read`           - Readies scanner to read key fob
 
 ===== Troubleshooting
 

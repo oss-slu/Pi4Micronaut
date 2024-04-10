@@ -61,20 +61,21 @@ as well as the LED specifications.
 ===== YAML
 [source, yaml]
 ----
-led:                                    # <1>
-      name: LED Output                      # <2>
-      address: 17                           # <3>
-      shutdown: HIGH                        # <4>
-      initial: HIGH                         # <5>
-      provider: pigpio-digital-output       # <6>
-
-led2:
-      name: LED Output
-      address: 26
-      shutdown: HIGH
-      initial: HIGH
-      provider: pigpio-digital-output
+digital-output:
+  led:
+    name: LED Output
+    address: 17
+    shutdown: LOW
+    initial: LOW
+    provider: pigpio-digital-output
+  led2:
+    name: LED Output
+    address: 26
+    shutdown: HIGH
+    initial: HIGH
+    provider: pigpio-digital-output
 ----
+
 
 ===== Constructor and Methods
 
@@ -85,5 +86,5 @@ for more details.
 
 [source, java]
 ----
-include:: ../../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/LEDController.java[tags=method]
+include::../../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/LEDController.java[tag=ex]
 ----

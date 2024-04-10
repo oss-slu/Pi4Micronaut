@@ -43,10 +43,9 @@ stated below and in the diagram.
 image::rotary_encoder_circuit.png[]
 
 ===== Functionality
-- The initial value returned is 0.
-- Turning the shaft one unit clockwise will increase the value returned by 1, whereas, turning the
-  knob counterclockwise by one unit will decrease the value returned by 1.
-- The value returned is an integer with a max value of 2147483647 and min of -2147483647.
+Use: `curl http://localhost:8080/rotaryEncoder` to test the component. These following commands will test the component:
+
+* `/value`  - returns the current value of the rotary encoder
 
 ===== Testing the Circuit
 To return the value of the rotary encoder:
@@ -71,8 +70,14 @@ So in the case of
 [source, yaml]
 ----
 multi-digital-input:
-  rot-encoder:
-    addresses: 17, 18, 27
+  rotary-encoder:
+    name: Rotary Encoder
+    addresses: 27,18,17
+    debounces: 6000,500,500
+    pulls: PULL_DOWN,PULL_UP,PULL_UP
+    shutdown: LOW
+    initial: HIGH
+    provider: pigpio-digital-input
 ----
 
 the sw pin would be the one connected to GPIO 27, the clk pin would be connected to GPIO 18, and the dt pin would connect to GPIO 17. All lists of values for Rotary Encoder components will follow the same order.

@@ -4,10 +4,8 @@ https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/doc
 
 Pulse width modulation, or PWM, is a technique for getting analog results with digital means. Digital control is used to create a square wave, a signal switched between on and off.
 This on-off pattern can simulate voltages in between full on (5 Volts) and off (0 Volts) by changing the portion of the time the signal spends on versus the time that the signal spends off.
-The duration of “on time” is called the pulse width. To get varying analog values, you change, or modulate, that pulse width. If you repeat this on-off pattern fast enough with an LED for example,
-the result is as if the signal is a steady voltage between 0 and 5V controlling the brightness of the LED.
-
-(https://learn.sunfounder.com/lesson-2-controlling-led-by-pwm-3/[Source: sunfounder.com])
+The duration of “on time” is called the pulse width. To get varying analog values, you change, or modulate, that pulse width (https://learn.sunfounder.com/lesson-2-controlling-led-by-pwm-3/[Source: sunfounder.com]).
+In our library, our Active Buzzer component uses PWM. Once fully activated at 5 Volts, the buzzer will go off, creating a tone.
 
 To define in application.yaml add pwm as a field under pi4j, then add each component under pwm. Each component will need:
 

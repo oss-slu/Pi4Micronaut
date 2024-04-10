@@ -40,15 +40,12 @@ The Ultrasonic Sensor uses sound waves to calculate the distance from itself to 
 The resulting measurement is accurate within a range of 3mm of the true measurement.
 The Ultrasonic Sensor's signal is stable within 5m of the sensor, gradually weakening until the signal fully disappears at 7m.
 
-Some information about the trigger and echo signals (from the sunfounder docs):
-The timing diagram is shown below. You only need to supply a short 10us pulse for the trigger input to start the ranging,
-and then the module will send out an 8 cycle burst of ultrasound at 40 kHz and raise its echo.
-You can calculate the range through the time interval between sending trigger signal and receiving echo signal.
+Use: `curl http://localhost:8080/ultraSound` to test the component. These following commands will test the component:
 
-Formula: us / 58 = centimeters or us / 148 =inch; or: the range = high level time * velocity (340M/S) / 2;
-you are suggested to use measurement cycle over 60ms in order to prevent signal collisions of trigger signal and the echo signal.
-
-image::ultrasonic_sensor_timing_diagram.png[]
+* `/enable`      - turns on ultrasonic sensor, starts measuring distance
+* `/distance/cm` - returns distance to nearest object in centimeters
+* `/distance/m`  - returns distance to nearest object in meters
+* `/disable`     - turns off ultrasonic sensor
 
 
 
@@ -71,9 +68,21 @@ The order for declaring the Echo Pin for the Ultrasonic Sensor is as follows:
 
 [source, yaml]
 ----
-digital-output:
+digital-input:
   ultra-sonic-echo:
+    name: UltraSonic Sensor Input
     address: 24
+    pull: PULL_DOWN
+    debounce: 3000
+    provider: pigpio-digital-input
+
+digital-output:
+  ultra-sonic-trig:
+    name: UltraSonic Sensor Output
+    address: 23
+    shutdown: LOW
+    initial: LOW
+    provider: pigpio-digital-output
 ----
 So the Echo Pin would be connected to GPIO 24.
 

@@ -77,13 +77,14 @@ Use: `curl http://localhost:8080/passive-buzzer` to test the component. These fo
 [source, yaml]
 
 ----
-    passive-buzzer:
-      name: passive-buzzer
-      address: 17
-      pwmType: SOFTWARE
-      provider: pigpio-pwm
-      initial: 0
-      shutdown: 0
+pwm:
+  passive-buzzer:
+    name: passive-buzzer
+    address: 17
+    pwmType: SOFTWARE
+    provider: pigpio-pwm
+    initial: 0
+    shutdown: 0
 ----
 
 ===== Constructors and Methods

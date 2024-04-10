@@ -48,6 +48,29 @@ produced. For instance:
 * Magenta: Power both Red and Blue pins while keeping Green off.
 * White: Power all three pins
 
+Use: `curl http://localhost:8080/rgb` to test the component. These following commands will test the component:
+
+* `/ledOn`                        - turns on RGB LED
+* `/ledOff`                       - turns off RGB LED
+* `/setRed/{val}`                 - sets value of red to *{val}*
+* `/setRed/{val},{frequency}`     - sets value of red to *{val}* and frequency to *{frequency}*
+* `/setGreen/{val}`               - sets value of green to *{val}*
+* `/setGreen/{val},{frequency}`   - sets value of green to *{val}* and frequency to *{frequency}*
+* `/setBlue/{val}`                - sets value of blue to *{val}*
+* `/setBlue/{val},{frequency}`    - sets value of blue to *{val}* and frequency to *{frequency}*
+* `/setColor/{redVal},{greenVal},{blueVal}`
+        - sets values of red *{redVal}*, green *{greenVal}*, and blue *{blueVal}*
+
+* `/setColor/{redVal},{greenVal},{blueVal},{frequency1},{frequency2},{frequency3}`
+        - sets values of red *{redVal}*, green *{greenVal}*, and blue *{blueVal}*,
+          and frequencies of red *{frequency1}*, green *{frequency2}*, and *{frequency3}*
+
+* `/setColorHex/{hexValue}`       - sets color value using its hex value *{hexValue}*
+* `/setColorHex/{hexValue},{frequency1},{frequency2},{frequency3}`
+        - sets color value using its hex value *{hexValue}*
+          and frequencies of red *{frequency1}*, green *{frequency2}*, and *{frequency3}*
+
+
 ===== Troubleshooting
 . LED not lighting up: Check all connections, ensure the LED is placed correctly,
 and check the power source.
@@ -69,7 +92,19 @@ So in the case of
 ----
 multi-pwm:
   rgb-led:
+    name: RGB LED
     addresses: 17, 18, 27
+    pwmTypes: SOFTWARE, SOFTWARE, SOFTWARE
+    provider: pigpio-pwm
+    initials: 0, 0, 0
+    shutdowns: 0, 0, 0
+  rgb-led-2:
+    name: RGB LED 2
+    addresses: 18, 27, 22
+    pwmTypes: SOFTWARE, SOFTWARE, SOFTWARE
+    provider: pigpio-pwm
+    initials: 0, 0, 0
+    shutdowns: 0, 0, 0
 ----
 
 the red pin would be the one connected to GPIO 17, green to GPIO 18, and blue to GPIO 27. All lists of values for RGB LED components will follow the same order.

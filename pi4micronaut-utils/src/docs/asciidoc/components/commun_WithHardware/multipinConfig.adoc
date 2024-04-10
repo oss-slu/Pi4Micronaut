@@ -24,7 +24,7 @@ include::../../../../../../components/src/main/resources/application.yml[tags=mu
 .Example Multipin PWM declaration
 [source, yaml]
 ----
-include::../../../../../../components/src/main/resources/application.yml[tags=multipwm]
+include::../../../../../../components/src/main/resources/application.yml[tags=multiInput]
 ----
 <.> Top level field for multipin PWMs (equivlent of digital-output declaration)
 <.> Component Identifier (Used in @Named annotations)

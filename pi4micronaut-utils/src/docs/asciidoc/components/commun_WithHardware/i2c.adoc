@@ -8,7 +8,7 @@ multiple devices using only two wires and unique addresses.
 
 The I2C LCD1602 consists of a normal LCD1602 and an I2C module that is attached to the back of the LCD.
 The I2C module is a chip that can expand the I/O ports of the LCD1602 using the I2C protocol.
-It converts the signals from the Arduino into commands for the LCD.
+It converts the signals from the Raspberry Pi into commands for the LCD.
 
 (https://docs.sunfounder.com/projects/umsk/en/latest/01_components_basic/26-component_i2c_lcd1602.html[Source: docs.sunfounder.com])
 
