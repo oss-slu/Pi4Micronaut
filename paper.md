@@ -6,22 +6,20 @@ tags:
   - RaspberryPi
   - Pi4j
   - GPIO
-
-
 authors:
-- name: "Adrian Swindle"
+- name: Adrian Swindle
   equal-contrib: true
   affiliation: 1
-- name: "Alex Delgado"
+- name: Alex Delgado
   equal-contrib: true
   affiliation: 1
-- name: "Joe Folen"
+- name: Joe Folen
   equal-contrib: true
   affiliation: 1
-- name: "John Yanev"
+- name: John Yanev
   equal-contrib: true
   affiliation: 1
-- name: "Ruthvik Mannem"
+- name: Ruthvik Mannem
   equal-contrib: true
   affiliation: 1
 affiliations:
@@ -30,6 +28,7 @@ affiliations:
 
 
 date: 3 April 2024 <!-- Change for submission date? -->
+bibliography: paper.bib
 ---
 
 # Summary
@@ -52,8 +51,8 @@ For researchers, a major component of their work is data gathering. While there 
 plug the tools they are using into their personal computer, circumstances call for a more mobile or collaborative medium.
 The single board computer Raspberry Pi with its ability to interface with almost anything provides an answer. The small
 size and versatility at a low price, makes the Raspberry Pi an ideal solution for researchers. Applications for the
-Raspberry Pi include rat licking behavior (Longley, et al.), greenhouse gas effect monitoring system (Shah and Bhatt),
-and many other applications(Jolles). Pi4Micronaut also allows for multiple users to read input from sensors. This
+Raspberry Pi include rat licking behavior ([Longley, et al.](#References)), greenhouse gas effect monitoring system ([Shah and Bhatt](#References)),
+and many other applications([Jolles](#References)). Pi4Micronaut also allows for multiple users to read input from sensors. This
 eliminates the elbowing that may occur when multiple researchers are trying to read input from a sensors. The utilization
 of a Raspberry Pi, eliminates the hassle and cost of needing a full computer for one small sensor. 
 
@@ -84,7 +83,7 @@ The following is the list of the currently supported hardware:
 
 
 
-# References
+# References <!-- All this info needs to go in a .bib file-->
 
 <!-- All the citations should be something that could be reasonably used with Pi4Micronaut. -->
 
