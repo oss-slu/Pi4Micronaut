@@ -14,4 +14,23 @@ public class ServoMotorHelper {
     {
         this.servoMotor = servoMotor;
     }
+
+    public void enable()
+    {
+        log.info("enabling servo motor");
+
+        servoMotor.on();
+    }
+
+    public void disable()
+    {
+        log.info("disabling servo motor");
+
+        servoMotor.off();
+    }
+
+    public void setAngle(int angle)
+    {
+        servoMotor.setFrequency(angle);
+    }
 }
