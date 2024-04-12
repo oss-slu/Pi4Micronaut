@@ -4,7 +4,6 @@ import com.opensourcewithslu.outputdevices.ServoMotorHelper;
 import com.pi4j.io.pwm.Pwm;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
-import io.micronaut.http.annotation.Post;
 import jakarta.inject.Named;
 
 @Controller("/servoMotor")
@@ -26,7 +25,7 @@ public class ServoMotorController {
         servoMotorHelper.disable();
     }
 
-    @Post("/setAngle/{angle}")
+    @Get("/setAngle/{angle}")
     public void setAngle(int angle) {
         servoMotorHelper.setAngle(angle);
     }
