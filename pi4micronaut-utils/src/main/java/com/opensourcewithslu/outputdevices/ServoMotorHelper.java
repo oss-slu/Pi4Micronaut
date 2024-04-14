@@ -53,6 +53,11 @@ public class ServoMotorHelper {
      */
     public void setAngle(int angle)
     {
+        if (servoMotor.isOff())
+        {
+            log.info("You must enable the servo motor first.");
+            return;
+        }
         log.info("Rotating the servo motor by " + angle + " degrees.");
 
         int MIN_ANGLE = 0;
