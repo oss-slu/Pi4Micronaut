@@ -50,28 +50,37 @@ public class HomeAutomation {
             @Named("touch-switch") DigitalInput touchSwitch,
             @Named("ultra-sonic-trig") DigitalOutput trig,
             @Named("ultra-sonic-echo") DigitalInput echo,
-            Context pi4j)
-    {
-        this.lcd = new LCD1602Helper(lcd,pi4j);
+            Context pi4j) {
+        this.lcd = new LCD1602Helper(lcd, pi4j);
 
-        this.rfid = new RFidHelper(rfid,25,pi4j);
+        this.rfid = new RFidHelper(rfid, 25, pi4j);
         this.led = new LEDHelper(led);
         this.pirSensor = new PIRSensorHelper(pirSensor);
         this.touchSwitch = new TouchSwitchHelper(touchSwitch);
         this.activeBuzzer = new ActiveBuzzerHelper(activeBuzzer);
-        this.ultraSonicSensor = new UltraSonicSensorHelper(trig,echo);
+        this.ultraSonicSensor = new UltraSonicSensorHelper(trig, echo);
         this.users = new ArrayList<String>();
         this.isSystemOn = false;
         this.alarmOn = false;
         this.authorized = false;
+    }
 
+
+    // Initializes Home Automation System.
+    @Get("/init")
+    public void initialize() {
         /* Thread for UltraSonic Sensor
          * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
          * Handles logic for components after the home automation system is turned on
          */
         this.threadUltraSonicSensor = new Thread(() -> {
+            log.info("!! ULTRASONIC SENSOR THREAD ACTIVE !!");
             while (true) {
-                try {
+
+                //try {
+                    // Run every 500ms
+                    //Thread.sleep(500);
+
                     // Checks if active buzzer is on (if someone is within 1m of sensor)
                     if ( alarmOn ) {
                         // Read data from RFID scanner
@@ -80,64 +89,54 @@ public class HomeAutomation {
                         // If authorized user, then turn off alarm welcome the user, and
                         // allow for the system to be turned off from touch sensor
                         if ( this.users.contains(data) ) {
+                            log.info("!! AUTHORIZED USER: TURN OFF BUZZER !!");
                             this.alarmOn = false;
                             this.authorized = true;
                             this.lcd.writeText("Hello " + data);
-                            this.led.ledOff();
-                            this.activeBuzzer.activeBuzzerOff();
+                            this.led.ledOn();
+                            this.activeBuzzer.activeBuzzerOn();
+                            this.threadUltraSonicSensor.interrupt();
                         }
                     // Check if someone is within 1m of sensor and turn on alarm if true
-                    } else if ( ultraSonicSensor.getDistanceInMeters() < 1 ) {
+                    } else if ( ultraSonicSensor.getDistanceInCentimeter() < 100 ) {
+                        log.info("!! PERSON DETECTED WITHIN 1M !!");
                         this.alarmOn = true;
-                        this.activeBuzzer.activeBuzzerOn();
+                        this.activeBuzzer.activeBuzzerOff();
                     }
-
-                    // Run every 500ms
-                    Thread.sleep(500);
-
+/*
                 } catch (InterruptedException e) {
                     log.error("Ultrasonic sensor measurement interrupted", e);
                     Thread.currentThread().interrupt();
                 }
+*/
             }
 
         });
+
+        log.info("!! HOME AUTOMATION SYSTEM INITIALIZED !!");
+
     }
 
-    // Enables the home automation system.
+    // Enables the home automation saystem.
     @Get("/enable")
     public String enableHomeAutomation() {
-
-
         // Add listener to touch switch to start/stop home automation system
         this.touchSwitch.addEventListener((e) -> {
             if (this.touchSwitch.isTouched) {
                 // If the system is on and an authorized user touches the sensor, shut off the system
                 if (this.isSystemOn) {
                     if (this.authorized) {
-                        this.isSystemOn = false;
-                        this.pirSensor.removeEventListener();
-                        this.threadUltraSonicSensor.interrupt(); ;
+                        this.shutdown();
+                    }
+                    else {
+                        log.info("!! SYSTEM STILL ON !!\nUNAUTHORIZED USER");
                     }
                 // If system is off, turn on system
                 } else {
+                    log.info("!! SYSTEM ON !!\nTouch Sensor has been touched, Home Automation System turned ON (allegedly)");
                     this.isSystemOn = true;
                     this.authorized = false;
-                    // Adds listener for pir sensor
-                    this.pirSensor.addEventListener((event) -> {
-                        // If sensor senses motion, turn on led and ultrasonic sensor
-                        if (this.pirSensor.isMoving) {
-                            this.led.ledOn();
-                            this.ultraSonicSensor.startMeasuring();
-                            this.threadUltraSonicSensor.start();
-                        // If sensor stops sensing motion, turn off led and ultrasonic sensor
-                        } else {
-                            this.led.ledOff();
-                            this.ultraSonicSensor.stopMeasuring();
-                            this.threadUltraSonicSensor.interrupt();
-                        }
-                    });
-                    //this.threadUltraSonicSensor.start();
+                    this.startup();
                 }
             }
         });
@@ -147,7 +146,7 @@ public class HomeAutomation {
     // Adds new authorized user to home automation system
     @Get("/addUser/{value}")
     public void addUser(String value) {
-
+        log.info("USER ADDED YAY! :D");
         this.users.add(value);
         this.rfid.writeToCard(value);
     }
@@ -155,7 +154,51 @@ public class HomeAutomation {
     // Removes user from home automation system
     @Get("/removeUser/{value}")
     public void removeUser(String value) {
+        log.info("USER REMOVED YAY! :D");
         this.users.remove(value);
+    }
+
+    // Shuts down Home Automation System
+    private void shutdown() {
+        log.info("!! SYSTEM OFF !!\nHome Automation System turned OFF (allegedly");
+        this.isSystemOn = false;
+        this.pirSensor.removeEventListener();
+        this.threadUltraSonicSensor.interrupt();
+    }
+
+    // Starts up Home Automation System
+    private void startup() {
+        log.info("!! STARTING UP HOME AUTOMATION SYSTEM !!");
+        this.led.ledOff();
+        this.ultraSonicSensor.startMeasuring();
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            log.error("cant sleep :(", e);
+        }
+        this.threadUltraSonicSensor.start();
+        /*
+        // Adds listener for pir sensor
+        log.info("!! PIR SENSOR ACTIVE !!");
+        this.pirSensor.addEventListener((event) -> {
+            // If sensor senses motion, turn on led and ultrasonic sensor
+            if (this.pirSensor.isMoving) {
+                log.info("!! ULTRASONIC SENSOR ACTIVE !!");
+                this.led.ledOff();
+                this.ultraSonicSensor.startMeasuring();
+                this.threadUltraSonicSensor.start();
+                // If sensor stops sensing motion, turn off led and ultrasonic sensor
+            } else if (!alarmOn) {
+                log.info("!! ULTRASONIC SENSOR STOPPED (NO ONE NEARBY) !!");
+                this.led.ledOn();
+                this.ultraSonicSensor.stopMeasuring();
+                this.threadUltraSonicSensor.interrupt();
+            } else {
+
+            }
+        });
+
+         */
     }
 
 

@@ -48,7 +48,7 @@ pi4j:
       shutdown: 0
     passive-buzzer:
       name: passive-buzzer
-      address: 17
+      address: 26
       pwmType: SOFTWARE
       provider: pigpio-pwm
       initial: 0
@@ -111,7 +111,7 @@ pi4j:
       name: PIR Sensor
       address: 13
       pull: PULL_DOWN
-      debounce: 30000
+      debounce: 200000
       provider: pigpio-digital-input
     ultra-sonic-echo:
       name: UltraSonic Sensor Input
