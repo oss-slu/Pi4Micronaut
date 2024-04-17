@@ -41,9 +41,6 @@ in research. By abstracting the complexity of hardware interactions, Pi4Micronau
 logic and features, making it easier to bring IoT applications from concept to deployment rapidly.
 
 
-<!-- Should use this: https://joss.theoj.org/papers/10.21105/joss.02584 as an example. -->
-
-[//]: # (We need to connect every thing to Pi4Micronaut being used for research purposes. )
 
 # Statement of Need
 
@@ -56,7 +53,7 @@ and many other applications @Jolles. Pi4Micronaut also allows for multiple users
 eliminates the elbowing that may occur when multiple researchers are trying to read input from a sensors. The utilization
 of a Raspberry Pi, eliminates the hassle and cost of needing a full computer for one small sensor. 
 
-<!-- Find papers that use raspberry pi's with instruments that could in theory work with the Pi4Micronaut library. -->
+
 
 # Availability and Usage
 
