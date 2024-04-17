@@ -11,6 +11,7 @@ import jakarta.inject.Named;
 /**
  * Controller for managing LCD1602 display operations via HTTP requests.
  */
+//tag::ex[]
 @Controller("/lcd")
 public class lcdController {
     private final LCD1602Helper lcdHelper;
@@ -68,3 +69,4 @@ public class lcdController {
         return "Display turned off\n";
     }
 }
+//end::ex[]

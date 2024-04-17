@@ -42,20 +42,33 @@ image::PIR_Sensor_Circuit.png[]
 
 ===== Functionality
 
-Use `curl http://localhost:8080/pirSensor/enable` to enable the sensor. Once the sensor is enabled, anytime the sensor detects motion, the RGB LED will turn red. If no motion is detected, the RGB LED will be green.
+A PIR - Passive Infrared sensor detects motion by sensing changes in the infrared light emitted by objects in its environment. It works passively, meaning it does not emit any infrared light itself, but rather detects the infrared radiation coming from warm objects, such as humans or animals. The sensor has two sensitive slots that detect infrared radiation.
 
-Use `curl http://localhost:8080/pirSensor/disable` to disable the sensor.
+As a warm object moves across its field of view, the amount of infrared radiation reaching each slot changes, creating a detectable change in the radiation pattern. This change triggers the sensor to send an electrical signal, which can then be used to activate alarms, lights, or other devices, making PIR sensors widely used in security systems and automated lighting controls due to their efficiency and effectiveness in detecting motion.
 
+===== Testing
+Use the below command to enable the sensor.
+[source, bash]
+----
+$ curl http://localhost:8080/pirSensor/enable
+----
+Once the sensor is enabled, anytime the sensor detects motion, the RGB LED will turn red. If no motion is detected, the RGB LED will be green.
+
+Use the below command to disable the sensor.
+[source, bash]
+----
+$ curl http://localhost:8080/pirSensor/disable
+----
 
 ===== Troubleshooting
 - Sensor not detecting something:
     * Make sure the object is moving. The sensor only detects movement. Once an object stops moving, it is no longer detected.
 
 
-===== YAML
+===== YAML Configuration
 [source, yaml]
-
 ----
+digital-input:
     pir-sensor:
       name: PIR Sensor
       address: 13

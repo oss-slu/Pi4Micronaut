@@ -6,6 +6,7 @@ import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import jakarta.inject.Named;
 
+//tag::ex[]
 @Controller("/led")
 public class LEDController {
     private final LEDHelper ledHelper;
@@ -34,3 +35,4 @@ public class LEDController {
         ledHelper.blink(duration);
     }
 }
+//end::ex[]

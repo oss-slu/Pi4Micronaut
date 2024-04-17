@@ -1,7 +1,0 @@
-
-== Adding to/Creating an Application
-[.text-right]
-https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/adding_creating_App.adoc[Improve this doc]
-
-TODO: outline how to create a basic applicaton like we did for the start of the check-in system +
-TODO: outline how someone should add our jar to their exsisting application

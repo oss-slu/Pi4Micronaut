@@ -74,6 +74,25 @@ Finally, install pigpio
 sudo apt-get install pigpio
 ----
 
+==== Enabling Different Communication Protocols
+. In the Pi4Micronaut library, we have used different communication protocols, such as I2C, SPI, etc.
+. To enable any of these protocols when needed, enter the following command:
++
+[source, bash]
+----
+sudo raspi-config
+----
++
+. Navigate to "*Interfacing Options*"
++
+image::commProtocol1.png[]
++
+. Choose your desired protocol.
++
+image::commProtocol2.png[]
++
+. Reboot when prompted.
+
 ==== Build and Copy Over Jar File
 . Open your terminal of choice
 . Navigate to the project root directory
@@ -104,7 +123,7 @@ scp Demo_Pi4Micronaut-0.1-all.jar test@raspberrypi-test:~
 +
 image:Copying_Jar_File_To_Pi.png[]
 
-==== Almost Done!
+==== Run Jar file on Pi and Test the Application
 . To test if you've set up everything correctly on your raspberry pi, we have some sample commands for you to run.
 . Open a new terminal and ssh into your raspberry pi.
 . Enter the following command to run the jar file:
@@ -133,21 +152,3 @@ curl http://localhost:8080/led/ledOn
 
 . If this command works and the LED has lit up, congratulations! You have successfully built and ran one of our components!
 
-==== Enabling Different Communication Protocols
-. In the Pi4Micronaut library, we have used different communication protocols, such as I2C, SPI, etc.
-. To enable any of these protocols when needed, enter the following command:
-+
-[source, bash]
-----
-sudo raspi-config
-----
-+
-. Navigate to "*Interfacing Options*"
-+
-image::commProtocol1.png[]
-+
-. Choose your desired protocol
-+
-image::commProtocol2.png[]
-+
-. Reboot when prompted to

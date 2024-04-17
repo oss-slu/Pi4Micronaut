@@ -1,37 +1,40 @@
 === How to Create a New Component
 [.text-right] 
-https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/contribute/newComponent.adoc[Improve this doc]
+https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/contribute/newComponent.adoc[Improve this doc]
 
 
-If its compatible with a Raspberry Pi then it should work well with the Pi4Micronaut framework. The following steps should encompass how most components are added to the framework, but should more or different steps be needed, use the
-https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/contribute/newComponent.adoc[Improve this doc] link to suggest changes. 
+If its compatible with a Raspberry Pi then it should work well with the Pi4Micronaut. The following steps should encompass how most components are added to the library. Start by creating a new
+https://github.com/oss-slu/Pi4Micronaut/issues/new/choose[Issue] to suggest changes.
 
 
-1. Determine if the device is Input or Output
+1. Determine the communication type for the component which you want to use. For example, Buzzer works with PWM and LCD1602 works with I2C.
 
-2. Create a Controller:
-** Controllers define and handle interactions with a given component. The Controller of a component will have a `@Controller("/example")` right above the class declaration that acts as the endpoint for requests to the component. Instead of "example", you should name the endpoint something that is identifiable to the component. Each method of the Controller should have a `@Get("/examppleendpoint")` above the method declaration. The endpoint for the method should have the same name as the method and any parameters should be included in the endpoint `/examppleendpoint/{parameter1},{parameter2}`.
+2. Setup the circuit.
+
+3. Add Component to the Application yml
+
+** The new component will need to be added to the application yml found at `components/src/main/resources/application.yml`.
+** More information on the `application.yml` found in <<Communicating with a Hardware Component>>
+
+4. Create a Helper:
+** A Helper is what the Controller calls to do an action. For example, to change the color of an RGB LED the controller will take the request to change it. The Controller will then call the change color method in the helper. The helper then takes all the actions needed to change the color of the LED.
+** See the https://github.com/oss-slu/Pi4Micronaut/blob/develop/pi4micronaut-utils/src/main/java/com/opensourcewithslu/outputdevices/RGBLEDHelper.java[RBG Helper] for an example of a Helper.
+
+** All Helpers should be kept here: `pi4micronaut-utils\src\main\java\com\opensourcewithslu\(inputdevices or outputdevices)`
+
+5. Create a Controller:
+** Controllers define and handle interactions with a given component. The Controller of a component will have a `@Controller("/example")` right above the class declaration that acts as the endpoint for requests to the component. Instead of "example", you should name the endpoint something that is identifiable to the component. Each method of the Controller should have a `@Get("/exampleEndPoint")` above the method declaration. The endpoint for the method should have the same name as the method and any parameters should be included in the endpoint `/exampleEndPoint/{parameter1},{parameter2}`.
 ** See the https://github.com/oss-slu/Pi4Micronaut/blob/develop/components/src/main/java/com/opensourcewithslu/components/controllers/rgbController.java[RGB Controller] for an example of a Controller.
 ** Consult the https://micronaut-projects.github.io/micronaut-docs-mn3/3.8.1/guide/#creatingClient[Micronaut Documentation] for more explanation on Controllers.
 ** All Controllers should be kept here:
 `components\src\main\java\com\opensourcewithslu\components\controllers`
 
-3. Create a Helper: 
-** A Helper is what the Controller calls to do a action. For example, to change the color of an RGB LED the controller will take the request to change it. The Controller will then call the change color method in the helper. The helper then takes all the actions needed to change the color of the LED.
-** See the https://github.com/oss-slu/Pi4Micronaut/blob/develop/micronautpi4j-utils/src/main/java/com/opensourcewithslu/outputdevices/RGBLEDHelper.java[RBG Helper] for an example of a Helper.
-
-** All Helpers should be kept here: `micronautpi4j-utils\src\main\java\com\opensourcewithslu\(inputdevices or outputdevices)`
-
-4. Add Component to the Application yml
-
-    ** The new component will need to be added to the application yml found at `components/src/main/resources/application.yml`.
-    ** More infomation on the `application.yml` found in <<Communicating with a Hardware Component>>
-
-5. Thoroughly test:
+6. Thoroughly test:
     ** Contributors should thoroughly test their integrations
     ** When submitting a pull request, make sure to include how you tested the component, any circuits that you may have used, and how to run any examples you may have created.
     ** It is important that reviewers are able to replicated your work in order to properly test the implementation.
-6. Create documentation for the component:
+
+7. Create documentation for the component:
     ** Create an .adoc file with the component name as the file name.
     ** Make sure to include all the information that the other components. Simply copy/paste an existing components documentation and edit as needed.
-    ** Add the file here: `micronautpi4j-utils/src/docs/asciidoc/components` under either input or output components.
+    ** Add the file here: `pi4micronaut-utils/src/docs/asciidoc/components` under either input or output components.
