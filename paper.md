@@ -38,7 +38,7 @@ applications for their research leveraging the Raspberry Pi platform. This softw
 Raspberry Pi, providing an interface between the high-level Micronaut framework and the low-level hardware control 
 provided by Pi4J. It serves as a vital tool for researchers who wish to use various sensors and electronic components 
 in research. By abstracting the complexity of hardware interactions, Pi4Micronaut allows developers to focus on crafting
-business logic and features, making it easier to bring IoT applications from concept to deployment rapidly.
+logic and features, making it easier to bring IoT applications from concept to deployment rapidly.
 
 
 <!-- Should use this: https://joss.theoj.org/papers/10.21105/joss.02584 as an example. -->
