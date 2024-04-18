@@ -28,7 +28,6 @@ public class HomeAutomation {
     private final LCD1602Helper lcd;
     private final RFidHelper rfid;
     private final LEDHelper led;
-    private final RGBLEDHelper rgb;
     private final PIRSensorHelper pirSensor;
     private final TouchSwitchHelper touchSwitch;
     private final ActiveBuzzerHelper activeBuzzer;
