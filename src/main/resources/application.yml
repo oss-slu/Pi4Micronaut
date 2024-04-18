@@ -117,7 +117,7 @@ pi4j:
       name: UltraSonic Sensor Input
       address: 24
       pull: PULL_DOWN
-      debounce: 3000
+      debounce: 12000
       provider: pigpio-digital-input
   # end::digitalInput[]
 
