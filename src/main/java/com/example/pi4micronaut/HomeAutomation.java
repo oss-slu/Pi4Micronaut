@@ -85,15 +85,15 @@ public class HomeAutomation {
         this.touchSwitch.addEventListener((e) -> {
             if (this.touchSwitch.isTouched) {
                 // If the system is on and an authorized user touches the sensor, shut off the system
-                if (this.isSystemOn && this.authorized) {
+                if (this.isSystemOn) {
                     if (this.authorized) {
                         this.shutdown();
                     }
                     else {
                         log.info("!! UNAUTHORIZED USER !!");
                     }
-                    // If system is off, turn on system
-                } else {
+                // If system is off, turn on system
+                } else if (!this.isSystemOn){
                     log.info("!! SYSTEM ON !!");
                     this.isSystemOn = true;
                     this.authorized = false;
@@ -175,14 +175,13 @@ public class HomeAutomation {
 
                 if (!this.isThreadRunning) {
                     log.info("!! STOPPING ULTRASONIC THREAD !!");
-                    this.authorized = false;
                     this.isNearby = false;
                     this.isSonicActive = false;
                     this.ultraSonicSensor.stopMeasuring();
                     break;
                 }
 
-                // Checks if active buzzer is on (if someone is within 1m of sensor)
+                // Checks if active buzzer is on (if someone is within 20 cm of sensor)
                 if ( alarmOn ) {
                     // Read data from RFID scanner
                     String data = this.rfid.readFromCard().toString();
@@ -198,9 +197,9 @@ public class HomeAutomation {
                         this.led.ledOn();
                         this.activeBuzzer.activeBuzzerOn();
                     }
-                // Check if someone is within 1m of sensor and turn on alarm if true
-                } else if ( ultraSonicSensor.getDistanceInCentimeter() < 10 ) {
-                    log.info("!! PERSON DETECTED WITHIN 1M !!");
+                // Check if someone is within 20 cm of sensor and turn on alarm if true
+                } else if ( ultraSonicSensor.getDistanceInCentimeter() < 20 ) {
+                    log.info("!! PERSON DETECTED WITHIN 20 CM !!");
                     this.alarmOn = true;
                     this.activeBuzzer.activeBuzzerOff();
                 }
@@ -253,7 +252,7 @@ public class HomeAutomation {
 
     // Shuts down Home Automation System
     private void shutdown() {
-        log.info("!! SYSTEM OFF !!\nHome Automation System turned OFF (allegedly");
+        log.info("!! SYSTEM OFF !!");
         this.isSystemOn = false;
         this.pirSensor.removeEventListener();
         this.ultraSonicSensorThread.interrupt();
