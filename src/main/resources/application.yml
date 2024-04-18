@@ -111,7 +111,7 @@ pi4j:
       name: PIR Sensor
       address: 13
       pull: PULL_DOWN
-      debounce: 200000
+      debounce: 30000
       provider: pigpio-digital-input
     ultra-sonic-echo:
       name: UltraSonic Sensor Input
