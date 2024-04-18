@@ -10,15 +10,6 @@ authors:
 - name: Adrian Swindle
   equal-contrib: true
   affiliation: 1
-- name: Alex Delgado
-  equal-contrib: true
-  affiliation: 1
-- name: Joe Folen
-  equal-contrib: true
-  affiliation: 1
-- name: John Yanev
-  equal-contrib: true
-  affiliation: 1
 - name: Ruthvik Mannem
   equal-contrib: true
   affiliation: 1
@@ -39,6 +30,15 @@ Raspberry Pi, providing an interface between the high-level Micronaut framework 
 provided by Pi4J. It serves as a vital tool for researchers who wish to use various sensors and electronic components 
 in research. By abstracting the complexity of hardware interactions, Pi4Micronaut allows developers to focus on crafting
 logic and features, making it easier to bring IoT applications from concept to deployment rapidly.
+
+Pi4Micronaut's utilization of the Micronaut framework allows for HTTP requests to interact with the software. These 
+requests then can be handled application's controller which can use the helper classes provided by Pi4Micronaut. These
+helper classes then interact with the connected hardware components by utilizing Pi4J's utilities. By providing the 
+abstraction between the utilities of Pi4J and the developer, the developer will have less to worry during development.
+Pi4Micronaut being built on Micronaut, allows for the easy creation of a server-like application that handles HTTP requests. 
+These requests can come from anyone on the same Wi-Fi network. This allows for multiple people to interact with the instruments
+that are connected to the Raspberry Pi. For a developer, Pi4Micronaut fills the need of a Java framework for IoT applications.
+
 
 
 
@@ -63,7 +63,7 @@ The repository can be found [here](https://github.com/oss-slu/Pi4Micronaut). How
 
 # Library
 
-The following is the list of the currently supported hardware:
+The following is the list of the currently supported hardware components:
 * Push Button
 * Slide Switch
 * Rotary Encoder
@@ -78,6 +78,11 @@ The following is the list of the currently supported hardware:
 * PIR Motion Sensor
 * Ultrasonic Sensor
 
+
+# Acknowledgments
+
+Thank you to Alex Delgado, Joe Folen, and John Yanev for helping create the first full release of Pi4Micronaut. To the 
+previous team who set the groundwork for us and set us up for the successful release of 1.0. A big thank you to Jeff Brown from the Unity Foundation for overseeing and supporting this project.
 
 
 # References
