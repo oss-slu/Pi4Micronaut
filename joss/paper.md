@@ -57,9 +57,11 @@ of a Raspberry Pi, eliminates the hassle and cost of needing a full computer for
 
 # Availability and Usage
 
-The Pi4Micronaut library package can be found [here](https://central.sonatype.com/artifact/io.github.oss-slu/pi4micronaut-utils).
-The repository can be found [here](https://github.com/oss-slu/Pi4Micronaut). How to use Pi4Micronaut can be found in the documentation [here](https://oss-slu.github.io/Pi4Micronaut/).
+* [Pi4Micronaut library package](https://central.sonatype.com/artifact/io.github.oss-slu/pi4micronaut-utils).
+* [Repository](https://github.com/oss-slu/Pi4Micronaut)
+* [Documentation](https://oss-slu.github.io/Pi4Micronaut/).
 
+A [check-in system](https://github.com/oss-slu/SLU_OSS_CheckIn) and a simple [security system](https://github.com/oss-slu/Pi4Micronaut/tree/Home_Automation) were created as examples for how to use this library. 
 
 # Library
 
@@ -82,7 +84,8 @@ The following is the list of the currently supported hardware components:
 # Acknowledgments
 
 Thank you to Alex Delgado, Joe Folen, and John Yanev for helping create the first full release of Pi4Micronaut. To the 
-previous team who set the groundwork for us and set us up for the successful release of 1.0. A big thank you to Jeff Brown from the Unity Foundation for overseeing and supporting this project.
+previous team who set the groundwork for us and set us up for the successful release of 1.0. A big thank you to 
+Jeff Brown from the Unity Foundation for overseeing and supporting this project. A final thank you to Open Source with SLU for funding and supporting the project.
 
 
 # References
