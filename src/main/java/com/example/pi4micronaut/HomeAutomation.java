@@ -134,7 +134,7 @@ public class HomeAutomation {
     private void initialize() {
 
         this.led.ledOn();
-        this.activeBuzzer.activeBuzzerOn();
+        this.activeBuzzer.activeBuzzerOff();
 
         this.systemMonitorThread = new Thread(() -> {
             while (true) {
@@ -145,6 +145,7 @@ public class HomeAutomation {
                     this.led.ledOff();
                     this.isSonicActive = true;
                     this.isThreadRunning = true;
+                    this.alarmOn = false;
                     this.buildUltraSonicThread();
 
                 } else if (!this.isNearby) {
@@ -194,13 +195,13 @@ public class HomeAutomation {
                         this.authorized = true;
                         this.lcd.writeText("Hello " + data);
                         this.led.ledOn();
-                        this.activeBuzzer.activeBuzzerOn();
+                        this.activeBuzzer.activeBuzzerOff();
                     }
                 // Check if someone is within 20 cm of sensor and turn on alarm if true
                 } else if ( ultraSonicSensor.getDistanceInCentimeter() < 20 ) {
                     log.info("!! PERSON DETECTED WITHIN 20 CM !!");
                     this.alarmOn = true;
-                    this.activeBuzzer.activeBuzzerOff();
+                    this.activeBuzzer.activeBuzzerOn();
                 }
                 try { Thread.sleep(100); }
                 catch (InterruptedException e) { log.error("cant sleep :(", e); }
