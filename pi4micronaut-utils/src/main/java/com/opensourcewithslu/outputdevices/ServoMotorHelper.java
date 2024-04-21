@@ -50,15 +50,14 @@ public class ServoMotorHelper {
 
     private float map(float value, float inMax, float outMin, float outMax)
     {
-        return ((outMax - outMin) * (value)) / ((inMax) + outMin);
+        return ((outMax - outMin) * (value - (float) ServoMotorHelper.MIN_ANGLE)) / ((inMax - (float) ServoMotorHelper.MIN_ANGLE) + outMin);
     }
 
     /**
      * Takes the angle as input and rotates the servo motor by that amount (between 0 and 180 degrees).
      * @param angle An integer type
      */
-    public void setAngle(int angle)
-    {
+    public void setAngle(int angle) {
         if (!isEnabled)
         {
             log.info("You must enable the servo motor first.");
@@ -77,5 +76,11 @@ public class ServoMotorHelper {
         log.info("Setting servo to {} degrees, Pulse Width: {} us, Duty Cycle: {}%", angle, pulseWidth, dutyCycle);
 
         servoMotor.on(dutyCycle, FREQUENCY);
+
+        try{
+            Thread.sleep(1000); //Allow a full second for servo to rotate
+        } catch (InterruptedException e){
+            Thread.currentThread().interrupt();
+        }
     }
 }
