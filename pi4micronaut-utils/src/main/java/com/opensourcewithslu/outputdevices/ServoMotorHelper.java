@@ -10,7 +10,13 @@ import org.slf4j.LoggerFactory;
 public class ServoMotorHelper {
 
     private static final Logger log = LoggerFactory.getLogger(ServoMotorHelper.class);
-
+    private static final int FREQUENCY = 50; // Frequency for PWM signal in Hz
+    private static final int PWM_CYCLE_MICROSECONDS = 2000; // Total cycle length in microseconds
+    private static final int MIN_ANGLE = 0;
+    private static final int MAX_ANGLE = 180;
+    private static final int SERVO_MIN_PULSE = 500; // Minimum pulse width in microseconds (0.5ms for 0 degrees)
+    private static final int SERVO_MAX_PULSE = 2500; // Maximum pulse width in microseconds (2.5ms for 180 degrees)
+    private boolean isEnabled = false; // State tracking variable for the servo motor
     private final Pwm servoMotor;
 
     /**
@@ -27,9 +33,9 @@ public class ServoMotorHelper {
      */
     public void enable()
     {
-        log.info("enabling servo motor");
-
-        servoMotor.on(0, 50);
+        log.info("Enabling servo motor");
+        servoMotor.on(0, FREQUENCY);
+        isEnabled = true;
     }
 
     /**
@@ -37,9 +43,9 @@ public class ServoMotorHelper {
      */
     public void disable()
     {
-        log.info("disabling servo motor");
-
+        log.info("Disabling servo motor");
         servoMotor.off();
+        isEnabled = false;
     }
 
     private float map(float value, int inMax, int outMin, int outMax)
@@ -51,24 +57,19 @@ public class ServoMotorHelper {
      * Takes the angle as input and rotates the servo motor by that amount (between 0 and 180 degrees).
      * @param angle An integer type
      */
-    public void setAngle(int angle)
-    {
-        if (servoMotor.isOff())
-        {
+    public void setAngle(int angle) {
+        if (!isEnabled) {
             log.info("You must enable the servo motor first.");
             return;
         }
-        log.info("Rotating the servo motor by " + angle + " degrees.");
-
-        int MIN_ANGLE = 0;
-        int MAX_ANGLE = 180;
-        int SERVO_MIN_PULSE = 500;
-        int SERVO_MAX_PULSE = 2500;
 
         angle = Math.max(MIN_ANGLE, Math.min(MAX_ANGLE, angle));
-        float pulse = map(angle, MAX_ANGLE, SERVO_MIN_PULSE, SERVO_MAX_PULSE);
-        float pwm = map(pulse, 20000, 0, 100);
 
-        servoMotor.setDutyCycle(pwm);
+        float pulseWidth = map(angle, MAX_ANGLE, SERVO_MIN_PULSE, SERVO_MAX_PULSE);
+        float dutyCycle = map(pulseWidth, PWM_CYCLE_MICROSECONDS, 0, 100);
+
+        log.info("Setting servo to {} degrees, Pulse Width: {} us, Duty Cycle: {}%", angle, pulseWidth, dutyCycle);
+
+        servoMotor.on(dutyCycle);
     }
 }
