@@ -86,14 +86,28 @@ public class HomeAutomation {
                 // If the system is on and an authorized user touches the sensor, shut off the system
                 if (this.isSystemOn) {
                     if (this.authorized) {
-                        this.shutdown();
+                        String data = this.rfid.readFromCard().toString();
+
+                        // If authorized user, then turn off alarm welcome the user, and
+                        // allow for the system to be turned off from touch sensor
+                        if ( this.users.contains(data) ) {
+                            this.lcd.writeText("SYSTEM OFF");
+                            this.shutdown();
+                        }
                     }
                     else {
+                        this.lcd.writeText("UNAUTHORIZED USER");
                         log.info("!! UNAUTHORIZED USER !!");
+                        try { Thread.sleep(3000); }
+                        catch (InterruptedException e) { log.error("cant sleep :(", e); }
+                        this.lcd.clearDisplay();
+
                     }
                 // If system is off, turn on system
                 } else if (!this.isSystemOn){
                     log.info("!! SYSTEM ON !!");
+                    this.lcd.setBackLight(true);
+                    this.lcd.writeText("SYSTEM ON");
                     this.isSystemOn = true;
                     this.authorized = false;
                     this.startup();
@@ -107,10 +121,11 @@ public class HomeAutomation {
     // Adds new authorized user to home automation system
     @Get("/addUser/{userID}")
     public void addUser(String userID) {
-        log.info("USER ADDED YAY! :D");
+
         if ( !this.users.contains(userID) ) {
-            this.users.add(userID);
             this.rfid.writeToCard(userID);
+            this.users.add(userID);
+            log.info("!! USER ADDED !!");
         }
     }
 
@@ -118,8 +133,8 @@ public class HomeAutomation {
     // Removes user from home automation system
     @Get("/removeUser/{userID}")
     public void removeUser(String userID) {
-        log.info("USER REMOVED YAY! :D");
         this.users.remove(userID);
+        log.info("!! USER REMOVED !!");
     }
 
 
@@ -135,6 +150,7 @@ public class HomeAutomation {
 
         this.led.ledOn();
         this.activeBuzzer.activeBuzzerOn();
+        this.lcd.setBackLight(false);
 
         this.systemMonitorThread = new Thread(() -> {
             while (true) {
@@ -236,8 +252,6 @@ public class HomeAutomation {
             }
 
             if ( this.pirSensor.isMoving ) {
-                try { Thread.sleep(0); }
-                catch (InterruptedException e) { log.error("cant sleep :(", e); }
                 this.isNearby = true;
 
             // If no motion is sensed, notify system that nobody is nearby
@@ -255,5 +269,9 @@ public class HomeAutomation {
         this.isSystemOn = false;
         this.pirSensor.removeEventListener();
         this.ultraSonicSensorThread.interrupt();
+        try { Thread.sleep(3000); }
+        catch (InterruptedException e) { log.error("cant sleep :(", e); }
+        this.lcd.clearDisplay();
+        this.lcd.setBackLight(false);
     }
 }
