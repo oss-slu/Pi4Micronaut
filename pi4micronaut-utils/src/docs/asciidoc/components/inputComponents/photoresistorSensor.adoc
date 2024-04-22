@@ -16,7 +16,7 @@ https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs
 
 
 ===== Overview
-This section provides the details of the PhotoResistor Sensor, also known as the light sensor, circuit, including its components, assembly instructions, and functionality.
+This section provides the details of the PhotoResistor Sensor including its components, assembly instructions, and functionality.
 
 ===== Components
 * 1 x RaspberryPi
@@ -27,7 +27,7 @@ This section provides the details of the PhotoResistor Sensor, also known as the
 * 1 x Capacitor (10µf)
 * 2 x 10KΩ Resistor
 * 4 Jumper Wires
-* Power source (appropriate voltage, typically 3.3V or 5V)
+* Power source
 
 
 ===== Assembly Instructions
@@ -80,17 +80,19 @@ $curl http://localhost:8080/photoResistor/disable
 $curl http://localhost:8080/photoResistor/threshold/i
 ----
 
-* `/threshold/{i}` - Sets the threshold for which the LED will turn on.
+* `/threshold/{i}` - Sets the threshold for the darkness.
 
 ===== Troubleshooting
 LED not lighting:
-    * Verify that the appropriate resistors are being used (220Ω)
-    * Double check the power source
+
+* Verify that the appropriate resistors are being used (220Ω)
+* Double check the power source
 
 PhotoResistor not working:
-    * Ensure that the darkness level is appropriately set
-    * Verify the PhotoResistor is correctly placed into the breadboard
-    * Verify the correct resistor is used (10KΩ)
+
+* Ensure that the darkness level is appropriately set
+* Verify the PhotoResistor is correctly placed into the breadboard
+* Verify the correct resistor is used (10KΩ)
 
 ===== YAML Configuration
 The PhotoResistor as it appears in the YAML file:
@@ -105,6 +107,14 @@ The PhotoResistor as it appears in the YAML file:
       pull: PULL_DOWN                     # <.>
       provider: pigpio-digital-input      # <.>
 
+  digital-output:
+    photo-resistor-output:
+      name: Photo Resistor Output
+      address: 27
+      shutdown: LOW
+      initial: HIGH
+      provider: pigpio-digital-output
+
 ----
 
 
@@ -112,7 +122,7 @@ The PhotoResistor as it appears in the YAML file:
 To see the constructor and methods of the PhotoResistorHelper class see our java doc link:https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/inputdevices/PhotoResistorHelper.html[here] for more details.
 
 
-===== Example
+===== Example Controller
 
 ====== This controller sets up the photoresistor sensor
 
