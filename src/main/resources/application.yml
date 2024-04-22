@@ -48,7 +48,7 @@ pi4j:
       shutdown: 0
     passive-buzzer:
       name: passive-buzzer
-      address: 17
+      address: 26
       pwmType: SOFTWARE
       provider: pigpio-pwm
       initial: 0
@@ -117,7 +117,7 @@ pi4j:
       name: UltraSonic Sensor Input
       address: 24
       pull: PULL_DOWN
-      debounce: 3000
+      debounce: 12000
       provider: pigpio-digital-input
   # end::digitalInput[]
 
