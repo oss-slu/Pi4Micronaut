@@ -125,6 +125,7 @@ public class HomeAutomation {
         if ( !this.users.contains(userID) ) {
             this.rfid.writeToCard(userID);
             this.users.add(userID);
+            this.lcd.writeText("USER ADDED");
             log.info("!! USER ADDED !!");
         }
     }
@@ -134,6 +135,7 @@ public class HomeAutomation {
     @Get("/removeUser/{userID}")
     public void removeUser(String userID) {
         this.users.remove(userID);
+        this.lcd.writeText("USER REMOVED");
         log.info("!! USER REMOVED !!");
     }
 
@@ -206,6 +208,8 @@ public class HomeAutomation {
                     // allow for the system to be turned off from touch sensor
                     if ( this.users.contains(data) ) {
                         log.info("!! AUTHORIZED USER: TURN OFF BUZZER !!");
+                        this.lcd.writeTextAtLine("AUTHORIZED USER", 0);
+                        this.lcd.writeTextAtLine("TURNING OFF BUZZER", 1);
                         this.isThreadRunning = false;
                         this.alarmOn = false;
                         this.authorized = true;
@@ -216,6 +220,8 @@ public class HomeAutomation {
                 // Check if someone is within 20 cm of sensor and turn on alarm if true
                 } else if ( ultraSonicSensor.getDistanceInCentimeter() < 20 ) {
                     log.info("!! PERSON DETECTED WITHIN 20 CM !!");
+                    this.lcd.writeTextAtLine("PERSON DETECTED", 0);
+                    this.lcd.writeTextAtLine("WITHIN 20 CM", 1);
                     this.alarmOn = true;
                     this.activeBuzzer.activeBuzzerOn();
                 }
