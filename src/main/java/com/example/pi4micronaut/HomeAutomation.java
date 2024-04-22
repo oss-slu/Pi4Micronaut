@@ -99,7 +99,7 @@ public class HomeAutomation {
                         this.lcd.writeText("UNAUTHORIZED USER");
                         log.info("!! UNAUTHORIZED USER !!");
                         try { Thread.sleep(3000); }
-                        catch (InterruptedException e) { log.error("cant sleep :(", e); }
+                        catch (InterruptedException f) { log.error("cant sleep :(", f); }
                         this.lcd.clearDisplay();
 
                     }
