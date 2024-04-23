@@ -32,8 +32,8 @@ This section provides the details of the PhotoResistor Sensor including its comp
 
 ===== Assembly Instructions
 * Place the PhotoResistor onto the breadboard.
-* Place the LED onto the breadboard with the Cathode in the negative side. The Anode will be place onto the breadboard
-* Place a 220Ω resistor next to the anode of the LED, then place the other pin on other side of the breadboard.
+* Place the LED onto the breadboard with the Cathode pin in the negative side of the breadboard. The Anode pin will be placed onto the main section of the breadboard.
+* Place a 220Ω resistor next to the anode pin of the LED, then place the other pin in line on the main section of the breadboard.
 * Place one side of the Capacitor onto the negative side of the breadboard.
 * Place the other side of the Capacitor into the breadboard inline with a jumper wire and a 10KΩ Resistor.
 * Place the PhotoResistor Sensor onto the breadboard inline with the Capacitor, 10KΩ Resistor. The PhotoResistor should have a 10KΩ pin on either side of its' pins.
@@ -45,7 +45,7 @@ This section provides the details of the PhotoResistor Sensor including its comp
 
 ===== Circuit Diagram
 
-image::photoresistor-CD.png[]
+image::photoResistor-CD.png[]
 
 ===== Functionality
 PhotoResistor is a DigitalInput and DigitalOutput type that controls the LED's behavior based on changes in light intensity.
