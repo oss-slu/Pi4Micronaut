@@ -10,6 +10,7 @@ import io.micronaut.http.annotation.Post;
 import jakarta.inject.Named;
 import javax.validation.constraints.Positive;
 
+//tag::ex[]
 @Controller("/photoResistor")
 public class PhotoResistorController {
     private final LEDHelper ledHelper;
@@ -56,3 +57,4 @@ public class PhotoResistorController {
     }
 
 }
+//end::ex[]

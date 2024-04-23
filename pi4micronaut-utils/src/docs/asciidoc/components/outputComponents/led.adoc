@@ -39,7 +39,7 @@ This section provides details of the LED, including its components and assembly 
 
 ===== Circuit Diagram
 
-image::LED_circuit.png[]
+image::LED-CD.png[]
 
 ===== Functionality
 LED can be turned on or off, switch state and set to blink for the provided  duration in milliseconds.
