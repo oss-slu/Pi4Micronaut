@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.18">
-<title>Active Buzzer</title>
+<title>PhotoResistor Sensor</title>
 <style>
 body {
 	font-family: sans-serif;
@@ -209,14 +209,14 @@ th {
 </div>
 <div id="content">
 <div class="sect3">
-<h4 id="_active_buzzer">Active Buzzer</h4>
+<h4 id="_photoresistor_sensor">PhotoResistor Sensor</h4>
 <div class="paragraph text-right">
-<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/outputComponents/activebuzzer.adoc">Improve this doc</a></p>
+<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/inputComponents/photoresistorSensor.adoc">Improve this doc</a></p>
 </div>
 <div class="sect4">
 <h5 id="_overview">Overview</h5>
 <div class="paragraph">
-<p>This section provides details of the Active Buzzer, including the components and assembly instructions. The Active Buzzer only emits one frequency, as described in the code, to play various sounds.</p>
+<p>This section provides the details of the PhotoResistor Sensor including its components, assembly instructions, and functionality.</p>
 </div>
 </div>
 <div class="sect4">
@@ -230,22 +230,25 @@ th {
 <p>1 x Breadboard</p>
 </li>
 <li>
-<p>1 x T-extension Board</p>
+<p>1 x LED</p>
 </li>
 <li>
-<p>1 x Active Buzzer</p>
+<p>1 x PhotoResistor Sensor</p>
 </li>
 <li>
-<p>6 x Jumper wires</p>
+<p>1 x 220Ω Resistor</p>
 </li>
 <li>
-<p>1 x Resistor (1KΩ)</p>
+<p>1 x Capacitor (10µf)</p>
 </li>
 <li>
-<p>1 x S8550 PNP Transistor</p>
+<p>2 x 10KΩ Resistor</p>
 </li>
 <li>
-<p>Power source (appropriate voltage, typically 3.3V)</p>
+<p>4 Jumper Wires</p>
+</li>
+<li>
+<p>Power source</p>
 </li>
 </ul>
 </div>
@@ -255,34 +258,37 @@ th {
 <div class="ulist">
 <ul>
 <li>
-<p>Place the Active Buzzer onto the Breadboard.</p>
+<p>Place the PhotoResistor onto the breadboard.</p>
 </li>
 <li>
-<p>Place the 1KΩ resistor onto the Breadboard, must be inline with base pin of S8550 PNP Transistor.</p>
+<p>Place the LED onto the breadboard with the Cathode pin in the negative side of the breadboard. The Anode pin will be placed onto the main section of the breadboard.</p>
 </li>
 <li>
-<p>Place the S8550 PNP Transistor onto the BreadBoard.</p>
+<p>Place a 220Ω resistor next to the anode pin of the LED, then place the other pin in line on the main section of the breadboard.</p>
 </li>
 <li>
-<p>The Active Buzzer will have two pins. The longer pin is the anode (+) while the shorter is the cathode(-).</p>
+<p>Place one side of the Capacitor onto the negative side of the breadboard.</p>
 </li>
 <li>
-<p>Connect a jumper wire from GND to (-) negative side</p>
+<p>Place the other side of the Capacitor into the breadboard inline with a jumper wire and a 10KΩ Resistor.</p>
 </li>
 <li>
-<p>Connect a jumper wire from 3.3V to (+) positive side.</p>
+<p>Place the PhotoResistor Sensor onto the breadboard inline with the Capacitor, 10KΩ Resistor. The PhotoResistor should have a 10KΩ pin on either side of its' pins.</p>
 </li>
 <li>
-<p>Connect a jumper wire from GPIO 17 to the 1KΩ resistor</p>
+<p>The 10KΩ resistor pin should then be placed in line away from the PhotoResistor pins.</p>
 </li>
 <li>
-<p>Connect jumper wire from positive side to positive end of Active Buzzer.</p>
+<p>Place a jumper wire from GND pin to the negative side of the board.</p>
 </li>
 <li>
-<p>Connect jumper wire from negative end of Active Buzzer to emitter pin of S8550 PNP Transistor.</p>
+<p>Place a jumper wire from GPIO4 next to the positive pin of the Capacitor and the 10KΩ Resistor.</p>
 </li>
 <li>
-<p>Connect jumper wire from negative side to collector pin of S8550 PNP Transistor.</p>
+<p>Place a jumper wire from GPIO17 and place it next to the 220Ω Resistor</p>
+</li>
+<li>
+<p>Place a jumper wire from GPIO27 to the pin of the 10KΩ.</p>
 </li>
 </ul>
 </div>
@@ -291,144 +297,140 @@ th {
 <h5 id="_circuit_diagram">Circuit Diagram</h5>
 <div class="imageblock">
 <div class="content">
-<img src="../../img/active_buzzer-CD.png" alt="active buzzer CD">
-</div>
-</div>
-<div class="paragraph">
-<p><strong>Schematic Diagram</strong></p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../../img/buzzer-SD.png" alt="buzzer SD">
+<img src="../../img/photoResistor-CD.png" alt="photoResistor CD">
 </div>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_functionality">Functionality</h5>
 <div class="paragraph">
-<p>Active Buzzer is PWM type and emits a beep tone, intermittent tone and a morseCode tone based on the frequency and the time interval.</p>
-</div>
-<div class="paragraph">
-<p><strong>Note:</strong> If you use transistor in the circuit, it swaps the functionalities of the buzzer i.e., if you enable the buzzer, it actually disables it and vice versa.</p>
+<p>PhotoResistor is a DigitalInput and DigitalOutput type that controls the LED&#8217;s behavior based on changes in light intensity.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_testing_the_circuit">Testing the circuit</h5>
+<h5 id="_testing">Testing</h5>
 <div class="paragraph">
 <p>Use the below command to test the component.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$curl http://localhost:8080/active-buzzer/enable</code></pre>
+<pre class="highlight"><code class="language-bash" data-lang="bash">$curl http://localhost:8080/photoResistor/enable</code></pre>
 </div>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>/enable</code>  - Turns the Active Buzzer on.</p>
+<p><code>/enable</code> - Initializes the PhotoResistor</p>
 </li>
 </ul>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$curl http://localhost:8080/active-buzzer/disable</code></pre>
+<pre class="highlight"><code class="language-bash" data-lang="bash">$curl http://localhost:8080/photoResistor/getDarkness</code></pre>
 </div>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>/disable</code> - Turns the Active Buzzer off.</p>
+<p><code>/getDarkness</code> - returns the darkness level</p>
 </li>
 </ul>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$curl http://localhost:8080/active-buzzer/beepTone</code></pre>
+<pre class="highlight"><code class="language-bash" data-lang="bash">$curl http://localhost:8080/photoResistor/disable</code></pre>
 </div>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>/beepTone</code> - Emits a beep sound from the Active Buzzer.</p>
+<p><code>/disable</code> - Disables the photoresistor</p>
 </li>
 </ul>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$curl http://localhost:8080/active-buzzer/intermittentTone</code></pre>
+<pre class="highlight"><code class="language-bash" data-lang="bash">$curl http://localhost:8080/photoResistor/threshold/i</code></pre>
 </div>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>/intermittentTone</code> - Emits an intermittent tone from the Active Buzzer. The total duration is twenty seconds: ten seconds of sound and ten seconds of silence.</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$curl http://localhost:8080/active-buzzer/morseCode</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>/morseCode</code> - Emits the word "pi" in morse code.</p>
+<p><code>/threshold/{i}</code> - Sets the threshold for the darkness.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_troubleshooting">Troubleshooting</h5>
+<div class="paragraph">
+<p>LED not lighting:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>Active Buzzer not creating sound:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Double check power source</p>
+<p>Verify that the appropriate resistors are being used (220Ω)</p>
 </li>
 <li>
-<p>Verify that 1K resistor is used</p>
-</li>
-<li>
-<p>Verify all wires are in appropriate slots.</p>
+<p>Double check the power source</p>
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>PhotoResistor not working:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Ensure that the darkness level is appropriately set</p>
+</li>
+<li>
+<p>Verify the PhotoResistor is correctly placed into the breadboard</p>
+</li>
+<li>
+<p>Verify the correct resistor is used (10KΩ)</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_yaml_configuration">YAML Configuration</h5>
+<div class="paragraph">
+<p>The PhotoResistor as it appears in the YAML file:</p>
+</div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-yaml" data-lang="yaml">pwm:
-  active-buzzer:
-    name: active-buzzer
-    address: 17
-    pwmType: SOFTWARE
-    provider: pigpio-pwm
-    initial: 0
-    shutdown: 0</code></pre>
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">  digital-input:
+    photo-resistor-input:                 # <b class="conum">(1)</b>
+      name: Photo Resistor Input          # <b class="conum">(2)</b>
+      address: 4                          # <b class="conum">(3)</b>
+      debounce: 100000                    # <b class="conum">(4)</b>
+      pull: PULL_DOWN                     # <b class="conum">(5)</b>
+      provider: pigpio-digital-input      # <b class="conum">(6)</b>
+
+  digital-output:
+    photo-resistor-output:
+      name: Photo Resistor Output
+      address: 27
+      shutdown: LOW
+      initial: HIGH
+      provider: pigpio-digital-output</code></pre>
 </div>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_constructor_and_methods">Constructor and Methods</h5>
 <div class="paragraph">
-<p>The constructor and the methods within the ActiveBuzzerHelper class can be seen in our javadoc <a href="https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/outputdevices/ActiveBuzzerHelper.html">here</a>.</p>
+<p>To see the constructor and methods of the PhotoResistorHelper class see our java doc <a href="https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/inputdevices/PhotoResistorHelper.html">here</a> for more details.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_example_controller">Example Controller</h5>
 <div class="sect5">
-<h6 id="_this_controller_uses_the_active_buzzer_to_emit_sound_once_prompted_by_the_commands">This controller uses the Active Buzzer to emit sound once prompted by the commands</h6>
+<h6 id="_this_controller_sets_up_the_photoresistor_sensor">This controller sets up the photoresistor sensor</h6>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">Unresolved directive in activebuzzer.adoc - include::../../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/ActiveBuzzerController.java[tag=ex]</code></pre>
+<pre class="highlight"><code class="language-java" data-lang="java">Unresolved directive in photoresistorSensor.adoc - include::../../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/PhotoResistorController.java[tag=ex]</code></pre>
 </div>
 </div>
 </div>
