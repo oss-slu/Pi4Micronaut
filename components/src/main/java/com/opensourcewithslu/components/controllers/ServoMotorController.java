@@ -6,6 +6,7 @@ import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import jakarta.inject.Named;
 
+//tag::ex[]
 @Controller("/servoMotor")
 public class ServoMotorController {
 
@@ -30,3 +31,4 @@ public class ServoMotorController {
         servoMotorHelper.setAngle(angle);
     }
 }
+//end::ex[]
