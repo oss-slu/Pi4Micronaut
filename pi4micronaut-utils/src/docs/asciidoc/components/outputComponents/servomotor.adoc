@@ -13,10 +13,10 @@ endif::rootpath[]
 
 [.text-right]
 
-Link will go here when controller and helper are pushed[Improve this doc]
+https://github.com/oss-slu-Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/componets/outputComponents/servomotor.adoc[Improve this doc]
 
 ===== Overview
-This section provides details of the Servo Motor, including the components and assembly instructions.
+This section provides details of the Servo Motor, including the components, and assembly instructions.
 
 
 ===== Components
@@ -31,9 +31,9 @@ This section provides details of the Servo Motor, including the components and a
 * Connect a jumper wire to 3.3V
 * Connect a jumper wire to GPIO 18
 * Connect a jumper wire to GND
-* Connect the 3.3V jumper wire to the middle power wire receiver (Color: Red)
-* Connect the GND jumper wire to the right ground wire receiver (Color: Brown or Black)
-* Connect the GPIO 18 jumper wire to the left signal wire receiver (Color: Orange)
+* Connect the 3.3V jumper wire to the power wire receiver (Color: Red)
+* Connect the GND jumper wire to the ground wire receiver (Color: Brown or Black)
+* Connect the GPIO 18 jumper wire to the signal wire receiver (Color: Orange)
 
 
 ===== Circuit Diagram
@@ -90,7 +90,7 @@ pwm:
 ----
 
 ===== Constructor and Methods
-The constructor and the methods within the ServoMotorHelper class can be seen in our javadoc (Link will be provided when helper and controller are merged)
+The constructor and the methods within the ServoMotorHelper class can be seen in our javadoc link:https://oss-slu-github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/outputdevices/ServoMotorHelper.html[here].
 
 ===== Example Controller
 
@@ -98,5 +98,5 @@ The constructor and the methods within the ServoMotorHelper class can be seen in
 
 [source,java]
 ----
-Link will go here
+include::../../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/ServoMotorController.java[tag=ex]
 ----
