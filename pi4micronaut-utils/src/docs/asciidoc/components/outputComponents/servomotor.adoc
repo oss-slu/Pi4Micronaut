@@ -1,0 +1,102 @@
+:imagesdir: img/
+
+ifndef::rootpath[]
+:rootpath: ../../
+endif::rootpath[]
+
+ifdef::rootpath[]
+:imagesdir: {rootpath}{imagesdir}
+endif::rootpath[]
+
+
+==== Servo Motor
+
+[.text-right]
+
+Link will go here when controller and helper are pushed[Improve this doc]
+
+===== Overview
+This section provides details of the Servo Motor, including the components and assembly instructions.
+
+
+===== Components
+* 1 x RaspberryPi
+* 1 x Breadboard
+* 1 x T-extension Board
+* 1 x Servo-Motor
+* 3 x Jumper Wires
+* Power source (appropriate voltage, typically 3.3V)
+
+===== Assembly Instructions
+* Connect a jumper wire to 3.3V
+* Connect a jumper wire to GPIO 18
+* Connect a jumper wire to GND
+* Connect the 3.3V jumper wire to the middle power wire receiver (Color: Red)
+* Connect the GND jumper wire to the right ground wire receiver (Color: Brown or Black)
+* Connect the GPIO 18 jumper wire to the left signal wire receiver (Color: Orange)
+
+
+===== Circuit Diagram
+
+
+*Schematic Diagram*
+
+
+===== Functionality
+Servo motor is a PWM type and will rotate the arm between the angles of 0 to 180 degrees.
+
+===== Testing the Circuit
+Use the below commands to test the component.
+
+[source, bash]
+----
+$curl http://localhost:8080/servoMotor/enable
+----
+
+* `/enable` - Turns the Servo Motor on.
+
+[source, bash]
+----
+$curl http://localhost:8080/servoMotor/disable
+----
+
+* `/disable` - Turns the Servo Motor off.
+
+[source, bash]
+----
+$curl http://localhost:8080/servoMotor/setAngle/{angle}
+----
+
+* `/setAngle/{angle}` - Sets the indicated angle for the Servo Motor.
+
+===== Troubleshooting
+- Servo Motor not rotating:
+    * Verify that all wires are placed into the correct locations on the Breadboard
+    * Verify that the wires are placed correctly into the wire receiver for the Servo Motor
+    * Verify that the Servo Motor is enabled
+
+
+===== YAML Configuration
+[source, yaml]
+----
+pwm:
+ servo-motor:
+      name: Servo Motor
+      address: 18
+      pwmType: SOFTWARE
+      provider: pigpio-pwm
+      initial: 0
+      shutdown: 0
+----
+
+===== Constructor and Methods
+The constructor and the methods within the ServoMotorHelper class can be seen in our javadoc (Link will be provided when helper and controller are merged)
+
+===== Example Controller
+
+====== This controller uses the Servo Motor to move the arm once prompted by the commands
+
+[source,java]
+----
+Link will go here
+----
