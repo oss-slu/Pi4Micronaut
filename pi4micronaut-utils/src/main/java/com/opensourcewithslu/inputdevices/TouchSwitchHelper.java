@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
  */
 public class TouchSwitchHelper {
 
-    private static final Logger log = LoggerFactory.getLogger(SlideSwitchHelper.class);
+    private static final Logger log = LoggerFactory.getLogger(TouchSwitchHelper.class);
 
     private final DigitalInput touchSwitchInput;
 
