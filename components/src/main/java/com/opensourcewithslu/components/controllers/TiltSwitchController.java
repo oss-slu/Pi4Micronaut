@@ -16,7 +16,7 @@ public class TiltSwitchController {
     private final LEDHelper ledHelper;
 
     public TiltSwitchController(@Named("tilt-switch-input")DigitalInput tiltSwitch,
-                                @Named("led")DigitalOutput led) {
+                                @Named("led2")DigitalOutput led) {
         this.tiltSwitchHelper = new TiltSwitchHelper(tiltSwitch);
         this.ledHelper = new LEDHelper(led);
     }
