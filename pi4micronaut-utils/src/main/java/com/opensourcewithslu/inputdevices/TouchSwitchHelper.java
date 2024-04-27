@@ -36,7 +36,7 @@ public class TouchSwitchHelper {
     /**
      * Initializes the listener that keeps track of if the touch switch has been touched or not. It is automatically called when the TouchSwitchHelper is instantiated.
      */
-    public void initialize()
+    private void initialize()
     {
         log.info("Initializing Touch Switch");
 
