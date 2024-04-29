@@ -38,9 +38,11 @@ This section provides details of the Servo Motor, including the components, and 
 
 ===== Circuit Diagram
 
+image::servo-motor_CD.png[]
 
 *Schematic Diagram*
 
+image::servo-motor_SD.png[]
 
 ===== Functionality
 Servo motor is a PWM type and will rotate the arm between the angles of 0 to 180 degrees.
