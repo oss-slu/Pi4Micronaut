@@ -24,21 +24,19 @@ bibliography: paper.bib
 
 # Summary
 
-Pi4Micronaut is an innovative Java library crafted for researchers who aim to create Internet of Things (IoT) 
-applications for their research leveraging the Raspberry Pi platform. This software is designed to run directly on the 
-Raspberry Pi, providing an interface between the high-level Micronaut framework and the low-level hardware control 
-provided by Pi4J. It serves as a vital tool for researchers who wish to use various sensors and electronic components 
-in research. By abstracting the complexity of hardware interactions, Pi4Micronaut allows developers to focus on crafting
-logic and features, making it easier to bring IoT applications from concept to deployment rapidly.
+Pi4Micronaut is a Java library designed specifically to support researchers in integrating various sensors and electronic 
+components into their research instruments and experiments. This library empowers researchers to create Internet of Things
+(IoT) applications that leverage the versatility and affordability of the Raspberry Pi, enabling them to build sophisticated
+research instruments tailored to their specific needs. By running directly on the Raspberry Pi platform, Pi4Micronaut serves
+as a bridge between the high-level Micronaut framework and the low-level hardware control provided by Pi4J.
 
-Pi4Micronaut's utilization of the Micronaut framework allows for HTTP requests to interact with the software. These 
-requests then can be handled application's controller which can use the helper classes provided by Pi4Micronaut. These
-helper classes then interact with the connected hardware components by utilizing Pi4J's utilities. By providing the 
-abstraction between the utilities of Pi4J and the developer, the developer will have less to worry during development.
-Pi4Micronaut being built on Micronaut, allows for the easy creation of a server-like application that handles HTTP requests. 
-These requests can come from anyone on the same Wi-Fi network. This allows for multiple people to interact with the instruments
-that are connected to the Raspberry Pi. For a developer, Pi4Micronaut fills the need of a Java framework for IoT applications.
 
+
+The Micronaut framework, widely used for building web applications and microservices, handles HTTP requests. 
+These requests are then passed to Micronaut's application controller, which is custom code written for each specific web
+application. The application controller can make calls to the Pi4Micronaut library to interact with the hardware components.
+Pi4Micronaut library uses Pi4J for low-level hardware interaction. Thus, Pi4Micronaut provides an abstraction layer between
+Pi4J utilities and Micronaut framework, allowing the developer to focus on the application logic.
 
 
 
