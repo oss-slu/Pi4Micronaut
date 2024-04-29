@@ -89,6 +89,12 @@ pi4j:
       pull: PULL_DOWN
       debounce: 200000
       provider: pigpio-digital-input
+    micro-switch:
+      name: Micro Switch
+      address: 19
+      pull: PULL_DOWN
+      debounce: 200000 #is this debounce correct
+      provider: pigpio-digital-input
     pir-sensor:
       name: PIR Sensor
       address: 13
