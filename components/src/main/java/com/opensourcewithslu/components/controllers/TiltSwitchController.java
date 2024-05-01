@@ -12,8 +12,8 @@ import jakarta.inject.Named;
 @Controller("/tiltSwitch")
 public class TiltSwitchController {
 
-    private final TiltSwitchHelper tiltSwitchHelper;
-    private final LEDHelper ledHelper;
+    private final TiltSwitchHelper tiltSwitchHelper; // controls the tilt switch
+    private final LEDHelper ledHelper; // controls the LED
 
     public TiltSwitchController(@Named("tilt-switch-input")DigitalInput tiltSwitch,
                                 @Named("led2")DigitalOutput led) {
@@ -21,6 +21,8 @@ public class TiltSwitchController {
         this.ledHelper = new LEDHelper(led);
     }
 
+    // The 'enable' method adds an event listener that listens for changes in the tilt switch
+    // If it is tilted, the LED turns on and off otherwise
     @Get("/enable")
     public void enableTiltSwitch() {
         tiltSwitchHelper.addEventListener(e -> {
@@ -33,6 +35,7 @@ public class TiltSwitchController {
         });
     }
 
+    // The disable method removes the event listener
     @Get("/disable")
     public void disableTiltSwitch() {
         tiltSwitchHelper.removeEventListener();
