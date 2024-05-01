@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
  */
 public class TouchSwitchHelper {
 
-    private static final Logger log = LoggerFactory.getLogger(SlideSwitchHelper.class);
+    private static final Logger log = LoggerFactory.getLogger(TouchSwitchHelper.class);
 
     private final DigitalInput touchSwitchInput;
 
@@ -36,7 +36,7 @@ public class TouchSwitchHelper {
     /**
      * Initializes the listener that keeps track of if the touch switch has been touched or not. It is automatically called when the TouchSwitchHelper is instantiated.
      */
-    public void initialize()
+    private void initialize()
     {
         log.info("Initializing Touch Switch");
 

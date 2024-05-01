@@ -101,6 +101,12 @@ pi4j:
       pull: PULL_DOWN
       debounce: 3000
       provider: pigpio-digital-input
+    tilt-switch-input:
+      name: Tilt Switch Input
+      address: 17
+      pull: PULL_DOWN
+      debounce: 5000
+      provider: pigpio-digital-input
   # end::digitalInput[]
 
   # tag::digitalOutput[]
