@@ -113,9 +113,15 @@ pi4j:
       pull: PULL_DOWN
       debounce: 30000
       provider: pigpio-digital-input
-    ultra-sonic-echo:
+    ultra-sonic-echo1:
       name: UltraSonic Sensor Input
       address: 24
+      pull: PULL_DOWN
+      debounce: 3000
+      provider: pigpio-digital-input
+    ultra-sonic-echo2:
+      name: UltraSonic Sensor Input
+      address: 17
       pull: PULL_DOWN
       debounce: 3000
       provider: pigpio-digital-input
@@ -141,9 +147,15 @@ pi4j:
       shutdown: LOW
       initial: HIGH
       provider: pigpio-digital-output
-    ultra-sonic-trig:
+    ultra-sonic-trig1:
       name: UltraSonic Sensor Output
       address: 23
+      shutdown: LOW
+      initial: LOW
+      provider: pigpio-digital-output
+    ultra-sonic-trig2:
+      name: UltraSonic Sensor Output
+      address: 27
       shutdown: LOW
       initial: LOW
       provider: pigpio-digital-output
