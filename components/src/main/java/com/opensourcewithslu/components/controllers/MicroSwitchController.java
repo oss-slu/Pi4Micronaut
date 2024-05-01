@@ -1,9 +1,9 @@
 package com.opensourcewithslu.components.controllers;
 
-//import com.opensourcewithslu.inputdevices.MicroSwitchHelper;
-//import com.opensourcewithslu.outputdevices.LEDHelper;
-//import com.pi4j.io.gpio.digital.DigitalInput;
-//import com.pi4j.io.gpio.digital.DigitalOutput;
+import com.opensourcewithslu.inputdevices.MicroSwitchHelper;
+import com.opensourcewithslu.outputdevices.LEDHelper;
+import com.pi4j.io.gpio.digital.DigitalInput;
+import com.pi4j.io.gpio.digital.DigitalOutput;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import jakarta.inject.Named;
@@ -14,10 +14,12 @@ public class MicroSwitchController {
 
     private final MicroSwitchHelper microSwitchHelper;
 
+    private final LEDHelper ledHelper1;
+    private final LEDHelper ledHelper2;
 
 
     public MicroSwitchController(@Named("micro-switch") DigitalInput microSwitch,
-                                 @Named("led1") DigitalOutput led1,
+                                 @Named("led") DigitalOutput led1,
                                  @Named("led2") DigitalOutput led2) {
         this.microSwitchHelper = new MicroSwitchHelper(microSwitch);
         this.ledHelper1 = new LEDHelper(led1);
