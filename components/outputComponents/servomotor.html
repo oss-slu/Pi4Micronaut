@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.18">
-<title>RFID Scanner</title>
+<title>Servo Motor</title>
 <style>
 body {
 	font-family: sans-serif;
@@ -209,14 +209,14 @@ th {
 </div>
 <div id="content">
 <div class="sect3">
-<h4 id="_rfid_scanner">RFID Scanner</h4>
+<h4 id="_servo_motor">Servo Motor</h4>
 <div class="paragraph text-right">
-<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/inputComponents/rfidScanner.adoc">Improve this doc</a></p>
+<p><a href="https://github.com/oss-slu-Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/componets/outputComponents/servomotor.adoc">Improve this doc</a></p>
 </div>
 <div class="sect4">
 <h5 id="_overview">Overview</h5>
 <div class="paragraph">
-<p>This section provides information regarding the RFID scanner component and its circuit, including assembly instructions.</p>
+<p>This section provides details of the Servo Motor. Specifically, the Micro Servo 9G - SG90, which is a positional servo with a range from 0 to 180 degrees. These details include the components and assembly instructions.</p>
 </div>
 </div>
 <div class="sect4">
@@ -224,19 +224,22 @@ th {
 <div class="ulist">
 <ul>
 <li>
-<p>RFID-RC522</p>
+<p>1 x RaspberryPi</p>
 </li>
 <li>
-<p>RFID key fob</p>
+<p>1 x Breadboard</p>
 </li>
 <li>
-<p>9 x Jumper Wires</p>
+<p>1 x T-extension Board</p>
 </li>
 <li>
-<p>Breadboard</p>
+<p>1 x Servo-Motor</p>
 </li>
 <li>
-<p>Power source (3.3V)</p>
+<p>3 x Jumper Wires</p>
+</li>
+<li>
+<p>Power source (appropriate voltage, typically 3.3V)</p>
 </li>
 </ul>
 </div>
@@ -246,13 +249,22 @@ th {
 <div class="ulist">
 <ul>
 <li>
-<p>Put RFID scanner on breadboard as shown in the diagram below.</p>
+<p>Connect a jumper wire to 3.3V</p>
 </li>
 <li>
-<p>Connect the RFID ground to the ground on the Pi, and connect the 3.3V pin of the RFID scanner to the 3V3 pin of the Pi.</p>
+<p>Connect a jumper wire to GPIO 18</p>
 </li>
 <li>
-<p>Connect the rest of the RFID pins to the corresponding pins on the Pi.</p>
+<p>Connect a jumper wire to GND</p>
+</li>
+<li>
+<p>Connect the 3.3V jumper wire to the SIG pin (Color: Red)</p>
+</li>
+<li>
+<p>Connect the GND jumper wire to the GND pin (Color: Brown or Black)</p>
+</li>
+<li>
+<p>Connect the GPIO 18 jumper wire to the VCC pin (Color: Orange)</p>
 </li>
 </ul>
 </div>
@@ -261,92 +273,117 @@ th {
 <h5 id="_circuit_diagram">Circuit Diagram</h5>
 <div class="imageblock">
 <div class="content">
-<img src="../../img/rfid_circuit.png" alt="rfid circuit">
+<img src="../../img/servo-motor_CD.png" alt="servo motor CD">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Schematic Diagram</strong></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../img/servo-motor_SD.png" alt="servo motor SD">
 </div>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_functionality">Functionality</h5>
 <div class="paragraph">
-<p>RFID Scanner requires RFID tags to work with. We can read/write the data on to the tags using the scanner.</p>
+<p>Servo motor is a PWM type and will rotate the arm between the angles of 0 to 180 degrees.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_testing_the_circuit">Testing the Circuit</h5>
+<div class="paragraph">
+<p>Use the below commands to test the component.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$curl http://localhost:8080/servoMotor/enable</code></pre>
+</div>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>/write/{value}</code>  - Writes {value} to the RFID key fob</p>
+<p><code>/enable</code> - Turns the Servo Motor on.</p>
 </li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$curl http://localhost:8080/servoMotor/disable</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
 <li>
-<p><code>/read</code>           - Scanner will be ready to read the key fob</p>
+<p><code>/disable</code> - Turns the Servo Motor off.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$curl http://localhost:8080/servoMotor/setAngle/{angle}</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>/setAngle/{angle}</code> - Sets the indicated angle for the Servo Motor.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_testing_the_circuit">Testing the Circuit:</h5>
-<div class="paragraph">
-<p>To write to the RFID fob:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>$ curl -X POST http://localhost:8080/rfid/write/HelloThere</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Scan the key fob to write the message to the fob.</p>
-</div>
-<div class="paragraph">
-<p>To read from the RFID fob:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>$ curl http://localhost:8080/rfid/read</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Scan the key fob and the message on the fob will be printed.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>HelloThere</code></pre>
-</div>
-</div>
-</div>
-<div class="sect4">
 <h5 id="_troubleshooting">Troubleshooting</h5>
-<div class="paragraph">
-<p>Make sure everything is connected to the correct pins.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Servo Motor not rotating:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Verify that all wires are placed into the correct locations on the Breadboard</p>
+</li>
+<li>
+<p>Verify that the wires are placed correctly into the wire receiver for the Servo Motor</p>
+</li>
+<li>
+<p>Verify that the Servo Motor is enabled</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_yaml_configuration">YAML Configuration</h5>
-<div class="paragraph">
-<p>The RFID scanner configuration as it appears in the application.yml:</p>
-</div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>spi:
-   rfid:
-      name: MFRC522
-      address: 8
-      baud: 500000
-      reset-pin: 25</code></pre>
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">pwm:
+ servo-motor:
+      name: Servo Motor
+      address: 18
+      pwmType: SOFTWARE
+      provider: pigpio-pwm
+      initial: 0
+      shutdown: 0</code></pre>
 </div>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_constructors_and_methods">Constructors and Methods</h5>
+<h5 id="_constructor_and_methods">Constructor and Methods</h5>
 <div class="paragraph">
-<p>To see the constructor and methods of our RFidHelper class see our javadoc <a href="https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/inputdevices/RFidHelper.html">here</a>
-for more details.</p>
+<p>The constructor and the methods within the ServoMotorHelper class can be seen in our javadoc <a href="https://oss-slu-github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/outputdevices/ServoMotorHelper.html">here</a>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_an_example_controller">An Example Controller</h5>
+<h5 id="_example_controller">Example Controller</h5>
 <div class="sect5">
-<h6 id="_this_controller_uses_the_rfid_scanner_to_write_and_read_to_a_card">This controller uses the RFID scanner to write and read to a card</h6>
+<h6 id="_this_controller_uses_the_servo_motor_to_move_the_arm_once_prompted_by_the_commands">This controller uses the Servo Motor to move the arm once prompted by the commands</h6>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">Unresolved directive in rfidScanner.adoc - include::../../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/RfidController.java[tag=ex]</code></pre>
+<pre class="highlight"><code class="language-java" data-lang="java">Unresolved directive in servomotor.adoc - include::../../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/ServoMotorController.java[tag=ex]</code></pre>
 </div>
 </div>
 </div>
