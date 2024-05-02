@@ -35,12 +35,11 @@ TBD
 
 ===== Circuit Diagram
 
-
-TBD
+image:tiltSwitch_CD.png[]
 
 *Schematic Diagram:*
 
-TBD
+image:tiltSwitch_SD.png[]
 
 ===== Functionality
 
