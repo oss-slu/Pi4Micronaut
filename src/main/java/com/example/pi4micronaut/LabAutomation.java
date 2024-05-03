@@ -33,14 +33,15 @@ public class LabAutomation {
 
     private static final Logger log = LoggerFactory.getLogger(LabAutomation.class);
 
+    // Lab Automation System detects when a mouse enters and leaves a maze and
+    // displays the time it takes for the mouse to complete the maze in seconds.
     public LabAutomation(
             @Named("lcd") I2CConfig lcd,
             @Named("rgb-led") MultipinConfiguration rgb,
             @Named("pir-sensor-1") DigitalInput pirStart,
             @Named("pir-sensor-2") DigitalInput pirEnd,
-            Context pi4j)
-    {
-        this.lcd = new LCD1602Helper(lcd,pi4j);
+            Context pi4j) {
+        this.lcd = new LCD1602Helper(lcd, pi4j);
         this.rgb = new RGBLEDHelper(rgb);
         this.pirStart = new PIRSensorHelper(pirStart);
         this.pirEnd = new PIRSensorHelper(pirEnd);
@@ -48,41 +49,46 @@ public class LabAutomation {
         this.inMaze = false;
         this.timeInMaze = 0;
 
+        // Timer thread: counts and displays how long the mouse has been in the maze in seconds
         this.timer = new Thread(() -> {
 
-            while ( true ) {
+            while (true) {
 
-                try { Thread.sleep(50); }
-                catch (InterruptedException e) { log.error("cant sleep :(", e); }
+                try {
+                    Thread.sleep(50);
+                } catch (InterruptedException e) {
+                    log.error("cant sleep :(", e);
+                }
 
-                if (!this.inMaze ) { continue; }
+                // If the mouse is not in the maze, dont execute the rest of the while block
+                if (!this.inMaze) { continue; }
 
+                // Write to LCD the seconds mouse has been in the maze
                 this.lcd.writeTextAtLine("Current Time:", 1);
                 this.lcd.writeTextAtLine(String.format("%d seconds", this.timeInMaze), 2);
                 this.timeInMaze++;
+
                 this.log.info("Mouse in Maze");
 
-                try { Thread.sleep(950); }
-                catch (InterruptedException e) { log.error("cant sleep :(", e); }
+                try {
+                    Thread.sleep(950);
+                } catch (InterruptedException e) {
+                    log.error("cant sleep :(", e);
+                }
             }
         });
         this.timer.start();
 
     }
 
-    /*
-        For the Lab automation, we are going to assume the mouse maze.
-        The idea of this maze is to figure out how much time the mouse takes to exit the maze.
-        We are going to use 2 ultrasonic sensors at the entry and exit locations.
-        - Start and end time need to be noted based on the ultrasonic sensor's input( should have a threshold of 4 CM).
-        - Subtract end time with the start time to get the time taken by the mouse to exit.
-        - Use LCD to display messages like Mouse entered, mouse left and total time
-     */
-
+    // Enables the Lab Automation system
     @Get("/enable")
     public void enable() {
+
+        // Adds event listener for the motion sensor at the start of the maze
         this.pirStart.addEventListener((event) -> {
 
+            // Detects if mouse has entering the maze
             if ( this.pirStart.isMoving  && !this.inMaze ) {
                 this.timeInMaze = 0;
                 this.inMaze = true;
@@ -94,8 +100,10 @@ public class LabAutomation {
 
         });
 
+        // Adds event listener for the motion sensor at the end of the maze
         this.pirEnd.addEventListener((event) -> {
 
+            // Detects if mouse has exited the maze
             if ( this.pirEnd.isMoving && this.inMaze ) {
                 this.inMaze = false;
                 this.rgb.setGreen(0);
