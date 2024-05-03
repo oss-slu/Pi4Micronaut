@@ -27,8 +27,8 @@ public class LabAutomation {
 
     private Thread timer;
     private boolean inMaze;
-    private int timeInMaze;
     private long startTime;
+    private long currentTime;
     private long endTime;
 
     private static final Logger log = LoggerFactory.getLogger(LabAutomation.class);
@@ -47,7 +47,6 @@ public class LabAutomation {
         this.pirEnd = new PIRSensorHelper(pirEnd);
 
         this.inMaze = false;
-        this.timeInMaze = 0;
 
         // Timer thread: counts and displays how long the mouse has been in the maze in seconds
         this.timer = new Thread(() -> {
@@ -55,7 +54,7 @@ public class LabAutomation {
             while (true) {
 
                 try {
-                    Thread.sleep(50);
+                    Thread.sleep(100);
                 } catch (InterruptedException e) {
                     log.error("cant sleep :(", e);
                 }
@@ -63,18 +62,15 @@ public class LabAutomation {
                 // If the mouse is not in the maze, dont execute the rest of the while block
                 if (!this.inMaze) { continue; }
 
-                // Write to LCD the seconds mouse has been in the maze
-                this.lcd.writeTextAtLine("Current Time:", 1);
-                this.lcd.writeTextAtLine(String.format("%d seconds", this.timeInMaze), 2);
-                this.timeInMaze++;
-
-                this.log.info("Mouse in Maze");
-
-                try {
-                    Thread.sleep(950);
-                } catch (InterruptedException e) {
-                    log.error("cant sleep :(", e);
+                // Calculate how long the mouse has been in the maze and write to LCD display
+                long newTime = System.currentTimeMillis();
+                if ( newTime - this.currentTime >= 1000 ) {
+                    long displayTime = (newTime - this.startTime) / 1000;
+                    this.currentTime = newTime;
+                    this.lcd.writeTextAtLine("Current Time:", 1);
+                    this.lcd.writeTextAtLine(String.format("%d seconds", displayTime), 2);
                 }
+
             }
         });
         this.timer.start();
@@ -90,11 +86,11 @@ public class LabAutomation {
 
             // Detects if mouse has entering the maze
             if ( this.pirStart.isMoving  && !this.inMaze ) {
-                this.timeInMaze = 0;
                 this.inMaze = true;
                 this.rgb.setGreen(255);
                 this.rgb.setRed(0);
                 this.startTime = System.currentTimeMillis();
+                this.currentTime = this.startTime;
                 this.lcd.clearDisplay();
             }
 
@@ -112,6 +108,7 @@ public class LabAutomation {
                 long finishTime = ( this.endTime - this.startTime ) / 1000;
                 this.lcd.writeTextAtLine("Final Time:", 1);
                 this.lcd.writeTextAtLine(String.format("%d seconds", finishTime), 2);
+                this.log.info(String.format("Final Time: %d seconds", finishTime));
             }
         });
     }
