@@ -7,54 +7,6 @@ netty:
       max-order: 3
 
 pi4j:
-  # tag::spi[]
-  spi:
-    rfid:                   # <1>
-      name: MFRC522         # <2>
-      address: 8            # <3>
-      baud: 500000          # <4>
-      reset-pin: 25         # <5>
-  # end::spi[]
-
-  # tag::pwm[]
-  pwm:
-    red-pwm:                  # <1>
-      name: red               # <2>
-      address: 17             # <3>
-      pwmType: SOFTWARE       # <4>
-      provider: pigpio-pwm    # <5>
-      initial: 0              # <6>
-      shutdown: 0             # <7>
-    blue-pwm:
-      name: blue
-      address: 18
-      pwmType: SOFTWARE
-      provider: pigpio-pwm
-      initial: 0
-      shutdown: 0
-    green-pwm:
-      name: green
-      address: 27
-      pwmType: SOFTWARE
-      provider: pigpio-pwm
-      initial: 0
-      shutdown: 0
-    active-buzzer:
-      name: active-buzzer
-      address: 17
-      pwmType: SOFTWARE
-      provider: pigpio-pwm
-      initial: 0
-      shutdown: 0
-    passive-buzzer:
-      name: passive-buzzer
-      address: 17
-      pwmType: SOFTWARE
-      provider: pigpio-pwm
-      initial: 0
-      shutdown: 0
-  # end::pwm[]
-
   # tag::i2c[]
   i2c:
     lcd:                                  # <1>
@@ -65,121 +17,19 @@ pi4j:
 
   # tag::digitalInput[]
   digital-input:
-    photo-resistor-input:                 # <.>
-      name: Photo Resistor Input          # <.>
-      address: 4                          # <.>
-      debounce: 100000                    # <.>
-      pull: PULL_DOWN                     # <.>
-      provider: pigpio-digital-input      # <.>
-    button-input-1:
-      name: Push Button Input
-      address: 16
-      pull: PULL_DOWN
-      debounce: 30
-      provider: pigpio-digital-input
-    button-input-2:
-      name: Push Button Input
-      address: 21
-      pull: PULL_DOWN
-      debounce: 30
-      provider: pigpio-digital-input
-    button-input-3:
-      name: Push Button Input
-      address: 18
-      pull: PULL_DOWN
-      debounce: 30
-      provider: pigpio-digital-input
-    slide-switch-input:
-      name: Slide Switch Input
-      address: 18
-      pull: PULL_DOWN
-      debounce: 3000
-      provider: pigpio-digital-input
-    slide-switch-input-2:
-      name: Slide Switch Input
-      address: 22
-      pull: PULL_DOWN
-      debounce: 3000
-      provider: pigpio-digital-input
-    touch-switch:
-      name: Touch Switch Input
-      address: 17
-      pull: PULL_DOWN
-      debounce: 200000
-      provider: pigpio-digital-input
-    pir-sensor:
+    pir-sensor-1:
       name: PIR Sensor
-      address: 13
+      address: 12
       pull: PULL_DOWN
       debounce: 30000
       provider: pigpio-digital-input
-    ultra-sonic-echo1:
-      name: UltraSonic Sensor Input
-      address: 24
+    pir-sensor-2:
+      name: PIR Sensor
+      address: 16
       pull: PULL_DOWN
-      debounce: 3000
-      provider: pigpio-digital-input
-    ultra-sonic-echo2:
-      name: UltraSonic Sensor Input
-      address: 17
-      pull: PULL_DOWN
-      debounce: 3000
+      debounce: 30000
       provider: pigpio-digital-input
   # end::digitalInput[]
-
-  # tag::digitalOutput[]
-  digital-output:
-    led:                                    # <1>
-      name: LED Output                      # <2>
-      address: 17                           # <3>
-      shutdown: LOW                        # <4>
-      initial: LOW                         # <5>
-      provider: pigpio-digital-output       # <6>
-    led2:
-      name: LED Output
-      address: 26
-      shutdown: HIGH
-      initial: HIGH
-      provider: pigpio-digital-output
-    photo-resistor-output:
-      name: Photo Resistor Output
-      address: 27
-      shutdown: LOW
-      initial: HIGH
-      provider: pigpio-digital-output
-    ultra-sonic-trig1:
-      name: UltraSonic Sensor Output
-      address: 23
-      shutdown: LOW
-      initial: LOW
-      provider: pigpio-digital-output
-    ultra-sonic-trig2:
-      name: UltraSonic Sensor Output
-      address: 27
-      shutdown: LOW
-      initial: LOW
-      provider: pigpio-digital-output
-  # end::digitalOutput[]
-
-  # tag::multiInput[]
-  multi-digital-input:                     # <.>
-    rotary-encoder:                        # <.>
-      name: Rotary Encoder                 # <.>
-      addresses: 27,18,17                  # <.>
-      debounces: 6000,500,500              # <.>
-      pulls: PULL_DOWN,PULL_UP,PULL_UP     # <.>
-      shutdown: LOW                        # <.>
-      initial: HIGH                        # <.>
-      provider: pigpio-digital-input       # <.>
-    rotary-encoder-2:
-      name: Rotary Encoder 2
-      addresses: 12, 16, 20
-      debounces: 6000, 500, 500
-      pulls: PULL_DOWN, PULL_UP, PULL_UP
-      shutdown: LOW
-      initial: HIGH
-      provider: pigpio-digital-input
-  # end::multiInput[]
 
   # tag::multipwm[]
   multi-pwm:
@@ -190,11 +40,4 @@ pi4j:
       provider: pigpio-pwm                      # <.>
       initials: 0, 0, 0                         # <.>
       shutdowns: 0, 0, 0                        # <.>
-    rgb-led-2:
-      name: RGB LED 2
-      addresses: 18, 27, 22
-      pwmTypes: SOFTWARE, SOFTWARE, SOFTWARE
-      provider: pigpio-pwm
-      initials: 0, 0, 0
-      shutdowns: 0, 0, 0
   # end::multipwm[]
