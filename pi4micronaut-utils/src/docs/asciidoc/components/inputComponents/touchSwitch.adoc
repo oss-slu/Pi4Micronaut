@@ -85,11 +85,11 @@ The YAML configuration for the LED is as follows:
 ----
 digital-output:
   led2:
-  name: LED Output
-  address: 26
-  shutdown: HIGH
-  initial: HIGH
-  provider: pigpio-digital-output
+    name: LED Output
+    address: 26
+    shutdown: HIGH
+    initial: HIGH
+    provider: pigpio-digital-output
 ----
 So, the output of the LED is connected to GPIO 26.
 
@@ -99,11 +99,11 @@ The YAML configuration for the touch switch is as follows:
 ----
 digital-input:
   touch-switch-input:
-  name: Touch Switch Input
-  address: 17
-  pull: PULL_DOWN
-  debounce: 200000
-  provider: pigpio-digital-input
+    name: Touch Switch Input
+    address: 17
+    pull: PULL_DOWN
+    debounce: 200000
+    provider: pigpio-digital-input
 ----
 So, the input of the touch switch is connected to GPIO 17.
 

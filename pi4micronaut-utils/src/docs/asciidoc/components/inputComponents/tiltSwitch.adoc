@@ -1,0 +1,121 @@
+:imagesdir: img/
+
+ifndef::rootpath[]
+:rootpath: ../../
+endif::rootpath[]
+
+ifdef::rootpath[]
+:imagesdir: {rootpath}{imagesdir}
+endif::rootpath[]
+
+==== Tilt Switch
+
+[.text-right]
+https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/inputComponents/tiltSwitch.adoc[Improve this doc]
+
+===== Overview
+
+This section provides details of a tilt switch sensor implementation, including its circuit diagram,
+required hardware components, assembly instructions, and functionality.
+
+===== Components
+
+. Tilt switch module
+. LED light
+. 1 x 220Ω resistor
+. 1 x 1kΩ resistor
+. Breadboard
+. Jumper wires
+. Power source
+
+===== Assembly Instructions
+
+. Ground: Place the ground so that it is connected to the tilt switch and the LED
+. Power: Place the power (3.3V) so that power is given to both the LED and tilt switch
+. Resistor (220Ω): Place the 220Ω resistor vertically so that it can connect the LED light to power
+. Resistor (1kΩ): Place the 1kΩ resistor vertically so that it can provide power to the tilt switch
+. Connect a wire from GPIO26 to the LED which is its digital output
+. Attach a wire from GPIO17 to the tilt switch which is its digital input
+
+See the circuit diagram below for more detail.
+
+===== Circuit Diagram
+
+image:tiltSwitch_CD.png[]
+
+*Schematic Diagram:*
+
+image:tiltSwitch_SD.png[]
+
+===== Functionality
+
+When the tilt switch is tilted or its orientation is changed, a metal ball moves inside the capsule
+and opens or closes an electrical circuit, altering the state of the switch.
+Our example showcases a tilt switch and LED which lights up when the tilt switch is enabled and detects a change in orientation.
+
+===== Testing the Circuit
+
+Use the below commands to test the tilt switch.
+
+* `/enable`  - turns on tilt switch
+[source, bash]
+----
+$ curl http://localhost:8080/tiltSwitch/enable
+----
+
+* `/disable` - turns off tilt switch
+[source, bash]
+----
+$ curl http://localhost:8080/tiltSwitch/disable
+----
+
+===== Troubleshooting
+
+- LED not lighting up once it has been enabled and is being tilted:
+. Make sure that the correct GPIO pins are being used for the LED and Tilt Switch as specified in the yml.
+. Confirm that everything is properly secured to the breadboard and is receiving power.
+. Ensure a 220Ω is being used for the LED and 1kΩ resistor for the Tilt Switch.
+
+===== YAML Configuration
+
+The YAML configuration for the LED is as follows:
+
+[source, yaml]
+----
+digital-output:
+  led2:
+    name: LED Output
+    address: 26
+    shutdown: HIGH
+    initial: HIGH
+    provider: pigpio-digital-output
+----
+So, the output of the LED is connected to GPIO 26.
+
+The YAML configuration for the tilt switch is as follows:
+
+[source, yaml]
+----
+digital-input:
+  tilt-switch-input:
+    name: Tilt Switch Input
+    address: 17
+    pull: PULL_DOWN
+    debounce: 5000
+    provider: pigpio-digital-input
+----
+So, the input of the tilt switch is connected to GPIO 17.
+
+===== Constructor and Methods
+
+To see the constructor and methods of our TiltSwitchHelper class see our javadoc link:https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/inputdevices/TiltSwitchHelper.html[here]
+for more details.
+
+===== An Example Controller
+
+====== This controller uses the tilt switch to light up a LED light once it is tilted
+
+[source, java]
+----
+include::../../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/TiltSwitchController.java[tag=ex]
+----
