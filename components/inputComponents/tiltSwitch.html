@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.18">
-<title>Rotary Encoder</title>
+<title>Tilt Switch</title>
 <style>
 body {
 	font-family: sans-serif;
@@ -209,15 +209,15 @@ th {
 </div>
 <div id="content">
 <div class="sect3">
-<h4 id="_rotary_encoder">Rotary Encoder</h4>
+<h4 id="_tilt_switch">Tilt Switch</h4>
 <div class="paragraph text-right">
-<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/inputComponents/rotaryEncoder.adoc">Improve this doc</a></p>
+<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/inputComponents/tiltSwitch.adoc">Improve this doc</a></p>
 </div>
 <div class="sect4">
 <h5 id="_overview">Overview</h5>
 <div class="paragraph">
-<p>This section provides details of the Rotary Encoder circuit,
-including its components, assembly instructions, and functionality.</p>
+<p>This section provides details of a tilt switch sensor implementation, including its circuit diagram,
+required hardware components, assembly instructions, and functionality.</p>
 </div>
 </div>
 <div class="sect4">
@@ -225,10 +225,16 @@ including its components, assembly instructions, and functionality.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Rotary encoder module</p>
+<p>Tilt switch module</p>
 </li>
 <li>
-<p>1 x 10kΩ resistor</p>
+<p>LED light</p>
+</li>
+<li>
+<p>1 x 220Ω resistor</p>
+</li>
+<li>
+<p>1 x 1kΩ resistor</p>
 </li>
 <li>
 <p>Breadboard</p>
@@ -244,70 +250,80 @@ including its components, assembly instructions, and functionality.</p>
 </div>
 <div class="sect4">
 <h5 id="_assembly_instructions">Assembly Instructions</h5>
-<div class="paragraph">
-<p>Connect the 5 pins on the encoder to the breadboard along with the resistor as
-stated below and in the diagram.</p>
-</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Ground: Connect ground on the encoder to ground on the breadboard</p>
+<p>Ground: Place the ground so that it is connected to the tilt switch and the LED</p>
 </li>
 <li>
-<p>Power: Connect the + on the encoder to the 3.3V on the breadboard</p>
+<p>Power: Place the power (3.3V) so that power is given to both the LED and tilt switch</p>
 </li>
 <li>
-<p>SW: Connect SW to GPIO 27 on the breadboard</p>
+<p>Resistor (220Ω): Place the 220Ω resistor vertically so that it can connect the LED light to power</p>
 </li>
 <li>
-<p>DT: Connect DT to GPIO 17 on the breadboard</p>
+<p>Resistor (1kΩ): Place the 1kΩ resistor vertically so that it can provide power to the tilt switch</p>
 </li>
 <li>
-<p>CLK: Connect CLK to GPIO 18 on the breadboard</p>
+<p>Connect a wire from GPIO26 to the LED which is its digital output</p>
 </li>
 <li>
-<p>Resistor: Place the resistor horizontally so that it is parallel
-with GPIO 27, having one side on the red + with the other next to the wire on GPIO 27</p>
-</li>
-<li>
-<p>Connect a wire from 3.3V to the red + in the same column as the resistor</p>
+<p>Attach a wire from GPIO17 to the tilt switch which is its digital input</p>
 </li>
 </ol>
+</div>
+<div class="paragraph">
+<p>See the circuit diagram below for more detail.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_circuit_diagram">Circuit Diagram</h5>
-<div class="imageblock">
-<div class="content">
-<img src="../../img/rotary_encoder_circuit.png" alt="rotary encoder circuit">
-</div>
+<div class="paragraph">
+<p><span class="image"><img src="../../img/tiltSwitch_CD.png" alt="tiltSwitch CD"></span></p>
 </div>
 <div class="paragraph">
-<p><strong>Note:</strong> The resistor location at GPIO 27.</p>
+<p><strong>Schematic Diagram:</strong></p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../../img/tiltSwitch_SD.png" alt="tiltSwitch SD"></span></p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_functionality">Functionality</h5>
 <div class="paragraph">
-<p>The rotary encoder returns the value as you rotate the knob.</p>
+<p>When the tilt switch is tilted or its orientation is changed, a metal ball moves inside the capsule
+and opens or closes an electrical circuit, altering the state of the switch.
+Our example showcases a tilt switch and LED which lights up when the tilt switch is enabled and detects a change in orientation.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_testing_the_circuit">Testing the Circuit</h5>
 <div class="paragraph">
-<p>To return the value of the rotary encoder:</p>
+<p>Use the below commands to test the tilt switch.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>/enable</code>  - turns on tilt switch</p>
+</li>
+</ul>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl http://localhost:8080/rotaryEncoder/value</code></pre>
+<pre>$ curl http://localhost:8080/tiltSwitch/enable</pre>
 </div>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>/value</code>  - returns the current value of the rotary encoder</p>
+<p><code>/disable</code> - turns off tilt switch</p>
 </li>
 </ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ curl http://localhost:8080/tiltSwitch/disable</pre>
+</div>
 </div>
 </div>
 <div class="sect4">
@@ -315,11 +331,20 @@ with GPIO 27, having one side on the red + with the other next to the wire on GP
 <div class="ulist">
 <ul>
 <li>
-<p>Value not being returned: Make sure all pins on the encoder match up
-to the correct GPIO pins according to the YAML pin order below.</p>
+<p>LED not lighting up once it has been enabled and is being tilted:</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Make sure that the correct GPIO pins are being used for the LED and Tilt Switch as specified in the yml.</p>
 </li>
 <li>
-<p>Make sure that a 10k resistor is being used</p>
+<p>Confirm that everything is properly secured to the breadboard and is receiving power.</p>
+</li>
+<li>
+<p>Ensure a 220Ω is being used for the LED and 1kΩ resistor for the Tilt Switch.</p>
+</li>
+</ol>
+</div>
 </li>
 </ul>
 </div>
@@ -327,45 +352,54 @@ to the correct GPIO pins according to the YAML pin order below.</p>
 <div class="sect4">
 <h5 id="_yaml_configuration">YAML Configuration</h5>
 <div class="paragraph">
-<p>The order for declaring pins for a Rotary Encoder component in the application.yaml file is as follows</p>
-</div>
-<div class="paragraph">
-<p><strong>SW-PIN-INFO, CLK-PIN-INFO, DT-PIN-INFO</strong></p>
-</div>
-<div class="paragraph">
-<p>So in the case of</p>
+<p>The YAML configuration for the LED is as follows:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-yaml" data-lang="yaml">multi-digital-input:
-  rotary-encoder:
-    name: Rotary Encoder
-    addresses: 27,18,17
-    debounces: 6000,500,500
-    pulls: PULL_DOWN,PULL_UP,PULL_UP
-    shutdown: LOW
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">digital-output:
+  led2:
+    name: LED Output
+    address: 26
+    shutdown: HIGH
     initial: HIGH
+    provider: pigpio-digital-output</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So, the output of the LED is connected to GPIO 26.</p>
+</div>
+<div class="paragraph">
+<p>The YAML configuration for the tilt switch is as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">digital-input:
+  tilt-switch-input:
+    name: Tilt Switch Input
+    address: 17
+    pull: PULL_DOWN
+    debounce: 5000
     provider: pigpio-digital-input</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>the sw pin would be the one connected to GPIO 27, the clk pin would be connected to GPIO 18, and the dt pin would connect to GPIO 17. All lists of values for Rotary Encoder components will follow the same order.</p>
+<p>So, the input of the tilt switch is connected to GPIO 17.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_constructors_and_methods">Constructors and Methods</h5>
+<h5 id="_constructor_and_methods">Constructor and Methods</h5>
 <div class="paragraph">
-<p>To see the constructor and methods of our RotaryEncoderHelper class see our javadoc <a href="https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/inputdevices/RotaryEncoderHelper.html">here</a>
+<p>To see the constructor and methods of our TiltSwitchHelper class see our javadoc <a href="https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/inputdevices/TiltSwitchHelper.html">here</a>
 for more details.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_an_example_controller">An Example Controller</h5>
 <div class="sect5">
-<h6 id="_this_controller_uses_a_rotary_encoder">This controller uses a rotary encoder</h6>
+<h6 id="_this_controller_uses_the_tilt_switch_to_light_up_a_led_light_once_it_is_tilted">This controller uses the tilt switch to light up a LED light once it is tilted</h6>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">Unresolved directive in rotaryEncoder.adoc - include::../../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/RotaryEncoderController.java[tag=ex]</code></pre>
+<pre class="highlight"><code class="language-java" data-lang="java">Unresolved directive in tiltSwitch.adoc - include::../../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/TiltSwitchController.java[tag=ex]</code></pre>
 </div>
 </div>
 </div>
