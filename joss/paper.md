@@ -42,9 +42,8 @@ Pi4J utilities and Micronaut framework, allowing the developer to focus on the a
 
 # Statement of Need
 
-For researchers, a major component of their work is data gathering. While there are many instances when they can simply
-plug the tools they are using into their personal computer, circumstances call for a more mobile or collaborative medium.
-The single board computer Raspberry Pi with its ability to interface with almost anything provides an answer. The small
+Data gather is a major element of research. Many research instruments can be simply connected to a personal computer and
+used as is. However, there are many circumstances when customized instruments need to be developed. The single board computer Raspberry Pi with its ability to interface with almost anything provides an answer. The small
 size and versatility at a low price, makes the Raspberry Pi an ideal solution for researchers. Applications for the
 Raspberry Pi include rat licking behavior @Longley, greenhouse gas effect monitoring system @Shah,
 and many other applications @Jolles. Pi4Micronaut also allows for multiple users to read input from sensors. This
