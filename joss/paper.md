@@ -38,6 +38,7 @@ application. The application controller can make calls to the Pi4Micronaut libra
 Pi4Micronaut library uses Pi4J for low-level hardware interaction. Thus, Pi4Micronaut provides an abstraction layer between
 Pi4J utilities and Micronaut framework, allowing the developer to focus on the application logic.
 
+![Pi4Micronaut](architecture_pi4micronaut.png)
 
 
 # Statement of Need
