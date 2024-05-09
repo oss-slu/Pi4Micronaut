@@ -452,6 +452,7 @@ pre.rouge .nv, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi, pre.rouge .vm {
 <li><a href="#_pir_sensor">4.2.7. PIR Sensor</a></li>
 <li><a href="#_photoresistor_sensor">4.2.8. PhotoResistor Sensor</a></li>
 <li><a href="#_tilt_switch">4.2.9. Tilt Switch</a></li>
+<li><a href="#_micro_switch">4.2.10. Micro Switch</a></li>
 </ul>
 </li>
 <li><a href="#_output_components">4.3. Output Components</a>
@@ -3682,6 +3683,261 @@ for more details.</p>
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_micro_switch"><a class="anchor" href="#_micro_switch"></a>4.2.10. Micro Switch</h4>
+<div class="paragraph text-right">
+<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/inputComponents/microSwitch.adoc">Improve this doc</a></p>
+</div>
+<div class="sect4">
+<h5 id="_overview_10"><a class="anchor" href="#_overview_10"></a>Overview</h5>
+<div class="paragraph">
+<p>This section provides details of a Micro Switch sensor implementation, including its circuit diagram, schematic diagram,
+required hardware components, assembly instructions, and functionality.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_components_11"><a class="anchor" href="#_components_11"></a>Components</h5>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>1 x Micro switch</p>
+</li>
+<li>
+<p>2 x LEDs of different colors</p>
+</li>
+<li>
+<p>2 x 220Ω resistor</p>
+</li>
+<li>
+<p>1 x 10kΩ resistor</p>
+</li>
+<li>
+<p>1 x 104 Capacitor</p>
+</li>
+<li>
+<p>Breadboard</p>
+</li>
+<li>
+<p>Jumper wires</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_assembly_instructions_8"><a class="anchor" href="#_assembly_instructions_8"></a>Assembly Instructions</h5>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Place the micro switch on the breadboard. Connect the common terminal 'C' to GPIO17.</p>
+</li>
+<li>
+<p>Connect the common terminal 'C' terminal of the micro switch to the ground via a 10KΩ resistor.</p>
+</li>
+<li>
+<p>Place the 0.1 µF capacitor (104) across the switch terminals directly on the breadboard. Connect one side to the GPIO17 where the switch connects and the other side to the ground via the other end of 10KΩ resistor which was connected to micro switch&#8217;s 'C' terminal. This capacitor serves as a debouncing element, smoothing out any electrical noise caused by the physical action of the switch.</p>
+</li>
+<li>
+<p>Connect the Normally Open 'NO' terminal of the micro switch to the ground (GND). This resistor acts as a pull-down, ensuring the switch input reads LOW when not pressed.</p>
+</li>
+<li>
+<p>Connect the Normally Closed 'NC' terminal directly to the +3.3V power supply. This means when the switch is not pressed, the GPIO pin will be held HIGH through this connection.</p>
+</li>
+<li>
+<p>Insert the two LEDs onto the breadboard, ensuring the longer leg (anode) is towards the positive supply and the shorter leg (cathode) towards the ground.</p>
+</li>
+<li>
+<p>Connect a 220Ω resistor to the anode of each LED and the other end of these resistors to a positive voltage supply (+3.3V).</p>
+</li>
+<li>
+<p>Connect the cathodes of the LEDs. GPIO22 for LED1 and GPIO27 for LED2.</p>
+</li>
+<li>
+<p>Connect the positive voltage supply (+3.3V) to the positive rail of the breadboard and link the ground (GND) to the negative rail. Ensure all ground connections of the components are tied to this rail.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>See the circuit diagram below for more detail.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_circuit_diagram_10"><a class="anchor" href="#_circuit_diagram_10"></a>Circuit Diagram</h5>
+<div class="paragraph">
+<p><span class="image"><img src="img/microSwitch_CD.png" alt="microSwitch CD"></span></p>
+</div>
+<div class="paragraph">
+<p><strong>Schematic Diagram:</strong></p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="img/microSwitch_SD.png" alt="microSwitch SD"></span></p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_functionality_10"><a class="anchor" href="#_functionality_10"></a>Functionality</h5>
+<div class="paragraph">
+<p>A Micro Switch is a small, very sensitive switch that requires minimum compression to activate. Because they are reliable and sensitive, micro switches are often used as a safety device. When the micro switch in your circuit is pressed, it breaks the connection between the Common 'C' terminal and the Normally Closed 'NC' terminal, which is linked to +3.3V, and instead makes a connection between the Common terminal and the Normally Open 'NO' terminal, connected to ground through a 10KΩ pull-down resistor. This change pulls the GPIO17 pin to a LOW state. Assuming your microcontroller is programmed accordingly, this action can be used to trigger specific behaviors, such as turning on an LED connected to another GPIO pin. This setup utilizes the micro switch to easily control electronic components through simple physical interaction.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_testing_the_circuit_6"><a class="anchor" href="#_testing_the_circuit_6"></a>Testing the Circuit</h5>
+<div class="paragraph">
+<p>Use the below commands to test the micro switch.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>/enable</code>  - turns on micro switch</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ curl http://localhost:8080/microSwitch/enable</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>/disable</code> - turns off micro switch</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ curl http://localhost:8080/microSwitch/disable</pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_troubleshooting_10"><a class="anchor" href="#_troubleshooting_10"></a>Troubleshooting</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>LEDs do not light up once it has been enabled and the micro switch is pressed:</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Make sure that the correct GPIO pins are being used for the LEDs and Micro Switch as specified in the yml.</p>
+</li>
+<li>
+<p>Confirm that everything is properly secured to the breadboard and is receiving power.</p>
+</li>
+<li>
+<p>Ensure that the micro switch and all resistors are correctly placed according to the schematic.</p>
+</li>
+<li>
+<p>Look for any unintended short circuits on the breadboard, particularly around the areas where the switch and LEDs are connected.</p>
+</li>
+<li>
+<p>Ensure that the capacitor (0.1 µF) is properly placed across the correct terminals of the micro switch</p>
+</li>
+<li>
+<p>Ensure a 220Ω is being used for the LEDs and 10kΩ resistor for the Micro Switch.</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_yaml_configuration_10"><a class="anchor" href="#_yaml_configuration_10"></a>YAML Configuration</h5>
+<div class="paragraph">
+<p>The YAML configuration for the LEDs is as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">digital-output</span><span class="pi">:</span>
+  <span class="na">led1</span><span class="pi">:</span>
+    <span class="na">name</span><span class="pi">:</span> <span class="s">LED Output</span>
+    <span class="na">address</span><span class="pi">:</span> <span class="m">22</span>
+    <span class="na">shutdown</span><span class="pi">:</span> <span class="s">HIGH</span>
+    <span class="na">initial</span><span class="pi">:</span> <span class="s">HIGH</span>
+    <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-digital-output</span>
+
+    <span class="na">led2</span><span class="pi">:</span>
+    <span class="na">name</span><span class="pi">:</span> <span class="s">LED Output</span>
+    <span class="na">address</span><span class="pi">:</span> <span class="m">27</span>
+    <span class="na">shutdown</span><span class="pi">:</span> <span class="s">HIGH</span>
+    <span class="na">initial</span><span class="pi">:</span> <span class="s">HIGH</span>
+    <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-digital-output</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So, the output of the LEDs is connected to GPIO 22 and GPIO 27 respectively.</p>
+</div>
+<div class="paragraph">
+<p>The YAML configuration for the micro switch is as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml">    <span class="na">micro-switch</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">Micro Switch</span>
+      <span class="na">address</span><span class="pi">:</span> <span class="m">17</span>
+      <span class="na">pull</span><span class="pi">:</span> <span class="s">PULL_DOWN</span>
+      <span class="na">debounce</span><span class="pi">:</span> <span class="m">200000</span>
+      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-digital-input</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So, the input of the micro switch is connected to GPIO 17.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_constructor_and_methods_7"><a class="anchor" href="#_constructor_and_methods_7"></a>Constructor and Methods</h5>
+<div class="paragraph">
+<p>To see the constructor and methods of our MicroSwitchHelper class see our javadoc <a href="https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/inputdevices/MicroSwitchHelper.html">here</a>
+for more details.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_an_example_controller_8"><a class="anchor" href="#_an_example_controller_8"></a>An Example Controller</h5>
+<div class="sect5">
+<h6 id="_this_controller_uses_the_micro_switch_to_light_up_led2_once_it_is_pressed_and_led1_if_it_is_not_pressed"><a class="anchor" href="#_this_controller_uses_the_micro_switch_to_light_up_led2_once_it_is_pressed_and_led1_if_it_is_not_pressed"></a>This controller uses the micro switch to light up LED2 once it is pressed and LED1 if it is not pressed.</h6>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="nd">@Controller</span><span class="o">(</span><span class="s">"/microSwitch"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MicroSwitchController</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">MicroSwitchHelper</span> <span class="n">microSwitchHelper</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">LEDHelper</span> <span class="n">ledHelper1</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">LEDHelper</span> <span class="n">ledHelper2</span><span class="o">;</span>
+
+
+    <span class="kd">public</span> <span class="nf">MicroSwitchController</span><span class="o">(</span><span class="nd">@Named</span><span class="o">(</span><span class="s">"micro-switch"</span><span class="o">)</span> <span class="nc">DigitalInput</span> <span class="n">microSwitch</span><span class="o">,</span>
+                                 <span class="nd">@Named</span><span class="o">(</span><span class="s">"led"</span><span class="o">)</span> <span class="nc">DigitalOutput</span> <span class="n">led1</span><span class="o">,</span>
+                                 <span class="nd">@Named</span><span class="o">(</span><span class="s">"led2"</span><span class="o">)</span> <span class="nc">DigitalOutput</span> <span class="n">led2</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">microSwitchHelper</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MicroSwitchHelper</span><span class="o">(</span><span class="n">microSwitch</span><span class="o">);</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">ledHelper1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LEDHelper</span><span class="o">(</span><span class="n">led1</span><span class="o">);</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">ledHelper2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LEDHelper</span><span class="o">(</span><span class="n">led2</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="c1">//enables the micro switch. The LEDs will switch states as the switch is pressed</span>
+    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/enable"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">enableMicroSwitch</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">microSwitchHelper</span><span class="o">.</span><span class="na">addEventListener</span><span class="o">(</span><span class="n">e</span> <span class="o">-&gt;</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">microSwitchHelper</span><span class="o">.</span><span class="na">isPressed</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">ledHelper1</span><span class="o">.</span><span class="na">ledOff</span><span class="o">();</span>
+                <span class="n">ledHelper2</span><span class="o">.</span><span class="na">ledOn</span><span class="o">();</span>
+
+            <span class="o">}</span>
+            <span class="k">else</span> <span class="o">{</span>
+                <span class="n">ledHelper1</span><span class="o">.</span><span class="na">ledOn</span><span class="o">();</span>
+                <span class="n">ledHelper2</span><span class="o">.</span><span class="na">ledOff</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+    <span class="c1">//disable the micro switch</span>
+    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/disable"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">disableMicroSwitch</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">microSwitchHelper</span><span class="o">.</span><span class="na">removeEventListener</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_output_components"><a class="anchor" href="#_output_components"></a>4.3. Output Components</h3>
@@ -3697,13 +3953,13 @@ for more details.</p>
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/outputComponents/led.adoc">Improve this doc</a></p>
 </div>
 <div class="sect4">
-<h5 id="_overview_10"><a class="anchor" href="#_overview_10"></a>Overview</h5>
+<h5 id="_overview_11"><a class="anchor" href="#_overview_11"></a>Overview</h5>
 <div class="paragraph">
 <p>This section provides details of the LED, including its components and assembly instructions.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_components_11"><a class="anchor" href="#_components_11"></a>Components</h5>
+<h5 id="_components_12"><a class="anchor" href="#_components_12"></a>Components</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -3731,7 +3987,7 @@ for more details.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_assembly_instructions_8"><a class="anchor" href="#_assembly_instructions_8"></a>Assembly Instructions</h5>
+<h5 id="_assembly_instructions_9"><a class="anchor" href="#_assembly_instructions_9"></a>Assembly Instructions</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -3762,7 +4018,7 @@ for more details.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_circuit_diagram_10"><a class="anchor" href="#_circuit_diagram_10"></a>Circuit Diagram</h5>
+<h5 id="_circuit_diagram_11"><a class="anchor" href="#_circuit_diagram_11"></a>Circuit Diagram</h5>
 <div class="imageblock">
 <div class="content">
 <img src="img/LED-CD.png" alt="LED CD">
@@ -3770,7 +4026,7 @@ for more details.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_functionality_10"><a class="anchor" href="#_functionality_10"></a>Functionality</h5>
+<h5 id="_functionality_11"><a class="anchor" href="#_functionality_11"></a>Functionality</h5>
 <div class="paragraph">
 <p>LED can be turned on or off, switch state and set to blink for the provided  duration in milliseconds.</p>
 </div>
@@ -3803,7 +4059,7 @@ for more details.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_troubleshooting_10"><a class="anchor" href="#_troubleshooting_10"></a>Troubleshooting</h5>
+<h5 id="_troubleshooting_11"><a class="anchor" href="#_troubleshooting_11"></a>Troubleshooting</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -3817,7 +4073,7 @@ as well as the LED specifications.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_yaml_configuration_10"><a class="anchor" href="#_yaml_configuration_10"></a>YAML Configuration</h5>
+<h5 id="_yaml_configuration_11"><a class="anchor" href="#_yaml_configuration_11"></a>YAML Configuration</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="yaml"><span class="na">digital-output</span><span class="pi">:</span>
@@ -3837,14 +4093,14 @@ as well as the LED specifications.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_constructor_and_methods_7"><a class="anchor" href="#_constructor_and_methods_7"></a>Constructor and Methods</h5>
+<h5 id="_constructor_and_methods_8"><a class="anchor" href="#_constructor_and_methods_8"></a>Constructor and Methods</h5>
 <div class="paragraph">
 <p>To see the constructor and methods of our LEDHelper class see our javadoc <a href="https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/outputdevices/LEDHelper.html">here</a>
 for more details.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_an_example_controller_8"><a class="anchor" href="#_an_example_controller_8"></a>An Example Controller</h5>
+<h5 id="_an_example_controller_9"><a class="anchor" href="#_an_example_controller_9"></a>An Example Controller</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="nd">@Controller</span><span class="o">(</span><span class="s">"/led"</span><span class="o">)</span>
@@ -3885,14 +4141,14 @@ for more details.</p>
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/outputComponents/rgbLed.adoc">Improve this doc</a></p>
 </div>
 <div class="sect4">
-<h5 id="_overview_11"><a class="anchor" href="#_overview_11"></a>Overview</h5>
+<h5 id="_overview_12"><a class="anchor" href="#_overview_12"></a>Overview</h5>
 <div class="paragraph">
 <p>This document provides details of the RGB (Red-Green-Blue) LED circuit,
 including its components, assembly instructions, and functionality.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_components_12"><a class="anchor" href="#_components_12"></a>Components</h5>
+<h5 id="_components_13"><a class="anchor" href="#_components_13"></a>Components</h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3914,7 +4170,7 @@ including its components, assembly instructions, and functionality.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_assembly_instructions_9"><a class="anchor" href="#_assembly_instructions_9"></a>Assembly Instructions</h5>
+<h5 id="_assembly_instructions_10"><a class="anchor" href="#_assembly_instructions_10"></a>Assembly Instructions</h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3946,7 +4202,7 @@ negative terminals (like GPIO pins set to OUTPUT and LOW on a microcontroller).<
 </div>
 </div>
 <div class="sect4">
-<h5 id="_circuit_diagram_11"><a class="anchor" href="#_circuit_diagram_11"></a>Circuit Diagram</h5>
+<h5 id="_circuit_diagram_12"><a class="anchor" href="#_circuit_diagram_12"></a>Circuit Diagram</h5>
 <div class="imageblock">
 <div class="content">
 <img src="https://docs.sunfounder.com/projects/raphael-kit/en/latest/_images/image61.png" alt="image61">
@@ -3962,7 +4218,7 @@ negative terminals (like GPIO pins set to OUTPUT and LOW on a microcontroller).<
 </div>
 </div>
 <div class="sect4">
-<h5 id="_functionality_11"><a class="anchor" href="#_functionality_11"></a>Functionality</h5>
+<h5 id="_functionality_12"><a class="anchor" href="#_functionality_12"></a>Functionality</h5>
 <div class="paragraph">
 <p>The RGB LED can produce a wide range of colors by mixing different intensities of
 Red, Green, and Blue. By adjusting the power to each pin, various colors can be
@@ -4069,7 +4325,7 @@ and frequencies of red <strong>{frequency1}</strong>, green <strong>{frequency2}
 </div>
 </div>
 <div class="sect4">
-<h5 id="_troubleshooting_11"><a class="anchor" href="#_troubleshooting_11"></a>Troubleshooting</h5>
+<h5 id="_troubleshooting_12"><a class="anchor" href="#_troubleshooting_12"></a>Troubleshooting</h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -4090,7 +4346,7 @@ each color pin&#8217;s connection.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_yaml_configuration_11"><a class="anchor" href="#_yaml_configuration_11"></a>YAML Configuration</h5>
+<h5 id="_yaml_configuration_12"><a class="anchor" href="#_yaml_configuration_12"></a>YAML Configuration</h5>
 <div class="paragraph">
 <p>The order for declaring pins for a RGB LED component in the application.yaml file is as follows</p>
 </div>
@@ -4124,14 +4380,14 @@ each color pin&#8217;s connection.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_constructor_and_methods_8"><a class="anchor" href="#_constructor_and_methods_8"></a>Constructor and Methods</h5>
+<h5 id="_constructor_and_methods_9"><a class="anchor" href="#_constructor_and_methods_9"></a>Constructor and Methods</h5>
 <div class="paragraph">
 <p>To see the constructor and methods of our RGBLEDHelper class see our javadoc <a href="https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/outputdevices/RGBLEDHelper.html">here</a>
 for more details.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_an_example_controller_9"><a class="anchor" href="#_an_example_controller_9"></a>An Example Controller</h5>
+<h5 id="_an_example_controller_10"><a class="anchor" href="#_an_example_controller_10"></a>An Example Controller</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="nd">@Controller</span><span class="o">(</span><span class="s">"/rgb"</span><span class="o">)</span>
@@ -4216,14 +4472,14 @@ for more details.</p>
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/outputComponents/lcdScreen.adoc">Improve this doc</a></p>
 </div>
 <div class="sect4">
-<h5 id="_overview_12"><a class="anchor" href="#_overview_12"></a>Overview</h5>
+<h5 id="_overview_13"><a class="anchor" href="#_overview_13"></a>Overview</h5>
 <div class="paragraph">
 <p>This section provides details of the LCD1602 (Liquid Crystal Display) circuit,
 including its components, assembly instructions, and functionality.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_components_13"><a class="anchor" href="#_components_13"></a>Components</h5>
+<h5 id="_components_14"><a class="anchor" href="#_components_14"></a>Components</h5>
 <div class="olist arabic">
 <div class="title">Note: The LCD1602 only works on the 32-bit version of Raspberry Pi OS.</div>
 <ol class="arabic">
@@ -4246,7 +4502,7 @@ including its components, assembly instructions, and functionality.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_assembly_instructions_10"><a class="anchor" href="#_assembly_instructions_10"></a>Assembly Instructions</h5>
+<h5 id="_assembly_instructions_11"><a class="anchor" href="#_assembly_instructions_11"></a>Assembly Instructions</h5>
 <div class="paragraph">
 <p>Connect the 4 pins on the LCD1602 screen to the breadboard as described below and in the diagram:</p>
 </div>
@@ -4268,7 +4524,7 @@ including its components, assembly instructions, and functionality.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_circuit_diagram_12"><a class="anchor" href="#_circuit_diagram_12"></a>Circuit Diagram</h5>
+<h5 id="_circuit_diagram_13"><a class="anchor" href="#_circuit_diagram_13"></a>Circuit Diagram</h5>
 <div class="imageblock">
 <div class="content">
 <img src="img/lcd1602-circuit.png" alt="lcd1602 circuit">
@@ -4276,7 +4532,7 @@ including its components, assembly instructions, and functionality.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_functionality_12"><a class="anchor" href="#_functionality_12"></a>Functionality</h5>
+<h5 id="_functionality_13"><a class="anchor" href="#_functionality_13"></a>Functionality</h5>
 <div class="paragraph">
 <p>The LCD1602 is a kind of dot matrix module that can show letters, numbers, and other characters.
 The number 1602 describes the display: 2 rows with 16 characters per row.</p>
@@ -4314,7 +4570,7 @@ The number 1602 describes the display: 2 rows with 16 characters per row.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_testing_the_circuit_6"><a class="anchor" href="#_testing_the_circuit_6"></a>Testing the Circuit</h5>
+<h5 id="_testing_the_circuit_7"><a class="anchor" href="#_testing_the_circuit_7"></a>Testing the Circuit</h5>
 <div class="paragraph">
 <p>Write Hello to the LCD1602 screen</p>
 </div>
@@ -4377,7 +4633,7 @@ The number 1602 describes the display: 2 rows with 16 characters per row.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_troubleshooting_12"><a class="anchor" href="#_troubleshooting_12"></a>Troubleshooting</h5>
+<h5 id="_troubleshooting_13"><a class="anchor" href="#_troubleshooting_13"></a>Troubleshooting</h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -4427,7 +4683,7 @@ The number 1602 describes the display: 2 rows with 16 characters per row.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_yaml_configuration_12"><a class="anchor" href="#_yaml_configuration_12"></a>YAML Configuration</h5>
+<h5 id="_yaml_configuration_13"><a class="anchor" href="#_yaml_configuration_13"></a>YAML Configuration</h5>
 <div class="paragraph">
 <p>LCD1602 uses I2C communication for this circuit and configuration in the application.yml file is as follows</p>
 </div>
@@ -4442,14 +4698,14 @@ The number 1602 describes the display: 2 rows with 16 characters per row.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_constructor_and_methods_9"><a class="anchor" href="#_constructor_and_methods_9"></a>Constructor and Methods</h5>
+<h5 id="_constructor_and_methods_10"><a class="anchor" href="#_constructor_and_methods_10"></a>Constructor and Methods</h5>
 <div class="paragraph">
 <p>To see the constructor and methods of our LCD1602Helper class, see our javadoc <a href="https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/outputdevices/LCD1602Helper.html">here</a>
 for more details.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_an_example_controller_10"><a class="anchor" href="#_an_example_controller_10"></a>An Example Controller</h5>
+<h5 id="_an_example_controller_11"><a class="anchor" href="#_an_example_controller_11"></a>An Example Controller</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="nd">@Controller</span><span class="o">(</span><span class="s">"/lcd"</span><span class="o">)</span>
@@ -4519,13 +4775,13 @@ for more details.</p>
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/outputComponents/passivebuzzer.adoc">Improve this doc</a></p>
 </div>
 <div class="sect4">
-<h5 id="_overview_13"><a class="anchor" href="#_overview_13"></a>Overview</h5>
+<h5 id="_overview_14"><a class="anchor" href="#_overview_14"></a>Overview</h5>
 <div class="paragraph">
 <p>This section provides details of the Passive Buzzer, including the components and assembly instructions. The Passive Buzzer emits various frequencies, as described by the code, to play music or many other frequencies.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_components_14"><a class="anchor" href="#_components_14"></a>Components</h5>
+<h5 id="_components_15"><a class="anchor" href="#_components_15"></a>Components</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -4556,7 +4812,7 @@ for more details.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_assembly_instructions_11"><a class="anchor" href="#_assembly_instructions_11"></a>Assembly Instructions</h5>
+<h5 id="_assembly_instructions_12"><a class="anchor" href="#_assembly_instructions_12"></a>Assembly Instructions</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -4593,7 +4849,7 @@ for more details.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_circuit_diagram_13"><a class="anchor" href="#_circuit_diagram_13"></a>Circuit Diagram</h5>
+<h5 id="_circuit_diagram_14"><a class="anchor" href="#_circuit_diagram_14"></a>Circuit Diagram</h5>
 <div class="imageblock">
 <div class="content">
 <img src="img/passive_buzzer-CD.png" alt="passive buzzer CD">
@@ -4609,7 +4865,7 @@ for more details.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_functionality_13"><a class="anchor" href="#_functionality_13"></a>Functionality</h5>
+<h5 id="_functionality_14"><a class="anchor" href="#_functionality_14"></a>Functionality</h5>
 <div class="paragraph">
 <p>A passive buzzer is an electronic component that produces sound by using an external oscillation source.
 To produce sound, a passive buzzer needs an external PWM signal supplied by Raspberry Pi. This signal controls the frequency of the sound produced, allowing for different tones or beeps. You can program specific melodies or sequences of beeps by changing the frequency of the PWM signal over time.</p>
@@ -4655,7 +4911,7 @@ To produce sound, a passive buzzer needs an external PWM signal supplied by Rasp
 </div>
 </div>
 <div class="sect4">
-<h5 id="_troubleshooting_13"><a class="anchor" href="#_troubleshooting_13"></a>Troubleshooting</h5>
+<h5 id="_troubleshooting_14"><a class="anchor" href="#_troubleshooting_14"></a>Troubleshooting</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -4681,7 +4937,7 @@ To produce sound, a passive buzzer needs an external PWM signal supplied by Rasp
 </div>
 </div>
 <div class="sect4">
-<h5 id="_yaml_configuration_13"><a class="anchor" href="#_yaml_configuration_13"></a>YAML Configuration</h5>
+<h5 id="_yaml_configuration_14"><a class="anchor" href="#_yaml_configuration_14"></a>YAML Configuration</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="yaml"><span class="na">pwm</span><span class="pi">:</span>
@@ -4807,13 +5063,13 @@ To produce sound, a passive buzzer needs an external PWM signal supplied by Rasp
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/outputComponents/activebuzzer.adoc">Improve this doc</a></p>
 </div>
 <div class="sect4">
-<h5 id="_overview_14"><a class="anchor" href="#_overview_14"></a>Overview</h5>
+<h5 id="_overview_15"><a class="anchor" href="#_overview_15"></a>Overview</h5>
 <div class="paragraph">
 <p>This section provides details of the Active Buzzer, including the components and assembly instructions. The Active Buzzer only emits one frequency, as described in the code, to play various sounds.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_components_15"><a class="anchor" href="#_components_15"></a>Components</h5>
+<h5 id="_components_16"><a class="anchor" href="#_components_16"></a>Components</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -4844,7 +5100,7 @@ To produce sound, a passive buzzer needs an external PWM signal supplied by Rasp
 </div>
 </div>
 <div class="sect4">
-<h5 id="_assembly_instructions_12"><a class="anchor" href="#_assembly_instructions_12"></a>Assembly Instructions</h5>
+<h5 id="_assembly_instructions_13"><a class="anchor" href="#_assembly_instructions_13"></a>Assembly Instructions</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -4881,7 +5137,7 @@ To produce sound, a passive buzzer needs an external PWM signal supplied by Rasp
 </div>
 </div>
 <div class="sect4">
-<h5 id="_circuit_diagram_14"><a class="anchor" href="#_circuit_diagram_14"></a>Circuit Diagram</h5>
+<h5 id="_circuit_diagram_15"><a class="anchor" href="#_circuit_diagram_15"></a>Circuit Diagram</h5>
 <div class="imageblock">
 <div class="content">
 <img src="img/active_buzzer-CD.png" alt="active buzzer CD">
@@ -4897,7 +5153,7 @@ To produce sound, a passive buzzer needs an external PWM signal supplied by Rasp
 </div>
 </div>
 <div class="sect4">
-<h5 id="_functionality_14"><a class="anchor" href="#_functionality_14"></a>Functionality</h5>
+<h5 id="_functionality_15"><a class="anchor" href="#_functionality_15"></a>Functionality</h5>
 <div class="paragraph">
 <p>Active Buzzer is PWM type and emits a beep tone, intermittent tone and a morseCode tone based on the frequency and the time interval.</p>
 </div>
@@ -4906,7 +5162,7 @@ To produce sound, a passive buzzer needs an external PWM signal supplied by Rasp
 </div>
 </div>
 <div class="sect4">
-<h5 id="_testing_the_circuit_7"><a class="anchor" href="#_testing_the_circuit_7"></a>Testing the circuit</h5>
+<h5 id="_testing_the_circuit_8"><a class="anchor" href="#_testing_the_circuit_8"></a>Testing the circuit</h5>
 <div class="paragraph">
 <p>Use the below command to test the component.</p>
 </div>
@@ -4972,7 +5228,7 @@ To produce sound, a passive buzzer needs an external PWM signal supplied by Rasp
 </div>
 </div>
 <div class="sect4">
-<h5 id="_troubleshooting_14"><a class="anchor" href="#_troubleshooting_14"></a>Troubleshooting</h5>
+<h5 id="_troubleshooting_15"><a class="anchor" href="#_troubleshooting_15"></a>Troubleshooting</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -4995,7 +5251,7 @@ To produce sound, a passive buzzer needs an external PWM signal supplied by Rasp
 </div>
 </div>
 <div class="sect4">
-<h5 id="_yaml_configuration_14"><a class="anchor" href="#_yaml_configuration_14"></a>YAML Configuration</h5>
+<h5 id="_yaml_configuration_15"><a class="anchor" href="#_yaml_configuration_15"></a>YAML Configuration</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="yaml"><span class="na">pwm</span><span class="pi">:</span>
@@ -5010,7 +5266,7 @@ To produce sound, a passive buzzer needs an external PWM signal supplied by Rasp
 </div>
 </div>
 <div class="sect4">
-<h5 id="_constructor_and_methods_10"><a class="anchor" href="#_constructor_and_methods_10"></a>Constructor and Methods</h5>
+<h5 id="_constructor_and_methods_11"><a class="anchor" href="#_constructor_and_methods_11"></a>Constructor and Methods</h5>
 <div class="paragraph">
 <p>The constructor and the methods within the ActiveBuzzerHelper class can be seen in our javadoc <a href="https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/outputdevices/ActiveBuzzerHelper.html">here</a>.</p>
 </div>
@@ -5092,13 +5348,13 @@ To produce sound, a passive buzzer needs an external PWM signal supplied by Rasp
 <p><a href="https://github.com/oss-slu-Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/componets/outputComponents/servomotor.adoc">Improve this doc</a></p>
 </div>
 <div class="sect4">
-<h5 id="_overview_15"><a class="anchor" href="#_overview_15"></a>Overview</h5>
+<h5 id="_overview_16"><a class="anchor" href="#_overview_16"></a>Overview</h5>
 <div class="paragraph">
 <p>This section provides details of the Servo Motor. Specifically, the Micro Servo 9G - SG90, which is a positional servo with a range from 0 to 180 degrees. These details include the components and assembly instructions.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_components_16"><a class="anchor" href="#_components_16"></a>Components</h5>
+<h5 id="_components_17"><a class="anchor" href="#_components_17"></a>Components</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -5123,7 +5379,7 @@ To produce sound, a passive buzzer needs an external PWM signal supplied by Rasp
 </div>
 </div>
 <div class="sect4">
-<h5 id="_assembly_instructions_13"><a class="anchor" href="#_assembly_instructions_13"></a>Assembly Instructions</h5>
+<h5 id="_assembly_instructions_14"><a class="anchor" href="#_assembly_instructions_14"></a>Assembly Instructions</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -5148,7 +5404,7 @@ To produce sound, a passive buzzer needs an external PWM signal supplied by Rasp
 </div>
 </div>
 <div class="sect4">
-<h5 id="_circuit_diagram_15"><a class="anchor" href="#_circuit_diagram_15"></a>Circuit Diagram</h5>
+<h5 id="_circuit_diagram_16"><a class="anchor" href="#_circuit_diagram_16"></a>Circuit Diagram</h5>
 <div class="imageblock">
 <div class="content">
 <img src="img/servo-motor_CD.png" alt="servo motor CD">
@@ -5164,13 +5420,13 @@ To produce sound, a passive buzzer needs an external PWM signal supplied by Rasp
 </div>
 </div>
 <div class="sect4">
-<h5 id="_functionality_15"><a class="anchor" href="#_functionality_15"></a>Functionality</h5>
+<h5 id="_functionality_16"><a class="anchor" href="#_functionality_16"></a>Functionality</h5>
 <div class="paragraph">
 <p>Servo motor is a PWM type and will rotate the arm between the angles of 0 to 180 degrees.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_testing_the_circuit_8"><a class="anchor" href="#_testing_the_circuit_8"></a>Testing the Circuit</h5>
+<h5 id="_testing_the_circuit_9"><a class="anchor" href="#_testing_the_circuit_9"></a>Testing the Circuit</h5>
 <div class="paragraph">
 <p>Use the below commands to test the component.</p>
 </div>
@@ -5212,7 +5468,7 @@ To produce sound, a passive buzzer needs an external PWM signal supplied by Rasp
 </div>
 </div>
 <div class="sect4">
-<h5 id="_troubleshooting_15"><a class="anchor" href="#_troubleshooting_15"></a>Troubleshooting</h5>
+<h5 id="_troubleshooting_16"><a class="anchor" href="#_troubleshooting_16"></a>Troubleshooting</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -5235,7 +5491,7 @@ To produce sound, a passive buzzer needs an external PWM signal supplied by Rasp
 </div>
 </div>
 <div class="sect4">
-<h5 id="_yaml_configuration_15"><a class="anchor" href="#_yaml_configuration_15"></a>YAML Configuration</h5>
+<h5 id="_yaml_configuration_16"><a class="anchor" href="#_yaml_configuration_16"></a>YAML Configuration</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="yaml"><span class="na">pwm</span><span class="pi">:</span>
@@ -5250,7 +5506,7 @@ To produce sound, a passive buzzer needs an external PWM signal supplied by Rasp
 </div>
 </div>
 <div class="sect4">
-<h5 id="_constructor_and_methods_11"><a class="anchor" href="#_constructor_and_methods_11"></a>Constructor and Methods</h5>
+<h5 id="_constructor_and_methods_12"><a class="anchor" href="#_constructor_and_methods_12"></a>Constructor and Methods</h5>
 <div class="paragraph">
 <p>The constructor and the methods within the ServoMotorHelper class can be seen in our javadoc <a href="https://oss-slu-github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/outputdevices/ServoMotorHelper.html">here</a>.</p>
 </div>
@@ -5297,7 +5553,7 @@ To produce sound, a passive buzzer needs an external PWM signal supplied by Rasp
 <div id="footer">
 <div id="footer-text">
 Version v1.1<br>
-Last updated 2024-05-08 17:52:42 UTC
+Last updated 2024-05-09 18:23:59 UTC
 </div>
 </div>
 </body>

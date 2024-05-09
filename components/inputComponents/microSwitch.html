@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.18">
-<title>Tilt Switch</title>
+<title>Micro Switch</title>
 <style>
 body {
 	font-family: sans-serif;
@@ -209,14 +209,14 @@ th {
 </div>
 <div id="content">
 <div class="sect3">
-<h4 id="_tilt_switch">Tilt Switch</h4>
+<h4 id="_micro_switch">Micro Switch</h4>
 <div class="paragraph text-right">
-<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/inputComponents/tiltSwitch.adoc">Improve this doc</a></p>
+<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/inputComponents/microSwitch.adoc">Improve this doc</a></p>
 </div>
 <div class="sect4">
 <h5 id="_overview">Overview</h5>
 <div class="paragraph">
-<p>This section provides details of a tilt switch sensor implementation, including its circuit diagram,
+<p>This section provides details of a Micro Switch sensor implementation, including its circuit diagram, schematic diagram,
 required hardware components, assembly instructions, and functionality.</p>
 </div>
 </div>
@@ -225,25 +225,25 @@ required hardware components, assembly instructions, and functionality.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Tilt switch module</p>
+<p>1 x Micro switch</p>
 </li>
 <li>
-<p>LED light</p>
+<p>2 x LEDs of different colors</p>
 </li>
 <li>
-<p>1 x 220Ω resistor</p>
+<p>2 x 220Ω resistor</p>
 </li>
 <li>
-<p>1 x 1kΩ resistor</p>
+<p>1 x 10kΩ resistor</p>
+</li>
+<li>
+<p>1 x 104 Capacitor</p>
 </li>
 <li>
 <p>Breadboard</p>
 </li>
 <li>
 <p>Jumper wires</p>
-</li>
-<li>
-<p>Power source</p>
 </li>
 </ol>
 </div>
@@ -253,22 +253,31 @@ required hardware components, assembly instructions, and functionality.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Ground: Place the ground so that it is connected to the tilt switch and the LED</p>
+<p>Place the micro switch on the breadboard. Connect the common terminal 'C' to GPIO17.</p>
 </li>
 <li>
-<p>Power: Place the power (3.3V) so that power is given to both the LED and tilt switch</p>
+<p>Connect the common terminal 'C' terminal of the micro switch to the ground via a 10KΩ resistor.</p>
 </li>
 <li>
-<p>Resistor (220Ω): Place the 220Ω resistor vertically so that it can connect the LED light to power</p>
+<p>Place the 0.1 µF capacitor (104) across the switch terminals directly on the breadboard. Connect one side to the GPIO17 where the switch connects and the other side to the ground via the other end of 10KΩ resistor which was connected to micro switch&#8217;s 'C' terminal. This capacitor serves as a debouncing element, smoothing out any electrical noise caused by the physical action of the switch.</p>
 </li>
 <li>
-<p>Resistor (1kΩ): Place the 1kΩ resistor vertically so that it can provide power to the tilt switch</p>
+<p>Connect the Normally Open 'NO' terminal of the micro switch to the ground (GND). This resistor acts as a pull-down, ensuring the switch input reads LOW when not pressed.</p>
 </li>
 <li>
-<p>Connect a wire from GPIO26 to the LED which is its digital output</p>
+<p>Connect the Normally Closed 'NC' terminal directly to the +3.3V power supply. This means when the switch is not pressed, the GPIO pin will be held HIGH through this connection.</p>
 </li>
 <li>
-<p>Attach a wire from GPIO17 to the tilt switch which is its digital input</p>
+<p>Insert the two LEDs onto the breadboard, ensuring the longer leg (anode) is towards the positive supply and the shorter leg (cathode) towards the ground.</p>
+</li>
+<li>
+<p>Connect a 220Ω resistor to the anode of each LED and the other end of these resistors to a positive voltage supply (+3.3V).</p>
+</li>
+<li>
+<p>Connect the cathodes of the LEDs. GPIO22 for LED1 and GPIO27 for LED2.</p>
+</li>
+<li>
+<p>Connect the positive voltage supply (+3.3V) to the positive rail of the breadboard and link the ground (GND) to the negative rail. Ensure all ground connections of the components are tied to this rail.</p>
 </li>
 </ol>
 </div>
@@ -279,50 +288,48 @@ required hardware components, assembly instructions, and functionality.</p>
 <div class="sect4">
 <h5 id="_circuit_diagram">Circuit Diagram</h5>
 <div class="paragraph">
-<p><span class="image"><img src="../../img/tiltSwitch_CD.png" alt="tiltSwitch CD"></span></p>
+<p><span class="image"><img src="../../img/microSwitch_CD.png" alt="microSwitch CD"></span></p>
 </div>
 <div class="paragraph">
 <p><strong>Schematic Diagram:</strong></p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../../img/tiltSwitch_SD.png" alt="tiltSwitch SD"></span></p>
+<p><span class="image"><img src="../../img/microSwitch_SD.png" alt="microSwitch SD"></span></p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_functionality">Functionality</h5>
 <div class="paragraph">
-<p>When the tilt switch is tilted or its orientation is changed, a metal ball moves inside the capsule
-and opens or closes an electrical circuit, altering the state of the switch.
-Our example showcases a tilt switch and LED which lights up when the tilt switch is enabled and detects a change in orientation.</p>
+<p>A Micro Switch is a small, very sensitive switch that requires minimum compression to activate. Because they are reliable and sensitive, micro switches are often used as a safety device. When the micro switch in your circuit is pressed, it breaks the connection between the Common 'C' terminal and the Normally Closed 'NC' terminal, which is linked to +3.3V, and instead makes a connection between the Common terminal and the Normally Open 'NO' terminal, connected to ground through a 10KΩ pull-down resistor. This change pulls the GPIO17 pin to a LOW state. Assuming your microcontroller is programmed accordingly, this action can be used to trigger specific behaviors, such as turning on an LED connected to another GPIO pin. This setup utilizes the micro switch to easily control electronic components through simple physical interaction.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_testing_the_circuit">Testing the Circuit</h5>
 <div class="paragraph">
-<p>Use the below commands to test the tilt switch.</p>
+<p>Use the below commands to test the micro switch.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>/enable</code>  - turns on tilt switch</p>
+<p><code>/enable</code>  - turns on micro switch</p>
 </li>
 </ul>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>$ curl http://localhost:8080/tiltSwitch/enable</pre>
+<pre>$ curl http://localhost:8080/microSwitch/enable</pre>
 </div>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>/disable</code> - turns off tilt switch</p>
+<p><code>/disable</code> - turns off micro switch</p>
 </li>
 </ul>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>$ curl http://localhost:8080/tiltSwitch/disable</pre>
+<pre>$ curl http://localhost:8080/microSwitch/disable</pre>
 </div>
 </div>
 </div>
@@ -331,17 +338,26 @@ Our example showcases a tilt switch and LED which lights up when the tilt switch
 <div class="ulist">
 <ul>
 <li>
-<p>LED not lighting up once it has been enabled and is being tilted:</p>
+<p>LEDs do not light up once it has been enabled and the micro switch is pressed:</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Make sure that the correct GPIO pins are being used for the LED and Tilt Switch as specified in the yml.</p>
+<p>Make sure that the correct GPIO pins are being used for the LEDs and Micro Switch as specified in the yml.</p>
 </li>
 <li>
 <p>Confirm that everything is properly secured to the breadboard and is receiving power.</p>
 </li>
 <li>
-<p>Ensure a 220Ω is being used for the LED and 1kΩ resistor for the Tilt Switch.</p>
+<p>Ensure that the micro switch and all resistors are correctly placed according to the schematic.</p>
+</li>
+<li>
+<p>Look for any unintended short circuits on the breadboard, particularly around the areas where the switch and LEDs are connected.</p>
+</li>
+<li>
+<p>Ensure that the capacitor (0.1 µF) is properly placed across the correct terminals of the micro switch</p>
+</li>
+<li>
+<p>Ensure a 220Ω is being used for the LEDs and 10kΩ resistor for the Micro Switch.</p>
 </li>
 </ol>
 </div>
@@ -352,54 +368,60 @@ Our example showcases a tilt switch and LED which lights up when the tilt switch
 <div class="sect4">
 <h5 id="_yaml_configuration">YAML Configuration</h5>
 <div class="paragraph">
-<p>The YAML configuration for the LED is as follows:</p>
+<p>The YAML configuration for the LEDs is as follows:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-yaml" data-lang="yaml">digital-output:
-  led2:
+  led1:
     name: LED Output
-    address: 26
+    address: 22
+    shutdown: HIGH
+    initial: HIGH
+    provider: pigpio-digital-output
+
+    led2:
+    name: LED Output
+    address: 27
     shutdown: HIGH
     initial: HIGH
     provider: pigpio-digital-output</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>So, the output of the LED is connected to GPIO 26.</p>
+<p>So, the output of the LEDs is connected to GPIO 22 and GPIO 27 respectively.</p>
 </div>
 <div class="paragraph">
-<p>The YAML configuration for the tilt switch is as follows:</p>
+<p>The YAML configuration for the micro switch is as follows:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-yaml" data-lang="yaml">digital-input:
-  tilt-switch-input:
-    name: Tilt Switch Input
-    address: 17
-    pull: PULL_DOWN
-    debounce: 5000
-    provider: pigpio-digital-input</code></pre>
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">    micro-switch:
+      name: Micro Switch
+      address: 17
+      pull: PULL_DOWN
+      debounce: 200000
+      provider: pigpio-digital-input</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>So, the input of the tilt switch is connected to GPIO 17.</p>
+<p>So, the input of the micro switch is connected to GPIO 17.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_constructor_and_methods">Constructor and Methods</h5>
 <div class="paragraph">
-<p>To see the constructor and methods of our TiltSwitchHelper class see our javadoc <a href="https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/inputdevices/TiltSwitchHelper.html">here</a>
+<p>To see the constructor and methods of our MicroSwitchHelper class see our javadoc <a href="https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/inputdevices/MicroSwitchHelper.html">here</a>
 for more details.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_an_example_controller">An Example Controller</h5>
 <div class="sect5">
-<h6 id="_this_controller_uses_the_tilt_switch_to_light_up_a_led_light_once_it_is_tilted">This controller uses the tilt switch to light up a LED light once it is tilted</h6>
+<h6 id="_this_controller_uses_the_micro_switch_to_light_up_led2_once_it_is_pressed_and_led1_if_it_is_not_pressed">This controller uses the micro switch to light up LED2 once it is pressed and LED1 if it is not pressed.</h6>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">Unresolved directive in tiltSwitch.adoc - include::../../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/TiltSwitchController.java[tag=ex]</code></pre>
+<pre class="highlight"><code class="language-java" data-lang="java">Unresolved directive in microSwitch.adoc - include::../../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/MicroSwitchController.java[tag=ex]</code></pre>
 </div>
 </div>
 </div>
