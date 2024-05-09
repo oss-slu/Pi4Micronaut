@@ -1,6 +1,6 @@
 applicationType: default
-defaultPackage: com.example.pi4micronaut
+defaultPackage: com.labAutomation
 testFramework: junit
-sourceLanguage: java
-buildTool: gradle
-features: [annotation-api, app-name, gradle, http-client, jackson-databind, java, java-application, junit, logback, micronaut-build, netty-server, readme, shade, yaml]
+sourceLanguage: kotlin
+buildTool: gradle_kotlin
+features: [annotation-api, app-name, gradle, http-client, jackson-databind, junit, kotlin, kotlin-application, kotlin-build, logback, micronaut-build, netty-server, readme, shade, yaml]
