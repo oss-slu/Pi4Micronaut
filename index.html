@@ -418,6 +418,7 @@ pre.rouge .nv, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi, pre.rouge .vm {
 <ul class="sectlevel3">
 <li><a href="#_remote_monitoring_check_in_system">1.3.1. Remote Monitoring Check-In System</a></li>
 <li><a href="#_home_automation">1.3.2. Home Automation</a></li>
+<li><a href="#_lab_automation">1.3.3. Lab Automation</a></li>
 </ul>
 </li>
 </ul>
@@ -432,7 +433,7 @@ pre.rouge .nv, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi, pre.rouge .vm {
 <ul class="sectlevel2">
 <li><a href="#_communicating_with_a_hardware_component">4.1. Communicating with a Hardware Component</a>
 <ul class="sectlevel3">
-<li><a href="#_yaml_configuration_workflow">4.1.1. YAML Configuration Workflow:</a></li>
+<li><a href="#_yaml_configuration_workflow">4.1.1. YAML Configuration Workflow</a></li>
 <li><a href="#_digital_input">4.1.2. Digital Input</a></li>
 <li><a href="#_digital_output">4.1.3. Digital Output</a></li>
 <li><a href="#_multipin_configurations">4.1.4. MultiPin Configurations</a></li>
@@ -492,6 +493,9 @@ pre.rouge .nv, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi, pre.rouge .vm {
 <p>Pi4Micronaut is an Open Source Java library which utilizes the Micronaut Framework and Pi4J to streamline the process of creating custom IoT applications that require hardware connectivity to Raspberry Pi&#8217;s.</p>
 </div>
 <div class="paragraph">
+<p><strong>Note:</strong> Pi4Micronaut doesn&#8217;t work with the latest Raspberry Pi 5 because of its whole new architecture. Pi4J and pigpio libraries doesn&#8217;t provide support for Pi 5 yet. Look out for the latest version of Pi4J to work with Pi5&#8217;s in the future.</p>
+</div>
+<div class="paragraph">
 <p>By reading through our documentation, you will learn how to implement our library into your application.</p>
 </div>
 <div class="sect2">
@@ -535,7 +539,7 @@ with Pi4Micronaut. As a demo, this will include the configuration and sample cod
 <p>Add the Pi4Micronaut dependency to the list.</p>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="gradle"><span class="n">implementation</span><span class="o">(</span><span class="s2">"io.github.oss-slu:pi4micronaut-utils:v1.0:all"</span><span class="o">)</span></code></pre>
+<pre class="rouge highlight"><code data-lang="gradle"><span class="n">implementation</span><span class="o">(</span><span class="s2">"io.github.oss-slu:pi4micronaut-utils:v1.1:all"</span><span class="o">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -878,6 +882,12 @@ For more information on the LED setup guide, see our documentation <a href="http
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/tree/Home_Automation" class="bare">https://github.com/oss-slu/Pi4Micronaut/tree/Home_Automation</a></p>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_lab_automation"><a class="anchor" href="#_lab_automation"></a>1.3.3. Lab Automation</h4>
+<div class="paragraph">
+<p><a href="https://github.com/oss-slu/Pi4Micronaut/tree/Lab_Automation" class="bare">https://github.com/oss-slu/Pi4Micronaut/tree/Lab_Automation</a></p>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -933,6 +943,15 @@ For more information on the LED setup guide, see our documentation <a href="http
 </li>
 <li>
 <p>Ultrasonic Sensor</p>
+</li>
+<li>
+<p>Servo Motor</p>
+</li>
+<li>
+<p>Tilt Switch</p>
+</li>
+<li>
+<p>Micro Switch</p>
 </li>
 </ul>
 </div>
@@ -1256,7 +1275,7 @@ which determines how the circuit is created by utilizing the I2C pins of the GPI
 If a user wants to implement multiple hardware components then the configuration should be defined in the snake yml structure.</p>
 </div>
 <div class="sect3">
-<h4 id="_yaml_configuration_workflow"><a class="anchor" href="#_yaml_configuration_workflow"></a>4.1.1. YAML Configuration Workflow:</h4>
+<h4 id="_yaml_configuration_workflow"><a class="anchor" href="#_yaml_configuration_workflow"></a>4.1.1. YAML Configuration Workflow</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -3463,7 +3482,7 @@ for more details.</p>
 <div class="sect4">
 <h5 id="_overview_9"><a class="anchor" href="#_overview_9"></a>Overview</h5>
 <div class="paragraph">
-<p>This section provides details of a tilt switch sensor implementation, including its circuit diagram,
+<p>This section provides details of a tilt switch implementation, including its circuit diagram,
 required hardware components, assembly instructions, and functionality.</p>
 </div>
 </div>
@@ -3691,7 +3710,7 @@ for more details.</p>
 <div class="sect4">
 <h5 id="_overview_10"><a class="anchor" href="#_overview_10"></a>Overview</h5>
 <div class="paragraph">
-<p>This section provides details of a Micro Switch sensor implementation, including its circuit diagram, schematic diagram,
+<p>This section provides details of a Micro Switch implementation, including its circuit diagram, schematic diagram,
 required hardware components, assembly instructions, and functionality.</p>
 </div>
 </div>
@@ -5553,7 +5572,7 @@ To produce sound, a passive buzzer needs an external PWM signal supplied by Rasp
 <div id="footer">
 <div id="footer-text">
 Version v1.1<br>
-Last updated 2024-05-09 18:23:59 UTC
+Last updated 2024-05-09 19:18:03 UTC
 </div>
 </div>
 </body>
