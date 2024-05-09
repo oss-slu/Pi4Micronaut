@@ -27,7 +27,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}")
     runtimeOnly("ch.qos.logback:logback-classic")
     runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
-    implementation("io.github.oss-slu:pi4micronaut-utils:v1.0:all")
+    implementation("io.github.oss-slu:pi4micronaut-utils:v1.1:all")
 }
 
 
