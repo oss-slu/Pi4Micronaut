@@ -70,6 +70,8 @@ include::components/inputComponents/photoresistorSensor.adoc[]
 
 include::components/inputComponents/tiltSwitch.adoc[]
 
+include::components/inputComponents/microSwitch.adoc[]
+
 include::components/outputComponents.adoc[]
 
 include::components/outputComponents/led.adoc[]
