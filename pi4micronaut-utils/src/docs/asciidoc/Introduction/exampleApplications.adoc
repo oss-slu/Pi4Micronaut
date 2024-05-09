@@ -10,3 +10,6 @@ https://github.com/oss-slu/SLU_OSS_CheckIn
 
 ==== Home Automation
 https://github.com/oss-slu/Pi4Micronaut/tree/Home_Automation
+
+==== Lab Automation
+https://github.com/oss-slu/Pi4Micronaut/tree/Lab_Automation

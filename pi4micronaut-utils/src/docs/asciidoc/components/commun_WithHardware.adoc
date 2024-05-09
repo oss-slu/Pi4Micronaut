@@ -21,7 +21,7 @@ which determines how the circuit is created by utilizing the I2C pins of the GPI
 Based on the pins and communication type, you have to define the configuration in the yml file accordingly.
 If a user wants to implement multiple hardware components then the configuration should be defined in the snake yml structure.
 
-==== YAML Configuration Workflow:
+==== YAML Configuration Workflow
 
 - The specifications in the yml file are given to the component in the controller through the use of the @Named() annotation.
 - The controller passes on the configuration to the helper through the object.
