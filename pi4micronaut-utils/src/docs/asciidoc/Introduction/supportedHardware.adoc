@@ -19,3 +19,6 @@ We plan on offering support for many more hardware components in the future. If 
 * Passive Buzzer
 * PIR Motion Sensor
 * Ultrasonic Sensor
+* Servo Motor
+* Tilt Switch
+* Micro Switch
