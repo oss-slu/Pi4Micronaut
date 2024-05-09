@@ -15,8 +15,8 @@ dependencies {
     implementation("io.micronaut:micronaut-http-client")
     implementation("io.micronaut:micronaut-jackson-databind")
     implementation("jakarta.annotation:jakarta.annotation-api")
-    //implementation("io.github.oss-slu:pi4micronaut-utils:v1.1:all")
-    implementation files("libs/pi4micronaut-utils-v1.0-all.jar")
+    implementation("io.github.oss-slu:pi4micronaut-utils:v1.1:all")
+    //implementation files("libs/pi4micronaut-utils-v1.0-all.jar")
     runtimeOnly("ch.qos.logback:logback-classic")
 }
 
