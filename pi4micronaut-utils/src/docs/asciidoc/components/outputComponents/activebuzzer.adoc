@@ -1,0 +1,119 @@
+:imagesdir: img/
+
+ifndef::rootpath[]
+:rootpath: ../../
+endif::rootpath[]
+
+ifdef::rootpath[]
+:imagesdir: {rootpath}{imagesdir}
+endif::rootpath[]
+
+
+==== Active Buzzer
+
+[.text-right]
+https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/outputComponents/activebuzzer.adoc[Improve this doc]
+
+===== Overview
+This section provides details of the Active Buzzer, including the components and assembly instructions. The Active Buzzer only emits one frequency, as described in the code, to play various sounds.
+
+===== Components
+* 1 x RaspberryPi
+* 1 x Breadboard
+* 1 x T-extension Board
+* 1 x Active Buzzer
+* 6 x Jumper wires
+* 1 x Resistor (1KΩ)
+* 1 x S8550 PNP Transistor
+* Power source (appropriate voltage, typically 3.3V)
+
+===== Assembly Instructions
+* Place the Active Buzzer onto the Breadboard.
+* Place the 1KΩ resistor onto the Breadboard, must be inline with base pin of S8550 PNP Transistor.
+* Place the S8550 PNP Transistor onto the BreadBoard.
+* The Active Buzzer will have two pins. The longer pin is the anode (+) while the shorter is the cathode(-).
+* Connect a jumper wire from GND to (-) negative side
+* Connect a jumper wire from 3.3V to (+) positive side.
+* Connect a jumper wire from GPIO 17 to the 1KΩ resistor
+* Connect jumper wire from positive side to positive end of Active Buzzer.
+* Connect jumper wire from negative end of Active Buzzer to emitter pin of S8550 PNP Transistor.
+* Connect jumper wire from negative side to collector pin of S8550 PNP Transistor.
+
+===== Circuit Diagram
+
+image::active_buzzer-CD.png[]
+
+*Schematic Diagram*
+
+image::buzzer-SD.png[]
+
+===== Functionality
+Active Buzzer is PWM type and emits a beep tone, intermittent tone and a morseCode tone based on the frequency and the time interval.
+
+*Note:* If you use transistor in the circuit, it swaps the functionalities of the buzzer i.e., if you enable the buzzer, it actually disables it and vice versa.
+
+===== Testing the circuit
+Use the below command to test the component.
+
+[source, bash]
+----
+$curl http://localhost:8080/active-buzzer/enable
+----
+
+* `/enable`  - Turns the Active Buzzer on.
+
+[source, bash]
+----
+$curl http://localhost:8080/active-buzzer/disable
+----
+* `/disable` - Turns the Active Buzzer off.
+
+[source, bash]
+----
+$curl http://localhost:8080/active-buzzer/beepTone
+----
+* `/beepTone` - Emits a beep sound from the Active Buzzer.
+
+[source, bash]
+----
+$curl http://localhost:8080/active-buzzer/intermittentTone
+----
+* `/intermittentTone` - Emits an intermittent tone from the Active Buzzer. The total duration is twenty seconds: ten seconds of sound and ten seconds of silence.
+
+[source, bash]
+----
+$curl http://localhost:8080/active-buzzer/morseCode
+----
+* `/morseCode` - Emits the word "pi" in morse code.
+
+
+===== Troubleshooting
+- Active Buzzer not creating sound:
+    * Double check power source
+    * Verify that 1K resistor is used
+    * Verify all wires are in appropriate slots.
+
+===== YAML Configuration
+[source, yaml]
+----
+pwm:
+  active-buzzer:
+    name: active-buzzer
+    address: 17
+    pwmType: SOFTWARE
+    provider: pigpio-pwm
+    initial: 0
+    shutdown: 0
+----
+
+===== Constructor and Methods
+The constructor and the methods within the ActiveBuzzerHelper class can be seen in our javadoc link:https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/outputdevices/ActiveBuzzerHelper.html[here].
+
+===== Example Controller
+
+====== This controller uses the Active Buzzer to emit sound once prompted by the commands
+
+[source, java]
+----
+include::../../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/ActiveBuzzerController.java[tag=ex]
+----

@@ -7,7 +7,7 @@ plugins {
 }
 
 group = 'io.github.oss-slu'
-version = 'v1.0'
+version = 'v1.1'
 
 apply plugin: 'maven-publish'
 apply plugin: 'signing'
@@ -34,7 +34,6 @@ java {
     sourceCompatibility = JavaVersion.toVersion("17")
     targetCompatibility = JavaVersion.toVersion("17")
 }
-
 
 tasks.named('build').configure {
     dependsOn 'javadoc'
@@ -94,7 +93,7 @@ publishing {
         mavenJava(MavenPublication) {
             groupId = 'io.github.oss-slu'
             artifactId = 'pi4micronaut-utils'
-            version = 'v1.0'
+            version = 'v1.1'
             from components.java
 
             artifact sourcesJar

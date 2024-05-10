@@ -10,11 +10,10 @@ endif::rootpath[]
 
 ==== RFID Scanner
 [.text-right]
-https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/inputComponents/rfidScanner.adoc[Improve this doc]
+https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/inputComponents/rfidScanner.adoc[Improve this doc]
 
 ===== Overview
 This section provides information regarding the RFID scanner component and its circuit, including assembly instructions.
-
 
 ===== Components
 
@@ -24,9 +23,6 @@ This section provides information regarding the RFID scanner component and its c
 * Breadboard
 * Power source (3.3V)
 
-
-
-
 ===== Assembly Instructions
 
 * Put RFID scanner on breadboard as shown in the diagram below.
@@ -35,31 +31,25 @@ This section provides information regarding the RFID scanner component and its c
 
 
 ===== Circuit Diagram
-Model:
 
 image::rfid_circuit.png[]
 
 ===== Functionality
-The two main functions of the RFID scanner are to read RFIDs and to write to them. What is written to the RFID will vary depending on the intended use for the scanner.
+RFID Scanner requires RFID tags to work with. We can read/write the data on to the tags using the scanner.
 
-===== Troubleshooting
-
-Make sure everything is connected to the correct pins.
+* `/write/{value}`  - Writes {value} to the RFID key fob
+* `/read`           - Scanner will be ready to read the key fob
 
 ===== Testing the Circuit:
 
-To write to the RFID fob: `curl -X POST http://localhost:8080/rfid/write/{message}`
-
-Example:
+To write to the RFID fob:
 [source]
 ----
 $ curl -X POST http://localhost:8080/rfid/write/HelloThere
 ----
 Scan the key fob to write the message to the fob.
 
-To read from the RFID fob: `curl http://localhost:8080/rfid/read`
-
-Example:
+To read from the RFID fob:
 [source]
 ----
 $ curl http://localhost:8080/rfid/read
@@ -70,25 +60,25 @@ Scan the key fob and the message on the fob will be printed.
 HelloThere
 ----
 
-===== YAML
-The RFID scanner as it appears in the application.yml:
+===== Troubleshooting
 
-include::../../../../../../components/src/main/resources/application.yml[tag=spi]
+Make sure everything is connected to the correct pins.
 
+===== YAML Configuration
+The RFID scanner configuration as it appears in the application.yml:
 
-===== Constructors
-
-[source, java]
+[source]
 ----
-include::../../../../../../pi4micronaut-utils/src/main/java/com/opensourcewithslu/inputDevices/RFidHelper.java[tag=const]
+spi:
+   rfid:
+      name: MFRC522
+      address: 8
+      baud: 500000
+      reset-pin: 25
 ----
-
-===== Methods
-
-[source, java]
-----
-include::../../../../../../pi4micronaut-utils/src/main/java/com/opensourcewithslu/inputDevices/RFidHelper.java[tag=method]
-----
+===== Constructors and Methods
+To see the constructor and methods of our RFidHelper class see our javadoc link:https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/inputdevices/RFidHelper.html[here]
+for more details.
 
 ===== An Example Controller
 
@@ -96,5 +86,5 @@ include::../../../../../../pi4micronaut-utils/src/main/java/com/opensourcewithsl
 
 [source, java]
 ----
-include::../../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/RFidController.java[tag=ex]
+include::../../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/RfidController.java[tag=ex]
 ----

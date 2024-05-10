@@ -6,6 +6,8 @@ Pi4Micronaut is an innovative Java library crafted for developers who aim to bui
 
 The existence of Pi4Micronaut is justified by the need for a robust, scalable, and efficient way to bridge the gap between enterprise-grade software and the physical world of hardware. It is particularly valuable for projects that demand both the high-performance, microservices-oriented capabilities of the Micronaut framework and the versatile hardware interaction that the Raspberry Pi offers. Whether it's for home automation, industrial monitoring, or educational purposes, Pi4Micronaut empowers developers to deliver reliable and sophisticated IoT applications that can run headless on a Raspberry Pi or be managed remotely, providing convenience, control, and customization to the end-users.
 
+**Note:** Pi4Micronaut doesn't work with the latest Raspberry Pi 5 because of its whole new architecture. Pi4J and pigpio libraries doesn't provide support for Pi 5 yet. Look out for the latest version of Pi4J to work with Pi5's in the future.
+
 ### Information
 
 - **Source Code:** <https://github.com/oss-slu/Pi4Micronaut/> 
@@ -25,7 +27,7 @@ The existence of Pi4Micronaut is justified by the need for a robust, scalable, a
 - **Adoption Date:** August 2022
 - **Technologies Used:**
     - Java
-    - Micronaut Framework
+    - Micronaut Framework with Gradle
     - Pi4J Library
 - **Type:** IOT (Raspberry Pi)
 - **License:** [Apache License 2.0](https://opensource.org/license/apache-2-0/)
@@ -34,9 +36,16 @@ The existence of Pi4Micronaut is justified by the need for a robust, scalable, a
 ## Pi4Micronaut
 - [Link to Pi4Micronaut Documentation](https://oss-slu.github.io/Pi4Micronaut/)
 - [API Reference](https://oss-slu.github.io/Pi4Micronaut/javadoc/index.html)
+- [Maven Central Repository](https://central.sonatype.com/artifact/io.github.oss-slu/pi4micronaut-utils)
+- [Maven Artifacts](https://repo1.maven.org/maven2/io/github/oss-slu/pi4micronaut-utils/)
 
 ### Architecture Diagram
-![Pi4Micronaut.png](Workflow.png)
+![Pi4Micronaut.png](Workflow_Diagram.png)
+
+## Example Projects using Pi4Micronaut Library
+- [Home Automation](https://github.com/oss-slu/Pi4Micronaut/tree/Home_Automation)
+- [Lab Automation](https://github.com/oss-slu/Pi4Micronaut/tree/Lab_Automation)
+- [OSS SLU Checkin](https://github.com/oss-slu/SLU_OSS_CheckIn)
 
 ## Micronaut 3.7.3
 - [Micronaut 3.7.3 User Guide](https://micronaut-projects.github.io/micronaut-docs-mn3/3.7.3/guide/index.html)

@@ -1,7 +1,26 @@
 ==== I2C
 [.text-right]
-https://github.com/oss-slu/Pi4Micronaut/edit/develop/micronautpi4j-utils/src/docs/asciidoc/components/commun_WithHardware/i2c.adoc[Improve this doc]
+https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/commun_WithHardware/i2c.adoc[Improve this doc]
 
+I2C stands for **Inter-Integrated Circuit**. It is a bus interface connection protocol incorporated into devices for serial communication. (https://geeksforgeeks.org/i2c-communication-protocol/[Source: geeksforgeeks.com])
+The I2C protocol uses two wires: SDA (serial data) and SCL (serial clock). This protocol allows for communication between
+multiple devices using only two wires and unique addresses.
+
+The I2C LCD1602 consists of a normal LCD1602 and an I2C module that is attached to the back of the LCD.
+The I2C module is a chip that can expand the I/O ports of the LCD1602 using the I2C protocol.
+It converts the signals from the Raspberry Pi into commands for the LCD.
+
+(https://docs.sunfounder.com/projects/umsk/en/latest/01_components_basic/26-component_i2c_lcd1602.html[Source: docs.sunfounder.com])
+
+To define in application.yaml add i2c as a field under pi4j, then add each component under i2c.
+
+Each component will need:
+
+* name: Name of the component
+* bus: Bus address of device
+* device: Address of device
+
+.Example I2C declaration
 [source,yaml]
 ----
 include::../../../../../../components/src/main/resources/application.yml[tags=i2c]
@@ -11,4 +30,3 @@ include::../../../../../../components/src/main/resources/application.yml[tags=i2
 <3> Device bus (0 or 1)
 <4> Device address
 
-TODO: add I2C information

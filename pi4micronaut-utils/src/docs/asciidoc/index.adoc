@@ -32,12 +32,8 @@ include::contribute/contributingToLibrary.adoc[]
 
 include::contribute/newComponent.adoc[]
 
-include::adding_creating_App.adoc[]
 
-
-include::usingLibrary.adoc[]
-
-include::components.adoc[]
+== Components
 
 include::components/commun_WithHardware.adoc[]
 
@@ -64,8 +60,17 @@ include::components/inputComponents/rotaryEncoder.adoc[]
 
 include::components/inputComponents/rfidScanner.adoc[]
 
-include::components/inputComponents/photosensor.adoc[]
+include::components/inputComponents/ultraSonicSensor.adoc[]
 
+include::components/inputComponents/touchSwitch.adoc[]
+
+include::components/inputComponents/pirSensor.adoc[]
+
+include::components/inputComponents/photoresistorSensor.adoc[]
+
+include::components/inputComponents/tiltSwitch.adoc[]
+
+include::components/inputComponents/microSwitch.adoc[]
 
 include::components/outputComponents.adoc[]
 
@@ -75,4 +80,8 @@ include::components/outputComponents/rgbLed.adoc[]
 
 include::components/outputComponents/lcd1602.adoc[]
 
+include::components/outputComponents/passivebuzzer.adoc[]
 
+include::components/outputComponents/activebuzzer.adoc[]
+
+include::components/outputComponents/servomotor.adoc[]

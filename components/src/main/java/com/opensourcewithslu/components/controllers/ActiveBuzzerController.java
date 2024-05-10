@@ -6,6 +6,7 @@ import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import jakarta.inject.Named;
 
+//tag::ex[]
 @Controller("/active-buzzer")
 public class ActiveBuzzerController {
 
@@ -37,7 +38,7 @@ public class ActiveBuzzerController {
     }
 
     /**
-     * Emits an beep sound from the active buzzer.
+     * Emits a beep sound from the active buzzer.
      */
     @Get("/beepTone")
     public void playBeepTone(){
@@ -66,3 +67,4 @@ public class ActiveBuzzerController {
         activeBuzzerHelper.morseCodeTone();
     }
 }
+//end::ex[]

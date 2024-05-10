@@ -11,6 +11,7 @@ import jakarta.inject.Named;
 /**
  * Controller for managing LCD1602 display operations via HTTP requests.
  */
+//tag::ex[]
 @Controller("/lcd")
 public class lcdController {
     private final LCD1602Helper lcdHelper;
@@ -37,10 +38,10 @@ public class lcdController {
         return "Text written at line " + line + ", position " + pos + ": " + text + "\n";
     }
 
-    @Get("/write/character/{charvalue}")
-    public String writeCharacter(@PathVariable char charvalue) {
-        lcdHelper.writeCharacter(charvalue);
-        return "Character '" + charvalue + "' written to LCD\n";
+    @Get("/write/character/{charValue}")
+    public String writeCharacter(@PathVariable char charValue) {
+        lcdHelper.writeCharacter(charValue);
+        return "Character '" + charValue + "' written to LCD\n";
     }
 
     @Get("/backlight/{state}")
@@ -68,3 +69,4 @@ public class lcdController {
         return "Display turned off\n";
     }
 }
+//end::ex[]
