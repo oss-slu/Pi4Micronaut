@@ -35,12 +35,20 @@ public class MultiCompController {
 
     @Post("/led1")
     public void switch1(){
-        ledHelper.switchState();
+        try {
+            ledHelper.switchState();
+        } catch (Exception e) {
+            log.error("Failed to switch LED1 state", e);
+        }
     }
 
     @Post("/led2")
     public void switch2(){
-        ledHelper2.switchState();
+        try {
+            ledHelper2.switchState();
+        } catch (Exception e) {
+            log.error("Failed to switch LED2 state", e);
+        }
     }
 
     @Get("/button1")
@@ -48,7 +56,11 @@ public class MultiCompController {
         button1.addEventListener(e ->{
             log.info(String.valueOf(button1.isPressed));
             if(button1.isPressed){
-                ledHelper.switchState();
+                try {
+                    ledHelper.switchState();
+                } catch (Exception ex) {
+                    log.error("Failed to switch LED1 state via Button1", ex);
+                }
             }
         });
     }
@@ -57,7 +69,11 @@ public class MultiCompController {
     public void button2(){
         button2.addEventListener(e ->{
             if(button2.isPressed){
-                ledHelper.switchState();
+                try {
+                    ledHelper2.switchState();
+                } catch (Exception ex) {
+                    log.error("Failed to switch LED2 state via Button1", ex);
+                }
             }
         });
     }
