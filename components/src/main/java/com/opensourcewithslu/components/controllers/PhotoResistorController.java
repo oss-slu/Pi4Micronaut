@@ -12,13 +12,11 @@ import javax.validation.constraints.Positive;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
 //tag::ex[]
 @Controller("/photoResistor")
 public class PhotoResistorController {
     private static final Logger log = LoggerFactory.getLogger(PhotoResistorController.class);
     private final LEDHelper ledHelper;
-
     private final PhotoResistorHelper photoResistorHelper;
 
     public PhotoResistorController(@Named("photo-resistor-input")DigitalInput photoResistorIN,

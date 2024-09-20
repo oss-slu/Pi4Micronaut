@@ -10,13 +10,11 @@ import jakarta.inject.Named;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
 //tag::ex[]
 @Controller("/touchSwitch")
 public class TouchSwitchController {
     private static final Logger log = LoggerFactory.getLogger(TouchSwitchController.class);
     private final TouchSwitchHelper touchSwitchHelper;
-
     private final LEDHelper ledHelper;
 
     public TouchSwitchController(@Named("touch-switch-input") DigitalInput touchSwitch,

@@ -9,11 +9,9 @@ import java.io.File;
 //tag::ex[]
 @Controller("/passive-buzzer")
 public class PassiveBuzzerController {
-
     private final PassiveBuzzerHelper passiveBuzzerHelper;
 
     protected int passBuzzFreq = 440;
-
     protected int passBuzzDC = 50;
 
     public PassiveBuzzerController(@Named("passive-buzzer") Pwm passiveBuzzerOutput){

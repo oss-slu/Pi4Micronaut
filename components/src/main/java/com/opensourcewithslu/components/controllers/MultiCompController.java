@@ -14,13 +14,9 @@ import org.slf4j.LoggerFactory;
 @Controller("/multi")
 public class MultiCompController {
     private static final Logger log = LoggerFactory.getLogger(MultiCompController.class);
-
     private final LEDHelper ledHelper;
-
     private final LEDHelper ledHelper2;
-
     private final PushButtonHelper button1;
-
     private final PushButtonHelper button2;
 
     public MultiCompController(@Named("led") DigitalOutput led1,
@@ -72,7 +68,7 @@ public class MultiCompController {
                 try {
                     ledHelper2.switchState();
                 } catch (Exception ex) {
-                    log.error("Failed to switch LED2 state via Button1", ex);
+                    log.error("Failed to switch LED2 state via Button2", ex);
                 }
             }
         });

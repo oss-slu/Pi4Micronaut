@@ -12,14 +12,11 @@ import org.slf4j.LoggerFactory;
 
 //tag::ex[]
 @Controller("/microSwitch")
-public class MicroSwitchController {
+public class MicroSwitchController { 
     private static final Logger log = LoggerFactory.getLogger(MicroSwitchController.class);
-
     private final MicroSwitchHelper microSwitchHelper;
-
     private final LEDHelper ledHelper1;
     private final LEDHelper ledHelper2;
-
 
     public MicroSwitchController(@Named("micro-switch") DigitalInput microSwitch,
                                  @Named("led") DigitalOutput led1,

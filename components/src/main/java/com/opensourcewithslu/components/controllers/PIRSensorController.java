@@ -17,6 +17,7 @@ import jakarta.inject.Named;
 public class PIRSensorController {
     private final PIRSensorHelper pirSensorHelper;
     private final RGBLEDHelper rgbledHelper;
+    
     /**
      * The PirSensorController constructor.
      * @param pirSensor A Pi4J DigitalInput object.

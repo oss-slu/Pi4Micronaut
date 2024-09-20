@@ -1,7 +1,5 @@
 package com.opensourcewithslu.components.controllers;
 
-import org.slf4j.LoggerFactory;
-
 import com.opensourcewithslu.outputdevices.LEDHelper;
 import com.pi4j.io.gpio.digital.DigitalOutput;
 import io.micronaut.http.annotation.Controller;
@@ -14,7 +12,6 @@ import org.slf4j.LoggerFactory;
 @Controller("/led")
 public class LEDController {
     private static final Logger log = LoggerFactory.getLogger(LEDController.class);
-
     private final LEDHelper ledHelper;
 
     public LEDController(@Named("led")DigitalOutput led){

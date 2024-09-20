@@ -9,7 +9,6 @@ import jakarta.inject.Named;
 //tag::ex[]
 @Controller("/active-buzzer")
 public class ActiveBuzzerController {
-
     private final ActiveBuzzerHelper activeBuzzerHelper;
 
     public ActiveBuzzerController(@Named("active-buzzer") Pwm activeBuzzerOutput){
