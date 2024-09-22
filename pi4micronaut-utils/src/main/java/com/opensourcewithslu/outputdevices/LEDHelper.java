@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
  *
  */
 public class LEDHelper {
-    private static final Logger log = LoggerFactory.getLogger(LEDHelper.class);
+    private static Logger log = LoggerFactory.getLogger(LEDHelper.class);
 
     private final DigitalOutput ledOutput;
 
@@ -81,5 +81,14 @@ public class LEDHelper {
     public void blink (int duration) {
 
         ledOutput.blink(duration, TimeUnit.MILLISECONDS);
+    }
+
+    /**
+     * Sets the logger object.
+     *
+     * @param log Logger object to set the logger to.
+     */
+    public void setLog(Logger log) {
+        this.log = log;
     }
 }
