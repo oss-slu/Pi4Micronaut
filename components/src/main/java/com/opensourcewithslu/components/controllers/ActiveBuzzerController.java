@@ -28,7 +28,6 @@ public class ActiveBuzzerController {
     /**
      * Disables the active buzzer
      */
-
     @Get("/disable")
     public void disableActiveBuzzer(){
 

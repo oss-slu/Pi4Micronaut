@@ -21,7 +21,6 @@ public class PassiveBuzzerController {
     /**
      * Enables passive buzzer
      */
-
     @Get("/enable")
     public void enablePassiveBuzzer(){
 
@@ -43,7 +42,6 @@ public class PassiveBuzzerController {
      *
      * Displays the current frequency of the passive buzzer.
      */
-
     @Get("/showFreq")
     public void passiveBuzzerFreq(){
 

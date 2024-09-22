@@ -25,7 +25,7 @@ public class MicroSwitchController {
         this.ledHelper1 = new LEDHelper(led1);
         this.ledHelper2 = new LEDHelper(led2);
     }
-//enables the micro switch. The LEDs will switch states as the switch is pressed
+    //enables the micro switch. The LEDs will switch states as the switch is pressed
     @Get("/enable")
     public void enableMicroSwitch() {
         microSwitchHelper.addEventListener(e -> {
