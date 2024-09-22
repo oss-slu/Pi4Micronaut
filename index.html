@@ -2085,9 +2085,8 @@ for more details.</p>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="nd">@Controller</span><span class="o">(</span><span class="s">"/pushButton"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">PushButtonController</span> <span class="o">{</span>
-
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Logger</span> <span class="n">log</span> <span class="o">=</span> <span class="nc">LoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="nc">PushButtonController</span><span class="o">.</span><span class="na">class</span><span class="o">);</span> 
     <span class="kd">private</span> <span class="kd">final</span> <span class="nc">PushButtonHelper</span> <span class="n">pushButtonHelper</span><span class="o">;</span>
-
     <span class="kd">private</span> <span class="kd">final</span> <span class="nc">LEDHelper</span> <span class="n">ledHelper</span><span class="o">;</span>
 
     <span class="kd">public</span> <span class="nf">PushButtonController</span><span class="o">(</span><span class="nd">@Named</span><span class="o">(</span><span class="s">"button-input-3"</span><span class="o">)</span> <span class="nc">DigitalInput</span> <span class="n">pushButton</span><span class="o">,</span>
@@ -2100,7 +2099,11 @@ for more details.</p>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">initController</span><span class="o">(){</span>
         <span class="n">pushButtonHelper</span><span class="o">.</span><span class="na">addEventListener</span><span class="o">(</span><span class="n">e</span> <span class="o">-&gt;{</span>
             <span class="k">if</span><span class="o">(</span><span class="n">pushButtonHelper</span><span class="o">.</span><span class="na">isPressed</span><span class="o">){</span>
-                <span class="n">ledHelper</span><span class="o">.</span><span class="na">switchState</span><span class="o">();</span>
+                <span class="k">try</span> <span class="o">{</span>
+                    <span class="n">ledHelper</span><span class="o">.</span><span class="na">switchState</span><span class="o">();</span>
+                <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">log</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">"Failed to switch LED state."</span><span class="o">,</span> <span class="n">ex</span><span class="o">);</span>
+                <span class="o">}</span>
             <span class="o">}</span>
         <span class="o">});</span>
     <span class="o">}</span>
@@ -2248,7 +2251,6 @@ for more details.</p>
 <pre class="rouge highlight"><code data-lang="java"><span class="nd">@Controller</span><span class="o">(</span><span class="s">"/slideSwitch"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">SlideSwitchController</span> <span class="o">{</span>
     <span class="kd">private</span> <span class="kd">final</span> <span class="nc">SlideSwitchHelper</span> <span class="n">slideSwitchHelper</span><span class="o">;</span>
-
     <span class="kd">private</span> <span class="kd">final</span> <span class="nc">SlideSwitchHelper</span> <span class="n">slideSwitchHelper2</span><span class="o">;</span>
 
     <span class="kd">public</span> <span class="nf">SlideSwitchController</span><span class="o">(</span><span class="nd">@Named</span><span class="o">(</span><span class="s">"slide-switch-input"</span><span class="o">)</span><span class="nc">DigitalInput</span> <span class="n">slideSwitch</span><span class="o">,</span> 
@@ -2746,7 +2748,6 @@ for more details.</p>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="nd">@Controller</span><span class="o">(</span><span class="s">"/ultraSound"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">UltraSonicSensorController</span> <span class="o">{</span>
-
     <span class="kd">private</span> <span class="kd">final</span> <span class="nc">UltraSonicSensorHelper</span> <span class="n">ultraSonicSensorHelper</span><span class="o">;</span>
 
     <span class="kd">public</span> <span class="nf">UltraSonicSensorController</span><span class="o">(</span><span class="nd">@Named</span><span class="o">(</span><span class="s">"ultra-sonic-trig"</span><span class="o">)</span> <span class="nc">DigitalOutput</span> <span class="n">trig</span><span class="o">,</span>
@@ -2754,7 +2755,6 @@ for more details.</p>
         <span class="k">this</span><span class="o">.</span><span class="na">ultraSonicSensorHelper</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">UltraSonicSensorHelper</span><span class="o">(</span><span class="n">trig</span><span class="o">,</span><span class="n">echo</span><span class="o">);</span>
 
     <span class="o">}</span>
-
 
     <span class="cm">/**
      * Enables the ultrasonic sensor
@@ -2982,9 +2982,8 @@ for more details.</p>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="nd">@Controller</span><span class="o">(</span><span class="s">"/touchSwitch"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">TouchSwitchController</span> <span class="o">{</span>
-
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Logger</span> <span class="n">log</span> <span class="o">=</span> <span class="nc">LoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="nc">TouchSwitchController</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
     <span class="kd">private</span> <span class="kd">final</span> <span class="nc">TouchSwitchHelper</span> <span class="n">touchSwitchHelper</span><span class="o">;</span>
-
     <span class="kd">private</span> <span class="kd">final</span> <span class="nc">LEDHelper</span> <span class="n">ledHelper</span><span class="o">;</span>
 
     <span class="kd">public</span> <span class="nf">TouchSwitchController</span><span class="o">(</span><span class="nd">@Named</span><span class="o">(</span><span class="s">"touch-switch-input"</span><span class="o">)</span> <span class="nc">DigitalInput</span> <span class="n">touchSwitch</span><span class="o">,</span>
@@ -2996,11 +2995,14 @@ for more details.</p>
     <span class="nd">@Get</span><span class="o">(</span><span class="s">"/enable"</span><span class="o">)</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">enableTouchSwitch</span><span class="o">()</span> <span class="o">{</span>
         <span class="n">touchSwitchHelper</span><span class="o">.</span><span class="na">addEventListener</span><span class="o">(</span><span class="n">e</span> <span class="o">-&gt;</span> <span class="o">{</span>
-            <span class="k">if</span> <span class="o">(</span><span class="n">touchSwitchHelper</span><span class="o">.</span><span class="na">isTouched</span><span class="o">)</span> <span class="o">{</span>
-                <span class="n">ledHelper</span><span class="o">.</span><span class="na">ledOn</span><span class="o">();</span>
-            <span class="o">}</span>
-            <span class="k">else</span> <span class="o">{</span>
-                <span class="n">ledHelper</span><span class="o">.</span><span class="na">ledOff</span><span class="o">();</span>
+            <span class="k">try</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">touchSwitchHelper</span><span class="o">.</span><span class="na">isTouched</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">ledHelper</span><span class="o">.</span><span class="na">ledOn</span><span class="o">();</span>
+                <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                    <span class="n">ledHelper</span><span class="o">.</span><span class="na">ledOff</span><span class="o">();</span>
+                <span class="o">}</span>
+            <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">log</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">"Error switching LED state"</span><span class="o">,</span> <span class="n">ex</span><span class="o">);</span>
             <span class="o">}</span>
         <span class="o">});</span>
     <span class="o">}</span>
@@ -3161,41 +3163,45 @@ for more details.</p>
 <pre class="rouge highlight"><code data-lang="java"><span class="nd">@Controller</span><span class="o">(</span><span class="s">"/pirSensor"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">PIRSensorController</span> <span class="o">{</span>
     <span class="kd">private</span> <span class="kd">final</span> <span class="nc">PIRSensorHelper</span> <span class="n">pirSensorHelper</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">RGBLEDHelper</span> <span class="n">rgbledHelper</span><span class="o">;</span>
-    <span class="cm">/**
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">RGBLEDHelper</span> <span class="n">rgbledHelper</span><span class="o">;</span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>    /**
      * The PirSensorController constructor.
      * @param pirSensor A Pi4J DigitalInput object.
      * @param rgbLed A MultiPinConfiguration object.
-     */</span>
-    <span class="kd">public</span> <span class="nf">PIRSensorController</span><span class="o">(</span><span class="nd">@Named</span><span class="o">(</span><span class="s">"pir-sensor"</span><span class="o">)</span> <span class="nc">DigitalInput</span> <span class="n">pirSensor</span><span class="o">,</span> <span class="nd">@Named</span><span class="o">(</span><span class="s">"rgb-led-2"</span><span class="o">)</span> <span class="nc">MultiPinConfiguration</span> <span class="n">rgbLed</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">pirSensorHelper</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PIRSensorHelper</span><span class="o">(</span><span class="n">pirSensor</span><span class="o">);</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">rgbledHelper</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">RGBLEDHelper</span><span class="o">(</span><span class="n">rgbLed</span><span class="o">);</span>
-    <span class="o">}</span>
-    <span class="cm">/**
+     */
+    public PIRSensorController(@Named("pir-sensor") DigitalInput pirSensor, @Named("rgb-led-2") MultiPinConfiguration rgbLed) {
+        this.pirSensorHelper = new PIRSensorHelper(pirSensor);
+        this.rgbledHelper = new RGBLEDHelper(rgbLed);
+    }
+    /**
      * Enables the PIR sensor by adding an event listener which sets the RGB LED to red when movement is detected and green otherwise.
-     */</span>
-    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/enable"</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">enablePIRSensor</span><span class="o">()</span> <span class="o">{</span>
-        <span class="kt">int</span><span class="o">[]</span> <span class="n">red</span> <span class="o">=</span> <span class="o">{</span><span class="mi">255</span><span class="o">,</span><span class="mi">0</span><span class="o">,</span><span class="mi">0</span><span class="o">};</span>
-        <span class="kt">int</span><span class="o">[]</span> <span class="n">green</span> <span class="o">=</span> <span class="o">{</span><span class="mi">0</span><span class="o">,</span><span class="mi">255</span><span class="o">,</span><span class="mi">0</span><span class="o">};</span>
-        <span class="n">pirSensorHelper</span><span class="o">.</span><span class="na">addEventListener</span><span class="o">(</span><span class="n">e</span> <span class="o">-&gt;</span> <span class="o">{</span>
-            <span class="k">if</span> <span class="o">(</span><span class="n">pirSensorHelper</span><span class="o">.</span><span class="na">isMoving</span><span class="o">)</span> <span class="o">{</span>
-                <span class="n">rgbledHelper</span><span class="o">.</span><span class="na">setColor</span><span class="o">(</span><span class="n">red</span><span class="o">);</span>
-            <span class="o">}</span>
-            <span class="k">else</span> <span class="o">{</span>
-                <span class="n">rgbledHelper</span><span class="o">.</span><span class="na">setColor</span><span class="o">(</span><span class="n">green</span><span class="o">);</span>
-            <span class="o">}</span>
-        <span class="o">});</span>
-    <span class="o">}</span>
-    <span class="cm">/**
+     */
+    @Get("/enable")
+    public void enablePIRSensor() {
+        int[] red = {255,0,0};
+        int[] green = {0,255,0};
+        pirSensorHelper.addEventListener(e -&gt; {
+            if (pirSensorHelper.isMoving) {
+                rgbledHelper.setColor(red);
+            }
+            else {
+                rgbledHelper.setColor(green);
+            }
+        });
+    }
+    /**
      * Disables the controller by removing the event listener and turning off the RGB LED.
-     */</span>
-    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/disable"</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">disablePIRSensor</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">pirSensorHelper</span><span class="o">.</span><span class="na">removeEventListener</span><span class="o">();</span>
-        <span class="n">rgbledHelper</span><span class="o">.</span><span class="na">ledOff</span><span class="o">();</span>
-    <span class="o">}</span>
-<span class="o">}</span></code></pre>
+     */
+    @Get("/disable")
+    public void disablePIRSensor() {
+        pirSensorHelper.removeEventListener();
+        rgbledHelper.ledOff();
+    }
+}</pre>
 </div>
 </div>
 </div>
@@ -3425,8 +3431,8 @@ for more details.</p>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="nd">@Controller</span><span class="o">(</span><span class="s">"/photoResistor"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">PhotoResistorController</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Logger</span> <span class="n">log</span> <span class="o">=</span> <span class="nc">LoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="nc">PhotoResistorController</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
     <span class="kd">private</span> <span class="kd">final</span> <span class="nc">LEDHelper</span> <span class="n">ledHelper</span><span class="o">;</span>
-
     <span class="kd">private</span> <span class="kd">final</span> <span class="nc">PhotoResistorHelper</span> <span class="n">photoResistorHelper</span><span class="o">;</span>
 
     <span class="kd">public</span> <span class="nf">PhotoResistorController</span><span class="o">(</span><span class="nd">@Named</span><span class="o">(</span><span class="s">"photo-resistor-input"</span><span class="o">)</span><span class="nc">DigitalInput</span> <span class="n">photoResistorIN</span><span class="o">,</span>
@@ -3441,11 +3447,14 @@ for more details.</p>
     <span class="kd">public</span> <span class="kt">int</span> <span class="nf">enableLightSensor</span><span class="o">(){</span>
         <span class="n">photoResistorHelper</span><span class="o">.</span><span class="na">initialize</span><span class="o">();</span>
         <span class="n">photoResistorHelper</span><span class="o">.</span><span class="na">addEventListener</span><span class="o">(</span><span class="n">e</span> <span class="o">-&gt;</span> <span class="o">{</span>
-            <span class="k">if</span> <span class="o">(</span><span class="n">photoResistorHelper</span><span class="o">.</span><span class="na">isDark</span><span class="o">)</span> <span class="o">{</span>
-                <span class="n">ledHelper</span><span class="o">.</span><span class="na">ledOn</span><span class="o">();</span>
-            <span class="o">}</span>
-            <span class="k">else</span> <span class="o">{</span>
-                <span class="n">ledHelper</span><span class="o">.</span><span class="na">ledOff</span><span class="o">();</span>
+            <span class="k">try</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">photoResistorHelper</span><span class="o">.</span><span class="na">isDark</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">ledHelper</span><span class="o">.</span><span class="na">ledOn</span><span class="o">();</span>
+                <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                    <span class="n">ledHelper</span><span class="o">.</span><span class="na">ledOff</span><span class="o">();</span>
+                <span class="o">}</span>
+            <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">log</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">"Error switching LED state"</span><span class="o">,</span> <span class="n">ex</span><span class="o">);</span>
             <span class="o">}</span>
         <span class="o">});</span>
         <span class="k">return</span> <span class="n">photoResistorHelper</span><span class="o">.</span><span class="na">getDark</span><span class="o">();</span>
@@ -3667,7 +3676,7 @@ for more details.</p>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="nd">@Controller</span><span class="o">(</span><span class="s">"/tiltSwitch"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">TiltSwitchController</span> <span class="o">{</span>
-
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Logger</span> <span class="n">log</span> <span class="o">=</span> <span class="nc">LoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="nc">TiltSwitchController</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
     <span class="kd">private</span> <span class="kd">final</span> <span class="nc">TiltSwitchHelper</span> <span class="n">tiltSwitchHelper</span><span class="o">;</span> <span class="c1">// controls the tilt switch</span>
     <span class="kd">private</span> <span class="kd">final</span> <span class="nc">LEDHelper</span> <span class="n">ledHelper</span><span class="o">;</span> <span class="c1">// controls the LED</span>
 
@@ -3682,11 +3691,14 @@ for more details.</p>
     <span class="nd">@Get</span><span class="o">(</span><span class="s">"/enable"</span><span class="o">)</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">enableTiltSwitch</span><span class="o">()</span> <span class="o">{</span>
         <span class="n">tiltSwitchHelper</span><span class="o">.</span><span class="na">addEventListener</span><span class="o">(</span><span class="n">e</span> <span class="o">-&gt;</span> <span class="o">{</span>
-            <span class="k">if</span> <span class="o">(</span><span class="n">tiltSwitchHelper</span><span class="o">.</span><span class="na">isTilted</span><span class="o">)</span> <span class="o">{</span>
-                <span class="n">ledHelper</span><span class="o">.</span><span class="na">ledOn</span><span class="o">();</span>
-            <span class="o">}</span>
-            <span class="k">else</span> <span class="o">{</span>
-                <span class="n">ledHelper</span><span class="o">.</span><span class="na">ledOff</span><span class="o">();</span>
+            <span class="k">try</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">tiltSwitchHelper</span><span class="o">.</span><span class="na">isTilted</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">ledHelper</span><span class="o">.</span><span class="na">ledOn</span><span class="o">();</span>
+                <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                    <span class="n">ledHelper</span><span class="o">.</span><span class="na">ledOff</span><span class="o">();</span>
+                <span class="o">}</span>
+            <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">log</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">"Error switching LED state"</span><span class="o">,</span> <span class="n">ex</span><span class="o">);</span>
             <span class="o">}</span>
         <span class="o">});</span>
     <span class="o">}</span>
@@ -3916,13 +3928,11 @@ for more details.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="nd">@Controller</span><span class="o">(</span><span class="s">"/microSwitch"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MicroSwitchController</span> <span class="o">{</span>
-
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MicroSwitchController</span> <span class="o">{</span> 
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Logger</span> <span class="n">log</span> <span class="o">=</span> <span class="nc">LoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="nc">MicroSwitchController</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
     <span class="kd">private</span> <span class="kd">final</span> <span class="nc">MicroSwitchHelper</span> <span class="n">microSwitchHelper</span><span class="o">;</span>
-
     <span class="kd">private</span> <span class="kd">final</span> <span class="nc">LEDHelper</span> <span class="n">ledHelper1</span><span class="o">;</span>
     <span class="kd">private</span> <span class="kd">final</span> <span class="nc">LEDHelper</span> <span class="n">ledHelper2</span><span class="o">;</span>
-
 
     <span class="kd">public</span> <span class="nf">MicroSwitchController</span><span class="o">(</span><span class="nd">@Named</span><span class="o">(</span><span class="s">"micro-switch"</span><span class="o">)</span> <span class="nc">DigitalInput</span> <span class="n">microSwitch</span><span class="o">,</span>
                                  <span class="nd">@Named</span><span class="o">(</span><span class="s">"led"</span><span class="o">)</span> <span class="nc">DigitalOutput</span> <span class="n">led1</span><span class="o">,</span>
@@ -3931,18 +3941,20 @@ for more details.</p>
         <span class="k">this</span><span class="o">.</span><span class="na">ledHelper1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LEDHelper</span><span class="o">(</span><span class="n">led1</span><span class="o">);</span>
         <span class="k">this</span><span class="o">.</span><span class="na">ledHelper2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LEDHelper</span><span class="o">(</span><span class="n">led2</span><span class="o">);</span>
     <span class="o">}</span>
-<span class="c1">//enables the micro switch. The LEDs will switch states as the switch is pressed</span>
+    <span class="c1">//enables the micro switch. The LEDs will switch states as the switch is pressed</span>
     <span class="nd">@Get</span><span class="o">(</span><span class="s">"/enable"</span><span class="o">)</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">enableMicroSwitch</span><span class="o">()</span> <span class="o">{</span>
         <span class="n">microSwitchHelper</span><span class="o">.</span><span class="na">addEventListener</span><span class="o">(</span><span class="n">e</span> <span class="o">-&gt;</span> <span class="o">{</span>
-            <span class="k">if</span> <span class="o">(</span><span class="n">microSwitchHelper</span><span class="o">.</span><span class="na">isPressed</span><span class="o">)</span> <span class="o">{</span>
-                <span class="n">ledHelper1</span><span class="o">.</span><span class="na">ledOff</span><span class="o">();</span>
-                <span class="n">ledHelper2</span><span class="o">.</span><span class="na">ledOn</span><span class="o">();</span>
-
-            <span class="o">}</span>
-            <span class="k">else</span> <span class="o">{</span>
-                <span class="n">ledHelper1</span><span class="o">.</span><span class="na">ledOn</span><span class="o">();</span>
-                <span class="n">ledHelper2</span><span class="o">.</span><span class="na">ledOff</span><span class="o">();</span>
+            <span class="k">try</span> <span class="o">{</span> 
+                <span class="k">if</span> <span class="o">(</span><span class="n">microSwitchHelper</span><span class="o">.</span><span class="na">isPressed</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">ledHelper1</span><span class="o">.</span><span class="na">ledOff</span><span class="o">();</span>
+                    <span class="n">ledHelper2</span><span class="o">.</span><span class="na">ledOn</span><span class="o">();</span>
+                <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                    <span class="n">ledHelper1</span><span class="o">.</span><span class="na">ledOn</span><span class="o">();</span>
+                    <span class="n">ledHelper2</span><span class="o">.</span><span class="na">ledOff</span><span class="o">();</span>
+                <span class="o">}</span>
+            <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">log</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">"Error switching LED state"</span><span class="o">,</span> <span class="n">ex</span><span class="o">);</span>
             <span class="o">}</span>
         <span class="o">});</span>
     <span class="o">}</span>
@@ -4124,6 +4136,7 @@ for more details.</p>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="nd">@Controller</span><span class="o">(</span><span class="s">"/led"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">LEDController</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Logger</span> <span class="n">log</span> <span class="o">=</span> <span class="nc">LoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="nc">LEDController</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
     <span class="kd">private</span> <span class="kd">final</span> <span class="nc">LEDHelper</span> <span class="n">ledHelper</span><span class="o">;</span>
 
     <span class="kd">public</span> <span class="nf">LEDController</span><span class="o">(</span><span class="nd">@Named</span><span class="o">(</span><span class="s">"led"</span><span class="o">)</span><span class="nc">DigitalOutput</span> <span class="n">led</span><span class="o">){</span>
@@ -4132,22 +4145,38 @@ for more details.</p>
 
     <span class="nd">@Get</span><span class="o">(</span><span class="s">"/ledOn"</span><span class="o">)</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">ledOn</span><span class="o">(){</span>
-        <span class="n">ledHelper</span><span class="o">.</span><span class="na">ledOn</span><span class="o">();</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">ledHelper</span><span class="o">.</span><span class="na">ledOn</span><span class="o">();</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">log</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">"Error turning on LED"</span><span class="o">,</span> <span class="n">e</span><span class="o">);</span>
+        <span class="o">}</span>
     <span class="o">}</span>
 
     <span class="nd">@Get</span><span class="o">(</span><span class="s">"/ledOff"</span><span class="o">)</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">ledOff</span><span class="o">(){</span>
-        <span class="n">ledHelper</span><span class="o">.</span><span class="na">ledOff</span><span class="o">();</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">ledHelper</span><span class="o">.</span><span class="na">ledOff</span><span class="o">();</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">log</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">"Error turning off LED"</span><span class="o">,</span> <span class="n">e</span><span class="o">);</span>
+        <span class="o">}</span>
     <span class="o">}</span>
 
     <span class="nd">@Get</span><span class="o">(</span><span class="s">"/switchState"</span><span class="o">)</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">switchState</span><span class="o">(){</span>
-        <span class="n">ledHelper</span><span class="o">.</span><span class="na">switchState</span><span class="o">();</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">ledHelper</span><span class="o">.</span><span class="na">switchState</span><span class="o">();</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">log</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">"Error switching LED state"</span><span class="o">,</span> <span class="n">e</span><span class="o">);</span>
+        <span class="o">}</span>
     <span class="o">}</span>
 
     <span class="nd">@Get</span><span class="o">(</span><span class="s">"/blink/{duration}/"</span><span class="o">)</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">blink</span><span class="o">(</span><span class="kt">int</span> <span class="n">duration</span><span class="o">){</span>
-        <span class="n">ledHelper</span><span class="o">.</span><span class="na">blink</span><span class="o">(</span><span class="n">duration</span><span class="o">);</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">ledHelper</span><span class="o">.</span><span class="na">blink</span><span class="o">(</span><span class="n">duration</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">log</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">"Error blinking LED"</span><span class="o">,</span> <span class="n">e</span><span class="o">);</span>
+        <span class="o">}</span>
     <span class="o">}</span>
 <span class="o">}</span></code></pre>
 </div>
@@ -4984,11 +5013,9 @@ To produce sound, a passive buzzer needs an external PWM signal supplied by Rasp
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="nd">@Controller</span><span class="o">(</span><span class="s">"/passive-buzzer"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">PassiveBuzzerController</span> <span class="o">{</span>
-
     <span class="kd">private</span> <span class="kd">final</span> <span class="nc">PassiveBuzzerHelper</span> <span class="n">passiveBuzzerHelper</span><span class="o">;</span>
 
     <span class="kd">protected</span> <span class="kt">int</span> <span class="n">passBuzzFreq</span> <span class="o">=</span> <span class="mi">440</span><span class="o">;</span>
-
     <span class="kd">protected</span> <span class="kt">int</span> <span class="n">passBuzzDC</span> <span class="o">=</span> <span class="mi">50</span><span class="o">;</span>
 
     <span class="kd">public</span> <span class="nf">PassiveBuzzerController</span><span class="o">(</span><span class="nd">@Named</span><span class="o">(</span><span class="s">"passive-buzzer"</span><span class="o">)</span> <span class="nc">Pwm</span> <span class="n">passiveBuzzerOutput</span><span class="o">){</span>
@@ -4998,7 +5025,6 @@ To produce sound, a passive buzzer needs an external PWM signal supplied by Rasp
     <span class="cm">/**
      * Enables passive buzzer
      */</span>
-
     <span class="nd">@Get</span><span class="o">(</span><span class="s">"/enable"</span><span class="o">)</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">enablePassiveBuzzer</span><span class="o">(){</span>
 
@@ -5020,7 +5046,6 @@ To produce sound, a passive buzzer needs an external PWM signal supplied by Rasp
      *
      * Displays the current frequency of the passive buzzer.
      */</span>
-
     <span class="nd">@Get</span><span class="o">(</span><span class="s">"/showFreq"</span><span class="o">)</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">passiveBuzzerFreq</span><span class="o">(){</span>
 
@@ -5298,7 +5323,6 @@ To produce sound, a passive buzzer needs an external PWM signal supplied by Rasp
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="nd">@Controller</span><span class="o">(</span><span class="s">"/active-buzzer"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">ActiveBuzzerController</span> <span class="o">{</span>
-
     <span class="kd">private</span> <span class="kd">final</span> <span class="nc">ActiveBuzzerHelper</span> <span class="n">activeBuzzerHelper</span><span class="o">;</span>
 
     <span class="kd">public</span> <span class="nf">ActiveBuzzerController</span><span class="o">(</span><span class="nd">@Named</span><span class="o">(</span><span class="s">"active-buzzer"</span><span class="o">)</span> <span class="nc">Pwm</span> <span class="n">activeBuzzerOutput</span><span class="o">){</span>
@@ -5318,7 +5342,6 @@ To produce sound, a passive buzzer needs an external PWM signal supplied by Rasp
     <span class="cm">/**
      * Disables the active buzzer
      */</span>
-
     <span class="nd">@Get</span><span class="o">(</span><span class="s">"/disable"</span><span class="o">)</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">disableActiveBuzzer</span><span class="o">(){</span>
 
@@ -5538,7 +5561,6 @@ To produce sound, a passive buzzer needs an external PWM signal supplied by Rasp
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="nd">@Controller</span><span class="o">(</span><span class="s">"/servoMotor"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">ServoMotorController</span> <span class="o">{</span>
-
     <span class="kd">private</span> <span class="kd">final</span> <span class="nc">ServoMotorHelper</span> <span class="n">servoMotorHelper</span><span class="o">;</span>
 
     <span class="kd">public</span> <span class="nf">ServoMotorController</span><span class="o">(</span><span class="nd">@Named</span><span class="o">(</span><span class="s">"servo-motor"</span><span class="o">)</span><span class="nc">Pwm</span> <span class="n">servoMotor</span><span class="o">)</span> <span class="o">{</span>
@@ -5572,7 +5594,7 @@ To produce sound, a passive buzzer needs an external PWM signal supplied by Rasp
 <div id="footer">
 <div id="footer-text">
 Version v1.1<br>
-Last updated 2024-05-10 17:55:36 UTC
+Last updated 2024-09-22 22:54:36 UTC
 </div>
 </div>
 </body>
