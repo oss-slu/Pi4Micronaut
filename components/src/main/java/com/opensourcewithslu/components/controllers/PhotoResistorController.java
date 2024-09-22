@@ -9,12 +9,14 @@ import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.Post;
 import jakarta.inject.Named;
 import javax.validation.constraints.Positive;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 //tag::ex[]
 @Controller("/photoResistor")
 public class PhotoResistorController {
+    private static final Logger log = LoggerFactory.getLogger(PhotoResistorController.class);
     private final LEDHelper ledHelper;
-
     private final PhotoResistorHelper photoResistorHelper;
 
     public PhotoResistorController(@Named("photo-resistor-input")DigitalInput photoResistorIN,
@@ -29,11 +31,14 @@ public class PhotoResistorController {
     public int enableLightSensor(){
         photoResistorHelper.initialize();
         photoResistorHelper.addEventListener(e -> {
-            if (photoResistorHelper.isDark) {
-                ledHelper.ledOn();
-            }
-            else {
-                ledHelper.ledOff();
+            try {
+                if (photoResistorHelper.isDark) {
+                    ledHelper.ledOn();
+                } else {
+                    ledHelper.ledOff();
+                }
+            } catch (Exception ex) {
+                log.error("Error switching LED state", ex);
             }
         });
         return photoResistorHelper.getDark();

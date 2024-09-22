@@ -172,7 +172,8 @@ publishing {
         useInMemoryPgpKeys(System.getenv('GPG_KEY'), System.getenv('GPG_PASSWORD'))
         sign publishing.publications.mavenJava
     }
- test{
+
+    test{
         useJUnitPlatform()
         testLogging {
             events "passed", "skipped", "failed"

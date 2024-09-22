@@ -9,7 +9,6 @@ import jakarta.inject.Named;
 //tag::ex[]
 @Controller("/servoMotor")
 public class ServoMotorController {
-
     private final ServoMotorHelper servoMotorHelper;
 
     public ServoMotorController(@Named("servo-motor")Pwm servoMotor) {
