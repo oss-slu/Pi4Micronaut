@@ -27,16 +27,12 @@ dependencies {
     api 'com.pi4j:pi4j-core:2.4.0'
     api 'com.pi4j:pi4j-plugin-raspberrypi:2.4.0'
     api 'com.pi4j:pi4j-plugin-pigpio:2.4.0'
-    testImplementation "org.mockito:mockito-core:3.+"
+    testImplementation("org.mockito:mockito-core:5.+")
     testImplementation(platform("org.junit:junit-bom:5.11.0"))
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher") {
-        because("Only needed to run tests in a version of IntelliJ IDEA that bundles older versions")
-    }
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
     testRuntimeOnly("org.junit.vintage:junit-vintage-engine")
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
-
 
 }
 
