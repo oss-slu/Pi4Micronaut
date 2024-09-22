@@ -7,13 +7,14 @@ import com.pi4j.io.gpio.digital.DigitalOutput;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import jakarta.inject.Named;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 //tag::ex[]
 @Controller("/touchSwitch")
 public class TouchSwitchController {
-
+    private static final Logger log = LoggerFactory.getLogger(TouchSwitchController.class);
     private final TouchSwitchHelper touchSwitchHelper;
-
     private final LEDHelper ledHelper;
 
     public TouchSwitchController(@Named("touch-switch-input") DigitalInput touchSwitch,
@@ -25,11 +26,14 @@ public class TouchSwitchController {
     @Get("/enable")
     public void enableTouchSwitch() {
         touchSwitchHelper.addEventListener(e -> {
-            if (touchSwitchHelper.isTouched) {
-                ledHelper.ledOn();
-            }
-            else {
-                ledHelper.ledOff();
+            try {
+                if (touchSwitchHelper.isTouched) {
+                    ledHelper.ledOn();
+                } else {
+                    ledHelper.ledOff();
+                }
+            } catch (Exception ex) {
+                log.error("Error switching LED state", ex);
             }
         });
     }
