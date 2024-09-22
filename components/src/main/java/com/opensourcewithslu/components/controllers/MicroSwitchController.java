@@ -7,16 +7,16 @@ import com.pi4j.io.gpio.digital.DigitalOutput;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import jakarta.inject.Named;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 //tag::ex[]
 @Controller("/microSwitch")
-public class MicroSwitchController {
-
+public class MicroSwitchController { 
+    private static final Logger log = LoggerFactory.getLogger(MicroSwitchController.class);
     private final MicroSwitchHelper microSwitchHelper;
-
     private final LEDHelper ledHelper1;
     private final LEDHelper ledHelper2;
-
 
     public MicroSwitchController(@Named("micro-switch") DigitalInput microSwitch,
                                  @Named("led") DigitalOutput led1,
@@ -25,18 +25,20 @@ public class MicroSwitchController {
         this.ledHelper1 = new LEDHelper(led1);
         this.ledHelper2 = new LEDHelper(led2);
     }
-//enables the micro switch. The LEDs will switch states as the switch is pressed
+    //enables the micro switch. The LEDs will switch states as the switch is pressed
     @Get("/enable")
     public void enableMicroSwitch() {
         microSwitchHelper.addEventListener(e -> {
-            if (microSwitchHelper.isPressed) {
-                ledHelper1.ledOff();
-                ledHelper2.ledOn();
-
-            }
-            else {
-                ledHelper1.ledOn();
-                ledHelper2.ledOff();
+            try { 
+                if (microSwitchHelper.isPressed) {
+                    ledHelper1.ledOff();
+                    ledHelper2.ledOn();
+                } else {
+                    ledHelper1.ledOn();
+                    ledHelper2.ledOff();
+                }
+            } catch (Exception ex) {
+                log.error("Error switching LED state", ex);
             }
         });
     }
