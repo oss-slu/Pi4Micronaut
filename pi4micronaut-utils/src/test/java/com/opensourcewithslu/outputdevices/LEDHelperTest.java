@@ -1,38 +1,21 @@
-package com.opensourcewithslu;
+package com.opensourcewithslu.outputdevices;
 
 import com.pi4j.io.gpio.digital.DigitalOutput;
 import org.junit.jupiter.api.*;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-import org.mockito.Spy;
 import org.slf4j.Logger;
 
 import java.util.concurrent.TimeUnit;
 
 import static org.mockito.Mockito.*;
 
-import com.opensourcewithslu.outputdevices.LEDHelper;
-
 class LEDHelperTest {
-    @Mock
-    // @Spy
-    Logger log;
-    @Mock
-    DigitalOutput ledOutput;
-    @InjectMocks
-    LEDHelper ledHelper;
-
-    private AutoCloseable closeable;
+    DigitalOutput ledOutput = mock(DigitalOutput.class);
+    LEDHelper ledHelper = new LEDHelper(ledOutput);
+    Logger log = mock(Logger.class);
 
     @BeforeEach
     public void openMocks() {
-        closeable = MockitoAnnotations.openMocks(this);
-    }
-
-    @AfterEach
-    public void releaseMocks() throws Exception {
-        closeable.close();
+        ledHelper.setLog(log);
     }
 
     @Test
