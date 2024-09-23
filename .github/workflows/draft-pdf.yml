@@ -31,6 +31,9 @@ jobs:
       - name: Commit PDF to repository
         uses: EndBug/add-and-commit@v9
         with:
+          author_name: "GitHub Actions"
+          author_email: "actions@github.com"
           message: '(auto) Paper PDF Draft'
-          # This should be the path to the paper within your repo.
-          add: 'joss-paper/paper.pdf' # 'paper/*.pdf' to commit all PDFs in the paper directory
+          add: 'joss-paper/paper.pdf'
+        env:
+          GITHUB_TOKEN: ${{ secrets.CI_GITHUB_TOKEN }}
