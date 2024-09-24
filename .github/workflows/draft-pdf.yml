@@ -27,13 +27,4 @@ jobs:
           # This is the output path where Pandoc will write the compiled
           # PDF. Note, this should be the same directory as the input
           # paper.md
-          path: paper.pdf
-      - name: Commit PDF to repository
-        uses: EndBug/add-and-commit@v9
-        with:
-          author_name: "GitHub Actions"
-          author_email: "actions@github.com"
-          message: '(auto) Paper PDF Draft'
-          add: 'joss-paper/paper.pdf'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+          path: joss-paper/paper.pdf
