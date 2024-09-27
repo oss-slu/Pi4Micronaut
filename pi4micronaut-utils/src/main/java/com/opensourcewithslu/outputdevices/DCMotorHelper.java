@@ -6,15 +6,13 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Helper class to control a DC motor using PWM (Pulse Width Modulation).
- * This class provides methods to enable, disable, and set the angle of a DC motor.
+ * This class provides methods to enable, disable, and set the speed of a DC motor.
  */
 public class DCMotorHelper {
 
     private static final Logger log = LoggerFactory.getLogger(DCMotorHelper.class);
     private static final int FREQUENCY = 50; // Frequency for PWM signal in Hz, typical for DC motors.
     private static final int PWM_CYCLE_MICROSECONDS = 20000; // Total cycle length in microseconds, corresponding to 50 Hz.
-    private static final int MIN_ANGLE = 0; // Minimum angle for DC operation.
-    private static final int MAX_ANGLE = 180; // Maximum angle for DC operation.
     private static final int DC_MIN_PULSE = 500; // Minimum pulse width in microseconds corresponding to 0 degrees.
     private static final int DC_MAX_PULSE = 2500; // Maximum pulse width in microseconds corresponding to 180 degrees.
     private boolean isEnabled = false; // State tracking variable for the DC motor.
@@ -50,46 +48,21 @@ public class DCMotorHelper {
     }
 
     /**
-     * Maps the given angle to the corresponding pulse width for the DC motor.
+     * Maps the given speed to the corresponding pulse width for the DC motor.
      *
-     * @param value the angle in degrees to be mapped to pulse width.
+     * @param value the speed in degrees to be mapped to pulse width.
      * @return the calculated pulse width in microseconds.
      */
     private float map(float value) {
-        return DC_MIN_PULSE + ((value - MIN_ANGLE) * (DC_MAX_PULSE - DC_MIN_PULSE) / (MAX_ANGLE - MIN_ANGLE));
+        return DC_MIN_PULSE + (value * (DC_MAX_PULSE - DC_MIN_PULSE));
     }
 
     /**
-     * Sets the DC motor to a specific angle.
-     * This method calculates the necessary pulse width and duty cycle to achieve the specified angle.
+     * Sets the speed of the DC motor.
+     * This method calculates the necessary pulse width and duty cycle to achieve the specified speed.
      *
-     * @param angle the target angle for the DC motor, between 0 and 180 degrees.
+     * @param speed the target speed for the DC motor, as a percentage between 0 and 1.
      */
-    public void setAngle(int angle) {
-        if (!isEnabled) {
-            log.info("You must enable the DC motor first.");
-            return;
-        }
-
-        if (angle < MIN_ANGLE || angle > MAX_ANGLE) {
-            log.info("You must enter an angle between 0 and 180 degrees.");
-            return;
-        }
-
-        float pulseWidth = map(angle);
-        float dutyCycle = (pulseWidth / PWM_CYCLE_MICROSECONDS) * 100;
-
-        log.info("Setting DC to {} degrees, Pulse Width: {} us, Duty Cycle: {}%", angle, pulseWidth, dutyCycle);
-
-        DCMotor.on(dutyCycle, FREQUENCY);
-        try {
-            Thread.sleep(100); // Pauses the thread to allow the DC to reach the set angle.
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt(); // Properly handle thread interruption.
-            log.info("Thread was interrupted, failed to complete rotation");
-        }
-    }
-
     public void setSpeed(double speed) {
         if (!isEnabled) {
             log.info("You must enable the DC motor first.");

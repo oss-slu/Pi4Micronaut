@@ -25,9 +25,9 @@ public class DCMotorController {
         DCMotorHelper.disable();
     }
 
-    @Get("/setAngle/{angle}")
-    public void setAngle(int angle) {
-        DCMotorHelper.setAngle(angle);
+    @Get("/setSpeed/{speed}")
+    public void setSpeed(double speed) {
+        DCMotorHelper.setSpeed(speed);
     }
 }
 //end::ex[]
