@@ -35,6 +35,13 @@ pi4j:
       provider: pigpio-pwm
       initial: 0
       shutdown: 0
+    dc-motor:
+      name: DC Motor
+      address: # TODO: Add address
+      pwmType: # TODO: Add pwmType
+      provider: pigpio-pwm
+      initial: 0
+      shutdown: 0
   # end::pwm[]
 
   # tag::i2c[]
