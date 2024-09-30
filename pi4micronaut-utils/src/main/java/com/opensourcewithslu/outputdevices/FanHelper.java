@@ -1,4 +1,4 @@
-package com.myapp;
+package com.opensourcewithslu.outputdevices;
 
 import com.pi4j.io.pwm.Pwm;
 import com.pi4j.io.pwm.PwmConfig;
@@ -8,13 +8,13 @@ import com.pi4j.library.pigpio.PiGpio;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class FANHelper {
+public class FanHelper {
 
-    private static final Logger log = LoggerFactory.getLogger(FANHelper.class);
+    private static final Logger log = LoggerFactory.getLogger(FanHelper.class);
     private final Pwm pwm;
 
     // Constructor that takes Pwm
-    public FANHelper(Pwm pwm) {
+    public FanHelper(Pwm pwm) {
         this.pwm = pwm;
     }
 

@@ -5,13 +5,3 @@ netty:
   default:
     allocator:
       max-order: 3
-
-pi4j:
-  pwm:
-    fan:
-      name: FAN
-      address: 17
-      initial: 0
-      shutdown: 0
-      provider: pigpio-pwm
-      pwm-type: hardware
