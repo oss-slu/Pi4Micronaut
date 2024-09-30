@@ -13,7 +13,6 @@ public class MotorHelper {
     private static final Logger log = LoggerFactory.getLogger(MotorHelper.class);
     private static final int FREQUENCY = 50; // Frequency for PWM signal in Hz, typical for DC motors.
     private boolean isEnabled = false; // State tracking variable for the DC motor.
-    private double speed = 0; // Speed of the DC motor, as a value 0 to 100.
     private final Pwm DCMotor; // PWM interface for the DC motor.
     private boolean isClockwise = true; // Direction of the DC motor.
 
@@ -61,8 +60,6 @@ public class MotorHelper {
             log.info("You must enter a speed between 0 and 1.");
             return;
         }
-
-        this.speed = speed;
 
         log.info("Setting DC speed to {}%", speed);
 
