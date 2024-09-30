@@ -37,8 +37,8 @@ pi4j:
       shutdown: 0
     dc-motor:
       name: DC Motor
-      address: # TODO: Add address
-      pwmType: # TODO: Add pwmType
+      address: 18
+      pwmType: SOFTWARE
       provider: pigpio-pwm
       initial: 0
       shutdown: 0

@@ -8,23 +8,21 @@ import org.slf4j.LoggerFactory;
  * Helper class to control a DC motor using PWM (Pulse Width Modulation).
  * This class provides methods to enable, disable, and set the speed of a DC motor.
  */
-public class DCMotorHelper {
+public class MotorHelper {
 
-    private static final Logger log = LoggerFactory.getLogger(DCMotorHelper.class);
+    private static final Logger log = LoggerFactory.getLogger(MotorHelper.class);
     private static final int FREQUENCY = 50; // Frequency for PWM signal in Hz, typical for DC motors.
-    private static final int PWM_CYCLE_MICROSECONDS = 20000; // Total cycle length in microseconds, corresponding to 50 Hz.
-    private static final int DC_MIN_PULSE = 500; // Minimum pulse width in microseconds corresponding to 0 degrees.
-    private static final int DC_MAX_PULSE = 2500; // Maximum pulse width in microseconds corresponding to 180 degrees.
     private boolean isEnabled = false; // State tracking variable for the DC motor.
-    private double speed = 0; // Speed of the DC motor, as a percentage 0 to 1.
+    private double speed = 0; // Speed of the DC motor, as a value 0 to 100.
     private final Pwm DCMotor; // PWM interface for the DC motor.
+    private boolean isClockwise = true; // Direction of the DC motor.
 
     /**
      * Constructs a new DCMotorHelper.
      *
      * @param DCMotor A PWM interface to control the DC motor.
      */
-    public DCMotorHelper(Pwm DCMotor) {
+    public MotorHelper(Pwm DCMotor) {
         this.DCMotor = DCMotor;
     }
 
@@ -48,16 +46,6 @@ public class DCMotorHelper {
     }
 
     /**
-     * Maps the given speed to the corresponding pulse width for the DC motor.
-     *
-     * @param value the speed in degrees to be mapped to pulse width.
-     * @return the calculated pulse width in microseconds.
-     */
-    private float map(float value) {
-        return DC_MIN_PULSE + (value * (DC_MAX_PULSE - DC_MIN_PULSE));
-    }
-
-    /**
      * Sets the speed of the DC motor.
      * This method calculates the necessary pulse width and duty cycle to achieve the specified speed.
      *
@@ -75,11 +63,33 @@ public class DCMotorHelper {
         }
 
         this.speed = speed;
-        float pulseWidth = map((float) (speed * 180));
-        float dutyCycle = (pulseWidth / PWM_CYCLE_MICROSECONDS) * 100;
 
-        log.info("Setting DC speed to {}%, Pulse Width: {} us, Duty Cycle: {}%", speed * 100, pulseWidth, dutyCycle);
+        log.info("Setting DC speed to {}%", speed);
 
-        DCMotor.on(dutyCycle, FREQUENCY);
+        DCMotor.on(speed, FREQUENCY);
+    }
+
+    /**
+     * Sets the direction of the DC motor.
+     *
+     * @param clockwise whether the DC motor should rotate clockwise.
+     */
+    public void setClockwise(boolean clockwise) {
+        if (!isEnabled) {
+            log.info("You must enable the DC motor first.");
+            return;
+        }
+
+        log.info("Setting DC motor direction clockwise to {}", clockwise);
+        // TODO: Implement logic to set the direction of the DC motor.
+
+        isClockwise = clockwise;
+    }
+
+    /**
+     * Switches the direction of the DC motor.
+     */
+    public void switchDirection() {
+        setClockwise(!isClockwise);
     }
 }
