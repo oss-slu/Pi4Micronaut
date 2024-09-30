@@ -7,7 +7,7 @@ import com.pi4j.io.binding.DigitalBinding;
 import com.pi4j.io.gpio.digital.*;
 
 /*
-The ockDigitalInput class implements the DigitalInput interface, which requires
+The MockDigitalInput class implements the DigitalInput interface, which requires
 all methods to be implemented, even if they are not used in the mock.
 These methods have default or no operation implementations to fulfill the interface contract.
 they provided an empty method("return null") because the methods are required by the interface,
