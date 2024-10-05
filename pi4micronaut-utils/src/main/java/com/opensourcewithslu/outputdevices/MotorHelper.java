@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
  */
 public class MotorHelper {
 
-    private static final Logger log = LoggerFactory.getLogger(MotorHelper.class);
+    private static Logger log = LoggerFactory.getLogger(MotorHelper.class);
     private static final int FREQUENCY = 50; // Frequency for PWM signal in Hz.
     private boolean isEnabled = false; // State tracking variable for the motor.
     private final Pwm motor; // PWM interface for the motor.
@@ -119,5 +119,14 @@ public class MotorHelper {
     //end::[method]
     {
         setClockwise(!isClockwise);
+    }
+
+    /**
+     * Sets the logger object.
+     *
+     * @param log Logger object to set the logger to.
+     */
+    public void setLog(Logger log) {
+        this.log = log;
     }
 }
