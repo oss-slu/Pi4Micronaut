@@ -8,13 +8,13 @@ import io.micronaut.http.annotation.Get;
 import jakarta.inject.Named;
 
 //tag::ex[]
-@Controller("/DCMotor")
+@Controller("/motor")
 public class MotorController {
     private final MotorHelper MotorHelper;
 
-    public MotorController(@Named("DC-motor") Pwm DCMotor, @Named("pin1") DigitalOutput pin1,
+    public MotorController(@Named("motor") Pwm motor, @Named("pin1") DigitalOutput pin1,
                            @Named("pin2") DigitalOutput pin2) {
-        this.MotorHelper = new MotorHelper(DCMotor, pin1, pin2);
+        this.MotorHelper = new MotorHelper(motor, pin1, pin2);
     }
 
     @Get("/enable")

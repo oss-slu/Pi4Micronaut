@@ -23,6 +23,8 @@ public class MotorHelper {
      * Constructs a new DCMotorHelper.
      *
      * @param DCMotor A PWM interface to control the DC motor.
+     * @param pin1 A DigitalOutput interface for the first GPIO pin.
+     * @param pin2 A DigitalOutput interface for the second GPIO pin.
      */
     //tag::const[]
     public MotorHelper(Pwm DCMotor, DigitalOutput pin1, DigitalOutput pin2)
