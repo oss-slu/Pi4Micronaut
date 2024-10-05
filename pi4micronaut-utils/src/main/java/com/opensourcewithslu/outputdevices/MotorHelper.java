@@ -1,5 +1,6 @@
 package com.opensourcewithslu.outputdevices;
 
+import com.pi4j.io.gpio.digital.DigitalOutput;
 import com.pi4j.io.pwm.Pwm;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,6 +15,8 @@ public class MotorHelper {
     private static final int FREQUENCY = 50; // Frequency for PWM signal in Hz, typical for DC motors.
     private boolean isEnabled = false; // State tracking variable for the DC motor.
     private final Pwm DCMotor; // PWM interface for the DC motor.
+    private final DigitalOutput pin1; // GPIO pin 1 for motor direction.
+    private final DigitalOutput pin2; // GPIO pin 2 for motor direction.
     private boolean isClockwise = true; // Direction of the DC motor.
 
     /**
@@ -21,8 +24,10 @@ public class MotorHelper {
      *
      * @param DCMotor A PWM interface to control the DC motor.
      */
-    public MotorHelper(Pwm DCMotor) {
+    public MotorHelper(Pwm DCMotor, DigitalOutput pin1, DigitalOutput pin2) {
         this.DCMotor = DCMotor;
+        this.pin1 = pin1;
+        this.pin2 = pin2;
     }
 
     /**
@@ -78,7 +83,13 @@ public class MotorHelper {
         }
 
         log.info("Setting DC motor direction clockwise to {}", clockwise);
-        // TODO: Implement logic to set the direction of the DC motor.
+        if (clockwise) {
+            pin1.high();
+            pin2.low();
+        } else {
+            pin1.low();
+            pin2.high();
+        }
 
         isClockwise = clockwise;
     }
