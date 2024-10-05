@@ -24,7 +24,10 @@ public class MotorHelper {
      *
      * @param DCMotor A PWM interface to control the DC motor.
      */
-    public MotorHelper(Pwm DCMotor, DigitalOutput pin1, DigitalOutput pin2) {
+    //tag::const[]
+    public MotorHelper(Pwm DCMotor, DigitalOutput pin1, DigitalOutput pin2)
+    //end::const[]
+    {
         this.DCMotor = DCMotor;
         this.pin1 = pin1;
         this.pin2 = pin2;
@@ -34,7 +37,10 @@ public class MotorHelper {
      * Enables the DC motor by setting an initial duty cycle and frequency.
      * The DC motor remains disabled until this method is called.
      */
-    public void enable() {
+    //tag::[method]
+    public void enable()
+    //end::[method]
+    {
         log.info("Enabling DC motor");
         DCMotor.on(0, FREQUENCY); // Initializes PWM signal with 0% duty cycle.
         isEnabled = true;
@@ -43,7 +49,10 @@ public class MotorHelper {
     /**
      * Disables the DC motor, effectively stopping any ongoing PWM signal.
      */
-    public void disable() {
+    //tag::[method]
+    public void disable()
+    //end::[method]
+    {
         log.info("Disabling DC motor");
         DCMotor.off(); // Stops the PWM signal.
         isEnabled = false;
@@ -55,7 +64,10 @@ public class MotorHelper {
      *
      * @param speed the target speed for the DC motor, as a percentage between 0 and 1.
      */
-    public void setSpeed(double speed) {
+    //tag::[method]
+    public void setSpeed(double speed)
+    //end::[method]
+    {
         if (!isEnabled) {
             log.info("You must enable the DC motor first.");
             return;
@@ -76,7 +88,10 @@ public class MotorHelper {
      *
      * @param clockwise whether the DC motor should rotate clockwise.
      */
-    public void setClockwise(boolean clockwise) {
+    //tag::[method]
+    public void setClockwise(boolean clockwise)
+    //end::[method]
+    {
         if (!isEnabled) {
             log.info("You must enable the DC motor first.");
             return;
@@ -97,7 +112,10 @@ public class MotorHelper {
     /**
      * Switches the direction of the DC motor.
      */
-    public void switchDirection() {
+    //tag::[method]
+    public void switchDirection()
+    //end::[method]
+    {
         setClockwise(!isClockwise);
     }
 }
