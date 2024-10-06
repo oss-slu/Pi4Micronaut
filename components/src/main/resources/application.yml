@@ -35,15 +35,20 @@ pi4j:
       provider: pigpio-pwm
       initial: 0
       shutdown: 0
+    motor:
+      name: Motor
+      address: 18
+      pwmType: SOFTWARE
+      provider: pigpio-pwm
+      initial: 0
+      shutdown: 0
     fan:
       name: FAN
       address: 18
+      pwm-type: SOFTWARE
+      provider: pigpio-pwm
       initial: 0
       shutdown: 0
-      provider: pigpio-pwm
-      pwm-type: hardware
-
-
   # end::pwm[]
 
   # tag::i2c[]
