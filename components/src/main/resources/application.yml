@@ -37,15 +37,6 @@ pi4j:
       shutdown: 0
   # end::pwm[]
 
-  # tag::speedSensor[]
-  speed-sensor:
-    name: Speed Sensor           # <1>
-    address: 22                  # <2>
-    pulses-per-revolution: 20    # <3>
-    provider: pigpio-digital-input # <4>
-    debounce: 500                # <5>
-  # end::speedSensor[]
-
   # tag::i2c[]
   i2c:
     lcd:                                  # <1>
@@ -122,6 +113,12 @@ pi4j:
       pull: PULL_DOWN
       debounce: 5000
       provider: pigpio-digital-input
+    speed-sensor:
+      name: Speed Sensor           # <1>
+      address: 22                  # <2>
+      pulses-per-revolution: 20    # <3>
+      provider: pigpio-digital-input # <4>
+      debounce: 500                # <5>
   # end::digitalInput[]
 
   # tag::digitalOutput[]
