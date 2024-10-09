@@ -6,6 +6,8 @@ on:
   pull_request:
     branches:
       - main
+  workflow_dispatch:
+      
 jobs:
   build-library:
     runs-on: ubuntu-latest
@@ -25,11 +27,13 @@ jobs:
       - name: Execute Gradle build
         working-directory: pi4micronaut-utils
         run: ./gradlew shadowJar
+  
   publish-jar:
     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
+    if: github.event_name == 'workflow_dispatch'
     needs: build-library
     steps:
       - uses: actions/checkout@v3
