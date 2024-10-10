@@ -18,7 +18,7 @@ affiliations:
   - name: Open Source with SLU
     index: 1
 
-date: 23 September 2024
+date: 10 October 2024
 bibliography: paper.bib
 ---
 
@@ -39,14 +39,14 @@ providing a flexible, scalable solution for building custom research tools.
 
 # Statement of Need
 
-Scientific research often requires customized data-gathering instruments that can be integrated with a computing platform. 
+Scientific research often requires to be customized data-gathering instruments that can be integrated with a computing platform. 
 While some research devices can be connected to a PC, there are situations where more flexible, cost-effective solutions are necessary. 
 The Raspberry Pi, due to its affordability, size, and versatility, is a popular choice for such research. Applications for the Raspberry Pi 
 include rat licking behavior '@Longley:2017', greenhouse gas effect monitoring system '@Shah:2017',and many other applications '@Jolles:2021'. 
 However, interfacing with sensors and other electronic components in Java poses significant challenges. 
 
 Pi4Micronaut addresses this gap by providing a Java-based solution that integrates with Pi4J for GPIO (General Purpose Input/Output) control. 
-This allows researchers to use Java, a well-established programming language in scientific computing, to interact with hardware components on the Raspberry Pi, 
+This allows researchers to use Java, a well-established programming language in scientific computing '@Knoll:2010', to interact with hardware components on the Raspberry Pi, 
 enabling the development of custom research instruments at a lower cost. The ability to interface multiple sensors simultaneously also 
 promotes collaborative use in shared research environments, reducing the bottleneck often encountered when multiple users need to access sensor data concurrently.
 
