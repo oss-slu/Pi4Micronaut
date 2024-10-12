@@ -23,9 +23,9 @@ This section provides details of the LED, including its components and assembly 
 * 1 x Breadboard
 * 1 x T-Extension Board
 * 1 x DC Motor
-* 2 x Jumper wires
-* 1 x bridge
-* 1 x battery pack
+* 8 x Jumper wires
+* 1 x L293D Motor Controller IC 1
+* 1 x battery pack with 4 AA or AAA batteries
 * Power source (appropriate voltage, typically 3.3V)
 
 ===== Assembly Instructions
@@ -34,7 +34,7 @@ This section provides details of the LED, including its components and assembly 
 
 ===== Circuit Diagram
 
-TODO
+image::motor_bb.png[]
 
 ===== Functionality
 
