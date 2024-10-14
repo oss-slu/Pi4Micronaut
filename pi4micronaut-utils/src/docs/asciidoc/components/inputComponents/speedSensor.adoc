@@ -87,7 +87,7 @@ The speed sensor as it appears in the application.yml:
 digital-input:
   speed-sensor:
     name: Speed Sensor
-    address: 22
+    address: 17
     pulses-per-revolution: 20
     provider: pigpio-digital-input
     debounce: 500
