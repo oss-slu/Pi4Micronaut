@@ -6,6 +6,7 @@ on:
   pull_request:
     branches:
       - main
+  workflow_dispatch:
       
 jobs:
   build-library:
@@ -32,6 +33,7 @@ jobs:
     permissions:
       contents: read
       packages: write
+    if: github.event_name == 'workflow_dispatch'
     needs: build-library
     steps:
       - uses: actions/checkout@v3
