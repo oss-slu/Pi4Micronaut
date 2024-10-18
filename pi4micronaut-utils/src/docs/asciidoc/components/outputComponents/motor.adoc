@@ -41,7 +41,6 @@ This section provides details of the DC motor, including its components and asse
 * Connect a jumper wire from pin 18 of the Raspberry Pi to the L293D.
 * Connect a jumper wire from pin 4 of the Raspberry Pi to the L293D.
 * Connect a jumper wire from the 5V pin of the Raspberry Pi to the L293D.
-* Connect the motor to the L293D.
 
 
 ===== Circuit Diagram
