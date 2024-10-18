@@ -30,12 +30,19 @@ This section provides details of the DC motor, including its components and asse
 
 ===== Assembly Instructions
 
+* Connect the ground (GND) pin of the Raspberry Pi to the ground rail on the breadboard.
 * Place the L293D Motor Controller on the breadboard.
+* Connect a jumper wire from the L293D to the ground rail on the breadboard.
 * Connect the motor to the breadboard, attaching both terminals in line with the L293D.
+* Connect a jumper wire from pin 17 to the L293D.
 * Connect the battery pack to the breadboard.
-* Connect a jumper wire from pin 17 to ...
+* Connect a jumper wire from the positive end of the battery pack to the L293D.
+* Connect a jumper wire from the negative end of the battery pack to the ground rail on the breadboard.
+* Connect a jumper wire from pin 18 of the Raspberry Pi to the L293D.
+* Connect a jumper wire from pin 4 of the Raspberry Pi to the L293D.
+* Connect a jumper wire from the 5V pin of the Raspberry Pi to the L293D.
+* Connect the motor to the L293D.
 
-* *TODO*: finish documentation here
 
 ===== Circuit Diagram
 
