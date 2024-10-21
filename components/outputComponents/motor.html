@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.18">
-<title>LED</title>
+<title>Motor</title>
 <style>
 body {
 	font-family: sans-serif;
@@ -209,14 +209,14 @@ th {
 </div>
 <div id="content">
 <div class="sect3">
-<h4 id="_led">LED</h4>
+<h4 id="_motor">Motor</h4>
 <div class="paragraph text-right">
-<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/outputComponents/led.adoc">Improve this doc</a></p>
+<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/outputComponents/motor.adoc">Improve this doc</a></p>
 </div>
 <div class="sect4">
 <h5 id="_overview">Overview</h5>
 <div class="paragraph">
-<p>This section provides details of the LED, including its components and assembly instructions.</p>
+<p>This section provides details of the DC motor, including its components and assembly instructions.</p>
 </div>
 </div>
 <div class="sect4">
@@ -233,13 +233,16 @@ th {
 <p>1 x T-Extension Board</p>
 </li>
 <li>
-<p>1 x LED</p>
+<p>1 x DC Motor</p>
 </li>
 <li>
-<p>2 x Jumper wires</p>
+<p>8 x Jumper wires</p>
 </li>
 <li>
-<p>1 x Resistor (220Ω)</p>
+<p>1 x L293D Motor Controller IC 1</p>
+</li>
+<li>
+<p>1 x battery pack with 4 AA or AAA batteries</p>
 </li>
 <li>
 <p>Power source (appropriate voltage, typically 3.3V)</p>
@@ -252,28 +255,37 @@ th {
 <div class="ulist">
 <ul>
 <li>
-<p>Place a single LED onto the Breadboard.</p>
+<p>Connect the ground (GND) pin of the Raspberry Pi to the ground rail on the breadboard.</p>
 </li>
 <li>
-<p>The LED will have two pins, a cathode and an anode.</p>
+<p>Place the L293D Motor Controller on the breadboard.</p>
 </li>
 <li>
-<p>Connect the cathode (short pin) of the LED to GPIO 17.</p>
+<p>Connect a jumper wire from the L293D to the ground rail on the breadboard.</p>
 </li>
 <li>
-<p>Connect the anode (long pin) to a 220Ω resistor on the positive side of the Breadboard.</p>
+<p>Connect the motor to the breadboard, attaching both terminals in line with the L293D.</p>
 </li>
 <li>
-<p>Connect the other end of the resistor to 3.3V</p>
+<p>Connect a jumper wire from pin 17 to the L293D.</p>
 </li>
 <li>
-<p>Connect a jumper wire from GPIO 17 to the cathode of the LED.</p>
+<p>Connect the battery pack to the breadboard.</p>
 </li>
 <li>
-<p>Connect another jumper wire from 3.3V to the positive side of the Breadboard.</p>
+<p>Connect a jumper wire from the positive end of the battery pack to the L293D.</p>
 </li>
 <li>
-<p>Two jumper wires should be connected to separate positions on the Breadboard and T-Extension Board.</p>
+<p>Connect a jumper wire from the negative end of the battery pack to the ground rail on the breadboard.</p>
+</li>
+<li>
+<p>Connect a jumper wire from pin 18 of the Raspberry Pi to the L293D.</p>
+</li>
+<li>
+<p>Connect a jumper wire from pin 4 of the Raspberry Pi to the L293D.</p>
+</li>
+<li>
+<p>Connect a jumper wire from the 5V pin of the Raspberry Pi to the L293D.</p>
 </li>
 </ul>
 </div>
@@ -282,39 +294,51 @@ th {
 <h5 id="_circuit_diagram">Circuit Diagram</h5>
 <div class="imageblock">
 <div class="content">
-<img src="../../img/LED-CD.png" alt="LED CD">
+<img src="../../img/motor_bb.png" alt="motor bb">
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_schematic_diagram">Schematic Diagram</h5>
+<div class="imageblock">
+<div class="content">
+<img src="../../img/Motor_schem.png" alt="Motor schem">
 </div>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_functionality">Functionality</h5>
 <div class="paragraph">
-<p>LED can be turned on or off, switch state and set to blink for the provided  duration in milliseconds.</p>
+<p>Motor can be enabled or disabled, change speed to custom value 0 to 100, and switch directions between clockwise and counterclockwise.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_testing">Testing</h5>
 <div class="paragraph">
-<p>Use the below commands to test the component. This will cause the LED to light.</p>
+<p>Use the below commands to test the component.
+This will cause the motor to turn.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl http://localhost:8080/led/ledOn</code></pre>
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl http://localhost:8080/motor/enable</code></pre>
 </div>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>/ledOn</code> - Turns the led on.</p>
+<p><code>/enable</code> - Enables the motor.</p>
 </li>
 <li>
-<p><code>/ledOff</code> - Turns the led off.</p>
+<p><code>/disable</code> - Disables the motor.</p>
 </li>
 <li>
-<p><code>/switchState</code> - Switches the state of the led.</p>
+<p><code>/setSpeed/{speed}</code> - Sets the speed of the motor to custom value 0 to 100.</p>
 </li>
 <li>
-<p><code>/blink/{duration}/</code> - Causes the led to blink for the desired duration(milliseconds).</p>
+<p><code>/setClockwise/{clockwise}</code> - Sets the direction of the motor; "true" for clockwise, "false" for counterclockwise.</p>
+</li>
+<li>
+<p><code>/switchDirection</code> - Switches the direction from clockwise to counterclockwise or vice versa.</p>
 </li>
 </ul>
 </div>
@@ -324,11 +348,42 @@ th {
 <div class="ulist">
 <ul>
 <li>
-<p>LED not lighting: Check the connections, and ensure the LED is placed correctly. Double-check the power source.</p>
+<p>Motor does not turn on</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Ensure all connections are secure and correct.</p>
 </li>
 <li>
-<p>LED is too dim: Resistor value may be too high. Verify you&#8217;re using 220Ω or adjust according to the power source your using
-as well as the LED specifications.</p>
+<p>Check for appropriate voltage from power source.</p>
+</li>
+<li>
+<p>Check the L239D for proper orientation and placement.</p>
+</li>
+<li>
+<p>Ensure the software configuration matches the hardware setup.</p>
+</li>
+<li>
+<p>Look for any error messages in the console or logs.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Motor turns on but does not respond to commands</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Check the software configuration for any discrepancies.</p>
+</li>
+<li>
+<p>Ensure the L239D is functioning properly.</p>
+</li>
+<li>
+<p>Check for appropriate voltage from power source.</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -337,26 +392,21 @@ as well as the LED specifications.</p>
 <h5 id="_yaml_configuration">YAML Configuration</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-yaml" data-lang="yaml">digital-output:
-  led:
-    name: LED Output
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">pwm:
+  motor:
+    name: Motor
     address: 17
-    shutdown: LOW
-    initial: LOW
-    provider: pigpio-digital-output
-  led2:
-    name: LED Output
-    address: 26
-    shutdown: HIGH
-    initial: HIGH
-    provider: pigpio-digital-output</code></pre>
+    pwmType: SOFTWARE
+    provider: pigpio-pwm
+    initial: 0
+    shutdown: 0</code></pre>
 </div>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_constructor_and_methods">Constructor and Methods</h5>
 <div class="paragraph">
-<p>To see the constructor and methods of our LEDHelper class see our javadoc <a href="https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/outputdevices/LEDHelper.html">here</a>
+<p>To see the constructor and methods of our MotorHelper class see our javadoc <a href="https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/outputdevices/MotorHelper.html">here</a>
 for more details.</p>
 </div>
 </div>
@@ -364,7 +414,7 @@ for more details.</p>
 <h5 id="_an_example_controller">An Example Controller</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">Unresolved directive in led.adoc - include::../../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/LEDController.java[tag=ex]</code></pre>
+<pre class="highlight"><code class="language-java" data-lang="java">Unresolved directive in motor.adoc - include::../../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/MotorController.java[tag=ex]</code></pre>
 </div>
 </div>
 </div>
