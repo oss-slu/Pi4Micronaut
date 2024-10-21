@@ -30,7 +30,7 @@ pi4j:
       shutdown: 0
     servo-motor:
       name: Servo Motor
-      address: 18
+      address: 17
       pwmType: SOFTWARE
       provider: pigpio-pwm
       initial: 0
