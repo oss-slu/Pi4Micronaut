@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.18">
-<title>Passive Buzzer</title>
+<title>Speed Sensor</title>
 <style>
 body {
 	font-family: sans-serif;
@@ -209,14 +209,14 @@ th {
 </div>
 <div id="content">
 <div class="sect3">
-<h4 id="_passive_buzzer">Passive Buzzer</h4>
+<h4 id="_speed_sensor">Speed Sensor</h4>
 <div class="paragraph text-right">
-<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/outputComponents/passivebuzzer.adoc">Improve this doc</a></p>
+<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/inputComponents/speedSensor.adoc">Improve this doc</a></p>
 </div>
 <div class="sect4">
 <h5 id="_overview">Overview</h5>
 <div class="paragraph">
-<p>This section provides details of the Passive Buzzer, including the components and assembly instructions. The Passive Buzzer emits various frequencies, as described by the code, to play music or many other frequencies.</p>
+<p>This section provides the details of the Speed Sensor circuit, including its components, assembly instructions, and functionality.</p>
 </div>
 </div>
 <div class="sect4">
@@ -224,185 +224,174 @@ th {
 <div class="ulist">
 <ul>
 <li>
-<p>1 x RaspberryPi</p>
+<p>Speed Sensor</p>
 </li>
 <li>
-<p>1 x Breadboard</p>
+<p>Bread Board</p>
 </li>
 <li>
-<p>1 x T-extension Board</p>
+<p>T-Extension Board</p>
 </li>
 <li>
-<p>1 x Passive Buzzer</p>
+<p>7x Jumper Cables</p>
 </li>
 <li>
-<p>6 x Jumper wires</p>
+<p>Green LED Light Bulb</p>
 </li>
 <li>
-<p>1 x Resistor (1KΩ)</p>
+<p>Red LED Light Bulb</p>
 </li>
 <li>
-<p>1 x S8550 PNP Transistor</p>
+<p>2x 220Ω Resistors</p>
 </li>
 <li>
-<p>Power source (appropriate voltage, typically 3.3V)</p>
+<p>Power source</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_assembly_instructions">Assembly Instructions</h5>
-<div class="ulist">
-<ul>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p>Place the Passive Buzzer onto the Breadboard.</p>
+<p>Ground (GND): Connect the GND pin on the speed sensor to the ground rail on the breadboard.</p>
 </li>
 <li>
-<p>Place the 1KΩ resistor onto the Breadboard, must be inline with base pin of S8550 PNP Transistor.</p>
+<p>VCC: Connect the VCC pin on the speed sensor to the 5V pin on the Raspberry Pi GPIO header via the breadboard power rail.</p>
 </li>
 <li>
-<p>Place the S8550 PNP Transistor onto the BreadBoard.</p>
+<p>Digital Output (D0): Connect the D0 pin on the speed sensor to GPIO 17 (Pin 11) on the Raspberry Pi GPIO header.</p>
 </li>
 <li>
-<p>The Passive Buzzer will have two pins of the same length. The anode is (+) while the cathode is (-).</p>
+<p>Connect the longer leg (anode) of the red LED to a row on the breadboard.</p>
 </li>
 <li>
-<p>Connect a jumper wire from GND to (-) negative side</p>
+<p>Place a 220-ohm resistor between the shorter leg (cathode) of the red LED and the ground rail on the breadboard.</p>
 </li>
 <li>
-<p>Connect a jumper wire from 3.3V to (+) positive side.</p>
+<p>Use a jumper wire to connect the same row as the anode of the red LED to GPIO 27 (Pin 13) on the Raspberry Pi.</p>
 </li>
 <li>
-<p>Connect a jumper wire from GPIO 17 to the 1KΩ resistor</p>
+<p>Similarly, place the green LED on the breadboard.</p>
 </li>
 <li>
-<p>Connect jumper wire from positive side to positive end of Passive Buzzer.</p>
+<p>Connect the longer leg (anode) to a free row.</p>
 </li>
 <li>
-<p>Connect jumper wire from negative end of Passive Buzzer to emitter pin of S8550 PNP Transistor.</p>
+<p>Place another 220-ohm resistor between the cathode of the green LED and ground.</p>
 </li>
 <li>
-<p>Connect jumper wire from negative side to collector pin of S8550 PNP Transistor.</p>
+<p>Use a jumper wire to connect the anode of the green LED to GPIO 22 (Pin 15).</p>
 </li>
-</ul>
+<li>
+<p>Connect the ground rail on the breadboard to a ground pin (GND) on the Raspberry Pi GPIO header (e.g., Pin 6).</p>
+</li>
+<li>
+<p>Connect the power rail on the breadboard to a 5V pin on the Raspberry Pi GPIO header (e.g., Pin 2).</p>
+</li>
+</ol>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_circuit_diagram">Circuit Diagram</h5>
 <div class="imageblock">
 <div class="content">
-<img src="../../img/passive_buzzer-CD.png" alt="passive buzzer CD">
+<img src="../../img/SpeedSensor-Circuit.png" alt="SpeedSensor Circuit">
 </div>
 </div>
 <div class="paragraph">
-<p><strong>Schematic Diagram</strong></p>
+<p><strong>Schematic Diagram:</strong></p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../../img/buzzer-SD.png" alt="buzzer SD">
+<img src="../../img/SpeedSensor-Schematic.png" alt="SpeedSensor Schematic">
 </div>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_functionality">Functionality</h5>
-<div class="paragraph">
-<p>A passive buzzer is an electronic component that produces sound by using an external oscillation source.
-To produce sound, a passive buzzer needs an external PWM signal supplied by Raspberry Pi. This signal controls the frequency of the sound produced, allowing for different tones or beeps. You can program specific melodies or sequences of beeps by changing the frequency of the PWM signal over time.</p>
-</div>
-<div class="paragraph">
-<p><strong>Note:</strong> If you use transistor in the circuit, it swaps the functionalities of the buzzer i.e., if you enable the buzzer, it actually disables it and vice versa.</p>
-</div>
+
 </div>
 <div class="sect4">
-<h5 id="_testing">Testing</h5>
+<h5 id="_testing_the_circuit">Testing the Circuit:</h5>
 <div class="paragraph">
-<p>Use the below commands to test the component.</p>
+<p>Use the below command to test the speed sensor.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl http://localhost:8080/passive-buzzer/enable</code></pre>
+<pre class="highlight"><code class="language-bash" data-lang="bash">$curl http://localhost:8080/speedSensor/enable</code></pre>
 </div>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>/enable</code>  - Turns the Passive Buzzer on.</p>
+<p><code>/enable</code> - Initializes the Speed Sensor</p>
 </li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$curl http://localhost:8080/speedSensor/speed/rpm</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
 <li>
-<p><code>/disable</code> - Turns the Passive Buzzer off.</p>
+<p><code>/speed/rpm</code> - Returns the speed in RPM</p>
 </li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$curl http://localhost:8080/speedSensor/speed/disable</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
 <li>
-<p><code>/showFreq</code> - Displays the current frequency of the Passive Buzzer.</p>
-</li>
-<li>
-<p><code>/setFreq/{frequenciesFile}</code> - Plays a series of frequencies from a file specified by the user.</p>
-</li>
-<li>
-<p><code>/passBuzz</code> - Plays a 1 - second buzz.</p>
-</li>
-<li>
-<p><code>/freqIter</code> - Cycles through different frequencies.</p>
-</li>
-<li>
-<p><code>/playPiSeq</code> - Plays an array containing the first ten digits of pi.</p>
+<p><code>/disable</code> - Disables the Speed Sensor</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_troubleshooting">Troubleshooting</h5>
-<div class="ulist">
-<ul>
-<li>
-<p>Passive Buzzer not creating sound:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Double check power source</p>
-</li>
-<li>
-<p>Verify that 1K resistor is used</p>
-</li>
-<li>
-<p>Verify all wires are in appropriate slots.</p>
-</li>
-<li>
-<p>When using a file, verify that the file itself is scp&#8217;d to the raspberrypi (see PassiveBuzzerController for full information).</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
+<div class="paragraph">
+<p>Verify that all connections are correct and that the order of components in a row are correct.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_yaml_configuration">YAML Configuration</h5>
+<div class="paragraph">
+<p>The speed sensor as it appears in the application.yml:</p>
+</div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-yaml" data-lang="yaml">pwm:
-  passive-buzzer:
-    name: passive-buzzer
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">digital-input:
+  speed-sensor:
+    name: Speed Sensor
     address: 17
-    pwmType: SOFTWARE
-    provider: pigpio-pwm
-    initial: 0
-    shutdown: 0</code></pre>
+    pulses-per-revolution: 20
+    provider: pigpio-digital-input
+    debounce: 500</code></pre>
 </div>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_constructors_and_methods">Constructors and Methods</h5>
 <div class="paragraph">
-<p>The constructor and the methods within the PassiveBuzzerHelper class can be seen in our javadoc <a href="https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/outputdevices/PassiveBuzzerHelper.html">here</a>.</p>
+<p>To see the constructor and methods of our SpeedSensorHelper class see our javadoc <a href="https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/inputdevices/SpeedSensorHelper.html">here</a>
+for more details.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_example_controller">Example Controller</h5>
+<h5 id="_an_example_controller">An Example Controller</h5>
 <div class="sect5">
-<h6 id="_this_controller_uses_the_passive_buzzer_to_emit_sound_once_prompted_by_the_commands">This controller uses the Passive Buzzer to emit sound once prompted by the commands</h6>
+<h6 id="_this_controller_sets_up_speed_sensor">This controller sets up Speed Sensor</h6>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">Unresolved directive in passivebuzzer.adoc - include::../../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/PassiveBuzzerController.java[tag=ex]</code></pre>
+<pre class="highlight"><code class="language-java" data-lang="java">Unresolved directive in speedSensor.adoc - include::../../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/SpeedSensorController.java[tag=ex]</code></pre>
 </div>
 </div>
 </div>
