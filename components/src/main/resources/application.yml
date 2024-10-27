@@ -200,3 +200,13 @@ pi4j:
       initials: 0, 0, 0
       shutdowns: 0, 0, 0
   # end::multiPWM[]
+
+  # tag::multiOutput[]
+  multi-digital-output:
+    4digit7segment:
+      name: 4 Digit 7 Segment Display
+      addresses: 17, 18, 27, 22
+      shutdowns: LOW, LOW, LOW, LOW
+      initials: HIGH, HIGH, HIGH, HIGH
+      provider: pigpio-digital-output
+  # end::multiOutput[]
