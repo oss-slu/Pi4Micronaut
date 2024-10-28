@@ -205,7 +205,7 @@ pi4j:
   multi-digital-output:
     4digit7segment:
       name: 4 Digit 7 Segment Display
-      addresses: 17, 18, 27, 22
+      addresses: 1, 2, 24, 25
       shutdowns: LOW, LOW, LOW, LOW
       initials: HIGH, HIGH, HIGH, HIGH
       provider: pigpio-digital-output

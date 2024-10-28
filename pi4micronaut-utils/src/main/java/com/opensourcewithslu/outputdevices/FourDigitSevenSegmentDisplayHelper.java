@@ -54,22 +54,44 @@ public class FourDigitSevenSegmentDisplayHelper {
 
         log.info("Displaying number: " + number);
 
+        resetDisplay();
+
+        // Render numbers with leading zeroes, e.g. 1 as 0001
+        switch (num.length) {
+            case 1:
+                sevenSegmentDisplay1.displayNumber("0");
+                sevenSegmentDisplay1.displayNumber("0");
+                sevenSegmentDisplay1.displayNumber("0");
+                sevenSegmentDisplay1.displayNumber(num[0]);
+                break;
+            case 2:
+                sevenSegmentDisplay1.displayNumber("0");
+                sevenSegmentDisplay1.displayNumber("0");
+                sevenSegmentDisplay1.displayNumber(num[0]);
+                sevenSegmentDisplay1.displayNumber(num[1]);
+                break;
+            case 3:
+                sevenSegmentDisplay1.displayNumber("0");
+                sevenSegmentDisplay1.displayNumber(num[0]);
+                sevenSegmentDisplay1.displayNumber(num[1]);
+                sevenSegmentDisplay1.displayNumber(num[2]);
+                break;
+            case 4:
+                sevenSegmentDisplay1.displayNumber(num[0]);
+                sevenSegmentDisplay1.displayNumber(num[1]);
+                sevenSegmentDisplay1.displayNumber(num[2]);
+                sevenSegmentDisplay1.displayNumber(num[3]);
+                break;
+        }
+    }
+
+    //tag::method[]
+    public void resetDisplay()
+    //end::method[]
+    {
+        sevenSegmentDisplay1.resetDisplay();
         sevenSegmentDisplay2.resetDisplay();
         sevenSegmentDisplay3.resetDisplay();
         sevenSegmentDisplay4.resetDisplay();
-
-        sevenSegmentDisplay1.displayNumber(num[0]);
-        if (num.length > 1) {
-            display2.high();
-            sevenSegmentDisplay2.displayNumber(num[1]);
-        }
-        if (num.length > 2) {
-            display3.high();
-            sevenSegmentDisplay2.displayNumber(num[2]);
-        }
-        if (num.length > 3) {
-            display4.high();
-            sevenSegmentDisplay2.displayNumber(num[3]);
-        }
     }
 }
