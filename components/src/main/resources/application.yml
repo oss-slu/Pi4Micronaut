@@ -133,6 +133,10 @@ pi4j:
       pulses-per-revolution: 20    # <3>
       provider: pigpio-digital-input # <4>
       debounce: 500                # <5>
+    thermistor-input:
+      name: Thermistor Input
+      address: 18
+      provider: pigpio-digital-input
   # end::digitalInput[]
 
   # tag::digitalOutput[]
