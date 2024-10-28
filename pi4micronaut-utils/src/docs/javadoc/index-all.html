@@ -49,7 +49,7 @@ loadScripts(document, 'script');</script>
 <div class="header">
 <h1>Index</h1>
 </div>
-<a href="#I:A">A</a>&nbsp;<a href="#I:B">B</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:D">D</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:L">L</a>&nbsp;<a href="#I:M">M</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:R">R</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<a href="#I:U">U</a>&nbsp;<a href="#I:W">W</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a>
+<a href="#I:A">A</a>&nbsp;<a href="#I:B">B</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:D">D</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:F">F</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:L">L</a>&nbsp;<a href="#I:M">M</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:R">R</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<a href="#I:U">U</a>&nbsp;<a href="#I:W">W</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a>
 <h2 class="title" id="I:A">A</h2>
 <dl class="index">
 <dt><a href="com/opensourcewithslu/outputdevices/ActiveBuzzerHelper.html#actBuzzCheck" class="member-name-link">actBuzzCheck</a> - Variable in class com.opensourcewithslu.outputdevices.<a href="com/opensourcewithslu/outputdevices/ActiveBuzzerHelper.html" title="class in com.opensourcewithslu.outputdevices">ActiveBuzzerHelper</a></dt>
@@ -203,6 +203,17 @@ loadScripts(document, 'script');</script>
 <dt><a href="com/opensourcewithslu/outputdevices/ServoMotorHelper.html#enable()" class="member-name-link">enable()</a> - Method in class com.opensourcewithslu.outputdevices.<a href="com/opensourcewithslu/outputdevices/ServoMotorHelper.html" title="class in com.opensourcewithslu.outputdevices">ServoMotorHelper</a></dt>
 <dd>
 <div class="block">Enables the servo motor by setting an initial duty cycle and frequency.</div>
+</dd>
+</dl>
+<h2 class="title" id="I:F">F</h2>
+<dl class="index">
+<dt><a href="com/opensourcewithslu/outputdevices/FanHelper.html" class="type-name-link" title="class in com.opensourcewithslu.outputdevices">FanHelper</a> - Class in <a href="com/opensourcewithslu/outputdevices/package-summary.html">com.opensourcewithslu.outputdevices</a></dt>
+<dd>
+<div class="block">Helper class to control a fan using PWM (Pulse Width Modulation).</div>
+</dd>
+<dt><a href="com/opensourcewithslu/outputdevices/FanHelper.html#%3Cinit%3E(com.pi4j.io.pwm.Pwm)" class="member-name-link">FanHelper(Pwm)</a> - Constructor for class com.opensourcewithslu.outputdevices.<a href="com/opensourcewithslu/outputdevices/FanHelper.html" title="class in com.opensourcewithslu.outputdevices">FanHelper</a></dt>
+<dd>
+<div class="block">Constructor to initialize the FanHelper with a PWM instance.</div>
 </dd>
 </dl>
 <h2 class="title" id="I:G">G</h2>
@@ -902,6 +913,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Sets the shutdown states for the component.</div>
 </dd>
+<dt><a href="com/opensourcewithslu/outputdevices/FanHelper.html#setSpeed(int)" class="member-name-link">setSpeed(int)</a> - Method in class com.opensourcewithslu.outputdevices.<a href="com/opensourcewithslu/outputdevices/FanHelper.html" title="class in com.opensourcewithslu.outputdevices">FanHelper</a></dt>
+<dd>
+<div class="block">Sets the fan speed by adjusting the PWM duty cycle.</div>
+</dd>
 <dt><a href="com/opensourcewithslu/inputdevices/PhotoResistorHelper.html#setToLow()" class="member-name-link">setToLow()</a> - Method in class com.opensourcewithslu.inputdevices.<a href="com/opensourcewithslu/inputdevices/PhotoResistorHelper.html" title="class in com.opensourcewithslu.inputdevices">PhotoResistorHelper</a></dt>
 <dd>
 <div class="block">To set the Photo Resistor output to low for each event.</div>
@@ -922,9 +937,17 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">The SpiConfiguration constructor.</div>
 </dd>
+<dt><a href="com/opensourcewithslu/outputdevices/FanHelper.html#start()" class="member-name-link">start()</a> - Method in class com.opensourcewithslu.outputdevices.<a href="com/opensourcewithslu/outputdevices/FanHelper.html" title="class in com.opensourcewithslu.outputdevices">FanHelper</a></dt>
+<dd>
+<div class="block">Starts the fan at full speed (1024 duty cycle) for 10 seconds, then stops it.</div>
+</dd>
 <dt><a href="com/opensourcewithslu/inputdevices/UltraSonicSensorHelper.html#startMeasuring()" class="member-name-link">startMeasuring()</a> - Method in class com.opensourcewithslu.inputdevices.<a href="com/opensourcewithslu/inputdevices/UltraSonicSensorHelper.html" title="class in com.opensourcewithslu.inputdevices">UltraSonicSensorHelper</a></dt>
 <dd>
 <div class="block">Begins measuring distance from sensor calling triggerAndMeasureDistance function every 100 milliseconds</div>
+</dd>
+<dt><a href="com/opensourcewithslu/outputdevices/FanHelper.html#stop()" class="member-name-link">stop()</a> - Method in class com.opensourcewithslu.outputdevices.<a href="com/opensourcewithslu/outputdevices/FanHelper.html" title="class in com.opensourcewithslu.outputdevices">FanHelper</a></dt>
+<dd>
+<div class="block">Stops the fan by turning off the PWM (0% duty cycle).</div>
 </dd>
 <dt><a href="com/opensourcewithslu/inputdevices/UltraSonicSensorHelper.html#stopMeasuring()" class="member-name-link">stopMeasuring()</a> - Method in class com.opensourcewithslu.inputdevices.<a href="com/opensourcewithslu/inputdevices/UltraSonicSensorHelper.html" title="class in com.opensourcewithslu.inputdevices">UltraSonicSensorHelper</a></dt>
 <dd>
@@ -996,7 +1019,7 @@ loadScripts(document, 'script');</script>
 <div class="block">Writes data to an RFID fob.</div>
 </dd>
 </dl>
-<a href="#I:A">A</a>&nbsp;<a href="#I:B">B</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:D">D</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:L">L</a>&nbsp;<a href="#I:M">M</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:R">R</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<a href="#I:U">U</a>&nbsp;<a href="#I:W">W</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a></main>
+<a href="#I:A">A</a>&nbsp;<a href="#I:B">B</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:D">D</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:F">F</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:L">L</a>&nbsp;<a href="#I:M">M</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:R">R</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<a href="#I:U">U</a>&nbsp;<a href="#I:W">W</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a></main>
 </div>
 </div>
 </body>
