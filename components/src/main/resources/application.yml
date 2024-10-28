@@ -30,7 +30,7 @@ pi4j:
       shutdown: 0
     servo-motor:
       name: Servo Motor
-      address: 18
+      address: 17
       pwmType: SOFTWARE
       provider: pigpio-pwm
       initial: 0
@@ -129,7 +129,7 @@ pi4j:
       provider: pigpio-digital-input
     speed-sensor:
       name: Speed Sensor           # <1>
-      address: 22                  # <2>
+      address: 17                 # <2>
       pulses-per-revolution: 20    # <3>
       provider: pigpio-digital-input # <4>
       debounce: 500                # <5>
