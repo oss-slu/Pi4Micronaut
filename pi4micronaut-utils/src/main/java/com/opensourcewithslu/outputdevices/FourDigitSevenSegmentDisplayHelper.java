@@ -31,10 +31,10 @@ public class FourDigitSevenSegmentDisplayHelper {
         this.display3 = displays[2];
         this.display4 = displays[3];
 
-        sevenSegmentDisplay1 = new SevenSegmentDisplayHelper(displayList[0]);
-        sevenSegmentDisplay2 = new SevenSegmentDisplayHelper(displayList[1]);
-        sevenSegmentDisplay3 = new SevenSegmentDisplayHelper(displayList[2]);
-        sevenSegmentDisplay4 = new SevenSegmentDisplayHelper(displayList[3]);
+        sevenSegmentDisplay1 = new SevenSegmentDisplayHelper();
+        sevenSegmentDisplay2 = new SevenSegmentDisplayHelper();
+        sevenSegmentDisplay3 = new SevenSegmentDisplayHelper();
+        sevenSegmentDisplay4 = new SevenSegmentDisplayHelper();
     }
 
     //tag::method[]
@@ -54,23 +54,22 @@ public class FourDigitSevenSegmentDisplayHelper {
 
         log.info("Displaying number: " + number);
 
-        display2.low();
-        display3.low();
-        display4.low();
+        sevenSegmentDisplay2.resetDisplay();
+        sevenSegmentDisplay3.resetDisplay();
+        sevenSegmentDisplay4.resetDisplay();
 
-        display1.high();
         sevenSegmentDisplay1.displayNumber(num[0]);
         if (num.length > 1) {
             display2.high();
-            sevenSegmentDisplay2.disaplNumber(num[1]);
+            sevenSegmentDisplay2.displayNumber(num[1]);
         }
         if (num.length > 2) {
             display3.high();
-            sevenSegmentDisplay2.disaplNumber(num[2]);
+            sevenSegmentDisplay2.displayNumber(num[2]);
         }
         if (num.length > 3) {
             display4.high();
-            sevenSegmentDisplay2.disaplNumber(num[3]);
+            sevenSegmentDisplay2.displayNumber(num[3]);
         }
     }
 }
