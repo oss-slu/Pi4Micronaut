@@ -59,28 +59,28 @@ public class FourDigitSevenSegmentDisplayHelper {
         // Render numbers with leading zeroes, e.g. 1 as 0001
         switch (num.length) {
             case 1:
-                sevenSegmentDisplay1.displayNumber("0");
-                sevenSegmentDisplay1.displayNumber("0");
-                sevenSegmentDisplay1.displayNumber("0");
-                sevenSegmentDisplay1.displayNumber(num[0]);
+                sevenSegmentDisplay1.displayNumber(0);
+                sevenSegmentDisplay2.displayNumber(0);
+                sevenSegmentDisplay3.displayNumber(0);
+                sevenSegmentDisplay4.displayNumber((int) num[0]);
                 break;
             case 2:
-                sevenSegmentDisplay1.displayNumber("0");
-                sevenSegmentDisplay1.displayNumber("0");
-                sevenSegmentDisplay1.displayNumber(num[0]);
-                sevenSegmentDisplay1.displayNumber(num[1]);
+                sevenSegmentDisplay1.displayNumber(0);
+                sevenSegmentDisplay2.displayNumber(0);
+                sevenSegmentDisplay3.displayNumber((int) num[0]);
+                sevenSegmentDisplay4.displayNumber((int) num[1]);
                 break;
             case 3:
-                sevenSegmentDisplay1.displayNumber("0");
-                sevenSegmentDisplay1.displayNumber(num[0]);
-                sevenSegmentDisplay1.displayNumber(num[1]);
-                sevenSegmentDisplay1.displayNumber(num[2]);
+                sevenSegmentDisplay1.displayNumber(0);
+                sevenSegmentDisplay2.displayNumber((int) num[0]);
+                sevenSegmentDisplay3.displayNumber((int) num[1]);
+                sevenSegmentDisplay4.displayNumber((int) num[2]);
                 break;
             case 4:
-                sevenSegmentDisplay1.displayNumber(num[0]);
-                sevenSegmentDisplay1.displayNumber(num[1]);
-                sevenSegmentDisplay1.displayNumber(num[2]);
-                sevenSegmentDisplay1.displayNumber(num[3]);
+                sevenSegmentDisplay1.displayNumber((int) num[0]);
+                sevenSegmentDisplay2.displayNumber((int) num[1]);
+                sevenSegmentDisplay3.displayNumber((int) num[2]);
+                sevenSegmentDisplay4.displayNumber((int) num[3]);
                 break;
         }
     }
@@ -93,5 +93,13 @@ public class FourDigitSevenSegmentDisplayHelper {
         sevenSegmentDisplay2.resetDisplay();
         sevenSegmentDisplay3.resetDisplay();
         sevenSegmentDisplay4.resetDisplay();
+    }
+
+    //tag::method[]
+    public int getValue()
+    //end::method[]
+    {
+        int[] values = {sevenSegmentDisplay1.getValue(), sevenSegmentDisplay2.getValue(), sevenSegmentDisplay3.getValue(), sevenSegmentDisplay4.getValue()};
+        return Integer.parseInt(String.valueOf(values));
     }
 }
