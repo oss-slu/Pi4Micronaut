@@ -9,7 +9,7 @@ import com.opensourcewithslu.utilities.MultiPinConfiguration;
 import com.opensourcewithslu.outputdevices.SevenSegmentDisplayHelper;
 
 public class FourDigitSevenSegmentDisplayHelper {
-    private static Logger log = LoggerFactory.getLogger(LEDHelper.class);
+    private static Logger log = LoggerFactory.getLogger(FourDigitSevenSegmentDisplayHelper.class);
 
     private final DigitalOutput display1;
     private final DigitalOutput display2;
@@ -51,8 +51,18 @@ public class FourDigitSevenSegmentDisplayHelper {
             log.error("Number is too short");
             return;
         }
+        try {
+            int integerNumber = Integer.parseInt(number);
+            if (integerNumber < 0) {
+                log.error("Display value must be positive");
+                return;
+            }
+        } catch (NumberFormatException e) {
+            log.error("Display value must be an integer");
+            return;
+        }
 
-        log.info("Displaying number: " + number);
+        log.info("Displaying number: {}", number);
 
         resetDisplay();
 
