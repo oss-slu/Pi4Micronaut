@@ -137,6 +137,8 @@ pi4j:
       name: Thermistor Input
       address: 18
       provider: pigpio-digital-input
+      pull: PULL_DOWN
+      debounce: 2000
   # end::digitalInput[]
 
   # tag::digitalOutput[]
@@ -165,6 +167,12 @@ pi4j:
       shutdown: LOW
       initial: LOW
       provider: pigpio-digital-output
+    thermistor-output:
+      name: Thermistor Output
+      address: 18
+      provider: pigpio-digital-output
+      initial: LOW
+      shutdown: LOW
   # end::digitalOutput[]
 
   # tag::multiInput[]

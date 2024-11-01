@@ -10,13 +10,19 @@ import jakarta.inject.Named;
 @Controller("/thermistor")
 public class ThermistorController {
     private final ThermistorHelper thermistorHelper;
-    // Finalize (Still gathering my thoughts about this)
-    public ThermistorController(@Named("thermistor-input") DigitalInput sensorInput, @Named("thermistor-output") DigitalOutput sensorOutput){
+
+    public ThermistorController(@Named("thermistor-input") DigitalInput sensorInput, @Named("thermistor-output") DigitalOutput sensorOutput) {
         this.thermistorHelper = new ThermistorHelper(sensorInput, sensorOutput);
     }
 
-    @Get("/value")
-    public int getThermistorValue(){
-        return thermistorHelper.getThermistorValue();
+    @Get("/celsius")
+    public double getTemperatureCelsius() {
+        return thermistorHelper.getTemperatureCelsius();
+    }
+
+    @Get("/fahrenheit")
+    public double getTemperatureFahrenheit() {
+        return thermistorHelper.getTemperatureFahrenheit();
     }
 }
+
