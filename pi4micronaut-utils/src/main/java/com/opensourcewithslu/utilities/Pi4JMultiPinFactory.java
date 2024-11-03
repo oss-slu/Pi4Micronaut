@@ -100,8 +100,8 @@ public class Pi4JMultiPinFactory {
                     .id(config.getId() + i)
                     .name(config.getName())
                     .address(config.getAddresses()[i])
-                    .initial(DigitalState.state(config.getInitials()[i]))
-                    .shutdown(DigitalState.state(config.getShutdowns()[i]))
+                    .initial(config.getInitials()[i])
+                    .shutdown(config.getShutdowns()[i])
                     .provider(config.getProvider());
 
             allOutputs[i] = pi4jContext.create(outputConfigBuilder);

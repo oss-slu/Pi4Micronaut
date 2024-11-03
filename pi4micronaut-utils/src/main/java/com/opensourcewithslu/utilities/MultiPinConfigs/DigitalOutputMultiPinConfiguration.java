@@ -1,5 +1,6 @@
 package com.opensourcewithslu.utilities.MultiPinConfigs;
 
+import com.pi4j.io.gpio.digital.DigitalState;
 import io.micronaut.context.annotation.EachProperty;
 import io.micronaut.context.annotation.Parameter;
 import io.micronaut.context.annotation.Prototype;
@@ -15,8 +16,8 @@ public class DigitalOutputMultiPinConfiguration {
     private final String id;
     private String name;
     private int[] addresses;
-    private int[] initials;
-    private int[] shutdowns;
+    private DigitalState[] initials;
+    private DigitalState[] shutdowns;
     private String provider;
 
     /**
@@ -79,18 +80,17 @@ public class DigitalOutputMultiPinConfiguration {
      *
      * @return Array of integers representing the initial state for each pin.
      */
-    public int[] getInitials() {
+    public DigitalState[] getInitials() {
         return initials;
     }
 
     /**
      * Sets the initial states for the component.
      *
-     * @param initials String of states separated by commas.
+     * @param initials Array of initial Digital states.
      */
-    public void setInitials(String initials) {
-        initials = initials.replaceAll("\\s", "");
-        this.initials = Arrays.stream(initials.split(",")).mapToInt(Integer::parseInt).toArray();
+    public void setInitials(DigitalState[] initials) {
+        this.initials = initials;
     }
 
     /**
@@ -98,18 +98,17 @@ public class DigitalOutputMultiPinConfiguration {
      *
      * @return Array of integers representing the shutdowns.
      */
-    public int[] getShutdowns() {
+    public DigitalState[] getShutdowns() {
         return shutdowns;
     }
 
     /**
      * Sets the shutdown states for the component. Existing shutdowns are replaced.
      *
-     * @param shutdowns String of shutdowns separated by commas.
+     * @param shutdowns Array of shutdowns Digital states.
      */
-    public void setShutdowns(String shutdowns) {
-        shutdowns = shutdowns.replaceAll("\\s", "");
-        this.shutdowns = Arrays.stream(shutdowns.split(",")).mapToInt(Integer::parseInt).toArray();
+    public void setShutdowns(DigitalState[] shutdowns) {
+        this.shutdowns = shutdowns;
     }
 
     /**

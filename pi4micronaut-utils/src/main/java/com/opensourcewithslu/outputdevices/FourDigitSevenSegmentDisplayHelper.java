@@ -147,13 +147,78 @@ public class FourDigitSevenSegmentDisplayHelper {
     }*/
 
     private void setValue(DigitalOutput digit, CharMap character) {
+        /*segmentA.off();
+        segmentB.off();
+        segmentC.off();
+        segmentD.off();
+        segmentE.off();
+        segmentF.off();
+        segmentG.off();
+
+        digit.on(100, 50);
+        for (int i = 0; i < 7; i++) {
+            if (character.getSegmentArray()[i] == 1) {
+                switch (i) {
+                    case 0:
+                        segmentA.on(100, 50);
+                        break;
+                    case 1:
+                        segmentB.on(100, 50);
+                        break;
+                    case 2:
+                        segmentC.on(100, 50);
+                        break;
+                    case 3:
+                        segmentD.on(100, 50);
+                        break;
+                    case 4:
+                        segmentE.on(100, 50);
+                        break;
+                    case 5:
+                        segmentF.on(100, 50);
+                        break;
+                    case 6:
+                        segmentG.on(100, 50);
+                        break;
+                }
+            }
+        }*/
+
+        segmentA.low();
+        segmentB.low();
+        segmentC.low();
+        segmentD.low();
+        segmentE.low();
+        segmentF.low();
+        segmentG.low();
+
         digit.high();
-        segmentA.setState(character.getSegmentArray()[0]);
-        segmentB.setState(character.getSegmentArray()[1]);
-        segmentC.setState(character.getSegmentArray()[2]);
-        segmentD.setState(character.getSegmentArray()[3]);
-        segmentE.setState(character.getSegmentArray()[4]);
-        segmentF.setState(character.getSegmentArray()[5]);
-        segmentG.setState(character.getSegmentArray()[6]);
+        for (int i = 0; i < 7; i++) {
+            if (character.getSegmentArray()[i] == 1) {
+                switch (i) {
+                    case 0:
+                        segmentA.high();
+                        break;
+                    case 1:
+                        segmentB.high();
+                        break;
+                    case 2:
+                        segmentC.high();
+                        break;
+                    case 3:
+                        segmentD.high();
+                        break;
+                    case 4:
+                        segmentE.high();
+                        break;
+                    case 5:
+                        segmentF.high();
+                        break;
+                    case 6:
+                        segmentG.high();
+                        break;
+                }
+            }
+        }
     }
 }
