@@ -3,70 +3,117 @@ package com.opensourcewithslu.inputdevices;
 import com.pi4j.context.Context;
 import com.pi4j.io.spi.Spi;
 import com.pi4j.io.spi.SpiConfig;
-import com.pi4j.io.spi.SpiProvider;
+import com.pi4j.io.spi.SpiMode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.pi4j.io.gpio.digital.DigitalInput;
 
 public class ThermistorHelper {
     private static final Logger log = LoggerFactory.getLogger(ThermistorHelper.class);
-    private final DigitalInput sensorInput;
-    private Spi spiDevice;
+    private final Spi spi; // SPI interface for ADC communication
 
-    public ThermistorHelper(Context pi4j, DigitalInput sensorInput) {
-        this.sensorInput = sensorInput;
-        initializeSpi(pi4j);
+    // Constants for Steinhart-Hart equation (example values; replace with actual thermistor constants)
+    private static final double A = 0.001129148;
+    private static final double B = 0.000234125;
+    private static final double C = 0.0000000876741;
+
+    public ThermistorHelper(Context pi4j) {
+        this.spi = initializeADC(pi4j);
     }
 
-    private void initializeSpi(Context pi4j) {
-        // Obtain SPI provider from Pi4J context
-        SpiProvider spiProvider = pi4j.provider("pigpio-spi");
-        SpiConfig spiConfig = Spi.newConfigBuilder(pi4j)
-                .id("spi-adc0834")
-                .name("ADC0834 SPI Device")
-                .address(0)  // SPI Channel 0
-                .baud(100_000) // Set appropriate baud rate
-                .build();
+    /**
+     * Initialize SPI and ADC settings specific to ADC0834.
+     */
+    private Spi initializeADC(Context pi4j) {
+        try {
+            // Create SPI configuration for the ADC0834
+            SpiConfig spiConfig = Spi.newConfigBuilder(pi4j)
+                    .id("ADC0834")
+                    .name("Thermistor ADC")
+                    .address(17) // SPI channel 0
+                    .baud(1000000) // 1 MHz SPI clock speed
+                    .mode(SpiMode.MODE_0)
+                    .build();
 
-        // Initialize SPI device
-        this.spiDevice = spiProvider.create(spiConfig);
+            Spi spi = pi4j.create(spiConfig);
+            log.info("SPI and ADC for thermistor initialized.");
+            return spi;
+
+        } catch (Exception e) {
+            log.error("Failed to initialize SPI for ADC0834", e);
+            throw new RuntimeException("SPI initialization failed", e);
+        }
     }
 
-    public double getTemperatureCelsius() {
-        int rawValue = getThermistorValue();
-        return convertRawToCelsius(rawValue);
+    /**
+     * Reads the raw value from the thermistor via ADC and converts it to resistance.
+     * @return the resistance value of the thermistor
+     */
+    public double getResistance() {
+        double rawValue = readADCValue();
+        return convertRawToResistance(rawValue);
     }
 
-    public double getTemperatureFahrenheit() {
-        double celsius = getTemperatureCelsius();
-        return celsius * 9.0 / 5.0 + 32;
+    /**
+     * Reads the ADC value from the thermistor on ADC0834.
+     * @return the raw ADC value as a double
+     */
+    public double readADCValue() {
+        byte[] packet = new byte[3];
+        byte[] response = new byte[3]; // To store the response from ADC0834
+
+        // ADC0834 requires sending a "start" bit sequence to initiate the read
+        packet[0] = 0x01; // Start bit
+        packet[1] = (byte) (0x80); // Single-ended mode and channel selection (channel 0 for thermistor)
+        packet[2] = 0x00; // Placeholder byte to read data
+
+        try {
+            // Send the command packet and receive response from ADC0834
+            spi.write(packet); // Send the packet
+            spi.read(response); // Read the response into the response array
+
+            // Process the response to extract ADC value (10-bit resolution for ADC0834)
+            int rawValue = ((response[1] & 0x03) << 8) + (response[2] & 0xFF); // Combine bits for 10-bit ADC result
+            log.info("Raw ADC Value: {}", rawValue);
+            return rawValue;
+        } catch (Exception e) {
+            log.error("Failed to read from ADC0834", e);
+            return -1; // Return a flag value indicating an error
+        }
     }
 
-    private double convertRawToCelsius(int rawValue) {
-        double resistance = calculateResistance(rawValue);
-        return 1.0 / (0.001129148 + (0.000234125 * Math.log(resistance)) + (0.0000000876741 * Math.pow(Math.log(resistance), 3))) - 273.15;
+
+    /**
+     * Converts the raw ADC value to thermistor resistance.
+     * @param rawValue the raw ADC value.
+     * @return the calculated resistance.
+     */
+    private double convertRawToResistance(double rawValue) {
+        // Convert ADC reading to resistance; adjust formula based on thermistor and ADC scaling
+        double voltage = (rawValue / 1023.0) * 3.3; // Assuming a 3.3V reference voltage
+        double resistance = (10000 * (3.3 - voltage)) / voltage; // Example formula for voltage divider circuit
+        log.info("Calculated Resistance: {} ohms", resistance);
+        return resistance;
     }
 
-    private double calculateResistance(int rawValue) {
-        double Vout = (rawValue / 255.0) * 3.3; // 8-bit value with 3.3V reference
-        return (10_000 * Vout) / (3.3 - Vout);
+    /**
+     * Calculates the temperature in Celsius using the Steinhart-Hart equation.
+     * @return temperature in Celsius.
+     */
+    public double getTemperatureInCelsius() {
+        double resistance = getResistance();
+        double temperatureInKelvin = 1.0 / (A + B * Math.log(resistance) + C * Math.pow(Math.log(resistance), 3));
+        double temperatureCelsius = temperatureInKelvin - 273.15;
+        log.info("Temperature in Celsius: {}", temperatureCelsius);
+        return temperatureCelsius;
     }
 
-    private int getThermistorValue() {
-        byte[] request = {(byte) 0b11010000, 0};  // Start command for ADC0834
-
-        // Send the request
-        spiDevice.write(request);
-
-        // Prepare a buffer for the response
-        byte[] response = new byte[2];
-
-        // Read the response (if your SPI device allows a separate read)
-        spiDevice.read(response, 0, 2);
-
-        // Extract the ADC value from the response
-        int rawValue = response[1] & 0xFF;
-        log.info("Raw thermistor value from ADC0834: " + rawValue);
-        return rawValue;
+    /**
+     * Converts temperature in Celsius to Fahrenheit.
+     * @return temperature in Fahrenheit.
+     */
+    public double getTemperatureInFahrenheit() {
+        double temperatureFahrenheit = getTemperatureInCelsius() * 9 / 5 + 32;
+        log.info("Temperature in Fahrenheit: {}", temperatureFahrenheit);
+        return temperatureFahrenheit;
     }
 }

@@ -10,6 +10,11 @@ pi4j:
       address: 8            # <3>
       baud: 500000          # <4>
       reset-pin: 25         # <5>
+    thermistor-adc: # Configuration for Thermistor ADC
+      name: Thermistor ADC  # <1>
+      address: 17            # <2> # SPI channel 0
+      baud: 1000000         # <3> # 1 MHz SPI clock speed
+      mode: SPI_MODE_0
   # end::spi[]
 
   # tag::pwm[]
@@ -133,12 +138,6 @@ pi4j:
       pulses-per-revolution: 20    # <3>
       provider: pigpio-digital-input # <4>
       debounce: 500                # <5>
-    thermistor-input:
-      name: Thermistor Input
-      address: 18
-      provider: pigpio-digital-input
-      pull: PULL_DOWN
-      debounce: 2000
   # end::digitalInput[]
 
   # tag::digitalOutput[]
@@ -167,12 +166,6 @@ pi4j:
       shutdown: LOW
       initial: LOW
       provider: pigpio-digital-output
-    thermistor-output:
-      name: Thermistor Output
-      address: 18
-      provider: pigpio-digital-output
-      initial: LOW
-      shutdown: LOW
   # end::digitalOutput[]
 
   # tag::multiInput[]

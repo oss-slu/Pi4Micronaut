@@ -15,23 +15,26 @@ public class ThermistorController {
 
     // Inject Pi4J Context and digital pins for the thermistor
     @Inject
-    public ThermistorController(
-            Context pi4jContext,
-            @Named("thermistor-input") DigitalInput sensorInput) {
+    public ThermistorController(Context pi4jContext) {
 
         // Initialize the ThermistorHelper with SPI configuration
-        this.thermistorHelper = new ThermistorHelper(pi4jContext, sensorInput);
+        this.thermistorHelper = new ThermistorHelper(pi4jContext);
     }
 
     // Endpoint to get temperature in Celsius
     @Get("/temperature/celsius")
     public double getTemperatureCelsius() {
-        return thermistorHelper.getTemperatureCelsius();
+        return thermistorHelper.getTemperatureInCelsius();
     }
 
     // Endpoint to get temperature in Fahrenheit
     @Get("/temperature/fahrenheit")
     public double getTemperatureFahrenheit() {
-        return thermistorHelper.getTemperatureFahrenheit();
+        return thermistorHelper.getTemperatureInFahrenheit();
+    }
+
+    @Get("/rawValue")
+    public double readADCValue(){
+        return thermistorHelper.readADCValue();
     }
 }
