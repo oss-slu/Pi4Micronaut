@@ -1,13 +1,13 @@
 package com.opensourcewithslu.outputdevices;
 
-import org.junit.jupiter.api.Test;
+/*import org.junit.jupiter.api.Test;
 
 import org.slf4j.Logger;
 
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-import com.opensourcewithslu.outputdevices.SevenSegmentDisplayHelper;
+import com.opensourcewithslu.outputdevices.SevenSegmentDisplayHelper;*/
 
 public class FourDigitSevenSegmentDisplayHelperTest {
     /*FourDigitSevenSegmentDisplayHelper displayHelper = mock(FourDigitSevenSegmentDisplayHelper.class);
