@@ -7,14 +7,13 @@ import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
-import com.pi4j.crowpi.components.internal.HT16K33;
 
 //tag::ex[]
 @Controller("/4digit7segment")
 public class FourDigitSevenSegmentDisplayController {
     private final FourDigitSevenSegmentDisplayHelper fourDigitSevenSegmentDisplayHelper;
 
-    @Inject
+    //    @Inject
     public FourDigitSevenSegmentDisplayController(@Named("4digit7segment") I2CConfig fourdigsevenseg, Context pi4jContext
     ) {
         this.fourDigitSevenSegmentDisplayHelper = new FourDigitSevenSegmentDisplayHelper(fourdigsevenseg, pi4jContext);
@@ -22,7 +21,7 @@ public class FourDigitSevenSegmentDisplayController {
 
     @Get("/enable")
     public void enable() {
-        fourDigitSevenSegmentDisplayHelper.enableDisplay(true);
+        fourDigitSevenSegmentDisplayHelper.setEnabled(true);
     }
 
     @Get("/displayNumber/{value}")
