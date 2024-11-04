@@ -60,45 +60,45 @@ pi4j:
     4digit7segment:
       name: 4 Digit 7 Segment Display
       bus: 1
-      device: 0x3F
-      segments:
-        segmentA:
-          pin: 18
-          state: "LOW"
-        segmentB:
-          pin: 22
-          state: "LOW"
-        segmentC:
-          pin: 24
-          state: "LOW"
-        segmentD:
-          pin: 26
-          state: "LOW"
-        segmentE:
-          pin: 28
-          state: "LOW"
-        segmentF:
-          pin: 32
-          state: "LOW"
-        segmentG:
-          pin: 36
-          state: "LOW"
-        decimal-point:
-          pin: 38
-          state: "LOW"
-        digits:
-          digit0:
-            pin: 11
-            state: "LOW"
-          digit1:
-            pin: 13
-            state: "LOW"
-          digit2:
-            pin: 15
-            state: "LOW"
-          digit3:
-            pin: 17
-            state: "LOW"
+      device: 0x70
+  #      segments:
+  #        segmentA:
+  #          pin: 18
+  #          state: "LOW"
+  #        segmentB:
+  #          pin: 22
+  #          state: "LOW"
+  #        segmentC:
+  #          pin: 24
+  #          state: "LOW"
+  #        segmentD:
+  #          pin: 26
+  #          state: "LOW"
+  #        segmentE:
+  #          pin: 28
+  #          state: "LOW"
+  #        segmentF:
+  #          pin: 32
+  #          state: "LOW"
+  #        segmentG:
+  #          pin: 36
+  #          state: "LOW"
+  #        decimal-point:
+  #          pin: 38
+  #          state: "LOW"
+  #        digits:
+  #          digit0:
+  #            pin: 11
+  #            state: "LOW"
+  #          digit1:
+  #            pin: 13
+  #            state: "LOW"
+  #          digit2:
+  #            pin: 15
+  #            state: "LOW"
+  #          digit3:
+  #            pin: 17
+  #            state: "LOW"
   # end::i2c[]
 
   # tag::digitalInput[]
