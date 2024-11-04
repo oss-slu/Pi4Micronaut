@@ -52,6 +52,37 @@ pi4j:
       name: lcd                           # <2>
       bus: 1                              # <3>
       device: 0x27                        # <4>
+    seven-segment-display:
+      name: "Single Seven-Segment Display"
+      bus: 1
+      device: 0x3F
+      brightness: 100
+      decimal-point: true
+      segments:
+        segmentA:
+          pin: 1
+          state: "HIGH"
+        segmentB:
+          pin: 2
+          state: "HIGH"
+        segmentC:
+          pin: 3
+          state: "HIGH"
+        segmentD:
+          pin: 4
+          state: "LOW"
+        segmentE:
+          pin: 5
+          state: "LOW"
+        segmentF:
+          pin: 6
+          state: "LOW"
+        segmentG:
+          pin: 7
+          state: "LOW"
+        decimal-point:
+          pin: 8
+          state: "LOW"
   # end::i2c[]
 
   # tag::digitalInput[]
