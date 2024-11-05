@@ -36,14 +36,14 @@ public class SevenSegmentDisplayHelper {
 
     // Constructor that loads GPIO pin addresses from `application.yml`
     public SevenSegmentDisplayHelper(
-            @Value("${i2c.seven-segment-display.segments.segment-a.pin}") int pinAAddress, // @ value reads application.yml
-            @Value("${i2c.seven-segment-display.segments.segment-b.pin}") int pinBAddress,
-            @Value("${i2c.seven-segment-display.segments.segment-c.pin}") int pinCAddress,
-            @Value("${i2c.seven-segment-display.segments.segment-d.pin}") int pinDAddress,
-            @Value("${i2c.seven-segment-display.segments.segment-e.pin}") int pinEAddress,
-            @Value("${i2c.seven-segment-display.segments.segment-f.pin}") int pinFAddress,
-            @Value("${i2c.seven-segment-display.segments.segment-g.pin}") int pinGAddress,
-            @Value("${i2c.seven-segment-display.segments.segment-dot.pin}") int decimalPointPinAddress) {
+            @Value("${i2c.seven-segment-display.segments.digital-output.segment-a.initial}") int pinAAddress, // @ value reads application.yml
+            @Value("${i2c.seven-segment-display.segments.digital-output.segment-b.initial}") int pinBAddress,
+            @Value("${i2c.seven-segment-display.segments.digital-output.segment-c.initial}") int pinCAddress,
+            @Value("${i2c.seven-segment-display.segments.digital-output.segment-d.initial}") int pinDAddress,
+            @Value("${i2c.seven-segment-display.segments.digital-output.segment-e.initial}") int pinEAddress,
+            @Value("${i2c.seven-segment-display.segments.digital-output.segment-f.initial}") int pinFAddress,
+            @Value("${i2c.seven-segment-display.segments.digital-output.segment-g.initial}") int pinGAddress,
+            @Value("${i2c.seven-segment-display.segments.digital-output.segment-dot.initial}") int decimalPointPinAddress) {
 
         // Initialize Pi4J context
         this.pi4j = Pi4J.newAutoContext();
