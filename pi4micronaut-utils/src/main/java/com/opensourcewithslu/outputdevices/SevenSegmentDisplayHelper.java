@@ -35,15 +35,16 @@ public class SevenSegmentDisplayHelper {
     };
 
     // Constructor that loads GPIO pin addresses from `application.yml`
-    public SevenSegmentDisplayHelper(
-            @Value("${i2c.seven-segment-display.segments.digital-output.segment-a.address}") int pinAAddress, // @ value reads application.yml
-            @Value("${i2c.seven-segment-display.segments.digital-output.segment-b.address}") int pinBAddress,
-            @Value("${i2c.seven-segment-display.segments.digital-output.segment-c.address}") int pinCAddress,
-            @Value("${i2c.seven-segment-display.segments.digital-output.segment-d.address}") int pinDAddress,
-            @Value("${i2c.seven-segment-display.segments.digital-output.segment-e.address}") int pinEAddress,
-            @Value("${i2c.seven-segment-display.segments.digital-output.segment-f.address}") int pinFAddress,
-            @Value("${i2c.seven-segment-display.segments.digital-output.segment-g.address}") int pinGAddress,
-            @Value("${i2c.seven-segment-display.segments.digital-output.segment-dot.address}") int decimalPointPinAddress) {
+    public SevenSegmentDisplayHelper
+
+            @Value("${i2c.seven-segment-display.segments.digital-output.segment-a.address}") int pinAAddress; // @ value reads application.yml
+            @Value("${i2c.seven-segment-display.segments.digital-output.segment-b.address}") int pinBAddress;
+            @Value("${i2c.seven-segment-display.segments.digital-output.segment-c.address}") int pinCAddress;
+            @Value("${i2c.seven-segment-display.segments.digital-output.segment-d.address}") int pinDAddress;
+            @Value("${i2c.seven-segment-display.segments.digital-output.segment-e.address}") int pinEAddress;
+            @Value("${i2c.seven-segment-display.segments.digital-output.segment-f.address}") int pinFAddress;
+            @Value("${i2c.seven-segment-display.segments.digital-output.segment-g.address}") int pinGAddress;
+            @Value("${i2c.seven-segment-display.segments.digital-output.segment-dot.address}") int decimalPointPinAddress; {
 
         // Initialize Pi4J context
         this.pi4j = Pi4J.newAutoContext();
