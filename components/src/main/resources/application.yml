@@ -59,30 +59,56 @@ pi4j:
       brightness: 100
       decimal-point: true
       segments:
-        segmentA:
-          pin: 1
-          state: "HIGH"
-        segmentB:
-          pin: 2
-          state: "HIGH"
-        segmentC:
-          pin: 3
-          state: "HIGH"
-        segmentD:
-          pin: 4
-          state: "LOW"
-        segmentE:
-          pin: 5
-          state: "LOW"
-        segmentF:
-          pin: 6
-          state: "LOW"
-        segmentG:
-          pin: 7
-          state: "LOW"
-        decimal-point:
-          pin: 8
-          state: "LOW"
+        digital-output:
+          # Define each segment of the seven-segment display as a digital output.
+          segment-a:
+            name: Segment A
+            address: 2
+            shutdown: LOW
+            initial: LOW
+            provider: pigpio-digital-output
+          segment-b:
+            name: Segment B
+            address: 3
+            shutdown: LOW
+            initial: LOW
+            provider: pigpio-digital-output
+          segment-c:
+            name: Segment C
+            address: 4
+            shutdown: LOW
+            initial: LOW
+            provider: pigpio-digital-output
+          segment-d:
+            name: Segment D
+            address: 5
+            shutdown: LOW
+            initial: LOW
+            provider: pigpio-digital-output
+          segment-e:
+            name: Segment E
+            address: 6
+            shutdown: LOW
+            initial: LOW
+            provider: pigpio-digital-output
+          segment-f:
+            name: Segment F
+            address: 7
+            shutdown: LOW
+            initial: LOW
+            provider: pigpio-digital-output
+          segment-g:
+            name: Segment G
+            address: 8
+            shutdown: LOW
+            initial: LOW
+            provider: pigpio-digital-output
+          segment-dot:
+            name: Segment DOT
+            address: 9
+            shutdown: LOW
+            initial: LOW
+            provider: pigpio-digital-output
   # end::i2c[]
 
   # tag::digitalInput[]
