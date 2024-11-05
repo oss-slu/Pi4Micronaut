@@ -18,6 +18,7 @@ public class SevenSegmentDisplayHelper {
     private final DigitalOutput pinE;
     private final DigitalOutput pinF;
     private final DigitalOutput pinG;
+    private final DigitalOutput decimalPoint;
 
     // Segment pattern configuration for displaying numbers 0-9
     private static final boolean[][] DIGIT_SEGMENTS = {
@@ -35,13 +36,14 @@ public class SevenSegmentDisplayHelper {
 
     // Constructor that loads GPIO pin addresses from `application.yml`
     public SevenSegmentDisplayHelper(
-            @Value("${pi4j.seven-segment-display.segment-pins.a}") int pinAAddress,
-            @Value("${pi4j.seven-segment-display.segment-pins.b}") int pinBAddress,
-            @Value("${pi4j.seven-segment-display.segment-pins.c}") int pinCAddress,
-            @Value("${pi4j.seven-segment-display.segment-pins.d}") int pinDAddress,
-            @Value("${pi4j.seven-segment-display.segment-pins.e}") int pinEAddress,
-            @Value("${pi4j.seven-segment-display.segment-pins.f}") int pinFAddress,
-            @Value("${pi4j.seven-segment-display.segment-pins.g}") int pinGAddress) {
+            @Value("${i2c.seven-segment-display.segments.segmentA.pin}") int pinAAddress, // @ value reads application.yml
+            @Value("${i2c.seven-segment-display.segments.segmentB.pin}") int pinBAddress,
+            @Value("${i2c.seven-segment-display.segments.segmentC.pin}") int pinCAddress,
+            @Value("${i2c.seven-segment-display.segments.segmentD.pin}") int pinDAddress,
+            @Value("${i2c.seven-segment-display.segments.segmentE.pin}") int pinEAddress,
+            @Value("${i2c.seven-segment-display.segments.segmentF.pin}") int pinFAddress,
+            @Value("${i2c.seven-segment-display.segments.segmentG.pin}") int pinGAddress,
+            @Value("${i2c.seven-segment-display.segments.decimal-point.pin}") int decimalPointPinAddress) {
 
         // Initialize Pi4J context
         this.pi4j = Pi4J.newAutoContext();
@@ -58,14 +60,15 @@ public class SevenSegmentDisplayHelper {
         this.pinE = configurePin(pinEAddress, "PinE");
         this.pinF = configurePin(pinFAddress, "PinF");
         this.pinG = configurePin(pinGAddress, "PinG");
+        this.decimalPoint = configurePin(decimalPointPinAddress, "DecimalPoint");
     }
 
-    private DigitalOutput configurePin(int address, String id) {
-        return pi4j.create(DigitalOutput.newConfigBuilder(pi4j)
+    private DigitalOutput configurePin(int address, String id) { // sets up each pin with a unique ID,name, and address
+        return pi4j.create(DigitalOutput.newConfigBuilder(pi4j) //creat the configuration pin
                 .id(id)
                 .name(id)
                 .address(address)
-                .shutdown(DigitalState.LOW)
+                .shutdown(DigitalState.LOW) // sets all pins are off
                 .initial(DigitalState.LOW));
     }
 
@@ -102,10 +105,10 @@ public class SevenSegmentDisplayHelper {
         pinE.low();
         pinF.low();
         pinG.low();
+        decimalPoint.low();
     }
 
     public void shutdown() {
-        pi4j.shutdown(); // showdown the program
+        pi4j.shutdown();
     }
-    //done!
 }
