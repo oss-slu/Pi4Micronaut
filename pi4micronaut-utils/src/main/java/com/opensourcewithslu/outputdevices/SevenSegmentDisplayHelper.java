@@ -35,8 +35,7 @@ public class SevenSegmentDisplayHelper {
     };
 
     // Constructor that loads GPIO pin addresses from `application.yml`
-    public SevenSegmentDisplayHelper
-
+    public SevenSegmentDisplayHelper(){}
             @Value("${i2c.seven-segment-display.segments.digital-output.segment-a.address}") int pinAAddress; // @ value reads application.yml
             @Value("${i2c.seven-segment-display.segments.digital-output.segment-b.address}") int pinBAddress;
             @Value("${i2c.seven-segment-display.segments.digital-output.segment-c.address}") int pinCAddress;
