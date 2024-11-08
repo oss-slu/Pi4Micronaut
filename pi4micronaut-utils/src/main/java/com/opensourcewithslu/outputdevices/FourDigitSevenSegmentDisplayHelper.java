@@ -4,11 +4,13 @@ import com.pi4j.io.gpio.digital.DigitalOutput;
 import com.pi4j.io.pwm.Pwm;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.opensourcewithslu.utilities.MultiPinConfiguration;
+//import com.opensourcewithslu.utilities.MultiPinConfiguration;
 
 public class FourDigitSevenSegmentDisplayHelper {
+/*
     private static Logger log = LoggerFactory.getLogger(FourDigitSevenSegmentDisplayHelper.class);
 
+*/
 /*    private int[][] charMap = {
             {1, 1, 1, 1, 1, 1, 0},
             {0, 1, 1, 0, 0, 0, 0},
@@ -22,6 +24,8 @@ public class FourDigitSevenSegmentDisplayHelper {
             {1, 1, 1, 1, 0, 1, 1},
             {0, 0, 0, 0, 0, 0, 1}
     };*/
+    /*
+
 
     private enum CharMap {
         ZERO(new int[]{1, 1, 1, 1, 1, 1, 0}),
@@ -59,12 +63,13 @@ public class FourDigitSevenSegmentDisplayHelper {
     private final DigitalOutput digit1;
     private final DigitalOutput digit2;
     private final DigitalOutput digit3;
+*/
 
     //tag::const[]
-    public FourDigitSevenSegmentDisplayHelper(MultiPinConfiguration fourDigitSevenSeg)
+    public FourDigitSevenSegmentDisplayHelper(/*DigitalOutput segmentA, DigitalOutput segmentB, DigitalOutput segmentC, DigitalOutput segmentD, DigitalOutput segmentE, DigitalOutput segmentF, DigitalOutput segmentG, DigitalOutput segmentDot, DigitalOutput digit0, DigitalOutput digit1, DigitalOutput digit2, DigitalOutput digit3*/)
     //end::const[]
     {
-        DigitalOutput[] components = (DigitalOutput[]) fourDigitSevenSeg.getComponents();
+        /*DigitalOutput[] components = (DigitalOutput[]) fourDigitSevenSeg.getComponents();
         this.segmentA = components[0];
         this.segmentB = components[1];
         this.segmentC = components[2];
@@ -76,11 +81,23 @@ public class FourDigitSevenSegmentDisplayHelper {
         this.digit0 = components[8];
         this.digit1 = components[9];
         this.digit2 = components[10];
-        this.digit3 = components[11];
+        this.digit3 = components[11];*/
+/*        this.segmentA = segmentA;
+        this.segmentB = segmentB;
+        this.segmentC = segmentC;
+        this.segmentD = segmentD;
+        this.segmentE = segmentE;
+        this.segmentF = segmentF;
+        this.segmentG = segmentG;
+        this.DP = segmentDot;
+        this.digit0 = digit0;
+        this.digit1 = digit1;
+        this.digit2 = digit2;
+        this.digit3 = digit3;*/
     }
 
     //tag::method[]
-    public void displayValue(String value)
+/*    public void displayValue(String value)
     //end::method[]
     {
         char[] num = value.toCharArray();
@@ -107,47 +124,58 @@ public class FourDigitSevenSegmentDisplayHelper {
         log.info("Displaying number: {}", value);
 
         // TODO: replace with actual implementation
-        setValue(digit0, CharMap.FOUR);
+        setValue(digit0, CharMap.FOUR);*/
 
         // Render numbers with leading zeroes, e.g. 1 as 0001
 /*        switch (num.length) {
             case 1:
-                *//*sevenSegmentDisplay1.displayNumber(0);
+                */
+    /*sevenSegmentDisplay1.displayNumber(0);
                 sevenSegmentDisplay2.displayNumber(0);
                 sevenSegmentDisplay3.displayNumber(0);
-                sevenSegmentDisplay4.displayNumber((int) num[0]);*//*
+                sevenSegmentDisplay4.displayNumber((int) num[0]);*/
+    /*
                 break;
             case 2:
-                *//*sevenSegmentDisplay1.displayNumber(0);
+                */
+    /*sevenSegmentDisplay1.displayNumber(0);
                 sevenSegmentDisplay2.displayNumber(0);
                 sevenSegmentDisplay3.displayNumber((int) num[0]);
-                sevenSegmentDisplay4.displayNumber((int) num[1]);*//*
+                sevenSegmentDisplay4.displayNumber((int) num[1]);*/
+    /*
                 break;
             case 3:
-                *//*sevenSegmentDisplay1.displayNumber(0);
+                */
+    /*sevenSegmentDisplay1.displayNumber(0);
                 sevenSegmentDisplay2.displayNumber((int) num[0]);
                 sevenSegmentDisplay3.displayNumber((int) num[1]);
-                sevenSegmentDisplay4.displayNumber((int) num[2]);*//*
+                sevenSegmentDisplay4.displayNumber((int) num[2]);*/
+    /*
                 break;
             case 4:
-                *//*sevenSegmentDisplay1.displayNumber((int) num[0]);
+                */
+    /*sevenSegmentDisplay1.displayNumber((int) num[0]);
                 sevenSegmentDisplay2.displayNumber((int) num[1]);
                 sevenSegmentDisplay3.displayNumber((int) num[2]);
-                sevenSegmentDisplay4.displayNumber((int) num[3]);*//*
+                sevenSegmentDisplay4.displayNumber((int) num[3]);*/
+    /*
                 break;
-        }*/
-    }
+        }
+    }*/
 
     /*//tag::method[]
     public String getValue()
     //end::method[]
     {
-        *//*int[] values = {sevenSegmentDisplay1.getValue(), sevenSegmentDisplay2.getValue(), sevenSegmentDisplay3.getValue(), sevenSegmentDisplay4.getValue()};
-        return Integer.parseInt(String.valueOf(values));*//*
+        */
+    /*int[] values = {sevenSegmentDisplay1.getValue(), sevenSegmentDisplay2.getValue(), sevenSegmentDisplay3.getValue(), sevenSegmentDisplay4.getValue()};
+        return Integer.parseInt(String.valueOf(values));*/
+    /*
     }*/
 
-    private void setValue(DigitalOutput digit, CharMap character) {
-        /*segmentA.off();
+    /*  private void setValue(DigitalOutput digit, CharMap character) {
+     */
+    /*segmentA.off();
         segmentB.off();
         segmentC.off();
         segmentD.off();
@@ -183,6 +211,7 @@ public class FourDigitSevenSegmentDisplayHelper {
                 }
             }
         }*/
+    /*
 
         segmentA.low();
         segmentB.low();
@@ -220,5 +249,5 @@ public class FourDigitSevenSegmentDisplayHelper {
                 }
             }
         }
-    }
+    }*/
 }
