@@ -7,11 +7,11 @@ import io.micronaut.http.annotation.Get;
 import jakarta.inject.Named;
 
 //tag::ex[]
-@Controller("/4digit7segment")
+@Controller("/four-digit-seven-segment")
 public class FourDigitSevenSegmentDisplayController {
     private final FourDigitSevenSegmentDisplayHelper fourDigitSevenSegmentDisplayHelper;
 
-    public FourDigitSevenSegmentDisplayController(@Named("4digit7segment") MultiPinConfiguration fourdigsevenseg
+    public FourDigitSevenSegmentDisplayController(@Named("four-digit-seven-segment") MultiPinConfiguration fourdigsevenseg
     ) {
         this.fourDigitSevenSegmentDisplayHelper = new FourDigitSevenSegmentDisplayHelper(fourdigsevenseg);
     }
