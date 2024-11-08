@@ -57,10 +57,10 @@ pi4j:
       name: lcd                           # <2>
       bus: 1                              # <3>
       device: 0x27                        # <4>
-    4digit7segment:
+    four-digit-seven-segment:
       name: 4 Digit 7 Segment Display
       bus: 1
-      device: 0x70
+      device: 0x27
   #      segments:
   #        segmentA:
   #          pin: 18

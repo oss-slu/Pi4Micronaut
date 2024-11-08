@@ -9,29 +9,29 @@ import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
 //tag::ex[]
-@Controller("/4digit7segment")
+@Controller("/four-digit-seven-segment")
 public class FourDigitSevenSegmentDisplayController {
     private final FourDigitSevenSegmentDisplayHelper fourDigitSevenSegmentDisplayHelper;
 
     //    @Inject
-    public FourDigitSevenSegmentDisplayController(@Named("4digit7segment") I2CConfig fourdigsevenseg, Context pi4jContext
+    public FourDigitSevenSegmentDisplayController(@Named("four-digit-seven-segment") I2CConfig fourdigsevenseg, Context pi4jContext
     ) {
         this.fourDigitSevenSegmentDisplayHelper = new FourDigitSevenSegmentDisplayHelper(fourdigsevenseg, pi4jContext);
     }
 
     @Get("/enable")
     public void enable() {
-        fourDigitSevenSegmentDisplayHelper.setEnabled(true);
+//        fourDigitSevenSegmentDisplayHelper.setEnabled(true);
     }
-
-    @Get("/displayNumber/{value}")
-    public void displayValue(String value) {
-        fourDigitSevenSegmentDisplayHelper.print(value);
-    }
-
-    @Get("/disable")
-    public void disable() {
-        fourDigitSevenSegmentDisplayHelper.setEnabled(false);
-    }
+//
+//    @Get("/displayNumber/{value}")
+//    public void displayValue(String value) {
+//        fourDigitSevenSegmentDisplayHelper.print(value);
+//    }
+//
+//    @Get("/disable")
+//    public void disable() {
+//        fourDigitSevenSegmentDisplayHelper.setEnabled(false);
+//    }
 }
 //end::ex[]
