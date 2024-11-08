@@ -161,6 +161,80 @@ pi4j:
       shutdown: LOW
       initial: LOW
       provider: pigpio-digital-output
+    4digit7segment:
+      segments:
+        segment-a:
+          name: Segment A
+          address: 18
+          shutdown: LOW
+          initial: LOW
+          provider: pigpio-digital-output
+        segment-b:
+          name: Segment B
+          address: 22
+          shutdown: LOW
+          initial: LOW
+          provider: pigpio-digital-output
+        segment-c:
+          name: Segment C
+          address: 24
+          shutdown: LOW
+          initial: LOW
+          provider: pigpio-digital-output
+        segment-d:
+          name: Segment D
+          address: 26
+          shutdown: LOW
+          initial: LOW
+          provider: pigpio-digital-output
+        segment-e:
+          name: Segment E
+          address: 28
+          shutdown: LOW
+          initial: LOW
+          provider: pigpio-digital-output
+        segment-f:
+          name: Segment F
+          address: 32
+          shutdown: LOW
+          initial: LOW
+          provider: pigpio-digital-output
+        segment-g:
+          name: Segment G
+          address: 36
+          shutdown: LOW
+          initial: LOW
+          provider: pigpio-digital-output
+        segment-dot:
+          name: Segment DOT
+          address: 38
+          shutdown: LOW
+          initial: LOW
+          provider: pigpio-digital-output
+        digit-0:
+          name: Digit 0
+          address: 11
+          shutdown: LOW
+          initial: LOW
+          provider: pigpio-digital-output
+        digit-1:
+          name: Digit 1
+          address: 13
+          shutdown: LOW
+          initial: LOW
+          provider: pigpio-digital-output
+        digit-2:
+          name: Digit 2
+          address: 15
+          shutdown: LOW
+          initial: LOW
+          provider: pigpio-digital-output
+        digit-3:
+          name: Digit 3
+          address: 17
+          shutdown: LOW
+          initial: LOW
+          provider: pigpio-digital-output
   # end::digitalOutput[]
 
   # tag::multiInput[]
@@ -209,11 +283,11 @@ pi4j:
   # end::multiPWM[]
 
   # tag::multiOutput[]
-      multi-digital-output:
-        4digit7segment:
-          name: 4 Digit 7 Segment Display
-          addresses: 18, 22, 24, 26, 28, 32, 36, 38, 11, 13, 15, 17 # A, B, C, D, E, F, G, DP, DIGIT1, DIGIT2, DIGIT3, DIGIT4
-          shutdowns: LOW, LOW, LOW, LOW, LOW, LOW, LOW, LOW, LOW, LOW, LOW, LOW
-          initials: HIGH, HIGH, HIGH, HIGH, HIGH, HIGH, HIGH, HIGH, HIGH, HIGH, HIGH, HIGH
-          provider: pigpio-digital-output
+  #      multi-digital-output:
+  #        4digit7segment:
+  #          name: 4 Digit 7 Segment Display
+  #          addresses: 18, 22, 24, 26, 28, 32, 36, 38, 11, 13, 15, 17 # A, B, C, D, E, F, G, DP, DIGIT1, DIGIT2, DIGIT3, DIGIT4
+  #          shutdowns: LOW, LOW, LOW, LOW, LOW, LOW, LOW, LOW, LOW, LOW, LOW, LOW
+  #          initials: HIGH, HIGH, HIGH, HIGH, HIGH, HIGH, HIGH, HIGH, HIGH, HIGH, HIGH, HIGH
+  #          provider: pigpio-digital-output
   # end::multiOutput[]
