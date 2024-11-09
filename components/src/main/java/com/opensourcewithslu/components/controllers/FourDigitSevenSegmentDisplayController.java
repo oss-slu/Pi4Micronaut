@@ -1,7 +1,6 @@
 package com.opensourcewithslu.components.controllers;
 
 import com.opensourcewithslu.outputdevices.DigitHelper;
-//import com.opensourcewithslu.utilities.MultiPinConfiguration;
 import com.opensourcewithslu.outputdevices.SegmentHelper;
 import com.pi4j.io.gpio.digital.DigitalOutput;
 import io.micronaut.http.annotation.Controller;
@@ -11,7 +10,6 @@ import jakarta.inject.Named;
 //tag::ex[]
 @Controller("/four-digit-seven-segment")
 public class FourDigitSevenSegmentDisplayController {
-    //    private final FourDigitSevenSegmentDisplayHelper fourDigitSevenSegmentDisplayHelper;
     private final SegmentHelper segmentA;
     private final SegmentHelper segmentB;
     private final SegmentHelper segmentC;
@@ -38,8 +36,6 @@ public class FourDigitSevenSegmentDisplayController {
                                                   @Named("digit-2") DigitalOutput digit2,
                                                   @Named("digit-3") DigitalOutput digit3
     ) {
-//        this.fourDigitSevenSegmentDisplayHelper = new FourDigitSevenSegmentDisplayHelper(segmentA, segmentB, segmentC, segmentD, segmentE, segmentF, segmentG, segmentDot, digit0, digit1, digit2, digit3);
-//        this.fourDigitSevenSegmentDisplayHelper = new FourDigitSevenSegmentDisplayHelper(fourdigsevenseg);
         this.segmentA = new SegmentHelper(segmentA);
         this.segmentB = new SegmentHelper(segmentB);
         this.segmentC = new SegmentHelper(segmentC);
@@ -56,7 +52,6 @@ public class FourDigitSevenSegmentDisplayController {
 
     /*@Get("/displayNumber/{value}")
     public void displayValue(String value) {
-        fourDigitSevenSegmentDisplayHelper.displayValue(value);
     }*/
 
     @Get("/test")
