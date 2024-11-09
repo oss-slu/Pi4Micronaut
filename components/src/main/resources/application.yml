@@ -61,44 +61,6 @@ pi4j:
       name: 4 Digit 7 Segment Display
       bus: 1
       device: 0x27
-  #      segments:
-  #        segmentA:
-  #          pin: 18
-  #          state: "LOW"
-  #        segmentB:
-  #          pin: 22
-  #          state: "LOW"
-  #        segmentC:
-  #          pin: 24
-  #          state: "LOW"
-  #        segmentD:
-  #          pin: 26
-  #          state: "LOW"
-  #        segmentE:
-  #          pin: 28
-  #          state: "LOW"
-  #        segmentF:
-  #          pin: 32
-  #          state: "LOW"
-  #        segmentG:
-  #          pin: 36
-  #          state: "LOW"
-  #        decimal-point:
-  #          pin: 38
-  #          state: "LOW"
-  #        digits:
-  #          digit0:
-  #            pin: 11
-  #            state: "LOW"
-  #          digit1:
-  #            pin: 13
-  #            state: "LOW"
-  #          digit2:
-  #            pin: 15
-  #            state: "LOW"
-  #          digit3:
-  #            pin: 17
-  #            state: "LOW"
   # end::i2c[]
 
   # tag::digitalInput[]
@@ -241,21 +203,4 @@ pi4j:
       provider: pigpio-pwm
       initials: 0, 0, 0
       shutdowns: 0, 0, 0
-      #    4digit7segment:
-      #      name: 4 Digit 7 Segment Display
-      #      addresses: 18, 22, 24, 26, 28, 32, 36, 38, 11, 13, 15, 17 # A, B, C, D, E, F, G, DP, DIGIT1, DIGIT2, DIGIT3, DIGIT4
-      #      shutdowns: 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-      #      initials: 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-      #      pwmTypes: SOFTWARE, SOFTWARE, SOFTWARE, SOFTWARE, SOFTWARE, SOFTWARE, SOFTWARE, SOFTWARE, SOFTWARE, SOFTWARE, SOFTWARE, SOFTWARE
-      #      provider: pigpio-pwm
   # end::multiPWM[]
-
-  # tag::multiOutput[]
-  #      multi-digital-output:
-  #        4digit7segment:
-  #          name: 4 Digit 7 Segment Display
-  #          addresses: 18, 22, 24, 26, 28, 32, 36, 38, 11, 13, 15, 17 # A, B, C, D, E, F, G, DP, DIGIT1, DIGIT2, DIGIT3, DIGIT4
-  #          shutdowns: LOW, LOW, LOW, LOW, LOW, LOW, LOW, LOW, LOW, LOW, LOW, LOW
-  #          initials: HIGH, HIGH, HIGH, HIGH, HIGH, HIGH, HIGH, HIGH, HIGH, HIGH, HIGH, HIGH
-  #          provider: pigpio-digital-output
-  # end::multiOutput[]
