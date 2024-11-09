@@ -10,6 +10,11 @@ pi4j:
       address: 8            # <3>
       baud: 500000          # <4>
       reset-pin: 25         # <5>
+    four-digit-seven-segment:
+      name: Four Digit Seven Segment Display
+      address: 0
+      baud: 1000000
+      reset-pin: 25
   # end::spi[]
 
   # tag::pwm[]
@@ -161,75 +166,45 @@ pi4j:
       shutdown: LOW
       initial: LOW
       provider: pigpio-digital-output
-    segment-a:
-      name: Segment A
-      address: 18
-      shutdown: LOW
-      initial: LOW
-      provider: pigpio-digital-output
-    segment-b:
-      name: Segment B
-      address: 22
-      shutdown: LOW
-      initial: LOW
-      provider: pigpio-digital-output
-    segment-c:
-      name: Segment C
-      address: 24
-      shutdown: LOW
-      initial: LOW
-      provider: pigpio-digital-output
-    segment-d:
-      name: Segment D
-      address: 26
-      shutdown: LOW
-      initial: LOW
-      provider: pigpio-digital-output
-    segment-e:
-      name: Segment E
-      address: 28
-      shutdown: LOW
-      initial: LOW
-      provider: pigpio-digital-output
-    segment-f:
-      name: Segment F
-      address: 32
-      shutdown: LOW
-      initial: LOW
-      provider: pigpio-digital-output
-    segment-g:
-      name: Segment G
-      address: 36
-      shutdown: LOW
-      initial: LOW
-      provider: pigpio-digital-output
-    segment-dot:
-      name: Segment DOT
-      address: 38
-      shutdown: LOW
-      initial: LOW
-      provider: pigpio-digital-output
     digit-0:
       name: Digit 0
-      address: 11
+      address: 17
       shutdown: LOW
       initial: LOW
       provider: pigpio-digital-output
     digit-1:
       name: Digit 1
-      address: 13
+      address: 27
       shutdown: LOW
       initial: LOW
       provider: pigpio-digital-output
     digit-2:
       name: Digit 2
-      address: 15
+      address: 22
       shutdown: LOW
       initial: LOW
       provider: pigpio-digital-output
     digit-3:
       name: Digit 3
-      address: 17
+      address: 10
+      shutdown: LOW
+      initial: LOW
+      provider: pigpio-digital-output
+    sdi:
+      name: SDI
+      address: 24
+      shutdown: LOW
+      initial: LOW
+      provider: pigpio-digital-output
+    rclk:
+      name: RCLK
+      address: 23
+      shutdown: LOW
+      initial: LOW
+      provider: pigpio-digital-output
+    srclk:
+      name: SRCLK
+      address: 18
       shutdown: LOW
       initial: LOW
       provider: pigpio-digital-output
