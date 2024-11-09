@@ -5,24 +5,25 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class SegmentHelper {
-    private static Logger log = LoggerFactory.getLogger(SegmentHelper.class);
+    private static final Logger log = LoggerFactory.getLogger(SegmentHelper.class);
 
     private final DigitalOutput segmentOutput;
 
-    //tag::const[]
-    public SegmentHelper(DigitalOutput segmentOutput)
-    //end::const[]
-    {
+    public SegmentHelper(DigitalOutput segmentOutput) {
         this.segmentOutput = segmentOutput;
     }
 
-    //tag::method[]
-    public void segmentOn()
-    //end::method[]
-    {
+    public void segmentOn() {
         if (segmentOutput.isLow()) {
             log.info("Turning on Segment");
             segmentOutput.high();
+        }
+    }
+
+    public void segmentOff() {
+        if (segmentOutput.isHigh()) {
+            log.info("Turning off Segment");
+            segmentOutput.low();
         }
     }
 }

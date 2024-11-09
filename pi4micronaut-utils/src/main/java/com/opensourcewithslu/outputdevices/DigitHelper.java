@@ -5,14 +5,25 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class DigitHelper {
-    private static Logger log = LoggerFactory.getLogger(DigitHelper.class);
+    private static final Logger log = LoggerFactory.getLogger(DigitHelper.class);
 
     private final DigitalOutput digitOutput;
 
-    //tag::const[]
-    public DigitHelper(DigitalOutput digitOutput)
-    //end::const[]
-    {
+    public DigitHelper(DigitalOutput digitOutput) {
         this.digitOutput = digitOutput;
+    }
+
+    public void digitOn() {
+        if (digitOutput.isLow()) {
+            log.info("Turning on Digit");
+            digitOutput.high();
+        }
+    }
+
+    public void digitOff() {
+        if (digitOutput.isHigh()) {
+            log.info("Turning off Digit");
+            digitOutput.low();
+        }
     }
 }
