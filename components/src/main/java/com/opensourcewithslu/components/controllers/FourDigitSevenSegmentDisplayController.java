@@ -1,7 +1,6 @@
 package com.opensourcewithslu.components.controllers;
 
 import com.opensourcewithslu.outputdevices.DigitHelper;
-import com.opensourcewithslu.outputdevices.FourDigitSevenSegmentDisplayHelper;
 //import com.opensourcewithslu.utilities.MultiPinConfiguration;
 import com.opensourcewithslu.outputdevices.SegmentHelper;
 import com.pi4j.io.gpio.digital.DigitalOutput;

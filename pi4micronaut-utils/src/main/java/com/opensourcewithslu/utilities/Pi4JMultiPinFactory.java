@@ -2,11 +2,8 @@ package com.opensourcewithslu.utilities;
 
 import com.opensourcewithslu.utilities.MultiPinConfigs.DigitalInputMultiPinConfiguration;
 import com.opensourcewithslu.utilities.MultiPinConfigs.PwmMultiPinConfiguration;
-import com.opensourcewithslu.utilities.MultiPinConfigs.DigitalOutputMultiPinConfiguration;
 import com.pi4j.context.Context;
 import com.pi4j.io.gpio.digital.DigitalInput;
-import com.pi4j.io.gpio.digital.DigitalOutput;
-import com.pi4j.io.gpio.digital.DigitalState;
 import com.pi4j.io.pwm.Pwm;
 import io.micronaut.context.annotation.EachBean;
 import io.micronaut.context.annotation.Factory;
@@ -79,34 +76,5 @@ public class Pi4JMultiPinFactory {
 
         String multiPinId = config.getId().substring(0, config.getId().length() - 8);
         return new MultiPinConfiguration(multiPinId, allPWMs);
-    }
-
-
-    /**
-     * Creates a MultiPinConfiguration object for a multi pin digital output component.
-     *
-     * @param config      {@link DigitalOutputMultiPinConfiguration} Object.
-     * @param pi4jContext The Pi4J {@link Context}.
-     * @return A MultiPinConfiguration object.
-     */
-    @Singleton
-    @EachBean(DigitalOutputMultiPinConfiguration.class)
-    public MultiPinConfiguration multiPinOutput(DigitalOutputMultiPinConfiguration config, Context pi4jContext) {
-        int[] addresses = config.getAddresses();
-        DigitalOutput[] allOutputs = new DigitalOutput[addresses.length];
-
-        for (int i = 0; i < addresses.length; i++) {
-            var outputConfigBuilder = DigitalOutput.newConfigBuilder(pi4jContext)
-                    .id(config.getId() + i)
-                    .name(config.getName())
-                    .address(config.getAddresses()[i])
-                    .initial(config.getInitials()[i])
-                    .shutdown(config.getShutdowns()[i])
-                    .provider(config.getProvider());
-
-            allOutputs[i] = pi4jContext.create(outputConfigBuilder);
-        }
-
-        return new MultiPinConfiguration(config.getId(), allOutputs);
     }
 }
