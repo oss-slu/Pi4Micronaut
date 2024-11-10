@@ -1,7 +1,6 @@
 package com.opensourcewithslu.outputdevices;
 
 import com.pi4j.context.Context;
-import com.pi4j.io.i2c.I2C;
 import com.pi4j.io.i2c.I2CConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
