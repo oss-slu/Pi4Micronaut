@@ -19,17 +19,22 @@ public class FourDigitSevenSegmentDisplayController {
 
     @Get("/enable")
     public void enable() {
-//        fourDigitSevenSegmentDisplayHelper.setEnabled(true);
+        fourDigitSevenSegmentDisplayHelper.setEnabled(true);
     }
-//
-//    @Get("/displayNumber/{value}")
-//    public void displayValue(String value) {
-//        fourDigitSevenSegmentDisplayHelper.print(value);
-//    }
-//
-//    @Get("/disable")
-//    public void disable() {
-//        fourDigitSevenSegmentDisplayHelper.setEnabled(false);
-//    }
+
+    @Get("/displayValue/{value}")
+    public void displayValue(String value) {
+        fourDigitSevenSegmentDisplayHelper.displayValue(value);
+    }
+
+    @Get("/disable")
+    public void disable() {
+        fourDigitSevenSegmentDisplayHelper.setEnabled(false);
+    }
+
+    @Get("/clear")
+    public void clear() {
+        fourDigitSevenSegmentDisplayHelper.clear();
+    }
 }
 //end::ex[]
