@@ -37,7 +37,7 @@ pi4j:
       shutdown: 0
     motor:
       name: Motor
-      address: 18
+      address: 22
       pwmType: SOFTWARE
       provider: pigpio-pwm
       initial: 0
@@ -158,6 +158,18 @@ pi4j:
     ultra-sonic-trig:
       name: UltraSonic Sensor Output
       address: 23
+      shutdown: LOW
+      initial: LOW
+      provider: pigpio-digital-output
+    motor-pin-1:
+      name: Motor Pin 1
+      address: 17
+      shutdown: HIGH
+      initial: HIGH
+      provider: pigpio-digital-output
+    motor-pin-2:
+      name: Motor Pin 2
+      address: 27
       shutdown: LOW
       initial: LOW
       provider: pigpio-digital-output
