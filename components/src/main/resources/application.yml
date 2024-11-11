@@ -138,6 +138,12 @@ pi4j:
       pulses-per-revolution: 20    # <3>
       provider: pigpio-digital-input # <4>
       debounce: 500                # <5>
+    adc-dout:
+      name: ADC DataOut
+      address: 8                # <4> Specify the GPIO pin for Data Out
+      pull: PULL_DOWN           # Configure pull-up or pull-down as needed
+      debounce: 100             # Optional debounce time for stable readings
+      provider: pigpio-digital-input
   # end::digitalInput[]
 
   # tag::digitalOutput[]
@@ -165,6 +171,21 @@ pi4j:
       address: 23
       shutdown: LOW
       initial: LOW
+      provider: pigpio-digital-output
+    adc-cs:
+      name: ADCChipSelect
+      address: 5                # <1> Specify the GPIO pin for CS (Chip Select)
+      initial: HIGH             # Initial state for Chip Select (could be HIGH or LOW based on needs)
+      provider: pigpio-digital-output
+    adc-clk:
+      name: ADCClock
+      address: 6                # <2> Specify the GPIO pin for CLK (Clock)
+      initial: LOW              # Initial state for Clock
+      provider: pigpio-digital-output
+    adc-din:
+      name: ADCDataIn
+      address: 7                # <3> Specify the GPIO pin for Data In
+      initial: LOW              # Initial state for Data In
       provider: pigpio-digital-output
   # end::digitalOutput[]
 
