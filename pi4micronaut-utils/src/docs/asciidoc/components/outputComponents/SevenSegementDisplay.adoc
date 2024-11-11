@@ -1,0 +1,292 @@
+:imagesdir: img/
+
+ifndef::rootpath[]
+:rootpath: ../../
+endif::rootpath[]
+
+ifdef::rootpath[]
+:imagesdir: {rootpath}{imagesdir}
+endif::rootpath[]
+
+==== Seven Segment Display
+
+[.text-right]
+https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/outputComponents/SevenSegmentDisplay.adoc[Improve this doc]
+
+===== Overview
+This section provides comprehensive details about the Seven Segment Display component, covering its configuration, circuit setup, and usage instructions.
+
+===== Components
+* 1 x Raspberry Pi
+* 1 x Seven Segment Display
+* Jumper wires
+* Breadboard
+* Power source
+
+===== Circuit Setup
+
+1. Place the Seven Segment Display on the breadboard.
+2. Connect each segment of the display to its respective GPIO pin as specified in the YAML configuration.
+3. Use a common ground to connect the display to the Raspberry Pi.
+4. Refer to the circuit diagram for detailed wiring instructions.
+
+===== Circuit Diagram
+
+image::/Users/jeongseyun7/Desktop/Capston1/Sprint4/Refreshed/Pi4Micronaut/Circuit_Diagram.png[]
+
+===== Schematic Diagram
+
+image::/Users/jeongseyun7/Desktop/Capston1/Sprint4/Refreshed/Pi4Micronaut/Schematic Diagram.png[]
+
+===== YAML Configuration
+The following YAML configuration is used to set up the Seven Segment Display in `application.yml`. This configuration defines each segment as a digital output and includes the I2C parameters necessary for Raspberry Pi integration.
+
+[source, yaml]
+----
+  # tag::i2c[]
+  i2c:
+    seven-segment-display:
+      name: "Single Seven-Segment Display"
+      bus: 1
+      device: 0x3F
+      brightness: 100
+      decimal-point: true
+      segments:
+        digital-output:
+          segment-a:
+            name: Segment A
+            address: 2
+            shutdown: LOW
+            initial: LOW
+            provider: pigpio-digital-output
+          segment-b:
+            name: Segment B
+            address: 3
+            shutdown: LOW
+            initial: LOW
+            provider: pigpio-digital-output
+          segment-c:
+            name: Segment C
+            address: 4
+            shutdown: LOW
+            initial: LOW
+            provider: pigpio-digital-output
+          segment-d:
+            name: Segment D
+            address: 5
+            shutdown: LOW
+            initial: LOW
+            provider: pigpio-digital-output
+          segment-e:
+            name: Segment E
+            address: 6
+            shutdown: LOW
+            initial: LOW
+            provider: pigpio-digital-output
+          segment-f:
+            name: Segment F
+            address: 7
+            shutdown: LOW
+            initial: LOW
+            provider: pigpio-digital-output
+          segment-g:
+            name: Segment G
+            address: 8
+            shutdown: LOW
+            initial: LOW
+            provider: pigpio-digital-output
+          segment-dot:
+            name: Segment DOT
+            address: 9
+            shutdown: LOW
+            initial: LOW
+            provider: pigpio-digital-output
+  # end::i2c[]
+----
+
+===== Functionality
+The Seven Segment Display can display numbers from 0-9 by controlling each segment. Additionally, the decimal point can be activated as needed.
+
+===== Testing
+
+To test the Seven Segment Display component with the Micronaut API, use the following commands:
+
+[source, bash]
+----
+$ curl http://localhost:8080/sevensegment/display/5
+----
+* `/display/{number}` - Displays the specified number (0-9).
+* `/reset` - Turns off all segments on the display.
+* `/shutdown` - Sets the display state to shutdown, which can deactivate the decimal point or all segments.
+
+===== Troubleshooting
+- **Display not working**: Verify all connections and ensure each segment is correctly wired to its designated GPIO pin.
+- **Incorrect display**: Review the YAML configuration for accuracy, ensuring the correct addresses are assigned to each segment.
+
+===== Constructor and Methods
+[source, java]
+----
+package com.opensourcewithslu.outputdevices;
+
+import com.pi4j.context.Context;
+import com.pi4j.io.gpio.digital.DigitalOutput;
+import com.pi4j.io.gpio.digital.DigitalState;
+import com.pi4j.Pi4J;
+import io.micronaut.context.annotation.Value;
+import jakarta.inject.Singleton;
+
+@Singleton
+public class SevenSegmentDisplayHelper {
+
+    private final Context pi4j;
+    private final DigitalOutput pinA;
+    private final DigitalOutput pinB;
+    private final DigitalOutput pinC;
+    private final DigitalOutput pinD;
+    private final DigitalOutput pinE;
+    private final DigitalOutput pinF;
+    private final DigitalOutput pinG;
+    private final DigitalOutput decimalPoint;
+
+    @Value("${i2c.seven-segment-display.segments.digital-output.segment-a.address}")
+    int pinAAddress;
+    @Value("${i2c.seven-segment-display.segments.digital-output.segment-b.address}")
+    int pinBAddress;
+    @Value("${i2c.seven-segment-display.segments.digital-output.segment-c.address}")
+    int pinCAddress;
+    @Value("${i2c.seven-segment-display.segments.digital-output.segment-d.address}")
+    int pinDAddress;
+    @Value("${i2c.seven-segment-display.segments.digital-output.segment-e.address}")
+    int pinEAddress;
+    @Value("${i2c.seven-segment-display.segments.digital-output.segment-f.address}")
+    int pinFAddress;
+    @Value("${i2c.seven-segment-display.segments.digital-output.segment-g.address}")
+    int pinGAddress;
+    @Value("${i2c.seven-segment-display.segments.digital-output.segment-dot.address}")
+    int decimalPointPinAddress;
+
+    // Segment pattern configuration for displaying numbers 0-9
+    private static final boolean[][] DIGIT_SEGMENTS = {
+            {true, true, true, true, true, true, false}, // 0
+            {false, true, true, false, false, false, false}, // 1
+            {true, true, false, true, true, false, true}, // 2
+            {true, true, true, true, false, false, true}, // 3
+            {false, true, true, false, false, true, true}, // 4
+            {true, false, true, true, false, true, true}, // 5
+            {true, false, true, true, true, true, true}, // 6
+            {true, true, true, false, false, false, false}, // 7
+            {true, true, true, true, true, true, true}, // 8
+            {true, true, true, true, false, true, true}  // 9
+    };
+
+    // Constructor
+    public SevenSegmentDisplayHelper() {
+        // Initialize Pi4J context
+        this.pi4j = Pi4J.newAutoContext();
+
+        if (pi4j == null) {
+            throw new IllegalStateException("Pi4J context failed to initialize");
+        }
+
+        // Set up each pin based on addresses from configuration
+        this.pinA = configurePin(pinAAddress, "PinA");
+        this.pinB = configurePin(pinBAddress, "PinB");
+        this.pinC = configurePin(pinCAddress, "PinC");
+        this.pinD = configurePin(pinDAddress, "PinD");
+        this.pinE = configurePin(pinEAddress, "PinE");
+        this.pinF = configurePin(pinFAddress, "PinF");
+        this.pinG = configurePin(pinGAddress, "PinG");
+        this.decimalPoint = configurePin(decimalPointPinAddress, "DecimalPoint");
+    }
+
+    // Configures a digital output pin with a specific address and ID
+    private DigitalOutput configurePin(int address, String id) {
+        return pi4j.create(DigitalOutput.newConfigBuilder(pi4j)
+                .id(id)
+                .name(id)
+                .address(address)
+                .shutdown(DigitalState.LOW)
+                .initial(DigitalState.LOW));
+    }
+
+    // Displays a number on the seven-segment display
+    public void display(int number) {
+        if (number < 0 || number > 9) {
+            throw new IllegalArgumentException("Number must be between 0 and 9");
+        }
+        boolean[] segments = DIGIT_SEGMENTS[number];
+        setSegments(segments[0], segments[1], segments[2], segments[3], segments[4], segments[5], segments[6]);
+    }
+
+    // Sets each segment's state based on the boolean values provided
+    private void setSegments(boolean a, boolean b, boolean c, boolean d, boolean e, boolean f, boolean g) {
+        pinA.state(a ? DigitalState.HIGH : DigitalState.LOW);
+        pinB.state(b ? DigitalState.HIGH : DigitalState.LOW);
+        pinC.state(c ? DigitalState.HIGH : DigitalState.LOW);
+        pinD.state(d ? DigitalState.HIGH : DigitalState.LOW);
+        pinE.state(e ? DigitalState.HIGH : DigitalState.LOW);
+        pinF.state(f ? DigitalState.HIGH : DigitalState.LOW);
+        pinG.state(g ? DigitalState.HIGH : DigitalState.LOW);
+    }
+
+    // Resets all segments and decimal point to LOW state, effectively turning off the display
+    public void resetDisplay() {
+        pinA.low();
+        pinB.low();
+        pinC.low();
+        pinD.low();
+        pinE.low();
+        pinF.low();
+        pinG.low();
+        decimalPoint.low();
+    }
+
+    // Shuts down the Pi4J context and cleans up resources
+    public void shutdown() {
+        resetDisplay(); // Ensure display is off before shutdown
+        pi4j.shutdown();
+    }
+}
+
+----
+
+
+===== Example Controller
+
+The following example controller demonstrates how to set up routes for displaying numbers and controlling the reset and shutdown features of the SevenSegment Display.
+
+[source, java]
+----
+package com.opensourcewithslu.components.controllers;
+
+import com.opensourcewithslu.outputdevices.SevenSegmentDisplayHelper;
+import io.micronaut.http.annotation.Controller;
+import io.micronaut.http.annotation.Get;
+import jakarta.inject.Inject;
+
+@Controller("/seven-segment")
+public class SevenSegmentController {
+
+    private final SevenSegmentDisplayHelper displayHelper;
+
+    @Inject
+    public SevenSegmentController(SevenSegmentDisplayHelper displayHelper) {
+        this.displayHelper = displayHelper;
+    }
+
+    @Get("/display/{number}")
+    public void displayNumber(int number) {
+        displayHelper.display(number);
+    }
+
+    @Get("/reset")
+    public void resetDisplay() {
+        displayHelper.reset();
+    }
+
+    @Get("/shutdown")
+    public void shutdownDisplay() {
+        displayHelper.shutdown();
+    }
+}
+----
