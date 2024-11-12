@@ -10,6 +10,11 @@ pi4j:
       address: 8            # <3>
       baud: 500000          # <4>
       reset-pin: 25         # <5>
+    thermistor-adc: # Configuration for Thermistor ADC
+      name: Thermistor ADC  # <1>
+      address: 17            # <2> # SPI channel 0
+      baud: 1000000         # <3> # 1 MHz SPI clock speed
+      mode: SPI_MODE_0
   # end::spi[]
 
   # tag::pwm[]
@@ -30,7 +35,7 @@ pi4j:
       shutdown: 0
     servo-motor:
       name: Servo Motor
-      address: 18
+      address: 17
       pwmType: SOFTWARE
       provider: pigpio-pwm
       initial: 0
@@ -129,7 +134,7 @@ pi4j:
       provider: pigpio-digital-input
     speed-sensor:
       name: Speed Sensor           # <1>
-      address: 22                  # <2>
+      address: 17                 # <2>
       pulses-per-revolution: 20    # <3>
       provider: pigpio-digital-input # <4>
       debounce: 500                # <5>
