@@ -7,6 +7,7 @@ import com.pi4j.Pi4J;
 import io.micronaut.context.annotation.Value;
 import jakarta.inject.Singleton;
 
+//tag::ex[]
 @Singleton
 public class SevenSegmentDisplayHelper {
 
@@ -18,6 +19,24 @@ public class SevenSegmentDisplayHelper {
     private final DigitalOutput pinE;
     private final DigitalOutput pinF;
     private final DigitalOutput pinG;
+    private final DigitalOutput decimalPoint;
+
+    @Value("${i2c.seven-segment-display.segments.digital-output.segment-a.address}")
+    int pinAAddress;
+    @Value("${i2c.seven-segment-display.segments.digital-output.segment-b.address}")
+    int pinBAddress;
+    @Value("${i2c.seven-segment-display.segments.digital-output.segment-c.address}")
+    int pinCAddress;
+    @Value("${i2c.seven-segment-display.segments.digital-output.segment-d.address}")
+    int pinDAddress;
+    @Value("${i2c.seven-segment-display.segments.digital-output.segment-e.address}")
+    int pinEAddress;
+    @Value("${i2c.seven-segment-display.segments.digital-output.segment-f.address}")
+    int pinFAddress;
+    @Value("${i2c.seven-segment-display.segments.digital-output.segment-g.address}")
+    int pinGAddress;
+    @Value("${i2c.seven-segment-display.segments.digital-output.segment-dot.address}")
+    int decimalPointPinAddress;
 
     // Segment pattern configuration for displaying numbers 0-9
     private static final boolean[][] DIGIT_SEGMENTS = {
@@ -33,16 +52,8 @@ public class SevenSegmentDisplayHelper {
             {true, true, true, true, false, true, true}  // 9
     };
 
-    // Constructor that loads GPIO pin addresses from `application.yml`
-    public SevenSegmentDisplayHelper(
-            @Value("${pi4j.seven-segment-display.segment-pins.a}") int pinAAddress,
-            @Value("${pi4j.seven-segment-display.segment-pins.b}") int pinBAddress,
-            @Value("${pi4j.seven-segment-display.segment-pins.c}") int pinCAddress,
-            @Value("${pi4j.seven-segment-display.segment-pins.d}") int pinDAddress,
-            @Value("${pi4j.seven-segment-display.segment-pins.e}") int pinEAddress,
-            @Value("${pi4j.seven-segment-display.segment-pins.f}") int pinFAddress,
-            @Value("${pi4j.seven-segment-display.segment-pins.g}") int pinGAddress) {
-
+    // Constructor
+    public SevenSegmentDisplayHelper() {
         // Initialize Pi4J context
         this.pi4j = Pi4J.newAutoContext();
 
@@ -58,8 +69,10 @@ public class SevenSegmentDisplayHelper {
         this.pinE = configurePin(pinEAddress, "PinE");
         this.pinF = configurePin(pinFAddress, "PinF");
         this.pinG = configurePin(pinGAddress, "PinG");
+        this.decimalPoint = configurePin(decimalPointPinAddress, "DecimalPoint");
     }
 
+    // Configures a digital output pin with a specific address and ID
     private DigitalOutput configurePin(int address, String id) {
         return pi4j.create(DigitalOutput.newConfigBuilder(pi4j)
                 .id(id)
@@ -69,21 +82,16 @@ public class SevenSegmentDisplayHelper {
                 .initial(DigitalState.LOW));
     }
 
+    // Displays a number on the seven-segment display
     public void display(int number) {
         if (number < 0 || number > 9) {
             throw new IllegalArgumentException("Number must be between 0 and 9");
         }
-        setSegments(
-                DIGIT_SEGMENTS[number][0],
-                DIGIT_SEGMENTS[number][1],
-                DIGIT_SEGMENTS[number][2],
-                DIGIT_SEGMENTS[number][3],
-                DIGIT_SEGMENTS[number][4],
-                DIGIT_SEGMENTS[number][5],
-                DIGIT_SEGMENTS[number][6]
-        );
+        boolean[] segments = DIGIT_SEGMENTS[number];
+        setSegments(segments[0], segments[1], segments[2], segments[3], segments[4], segments[5], segments[6]);
     }
 
+    // Sets each segment's state based on the boolean values provided
     private void setSegments(boolean a, boolean b, boolean c, boolean d, boolean e, boolean f, boolean g) {
         pinA.state(a ? DigitalState.HIGH : DigitalState.LOW);
         pinB.state(b ? DigitalState.HIGH : DigitalState.LOW);
@@ -94,6 +102,7 @@ public class SevenSegmentDisplayHelper {
         pinG.state(g ? DigitalState.HIGH : DigitalState.LOW);
     }
 
+    // Resets all segments and decimal point to LOW state, effectively turning off the display
     public void resetDisplay() {
         pinA.low();
         pinB.low();
@@ -102,10 +111,13 @@ public class SevenSegmentDisplayHelper {
         pinE.low();
         pinF.low();
         pinG.low();
+        decimalPoint.low();
     }
 
+    // Shuts down the Pi4J context and cleans up resources
     public void shutdown() {
-        pi4j.shutdown(); // showdown the program
+        resetDisplay(); // Ensure display is off before shutdown
+        pi4j.shutdown();
     }
-    //done!
 }
+//end::ex[]
