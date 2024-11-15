@@ -23,24 +23,27 @@ This section provides details of the DC motor, including its components and asse
 * 1 x Breadboard
 * 1 x T-Extension Board
 * 1 x DC Motor
-* 8 x Jumper wires
+* 10 x Jumper wires
 * 1 x L293D Motor Controller IC 1
-* 1 x battery pack with 4 AA or AAA batteries
-* Power source (appropriate voltage, typically 3.3V)
+* 1 x Power supply module
+* Raspberry Pi power source (appropriate voltage, typically 3.3V)
+* Motor power source (for example, a 9V battery and buckle connector)
 
 ===== Assembly Instructions
 
-* Connect the ground (GND) pin of the Raspberry Pi to the ground rail on the breadboard.
+* Connect the ground (GND) pin of the Raspberry Pi to the negative ground rail on the breadboard.
 * Place the L293D Motor Controller on the breadboard.
-* Connect a jumper wire from the L293D to the ground rail on the breadboard.
-* Connect the motor to the breadboard, attaching both terminals in line with the L293D.
-* Connect a jumper wire from pin 17 to the L293D.
-* Connect the battery pack to the breadboard.
-* Connect a jumper wire from the positive end of the battery pack to the L293D.
-* Connect a jumper wire from the negative end of the battery pack to the ground rail on the breadboard.
-* Connect a jumper wire from pin 18 of the Raspberry Pi to the L293D.
-* Connect a jumper wire from pin 4 of the Raspberry Pi to the L293D.
-* Connect a jumper wire from the 5V pin of the Raspberry Pi to the L293D.
+* Connect a jumper wire from GND pin 5 of the L293D to the negative ground rail of the breadboard.
+* Connect a jumper wire from the Vcc1 pin (pin 16) of the L293D to the positive rail of the breadboard.
+* Connect a jumper wire from the Vcc2 pin (pin 8) of the L293D to the other positive rail of the breadboard.
+* Connect a jumper wire from the pin GPIO17 (BCM pin 17) on the Raspberry Pi to the 2A pin (pin 7) on the L293D.
+* Connect a jumper wire from the pin GPIO27 (BCM pin 27) on the Raspberry Pi to the 1A pin (pin 2) on the L293D.
+* Connect a jumper wire from the pin GPIO22 (BCM pin 22) on the Raspberry Pi to the 1,2EN pin (pin 1) on the L293D.
+* Connect the motor to the breadboard.
+* Connect terminals of the motor to the 1Y (pin 3) and 2Y (pin 6 pins on the L293D using two jumper wires.
+* Connect a jumper wire between GND pins 4 and 5 of the L293D.
+* Place the power module on the breadboard.
+* Connect the motor power source into the power module.
 
 
 ===== Circuit Diagram
@@ -49,7 +52,7 @@ image::motor_bb.png[]
 
 ===== Schematic Diagram
 
-image::Motor_schem.png[]
+image::Motor_schem.jpg[]
 
 ===== Functionality
 
@@ -92,11 +95,24 @@ $ curl http://localhost:8080/motor/enable
 pwm:
   motor:
     name: Motor
-    address: 17
+    address: 22
     pwmType: SOFTWARE
     provider: pigpio-pwm
     initial: 0
     shutdown: 0
+digital-output:
+  motor-pin-1:
+    name: Motor Pin 1
+    address: 17
+    shutdown: HIGH
+    initial: HIGH
+    provider: pigpio-digital-output
+  motor-pin-2:
+    name: Motor Pin 2
+    address: 27
+    shutdown: LOW
+    initial: LOW
+    provider: pigpio-digital-output
 ----
 
 ===== Constructor and Methods
