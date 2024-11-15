@@ -15,7 +15,7 @@ authors:
   equal-contrib: true
   affiliation: 1
 affiliations:
-  - name: Open Source with SLU
+  - name: Open Source with SLU, Saint Louis University, USA
     index: 1
 
 date: 10 October 2024
