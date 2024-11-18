@@ -100,8 +100,8 @@ public class FourDigitSevenSegmentDisplayHelper {
     /**
      * Helper method to shift out a byte to the shift register.
      *
-     * @param data
-     * @param decimalPointEnabled
+     * @param data Data to shift out
+     * @param decimalPointEnabled Whether the decimal point should be enabled or not
      */
     private void shiftOut(Integer data, boolean decimalPointEnabled) {
         int value;
@@ -126,9 +126,9 @@ public class FourDigitSevenSegmentDisplayHelper {
     /**
      * Helper method to shift out a value to a specific digit.
      *
-     * @param digit
-     * @param c
-     * @param decimalPoint
+     * @param digit The digit to shift the value to
+     * @param c The character to shift out
+     * @param decimalPoint Whether the decimal point should be enabled or not
      */
     private void shiftValueToDigit(int digit, char c, boolean decimalPoint) {
         digit0.low();
@@ -235,6 +235,7 @@ public class FourDigitSevenSegmentDisplayHelper {
     {
         displayValue = "";
         this.parseDisplayValue();
+        log.info("Display cleared");
     }
 
     /**
@@ -246,6 +247,7 @@ public class FourDigitSevenSegmentDisplayHelper {
     {
         this.enabled = true;
         this.startDisplayThread();
+        log.info("Display enabled");
     }
 
     /**
@@ -257,6 +259,7 @@ public class FourDigitSevenSegmentDisplayHelper {
     {
         this.clear();
         this.enabled = false;
+        log.info("Display disabled");
     }
 
     /**
@@ -269,6 +272,11 @@ public class FourDigitSevenSegmentDisplayHelper {
     public void print(String value)
     //end::method[]
     {
+        if (!enabled) {
+            log.error("Display must be enabled first");
+            return;
+        }
+
         // Check: Non-decimal point characters must be digits 0 to 1, letters A to F (case-insensitive), -, or space
         String noDecimals = value.replaceAll("\\.", "");
         String valid = "1234567890ABCDEFabcdef- ";
@@ -330,6 +338,7 @@ public class FourDigitSevenSegmentDisplayHelper {
         }
         digitValues[digit] = value;
         this.setDisplayValueFromDigitValues();
+        log.info("Digit {} set to {}", digit, value);
     }
 
     /**
@@ -347,5 +356,6 @@ public class FourDigitSevenSegmentDisplayHelper {
         }
         decimalPoints[digit] = enabled;
         this.setDisplayValueFromDigitValues();
+        log.info("Decimal point on digit {} set to {}", digit, enabled);
     }
 }

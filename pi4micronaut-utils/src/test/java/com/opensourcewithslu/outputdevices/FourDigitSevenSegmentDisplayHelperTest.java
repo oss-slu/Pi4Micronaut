@@ -26,7 +26,29 @@ public class FourDigitSevenSegmentDisplayHelperTest {
     }
 
     @Test
+    void enable() {
+        displayHelper.enable();
+        verify(log).info("Display enabled");
+    }
+
+    @Test
+    void disable() {
+        displayHelper.enable();
+        verify(log).info("Display enabled");
+        displayHelper.disable();
+        verify(log).info("Display disabled");
+    }
+
+    @Test
+    void printFailsWhenDisabled() {
+        displayHelper.print("1234");
+        verify(log).error("Display must be enabled first");
+        verify(log, never()).info("Displaying value: {}", "1234");
+    }
+
+    @Test
     void longNumberIsCutOff() {
+        displayHelper.enable();
         String value = "12345";
         displayHelper.print(value);
         verify(log).info("Displaying value: {}", "1234");
@@ -34,6 +56,7 @@ public class FourDigitSevenSegmentDisplayHelperTest {
 
     @Test
     void consecutiveDecimalPointIsParsed() {
+        displayHelper.enable();
         String value = "1..23";
         displayHelper.print(value);
         String myValue = " ";
@@ -46,6 +69,7 @@ public class FourDigitSevenSegmentDisplayHelperTest {
 
     @Test
     void multipleConsecutiveDecimalPointIsParsed() {
+        displayHelper.enable();
         String value = "1...3";
         displayHelper.print(value);
         verify(log).info("Displaying value: {}", "1. . .3");
@@ -55,6 +79,7 @@ public class FourDigitSevenSegmentDisplayHelperTest {
 
     @Test
     void decimalPointOnLeftEndCutsOff() {
+        displayHelper.enable();
         String value = ".1234";
         displayHelper.print(value);
         verify(log).info("Displaying value: {}", " .123");
@@ -64,6 +89,7 @@ public class FourDigitSevenSegmentDisplayHelperTest {
 
     @Test
     void invalidCharacterFails() {
+        displayHelper.enable();
         String value = "G";
         displayHelper.print(value);
         verify(log).error("Each display value digit must be numeric, a letter A to F (case insensitive), a hyphen, or a space");
@@ -72,6 +98,7 @@ public class FourDigitSevenSegmentDisplayHelperTest {
 
     @Test
     void displaysLetters() {
+        displayHelper.enable();
         String value = "ABCD";
         displayHelper.print(value);
         verify(log).info("Displaying value: {}", "ABCD");
@@ -82,6 +109,7 @@ public class FourDigitSevenSegmentDisplayHelperTest {
 
     @Test
     void displaysLettersWithLowercase() {
+        displayHelper.enable();
         String value = "abcd";
         displayHelper.print(value);
         verify(log).info("Displaying value: {}", "ABCD");
@@ -92,6 +120,7 @@ public class FourDigitSevenSegmentDisplayHelperTest {
 
     @Test
     void displaysLettersWithMixedCase() {
+        displayHelper.enable();
         String value = "aBcD";
         displayHelper.print(value);
         verify(log).info("Displaying value: {}", "ABCD");
@@ -102,6 +131,7 @@ public class FourDigitSevenSegmentDisplayHelperTest {
 
     @Test
     void displaysHyphen() {
+        displayHelper.enable();
         String value = "-";
         displayHelper.print(value);
         verify(log).info("Displaying value: {}", "-   ");
@@ -112,6 +142,7 @@ public class FourDigitSevenSegmentDisplayHelperTest {
 
     @Test
     void displaysSpaces() {
+        displayHelper.enable();
         String value = "2 2";
         displayHelper.print(value);
         verify(log).info("Displaying value: {}", "2 2 ");
@@ -122,6 +153,7 @@ public class FourDigitSevenSegmentDisplayHelperTest {
 
     @Test
     void displaysNegativeNumber() {
+        displayHelper.enable();
         String number = "-123";
         displayHelper.print(number);
         verify(log).info("Displaying value: {}", "-123");
@@ -132,6 +164,7 @@ public class FourDigitSevenSegmentDisplayHelperTest {
 
     @Test
     void displaysFourDigitNumber() {
+        displayHelper.enable();
         String number = "1234";
         displayHelper.print(number);
         verify(log).info("Displaying value: {}", "1234");
@@ -142,6 +175,7 @@ public class FourDigitSevenSegmentDisplayHelperTest {
 
     @Test
     void displaysThreeDigitNumber() {
+        displayHelper.enable();
         String number = "123";
         displayHelper.print(number);
         verify(log).info("Displaying value: {}", "123 ");
@@ -152,6 +186,7 @@ public class FourDigitSevenSegmentDisplayHelperTest {
 
     @Test
     void displaysTwoDigitNumber() {
+        displayHelper.enable();
         String number = "34";
         displayHelper.print(number);
         verify(log).info("Displaying value: {}", "34  ");
@@ -162,6 +197,7 @@ public class FourDigitSevenSegmentDisplayHelperTest {
 
     @Test
     void displaysOneDigitNumber() {
+        displayHelper.enable();
         String number = "4";
         displayHelper.print(number);
         verify(log).info("Displaying value: {}", "4   ");
@@ -172,6 +208,7 @@ public class FourDigitSevenSegmentDisplayHelperTest {
 
     @Test
     void displaysBlankValue() {
+        displayHelper.enable();
         String number = "";
         displayHelper.print(number);
         verify(log).info("Displaying value: {}", "    ");
@@ -182,6 +219,7 @@ public class FourDigitSevenSegmentDisplayHelperTest {
 
     @Test
     void displaysDecimalNumber() {
+        displayHelper.enable();
         String number = "1.23";
         displayHelper.print(number);
         verify(log).info("Displaying value: {}", "1.23 ");
@@ -192,6 +230,7 @@ public class FourDigitSevenSegmentDisplayHelperTest {
 
     @Test
     void displaysDecimalNumberWithLeadingDecimal() {
+        displayHelper.enable();
         String number = ".23";
         displayHelper.print(number);
         verify(log).info("Displaying value: {}", " .23 ");
@@ -202,6 +241,7 @@ public class FourDigitSevenSegmentDisplayHelperTest {
 
     @Test
     void displaysDecimalNumberWithTrailingDecimal() {
+        displayHelper.enable();
         String number = "1.";
         displayHelper.print(number);
         verify(log).info("Displaying value: {}", "1.   ");
@@ -212,6 +252,7 @@ public class FourDigitSevenSegmentDisplayHelperTest {
 
     @Test
     void displaysMultipleDecimals() {
+        displayHelper.enable();
         String number = "1.2.3.4.";
         displayHelper.print(number);
         verify(log).info("Displaying value: {}", "1.2.3.4.");
@@ -222,6 +263,7 @@ public class FourDigitSevenSegmentDisplayHelperTest {
 
     @Test
     void displaysSpacesAndDecimals() {
+        displayHelper.enable();
         String number = " . . . ";
         displayHelper.print(number);
         verify(log).info("Displaying value: {}", " . . . ");
@@ -232,14 +274,33 @@ public class FourDigitSevenSegmentDisplayHelperTest {
 
     @Test
     void clearDisplay() {
+        displayHelper.enable();
         String number = "1234";
         displayHelper.print(number);
 
         displayHelper.clear();
+        verify(log).info("Display cleared");
 
         String displayed = displayHelper.getDisplayValue();
         assertEquals("    ", displayed);
     }
 
-    /* TODO: Add tests for setDigit and setDecimalPoint */
+    @Test
+    void setsDigit() {
+        displayHelper.enable();
+        displayHelper.setDigit(0, 'A');
+        verify(log).info("Digit {} set to {}", 0, 'A');
+        String displayValue = displayHelper.getDisplayValue();
+        assertEquals("A   ", displayValue);
+    }
+
+    @Test
+    void setsDecimalPoint() {
+        displayHelper.enable();
+        displayHelper.print("1234");
+        displayHelper.setDecimalPoint(0, true);
+        verify(log).info("Decimal point on digit {} set to {}", 0, true);
+        String displayValue = displayHelper.getDisplayValue();
+        assertEquals("1.234", displayValue);
+    }
 }
