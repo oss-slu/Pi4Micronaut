@@ -273,23 +273,73 @@ th {
 <p>Connect a jumper wire from each "digit" pin of the 4-digit 7-segment to one of the resistors.</p>
 </li>
 <li>
-<p>Connect the other end of the resistors to the Raspberry Pi&#8217;s pins:</p>
+<p>Connect the other ends of the resistors to the Raspberry Pi&#8217;s pins:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Digit 1 to GPIO17 (BCM pin 18)</p>
+<p>Digit 1 (pin 12) to GPIO17 (BCM pin 18)</p>
 </li>
 <li>
-<p>Digit 2 to GPIO27 (BCM pin 27)</p>
+<p>Digit 2 (pin 9) to GPIO27 (BCM pin 27)</p>
 </li>
 <li>
-<p>Digit 3 to GPIO22 (BCM pin 22)</p>
+<p>Digit 3 (pin 8) to GPIO22 (BCM pin 22)</p>
 </li>
 <li>
-<p>Digit 4 to SPIMOSI (BCM pin 10)</p>
+<p>Digit 4 (pin 6) to SPIMOSI (BCM pin 10)</p>
 </li>
 </ul>
 </div>
+</li>
+<li>
+<p>Use jumper wires to connect pins on the display to pins on the 74HC595:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>A (pin 11) to Q0 (pin 15)</p>
+</li>
+<li>
+<p>B (pin 7) to Q1 (pin 1)</p>
+</li>
+<li>
+<p>C (pin 4) to Q2 (pin 2)</p>
+</li>
+<li>
+<p>D (pin 2) to Q3 (pin 3)</p>
+</li>
+<li>
+<p>E (pin 1) to Q4 (pin 4)</p>
+</li>
+<li>
+<p>F (pin 10) to Q5 (pin 5)</p>
+</li>
+<li>
+<p>G (pin 5) to Q6 (pin 6)</p>
+</li>
+<li>
+<p>DP (pin 3) to Q7 (pin 7)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Use jumper wires to connect the 74HC595 to the Raspberry Pi:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>SHcp (pin 11) to GPIO18 (BCM pin 18)</p>
+</li>
+<li>
+<p>STcp (pin 12) to GPIO23 (BCM pin 23)</p>
+</li>
+<li>
+<p>DS (pin 14) to GPIO24 (BCM pin 24)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Use jumper wires to connect the remaining pins of the 74HC595 to the ground rails of breadboard.</p>
 </li>
 </ul>
 </div>
@@ -340,12 +390,20 @@ Each of the four decimal points can also be turned on or off.</p>
 <h5 id="_testing">Testing</h5>
 <div class="paragraph">
 <p>Use the below commands to test the component.
-This will cause the display to turn on and display the value <code>1234</code>.</p>
+The first two commands will cause the display to turn on and display the value <code>1234</code>.</p>
+</div>
+<div class="paragraph">
+<p>The third command will cause the display to then show <code>1.234</code>.</p>
+</div>
+<div class="paragraph">
+<p>The fourth command will cause the display to show <code>1 34</code>, using standard URL encoding for the space (<code>%20</code>).</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-bash" data-lang="bash">$ curl http://localhost:8080/four-digit-seven-segment/enable
-$ curl http://localhost:8080/four-digit-seven-segment/displayValue/1234</code></pre>
+$ curl http://localhost:8080/four-digit-seven-segment/displayValue/1234
+$ curl http://localhost:8080/four-digit-seven-segment/set-decimal-point/0/true
+$ curl http://localhost:8080/four-digit-seven-segment/displayValue/1%2034</code></pre>
 </div>
 </div>
 <div class="ulist">
@@ -357,10 +415,16 @@ $ curl http://localhost:8080/four-digit-seven-segment/displayValue/1234</code></
 <p><code>/disable</code> - Disables the display.</p>
 </li>
 <li>
-<p><code>/displayValue/{value}</code> - Displays a custom value on the display.</p>
+<p><code>/print/{value}</code> - Displays a custom value on the display.</p>
 </li>
 <li>
 <p><code>/clear</code> - Clears the display.</p>
+</li>
+<li>
+<p><code>/set-digit/{digit}/{value}</code> - Sets a specific digit to a specific value.</p>
+</li>
+<li>
+<p><code>/set-decimal-point/{digit}/{value}</code> - Sets a specific decimal point to on (true) or off (false).</p>
 </li>
 </ul>
 </div>
@@ -408,11 +472,49 @@ $ curl http://localhost:8080/four-digit-seven-segment/displayValue/1234</code></
 <h5 id="_yaml_configuration">YAML Configuration</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-yaml" data-lang="yaml">i2c:
-four-digit-seven-segment:
-  name: 4 Digit 7 Segment Display
-  bus: 1
-  device: 0x27</code></pre>
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">digital-output:
+  digit-0:
+    name: Digit 0
+    address: 17
+    shutdown: LOW
+    initial: LOW
+    provider: pigpio-digital-output
+  digit-1:
+    name: Digit 1
+    address: 27
+    shutdown: LOW
+    initial: LOW
+    provider: pigpio-digital-output
+  digit-2:
+    name: Digit 2
+    address: 22
+    shutdown: LOW
+    initial: LOW
+    provider: pigpio-digital-output
+  digit-3:
+    name: Digit 3
+    address: 10
+    shutdown: LOW
+    initial: LOW
+    provider: pigpio-digital-output
+  sdi:
+    name: SDI
+    address: 24
+    shutdown: LOW
+    initial: LOW
+    provider: pigpio-digital-output
+  rclk:
+    name: RCLK
+    address: 23
+    shutdown: LOW
+    initial: LOW
+    provider: pigpio-digital-output
+  srclk:
+    name: SRCLK
+    address: 18
+    shutdown: LOW
+    initial: LOW
+    provider: pigpio-digital-output</code></pre>
 </div>
 </div>
 </div>
@@ -436,7 +538,7 @@ for more details.</p>
 <div id="footer">
 <div id="footer-text">
 Version v1.1<br>
-Last updated 2024-11-18 15:08:11 UTC
+Last updated 2024-11-18 22:18:57 UTC
 </div>
 </div>
 </body>
