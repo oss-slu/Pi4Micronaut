@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.18">
-<title>Motor</title>
+<title>4-Digit 7-Segment Display</title>
 <style>
 body {
 	font-family: sans-serif;
@@ -209,14 +209,14 @@ th {
 </div>
 <div id="content">
 <div class="sect3">
-<h4 id="_motor">Motor</h4>
+<h4 id="_4_digit_7_segment_display">4-Digit 7-Segment Display</h4>
 <div class="paragraph text-right">
-<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/outputComponents/motor.adoc">Improve this doc</a></p>
+<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/outputComponents/fourDigitSevenSegment.adoc">Improve this doc</a></p>
 </div>
 <div class="sect4">
 <h5 id="_overview">Overview</h5>
 <div class="paragraph">
-<p>This section provides details of the DC motor, including its components and assembly instructions.</p>
+<p>This section provides details of the 4-digit 7-segment display, including its components and assembly instructions.</p>
 </div>
 </div>
 <div class="sect4">
@@ -224,7 +224,7 @@ th {
 <div class="ulist">
 <ul>
 <li>
-<p>1 x RaspberryPi</p>
+<p>1 x Raspberry Pi</p>
 </li>
 <li>
 <p>1 x Breadboard</p>
@@ -233,16 +233,16 @@ th {
 <p>1 x T-Extension Board</p>
 </li>
 <li>
-<p>1 x DC Motor</p>
+<p>25 x Jumper Wire</p>
 </li>
 <li>
-<p>8 x Jumper wires</p>
+<p>4 x Resistor (220Ω)</p>
 </li>
 <li>
-<p>1 x L293D Motor Controller IC 1</p>
+<p>1 x 4-Digit 7-Segment Display</p>
 </li>
 <li>
-<p>1 x battery pack with 4 AA or AAA batteries</p>
+<p>1 x 74HC595</p>
 </li>
 <li>
 <p>Power source (appropriate voltage, typically 3.3V)</p>
@@ -255,37 +255,41 @@ th {
 <div class="ulist">
 <ul>
 <li>
-<p>Connect the ground (GND) pin of the Raspberry Pi to the ground rail on the breadboard.</p>
+<p>Connect the ground (GND) pins of the Raspberry Pi to the ground rails on the breadboard.</p>
 </li>
 <li>
-<p>Place the L293D Motor Controller on the breadboard.</p>
+<p>Connect the two ground rails of the breadboard with a jumper wire.</p>
 </li>
 <li>
-<p>Connect a jumper wire from the L293D to the ground rail on the breadboard.</p>
+<p>Place the 74HC595 on the breadboard.</p>
 </li>
 <li>
-<p>Connect the motor to the breadboard, attaching both terminals in line with the L293D.</p>
+<p>Place the four resistors on the breadboard.</p>
 </li>
 <li>
-<p>Connect a jumper wire from pin 17 to the L293D.</p>
+<p>Place the 4-digit 7-segment display on the breadboard.</p>
 </li>
 <li>
-<p>Connect the battery pack to the breadboard.</p>
+<p>Connect a jumper wire from each "digit" pin of the 4-digit 7-segment to one of the resistors.</p>
 </li>
 <li>
-<p>Connect a jumper wire from the positive end of the battery pack to the L293D.</p>
+<p>Connect the other end of the resistors to the Raspberry Pi&#8217;s pins:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Digit 1 to GPIO17 (BCM pin 18)</p>
 </li>
 <li>
-<p>Connect a jumper wire from the negative end of the battery pack to the ground rail on the breadboard.</p>
+<p>Digit 2 to GPIO27 (BCM pin 27)</p>
 </li>
 <li>
-<p>Connect a jumper wire from pin 18 of the Raspberry Pi to the L293D.</p>
+<p>Digit 3 to GPIO22 (BCM pin 22)</p>
 </li>
 <li>
-<p>Connect a jumper wire from pin 4 of the Raspberry Pi to the L293D.</p>
+<p>Digit 4 to SPIMOSI (BCM pin 10)</p>
 </li>
-<li>
-<p>Connect a jumper wire from the 5V pin of the Raspberry Pi to the L293D.</p>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -294,7 +298,7 @@ th {
 <h5 id="_circuit_diagram">Circuit Diagram</h5>
 <div class="imageblock">
 <div class="content">
-<img src="../../img/motor_bb.png" alt="motor bb">
+<img src="../../img/four_digit_circuit.webp" alt="four digit circuit">
 </div>
 </div>
 </div>
@@ -302,43 +306,61 @@ th {
 <h5 id="_schematic_diagram">Schematic Diagram</h5>
 <div class="imageblock">
 <div class="content">
-<img src="../../img/Motor_schem.png" alt="Motor schem">
+<img src="../../img/four_digit_schematic.webp" alt="four digit schematic">
 </div>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_functionality">Functionality</h5>
 <div class="paragraph">
-<p>Motor can be enabled or disabled, change speed to custom value 0 to 100, and switch directions between clockwise and counterclockwise.</p>
+<p>The display can be enabled/disabled, display a custom value, or cleared.</p>
+</div>
+<div class="paragraph">
+<p>Each digit of the display can display a digit 0 to 9, an uppercase letter A to F, a hypen (-), or a blank space.
+Each of the four decimal points can also be turned on or off.</p>
+</div>
+<div class="paragraph">
+<p>Example possible values include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>"1" (displayed with the 1 in the first digit and the others blank)</p>
+</li>
+<li>
+<p>"8.8.8.8." (displayed with all segments enabled as <code>8.8.8.8.</code>)</p>
+</li>
+<li>
+<p>"A.-.42" (displayed as <code><code>A.-.42</code></code>)</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_testing">Testing</h5>
 <div class="paragraph">
 <p>Use the below commands to test the component.
-This will cause the motor to turn.</p>
+This will cause the display to turn on and display the value <code>1234</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl http://localhost:8080/motor/enable</code></pre>
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl http://localhost:8080/four-digit-seven-segment/enable
+$ curl http://localhost:8080/four-digit-seven-segment/displayValue/1234</code></pre>
 </div>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>/enable</code> - Enables the motor.</p>
+<p><code>/enable</code> - Enables the display.</p>
 </li>
 <li>
-<p><code>/disable</code> - Disables the motor.</p>
+<p><code>/disable</code> - Disables the display.</p>
 </li>
 <li>
-<p><code>/setSpeed/{speed}</code> - Sets the speed of the motor to custom value 0 to 100.</p>
+<p><code>/displayValue/{value}</code> - Displays a custom value on the display.</p>
 </li>
 <li>
-<p><code>/setClockwise/{clockwise}</code> - Sets the direction of the motor; "true" for clockwise, "false" for counterclockwise.</p>
-</li>
-<li>
-<p><code>/switchDirection</code> - Switches the direction from clockwise to counterclockwise or vice versa.</p>
+<p><code>/clear</code> - Clears the display.</p>
 </li>
 </ul>
 </div>
@@ -348,17 +370,14 @@ This will cause the motor to turn.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Motor does not turn on</p>
+<p>Display does not turn on</p>
 <div class="ulist">
 <ul>
 <li>
 <p>Ensure all connections are secure and correct.</p>
 </li>
 <li>
-<p>Check for appropriate voltage from power source.</p>
-</li>
-<li>
-<p>Check the L239D for proper orientation and placement.</p>
+<p>Check the 74HC595 for proper orientation and placement.</p>
 </li>
 <li>
 <p>Ensure the software configuration matches the hardware setup.</p>
@@ -370,17 +389,14 @@ This will cause the motor to turn.</p>
 </div>
 </li>
 <li>
-<p>Motor turns on but does not respond to commands</p>
+<p>Display turns on but does not respond to commands</p>
 <div class="ulist">
 <ul>
 <li>
 <p>Check the software configuration for any discrepancies.</p>
 </li>
 <li>
-<p>Ensure the L239D is functioning properly.</p>
-</li>
-<li>
-<p>Check for appropriate voltage from power source.</p>
+<p>Ensure the 74HC595 is functioning properly.</p>
 </li>
 </ul>
 </div>
@@ -392,21 +408,18 @@ This will cause the motor to turn.</p>
 <h5 id="_yaml_configuration">YAML Configuration</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-yaml" data-lang="yaml">pwm:
-  motor:
-    name: Motor
-    address: 17
-    pwmType: SOFTWARE
-    provider: pigpio-pwm
-    initial: 0
-    shutdown: 0</code></pre>
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">i2c:
+four-digit-seven-segment:
+  name: 4 Digit 7 Segment Display
+  bus: 1
+  device: 0x27</code></pre>
 </div>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_constructor_and_methods">Constructor and Methods</h5>
 <div class="paragraph">
-<p>To see the constructor and methods of our MotorHelper class see our javadoc <a href="https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/outputdevices/MotorHelper.html">here</a>
+<p>To see the constructor and methods of our FourDigitSevenSegmentHelper class see our javadoc <a href="https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/outputdevices/FourDigitSevenSegmentHelper.html">here</a>
 for more details.</p>
 </div>
 </div>
@@ -414,7 +427,7 @@ for more details.</p>
 <h5 id="_an_example_controller">An Example Controller</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">Unresolved directive in motor.adoc - include::../../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/MotorController.java[tag=ex]</code></pre>
+<pre class="highlight"><code class="language-java" data-lang="java">Unresolved directive in fourDigitSevenSegment.adoc - include::../../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/FourDigitSevenSegmentDisplayController.java[tag=ex]</code></pre>
 </div>
 </div>
 </div>
