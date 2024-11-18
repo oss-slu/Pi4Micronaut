@@ -30,7 +30,7 @@ public class FourDigitSevenSegmentDisplayController {
         displayHelper.disable();
     }
 
-    @Get("/display/{value}")
+    @Get("/displayValue/{value}")
     public void displayValue(String value) {
         displayHelper.displayValue(value);
     }
