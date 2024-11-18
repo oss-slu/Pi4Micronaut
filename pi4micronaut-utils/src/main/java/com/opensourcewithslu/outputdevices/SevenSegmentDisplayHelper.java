@@ -7,6 +7,7 @@ import com.pi4j.Pi4J;
 import io.micronaut.context.annotation.Value;
 import jakarta.inject.Singleton;
 
+//tag::ex[]
 @Singleton
 public class SevenSegmentDisplayHelper {
 
@@ -119,3 +120,4 @@ public class SevenSegmentDisplayHelper {
         pi4j.shutdown();
     }
 }
+//end::ex[]
