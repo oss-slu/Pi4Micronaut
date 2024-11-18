@@ -4,7 +4,7 @@ import com.opensourcewithslu.outputdevices.SevenSegmentDisplayHelper;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import jakarta.inject.Inject;
-//solution
+//tag::ex[]
 @Controller("/sevensegment")
 public class SevenSegmentController {
 
@@ -31,3 +31,4 @@ public class SevenSegmentController {
         displayHelper.shutdown();
     }
 }
+//end::ex[]
