@@ -35,7 +35,7 @@ pi4j:
       shutdown: 0
     servo-motor:
       name: Servo Motor
-      address: 17
+      address: 18
       pwmType: SOFTWARE
       provider: pigpio-pwm
       initial: 0
@@ -163,6 +163,48 @@ pi4j:
     ultra-sonic-trig:
       name: UltraSonic Sensor Output
       address: 23
+      shutdown: LOW
+      initial: LOW
+      provider: pigpio-digital-output
+    digit-0:
+      name: Digit 0
+      address: 17
+      shutdown: LOW
+      initial: LOW
+      provider: pigpio-digital-output
+    digit-1:
+      name: Digit 1
+      address: 27
+      shutdown: LOW
+      initial: LOW
+      provider: pigpio-digital-output
+    digit-2:
+      name: Digit 2
+      address: 22
+      shutdown: LOW
+      initial: LOW
+      provider: pigpio-digital-output
+    digit-3:
+      name: Digit 3
+      address: 10
+      shutdown: LOW
+      initial: LOW
+      provider: pigpio-digital-output
+    sdi:
+      name: SDI
+      address: 24
+      shutdown: LOW
+      initial: LOW
+      provider: pigpio-digital-output
+    rclk:
+      name: RCLK
+      address: 23
+      shutdown: LOW
+      initial: LOW
+      provider: pigpio-digital-output
+    srclk:
+      name: SRCLK
+      address: 18
       shutdown: LOW
       initial: LOW
       provider: pigpio-digital-output
