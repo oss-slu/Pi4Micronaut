@@ -31,14 +31,24 @@ public class FourDigitSevenSegmentDisplayController {
         displayHelper.disable();
     }
 
-    @Get("/displayValue/{value}")
-    public void displayValue(String value) {
-        displayHelper.displayValue(value);
+    @Get("/print/{value}")
+    public void print(String value) {
+        displayHelper.print(value);
     }
 
     @Get("/clear")
-    public void clearDisplay() {
+    public void clear() {
         displayHelper.clear();
+    }
+
+    @Get("set-digit/{digit}/{value}")
+    public void setDigit(int digit, char value) {
+        displayHelper.setDigit(digit, value);
+    }
+
+    @Get("set-decimal-point/{digit}/{value}")
+    public void setDecimalPoint(int digit, boolean value) {
+        displayHelper.setDecimalPoint(digit, value);
     }
 }
 //end::ex[]

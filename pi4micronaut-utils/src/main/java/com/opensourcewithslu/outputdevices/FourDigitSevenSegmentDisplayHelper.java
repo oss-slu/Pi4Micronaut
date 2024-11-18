@@ -21,12 +21,15 @@ public class FourDigitSevenSegmentDisplayHelper {
     private boolean enabled = false;
     private final int decimalPoint = 0x7f;
 
+    private char[] digitValues = new char[4];
+    private boolean[] decimalPoints = new boolean[4];
+
     /**
      * Mapping of characters to their respective byte representation.
      * Each byte is a bitset where each bit specifies if a specific segment should be disabled (1) or enabled (0).
      * Note carefully that the bits are inverted, so 0 means enabled and 1 means disabled.
      */
-    protected static final Map<Character, Integer> CHAR_BITSETS = Map.ofEntries(
+    private static final Map<Character, Integer> CHAR_BITSETS = Map.ofEntries(
             Map.entry(' ', 0xff),
             Map.entry('-', 0x02),
             Map.entry('0', 0xc0),
@@ -70,9 +73,36 @@ public class FourDigitSevenSegmentDisplayHelper {
         this.digit2 = digit2;
         this.digit3 = digit3;
 
-        this.displayValue = "";
+        this.displayValue = "    ";
+        this.parseDisplayValue();
     }
 
+    /**
+     * Helper method to start a second thread continuously updating the display.
+     */
+    private void startDisplayThread() {
+        Thread displayThread = new Thread(() -> {
+            while (enabled) {
+                for (int i = 0; i < 4; i++) {
+                    shiftValueToDigit(i, this.digitValues[i], this.decimalPoints[i]);
+                    try {
+                        Thread.sleep(5); // Adjust the delay as needed
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                        log.error("Display thread interrupted", e);
+                    }
+                }
+            }
+        });
+        displayThread.start();
+    }
+
+    /**
+     * Helper method to shift out a byte to the shift register.
+     *
+     * @param data
+     * @param decimalPointEnabled
+     */
     private void shiftOut(Integer data, boolean decimalPointEnabled) {
         int value;
         for (int i = 0; i < 8; i++) { // Loop through each bit in the byte, one for each of the 7 segment and the decimal point
@@ -94,16 +124,13 @@ public class FourDigitSevenSegmentDisplayHelper {
     }
 
     /**
-     * Clears the display.
+     * Helper method to shift out a value to a specific digit.
+     *
+     * @param digit
+     * @param c
+     * @param decimalPoint
      */
-    //tag::method[]
-    public void clear()
-    //end::method[]
-    {
-        displayValue = "";
-    }
-
-    public void setDigit(int digit, char c, boolean decimalPoint) {
+    private void shiftValueToDigit(int digit, char c, boolean decimalPoint) {
         digit0.low();
         digit1.low();
         digit2.low();
@@ -138,6 +165,79 @@ public class FourDigitSevenSegmentDisplayHelper {
     }
 
     /**
+     * Helper method to parse the display value into digit values and decimal points.
+     */
+    private void parseDisplayValue() {
+        this.digitValues = new char[]{' ', ' ', ' ', ' '};
+        this.decimalPoints = new boolean[]{false, false, false, false};
+
+        // Add leading space if the first character is a decimal point
+        if (!this.displayValue.isEmpty() && this.displayValue.charAt(0) == '.') {
+            this.displayValue = " " + this.displayValue;
+        }
+
+        // Replace consecutive decimal points with a space in between
+        while (true) {
+            this.displayValue = this.displayValue.replaceAll("\\.\\.", ". .");
+            // If parsing again would result in no change, we're done and can break
+            if (this.displayValue.replaceAll("\\.\\.", ". .").equals(this.displayValue)) {
+                break;
+            }
+        }
+
+        int idx = 0, pos = 0;
+        while (idx < this.displayValue.length() && pos < 4) {
+            // Set digit to character at current index and advance
+            this.digitValues[pos] = this.displayValue.charAt(idx++);
+
+            // Exit early if we reached the end
+            if (idx >= this.displayValue.length()) {
+                break;
+            }
+
+            // Set decimal point if next character is dot
+            if (this.displayValue.charAt(idx) == '.') {
+                this.decimalPoints[pos] = true;
+                idx++;
+            }
+
+            // Exit early if we reached the end
+            if (idx >= this.displayValue.length()) {
+                break;
+            }
+
+            // Advance to next digit
+            pos++;
+        }
+
+        this.setDisplayValueFromDigitValues();
+    }
+
+    /**
+     * Helper method to set the display value from the digit values and decimal points.
+     */
+    private void setDisplayValueFromDigitValues() {
+        this.displayValue = "";
+        for (int i = 0; i < 4; i++) {
+            this.displayValue += digitValues[i];
+            if (decimalPoints[i]) {
+                this.displayValue += ".";
+            }
+        }
+    }
+
+    /**
+     * Clears the display.
+     */
+    //tag::method[]
+    public void clear()
+    //end::method[]
+    {
+        displayValue = "";
+        this.parseDisplayValue();
+    }
+
+    /**
      * Enables the display.
      */
     //tag::method[]
@@ -163,36 +263,14 @@ public class FourDigitSevenSegmentDisplayHelper {
      * Displays a value on the four-digit seven-segment display.
      *
      * @param value The value to display. It can include digits 0-9, letters A-F (case-insensitive),
-     *              hyphens, spaces, and decimal points. The value must not have more than 4 non-decimal
-     *              point characters, no consecutive decimal points, and if there are 4 non-decimal
-     *              point characters, decimal points must not appear on the ends.
+     *              hyphens, spaces, and decimal points.
      */
     //tag::method[]
-    public void displayValue(String value)
+    public void print(String value)
     //end::method[]
     {
-        // Parse out the decimal points
-        String noDecimals = value.replaceAll("\\.", "");
-
-        // Check: No more than 4 non-decimal point characters long
-        if (noDecimals.length() > 4) {
-            log.error("Display value must not have more than 4 non-decimal point characters");
-            return;
-        }
-
-        // Check: No consecutive decimal points
-        if (value.contains("..")) {
-            log.error("Display value cannot have consecutive decimal points");
-            return;
-        }
-
-        // Check: If there are 4 non-decimal point characters, then decimal points must not appear on the ends
-        if (noDecimals.length() == 4 && (value.startsWith(".") || value.endsWith("."))) {
-            log.error("Display value must have decimal points appearing strictly between the digits");
-            return;
-        }
-
         // Check: Non-decimal point characters must be digits 0 to 1, letters A to F (case-insensitive), -, or space
+        String noDecimals = value.replaceAll("\\.", "");
         String valid = "1234567890ABCDEFabcdef- ";
         for (char character : noDecimals.toCharArray()) {
             if (valid.indexOf(character) == -1) {
@@ -202,30 +280,10 @@ public class FourDigitSevenSegmentDisplayHelper {
         }
 
         value = value.toUpperCase();
-        this.displayValue = value;
-        log.info("Displaying value: {}", value);
-    }
 
-    private void startDisplayThread() {
-        Thread displayThread = new Thread(() -> {
-            while (enabled) {
-                for (int i = 0; i < 4; i++) {
-                    if (i < displayValue.length()) {
-                        char value = displayValue.charAt(i);
-                        setDigit(i, value, true);
-                    } else {
-                        setDigit(i, '0', false);
-                    }
-                    try {
-                        Thread.sleep(5); // Adjust the delay as needed
-                    } catch (InterruptedException e) {
-                        Thread.currentThread().interrupt();
-                        log.error("Display thread interrupted", e);
-                    }
-                }
-            }
-        });
-        displayThread.start();
+        this.displayValue = value;
+        this.parseDisplayValue();
+        log.info("Displaying value: {}", this.displayValue);
     }
 
     /**
@@ -250,5 +308,44 @@ public class FourDigitSevenSegmentDisplayHelper {
     //end::method[]
     {
         return displayValue;
+    }
+
+    /**
+     * Sets the value of a digit.
+     *
+     * @param digit The digit to set the value of (0-3)
+     * @param value The value to set the digit to. Must be a digit 0-9, a letter A-F (case-insensitive), a hyphen, or a space
+     */
+    //tag::method[]
+    public void setDigit(int digit, char value)
+    //end::method[]
+    {
+        if (digit < 0 || digit > 3) {
+            throw new IllegalArgumentException("Digit must be between 0 and 3");
+        }
+        String valid = "1234567890ABCDEFabcdef- ";
+        if (valid.indexOf(value) == -1) {
+            log.error("Each display value digit must be numeric, a letter A to F (case insensitive), a hyphen, or a space");
+            return;
+        }
+        digitValues[digit] = value;
+        this.setDisplayValueFromDigitValues();
+    }
+
+    /**
+     * Sets the decimal point of a digit.
+     *
+     * @param digit   The digit to set the decimal point of (0-3)
+     * @param enabled Whether the decimal point should be enabled or not
+     */
+    //tag::method[]
+    public void setDecimalPoint(int digit, boolean enabled)
+    //end::method[]
+    {
+        if (digit < 0 || digit > 3) {
+            throw new IllegalArgumentException("Digit must be between 0 and 3");
+        }
+        decimalPoints[digit] = enabled;
+        this.setDisplayValueFromDigitValues();
     }
 }
