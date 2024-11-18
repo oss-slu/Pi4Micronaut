@@ -1,6 +1,7 @@
 package com.opensourcewithslu.outputdevices;
 
 import com.pi4j.context.ContextProperties;
+import com.pi4j.io.gpio.digital.DigitalOutput;
 import com.pi4j.io.i2c.I2CConfig;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,14 +17,17 @@ import com.pi4j.crowpi.components.SevenSegmentComponent;
 import java.lang.reflect.Field;
 
 public class FourDigitSevenSegmentDisplayHelperTest {
-    I2CConfig i2cConfig = mock(I2CConfig.class);
-    Context pi4jContext = mock(Context.class);
-    ContextProperties contextProperties = mock(ContextProperties.class);
-    FourDigitSevenSegmentDisplayHelper displayHelper;
-    SevenSegmentComponent displayComponent = mock(SevenSegmentComponent.class);
+    DigitalOutput sdi = mock(DigitalOutput.class);
+    DigitalOutput rclk = mock(DigitalOutput.class);
+    DigitalOutput srclk = mock(DigitalOutput.class);
+    DigitalOutput digit0 = mock(DigitalOutput.class);
+    DigitalOutput digit1 = mock(DigitalOutput.class);
+    DigitalOutput digit2 = mock(DigitalOutput.class);
+    DigitalOutput digit3 = mock(DigitalOutput.class);
+    FourDigitSevenSegmentDisplayHelper displayHelper = new FourDigitSevenSegmentDisplayHelper(sdi, rclk, srclk, digit0, digit1, digit2, digit3);
     Logger log = mock(Logger.class);
 
-    @BeforeEach
+    /*@BeforeEach
     void setUp() throws Exception {
         // Mock the Context to return a non-null ContextProperties
         when(pi4jContext.properties()).thenReturn(contextProperties);
@@ -34,7 +38,7 @@ public class FourDigitSevenSegmentDisplayHelperTest {
         Field displayField = FourDigitSevenSegmentDisplayHelper.class.getDeclaredField("display");
         displayField.setAccessible(true);
         displayField.set(displayHelper, displayComponent);
-    }
+    }*/
 
     @BeforeEach
     public void openMocks() {
@@ -47,7 +51,6 @@ public class FourDigitSevenSegmentDisplayHelperTest {
         displayHelper.displayValue(value);
         verify(log).error("Display value must not have more than 4 non-decimal point characters");
         verify(log, never()).info("Displaying value: {}", "12345");
-        verify(displayComponent, never()).print("12345");
     }
 
     @Test
@@ -56,7 +59,6 @@ public class FourDigitSevenSegmentDisplayHelperTest {
         displayHelper.displayValue(value);
         verify(log).error("Display value cannot have consecutive decimal points");
         verify(log, never()).info("Displaying value: {}", "1..23");
-        verify(displayComponent, never()).print("1..23");
     }
 
     @Test
@@ -65,7 +67,6 @@ public class FourDigitSevenSegmentDisplayHelperTest {
         displayHelper.displayValue(value);
         verify(log).error("Display value must have decimal points appearing strictly between the digits");
         verify(log, never()).info("Displaying value: {}", ".1234");
-        verify(displayComponent, never()).print(".1234");
     }
 
     @Test
@@ -74,7 +75,6 @@ public class FourDigitSevenSegmentDisplayHelperTest {
         displayHelper.displayValue(value);
         verify(log).error("Display value must have decimal points appearing strictly between the digits");
         verify(log, never()).info("Displaying value: {}", "1234.");
-        verify(displayComponent, never()).print("1234.");
     }
 
     @Test
@@ -83,7 +83,6 @@ public class FourDigitSevenSegmentDisplayHelperTest {
         displayHelper.displayValue(value);
         verify(log).error("Display value must have decimal points appearing strictly between the digits");
         verify(log, never()).info("Displaying value: {}", ".1234.");
-        verify(displayComponent, never()).print(".1234.");
     }
 
     @Test
@@ -92,7 +91,6 @@ public class FourDigitSevenSegmentDisplayHelperTest {
         displayHelper.displayValue(value);
         verify(log).error("Each display value digit must be numeric, a letter A to F (case insensitive), a hyphen, or a space");
         verify(log, never()).info("Displaying value: {}", "G");
-        verify(displayComponent, never()).print("G");
     }
 
     @Test
@@ -261,10 +259,6 @@ public class FourDigitSevenSegmentDisplayHelperTest {
         displayHelper.displayValue(number);
 
         displayHelper.clear();
-        verify(displayComponent, times(4)).clear();
-        verify(displayComponent, times(4)).setDecimalPoint(anyInt(), eq(false));
-        verify(displayComponent).setColon(false);
-        verify(displayComponent, times(2)).refresh();
 
         String displayed = displayHelper.getDisplayValue();
         assertEquals("", displayed);
