@@ -1411,7 +1411,13 @@ to apply the specifics listed in the yml file.</p>
       <span class="na">address</span><span class="pi">:</span> <span class="s">17</span>                 <i class="conum" data-value="2"></i><b>(2)</b>
       <span class="na">pulses-per-revolution</span><span class="pi">:</span> <span class="s">20</span>    <i class="conum" data-value="3"></i><b>(3)</b>
       <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-digital-input</span> <i class="conum" data-value="4"></i><b>(4)</b>
-      <span class="na">debounce</span><span class="pi">:</span> <span class="s">500</span>                <i class="conum" data-value="5"></i><b>(5)</b></code></pre>
+      <span class="na">debounce</span><span class="pi">:</span> <span class="s">500</span>                <i class="conum" data-value="5"></i><b>(5)</b>
+    <span class="na">adc-dout</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">ADC DataOut</span>
+      <span class="na">address</span><span class="pi">:</span> <span class="m">8</span>                <span class="c1"># &lt;4&gt; Specify the GPIO pin for Data Out</span>
+      <span class="na">pull</span><span class="pi">:</span> <span class="s">PULL_DOWN</span>           <span class="c1"># Configure pull-up or pull-down as needed</span>
+      <span class="na">debounce</span><span class="pi">:</span> <span class="m">100</span>             <span class="c1"># Optional debounce time for stable readings</span>
+      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-digital-input</span></code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -1507,6 +1513,20 @@ to apply the specifics listed in the yml file.</p>
       <span class="na">shutdown</span><span class="pi">:</span> <span class="s">LOW</span>
       <span class="na">initial</span><span class="pi">:</span> <span class="s">LOW</span>
       <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-digital-output</span>
+    <span class="na">adc-cs</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">ADCChipSelect</span>
+      <span class="na">address</span><span class="pi">:</span> <span class="m">5</span>                <span class="c1"># &lt;1&gt; Specify the GPIO pin for CS (Chip Select)</span>
+      <span class="na">initial</span><span class="pi">:</span> <span class="s">HIGH</span>             <span class="c1"># Initial state for Chip Select (could be HIGH or LOW based on needs)</span>
+      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-digital-output</span>
+    <span class="na">adc-clk</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">ADCClock</span>
+      <span class="na">address</span><span class="pi">:</span> <span class="m">6</span>                <span class="c1"># &lt;2&gt; Specify the GPIO pin for CLK (Clock)</span>
+      <span class="na">initial</span><span class="pi">:</span> <span class="s">LOW</span>              <span class="c1"># Initial state for Clock</span>
+      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-digital-output</span>
+    <span class="na">adc-din</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">ADCDataIn</span>
+      <span class="na">address</span><span class="pi">:</span> <span class="m">7</span>                <span class="c1"># &lt;3&gt; Specify the GPIO pin for Data In</span>
+      <span class="na">initial</span><span class="pi">:</span> <span class="s">LOW</span>              <span class="c1"># Initial state for Data In</span>
     <span class="na">digit-0</span><span class="pi">:</span>
       <span class="na">name</span><span class="pi">:</span> <span class="s">Digit </span><span class="m">0</span>
       <span class="na">address</span><span class="pi">:</span> <span class="m">17</span>
@@ -5661,7 +5681,7 @@ To produce sound, a passive buzzer needs an external PWM signal supplied by Rasp
 <div id="footer">
 <div id="footer-text">
 Version v1.1<br>
-Last updated 2024-11-18 22:18:57 UTC
+Last updated 2024-11-19 22:47:59 UTC
 </div>
 </div>
 </body>
