@@ -12,8 +12,8 @@ import jakarta.inject.Named;
 public class MotorController {
     private final MotorHelper MotorHelper;
 
-    public MotorController(@Named("motor") Pwm motor, @Named("pin1") DigitalOutput pin1,
-                           @Named("pin2") DigitalOutput pin2) {
+    public MotorController(@Named("motor") Pwm motor, @Named("motor-pin-1") DigitalOutput pin1,
+                           @Named("motor-pin-2") DigitalOutput pin2) {
         this.MotorHelper = new MotorHelper(motor, pin1, pin2);
     }
 
