@@ -30,6 +30,7 @@ public class ServoMotorHelperTest {
 
     @Test
     void disables() {
+        servoMotorHelper.enable();
         servoMotorHelper.disable();
         verify(servoMotor).off();
         verify(log).info("Disabling servo motor");
