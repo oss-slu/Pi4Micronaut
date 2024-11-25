@@ -35,11 +35,6 @@ This section provides details of the Thermistor, including the components and as
 
 image::thermistor_schematic.webp[]
 
-
-===== Circuit Diagram
-
-
-
 ===== Functionality
 
 A Thermistor -  A thermistor is a thermally sensitive resistor that exhibits a precise and predictable change in resistance proportional to small changes in temperature. 
