@@ -27,7 +27,7 @@ public class ServoMotorHelperTest {
             servoMotorHelper.enable();
             verify(servoMotor).on(0, 50);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Error running test: ", e);
         }
         verify(log).info("Enabling servo motor");
         assertTrue(servoMotorHelper.isEnabled());
@@ -39,7 +39,7 @@ public class ServoMotorHelperTest {
             servoMotorHelper.enable();
             servoMotorHelper.disable();
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Error running test: ", e);
         }
         verify(servoMotor).off();
         verify(log).info("Disabling servo motor");
@@ -51,7 +51,7 @@ public class ServoMotorHelperTest {
         try {
             servoMotorHelper.setAngle(90);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Error running test: ", e);
         }
         verify(log).info("You must enable the servo motor first.");
         verify(servoMotor, never()).on(0, 50);
@@ -64,7 +64,7 @@ public class ServoMotorHelperTest {
             servoMotorHelper.enable();
             servoMotorHelper.setAngle(-10);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Error running test: ", e);
         }
         verify(log).info("You must enter an angle between 0 and 180 degrees.");
 
@@ -81,7 +81,7 @@ public class ServoMotorHelperTest {
             servoMotorHelper.enable();
             servoMotorHelper.setAngle(181);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Error running test: ", e);
         }
         verify(log).info("You must enter an angle between 0 and 180 degrees.");
 
@@ -98,7 +98,7 @@ public class ServoMotorHelperTest {
             servoMotorHelper.enable();
             servoMotorHelper.setAngle(0);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Error running test: ", e);
         }
 
         float pulseWidth = servoMotorHelper.map(0);
@@ -113,7 +113,7 @@ public class ServoMotorHelperTest {
         try {
             servoMotorHelper.enable();
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Error running test: ", e);
         }
 
         float pulseWidth = servoMotorHelper.map(180);
@@ -122,7 +122,7 @@ public class ServoMotorHelperTest {
         try {
             servoMotorHelper.setAngle(180);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Error running test: ", e);
         }
         verify(log).info("Setting servo to {} degrees, Pulse Width: {} us, Duty Cycle: {}%", 180, pulseWidth, dutyCycle);
         verify(servoMotor).on(dutyCycle, FREQUENCY);
@@ -133,7 +133,7 @@ public class ServoMotorHelperTest {
         try {
             servoMotorHelper.enable();
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Error running test: ", e);
         }
 
         float pulseWidth = servoMotorHelper.map(90);
@@ -142,7 +142,7 @@ public class ServoMotorHelperTest {
         try {
             servoMotorHelper.setAngle(90);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Error running test: ", e);
         }
         verify(log).info("Setting servo to {} degrees, Pulse Width: {} us, Duty Cycle: {}%", 90, pulseWidth, dutyCycle);
         verify(servoMotor).on(dutyCycle, FREQUENCY);
