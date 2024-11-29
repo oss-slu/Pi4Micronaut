@@ -1,5 +1,6 @@
 package com.opensourcewithslu.outputdevices;
 
+import com.pi4j.io.exception.IOException;
 import com.pi4j.io.pwm.Pwm;
 import org.junit.jupiter.api.*;
 import org.slf4j.Logger;
@@ -22,16 +23,24 @@ public class ServoMotorHelperTest {
 
     @Test
     void enables() {
-        servoMotorHelper.enable();
-        verify(servoMotor).on(0, 50);
+        try {
+            servoMotorHelper.enable();
+            verify(servoMotor).on(0, 50);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         verify(log).info("Enabling servo motor");
         assertTrue(servoMotorHelper.isEnabled());
     }
 
     @Test
     void disables() {
-        servoMotorHelper.enable();
-        servoMotorHelper.disable();
+        try {
+            servoMotorHelper.enable();
+            servoMotorHelper.disable();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         verify(servoMotor).off();
         verify(log).info("Disabling servo motor");
         assertFalse(servoMotorHelper.isEnabled());
@@ -39,7 +48,11 @@ public class ServoMotorHelperTest {
 
     @Test
     void setAngleFailsWhenDisabled() {
-        servoMotorHelper.setAngle(90);
+        try {
+            servoMotorHelper.setAngle(90);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         verify(log).info("You must enable the servo motor first.");
         verify(servoMotor, never()).on(0, 50);
         verify(log, never()).info("Setting angle to {} degrees", 90);
@@ -47,8 +60,12 @@ public class ServoMotorHelperTest {
 
     @Test
     void setAngleLowFails() {
-        servoMotorHelper.enable();
-        servoMotorHelper.setAngle(-10);
+        try {
+            servoMotorHelper.enable();
+            servoMotorHelper.setAngle(-10);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         verify(log).info("You must enter an angle between 0 and 180 degrees.");
 
         float pulseWidth = servoMotorHelper.map(-10);
@@ -60,8 +77,12 @@ public class ServoMotorHelperTest {
 
     @Test
     void setAngleHighFails() {
-        servoMotorHelper.enable();
-        servoMotorHelper.setAngle(181);
+        try {
+            servoMotorHelper.enable();
+            servoMotorHelper.setAngle(181);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         verify(log).info("You must enter an angle between 0 and 180 degrees.");
 
         float pulseWidth = servoMotorHelper.map(181);
@@ -73,8 +94,12 @@ public class ServoMotorHelperTest {
 
     @Test
     void setAngleAtMinimumValue() {
-        servoMotorHelper.enable();
-        servoMotorHelper.setAngle(0);
+        try {
+            servoMotorHelper.enable();
+            servoMotorHelper.setAngle(0);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
         float pulseWidth = servoMotorHelper.map(0);
         float dutyCycle = (pulseWidth / PWM_CYCLE_MICROSECONDS) * 100;
@@ -85,24 +110,40 @@ public class ServoMotorHelperTest {
 
     @Test
     void setAngleAtMaximumValue() {
-        servoMotorHelper.enable();
+        try {
+            servoMotorHelper.enable();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
         float pulseWidth = servoMotorHelper.map(180);
         float dutyCycle = (pulseWidth / PWM_CYCLE_MICROSECONDS) * 100;
 
-        servoMotorHelper.setAngle(180);
+        try {
+            servoMotorHelper.setAngle(180);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         verify(log).info("Setting servo to {} degrees, Pulse Width: {} us, Duty Cycle: {}%", 180, pulseWidth, dutyCycle);
         verify(servoMotor).on(dutyCycle, FREQUENCY);
     }
 
     @Test
     void setAngle() {
-        servoMotorHelper.enable();
+        try {
+            servoMotorHelper.enable();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
         float pulseWidth = servoMotorHelper.map(90);
         float dutyCycle = (pulseWidth / PWM_CYCLE_MICROSECONDS) * 100;
 
-        servoMotorHelper.setAngle(90);
+        try {
+            servoMotorHelper.setAngle(90);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         verify(log).info("Setting servo to {} degrees, Pulse Width: {} us, Duty Cycle: {}%", 90, pulseWidth, dutyCycle);
         verify(servoMotor).on(dutyCycle, FREQUENCY);
     }
