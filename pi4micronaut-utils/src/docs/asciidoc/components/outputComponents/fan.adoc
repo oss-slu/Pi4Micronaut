@@ -32,11 +32,11 @@ This section provides comprehensive details about the Fan Controller component, 
 
 ===== Circuit Diagram
 
-image::/Users/jeongseyun7/Desktop/Capston1/Sprint4/Refreshed/Pi4Micronaut/Circuit_Diagram1.png[]
+image::fanCircuit.png[]
 
 ===== Schematic Diagram
 
-image::/Users/jeongseyun7/Desktop/Capston1/Sprint4/Refreshed/Pi4Micronaut/Schematic_Diagram1.png[]
+image::fanSchmetic.png[]
 
 ===== YAML Configuration
 The following YAML configuration is used to set up the Fan Controller in `application.yml`. This configuration includes parameters to control fan speed and behavior.
