@@ -1,34 +1,46 @@
 package com.opensourcewithslu.components.controllers;
 
 import com.opensourcewithslu.outputdevices.SevenSegmentDisplayHelper;
+import com.pi4j.io.gpio.digital.DigitalOutput;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
-import jakarta.inject.Inject;
+import jakarta.inject.Named;
+
 //tag::ex[]
-@Controller("/sevensegment")
+@Controller("/seven-segment")
 public class SevenSegmentController {
 
     private final SevenSegmentDisplayHelper displayHelper;
 
-    // Inject SevenSegmentDisplayHelper as a dependency
-    @Inject
-    public SevenSegmentController(SevenSegmentDisplayHelper displayHelper) {
-        this.displayHelper = displayHelper;
+    public SevenSegmentController(@Named("pinA") DigitalOutput pinA,
+                                  @Named("pinB") DigitalOutput pinB,
+                                  @Named("pinC") DigitalOutput pinC,
+                                  @Named("pinD") DigitalOutput pinD,
+                                  @Named("pinE") DigitalOutput pinE,
+                                  @Named("pinF") DigitalOutput pinF,
+                                  @Named("pinG") DigitalOutput pinG,
+                                  @Named("decimalPoint") DigitalOutput decimalPoint) {
+        this.displayHelper = new SevenSegmentDisplayHelper(pinA, pinB, pinC, pinD, pinE, pinF, pinG, decimalPoint);
     }
 
-    @Get("/display/{number}")
-    public void displayNumber(int number) {
-        displayHelper.display(number);
+    @Get("/enable")
+    public void enable() {
+        displayHelper.enable();
     }
 
-    @Get("/reset")
-    public void resetDisplay() {
-        displayHelper.resetDisplay();
+    @Get("/disable")
+    public void disable() {
+        displayHelper.disable();
     }
 
-    @Get("/shutdown")
-    public void shutdownDisplay() {
-        displayHelper.shutdown();
+    @Get("/print/{value}")
+    public void print(char value, boolean decimalPoint) {
+        displayHelper.print(value, decimalPoint);
+    }
+
+    @Get("/clear")
+    public void clear() {
+        displayHelper.clear();
     }
 }
 //end::ex[]
