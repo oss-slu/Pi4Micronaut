@@ -33,7 +33,7 @@ public class SevenSegmentController {
         displayHelper.disable();
     }
 
-    @Get("/print/{value}")
+    @Get("/print/{value}/{decimalPoint}")
     public void print(char value, boolean decimalPoint) {
         displayHelper.print(value, decimalPoint);
     }
