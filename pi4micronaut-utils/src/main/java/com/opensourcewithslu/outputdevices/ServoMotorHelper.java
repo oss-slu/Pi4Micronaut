@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
  */
 public class ServoMotorHelper {
 
-    private static final Logger log = LoggerFactory.getLogger(ServoMotorHelper.class);
+    private static Logger log = LoggerFactory.getLogger(ServoMotorHelper.class);
     private static final int FREQUENCY = 50; // Frequency for PWM signal in Hz, typical for servo motors.
     private static final int PWM_CYCLE_MICROSECONDS = 20000; // Total cycle length in microseconds, corresponding to 50 Hz.
     private static final int MIN_ANGLE = 0; // Minimum angle for servo operation.
@@ -54,7 +54,7 @@ public class ServoMotorHelper {
      * @param value the angle in degrees to be mapped to pulse width.
      * @return the calculated pulse width in microseconds.
      */
-    private float map(float value) {
+    float map(float value) {
         return SERVO_MIN_PULSE + ((value - MIN_ANGLE) * (SERVO_MAX_PULSE - SERVO_MIN_PULSE) / (MAX_ANGLE - MIN_ANGLE));
     }
 
@@ -87,5 +87,23 @@ public class ServoMotorHelper {
             Thread.currentThread().interrupt(); // Properly handle thread interruption.
             log.info("Thread was interrupted, failed to complete rotation");
         }
+    }
+
+    /**
+     * Sets the logger for this ServoMotorHelper instance.
+     *
+     * @param logger the logger to be used for logging messages.
+     */
+    public void setLog(Logger logger) {
+        log = logger;
+    }
+
+    /**
+     * Returns the current state of the servo motor.
+     *
+     * @return true if the servo motor is enabled, false otherwise.
+     */
+    public boolean isEnabled() {
+        return isEnabled;
     }
 }
