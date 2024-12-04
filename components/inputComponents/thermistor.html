@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.18">
-<title>Push Button</title>
+<title>Thermistor Sensor</title>
 <style>
 body {
 	font-family: sans-serif;
@@ -209,152 +209,144 @@ th {
 </div>
 <div id="content">
 <div class="sect3">
-<h4 id="_push_button">Push Button</h4>
+<h4 id="_thermistor_sensor">Thermistor Sensor</h4>
 <div class="paragraph text-right">
-<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/inputComponents/pushButton.adoc">Improve this doc</a></p>
+<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/inputComponents/thermistor.adoc" class="bare">https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/inputComponents/thermistor.adoc</a></p>
 </div>
 <div class="sect4">
 <h5 id="_overview">Overview</h5>
 <div class="paragraph">
-<p>This document provides details of the Push Button circuit,
-including its components, assembly instructions, and functionality.</p>
+<p>This section provides details of the Thermistor, including the components and assembly instructions.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_components">Components</h5>
-<div class="olist arabic">
-<ol class="arabic">
+<div class="ulist">
+<ul>
 <li>
-<p>LED light</p>
-</li>
-<li>
-<p>Push button</p>
-</li>
-<li>
-<p>1 x 10Ω resistor</p>
-</li>
-<li>
-<p>1 x 220Ω resistor</p>
+<p>Thermistor</p>
 </li>
 <li>
 <p>Breadboard</p>
 </li>
 <li>
-<p>Jumper wires</p>
+<p>T-Extension Board</p>
 </li>
 <li>
-<p>Power source</p>
+<p>ADC0834 Analog to Digital Converter</p>
+</li>
+<li>
+<p>Jumper wires x 16</p>
+</li>
+<li>
+<p>Power source (5V)</p>
+</li>
+<li>
+<p>10KΩ resistor</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_assembly_instructions">Assembly Instructions</h5>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Insert the ADC0834 chip into the breadboard with its pins centered around the central divider</p>
+</li>
+<li>
+<p>Connect VCC (pin 16) of ADC0834 to the 5V pin on the Raspberry Pi GPIO.</p>
+</li>
+<li>
+<p>Connect GND (pin 8) to the GND pin on the Raspberry Pi GPIO.</p>
+</li>
+<li>
+<p>CLK (pin 18): Connect to the (GPIO18) pin on the Raspberry Pi.</p>
+</li>
+<li>
+<p>DOUT (pin 27): Connect to the (GPIO27) pin on the Raspberry Pi.</p>
+</li>
+<li>
+<p>DIN (pin 27): Connect to the (GPIO10) pin on the Raspberry Pi.</p>
+</li>
+<li>
+<p>CS (pin 17): Connect to the (GPIO17) pin on the Raspberry Pi.</p>
 </li>
 </ol>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_circuit_diagram">Circuit Diagram</h5>
+<h5 id="_wiring_diagrams">Wiring Diagrams</h5>
 <div class="imageblock">
 <div class="content">
-<img src="https://docs.sunfounder.com/projects/raphael-kit/en/latest/_images/image152.png" alt="image152">
-</div>
-</div>
-<div class="paragraph">
-<div class="title"><strong>Note:</strong> The 220Ω resistor is for the LED and the 10Ω for the button.</div>
-<p><strong>Schematic Diagram:</strong></p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="https://docs.sunfounder.com/projects/raphael-kit/en/latest/_images/image303.png" alt="image303">
+<img src="../../img/thermistor_schematic.webp" alt="thermistor schematic">
 </div>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_functionality">Functionality</h5>
 <div class="paragraph">
-<p>On click of a button can either open or close the circuit based on its current state.</p>
+<p>A Thermistor -  A thermistor is a thermally sensitive resistor that exhibits a precise and predictable change in resistance proportional to small changes in temperature.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_testing">Testing</h5>
 <div class="paragraph">
-<p>Use below command to test the component.</p>
+<p>Use the below command to get Fahrenheit.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl http://localhost:8080/pushButton/init</code></pre>
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl http://localhost:8080/temperature/fahrenheit</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Use the below command to get Celsius.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl http://localhost:8080/temperature/celsius</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_troubleshooting">Troubleshooting</h5>
 <div class="ulist">
 <ul>
 <li>
-<p><code>/init</code>  - Initializes the Push Button for use.</p>
+<p>Sensor not detecting something:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Make sure the pins of the thermistor are in the correct pins of ADC0834
+*</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_troubleshooting">Troubleshooting</h5>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>LED not lighting up: Check all connections, ensure the LED is placed correctly,
-and check the power source.</p>
-</li>
-<li>
-<p>LED is too dim: The resistor value might be too high. Ensure you&#8217;re using the correct resistors or
-adjust according to your power source and LED specifications</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect4">
 <h5 id="_yaml_configuration">YAML Configuration</h5>
-<div class="paragraph">
-<p>The order for declaring the pin for the LED is as follows:</p>
-</div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-yaml" data-lang="yaml">digital-output:
-  led:
-    name: LED Output
-    address: 17
-    shutdown: LOW
-    initial: LOW
-    provider: pigpio-digital-output</code></pre>
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">digital-input:</code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p>So the LED would be connected to GPIO 17.</p>
-</div>
-<div class="paragraph">
-<p>The order for declaring the pin for the push button is as follows:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-yaml" data-lang="yaml">digital-input:
-    button-input-3:
-      name: Push Button Input
-      address: 18
-      pull: PULL_DOWN
-      debounce: 30
-      provider: pigpio-digital-input</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>So the push button would be connected to GPIO 18.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_constructor_and_methods">Constructor and Methods</h5>
 <div class="paragraph">
-<p>To see the constructor and methods of our PushButtonHelper class see our javadoc <a href="https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/inputdevices/PushButtonHelper.html">here</a>
-for more details.</p>
+<p>The constructor and the methods within the ThermistorHelper class can be seen in our javadoc <a href="https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/inputdevices/ThermistorHelper.html">here</a>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_an_example_controller">An Example Controller</h5>
+<h5 id="_example_controller">Example Controller</h5>
 <div class="sect5">
-<h6 id="_this_controller_uses_the_push_button_to_turn_an_led_on_and_off">This controller uses the push button to turn an LED on and off</h6>
+<h6 id="_this_controller_uses_the_thermistor_to_detect_a_temperature_value">This controller uses the thermistor to detect a temperature value</h6>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">Unresolved directive in pushButton.adoc - include::../../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/PushButtonController.java[tag=ex]</code></pre>
+<pre class="highlight"><code class="language-java" data-lang="java">Unresolved directive in thermistor.adoc - include::../../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/ThermistorController.java[tag=ex]</code></pre>
 </div>
 </div>
 </div>
