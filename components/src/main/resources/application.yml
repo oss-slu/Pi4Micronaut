@@ -241,54 +241,6 @@ pi4j:
       shutdown: LOW
       initial: LOW
       provider: pigpio-digital-output
-    pinA:
-      name: pinA
-      address: 23
-      shutdown: LOW
-      initial: LOW
-      provider: pigpio-digital-output
-    pinB:
-      name: pinB
-      address: 24
-      shutdown: LOW
-      initial: LOW
-      provider: pigpio-digital-output
-    pinC:
-      name: pinC
-      address: 5
-      shutdown: LOW
-      initial: LOW
-      provider: pigpio-digital-output
-    pinD:
-      name: pinD
-      address: 26
-      shutdown: LOW
-      initial: LOW
-      provider: pigpio-digital-output
-    pinE:
-      name: pinE
-      address: 6
-      shutdown: LOW
-      initial: LOW
-      provider: pigpio-digital-output
-    pinF:
-      name: pinF
-      address: 16
-      shutdown: LOW
-      initial: LOW
-      provider: pigpio-digital-output
-    pinG:
-      name: pinG
-      address: 12
-      shutdown: LOW
-      initial: LOW
-      provider: pigpio-digital-output
-    decimalPoint:
-      name: decimalPoint
-      address: 13
-      shutdown: LOW
-      initial: LOW
-      provider: pigpio-digital-output
   # end::digitalOutput[]
 
   # tag::multiInput[]
