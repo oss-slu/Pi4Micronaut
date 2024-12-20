@@ -7,12 +7,12 @@ import io.micronaut.http.annotation.Get;
 import jakarta.inject.Named;
 
 //tag::ex[]
-@Controller("/seven-segment")
+@Controller("/seven-segment") // it listens for HTTP requst
 public class SevenSegmentController {
 
     private final SevenSegmentDisplayHelper displayHelper;
 
-    public SevenSegmentController(@Named("pinA") DigitalOutput pinA,
+    public SevenSegmentController(@Named("pinA") DigitalOutput pinA, // constructor injection
                                   @Named("pinB") DigitalOutput pinB,
                                   @Named("pinC") DigitalOutput pinC,
                                   @Named("pinD") DigitalOutput pinD,
@@ -23,7 +23,7 @@ public class SevenSegmentController {
         this.displayHelper = new SevenSegmentDisplayHelper(pinA, pinB, pinC, pinD, pinE, pinF, pinG, decimalPoint);
     }
 
-    @Get("/enable")
+    @Get("/enable") // endpoints
     public void enable() {
         displayHelper.enable();
     }
