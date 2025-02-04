@@ -47,16 +47,15 @@ public class MicroSwitchHelperTests {
     @Test
     public void testAddEventListener() {
         DigitalInput mockInput = mock(DigitalInput.class);
-        SlideSwitchHelper slideSwitchHelper = new SlideSwitchHelper(mockInput);
+        MicroSwitchHelper microSwitchHelper = new MicroSwitchHelper(mockInput);
 
 
         DigitalStateChangeListener dummyListener = mock(DigitalStateChangeListener.class);
 
 
-        slideSwitchHelper.addEventListener(dummyListener);
+        MicroSwitchHelper.addEventListener(dummyListener);
         verify(mockInput).addListener(dummyListener);
     }
-
 
     @Test
     public void testRemoveEventListener(){
