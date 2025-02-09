@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
  * The SlideSwitchHelper class is used to initialize a slide switch.
  */
 public class SlideSwitchHelper {
-    private static Logger log = LoggerFactory.getLogger(SlideSwitchHelper.class);
+    private static final Logger log = LoggerFactory.getLogger(SlideSwitchHelper.class);
 
     private final DigitalInput slideSwitchInput;
 
@@ -23,7 +23,7 @@ public class SlideSwitchHelper {
      * @param slideSwitchInput A Pi4J DigitalInput Object.
      */
     //tag::const[]
-    public SlideSwitchHelper(DigitalInput slideSwitchInput) 
+    public SlideSwitchHelper(DigitalInput slideSwitchInput)
     //end::const[]
     {
         this.slideSwitchInput = slideSwitchInput;
@@ -41,26 +41,9 @@ public class SlideSwitchHelper {
     {
         log.info("Initializing Slide Switch");
 
-        // Update the current state and log the appropriate message
-        isOn = slideSwitchInput.isHigh();
-        if (isOn) {
-            log.info("Turning Switch On");
-        } else {
-            log.info("Turning Switch Off");
-        }
-
-        // Add a single listener that updates the state and logs on change
-        slideSwitchInput.addListener(e-> {
-            boolean currentState = slideSwitchInput.isHigh();
-            if (currentState != isOn) {
-                isOn = currentState;
-                if (isOn) {
-                    log.info("Turning Switch On");
-                } else {
-                    log.info("Turning Switch Off");
-                }
-            }
-        });
+        slideSwitchInput.addListener(e->
+                isOn = slideSwitchInput.isHigh()
+        );
     }
 
     /**
@@ -68,7 +51,7 @@ public class SlideSwitchHelper {
      * @param function A Pi4J DigitalStateChangeListener object.
      */
     //tag::method[]
-    public void addEventListener(DigitalStateChangeListener function) 
+    public void addEventListener(DigitalStateChangeListener function)
     //end::method[]
     {
         slideSwitchInput.addListener(function);
@@ -79,15 +62,9 @@ public class SlideSwitchHelper {
      * @param function A Pi4J DigitalStateChangeListener object.
      */
     //tag::method[]
-    public void removeEventListener(DigitalStateChangeListener function) 
+    public void removeEventListener(DigitalStateChangeListener function)
     //end::method[]
     {
         slideSwitchInput.removeListener(function);
     }
-
-    /**
-     *
-     * @param log Logger object to set the logger to.
-     */
-    public void setLog(Logger log) { this.log = log; }
 }
