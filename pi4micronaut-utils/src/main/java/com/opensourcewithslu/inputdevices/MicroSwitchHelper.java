@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
  */
 public class MicroSwitchHelper {
 
-    private static final Logger log = LoggerFactory.getLogger(MicroSwitchHelper.class);
+    private static Logger log = LoggerFactory.getLogger(MicroSwitchHelper.class);
 
     private final DigitalInput microSwitchInput;
 
@@ -63,5 +63,9 @@ public class MicroSwitchHelper {
             microSwitchInput.removeListener(microSwitchInputListener);
             microSwitchInputListener = null;
         }
+    }
+
+    public void setLog (Logger log){
+        this.log = log;
     }
 }
