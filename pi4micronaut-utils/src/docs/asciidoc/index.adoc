@@ -87,3 +87,7 @@ include::components/outputComponents/passivebuzzer.adoc[]
 include::components/outputComponents/activebuzzer.adoc[]
 
 include::components/outputComponents/servomotor.adoc[]
+
+include::components/inputComponents/photoresistorSensor.adoc[]
+
+include::components/inputComponents/pirSensor.adoc[]
