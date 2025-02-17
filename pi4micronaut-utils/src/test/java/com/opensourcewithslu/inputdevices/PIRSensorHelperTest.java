@@ -28,14 +28,14 @@ class PIRSensorHelperTest {
     void testIsMovingFieldSetCorrectlyWhenInputIsHigh() {
         when(pirSensorInput.isHigh()).thenReturn(true);
         pirSensorHelper = new PIRSensorHelper(pirSensorInput);
-        assertTrue(pirSensorHelper.isMoving, "Expected isMoving to be true when DigitalInput is high");
+        assertTrue(pirSensorHelper.isMoving, "Expected isMoving to be true when PIR sensor detects motion (DigitalInput is high)");
     }
 
     @Test
     void testIsMovingFieldSetCorrectlyWhenInputIsLow() {
         when(pirSensorInput.isHigh()).thenReturn(false);
         pirSensorHelper = new PIRSensorHelper(pirSensorInput);
-        assertFalse(pirSensorHelper.isMoving, "Expected isMoving to be false when DigitalInput is low");
+        assertFalse(pirSensorHelper.isMoving, "Expected isMoving to be true when PIR sensor detects motion (DigitalInput is low)");
     }
 
     @Test
