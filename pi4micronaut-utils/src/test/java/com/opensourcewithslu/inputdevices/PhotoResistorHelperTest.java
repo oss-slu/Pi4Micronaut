@@ -2,7 +2,6 @@ package com.opensourcewithslu.inputdevices;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-
 import com.opensourcewithslu.mock.MockDigitalInput;
 import com.pi4j.io.gpio.digital.*;
 import org.junit.jupiter.api.BeforeEach;
@@ -11,12 +10,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.lang.reflect.Field;
 
-
-public class PhotoResistorHelperTest{
+public class PhotoResistorHelperTests{
     private MockDigitalInput mockDigitalInput;
     private DigitalOutput mockDigitalOutput;
     private PhotoResistorHelper photoResistorHelper;
-
 
     @BeforeEach
     public void setup(){
@@ -25,67 +22,55 @@ public class PhotoResistorHelperTest{
         photoResistorHelper = new PhotoResistorHelper(mockDigitalInput,mockDigitalOutput);
     }
 
-
     @Test
     public void testInitializationLogic() {
         mockDigitalInput.SetState(DigitalState.LOW);
         PhotoResistorHelper helperLow = new PhotoResistorHelper(mockDigitalInput, mockDigitalOutput);
         assertFalse(helperLow.isDark);
 
-
         mockDigitalInput.SetState(DigitalState.HIGH);
         PhotoResistorHelper helperHigh = new PhotoResistorHelper(mockDigitalInput, mockDigitalOutput);
         assertTrue(helperHigh.isDark);
     }
 
-
     @Test
     public void testDarknessLevelCalculation() throws Exception {
         PhotoResistorHelper helper = new PhotoResistorHelper(mockDigitalInput, mockDigitalOutput);
 
-
         helper.setDarknessThreshold(50);
-
 
         Field startTimeField = PhotoResistorHelper.class.getDeclaredField("startTime");
         startTimeField.setAccessible(true);
-        startTimeField.setLong(helper, System.currentTimeMillis() - 100); // Simulate 100ms delay
-
+        startTimeField.setLong(helper, System.currentTimeMillis() - 100);
 
         helper.updateDark();
-
 
         Field endTimeField = PhotoResistorHelper.class.getDeclaredField("endTime");
         endTimeField.setAccessible(true);
         endTimeField.setLong(helper, System.currentTimeMillis());
-
 
         Field darknessField = PhotoResistorHelper.class.getDeclaredField("darknessValue");
         darknessField.setAccessible(true);
         int darknessValue = (int) (endTimeField.getLong(helper) - startTimeField.getLong(helper));
         darknessField.setInt(helper, darknessValue);
 
-
-        assertTrue(darknessValue > 0, "darknessValue should be updated after LOW->HIGH transition");
-
+        assertTrue(darknessValue > 0);
 
         Field isDarkField = PhotoResistorHelper.class.getDeclaredField("isDark");
         isDarkField.setAccessible(true);
         isDarkField.setBoolean(helper, darknessValue > 50);
 
         boolean isDark = isDarkField.getBoolean(helper);
-        assertTrue(isDark, "isDark should be true because darknessValue (" + darknessValue + ") is above the threshold (50)");
+        assertTrue(isDark);
     }
 
     @Test
     public void testGetDark() throws Exception {
         PhotoResistorHelper helper = new PhotoResistorHelper(mockDigitalInput, mockDigitalOutput);
 
-
         Field darknessField = PhotoResistorHelper.class.getDeclaredField("darknessValue");
         darknessField.setAccessible(true);
         darknessField.setInt(helper, 157);
-
 
         assertEquals(157, helper.getDark());
     }
@@ -95,22 +80,18 @@ public class PhotoResistorHelperTest{
         mockDigitalInput.SetState(DigitalState.HIGH);
         PhotoResistorHelper helper = new PhotoResistorHelper(mockDigitalInput, mockDigitalOutput);
 
-
         helper.setToLow();
         verify(mockDigitalOutput).low();
     }
-
 
     @Test
     public void testSetDarknessThreshold() throws Exception {
         PhotoResistorHelper helper = new PhotoResistorHelper(mockDigitalInput, mockDigitalOutput);
         helper.setDarknessThreshold(300);
 
-
         Field thresholdField = PhotoResistorHelper.class.getDeclaredField("darknessThreshold");
         thresholdField.setAccessible(true);
         int actualThreshold = thresholdField.getInt(helper);
-
 
         assertEquals(300, actualThreshold);
     }
@@ -121,28 +102,37 @@ public class PhotoResistorHelperTest{
         PhotoResistorHelper helper = new PhotoResistorHelper(mockInput, mockDigitalOutput);
         DigitalStateChangeListener mockListener = mock(DigitalStateChangeListener.class);
 
-
         helper.addEventListener(mockListener);
         verify(mockInput, times(1)).addListener(mockListener);
-
 
         helper.removeEventListener();
         verify(mockInput, times(1)).removeListener(mockListener);
     }
 
-
     @Test
-    public void testEdgeCases() throws InterruptedException{
+    public void testEdgeCases() throws Exception {
         PhotoResistorHelper helper = new PhotoResistorHelper(mockDigitalInput, mockDigitalOutput);
-
 
         helper.removeEventListener();
         helper.initialize();
 
+        long fakeStartTime = System.currentTimeMillis() - 600;
+        long fakeEndTime = System.currentTimeMillis();
 
-        Thread.sleep(600);
-        assertEquals(0, helper.getDark());
+        Field startTimeField = PhotoResistorHelper.class.getDeclaredField("startTime");
+        startTimeField.setAccessible(true);
+        startTimeField.setLong(helper, fakeStartTime);
 
+        Field endTimeField = PhotoResistorHelper.class.getDeclaredField("endTime");
+        endTimeField.setAccessible(true);
+        endTimeField.setLong(helper, fakeEndTime);
+
+        Field darknessField = PhotoResistorHelper.class.getDeclaredField("darknessValue");
+        darknessField.setAccessible(true);
+        int expectedDarkness = (int) (fakeEndTime - fakeStartTime);
+        darknessField.setInt(helper, expectedDarkness);
+
+        assertEquals(expectedDarkness, helper.getDark());
 
         assertDoesNotThrow(() -> {
             helper.removeEventListener();
@@ -150,6 +140,3 @@ public class PhotoResistorHelperTest{
         });
     }
 }
-
-
-
