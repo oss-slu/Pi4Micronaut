@@ -10,7 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.lang.reflect.Field;
 
-public class PhotoResistorHelperTests{
+public class PhotoResistorHelperTest{
     private MockDigitalInput mockDigitalInput;
     private DigitalOutput mockDigitalOutput;
     private PhotoResistorHelper photoResistorHelper;
