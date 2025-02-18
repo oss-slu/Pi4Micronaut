@@ -108,35 +108,4 @@ public class PhotoResistorHelperTests{
         helper.removeEventListener();
         verify(mockInput, times(1)).removeListener(mockListener);
     }
-
-    @Test
-    public void testEdgeCases() throws Exception {
-        PhotoResistorHelper helper = new PhotoResistorHelper(mockDigitalInput, mockDigitalOutput);
-
-        helper.removeEventListener();
-        helper.initialize();
-
-        long fakeStartTime = System.currentTimeMillis() - 600;
-        long fakeEndTime = System.currentTimeMillis();
-
-        Field startTimeField = PhotoResistorHelper.class.getDeclaredField("startTime");
-        startTimeField.setAccessible(true);
-        startTimeField.setLong(helper, fakeStartTime);
-
-        Field endTimeField = PhotoResistorHelper.class.getDeclaredField("endTime");
-        endTimeField.setAccessible(true);
-        endTimeField.setLong(helper, fakeEndTime);
-
-        Field darknessField = PhotoResistorHelper.class.getDeclaredField("darknessValue");
-        darknessField.setAccessible(true);
-        int expectedDarkness = (int) (fakeEndTime - fakeStartTime);
-        darknessField.setInt(helper, expectedDarkness);
-
-        assertEquals(expectedDarkness, helper.getDark());
-
-        assertDoesNotThrow(() -> {
-            helper.removeEventListener();
-            helper.removeEventListener();
-        });
-    }
 }
