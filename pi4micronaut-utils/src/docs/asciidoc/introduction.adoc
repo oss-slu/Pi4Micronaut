@@ -1,19 +1,16 @@
 == Introduction
 
-[.text-right]
-https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/introduction.adoc[Improve this doc]
+:improve-doc-url: https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/introduction.adoc
 
+[align="right"]
+link:{improve-doc-url}[Improve this doc]
 
-
-
+//
 
 Welcome to the **Pi4Micronaut Documentation**!
 
-Pi4Micronaut is an Open Source Java library which utilizes the Micronaut Framework and Pi4J to streamline the process of creating custom IoT applications that require hardware connectivity to Raspberry Pi's.
+Pi4Micronaut is an Open Source Java library that utilizes the Micronaut Framework and Pi4J to streamline the process of creating custom IoT applications that require hardware connectivity to Raspberry Pi's.
 
-**Note:** Pi4Micronaut doesn't work with the latest Raspberry Pi 5 because of its whole new architecture. Pi4J and pigpio libraries doesn't provide support for Pi 5 yet. Look out for the latest version of Pi4J to work with Pi5's in the future.
+Pi4Micronaut doesn't work with the latest Raspberry Pi 5 because of its new architecture. Pi4J and pigpio libraries don't provide support for Pi 5 yet. Look out for the latest version of Pi4J that will work with Pi 5 in the future.
 
 By reading through our documentation, you will learn how to implement our library into your application.
-
-
-
