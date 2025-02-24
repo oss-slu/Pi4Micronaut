@@ -41,14 +41,14 @@ include::components/commun_WithHardware/digitalInput.adoc[]
 
 include::components/commun_WithHardware/digitalOutput.adoc[]
 
+include::components/commun_WithHardware/i2c.adoc[]
+
 include::components/commun_WithHardware/multipinConfig.adoc[]
 
 include::components/commun_WithHardware/pwm.adoc[]
 
 include::components/commun_WithHardware/spi.adoc[]
 
-
-include::components/commun_WithHardware/i2c.adoc[]
 
 include::components/inputComponents.adoc[]
 
@@ -74,6 +74,11 @@ include::components/inputComponents/microSwitch.adoc[]
 
 include::components/inputComponents/thermistor.adoc[]
 
+include::components/inputComponents/photosensor.adoc[]
+
+include::components/inputComponents/speedSensor.adoc[]
+
+
 include::components/outputComponents.adoc[]
 
 include::components/outputComponents/led.adoc[]
@@ -87,3 +92,9 @@ include::components/outputComponents/passivebuzzer.adoc[]
 include::components/outputComponents/activebuzzer.adoc[]
 
 include::components/outputComponents/servomotor.adoc[]
+
+include::components/outputComponents/fan.adoc[]
+
+include::components/outputComponents/fourDigitSevenSegment.adoc[]
+
+include::components/outputComponents/motor.adoc[]
