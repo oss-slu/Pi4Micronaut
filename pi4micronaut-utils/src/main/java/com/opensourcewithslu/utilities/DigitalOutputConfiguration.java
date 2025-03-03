@@ -4,10 +4,12 @@ import com.pi4j.io.gpio.digital.DigitalState;
 import io.micronaut.context.annotation.ConfigurationInject;
 import io.micronaut.context.annotation.EachProperty;
 import io.micronaut.context.annotation.Parameter;
+import io.micronaut.context.annotation.Prototype;
 
 /**
  * This class handles the configuration of a digital output component.
  */
+@Prototype
 @EachProperty("pi4j.digital-output")
 public class DigitalOutputConfiguration {
 
@@ -116,3 +118,4 @@ public class DigitalOutputConfiguration {
     }
 
 }
+// @prototype, @
