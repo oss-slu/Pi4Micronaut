@@ -1,7 +1,6 @@
 package com.opensourcewithslu.utilities;
 
 import com.pi4j.io.gpio.digital.DigitalState;
-import io.micronaut.context.annotation.ConfigurationInject;
 import io.micronaut.context.annotation.EachProperty;
 import io.micronaut.context.annotation.Parameter;
 import io.micronaut.context.annotation.Prototype;
@@ -24,7 +23,6 @@ public class DigitalOutputConfiguration {
      * The DigitalOutputConfiguration constructor.
      * @param id The configuration id as defined in the application.yml.
      */
-    @ConfigurationInject
     public DigitalOutputConfiguration(@Parameter String id) {
         this.id = id;
     }

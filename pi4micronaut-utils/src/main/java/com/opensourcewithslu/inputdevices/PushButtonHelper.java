@@ -7,7 +7,6 @@ import org.slf4j.LoggerFactory;
 
 /**
  * The PushButtonHelper class is used to create a listener that determines when a 4 pin button is pressed.
- * verified for Micronaut 4.7.6, awaiting hardware testing
  */
 public class PushButtonHelper {
     private static final Logger log = LoggerFactory.getLogger(PushButtonHelper.class);
