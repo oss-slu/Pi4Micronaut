@@ -23,7 +23,7 @@ public class DigitalInputConfiguration {
      * Constructor for the DigitalInputConfiguration.
      * @param id The configuration id as defined in the application.yml
      */
-    public DigitalInputConfiguration(String id) {
+    public DigitalInputConfiguration(@Parameter String id) {
         this.id = id;
     }
 
