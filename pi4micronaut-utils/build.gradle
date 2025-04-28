@@ -26,7 +26,7 @@ dependencies {
     compileOnly("io.micronaut:micronaut-http-client")
     runtimeOnly("ch.qos.logback:logback-classic")
     testImplementation("io.micronaut:micronaut-http-client")
-    implementation("io.micronaut:micronaut-jackson-databind:4.8.6")
+    implementation("io.micronaut:micronaut-jackson-databind")
 //    annotationProcessor("io.micronaut:micronaut-validation")
 //    implementation("io.micronaut:micronaut-http-client")
     implementation("jakarta.annotation:jakarta.annotation-api")
