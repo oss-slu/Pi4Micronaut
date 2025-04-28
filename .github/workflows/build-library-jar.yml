@@ -16,10 +16,13 @@ jobs:
         with:
           distribution: temurin
           java-version: 17
-      - name: Clean Gradle caches
-        run: rm -rf ~/.gradle/caches
       - name: Change wrapper permissions
         run: chmod +x pi4micronaut-utils/gradlew
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: build
+          build-root-directory: pi4micronaut-utils/
       - name: Execute Gradle build
         working-directory: pi4micronaut-utils
         run: ./gradlew shadowJar
@@ -38,8 +41,6 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           cache: 'gradle'
-      - name: Clean Gradle caches
-        run: rm -rf ~/.gradle/caches
       - name: Change wrapper permissions
         run: chmod +x pi4micronaut-utils/gradlew
       - name: Publish Library
