@@ -16,6 +16,8 @@ jobs:
         with:
           distribution: temurin
           java-version: 17
+      - name: Clean Gradle caches
+        run: rm -rf ~/.gradle/caches
       - name: Change wrapper permissions
         run: chmod +x pi4micronaut-utils/gradlew
       - name: Setup Gradle
@@ -41,6 +43,8 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           cache: 'gradle'
+      - name: Clean Gradle caches
+        run: rm -rf ~/.gradle/caches
       - name: Change wrapper permissions
         run: chmod +x pi4micronaut-utils/gradlew
       - name: Publish Library
