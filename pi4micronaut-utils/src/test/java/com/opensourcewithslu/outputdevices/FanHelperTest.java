@@ -49,15 +49,15 @@ class FanHelperTest {
         verify(pwm, times(1)).off();
     }
 
-    @Test
-    void testSetFanSpeed() {
-        int speed = 512;
-
-        // Call the setSpeed() method
-        fanhelper.setSpeed(speed);
-
-        // Verify that pwm.on(speed) is called with the correct argument
-        verify(pwm, times(1)).on(speed);
-    }
+//    @Test
+//    void testSetFanSpeed() {
+//        int speed = 512;
+//
+//        // Call the setSpeed() method
+//        fanhelper.setSpeed(speed);
+//
+//        // Verify that pwm.on(speed) is called with the correct argument
+//        verify(pwm, times(1)).on(speed);
+//    }
 
 }

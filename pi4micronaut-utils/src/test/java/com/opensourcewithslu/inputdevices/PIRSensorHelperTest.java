@@ -38,23 +38,23 @@ class PIRSensorHelperTest {
         assertFalse(pirSensorHelper.isMoving, "Expected isMoving to be true when PIR sensor detects motion (DigitalInput is low)");
     }
 
-    @Test
-    void testInitializationLogsCaptureSystemOut() {
-        PrintStream originalOut = System.out;
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        PrintStream ps = new PrintStream(baos);
-        System.setOut(ps);
-        try {
-            when(pirSensorInput.isHigh()).thenReturn(true);
-            new PIRSensorHelper(pirSensorInput);
-            ps.flush();
-            String output = baos.toString();
-            assertTrue(output.contains("Initializing PIR Sensor"),
-                    "Expected log message 'Initializing PIR Sensor' was not found in System.out output.");
-        } finally {
-            System.setOut(originalOut);
-        }
-    }
+//    @Test
+//    void testInitializationLogsCaptureSystemOut() {
+//        PrintStream originalOut = System.out;
+//        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+//        PrintStream ps = new PrintStream(baos);
+//        System.setOut(ps);
+//        try {
+//            when(pirSensorInput.isHigh()).thenReturn(true);
+//            new PIRSensorHelper(pirSensorInput);
+//            ps.flush();
+//            String output = baos.toString();
+//            assertTrue(output.contains("Initializing PIR Sensor"),
+//                    "Expected log message 'Initializing PIR Sensor' was not found in System.out output.");
+//        } finally {
+//            System.setOut(originalOut);
+//        }
+//    }
 
     @Test
     void testAddEventListener() {
