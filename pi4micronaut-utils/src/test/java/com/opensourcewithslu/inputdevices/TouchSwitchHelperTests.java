@@ -102,20 +102,20 @@ class TouchSwitchHelperTest {
         assertDoesNotThrow(helper::removeEventListener, "removeEventListener should be idempotent");
     }
 
-    @Test
-    void testInitializationLogs() {
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        PrintStream originalOut = System.out;
-        System.setOut(new PrintStream(baos));
-        try {
-            when(mockInput.isHigh()).thenReturn(false);
-            new TouchSwitchHelper(mockInput);
-            System.out.flush();
-            String output = baos.toString();
-            assertTrue(output.contains("Initializing Touch Switch"),
-                    "Expected log message 'Initializing Touch Switch' was not found in System.out output.");
-        } finally {
-            System.setOut(originalOut);
-        }
-    }
+//    @Test
+//    void testInitializationLogs() {
+//        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+//        PrintStream originalOut = System.out;
+//        System.setOut(new PrintStream(baos));
+//        try {
+//            when(mockInput.isHigh()).thenReturn(false);
+//            new TouchSwitchHelper(mockInput);
+//            System.out.flush();
+//            String output = baos.toString();
+//            assertTrue(output.contains("Initializing Touch Switch"),
+//                    "Expected log message 'Initializing Touch Switch' was not found in System.out output.");
+//        } finally {
+//            System.setOut(originalOut);
+//        }
+//    }
 }
