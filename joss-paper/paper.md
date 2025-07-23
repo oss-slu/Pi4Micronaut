@@ -50,8 +50,10 @@ This allows researchers to use Java, a well-established programming language in 
 enabling the development of custom research instruments at a lower cost. The ability to interface multiple sensors simultaneously also 
 promotes collaborative use in shared research environments, reducing the bottleneck often encountered when multiple users need to access sensor data concurrently.
 
-Unlike existing solutions like **Diozero** and **Spring for Raspberry Pi**, Pi4Micronaut is built on the Micronaut framework’s lightweight microservice architecture with its efficient dependency injection system.
-By utilizing `@Singleton` communication beans, Pi4Micronaut effectively manages GPIO interactions, improving modularity, performance, and scalability for hardware integration on the Raspberry Pi.
+Existing software packages for Raspberry Pi GPIO control include **RPi.GPIO** [@RPi.GPIO], a popular Python library that provides direct, low-level access to GPIO pins and is widely used for simple hardware interfacing and scripting. However, RPi.GPIO is limited to Python and does not offer abstractions for hardware components or support for scalable application architectures. **Diozero** [@Diozero] provides a component-oriented Java API for GPIO, I2C, SPI, and PWM devices, encapsulating devices as high-level classes and supporting multiple board types.
+
+Both Diozero and Pi4Micronaut abstract hardware details, but Pi4Micronaut is mainly focused on Raspberry Pi and distinguished by its deep integration with the Micronaut framework, enabling advanced features such as dependency injection, modular microservice architectures, and seamless bean management. In Pi4Micronaut, hardware components are managed as Micronaut beans, enabling scalable and maintainable IoT applications for complex research and scientific computing.
+
 Pi4Micronaut simplifies deployment by allowing developers to package the entire application as a single `.jar` file, reducing complexity and improving maintainability. 
 Additionally, this deployment model ensures that the entire application, including dependencies, is bundled in one executable file, simplifying installation and reducing the risk of version conflicts.
 
