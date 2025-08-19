@@ -14,7 +14,7 @@ The existence of Pi4Micronaut is justified by the need for a robust, scalable, a
 - **Client** Jeff Brown - Unity Foundation
 - **Current Tech Lead:** [Leandru Martin](https://github.com/leandrumartin)
 - **Developers:**
-    - [Yenkatarajalaxmimanohar](https://github.com/yrlmanoharreddy) (prior tech lead, alumni)
+    - [Yenkatarajalaxmimanohar Meda](https://github.com/yrlmanoharreddy) (prior tech lead, alumni)
     - [Ava Enke](https://github.com/avaenk) (alumni)
     - [Seyun Jeong](https://github.com/Ed0827) (alumni)
     - [Ralph Tan](https://github.com/RalphTan37) (alumni)
