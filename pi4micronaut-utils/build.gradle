@@ -137,6 +137,30 @@ publishing {
 
                 developers {
                     developer {
+                        id = 'yrlmanoharreddy'
+                        name = 'Yenkatarajalaxmimanohar'
+                    }
+                    developer {
+                        id = 'avaenk'
+                        name = 'Ava Enke'
+                    }
+                    developer {
+                        id = 'Ed0827'
+                        name = 'Seyun Jeong'
+                    }
+                    developer {
+                        id = 'RalphTan37'
+                        name = 'Ralph Tan'
+                    }
+                    developer {
+                        id = 'tmacas'
+                        name = 'Thomas Macas'
+                    }
+                    developer {
+                        id = 'leandrumartin'
+                        name = 'Leandru Martin'
+                    }
+                    developer {
                         id = 'ruthvikm'
                         name = 'Ruthvik Mannem'
                     }
@@ -157,19 +181,19 @@ publishing {
                         name = 'John Yanev'
                     }
                     developer{
-                        id = 'MurrayG'
+                        id = 'GreihMurray'
                         name = 'Greih Murray'
                     }
                     developer{
-                        id = 'TraisonD'
+                        id = 'traison-diedrich'
                         name = 'Traison Diedrich'
                     }
                     developer{
-                        id = 'AustinH'
+                        id = 'austinjhoward'
                         name = 'Austin Howard'
                     }
                     developer{
-                        id = 'SinuoL'
+                        id = 'liusinuo2000'
                         name = 'Sinuo Liu'
                     }
 
