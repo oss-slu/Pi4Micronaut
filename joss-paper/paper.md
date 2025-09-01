@@ -68,6 +68,7 @@ By combining the Micronaut framework, which is well-suited for building modular 
 hardware components through Java.
 
 Key functionalities include:
+
 - Running Micronaut applications directly on Raspberry Pi
 - Interacting with GPIO-based sensors and actuators using pre-built interfaces
 - Supporting real-time data collection and analysis for research purposes
@@ -83,8 +84,9 @@ A [check-in system](https://github.com/oss-slu/SLU_OSS_CheckIn) and a simple [se
 # Usage
 
 To start using Pi4Micronaut, follow these steps:
+
 1. Create a [Micronaut Application](https://micronaut.io/launch/).
-2. Add the Pi4Micronaut library (`implementation 'io.github.oss-slu:pi4micronaut-utils:v1.0'`) and any required dependencies.
+2. Add the Pi4Micronaut library (`implementation 'io.github.oss-slu:pi4micronaut-utils:v1.1'`) and any required dependencies.
 3. Set up the electronic components (e.g., sensors) on a Raspberry Pi GPIO extension board.
 4. Configure the components in the `application.yml` file for easy setup and integration.
 5. Setup and use the APIs to control and interact with the hardware components from your Micronaut application.
@@ -93,6 +95,7 @@ To start using Pi4Micronaut, follow these steps:
 # Supported Components
 
 Pi4Micronaut currently supports a wide range of sensors and actuators, including:
+
 - Push Button
 - Slide Switch
 - Tilt Switch
