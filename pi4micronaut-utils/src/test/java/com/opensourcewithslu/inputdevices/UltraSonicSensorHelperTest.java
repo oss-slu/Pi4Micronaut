@@ -8,7 +8,7 @@ import org.mockito.Mockito;
 import org.slf4j.Logger;
 
 import java.lang.reflect.Method;
-
+import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -58,14 +58,42 @@ class UltraSonicSensorHelperTest {
     }
 
     @Test
-    void testCalculateDistance() {}
+    void testCalculateDistance() throws Exception {
+        Method method = UltraSonicSensorHelper.class.getDeclaredMethod("calculateDistance", long.class);
+        method.setAccessible(true);
+
+        long durationInNano = TimeUnit.MICROSECONDS.toNanos(580);
+        method.invoke(sensorHelper, durationInNano);
+
+        assertEquals(10.0, sensorHelper.getDistanceInCentimeter(), 0.5);
+    }
+
 
     @Test
-    void testgetDistanceInCentemeter() {}
+    void testgetDistanceInCentemeter() throws Exception {
+        Method method = UltraSonicSensorHelper.class.getDeclaredMethod("calculateDistance", long.class);
+        method.setAccessible(true);
+
+        long durationInNano = TimeUnit.MICROSECONDS.toNanos(290);
+        method.invoke(sensorHelper, durationInNano);
+
+        assertEquals(5.0, sensorHelper.getDistanceInCentimeter(), 0.5);
+    }
 
     @Test
-    void testgetDistanceInMeters() {}
+    void testgetDistanceInMeters() throws Exception {
+        Method method = UltraSonicSensorHelper.class.getDeclaredMethod("calculateDistance", long.class);
+        method.setAccessible(true);
+
+        long durationInNano = TimeUnit.MICROSECONDS.toNanos(580);
+        method.invoke(sensorHelper, durationInNano);
+
+        assertEquals(0.10, sensorHelper.getDistanceInMeters(), 0.5);
+    }
 
     @Test
-    void stopMeasuring() {}
+    void stopMeasuring() {
+        assertDoesNotThrow(sensorHelper::stopMeasuring);
+        assertDoesNotThrow(sensorHelper::stopMeasuring);
+    }
 }
