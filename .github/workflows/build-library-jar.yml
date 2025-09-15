@@ -47,18 +47,22 @@ jobs:
           name: pi4micronaut-jar
           path: pi4micronaut-utils/build/libs/*.jar
 
-      # 🔑 Generate SLSA provenance for the built JAR
-      - name: Generate SLSA Provenance
-        uses: slsa-framework/slsa-github-generator/.github/workflows/attest-build-provenance.yml@v2.1.0
-        with:
-          subject-path: "pi4micronaut-utils/build/libs/*.jar"
+  provenance:
+    needs: build-library
+    uses: slsa-framework/slsa-github-generator/.github/workflows/attest-build-provenance.yml@v2.1.0
+    with:
+      subject-path: "pi4micronaut-utils/build/libs/*.jar"
+    permissions:
+      actions: read
+      id-token: write
+      contents: write
 
   publish-jar:
     runs-on: ubuntu-latest
+    needs: [build-library, provenance]
     permissions:
       contents: read
       packages: write
-    needs: build-library
     steps:
       - uses: actions/checkout@v4
 
