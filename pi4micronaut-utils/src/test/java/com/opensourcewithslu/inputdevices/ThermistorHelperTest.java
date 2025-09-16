@@ -7,7 +7,7 @@ public class ThermistorHelperTest {
 
     @Test
     void testBasicFunctionality() {
-        // This test will definitely pass just validates basic math,  this was for my sanity, java 24 would not work//
+        // This test will definitely pass just for a test.
         assertTrue(true, "Basic test should pass");
     }
 
