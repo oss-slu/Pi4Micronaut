@@ -1,6 +1,5 @@
 package com.opensourcewithslu.inputdevices;
 
-import com.opensourcewithslu.outputdevices.FourDigitSevenSegmentDisplayHelper;
 import com.pi4j.io.gpio.digital.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
