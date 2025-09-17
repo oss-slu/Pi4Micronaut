@@ -1,45 +1,41 @@
-name: Build and Release Library
+name: Build and Release Library Reusable
+
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-      
+  workflow_call:
+
+permissions:
+  attestations: write
+  contents: read
+  id-token: write
+  packages: write
+
 jobs:
   build-library:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-java@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 17
       - name: Change wrapper permissions
         run: chmod +x pi4micronaut-utils/gradlew
       - name: Setup Gradle
-        uses: gradle/gradle-build-action@v2
-        with:
-          arguments: build
-          build-root-directory: pi4micronaut-utils/
+        uses: gradle/actions/setup-gradle@v4
       - name: Execute Gradle build with info logging
         working-directory: pi4micronaut-utils
         run: ./gradlew build --info
-      - name: Execute Gradle build
+      - name: Execute Gradle shadowJar
         working-directory: pi4micronaut-utils
         run: ./gradlew shadowJar
-  
+
   publish-jar:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
     needs: build-library
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Set up Java
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
@@ -54,3 +50,6 @@ jobs:
           GPG_KEY: ${{ secrets.GPG_KEY }}
           GPG_PASSWORD: ${{ secrets.GPG_PASSWORD }}
         run: ./gradlew clean publish --info
+      - uses: actions/attest-build-provenance@v1
+        with:
+          subject-path: 'pi4micronaut-utils/build/libs/**/*.jar'
