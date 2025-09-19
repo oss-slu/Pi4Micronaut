@@ -43,22 +43,38 @@ class UltraSonicSensorHelperTest {
     @Test
     void testInitialization() {
         verify(mockTriggerPin).low();
+
         assertEquals(0.0, sensorHelper.getDistanceInCentimeter());
     }
 
     @Test
-    void testStartMeasuring() throws Exception {
+    void testStartMeasuringWhenSensorInactiveDoesNothing() throws Exception {
         Field sensorActiveField = UltraSonicSensorHelper.class.getDeclaredField("sensorActive");
         sensorActiveField.setAccessible(true);
 
         sensorActiveField.set(sensorHelper, false);
+        Mockito.clearInvocations(mockTriggerPin, mockEchoPin);
         sensorHelper.startMeasuring();Thread.sleep(150);
-        assertEquals(0, sensorHelper.getDistanceInCentimeter());
         
+        assertEquals(0.0, sensorHelper.getDistanceInCentimeter(), 0.01);
+
+        verifyNoMoreInteractions(mockTriggerPin, mockEchoPin);
+
+        assertFalse((boolean) sensorActiveField.get(sensorHelper));
+    }
+
+    @Test
+    void testStartMeasuringWhenSensorActiveStartsMeasurements() throws Exception {
+        Field sensorActiveField = UltraSonicSensorHelper.class.getDeclaredField("sensorActive");
+        sensorActiveField.setAccessible(true);
         sensorActiveField.set(sensorHelper, true);
+
+        Mockito.clearInvocations(mockTriggerPin, mockEchoPin);
+
         when(mockEchoPin.isHigh()).thenReturn(true, false);
         sensorHelper.startMeasuring();
         Thread.sleep(150);
+
         assertTrue(sensorHelper.getDistanceInCentimeter() >= 0);
 
         verify(log).info("Ultrasonic Sensor Measurement Started");
@@ -69,6 +85,7 @@ class UltraSonicSensorHelperTest {
         sensorHelper.stopMeasuring();
         Mockito.clearInvocations(mockTriggerPin, mockEchoPin);
         sensorHelper.startMeasuring();
+
         verifyNoMoreInteractions(mockTriggerPin, mockEchoPin);
     }
 
@@ -77,6 +94,7 @@ class UltraSonicSensorHelperTest {
         Method method = UltraSonicSensorHelper.class.getDeclaredMethod("triggerAndMeasureDistance");
         method.setAccessible(true);
         when(mockEchoPin.isHigh()).thenReturn(true);
+
         assertDoesNotThrow(() -> method.invoke(sensorHelper));
     }
 
@@ -85,6 +103,7 @@ class UltraSonicSensorHelperTest {
         Method method = UltraSonicSensorHelper.class.getDeclaredMethod("calculateDistance", long.class);
         method.setAccessible(true);
         method.invoke(sensorHelper, -100L);
+
         assertEquals(0.0, sensorHelper.getDistanceInCentimeter(), 0.01);
     }
 
@@ -94,6 +113,7 @@ class UltraSonicSensorHelperTest {
         sensorHelper.stopMeasuring();
         Mockito.clearInvocations(mockTriggerPin, mockEchoPin);
         sensorHelper.startMeasuring();
+
         verifyNoMoreInteractions(mockTriggerPin, mockEchoPin);
     }   
 
@@ -104,6 +124,7 @@ class UltraSonicSensorHelperTest {
         when(mockTriggerPin.isHigh()).thenReturn(true);
         when(mockEchoPin.isHigh()).thenReturn(true).thenReturn(false);
         method.invoke(sensorHelper);
+
         assertTrue(sensorHelper.getDistanceInCentimeter() >= 0);
     }
 
