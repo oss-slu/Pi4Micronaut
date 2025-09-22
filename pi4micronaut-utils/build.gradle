@@ -10,7 +10,7 @@ plugins {
 }
 
 group = 'io.github.oss-slu'
-version = 'v1.1'
+version = 'v1.2'
 
 apply plugin: 'maven-publish'
 apply plugin: 'signing'
@@ -116,7 +116,7 @@ publishing {
         mavenJava(MavenPublication) {
             groupId = 'io.github.oss-slu'
             artifactId = 'pi4micronaut-utils'
-            version = 'v1.1'
+            version = 'v1.2'
             from components.java
 
             artifact sourcesJar
@@ -136,6 +136,30 @@ publishing {
                 }
 
                 developers {
+                    developer {
+                        id = 'yrlmanoharreddy'
+                        name = 'Yenkatarajalaxmimanohar'
+                    }
+                    developer {
+                        id = 'avaenk'
+                        name = 'Ava Enke'
+                    }
+                    developer {
+                        id = 'Ed0827'
+                        name = 'Seyun Jeong'
+                    }
+                    developer {
+                        id = 'RalphTan37'
+                        name = 'Ralph Tan'
+                    }
+                    developer {
+                        id = 'tmacas'
+                        name = 'Thomas Macas'
+                    }
+                    developer {
+                        id = 'leandrumartin'
+                        name = 'Leandru Martin'
+                    }
                     developer {
                         id = 'ruthvikm'
                         name = 'Ruthvik Mannem'
@@ -157,19 +181,19 @@ publishing {
                         name = 'John Yanev'
                     }
                     developer{
-                        id = 'MurrayG'
+                        id = 'GreihMurray'
                         name = 'Greih Murray'
                     }
                     developer{
-                        id = 'TraisonD'
+                        id = 'traison-diedrich'
                         name = 'Traison Diedrich'
                     }
                     developer{
-                        id = 'AustinH'
+                        id = 'austinjhoward'
                         name = 'Austin Howard'
                     }
                     developer{
-                        id = 'SinuoL'
+                        id = 'liusinuo2000'
                         name = 'Sinuo Liu'
                     }
 
