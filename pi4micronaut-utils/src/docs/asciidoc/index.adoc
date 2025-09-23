@@ -74,8 +74,6 @@ include::components/inputComponents/microSwitch.adoc[]
 
 include::components/inputComponents/thermistor.adoc[]
 
-include::components/inputComponents/photosensor.adoc[]
-
 include::components/inputComponents/speedSensor.adoc[]
 
 
