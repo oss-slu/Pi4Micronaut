@@ -45,7 +45,7 @@ This section provides the details of the PhotoResistor Sensor including its comp
 
 ===== Circuit Diagram
 
-image::photoResistor-CD.png[]
+image::photoresistor-CD.png[]
 
 ===== Functionality
 PhotoResistor is a DigitalInput and DigitalOutput type that controls the LED's behavior based on changes in light intensity.
