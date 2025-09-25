@@ -37,7 +37,7 @@ public class ThermistorHelperTest {
         verify(mockContext).create(any(SpiConfig.class));
     }
 
-    @Test // i had trouble getting this to work right so I just mocked the return value
+    @Test 
     void testReadADCValue_successfulRead() throws Exception {
         ThermistorHelper spyHelper = spy(thermistorHelper);
 
