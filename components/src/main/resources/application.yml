@@ -144,6 +144,13 @@ pi4j:
       pull: PULL_DOWN           # Configure pull-up or pull-down as needed
       debounce: 100             # Optional debounce time for stable readings
       provider: pigpio-digital-input
+    DHT11-data-input:
+      name: DHT11
+      address: 17
+      pull: PULL_DOWN
+      debounce: 100000
+      provider: pigpio-digital-input
+      
   # end::digitalInput[]
 
   # tag::digitalOutput[]
@@ -240,6 +247,12 @@ pi4j:
       address: 18
       shutdown: LOW
       initial: LOW
+      provider: pigpio-digital-output
+    DHT11-data-output:
+      name: DHT11
+      address: 17
+      shutdown: LOW
+      initial: HIGH
       provider: pigpio-digital-output
   # end::digitalOutput[]
 
