@@ -4,7 +4,6 @@ import com.pi4j.Pi4J;
 import com.pi4j.context.Context;
 import com.pi4j.io.gpio.digital.DigitalInput;
 import com.pi4j.io.gpio.digital.DigitalOutput;
-import com.pi4j.io.gpio.digital.DigitalState;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,7 +24,7 @@ public class DHT11Helper {
         this.dataOutput = dataOutput;
     }
 
-    public Reading readData() throws Exception {
+    public void readData() throws Exception {
         int bitCount = 0;
         int delayCount = 0;
         StringBuilder bits = new StringBuilder();
@@ -38,7 +37,7 @@ public class DHT11Helper {
 
 
         // -------- wait for sensor response --------
-        while (dataInput.state() == DigitalState.HIGH) {
+        while (dataInput.isHigh()) {
             log.info("Waiting for DHT11 response...");
         }
         
@@ -46,13 +45,10 @@ public class DHT11Helper {
         log.info("DHT11 response started. Counting BITS...");
         while (bitCount < bitsLength) {
             // wait for low-to-high
-            /* while (dataInput.state() == DigitalState.LOW) {
-                log.info("Waiting for bit start...");
-            } */
 
             // measure how long the signal stays HIGH
             delayCount = 0;
-            while (dataInput.state() == DigitalState.HIGH) {
+            while (dataInput.isHigh()) {
                 delayCount++;
                 if (delayCount > maxDelayCount) break;
             }
@@ -65,6 +61,8 @@ public class DHT11Helper {
 
             bitCount++;
         }
+
+        log.info("DHT11 bits read: {}", bits.toString());
 
         dataInput.shutdown(pi4j);
 
@@ -87,20 +85,6 @@ public class DHT11Helper {
         }
 
         log.info("DHT11 Reading - Temperature: {} C, Humidity: {} %", temperature, humidity);
-        return new Reading(temperature, humidity);
-    }
-
-    public static class Reading {
-        private final double temperatureC;
-        private final double humidity;
-
-        public Reading(double temperatureC, double humidity) {
-            this.temperatureC = temperatureC;
-            this.humidity = humidity;
-        }
-
-        public double getTemperatureC() { return temperatureC; }
-        public double getHumidity() { return humidity; }
     }
 
 }

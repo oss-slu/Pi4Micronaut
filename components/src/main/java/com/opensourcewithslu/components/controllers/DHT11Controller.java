@@ -1,7 +1,6 @@
 package com.opensourcewithslu.components.controllers;
 
 import com.opensourcewithslu.inputdevices.DHT11Helper;
-import com.opensourcewithslu.inputdevices.DHT11Helper.Reading;
 import com.pi4j.io.gpio.digital.DigitalInput;
 import com.pi4j.io.gpio.digital.DigitalOutput;
 
@@ -21,11 +20,11 @@ public class DHT11Controller {
     }
 
     @Get("/read")
-    public Reading readSensorData() {
-        try {
-            return dht11.readData();
+    public void readSensorData() {
+        try{
+            dht11.readData();
         } catch (Exception e) {
-            return new Reading(0.0, 0.0);
+            e.printStackTrace();
         }
     }
 }

@@ -252,7 +252,7 @@ pi4j:
       name: DHT11
       address: 17
       shutdown: LOW
-      initial: HIGH
+      initial: LOW
       provider: pigpio-digital-output
   # end::digitalOutput[]
 
