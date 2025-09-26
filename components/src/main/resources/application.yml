@@ -147,8 +147,8 @@ pi4j:
     DHT11-data-input:
       name: DHT11
       address: 17
-      pull: PULL_DOWN
-      debounce: 100000
+      pull: PULL_UP
+      debounce: 0
       provider: pigpio-digital-input
       
   # end::digitalInput[]
@@ -251,8 +251,8 @@ pi4j:
     DHT11-data-output:
       name: DHT11
       address: 17
-      shutdown: LOW
-      initial: LOW
+      shutdown: HIGH
+      initial: HIGH
       provider: pigpio-digital-output
   # end::digitalOutput[]
 
