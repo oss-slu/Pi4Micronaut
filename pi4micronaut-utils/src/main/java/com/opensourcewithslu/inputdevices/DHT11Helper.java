@@ -33,7 +33,7 @@ public class DHT11Helper {
         
         dataOutput.low();
         Thread.sleep(20); // 20ms start signal
-        dataOutput.shutdown(pi4j);   // release pin
+        
 
 
         // -------- wait for sensor response --------
@@ -51,6 +51,7 @@ public class DHT11Helper {
             while (dataInput.isHigh()) {
                 delayCount++;
                 if (delayCount > maxDelayCount) break;
+                log.info("delay count {}", delayCount);
             }
 
             if (delayCount > bitOneDelayCount) {
