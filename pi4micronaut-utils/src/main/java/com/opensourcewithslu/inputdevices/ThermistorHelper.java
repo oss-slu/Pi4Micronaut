@@ -19,6 +19,9 @@ public class ThermistorHelper {
     public ThermistorHelper(Context pi4j) {
         this.spi = initializeADC(pi4j);
     }
+    Spi getSpi() {  // added for use in test class to mock spi 
+    return spi;
+    }
 
     /**
      * Initialize SPI and ADC settings specific to ADC0834.
