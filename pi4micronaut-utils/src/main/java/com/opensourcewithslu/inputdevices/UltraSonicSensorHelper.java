@@ -10,7 +10,7 @@ import java.util.concurrent.*;
  */
 public class UltraSonicSensorHelper {
 
-    private static final Logger log = LoggerFactory.getLogger(UltraSonicSensorHelper.class);
+    private static Logger log = LoggerFactory.getLogger(UltraSonicSensorHelper.class);
     private final DigitalOutput triggerPin; // This is the Trigger Pin - we send the pulse
     private final DigitalInput echoPin;     // This is the Echo Pin - we read the return signal
     private volatile boolean sensorActive;
@@ -56,6 +56,8 @@ public class UltraSonicSensorHelper {
             return;
         }
         executorService.scheduleAtFixedRate(this::triggerAndMeasureDistance, 0, 100, TimeUnit.MILLISECONDS);
+
+        log.info("Ultrasonic Sensor Measurement Started");
     }
 
     /**
@@ -149,5 +151,19 @@ public class UltraSonicSensorHelper {
         if (!executorService.isShutdown()) {
             executorService.shutdownNow();
         }
+
+        log.info("Ultrasonic Sensor Measurement Stopped");
+    }
+
+    /**
+     * Sets the logger object.
+     *
+     * @param log Logger object to set the logger to.
+     */
+    //tag::method[]
+    public void setLog(Logger log)
+    //end::method[]
+    {
+        UltraSonicSensorHelper.log = log;
     }
 }

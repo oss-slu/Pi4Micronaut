@@ -48,7 +48,7 @@ This section provides details of the DC motor, including its components and asse
 
 ===== Circuit Diagram
 
-image::motor_bb.png[]
+image::Motor_bb.png[]
 
 ===== Schematic Diagram
 
