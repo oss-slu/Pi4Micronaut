@@ -14,6 +14,9 @@ import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
 
 public class ThermistorHelperTest {
+
+    private static final Logger log = LoggerFactory.getLogger(ThermistorHelperTest.class);
+
         
     private Context mockContext;
     private Spi mockSpi;
@@ -53,6 +56,7 @@ public class ThermistorHelperTest {
             return null;
         }).when(mockSpi).read(any(byte[].class));
         double adcValue = spyHelper.readADCValue();
+        log.info("Test successful ADC read, got value: {}", adcValue);
         assertEquals(683.0, adcValue, "ADC value should be correctly decoded");
     }     
     @Test

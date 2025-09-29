@@ -19,7 +19,14 @@ public class ThermistorHelper {
     public ThermistorHelper(Context pi4j) {
         this.spi = initializeADC(pi4j);
     }
-    Spi getSpi() {  // added for use in test class to mock spi 
+
+    /**
+ * Gets the SPI interface used by this class.
+ * this is used for ThermistorHelperTest to mock SPI interactions.
+ * 
+ * @return the SPI interface
+ */
+    Spi getSpi() {  
     return spi;
     }
 
