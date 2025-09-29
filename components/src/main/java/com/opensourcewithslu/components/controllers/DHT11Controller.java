@@ -13,10 +13,10 @@ import jakarta.inject.Named;
 public class DHT11Controller {
     private final DHT11Helper dht11;
 
-    public DHT11Controller(@Named("DHT11-data-input")DigitalInput dht11Input,
+    public DHT11Controller(
                            @Named("DHT11-data-output")DigitalOutput dht11Output) {
 
-        this.dht11 = new DHT11Helper(dht11Input, dht11Output);
+        this.dht11 = new DHT11Helper( dht11Output);
     }
 
     @Get("/read")
