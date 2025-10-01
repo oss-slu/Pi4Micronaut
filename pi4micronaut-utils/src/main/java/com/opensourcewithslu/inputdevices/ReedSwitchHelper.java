@@ -25,6 +25,7 @@ public class ReedSwitchHelper {
         {
             this.reedSwitchDigitalInput = reedSwitchDigitalInput;
             this.isDetected = reedSwitchDigitalInput.isHigh();
+            log.info("Magnet detected!");
 
             initialize();
         }
