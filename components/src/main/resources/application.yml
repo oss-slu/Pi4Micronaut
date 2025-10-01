@@ -144,7 +144,7 @@ pi4j:
       pull: PULL_DOWN           # Configure pull-up or pull-down as needed
       debounce: 100             # Optional debounce time for stable readings
       provider: pigpio-digital-input
-    reed-switch:
+    reed-switch-input:
       name: Reed Switch
       address: 17
       pull: PULL_UP
@@ -163,6 +163,17 @@ pi4j:
     led2:
       name: LED Output
       address: 26
+      shutdown: HIGH
+      initial: HIGH
+      provider: pigpio-digital-output
+    led3:
+      name: LED Output
+      address: 22
+      shutdown: LOW
+      initial: LOW
+    led4:
+      name: LED Output
+      address: 27
       shutdown: HIGH
       initial: HIGH
       provider: pigpio-digital-output
