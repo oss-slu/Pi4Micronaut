@@ -52,13 +52,13 @@ public class ReedSwitchHelperTest {
         verify(mockInput).addListener(listenerCaptor.capture());
         DigitalStateChangeListener internalListener = listenerCaptor.getValue();
 
-        when(mockInput.isHigh()).thenReturn(true);
-        internalListener.onDigitalStateChange(mock(DigitalStateChangeEvent.class));
-        assertTrue(helper.isDetected, "Listener should set isDetected to true when input goes high");
-
         when(mockInput.isHigh()).thenReturn(false);
         internalListener.onDigitalStateChange(mock(DigitalStateChangeEvent.class));
-        assertFalse(helper.isDetected, "Listener should set isDetected to false when input goes low");
+        assertFalse(helper.isDetected, "Listener should set isDetected to false when input goes high");
+
+        when(mockInput.isLow()).thenReturn(true);
+        internalListener.onDigitalStateChange(mock(DigitalStateChangeEvent.class));
+        assertTrue(helper.isDetected, "Listener should set isDetected to true when input goes low");
     }
 
     @Test
