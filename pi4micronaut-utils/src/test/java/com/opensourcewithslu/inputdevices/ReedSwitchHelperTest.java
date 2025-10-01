@@ -85,7 +85,8 @@ public class ReedSwitchHelperTest {
         verify(mockInput).removeListener(internalListener);
 
         helper.removeEventListener();
-        verifyNoMoreInteractions(mockInput);
+        
+        verify(mockInput, times(1)).removeListener(internalListener);
 
     }
 

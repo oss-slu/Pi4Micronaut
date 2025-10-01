@@ -144,6 +144,12 @@ pi4j:
       pull: PULL_DOWN           # Configure pull-up or pull-down as needed
       debounce: 100             # Optional debounce time for stable readings
       provider: pigpio-digital-input
+    reed-switch:
+      name: Reed Switch
+      address: 17
+      pull: PULL_UP
+      debounce: 200
+      provider: pigpio-digital-input
   # end::digitalInput[]
 
   # tag::digitalOutput[]
