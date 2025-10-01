@@ -10,14 +10,15 @@ import jakarta.inject.Named;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+//tag::ex[]
 @Controller("/reedSwitch")
-public class ReedSwitchContoller {
-    private final Logger log = LoggerFactory.getLogger(ReedSwitchContoller.class);
+public class ReedSwitchController {
+    private final Logger log = LoggerFactory.getLogger(ReedSwitchController.class);
     private final ReedSwitchHelper reedSwitchHelper;
     private final LEDHelper ledHelper3;
     private final LEDHelper ledHelper4;
 
-    public ReedSwitchContoller(@Named("reed-switch-input") DigitalInput reedSwitch,
+    public ReedSwitchController(@Named("reed-switch-input") DigitalInput reedSwitch,
                               @Named("led3") DigitalOutput led3,
                               @Named("led4") DigitalOutput led4) {
         this.reedSwitchHelper = new ReedSwitchHelper(reedSwitch);
@@ -48,3 +49,4 @@ public class ReedSwitchContoller {
     }
 }
 
+//end::ex[]
