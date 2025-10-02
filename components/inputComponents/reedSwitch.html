@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.18">
-<title>Rotary Encoder</title>
+<title>Reed Switch</title>
 <style>
 body {
 	font-family: sans-serif;
@@ -209,15 +209,14 @@ th {
 </div>
 <div id="content">
 <div class="sect3">
-<h4 id="_rotary_encoder">Rotary Encoder</h4>
+<h4 id="_reed_switch">Reed Switch</h4>
 <div class="paragraph text-right">
-<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/inputComponents/rotaryEncoder.adoc">Improve this doc</a></p>
+<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/inputComponents/reedSwitch.adoc">Improve this doc</a></p>
 </div>
 <div class="sect4">
 <h5 id="_overview">Overview</h5>
 <div class="paragraph">
-<p>This section provides details of the Rotary Encoder circuit,
-including its components, assembly instructions, and functionality.</p>
+<p>This document describes a reed (magnetic) switch sensor implementation: required hardware, assembly instructions, circuit diagrams, configuration, and testing. A reed switch is a small magnetic sensor that closes a contact when a magnet is brought near.</p>
 </div>
 </div>
 <div class="sect4">
@@ -225,10 +224,13 @@ including its components, assembly instructions, and functionality.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Rotary encoder module</p>
+<p>Reed switch module</p>
 </li>
 <li>
-<p>1 x 10kΩ resistor</p>
+<p>2 x LED lights</p>
+</li>
+<li>
+<p>2 x 220Ω resistors</p>
 </li>
 <li>
 <p>Breadboard</p>
@@ -237,7 +239,7 @@ including its components, assembly instructions, and functionality.</p>
 <p>Jumper wires</p>
 </li>
 <li>
-<p>Power source</p>
+<p>Power source (3.3V)</p>
 </li>
 </ol>
 </div>
@@ -245,69 +247,75 @@ including its components, assembly instructions, and functionality.</p>
 <div class="sect4">
 <h5 id="_assembly_instructions">Assembly Instructions</h5>
 <div class="paragraph">
-<p>Connect the 5 pins on the encoder to the breadboard along with the resistor as
-stated below and in the diagram.</p>
+<p>Connect the reed switch, LEDs, resistors, and wiring on the breadboard as shown in the circuit diagrams.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Ground: Connect ground on the encoder to ground on the breadboard</p>
+<p>Ground: connect the GND pin of the reed switch to the breadboard ground.</p>
 </li>
 <li>
-<p>Power: Connect the + on the encoder to the 3.3V on the breadboard</p>
+<p>Power: connect VCC of the reed switch to 3.3V on the breadboard.</p>
 </li>
 <li>
-<p>SW: Connect SW to GPIO 27 on the breadboard</p>
+<p>IO: connect the reed switch output pin (DO) to GPIO 17 on the Raspberry Pi (digital input).</p>
 </li>
 <li>
-<p>DT: Connect DT to GPIO 17 on the breadboard</p>
+<p>LEDs: use a 220Ω resistor in series with each LED. Connect the LED cathodes to ground and the anodes to the GPIO outputs.</p>
 </li>
 <li>
-<p>CLK: Connect CLK to GPIO 18 on the breadboard</p>
-</li>
-<li>
-<p>Resistor: Place the resistor horizontally so that it is parallel
-with GPIO 27, having one side on the red + with the other next to the wire on GPIO 27</p>
-</li>
-<li>
-<p>Connect a wire from 3.3V to the red + in the same column as the resistor</p>
+<p>LED GPIOs: connect the two LED anodes to GPIO 22 and GPIO 27 respectively (digital outputs).</p>
 </li>
 </ol>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_circuit_diagram">Circuit Diagram</h5>
-<div class="imageblock">
-<div class="content">
-<img src="../../img/rotary_encoder_circuit.png" alt="rotary encoder circuit">
-</div>
+<div class="paragraph">
+<p><span class="image"><img src="../../img/reedSwitchCD.png" alt="reedSwitchCD"></span></p>
 </div>
 <div class="paragraph">
-<p><strong>Note:</strong> The resistor location at GPIO 27.</p>
+<p><strong>Schematic Diagram:</strong></p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../../img/reedSwitch_schematic.png" alt="reedSwitch schematic"></span>
+<span class="image"><img src="../../img/reedSwitch_schematic2.png" alt="reedSwitch schematic2"></span></p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_functionality">Functionality</h5>
 <div class="paragraph">
-<p>The rotary encoder returns the value as you rotate the knob.</p>
+<p>When a magnet approaches the reed switch the internal contacts change state (close). In our example controller we read this digital input and drive one LED for detection and another for no detection.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_testing_the_circuit">Testing the Circuit</h5>
 <div class="paragraph">
-<p>To return the value of the rotary encoder:</p>
+<p>Use the following HTTP endpoints to interact with the reed switch controller.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>/enable</code>  - enable reed switch handling</p>
+</li>
+</ul>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl http://localhost:8080/rotaryEncoder/value</code></pre>
+<pre>$ curl http://localhost:8080/reedSwitch/enable</pre>
 </div>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>/value</code>  - returns the current value of the rotary encoder</p>
+<p><code>/disable</code> - disable reed switch handling</p>
 </li>
 </ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ curl http://localhost:8080/reedSwitch/disable</pre>
+</div>
 </div>
 </div>
 <div class="sect4">
@@ -315,11 +323,36 @@ with GPIO 27, having one side on the red + with the other next to the wire on GP
 <div class="ulist">
 <ul>
 <li>
-<p>Value not being returned: Make sure all pins on the encoder match up
-to the correct GPIO pins according to the YAML pin order below.</p>
+<p>LED does not light when expected:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Verify VCC and GND are correctly wired and the breadboard power rail is powered.</p>
 </li>
 <li>
-<p>Make sure that a 10k resistor is being used</p>
+<p>Ensure LEDs are oriented correctly (anode to resistor &#8594; GPIO, cathode to GND).</p>
+</li>
+<li>
+<p>Confirm resistors are 220Ω.</p>
+</li>
+<li>
+<p>Check the reed switch wiring: DO connected to GPIO 17, VCC to 3.3V, GND to ground.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>False triggers or bouncing:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Verify the configured pull-up/pull-down and debounce values in YAML.</p>
+</li>
+<li>
+<p>Move wires away from noisy power lines; shorten jumper wires where possible.</p>
+</li>
+</ol>
+</div>
 </li>
 </ul>
 </div>
@@ -327,45 +360,62 @@ to the correct GPIO pins according to the YAML pin order below.</p>
 <div class="sect4">
 <h5 id="_yaml_configuration">YAML Configuration</h5>
 <div class="paragraph">
-<p>The order for declaring pins for a Rotary Encoder component in the application.yaml file is as follows</p>
-</div>
-<div class="paragraph">
-<p><strong>SW-PIN-INFO, CLK-PIN-INFO, DT-PIN-INFO</strong></p>
-</div>
-<div class="paragraph">
-<p>So in the case of</p>
+<p>The YAML configuration for the reed switch input:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-yaml" data-lang="yaml">multi-digital-input:
-  rotary-encoder:
-    name: Rotary Encoder
-    addresses: 27,18,17
-    debounces: 6000,500,500
-    pulls: PULL_DOWN,PULL_UP,PULL_UP
-    shutdown: LOW
-    initial: HIGH
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">digital-input:
+  reed-switch-input:
+    name: Reed Switch
+    address: 17
+    pull: PULL_UP
+    debounce: 200
     provider: pigpio-digital-input</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>the sw pin would be the one connected to GPIO 27, the clk pin would be connected to GPIO 18, and the dt pin would connect to GPIO 17. All lists of values for Rotary Encoder components will follow the same order.</p>
+<p>The YAML configuration for the first LED:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">digital-output:
+  led3:
+    name: LED Output
+    address: 22
+    shutdown: LOW
+    initial: HIGH
+    provider: pigpio-digital-output</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The YAML configuration for the second LED:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">digital-output:
+  led4:
+    name: LED Output
+    address: 27
+    shutdown: HIGH
+    initial: HIGH
+    provider: pigpio-digital-output</code></pre>
+</div>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_constructors_and_methods">Constructors and Methods</h5>
+<h5 id="_constructor_and_methods">Constructor and Methods</h5>
 <div class="paragraph">
-<p>To see the constructor and methods of our RotaryEncoderHelper class see our javadoc <a href="https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/inputdevices/RotaryEncoderHelper.html">here</a>
-for more details.</p>
+<p>To see the constructor and methods of the ReedSwitchHelper class see the javadoc:
+<a href="https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/inputdevices/ReedSwitchHelper.html" class="bare">https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/inputdevices/ReedSwitchHelper.html</a></p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_an_example_controller">An Example Controller</h5>
 <div class="sect5">
-<h6 id="_this_controller_uses_a_rotary_encoder">This controller uses a rotary encoder</h6>
+<h6 id="_this_controller_uses_the_reed_switch_to_light_up_led_lights_when_activated">This controller uses the reed switch to light up LED lights when activated</h6>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">Unresolved directive in rotaryEncoder.adoc - include::../../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/RotaryEncoderController.java[tag=ex]</code></pre>
+<pre class="highlight"><code class="language-java" data-lang="java">Unresolved directive in reedSwitch.adoc - include::../../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/ReedSwitchController.java[tag=ex]</code></pre>
 </div>
 </div>
 </div>
