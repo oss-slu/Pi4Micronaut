@@ -1,65 +1,95 @@
 package com.opensourcewithslu.inputdevices;
 
-import com.pi4j.io.gpio.digital.DigitalInput;
-import com.pi4j.io.gpio.digital.DigitalOutput;
+import com.pi4j.context.Context;
+import com.pi4j.io.spi.Spi;
+import com.pi4j.io.spi.SpiConfig;
+import com.pi4j.io.spi.SpiConfigBuilder;
+import com.pi4j.io.spi.SpiMode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * The ADCConverterHelper class is used to read digital values from the ADC0834, which converts analog signals to digital.
+ * The ADCConverterHelper class interfaces with the ADC0834 analog-to-digital converter using SPI.
+ * It provides methods to read digital values and voltages from the specified channel.
  */
 public class ADCConverterHelper {
     private static final Logger log = LoggerFactory.getLogger(ADCConverterHelper.class);
-
-    private final DigitalOutput cs;    // Chip Select
-    private final DigitalOutput clk;   // Clock
-    private final DigitalOutput din;   // Data In
-    private final DigitalInput dout;   // Data Out
+    private final Spi spi;
 
     /**
      * Constructor for ADCConverterHelper.
-     *
-     * @param cs  DigitalOutput for Chip Select
-     * @param clk DigitalOutput for Clock
-     * @param din DigitalOutput for Data In
-     * @param dout DigitalInput for Data Out
+     * @param pi4j A Pi4J Context object.
+     * @param spiBus The SPI bus number (e.g., 0 for SPI0).
+     * @param chipSelect The chip select line (e.g., 0 for CE0).
      */
-    public ADCConverterHelper(DigitalOutput cs, DigitalOutput clk, DigitalOutput din, DigitalInput dout) {
-        this.cs = cs;
-        this.clk = clk;
-        this.din = din;
-        this.dout = dout;
+    public ADCConverterHelper(Context pi4j, int spiBus, int chipSelect) {
+        this.spi = initializeADC(pi4j, spiBus, chipSelect);
+        log.info("ADCConverterHelper initialized on SPI bus {} with chip select {}", spiBus, chipSelect);
     }
 
     /**
-     * Reads a value from the ADC0834.
-     *
-     * @return The converted digital value from the ADC0834.
+     * Initializes the SPI interface for ADC0834.
+     * @param pi4j A Pi4J Context object.
+     * @param spiBus The SPI bus number.
+     * @param chipSelect The chip select line.
+     * @return Configured Spi instance.
      */
-    public int readValue() {
-        cs.low(); // Activate ADC
-        sendStartBit();
+    private Spi initializeADC(Context pi4j, int spiBus, int chipSelect) {
+        SpiConfig config = SpiConfigBuilder.newInstance(pi4j)
+                .id("adc0834-spi")
+                .address(chipSelect)
+                .bus(spiBus)
+                .mode(SpiMode.MODE_0) // ADC0834 uses CPOL=0, CPHA=0
+                .baud(1000000) // 1MHz, within ADC0834 spec
+                .build();
+        return pi4j.create(config);
+    }
 
-        int digitalValue = 0;
-        for (int i = 0; i < 8; i++) {
-            clk.high();
-            clk.low();
-            if (dout.isHigh()) {
-                digitalValue |= (1 << (7 - i)); // Construct the digital value bit by bit
-            }
+    /**
+     * Reads the digital value from the specified channel (0-3) of the ADC0834.
+     * @param channel The ADC channel to read (0-3).
+     * @return The 8-bit digital value (0-255).
+     * @throws IllegalArgumentException if channel is invalid.
+     */
+    public int readValue(int channel) {
+        if (channel < 0 || channel > 3) {
+            log.error("Invalid channel: {}. Must be 0-3.", channel);
+            throw new IllegalArgumentException("Channel must be between 0 and 3");
         }
 
-        cs.high(); // Deactivate ADC
-        log.info("ADC0834 Digital Value Read: {}", digitalValue);
-        return digitalValue;
+        // ADC0834 control byte: Start bit (1), single-ended (1), channel select (2 bits), reserved (0)
+        byte controlByte = (byte) (0b10000000 | (channel << 5));
+        byte[] txBuffer = new byte[] { controlByte, 0 }; // Second byte for clocking out data
+        byte[] rxBuffer = new byte[2];
+
+        try {
+            spi.transfer(txBuffer, rxBuffer);
+            int digitalValue = rxBuffer[1] & 0xFF; // 8-bit result
+            log.info("Read channel {}: raw value = {}", channel, digitalValue);
+            return digitalValue;
+        } catch (Exception e) {
+            log.error("Failed to read from ADC0834 on channel {}: {}", channel, e.getMessage());
+            throw new RuntimeException("SPI communication error", e);
+        }
     }
 
     /**
-     * Sends the start bit to initialize communication with ADC0834.
+     * Reads the voltage from the specified channel using the provided reference voltage.
+     * @param channel The ADC channel to read (0-3).
+     * @param referenceVoltage The reference voltage (e.g., 3.3V or 5.0V).
+     * @return The measured voltage.
+     * @throws IllegalArgumentException if channel or referenceVoltage is invalid.
      */
-    private void sendStartBit() {
-        clk.high();
-        din.high();
-        clk.low();
+    public double readVoltage(int channel, double referenceVoltage) {
+        if (referenceVoltage <= 0) {
+            log.error("Invalid reference voltage: {}. Must be positive.", referenceVoltage);
+            throw new IllegalArgumentException("Reference voltage must be positive");
+        }
+
+        int rawValue = readValue(channel);
+        double voltage = (rawValue / 255.0) * referenceVoltage;
+        log.info("Channel {} voltage: {}V (raw = {}, ref = {}V)", channel, voltage, rawValue, referenceVoltage);
+        return voltage;
     }
 }
+
