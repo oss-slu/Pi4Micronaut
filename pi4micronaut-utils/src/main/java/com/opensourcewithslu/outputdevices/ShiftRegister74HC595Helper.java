@@ -39,7 +39,6 @@ public class ShiftRegister74HC595Helper {
         log.info("Shift register cleared");
     }
 
-    // Method to set a specific bit
     public void setBit(int bitIndex, boolean value) throws IOException {
         if (bitIndex < 0 || bitIndex > 7) {
             throw new IllegalArgumentException("bitIndex must be 0..7; got " + bitIndex);
@@ -57,6 +56,10 @@ public class ShiftRegister74HC595Helper {
     public void clearBit(int bitIndex) throws IOException {
         setBit(bitIndex, false);
         log.info("Bit {} cleared", bitIndex);
+    }
+
+    public byte getState() {
+        return state;
     }
 
     
