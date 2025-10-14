@@ -8,6 +8,18 @@ import org.slf4j.LoggerFactory;
 
 import com.pi4j.io.spi.Spi;
 
+/**
+ * Helper for controlling a 74HC595 shift register over SPI (Pi4J).
+ *
+ * Provides simple operations to write a full byte to the shift register,
+ * set or clear individual output bits, clear the register,
+ * and read the last written state. All SPI communication is performed using
+ * the provided {@link com.pi4j.io.spi.Spi} instance.
+ *
+ * The helper maintains an internal state byte reflecting the last value
+ * written to the device.
+ *
+ */
 public class ShiftRegister74HC595Helper {
 
     private static final Logger log = LoggerFactory.getLogger(ShiftRegister74HC595Helper.class);
