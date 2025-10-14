@@ -22,7 +22,7 @@
 
     # Familiarize yourself with the library’s contribution guidelines.
 
-    # Understand the community guidelines.
+    # Understand the [community guidelines](community-guidelines.md).
 
     # Find out the preferred method of communication (e.g., issues, mailing list, discord).
 
