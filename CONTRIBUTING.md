@@ -1,6 +1,8 @@
 # Contribute to the Pi4Micronaut Library
 
-## Get Familiar with the Library
+## General Contribution Guidelines
+
+### Get Familiar with the Library
 
 * Before making contributions, understand the purpose and functionality of the Pi4Micronaut library.
 
@@ -10,7 +12,7 @@
 
     This file will go over some quick information about our library, but please refer to our documentation webpage for more complete information.
 
-## Set Up Your Development Environment
+### Set Up Your Development Environment
 
 * Fork the library’s repository from the GitHub.
 
@@ -18,7 +20,7 @@
 
 * Follow setup instructions provided in the repository’s README or our online documentation.
 
-## Understand the Contribution Process
+### Understand the Contribution Process
 
 * Familiarize yourself with the library’s contribution guidelines.
 
@@ -26,7 +28,7 @@
 
 * Find out the preferred method of communication (e.g., issues, mailing list, discord).
 
-## Identify a Way to Contribute
+### Identify a Way to Contribute
 
 * Bug fixes: Look for open issues tagged as 'bug' or report new ones.
 
@@ -38,7 +40,7 @@
 
 * Refactoring: Optimize existing code or improve its readability.
 
-## Making Changes
+### Making Changes
 
 * Always create a new branch for your changes.
 
@@ -50,7 +52,7 @@
 
 * Commit frequently with meaningful commit messages.
 
-## Test Your Changes
+### Test Your Changes
 
 * Ensure that all tests pass.
 
@@ -62,11 +64,11 @@
 
 * Note: A test suite will be developed in future to test the components without the use of external hardware
 
-## Signing the Contributor License Agreement
+### Signing the Contributor License Agreement
 
 * While creating a pull request, you’ll be prompted to sign a Contributor License Agreement. Please do so by logging in with your GitHub account.
 
-## Submit a Pull Request (PR)
+### Submit a Pull Request (PR)
 
 * Push your changes to your forked repository. Create a pull request from your branch to the main library’s main branch.
 
@@ -74,19 +76,19 @@
 
 * Link to any related issues or discussions.
 
-## Respond to Feedback
+### Respond to Feedback
 
 * Maintainers or other contributors might provide feedback. Be open to suggestions and make necessary revisions.
 
 * Engage in a constructive dialogue to ensure the quality of the contribution.
 
-## Stay Updated
+### Stay Updated
 
 * Keep your fork synchronized with the main repository to ease future contributions.
 
 * Regularly check for updates or changes in the library’s contribution guidelines.
 
-## Engage with the Community
+### Engage with the Community
 
 * Attend community meetings or join chat groups.
 
@@ -96,20 +98,21 @@
 
 Thanks for considering a contribution to the Pi4Micronaut library! Your involvement helps make the project better for everyone.
 
+## How to Create a New Component
 
-### 3.1. How to Create a New Component
+If it's compatible with a Raspberry Pi then it should work well with Pi4Micronaut. The following steps should encompass in brief how most components are added to the library; further details can be found on our documentation webpage. Start by creating a new issue to suggest changes.
 
-If its compatible with a Raspberry Pi then it should work well with the Pi4Micronaut. The following steps should encompass how most components are added to the library. Start by creating a new Issue to suggest changes.
+## Determine the communication type for the component which you want to use
 
-## Determine the communication type for the component which you want to use. For example, Buzzer works with PWM and LCD1602 works with I2C.
+For example, Buzzer works with PWM and LCD1602 works with I2C. Online documentation for your component will be able to tell you what is best.
 
 ## Set up the circuit
 
 ## Add Component to the Application yml
 
-* The new component will need to be added to the application yml found at components/src/main/resources/application.yml.
+* The new component will need to be added to the application yml found at `components/src/main/resources/application.yml`.
 
-* More information on the application.yml found in Communicating with a Hardware Component
+* More information on the `application.yml` found in Communicating with a Hardware Component
 
 ## Create a Helper
 
@@ -117,17 +120,17 @@ If its compatible with a Raspberry Pi then it should work well with the Pi4Micro
 
 * See the RBG Helper for an example of a Helper.
 
-* All Helpers should be kept here: pi4micronaut-utils\src\main\java\com\opensourcewithslu\(inputdevices or outputdevices)
+* All Helpers should be kept here: `pi4micronaut-utils/src/main/java/com/opensourcewithslu/(inputdevices or outputdevices)`
 
 ## Create a Controller
 
-* Controllers define and handle interactions with a given component. The Controller of a component will have a @Controller("/example") right above the class declaration that acts as the endpoint for requests to the component. Instead of "example", you should name the endpoint something that is identifiable to the component. Each method of the Controller should have a @Get("/exampleEndPoint") above the method declaration. The endpoint for the method should have the same name as the method and any parameters should be included in the endpoint /exampleEndPoint/{parameter1},{parameter2}.
+* Controllers define and handle interactions with a given component. The Controller of a component will have `@Controller("/example")` right above the class declaration that acts as the endpoint for requests to the component. Instead of "example", you should name the endpoint something that is identifiable to the component. Each method of the Controller should have `@Get("/exampleEndPoint")` above the method declaration. The endpoint for the method should have the same name as the method and any parameters should be included in the endpoint `/exampleEndPoint/{parameter1},{parameter2}`.
 
 * See the RGB Controller for an example of a Controller.
 
-* Consult the Micronaut Documentation for more explanation on Controllers.
+* Consult the Micronaut documentation for more explanation on Controllers.
 
-* All Controllers should be kept here: components\src\main\java\com\opensourcewithslu\components\controllers
+* All Controllers should be kept here: `components/src/main/java/com/opensourcewithslu/components/controllers`
 
 ## Thoroughly test
 
@@ -143,4 +146,4 @@ If its compatible with a Raspberry Pi then it should work well with the Pi4Micro
 
 * Make sure to include all the information that the other components. Simply copy/paste an existing components documentation and edit as needed.
 
-* Add the file here: pi4micronaut-utils/src/docs/asciidoc/components under either input or output components.
+* Add the file here: `pi4micronaut-utils/src/docs/asciidoc/components` under either input or output components.
