@@ -1,9 +1,12 @@
 package com.opensourcewithslu.components.controllers;
 
+import java.awt.Event;
+
 import com.opensourcewithslu.inputdevices.IRObstacleAvoidanceHelper;
 import com.pi4j.context.Context;
 import com.pi4j.io.gpio.digital.DigitalInput;
 import com.pi4j.io.gpio.digital.DigitalState;
+
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import jakarta.inject.Inject;
@@ -42,5 +45,16 @@ public class IRObstacleAvoidanceController {
     @Get("/wait/{timeoutMillis}")
     public boolean waitForObstacle(long timeoutMillis) throws InterruptedException {
         return irObstacleAvoidanceHelper.waitForObstacle(timeoutMillis);
+    }
+    // initializing endpoint
+    @Get("/init")
+    public void enable() {
+        irObstacleAvoidanceHelper.addEventListener (event ->{
+            if (irObstacleAvoidanceHelper.isObstacleDetected()){
+                System.out.println("Obstacle Detected");
+            } else {
+                System.out.println("No Obstacle");
+            }
+    });
     }
 }

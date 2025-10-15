@@ -28,7 +28,7 @@ public class IRObstacleAvoidanceHelper {
      * @param digitalInput The Pi4J DigitalInput instance connected to the IR sensor's output pin
      * @throws IllegalArgumentException if digitalInput is null
      */
-    public void  IRObstacleAvoidanceHelper(@Named("ir-obstacle-input") DigitalInput digitalInput) {
+    public  IRObstacleAvoidanceHelper( DigitalInput digitalInput) {
         if (digitalInput == null) {
             String errorMsg = "DigitalInput cannot be null for IR obstacle avoidance module";
             log.error(errorMsg);
@@ -73,11 +73,11 @@ public class IRObstacleAvoidanceHelper {
      * Only one listener can be registered at a time. Calling this method again will replace
      * the previous listener.
      *
-     * @param eventConsumer The callback to execute when state changes
+     * @param function The callback to execute when state changes
      * @throws IllegalArgumentException if eventConsumer is null
      */
-    public void addEventListener(ObstacleEventListener eventConsumer) {
-        if (eventConsumer == null) {
+    public void addEventListener(DigitalStateChangeListener function) {
+        if (function == null) {
             String errorMsg = "Event listener cannot be null";
             log.error(errorMsg);
             throw new IllegalArgumentException(errorMsg);
@@ -89,20 +89,7 @@ public class IRObstacleAvoidanceHelper {
             log.debug("Removed previous event listener");
         }
 
-        // Create new listener
-        listener = (DigitalStateChangeEvent event) -> {
-            boolean newObstacleState = (event.state() == DigitalState.LOW);
-            obstacleDetected = newObstacleState;
-            
-            log.info("Obstacle detection state changed - Obstacle detected: {}, State: {}", newObstacleState, event.state());
-            
-            try {
-                eventConsumer.onObstacleEvent(newObstacleState, event.state());
-            } catch (Exception e) {
-                log.error("Error in user-provided event listener", e);
-            }
-        };
-
+        listener = function;
         digitalInput.addListener(listener);
         log.info("Event listener registered for IR obstacle avoidance module");
     }
@@ -175,18 +162,5 @@ public class IRObstacleAvoidanceHelper {
     }
     }
 
-
-    /**
-     * Functional interface for handling obstacle detection events.
-     */
-    @FunctionalInterface
-    public interface ObstacleEventListener {
-        void onObstacleEvent(boolean obstacleDetected, DigitalState state);
-        /**
-         * Called when the obstacle detection state changes.
-         *
-         * @param obstacleDetected true if an obstacle is detected, false otherwise
-         * @param state The raw digital state (HIGH or LOW)
-         */
-    }}
+}
 
