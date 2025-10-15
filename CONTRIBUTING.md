@@ -8,9 +8,9 @@
 
 * Review the library documentation, any related articles, or tutorials.
 
-    Our documentation can be found online at [oss-slu.github.io/Pi4Micronaut](https://oss-slu.github.io/Pi4Micronaut/). Good information and tutorials on Raspberry Pis and electronic components can be found online from [Sunfounder](https://docs.sunfounder.com/en/latest/), [SparkFun](https://learn.sparkfun.com/), or others.
+Our documentation can be found online at [oss-slu.github.io/Pi4Micronaut](https://oss-slu.github.io/Pi4Micronaut/). Good information and tutorials on Raspberry Pis and electronic components can be found online from [Sunfounder](https://docs.sunfounder.com/en/latest/), [SparkFun](https://learn.sparkfun.com/), or others.
 
-    This file will go over some quick information about our library, but please refer to our documentation webpage for more complete information.
+This file will go over some quick information about our library, but please refer to our documentation webpage for more complete information.
 
 ### Set Up Your Development Environment
 
