@@ -29,12 +29,6 @@ public class ADC0834ConverterHelperTest {
     }
 
     @Test
-    public void testInitializeADC_createsSpiConfig() {
-        verify(mockContext).create(any(SpiConfig.class));
-        log.info("Tested SPI config creation");
-    }
-
-    @Test
     public void testReadValueValidChannel() throws Exception {
         // Mock the transfer(byte[], byte[]) method
         doAnswer(invocation -> {
@@ -48,21 +42,18 @@ public class ADC0834ConverterHelperTest {
 
         int value = adc.readValue(2);
         assertEquals(128, value, "ADC value should be 128 (8-bit)");
-        
     }
 
     @Test
     public void testReadValueInvalidChannelLow() {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> adc.readValue(-1));
         assertEquals("Channel must be between 0 and 3", exception.getMessage());
-        log.info("Tested invalid channel -1, got expected exception");
     }
 
     @Test
     public void testReadValueInvalidChannelHigh() {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> adc.readValue(4));
         assertEquals("Channel must be between 0 and 3", exception.getMessage());
-        log.info("Tested invalid channel 4, got expected exception");
     }
 
     @Test
@@ -79,14 +70,12 @@ public class ADC0834ConverterHelperTest {
         double voltage = adc.readVoltage(1, 3.3);
         // Expected: (128 / 255.0) * 3.3 = 1.654...
         assertEquals(3.3 * (128.0 / 255.0), voltage, 0.001, "Voltage should be correctly calculated (8-bit)");
-        log.info("Tested readVoltage for channel 1, got voltage: {}V", voltage);
     }
 
     @Test
     public void testReadVoltageInvalidReference() {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> adc.readVoltage(0, 0));
         assertEquals("Reference voltage must be positive", exception.getMessage());
-        log.info("Tested invalid reference voltage 0, got expected exception");
     }
 
     @Test
@@ -96,6 +85,5 @@ public class ADC0834ConverterHelperTest {
         
         Exception exception = assertThrows(RuntimeException.class, () -> adc.readValue(0));
         assertTrue(exception.getMessage().contains("SPI"), "Expected SPI-related error");
-        log.info("Tested SPI failure, got exception: {}", exception.getMessage());
     }
 }

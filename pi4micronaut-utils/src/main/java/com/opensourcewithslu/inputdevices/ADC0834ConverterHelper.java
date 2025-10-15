@@ -1,15 +1,11 @@
 package com.opensourcewithslu.inputdevices;
 
-import com.pi4j.context.Context;
 import com.pi4j.io.spi.Spi;
-import com.pi4j.io.spi.SpiConfig;
-import com.pi4j.io.spi.SpiConfigBuilder;
-import com.pi4j.io.spi.SpiMode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * The ADCConverterHelper class interfaces with the ADC0834 analog-to-digital converter using SPI.
+ * The ADC0834ConverterHelper class interfaces with the ADC0834 analog-to-digital converter using SPI.
  * It provides methods to read digital values and voltages from the specified channel.
  */
 public class ADC0834ConverterHelper {
@@ -17,32 +13,12 @@ public class ADC0834ConverterHelper {
     private final Spi spi;
 
     /**
-     * Constructor for ADCConverterHelper.
-     * @param pi4j A Pi4J Context object.
-     * @param spiBus The SPI bus number (e.g., 0 for SPI0).
-     * @param chipSelect The chip select line (e.g., 0 for CE0).
+     * Constructor for ADC0834ConverterHelper.
+     * @param spi The SPI interface.
      */
     public ADC0834ConverterHelper(Spi spi) {
         this.spi = spi;
-        log.info("ADCConverterHelper initialized on SPI");
-    }
-
-    /**
-     * Initializes the SPI interface for ADC0834.
-     * @param pi4j A Pi4J Context object.
-     * @param spiBus The SPI bus number.
-     * @param chipSelect The chip select line.
-     * @return Configured Spi instance.
-     */
-    private Spi initializeADC(Context pi4j, int spiBus, int chipSelect) {
-        SpiConfig config = SpiConfigBuilder.newInstance(pi4j)
-                .id("adc0834-spi")
-                .address(chipSelect)
-                .bus(spiBus)
-                .mode(SpiMode.MODE_0) // ADC0834 uses CPOL=0, CPHA=0
-                .baud(1000000) // 1MHz, within ADC0834 spec
-                .build();
-        return pi4j.create(config);
+        log.info("ADC0834ConverterHelper initialized with SPI");
     }
 
     /**
@@ -92,4 +68,3 @@ public class ADC0834ConverterHelper {
         return voltage;
     }
 }
-
