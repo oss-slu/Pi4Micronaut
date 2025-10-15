@@ -126,7 +126,7 @@ Contributors should thoroughly test their integrations. Software unit tests shou
 
 Hardware testing should also be done. When submitting a pull request, make sure to include how you tested the component, any circuits that you may have used, and how to run any examples you may have created. Instructions for how to conduct hardware testing, including how to send the files over to the Raspberry Pi device, are on our online documentation.
 
-It is important that reviewers are able to replicated your work in order to properly test the implementation.
+It is important that reviewers are able to replicate your work in order to properly test the implementation.
 
 ### Create documentation for the component
 
