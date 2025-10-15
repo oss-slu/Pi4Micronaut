@@ -16,7 +16,7 @@ import org.slf4j.LoggerFactory;
  */
 @Primary
 public class IRObstacleAvoidanceHelper {
-    private static final Logger log = LoggerFactory.getLogger(IRObstacleAvoidance.class);
+    private static final Logger log = LoggerFactory.getLogger(IRObstacleAvoidanceHelper.class);
     
     private final DigitalInput digitalInput;
     private DigitalStateChangeListener listener;
@@ -28,7 +28,7 @@ public class IRObstacleAvoidanceHelper {
      * @param digitalInput The Pi4J DigitalInput instance connected to the IR sensor's output pin
      * @throws IllegalArgumentException if digitalInput is null
      */
-    public IRObstacleAvoidance(@Named("ir-obstacle-input") DigitalInput digitalInput) {
+    public void  IRObstacleAvoidanceHelper(@Named("ir-obstacle-input") DigitalInput digitalInput) {
         if (digitalInput == null) {
             String errorMsg = "DigitalInput cannot be null for IR obstacle avoidance module";
             log.error(errorMsg);
