@@ -10,8 +10,8 @@ pi4j:
       address: 8            # <3>
       baud: 500000          # <4>
       reset-pin: 25         # <5>
-    thermistor-adc: # Configuration for Thermistor ADC
-      name: Thermistor ADC  # <1>
+    adc0834: # Configuration for ADC0834
+      name: ADC0834  # <1>
       address: 17            # <2> # SPI channel 0
       baud: 1000000         # <3> # 1 MHz SPI clock speed
       mode: SPI_MODE_0
