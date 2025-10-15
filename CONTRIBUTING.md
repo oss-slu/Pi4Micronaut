@@ -100,50 +100,44 @@ Thanks for considering a contribution to the Pi4Micronaut library! Your involvem
 
 ## How to Create a New Component
 
-If it's compatible with a Raspberry Pi then it should work well with Pi4Micronaut. The following steps should encompass in brief how most components are added to the library; further details can be found on our documentation webpage. Start by creating a new issue to suggest changes.
+If it's compatible with a Raspberry Pi, then it should work well with Pi4Micronaut. The following steps should encompass in brief how most components are added to the library; further details can be found on our documentation webpage. Start by creating a new issue to suggest changes.
 
-## Determine the communication type for the component which you want to use
+Support for a hardware component consists of five parts:
 
-For example, Buzzer works with PWM and LCD1602 works with I2C. Online documentation for your component will be able to tell you what is best.
+1. **Helper class:** A Helper is a class that interfaces with the hardware to control it. These classes form the core of our library, and they are what developers will import and call to build their apps.
+2. **Application YAML:** Developers using our library will create an `application.yml` file to define necessary configurations for the hardware they are using.
+3. **Controller class:** A Controller is a special class type in the Micronaut framework, which developers will build to create APIs using our library. We build controllers in this repository as demonstrations for how to interface with our helper classes. These are kept in a separate top-level folder as the helpers, as the controllers are for demonstration purposes, whereas the helpers are the importable portion of our library.
+4. **Unit tests:** We write unit tests for our helper classes to ensure they work as expected.
+5. **Documentation:** We write documentation files for each component, which are compiled and hosted on our online documentation webpage.
 
-## Set up the circuit
+### Create a Helper
 
-## Add Component to the Application yml
+A helper communicates diretly with the hardware component and defines methods that a controller can call to interact with the component. For example, to change the color of an RGB LED, the controller will receive the API request to change it. The controller will then call the change color method in the helper. The helper then takes all the actions needed to change the color of the LED.
 
-* The new component will need to be added to the application yml found at `components/src/main/resources/application.yml`.
+All helpers should be kept here: `pi4micronaut-utils/src/main/java/com/opensourcewithslu/(inputdevices or outputdevices)`
 
-* More information on the `application.yml` found in Communicating with a Hardware Component
+### Add Component to the Application YAML
 
-## Create a Helper
+To create a controller, the new component will need to be added to the application YAML file found at `components/src/main/resources/application.yml`. More information on the `application.yml` found in our online documentation.
 
-* A Helper is what the Controller calls to do an action. For example, to change the color of an RGB LED the controller will take the request to change it. The Controller will then call the change color method in the helper. The helper then takes all the actions needed to change the color of the LED.
+For this, you will need to know the communicatino type for the component. For example, Buzzer works with PWM and LCD1602 works with I2C. Online documentation for your component will be able to tell you what is best. You will also need an understanding of what the circuit will look like; online resources can similarly be useful here.
 
-* See the RBG Helper for an example of a Helper.
+### Create a Controller
 
-* All Helpers should be kept here: `pi4micronaut-utils/src/main/java/com/opensourcewithslu/(inputdevices or outputdevices)`
+Controllers define and handle interactions with a given component. We include controllers in this repository to provide examples of how developers can build APIs using our helper classes. The controller of a component will have `@Controller("/example")` right above the class declaration that acts as the endpoint for requests to the component. Instead of "example", you should name the endpoint something that is identifiable to the component. Each method of the controller should have `@Get("/exampleEndPoint")` above the method declaration. The endpoint for the method should have the same name as the method and any parameters should be included in the endpoint `/exampleEndPoint/{parameter1},{parameter2}`.
 
-## Create a Controller
+All controllers should be kept here: `components/src/main/java/com/opensourcewithslu/components/controllers`. Consult the [Micronaut documentation](https://docs.micronaut.io/) for more explanation on controllers.
 
-* Controllers define and handle interactions with a given component. The Controller of a component will have `@Controller("/example")` right above the class declaration that acts as the endpoint for requests to the component. Instead of "example", you should name the endpoint something that is identifiable to the component. Each method of the Controller should have `@Get("/exampleEndPoint")` above the method declaration. The endpoint for the method should have the same name as the method and any parameters should be included in the endpoint `/exampleEndPoint/{parameter1},{parameter2}`.
+### Thoroughly test
 
-* See the RGB Controller for an example of a Controller.
+Contributors should thoroughly test their integrations. Software unit tests should be written in `pi4micronaut-utils/src/test/java/com/opensourcewithslu/(inputdevices or outputdevices)`.
 
-* Consult the Micronaut documentation for more explanation on Controllers.
+Hardware testing should also be done. When submitting a pull request, make sure to include how you tested the component, any circuits that you may have used, and how to run any examples you may have created.
 
-* All Controllers should be kept here: `components/src/main/java/com/opensourcewithslu/components/controllers`
+It is important that reviewers are able to replicated your work in order to properly test the implementation.
 
-## Thoroughly test
+### Create documentation for the component
 
-* Contributors should thoroughly test their integrations
+Create an .adoc file with the component name as the file name. Make sure to include all the information that the other components. Simply copy/paste an existing components documentation and edit as needed. Add the file here: `pi4micronaut-utils/src/docs/asciidoc/components/(inputComponents or outputComponents)`.
 
-* When submitting a pull request, make sure to include how you tested the component, any circuits that you may have used, and how to run any examples you may have created.
-
-* It is important that reviewers are able to replicated your work in order to properly test the implementation.
-
-## Create documentation for the component
-
-* Create an .adoc file with the component name as the file name.
-
-* Make sure to include all the information that the other components. Simply copy/paste an existing components documentation and edit as needed.
-
-* Add the file here: `pi4micronaut-utils/src/docs/asciidoc/components` under either input or output components.
+Also ensure that the classes you have written have appropriate Javadoc comments.
