@@ -108,7 +108,7 @@ All helpers should be kept here: `pi4micronaut-utils/src/main/java/com/opensourc
 
 ### Add Component to the Application YAML
 
-Developers using our library will create an `application.yml` file to define necessary configurations for the hardware they are using.To create a controller, the new component will need to be added to the application YAML file found at `components/src/main/resources/application.yml`. More information on the `application.yml` can be found in our online documentation.
+Developers using our library will create an `application.yml` file to define necessary configurations for the hardware they are using. To create a controller, the new component will need to be added to the application YAML file found at `components/src/main/resources/application.yml`. More information on the `application.yml` can be found in our online documentation.
 
 For this, you will need to know the communication type for the component. For example, Buzzer works with PWM and LCD1602 works with I2C. Online documentation for your component will be able to tell you what is best. You will also need an understanding of what the circuit will look like; online resources can similarly be useful here.
 
