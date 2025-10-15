@@ -102,7 +102,7 @@ If it's compatible with a Raspberry Pi, then it should work well with Pi4Microna
 
 ### Create a Helper
 
-A helper communicates directly with the hardware component. These classes form the core of our library, and they define methods for  developers import into and call in their controllers. For example, to change the color of an RGB LED, the controller will receive the API request to change it. The controller will then call the change color method in the helper. The helper then takes all the actions needed to change the color of the LED.
+A helper communicates directly with the hardware component. These classes form the core of our library, and they define methods for developers to import into and call in their controllers. For example, to change the color of an RGB LED, the controller will receive the API request to change it. The controller will then call the change color method in the helper. The helper then takes all the actions needed to change the color of the LED.
 
 All helpers should be kept here: `pi4micronaut-utils/src/main/java/com/opensourcewithslu/(inputdevices or outputdevices)`
 
