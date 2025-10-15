@@ -26,8 +26,6 @@ This file will go over some quick information about our library, but please refe
 
 * Understand the [community guidelines](community-guidelines.md).
 
-* Find out the preferred method of communication (e.g., issues, mailing list, discord).
-
 ### Identify a Way to Contribute
 
 * Bug fixes: Look for open issues tagged as 'bug' or report new ones.
@@ -90,7 +88,7 @@ This file will go over some quick information about our library, but please refe
 
 ### Engage with the Community
 
-* Attend community meetings or join chat groups.
+* Learn more about Open Source with SLU on the [website](https://oss-slu.github.io/), and join the `#project_pi4micronaut` channel in [the OSS Slack community](https://join.slack.com/t/oswslu/shared_invite/zt-24f0qhjbo-NkSfQ4LOg5wXxBdxP4vzfA).
 
 * Help other contributors or users when you can.
 
