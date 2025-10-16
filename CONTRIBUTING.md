@@ -1,142 +1,135 @@
-### Contribute to the Pi4Micronaut Library
+# Contribute to the Pi4Micronaut Library
 
-## Get Familiar with the Library
+## General Contribution Guidelines
 
-    # Before making contributions,understand the purpose and functionality of the Pi4Micronaut library.
+### Get Familiar with the Library
 
-    # Review the library documentation, any related articles, or tutorials.
+* Before making contributions, understand the purpose and functionality of the Pi4Micronaut library.
 
-## Set Up Your Development Environment
+* Review the library documentation, any related articles, or tutorials.
 
-    # Fork the library’s repository from the GitHub.
+Our documentation can be found online at [oss-slu.github.io/Pi4Micronaut](https://oss-slu.github.io/Pi4Micronaut/). Good information and tutorials on Raspberry Pis and electronic components can be found online from [Sunfounder](https://docs.sunfounder.com/en/latest/), [SparkFun](https://learn.sparkfun.com/), or others.
 
-    # Clone your fork locally.
+This file will go over some quick information about our library, but please refer to our documentation webpage for more complete information.
 
-    # Follow setup instructions provided in the repository’s README or ADOC files.
+### Set Up Your Development Environment
 
-## Understand the Contribution Process
+* Fork the library’s repository from the GitHub.
 
-    # Familiarize yourself with the library’s contribution guidelines.
+* Clone your fork locally.
 
-    # Understand the community guidelines.
+* Follow setup instructions provided in the repository’s README or our online documentation.
 
-    # Find out the preferred method of communication (e.g., issues, mailing list, discord).
+### Understand the Contribution Process
 
-## Identify a Way to Contribute
+* Familiarize yourself with the library’s contribution guidelines.
 
-    # Bug fixes: Look for open issues tagged as 'bug' or report new ones.
+* Understand the [community guidelines](community-guidelines.md).
 
-    # New features: Discuss new ideas before implementing, to gauge interest and get guidance.
+### Identify a Way to Contribute
 
-    # Documentation: Contribute to the README, ADOC or other documentation.
+* Bug fixes: Look for open issues tagged as 'bug' or report new ones.
 
-    # Testing: Improve or expand the test suite.
+* New features: Discuss new ideas before implementing, to gauge interest and get guidance.
 
-    # Refactoring: Optimize existing code or improve its readability.
+* Documentation: Contribute to the README, ADOC or other documentation.
 
-## Making Changes
+* Testing: Improve or expand the test suite.
 
-    # Always create a new branch for your changes.
+* Refactoring: Optimize existing code or improve its readability.
 
-    # Follow the library’s coding style and standards.
+### Making Changes
 
-    # Write clean, well-documented code.
+* Always create a new branch for your changes.
 
-    # Add or update tests for your changes, if necessary.
+* Follow the library’s coding style and standards.
 
-    # Commit frequently with meaningful commit messages.
+* Write clean, well-documented code.
 
-## Test Your Changes
+* Add or update tests for your changes, if necessary.
 
-    # Ensure that all tests pass.
+* Commit frequently with meaningful commit messages.
 
-    # Manually test your changes for unforeseen issues.
+### Test Your Changes
 
-    # Ensure your changes do not introduce regressions.
+* Ensure that all tests pass.
 
-    # Use your own hardware to test the new component integration.
+* Manually test your changes for unforeseen issues.
 
-    # Note: A test suite will be developed in future to test the components without the use of external hardware
+* Ensure your changes do not introduce regressions.
 
-## Signing the Contributor License Agreement
+* Use your own hardware to test the new component integration.
 
-    # While creating a pull request, you’ll be prompted to sign a Contributor License Agreement. Please do so by logging in with your GitHub account.
+* Note: A test suite will be developed in future to test the components without the use of external hardware
 
-## Submit a Pull Request (PR)
+### Signing the Contributor License Agreement
 
-    # Push your changes to your forked repository. Create a pull request from your branch to the main library’s main branch.
+* While creating a pull request, you’ll be prompted to sign a Contributor License Agreement. Please do so by logging in with your GitHub account.
 
-    # In the PR description, explain your changes, motivations, and any decisions made.
+### Submit a Pull Request (PR)
 
-    # Link to any related issues or discussions.
+* Push your changes to your forked repository. Create a pull request from your branch to the main library’s main branch.
 
-## Respond to Feedback
+* In the PR description, explain your changes, motivations, and any decisions made.
 
-    # Maintainers or other contributors might provide feedback. Be open to suggestions and make necessary revisions.
+* Link to any related issues or discussions.
 
-    # Engage in a constructive dialogue to ensure the quality of the contribution.
+### Respond to Feedback
 
-## Stay Updated
+* Maintainers or other contributors might provide feedback. Be open to suggestions and make necessary revisions.
 
-    # Keep your fork synchronized with the main repository to ease future contributions.
+* Engage in a constructive dialogue to ensure the quality of the contribution.
 
-    # Regularly check for updates or changes in the library’s contribution guidelines.
+### Stay Updated
 
-## Engage with the Community
+* Keep your fork synchronized with the main repository to ease future contributions.
 
-    # Attend community meetings or join chat groups.
+* Regularly check for updates or changes in the library’s contribution guidelines.
 
-    # Help other contributors or users when you can.
+### Engage with the Community
 
-    # Note: While your contribution is highly valued, there’s no guarantee that all pull requests will be merged. It depends on the library’s direction, quality of the contribution, and decisions of the maintainers.
+* Learn more about Open Source with SLU on the [website](https://oss-slu.github.io/), and join the `#project_pi4micronaut` channel in [the OSS Slack community](https://join.slack.com/t/oswslu/shared_invite/zt-24f0qhjbo-NkSfQ4LOg5wXxBdxP4vzfA).
+
+* Help other contributors or users when you can.
+
+* Note: While your contribution is highly valued, there’s no guarantee that all pull requests will be merged. It depends on the library’s direction, quality of the contribution, and decisions of the maintainers.
 
 Thanks for considering a contribution to the Pi4Micronaut library! Your involvement helps make the project better for everyone.
 
+## How to Create a New Component
 
-### 3.1. How to Create a New Component
+If it's compatible with a Raspberry Pi, then it should work well with Pi4Micronaut. The following steps should encompass in brief how most components are added to the library; further details can be found on our documentation webpage. Start by creating a new issue to suggest changes.
 
-If its compatible with a Raspberry Pi then it should work well with the Pi4Micronaut. The following steps should encompass how most components are added to the library. Start by creating a new Issue to suggest changes.
+### Create a Helper
 
-## Determine the communication type for the component which you want to use. For example, Buzzer works with PWM and LCD1602 works with I2C.
+A helper communicates directly with the hardware component. These classes form the core of our library, and they define methods for developers to import into and call in their controllers. For example, to change the color of an RGB LED, the controller will receive the API request to change it. The controller will then call the change color method in the helper. The helper then takes all the actions needed to change the color of the LED.
 
-## Setup the circuit.
+All helpers should be kept here: `pi4micronaut-utils/src/main/java/com/opensourcewithslu/(inputdevices or outputdevices)`
 
-## Add Component to the Application yml
+### Add Component to the Application YAML
 
-    # The new component will need to be added to the application yml found at components/src/main/resources/application.yml.
+Developers using our library will create an `application.yml` file to define necessary configurations for the hardware they are using. To create a controller, the new component will need to be added to the application YAML file found at `components/src/main/resources/application.yml`. More information on the `application.yml` can be found in our online documentation.
 
-    # More information on the application.yml found in Communicating with a Hardware Component
+For this, you will need to know the communication type for the component. For example, Buzzer works with PWM and LCD1602 works with I2C. Online documentation for your component will be able to tell you what is best. You will also need an understanding of what the circuit will look like; online resources can similarly be useful here.
 
-## Create a Helper:
+### Create a Controller
 
-    # A Helper is what the Controller calls to do an action. For example, to change the color of an RGB LED the controller will take the request to change it. The Controller will then call the change color method in the helper. The helper then takes all the actions needed to change the color of the LED.
+A Controller is a special class type in the Micronaut framework, which developers will build to create APIs using our library. We build controllers in this repository as demonstrations for how to interface with our helper classes. These are kept in a separate top-level folder as the helpers, as the controllers are for demonstration purposes, whereas the helpers are the importable portion of our library.
 
-    # See the RBG Helper for an example of a Helper.
+The controller of a component will have `@Controller("/example")` right above the class declaration that acts as the endpoint for requests to the component. Instead of "example", you should name the endpoint something that is identifiable to the component. Each method of the controller should have `@Get("/exampleEndPoint")` above the method declaration. The endpoint for the method should have the same name as the method and any parameters should be included in the endpoint `/exampleEndPoint/{parameter1},{parameter2}`.
 
-    # All Helpers should be kept here: pi4micronaut-utils\src\main\java\com\opensourcewithslu\(inputdevices or outputdevices)
+All controllers should be kept here: `components/src/main/java/com/opensourcewithslu/components/controllers`. Consult the [Micronaut documentation](https://docs.micronaut.io/) for more explanation on controllers.
 
-## Create a Controller:
+### Thoroughly test
 
-    # Controllers define and handle interactions with a given component. The Controller of a component will have a @Controller("/example") right above the class declaration that acts as the endpoint for requests to the component. Instead of "example", you should name the endpoint something that is identifiable to the component. Each method of the Controller should have a @Get("/exampleEndPoint") above the method declaration. The endpoint for the method should have the same name as the method and any parameters should be included in the endpoint /exampleEndPoint/{parameter1},{parameter2}.
+Contributors should thoroughly test their integrations. Software unit tests should be written in `pi4micronaut-utils/src/test/java/com/opensourcewithslu/(inputdevices or outputdevices)`.
 
-    # See the RGB Controller for an example of a Controller.
+Hardware testing should also be done. When submitting a pull request, make sure to include how you tested the component, any circuits that you may have used, and how to run any examples you may have created. Instructions for how to conduct hardware testing, including how to send the files over to the Raspberry Pi device, are on our online documentation.
 
-    # Consult the Micronaut Documentation for more explanation on Controllers.
+It is important that reviewers are able to replicate your work in order to properly test the implementation.
 
-    # All Controllers should be kept here: components\src\main\java\com\opensourcewithslu\components\controllers
+### Create documentation for the component
 
-## Thoroughly test:
+We write documentation files for each component, which are compiled and hosted on our online documentation webpage. Create an .adoc file with the component name as the file name. Make sure to include all the information that the other components include. Simply copy/paste an existing component's documentation and edit as needed. Add the file here: `pi4micronaut-utils/src/docs/asciidoc/components/(inputComponents or outputComponents)`.
 
-    # Contributors should thoroughly test their integrations
-
-    # When submitting a pull request, make sure to include how you tested the component, any circuits that you may have used, and how to run any examples you may have created.
-
-    # It is important that reviewers are able to replicated your work in order to properly test the implementation.
-
-## Create documentation for the component:
-
-    # Create an .adoc file with the component name as the file name.
-
-    # Make sure to include all the information that the other components. Simply copy/paste an existing components documentation and edit as needed.
-
-    # Add the file here: pi4micronaut-utils/src/docs/asciidoc/components under either input or output components.
+Also ensure that the classes you have written have appropriate Javadoc comments.
