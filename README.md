@@ -10,17 +10,19 @@ The existence of Pi4Micronaut is justified by the need for a robust, scalable, a
 
 ### Information
 
-- **Source Code:** <https://github.com/oss-slu/Pi4Micronaut/> 
+- **Source Code:** <https://github.com/oss-slu/Pi4Micronaut/>
 - **Client** Jeff Brown - Unity Foundation
 - **Current Tech Lead:** [Leandru Martin](https://github.com/leandrumartin)
 - **Developers:**
-    - [Yenkatarajalaxmimanohar Meda](https://github.com/yrlmanoharreddy) (prior tech lead, alumni)
+    - [Joey Heitzler](https://github.com/j-heitz) (capstone)
+    - [Thomas Pautler](https://github.com/ThomasPautler952194) (capstone)
+    - [Yenkatarajalaxmimanohar Meda](https://github.com/yrlmanoharreddy) (alumni, prior tech lead)
     - [Ava Enke](https://github.com/avaenk) (alumni)
     - [Seyun Jeong](https://github.com/Ed0827) (alumni)
     - [Ralph Tan](https://github.com/RalphTan37) (alumni)
     - [Thomas Macas](https://github.com/tmacas) (alumni)
     - [Leandru Martin](https://github.com/leandrumartin) (alumni)
-    - [Ruthvik Mannem](https://github.com/ruthvikm) (prior tech lead, alumni)
+    - [Ruthvik Mannem](https://github.com/ruthvikm) (alumni, prior tech lead)
     - [Adrian Swindle](https://github.com/SwindleA) (alumni)
     - [Alex Delgado](https://github.com/adelgadoj3) (alumni)
     - [Joe Folen](https://github.com/joefol) (alumni)
