@@ -4,7 +4,7 @@
 
 ## PR Checklist
 
-- [ ] Closes: #xxx
+- [ ] Closes #xxx
 - [ ] Tests pass
 - [ ] Any related documentation has been updated, if necessary
 
