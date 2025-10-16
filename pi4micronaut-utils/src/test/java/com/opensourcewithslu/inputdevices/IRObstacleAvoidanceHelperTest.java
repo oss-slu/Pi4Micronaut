@@ -2,6 +2,7 @@ package com.opensourcewithslu.inputdevices;
 
 import com.pi4j.io.gpio.digital.DigitalInput;
 import com.pi4j.io.gpio.digital.DigitalState;
+import com.pi4j.io.gpio.digital.DigitalStateChangeListener;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 
@@ -17,6 +18,8 @@ public class IRObstacleAvoidanceHelperTest {
     @BeforeEach
     void setUp() {
         mockDigitalInput = mock(DigitalInput.class);
+        when(mockDigitalInput.id()).thenReturn("GPIO_17");
+        when(mockDigitalInput.state()).thenReturn(DigitalState.HIGH);
         irObstacleAvoidanceHelper = new IRObstacleAvoidanceHelper(mockDigitalInput);
     }
 
@@ -67,9 +70,7 @@ public class IRObstacleAvoidanceHelperTest {
 
     @Test
     void testAddEventListener_withValidListener() {
-        IRObstacleAvoidanceHelper.ObstacleEventListener mockListener = mock(
-                IRObstacleAvoidanceHelper.ObstacleEventListener.class
-        );
+        DigitalStateChangeListener mockListener = mock(DigitalStateChangeListener.class);
         
         irObstacleAvoidanceHelper.addEventListener(mockListener);
         verify(mockDigitalInput).addListener(any());
@@ -77,9 +78,7 @@ public class IRObstacleAvoidanceHelperTest {
 
     @Test
     void testRemoveEventListener_successful() {
-        IRObstacleAvoidanceHelper.ObstacleEventListener mockListener = mock(
-                IRObstacleAvoidanceHelper.ObstacleEventListener.class
-        );
+        DigitalStateChangeListener mockListener = mock(DigitalStateChangeListener.class);
         irObstacleAvoidanceHelper.addEventListener(mockListener);
         
         irObstacleAvoidanceHelper.removeEventListener();
