@@ -35,64 +35,39 @@ include::contribute/newComponent.adoc[]
 
 == Components
 
+// Communication with Hardware
 include::components/commun_WithHardware.adoc[]
-
 include::components/commun_WithHardware/digitalInput.adoc[]
-
 include::components/commun_WithHardware/digitalOutput.adoc[]
-
 include::components/commun_WithHardware/i2c.adoc[]
-
 include::components/commun_WithHardware/multipinConfig.adoc[]
-
 include::components/commun_WithHardware/pwm.adoc[]
-
 include::components/commun_WithHardware/spi.adoc[]
 
-
+// Input Components
 include::components/inputComponents.adoc[]
-
+include::components/inputComponents/microSwitch.adoc[]
+include::components/inputComponents/photoresistorSensor.adoc[]
+include::components/inputComponents/pirSensor.adoc[]
 include::components/inputComponents/pushButton.adoc[]
-
-include::components/inputComponents/slideSwitch.adoc[]
-
-include::components/inputComponents/rotaryEncoder.adoc[]
-
+include::components/inputComponents/reedSwitch.adoc[]
 include::components/inputComponents/rfidScanner.adoc[]
-
+include::components/inputComponents/rotaryEncoder.adoc[]
+include::components/inputComponents/slideSwitch.adoc[]
+include::components/inputComponents/speedSensor.adoc[]
+include::components/inputComponents/thermistor.adoc[]
+include::components/inputComponents/tiltSwitch.adoc[]
+include::components/inputComponents/touchSwitch.adoc[]
 include::components/inputComponents/ultraSonicSensor.adoc[]
 
-include::components/inputComponents/touchSwitch.adoc[]
-
-include::components/inputComponents/pirSensor.adoc[]
-
-include::components/inputComponents/photoresistorSensor.adoc[]
-
-include::components/inputComponents/tiltSwitch.adoc[]
-
-include::components/inputComponents/microSwitch.adoc[]
-
-include::components/inputComponents/thermistor.adoc[]
-
-include::components/inputComponents/speedSensor.adoc[]
-
-
+// Output Components
 include::components/outputComponents.adoc[]
-
-include::components/outputComponents/led.adoc[]
-
-include::components/outputComponents/rgbLed.adoc[]
-
-include::components/outputComponents/lcd1602.adoc[]
-
-include::components/outputComponents/passivebuzzer.adoc[]
-
 include::components/outputComponents/activebuzzer.adoc[]
-
-include::components/outputComponents/servomotor.adoc[]
-
 include::components/outputComponents/fan.adoc[]
-
 include::components/outputComponents/fourDigitSevenSegment.adoc[]
-
+include::components/outputComponents/lcd1602.adoc[]
+include::components/outputComponents/led.adoc[]
 include::components/outputComponents/motor.adoc[]
+include::components/outputComponents/passivebuzzer.adoc[]
+include::components/outputComponents/rgbLed.adoc[]
+include::components/outputComponents/servomotor.adoc[]
