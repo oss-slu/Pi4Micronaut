@@ -53,7 +53,7 @@ public class MicroSwitchHelperTests {
         DigitalStateChangeListener dummyListener = mock(DigitalStateChangeListener.class);
 
 
-        MicroSwitchHelper.addEventListener(dummyListener);
+        microSwitchHelper.addEventListener(dummyListener);
         verify(mockInput).addListener(dummyListener);
     }
 
