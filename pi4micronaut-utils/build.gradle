@@ -1,13 +1,16 @@
 plugins {
     id("com.github.johnrengelman.shadow") version "7.1.2"
-    id("io.micronaut.library") version "3.7.3"
+//    id("io.micronaut.library") version "3.7.3"
+    id("io.micronaut.application") version "4.4.4"
+    id("io.micronaut.aot") version "4.4.4"
     id 'maven-publish'
     id 'signing'
     id 'org.asciidoctor.jvm.convert' version '4.0.2'
+    id 'java-library'
 }
 
 group = 'io.github.oss-slu'
-version = 'v1.1'
+version = 'v1.2'
 
 apply plugin: 'maven-publish'
 apply plugin: 'signing'
@@ -17,17 +20,37 @@ repositories {
 }
 
 dependencies {
-    annotationProcessor("io.micronaut:micronaut-validation")
-    implementation("io.micronaut:micronaut-http-client")
+    annotationProcessor("io.micronaut:micronaut-http-validation")
+    annotationProcessor("io.micronaut.serde:micronaut-serde-processor")
+    implementation("io.micronaut.serde:micronaut-serde-jackson")
+    compileOnly("io.micronaut:micronaut-http-client")
+    runtimeOnly("ch.qos.logback:logback-classic")
+    testImplementation("io.micronaut:micronaut-http-client")
+    implementation("io.micronaut:micronaut-jackson-databind")
+//    annotationProcessor("io.micronaut:micronaut-validation")
+//    implementation("io.micronaut:micronaut-http-client")
     implementation("jakarta.annotation:jakarta.annotation-api")
     runtimeOnly("ch.qos.logback:logback-classic")
-    implementation("io.micronaut:micronaut-jackson-databind")
-    implementation("io.micronaut:micronaut-validation")
+//    implementation("io.micronaut:micronaut-jackson-databind")
+//    implementation("io.micronaut:micronaut-validation")
+    implementation 'org.fusesource.jansi:jansi:2.4.0'
     implementation files("libs/crowpi.jar", "libs/components.jar")
+    runtimeOnly "org.yaml:snakeyaml:2.0"
     api 'com.pi4j:pi4j-core:2.4.0'
     api 'com.pi4j:pi4j-plugin-raspberrypi:2.4.0'
     api 'com.pi4j:pi4j-plugin-pigpio:2.4.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.5.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    testImplementation("org.mockito:mockito-core:5.+")
+    testImplementation(platform("org.junit:junit-bom:5.11.0"))
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+    testRuntimeOnly("org.junit.vintage:junit-vintage-engine")
 
+}
+
+application {
+    mainClass = "com.opensourcewithslu.Application"
 }
 
 java {
@@ -93,7 +116,7 @@ publishing {
         mavenJava(MavenPublication) {
             groupId = 'io.github.oss-slu'
             artifactId = 'pi4micronaut-utils'
-            version = 'v1.1'
+            version = 'v1.2'
             from components.java
 
             artifact sourcesJar
@@ -113,6 +136,30 @@ publishing {
                 }
 
                 developers {
+                    developer {
+                        id = 'yrlmanoharreddy'
+                        name = 'Yenkatarajalaxmimanohar'
+                    }
+                    developer {
+                        id = 'avaenk'
+                        name = 'Ava Enke'
+                    }
+                    developer {
+                        id = 'Ed0827'
+                        name = 'Seyun Jeong'
+                    }
+                    developer {
+                        id = 'RalphTan37'
+                        name = 'Ralph Tan'
+                    }
+                    developer {
+                        id = 'tmacas'
+                        name = 'Thomas Macas'
+                    }
+                    developer {
+                        id = 'leandrumartin'
+                        name = 'Leandru Martin'
+                    }
                     developer {
                         id = 'ruthvikm'
                         name = 'Ruthvik Mannem'
@@ -134,19 +181,19 @@ publishing {
                         name = 'John Yanev'
                     }
                     developer{
-                        id = 'MurrayG'
+                        id = 'GreihMurray'
                         name = 'Greih Murray'
                     }
                     developer{
-                        id = 'TraisonD'
+                        id = 'traison-diedrich'
                         name = 'Traison Diedrich'
                     }
                     developer{
-                        id = 'AustinH'
+                        id = 'austinjhoward'
                         name = 'Austin Howard'
                     }
                     developer{
-                        id = 'SinuoL'
+                        id = 'liusinuo2000'
                         name = 'Sinuo Liu'
                     }
 
@@ -164,6 +211,14 @@ publishing {
     signing {
         useInMemoryPgpKeys(System.getenv('GPG_KEY'), System.getenv('GPG_PASSWORD'))
         sign publishing.publications.mavenJava
+    }
+
+    test{
+        useJUnitPlatform()
+        testLogging {
+            events "passed", "skipped", "failed"
+        }
+
     }
 }
 

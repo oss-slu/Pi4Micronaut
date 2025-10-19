@@ -1,0 +1,128 @@
+:imagesdir: img/
+
+ifndef::rootpath[]
+:rootpath: ../../
+endif::rootpath[]
+
+ifdef::rootpath[]
+:imagesdir: {rootpath}{imagesdir}
+endif::rootpath[]
+
+==== Motor
+
+[.text-right]
+https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/outputComponents/motor.adoc[Improve this doc]
+
+===== Overview
+
+This section provides details of the DC motor, including its components and assembly instructions.
+
+===== Components
+
+* 1 x RaspberryPi
+* 1 x Breadboard
+* 1 x T-Extension Board
+* 1 x DC Motor
+* 10 x Jumper wires
+* 1 x L293D Motor Controller IC 1
+* 1 x Power supply module
+* Raspberry Pi power source (appropriate voltage, typically 3.3V)
+* Motor power source (for example, a 9V battery and buckle connector)
+
+===== Assembly Instructions
+
+* Connect the ground (GND) pin of the Raspberry Pi to the negative ground rail on the breadboard.
+* Place the L293D Motor Controller on the breadboard.
+* Connect a jumper wire from GND pin 5 of the L293D to the negative ground rail of the breadboard.
+* Connect a jumper wire from the Vcc1 pin (pin 16) of the L293D to the positive rail of the breadboard.
+* Connect a jumper wire from the Vcc2 pin (pin 8) of the L293D to the other positive rail of the breadboard.
+* Connect a jumper wire from the pin GPIO17 (BCM pin 17) on the Raspberry Pi to the 2A pin (pin 7) on the L293D.
+* Connect a jumper wire from the pin GPIO27 (BCM pin 27) on the Raspberry Pi to the 1A pin (pin 2) on the L293D.
+* Connect a jumper wire from the pin GPIO22 (BCM pin 22) on the Raspberry Pi to the 1,2EN pin (pin 1) on the L293D.
+* Connect the motor to the breadboard.
+* Connect terminals of the motor to the 1Y (pin 3) and 2Y (pin 6 pins on the L293D using two jumper wires.
+* Connect a jumper wire between GND pins 4 and 5 of the L293D.
+* Place the power module on the breadboard.
+* Connect the motor power source into the power module.
+
+
+===== Circuit Diagram
+
+image::Motor_bb.png[]
+
+===== Schematic Diagram
+
+image::Motor_schem.jpg[]
+
+===== Functionality
+
+Motor can be enabled or disabled, change speed to custom value 0 to 100, and switch directions between clockwise and counterclockwise.
+
+===== Testing
+
+Use the below commands to test the component.
+This will cause the motor to turn.
+
+[source,bash]
+----
+$ curl http://localhost:8080/motor/enable
+----
+
+* `/enable` - Enables the motor.
+* `/disable` - Disables the motor.
+* `/setSpeed/{speed}` - Sets the speed of the motor to custom value 0 to 100.
+* `/setClockwise/{clockwise}` - Sets the direction of the motor; "true" for clockwise, "false" for counterclockwise.
+* `/switchDirection` - Switches the direction from clockwise to counterclockwise or vice versa.
+
+===== Troubleshooting
+
+* Motor does not turn on
+- Ensure all connections are secure and correct.
+- Check for appropriate voltage from power source.
+- Check the L239D for proper orientation and placement.
+- Ensure the software configuration matches the hardware setup.
+- Look for any error messages in the console or logs.
+
+* Motor turns on but does not respond to commands
+- Check the software configuration for any discrepancies.
+- Ensure the L239D is functioning properly.
+- Check for appropriate voltage from power source.
+
+===== YAML Configuration
+
+[source,yaml]
+----
+pwm:
+  motor:
+    name: Motor
+    address: 22
+    pwmType: SOFTWARE
+    provider: pigpio-pwm
+    initial: 0
+    shutdown: 0
+digital-output:
+  motor-pin-1:
+    name: Motor Pin 1
+    address: 17
+    shutdown: HIGH
+    initial: HIGH
+    provider: pigpio-digital-output
+  motor-pin-2:
+    name: Motor Pin 2
+    address: 27
+    shutdown: LOW
+    initial: LOW
+    provider: pigpio-digital-output
+----
+
+===== Constructor and Methods
+
+To see the constructor and methods of our MotorHelper class see our javadoc link:https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/outputdevices/MotorHelper.html[here]
+for more details.
+
+===== An Example Controller
+
+[source,java]
+----
+include::../../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/MotorController.java[tag=ex]
+----

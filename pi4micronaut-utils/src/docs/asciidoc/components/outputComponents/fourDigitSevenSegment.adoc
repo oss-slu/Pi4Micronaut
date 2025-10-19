@@ -1,0 +1,181 @@
+:imagesdir: img/
+
+ifndef::rootpath[]
+:rootpath: ../../
+endif::rootpath[]
+
+ifdef::rootpath[]
+:imagesdir: {rootpath}{imagesdir}
+endif::rootpath[]
+
+==== 4-Digit 7-Segment Display
+
+[.text-right]
+https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/outputComponents/fourDigitSevenSegment.adoc[Improve this doc]
+
+===== Overview
+
+This section provides details of the 4-digit 7-segment display, including its components and assembly instructions.
+
+===== Components
+
+* 1 x Raspberry Pi
+* 1 x Breadboard
+* 1 x T-Extension Board
+* 25 x Jumper Wire
+* 4 x Resistor (220Ω)
+* 1 x 4-Digit 7-Segment Display
+* 1 x 74HC595
+* Power source (appropriate voltage, typically 3.3V)
+
+===== Assembly Instructions
+
+* Connect the ground (GND) pins of the Raspberry Pi to the ground rails on the breadboard.
+* Connect the two ground rails of the breadboard with a jumper wire.
+* Place the 74HC595 on the breadboard.
+* Place the four resistors on the breadboard.
+* Place the 4-digit 7-segment display on the breadboard.
+* Connect a jumper wire from each "digit" pin of the 4-digit 7-segment to one of the resistors.
+* Connect the other ends of the resistors to the Raspberry Pi's pins:
+
+- Digit 1 (pin 12) to GPIO17 (BCM pin 18)
+- Digit 2 (pin 9) to GPIO27 (BCM pin 27)
+- Digit 3 (pin 8) to GPIO22 (BCM pin 22)
+- Digit 4 (pin 6) to SPIMOSI (BCM pin 10)
+
+* Use jumper wires to connect pins on the display to pins on the 74HC595:
+
+- A (pin 11) to Q0 (pin 15)
+- B (pin 7) to Q1 (pin 1)
+- C (pin 4) to Q2 (pin 2)
+- D (pin 2) to Q3 (pin 3)
+- E (pin 1) to Q4 (pin 4)
+- F (pin 10) to Q5 (pin 5)
+- G (pin 5) to Q6 (pin 6)
+- DP (pin 3) to Q7 (pin 7)
+
+* Use jumper wires to connect the 74HC595 to the Raspberry Pi:
+
+- SHcp (pin 11) to GPIO18 (BCM pin 18)
+- STcp (pin 12) to GPIO23 (BCM pin 23)
+- DS (pin 14) to GPIO24 (BCM pin 24)
+
+* Use jumper wires to connect the remaining pins of the 74HC595 to the ground rails of breadboard.
+
+===== Circuit Diagram
+
+image::four_digit_circuit.webp[]
+
+===== Schematic Diagram
+
+image::four_digit_schematic.webp[]
+
+===== Functionality
+
+The display can be enabled/disabled, display a custom value, or cleared.
+
+Each digit of the display can display a digit 0 to 9, an uppercase letter A to F, a hypen (-), or a blank space.
+Each of the four decimal points can also be turned on or off.
+
+Example possible values include:
+
+* "1" (displayed with the 1 in the first digit and the others blank)
+* "8.8.8.8." (displayed with all segments enabled as `8.8.8.8.`)
+* "A.-.42" (displayed as ```A.-.42```)
+
+===== Testing
+
+Use the below commands to test the component.
+The first two commands will cause the display to turn on and display the value `1234`.
+
+The third command will cause the display to then show `1.234`.
+
+The fourth command will cause the display to show `1 34`, using standard URL encoding for the space (`%20`).
+
+[source,bash]
+----
+$ curl http://localhost:8080/four-digit-seven-segment/enable
+$ curl http://localhost:8080/four-digit-seven-segment/displayValue/1234
+$ curl http://localhost:8080/four-digit-seven-segment/set-decimal-point/0/true
+$ curl http://localhost:8080/four-digit-seven-segment/displayValue/1%2034
+----
+
+* `/enable` - Enables the display.
+* `/disable` - Disables the display.
+* `/print/{value}` - Displays a custom value on the display.
+* `/clear` - Clears the display.
+* `/set-digit/{digit}/{value}` - Sets a specific digit to a specific value.
+* `/set-decimal-point/{digit}/{value}` - Sets a specific decimal point to on (true) or off (false).
+
+===== Troubleshooting
+
+* Display does not turn on
+- Ensure all connections are secure and correct.
+- Check the 74HC595 for proper orientation and placement.
+- Ensure the software configuration matches the hardware setup.
+- Look for any error messages in the console or logs.
+
+* Display turns on but does not respond to commands
+- Check the software configuration for any discrepancies.
+- Ensure the 74HC595 is functioning properly.
+
+===== YAML Configuration
+
+[source,yaml]
+----
+digital-output:
+  digit-0:
+    name: Digit 0
+    address: 17
+    shutdown: LOW
+    initial: LOW
+    provider: pigpio-digital-output
+  digit-1:
+    name: Digit 1
+    address: 27
+    shutdown: LOW
+    initial: LOW
+    provider: pigpio-digital-output
+  digit-2:
+    name: Digit 2
+    address: 22
+    shutdown: LOW
+    initial: LOW
+    provider: pigpio-digital-output
+  digit-3:
+    name: Digit 3
+    address: 10
+    shutdown: LOW
+    initial: LOW
+    provider: pigpio-digital-output
+  sdi:
+    name: SDI
+    address: 24
+    shutdown: LOW
+    initial: LOW
+    provider: pigpio-digital-output
+  rclk:
+    name: RCLK
+    address: 23
+    shutdown: LOW
+    initial: LOW
+    provider: pigpio-digital-output
+  srclk:
+    name: SRCLK
+    address: 18
+    shutdown: LOW
+    initial: LOW
+    provider: pigpio-digital-output
+----
+
+===== Constructor and Methods
+
+To see the constructor and methods of our FourDigitSevenSegmentHelper class see our javadoc link:https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/outputdevices/FourDigitSevenSegmentHelper.html[here]
+for more details.
+
+===== An Example Controller
+
+[source,java]
+----
+include::../../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/FourDigitSevenSegmentDisplayController.java[tag=ex]
+----

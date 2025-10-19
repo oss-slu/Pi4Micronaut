@@ -23,7 +23,7 @@ public class SlideSwitchHelper {
      * @param slideSwitchInput A Pi4J DigitalInput Object.
      */
     //tag::const[]
-    public SlideSwitchHelper(DigitalInput slideSwitchInput) 
+    public SlideSwitchHelper(DigitalInput slideSwitchInput)
     //end::const[]
     {
         this.slideSwitchInput = slideSwitchInput;
@@ -42,7 +42,7 @@ public class SlideSwitchHelper {
         log.info("Initializing Slide Switch");
 
         slideSwitchInput.addListener(e->
-            isOn = slideSwitchInput.isHigh()
+                isOn = slideSwitchInput.isHigh()
         );
     }
 
@@ -51,7 +51,7 @@ public class SlideSwitchHelper {
      * @param function A Pi4J DigitalStateChangeListener object.
      */
     //tag::method[]
-    public void addEventListener(DigitalStateChangeListener function) 
+    public void addEventListener(DigitalStateChangeListener function)
     //end::method[]
     {
         slideSwitchInput.addListener(function);
@@ -62,7 +62,7 @@ public class SlideSwitchHelper {
      * @param function A Pi4J DigitalStateChangeListener object.
      */
     //tag::method[]
-    public void removeEventListener(DigitalStateChangeListener function) 
+    public void removeEventListener(DigitalStateChangeListener function)
     //end::method[]
     {
         slideSwitchInput.removeListener(function);

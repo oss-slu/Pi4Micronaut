@@ -9,7 +9,6 @@ import jakarta.inject.Named;
 //tag::ex[]
 @Controller("/active-buzzer")
 public class ActiveBuzzerController {
-
     private final ActiveBuzzerHelper activeBuzzerHelper;
 
     public ActiveBuzzerController(@Named("active-buzzer") Pwm activeBuzzerOutput){
@@ -29,7 +28,6 @@ public class ActiveBuzzerController {
     /**
      * Disables the active buzzer
      */
-
     @Get("/disable")
     public void disableActiveBuzzer(){
 

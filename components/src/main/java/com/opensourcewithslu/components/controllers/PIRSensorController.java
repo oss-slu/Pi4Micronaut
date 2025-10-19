@@ -11,7 +11,6 @@ import jakarta.inject.Named;
 /**
  * The PIRSensorController class is used with the PIRSensorHelper class and RGBHelper class to implement a PIR motion sensor with an RGB LED light.
  */
-
 //tag::ex[]
 @Controller("/pirSensor")
 public class PIRSensorController {

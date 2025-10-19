@@ -7,11 +7,13 @@ import com.pi4j.io.gpio.digital.DigitalOutput;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import jakarta.inject.Named;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 //tag::ex[]
 @Controller("/tiltSwitch")
 public class TiltSwitchController {
-
+    private static final Logger log = LoggerFactory.getLogger(TiltSwitchController.class);
     private final TiltSwitchHelper tiltSwitchHelper; // controls the tilt switch
     private final LEDHelper ledHelper; // controls the LED
 
@@ -26,11 +28,14 @@ public class TiltSwitchController {
     @Get("/enable")
     public void enableTiltSwitch() {
         tiltSwitchHelper.addEventListener(e -> {
-            if (tiltSwitchHelper.isTilted) {
-                ledHelper.ledOn();
-            }
-            else {
-                ledHelper.ledOff();
+            try {
+                if (tiltSwitchHelper.isTilted) {
+                    ledHelper.ledOn();
+                } else {
+                    ledHelper.ledOff();
+                }
+            } catch (Exception ex) {
+                log.error("Error switching LED state", ex);
             }
         });
     }
