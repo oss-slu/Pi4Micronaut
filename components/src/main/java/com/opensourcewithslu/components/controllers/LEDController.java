@@ -53,10 +53,5 @@ public class LEDController {
             log.error("Error blinking LED", e);
         }
     }
-
-    @Get("/blink/{duration}/")
-    public void blink(int duration){
-        ledHelper.blink(duration);
-    }
 }
 //end::ex[]
