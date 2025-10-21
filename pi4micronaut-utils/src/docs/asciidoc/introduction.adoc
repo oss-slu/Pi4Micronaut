@@ -5,8 +5,6 @@
 [align="right"]
 link:{improve-doc-url}[Improve this doc]
 
-//
-
 Welcome to the **Pi4Micronaut Documentation**!
 
 Pi4Micronaut is an Open Source Java library that utilizes the Micronaut Framework and Pi4J to streamline the process of creating custom IoT applications that require hardware connectivity to Raspberry Pi's.
