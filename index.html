@@ -2266,7 +2266,7 @@ for more details.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="nd">@Controller</span><span class="o">(</span><span class="s">"/microSwitch"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MicroSwitchController</span> <span class="o">{</span> 
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MicroSwitchController</span> <span class="o">{</span>
     <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Logger</span> <span class="n">log</span> <span class="o">=</span> <span class="nc">LoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="nc">MicroSwitchController</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
     <span class="kd">private</span> <span class="kd">final</span> <span class="nc">MicroSwitchHelper</span> <span class="n">microSwitchHelper</span><span class="o">;</span>
     <span class="kd">private</span> <span class="kd">final</span> <span class="nc">LEDHelper</span> <span class="n">ledHelper1</span><span class="o">;</span>
@@ -2279,11 +2279,12 @@ for more details.</p>
         <span class="k">this</span><span class="o">.</span><span class="na">ledHelper1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LEDHelper</span><span class="o">(</span><span class="n">led1</span><span class="o">);</span>
         <span class="k">this</span><span class="o">.</span><span class="na">ledHelper2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LEDHelper</span><span class="o">(</span><span class="n">led2</span><span class="o">);</span>
     <span class="o">}</span>
+
     <span class="c1">//enables the micro switch. The LEDs will switch states as the switch is pressed</span>
     <span class="nd">@Get</span><span class="o">(</span><span class="s">"/enable"</span><span class="o">)</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">enableMicroSwitch</span><span class="o">()</span> <span class="o">{</span>
         <span class="n">microSwitchHelper</span><span class="o">.</span><span class="na">addEventListener</span><span class="o">(</span><span class="n">e</span> <span class="o">-&gt;</span> <span class="o">{</span>
-            <span class="k">try</span> <span class="o">{</span> 
+            <span class="k">try</span> <span class="o">{</span>
                 <span class="k">if</span> <span class="o">(</span><span class="n">microSwitchHelper</span><span class="o">.</span><span class="na">isPressed</span><span class="o">)</span> <span class="o">{</span>
                     <span class="n">ledHelper1</span><span class="o">.</span><span class="na">ledOff</span><span class="o">();</span>
                     <span class="n">ledHelper2</span><span class="o">.</span><span class="na">ledOn</span><span class="o">();</span>
@@ -2296,6 +2297,7 @@ for more details.</p>
             <span class="o">}</span>
         <span class="o">});</span>
     <span class="o">}</span>
+
     <span class="c1">//disable the micro switch</span>
     <span class="nd">@Get</span><span class="o">(</span><span class="s">"/disable"</span><span class="o">)</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">disableMicroSwitch</span><span class="o">()</span> <span class="o">{</span>
@@ -2734,32 +2736,40 @@ for more details.</p>
 </div>
 <div class="literalblock">
 <div class="content">
+<pre>/**
+ * The PirSensorController constructor.
+ * @param pirSensor A Pi4J DigitalInput object.
+ * @param rgbLed A MultiPinConfiguration object.
+ */
+public PIRSensorController(@Named("pir-sensor") DigitalInput pirSensor, @Named("rgb-led-2") MultiPinConfiguration rgbLed) {
+    this.pirSensorHelper = new PIRSensorHelper(pirSensor);
+    this.rgbledHelper = new RGBLEDHelper(rgbLed);
+}</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>/**
+ * Enables the PIR sensor by adding an event listener which sets the RGB LED to red when movement is detected and green otherwise.
+ */
+@Get("/enable")
+public void enablePIRSensor() {
+    int[] red = {255,0,0};
+    int[] green = {0,255,0};
+    pirSensorHelper.addEventListener(e -&gt; {
+        if (pirSensorHelper.isMoving) {
+            rgbledHelper.setColor(red);
+        }
+        else {
+            rgbledHelper.setColor(green);
+        }
+    });
+}</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
 <pre>    /**
-     * The PirSensorController constructor.
-     * @param pirSensor A Pi4J DigitalInput object.
-     * @param rgbLed A MultiPinConfiguration object.
-     */
-    public PIRSensorController(@Named("pir-sensor") DigitalInput pirSensor, @Named("rgb-led-2") MultiPinConfiguration rgbLed) {
-        this.pirSensorHelper = new PIRSensorHelper(pirSensor);
-        this.rgbledHelper = new RGBLEDHelper(rgbLed);
-    }
-    /**
-     * Enables the PIR sensor by adding an event listener which sets the RGB LED to red when movement is detected and green otherwise.
-     */
-    @Get("/enable")
-    public void enablePIRSensor() {
-        int[] red = {255,0,0};
-        int[] green = {0,255,0};
-        pirSensorHelper.addEventListener(e -&gt; {
-            if (pirSensorHelper.isMoving) {
-                rgbledHelper.setColor(red);
-            }
-            else {
-                rgbledHelper.setColor(green);
-            }
-        });
-    }
-    /**
      * Disables the controller by removing the event listener and turning off the RGB LED.
      */
     @Get("/disable")
@@ -7104,7 +7114,7 @@ for more details.</p>
 <div id="footer">
 <div id="footer-text">
 Version v1.2<br>
-Last updated 2025-10-20 22:08:39 UTC
+Last updated 2025-10-21 03:12:22 UTC
 </div>
 </div>
 </body>
