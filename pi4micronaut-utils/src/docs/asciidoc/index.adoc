@@ -76,6 +76,8 @@ include::components/inputComponents/thermistor.adoc[]
 
 include::components/inputComponents/speedSensor.adoc[]
 
+include::components/inputComponents/IRObstacleAvoidance.adoc[]
+
 
 include::components/outputComponents.adoc[]
 
