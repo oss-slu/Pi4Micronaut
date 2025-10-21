@@ -87,8 +87,9 @@ public class LEDHelper {
      * Sets the logger object.
      *
      * @param log Logger object to set the logger to.
+     * For internal use only
      */
-    public void setLog(Logger log) {
+    void setLog(Logger log) {
         this.log = log;
     }
 }

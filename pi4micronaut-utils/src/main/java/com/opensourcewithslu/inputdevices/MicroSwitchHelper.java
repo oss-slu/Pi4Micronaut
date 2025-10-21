@@ -65,7 +65,11 @@ public class MicroSwitchHelper {
         }
     }
 
-    public void setLog (Logger log){
+
+    /**
+     * For internal use only
+     */
+    void setLog (Logger log){
         this.log = log;
     }
 }

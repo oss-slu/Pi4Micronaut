@@ -93,8 +93,9 @@ public class ServoMotorHelper {
      * Sets the logger for this ServoMotorHelper instance.
      *
      * @param logger the logger to be used for logging messages.
+     * For internal use only
      */
-    public void setLog(Logger logger) {
+    void setLog(Logger logger) {
         log = logger;
     }
 
