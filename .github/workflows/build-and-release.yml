@@ -1,0 +1,19 @@
+name: Build and Release Library
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  attestations: write
+  contents: read
+  id-token: write
+  packages: write
+
+jobs:
+  build-and-publish:
+    uses: ./.github/workflows/build-reusable.yml

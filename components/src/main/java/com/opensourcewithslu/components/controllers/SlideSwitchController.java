@@ -10,7 +10,6 @@ import jakarta.inject.Named;
 @Controller("/slideSwitch")
 public class SlideSwitchController {
     private final SlideSwitchHelper slideSwitchHelper;
-
     private final SlideSwitchHelper slideSwitchHelper2;
 
     public SlideSwitchController(@Named("slide-switch-input")DigitalInput slideSwitch, 

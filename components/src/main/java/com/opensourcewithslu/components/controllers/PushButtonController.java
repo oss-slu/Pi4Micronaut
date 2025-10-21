@@ -7,13 +7,14 @@ import com.pi4j.io.gpio.digital.DigitalOutput;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import jakarta.inject.Named;
+import org.slf4j.Logger; 
+import org.slf4j.LoggerFactory;
 
 //tag::ex[]
 @Controller("/pushButton")
 public class PushButtonController {
-
+    private static final Logger log = LoggerFactory.getLogger(PushButtonController.class); 
     private final PushButtonHelper pushButtonHelper;
-
     private final LEDHelper ledHelper;
 
     public PushButtonController(@Named("button-input-3") DigitalInput pushButton,
@@ -26,7 +27,11 @@ public class PushButtonController {
     public void initController(){
         pushButtonHelper.addEventListener(e ->{
             if(pushButtonHelper.isPressed){
-                ledHelper.switchState();
+                try {
+                    ledHelper.switchState();
+                } catch (Exception ex) {
+                    log.error("Failed to switch LED state.", ex);
+                }
             }
         });
     }

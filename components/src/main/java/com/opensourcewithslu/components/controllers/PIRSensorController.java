@@ -11,12 +11,12 @@ import jakarta.inject.Named;
 /**
  * The PIRSensorController class is used with the PIRSensorHelper class and RGBHelper class to implement a PIR motion sensor with an RGB LED light.
  */
-
 //tag::ex[]
 @Controller("/pirSensor")
 public class PIRSensorController {
     private final PIRSensorHelper pirSensorHelper;
     private final RGBLEDHelper rgbledHelper;
+
     /**
      * The PirSensorController constructor.
      * @param pirSensor A Pi4J DigitalInput object.
@@ -26,6 +26,7 @@ public class PIRSensorController {
         this.pirSensorHelper = new PIRSensorHelper(pirSensor);
         this.rgbledHelper = new RGBLEDHelper(rgbLed);
     }
+
     /**
      * Enables the PIR sensor by adding an event listener which sets the RGB LED to red when movement is detected and green otherwise.
      */
@@ -42,6 +43,7 @@ public class PIRSensorController {
             }
         });
     }
+
     /**
      * Disables the controller by removing the event listener and turning off the RGB LED.
      */
