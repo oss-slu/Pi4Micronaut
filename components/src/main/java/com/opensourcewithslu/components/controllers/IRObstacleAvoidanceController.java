@@ -11,7 +11,7 @@ import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
-
+//tag::ex[]
 @Controller("/ir-obstacle")
 public class IRObstacleAvoidanceController {
 
@@ -58,3 +58,4 @@ public class IRObstacleAvoidanceController {
     });
     }
 }
+//end::ex[]
