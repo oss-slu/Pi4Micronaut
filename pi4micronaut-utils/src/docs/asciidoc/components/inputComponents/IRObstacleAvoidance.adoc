@@ -37,10 +37,10 @@ The IR (Infrared) Obstacle Avoidance Module is a proximity sensor that detects o
 
 > **Tip**: Use 3.3V for compatibility with Raspberry Pi GPIO. Ensure the module's IR LEDs face forward.
 
-===== Circuit Diagram
+===== Schematic Diagram
 image::irObstacleAvoidance-CD.png[]
 
-===== Schematic Diagram
+===== Circuit Diagram
 image::irObstacleAvoidance-SD.png[]
 
 ===== Functionality
