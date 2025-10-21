@@ -157,9 +157,9 @@ public class UltraSonicSensorHelper {
 
     /**
      * Sets the logger object.
+     * This method is intended for internal testing purposes only.
      *
      * @param log Logger object to set the logger to.
-     * For internal use only
      */
     //tag::method[]
     void setLog(Logger log)

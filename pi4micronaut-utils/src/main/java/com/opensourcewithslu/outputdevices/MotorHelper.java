@@ -123,9 +123,9 @@ public class MotorHelper {
 
     /**
      * Sets the logger object.
+     * This method is intended for internal testing purposes only.
      *
      * @param log Logger object to set the logger to.
-     * For internal use only
      */
     void setLog(Logger log) {
         this.log = log;
