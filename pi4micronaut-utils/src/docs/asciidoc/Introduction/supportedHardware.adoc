@@ -6,11 +6,14 @@ If you plan on creating an application using any of the hardware components list
 
 We plan on offering support for many more hardware components in the future. If you have a hardware component you would like to use but can't find, feel free to checkout how you can add support for it under "Contributing to the Library"
 
+* 4-Digit 7-Segment Display
 * Active Buzzer
+* Fan Controller
 * IR Obstacle Avoidance Sensor
-* LCD Screen
+* LCD1602 (Liquid Crystal Display)
 * LED
 * Micro Switch
+* DC Motor
 * Passive Buzzer
 * PhotoResistor Sensor
 * PIR Motion Sensor
