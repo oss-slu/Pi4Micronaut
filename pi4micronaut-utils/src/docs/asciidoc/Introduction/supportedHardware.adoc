@@ -12,14 +12,17 @@ We plan on offering support for many more hardware components in the future. If 
 * LED
 * Micro Switch
 * Passive Buzzer
-* Photo Sensor
+* PhotoResistor Sensor
 * PIR Motion Sensor
 * Push Button
+* Reed Switch
 * RFID Scanner
 * RGB LED
 * Rotary Encoder
 * Servo Motor
 * Slide Switch
+* Speed Sensor
+* Thermistor Sensor
 * Tilt Switch
 * Touch Switch Sensor
 * Ultrasonic Sensor
