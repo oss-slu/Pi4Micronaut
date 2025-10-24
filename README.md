@@ -52,8 +52,8 @@ The existence of Pi4Micronaut is justified by the need for a robust, scalable, a
 ![Pi4Micronaut.png](Workflow_Diagram.png)
 
 ## Example Projects using Pi4Micronaut Library
-- [Home Automation](https://github.com/oss-slu/Pi4Micronaut/tree/Home_Automation)
-- [Lab Automation](https://github.com/oss-slu/Pi4Micronaut/tree/Lab_Automation)
+- [Home Automation](https://github.com/oss-slu/home_automation_rpi)
+- [Lab Automation](https://github.com/oss-slu/lab_automation_rpi)
 - [OSS SLU Checkin](https://github.com/oss-slu/SLU_OSS_CheckIn)
 
 ## Micronaut 3.7.3
