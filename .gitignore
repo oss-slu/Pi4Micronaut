@@ -1,4 +1,4 @@
-Thumbs.db
+git Thumbs.db
 .DS_Store
 .gradle
 bin/
@@ -17,3 +17,4 @@ out/
 *@*
 Workflow_Diagram.png
 Pi4Micronaut_logo.png
+javadoc/
