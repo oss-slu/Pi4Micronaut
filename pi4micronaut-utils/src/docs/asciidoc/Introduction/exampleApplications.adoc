@@ -9,7 +9,7 @@ If you're curious about what Pi4Micronaut is capable of, check out some of the w
 https://github.com/oss-slu/SLU_OSS_CheckIn
 
 ==== Home Automation
-https://github.com/oss-slu/Pi4Micronaut/tree/Home_Automation
+https://github.com/oss-slu/home_automation_rpi
 
 ==== Lab Automation
-https://github.com/oss-slu/Pi4Micronaut/tree/Lab_Automation
+https://github.com/oss-slu/lab_automation_rpi
