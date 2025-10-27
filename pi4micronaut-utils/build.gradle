@@ -59,10 +59,12 @@ java {
 }
 
 tasks.named('build').configure {
-    dependsOn 'javadoc'
-    copy {
-        from tasks.javadoc.destinationDir
-        into "src/docs/javadoc"
+    if (project.hasProperty('generateJavadoc') || System.getenv('CI') == 'true') {
+        dependsOn 'javadoc'
+        copy {
+            from tasks.javadoc.destinationDir
+            into "src/docs/javadoc"
+        }
     }
 }
 
