@@ -65,6 +65,9 @@ HelloThere
 Make sure everything is connected to the correct pins.
 
 ===== YAML Configuration
+
+A BCM numbering system is used. More info can be found https://pinout.xyz[here].
+
 The RFID scanner configuration as it appears in the application.yml:
 
 [source]

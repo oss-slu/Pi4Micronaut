@@ -66,6 +66,9 @@ $ curl http://localhost:8080/pirSensor/disable
 
 
 ===== YAML Configuration
+
+A BCM numbering system is used. More info can be found https://pinout.xyz[here].
+
 [source, yaml]
 ----
 digital-input:
