@@ -41,7 +41,9 @@ image:Adding_Dependency.png[]
 +
 path: Demo_Pi4Micronaut/src/main/resources/application.yml
 . Create a new tree in the yml file as shown below.
-+
+
+NOTE: A BCM numbering system should be used. More info can be found https://pinout.xyz[here].
+
 [source, yaml]
 ----
 pi4j:
@@ -54,7 +56,7 @@ pi4j:
             provider: pigpio-digital-output
 ----
 +
-Here we are specifying a led as a digital output type with name LED, address 17, etc.
+Here we are specifying a led as a digital output type with name LED, BCM address 17, etc
 For more information on the LED setup guide, see our documentation https://oss-slu.github.io/Pi4Micronaut/#_led[here].
 +
 It should look like:
