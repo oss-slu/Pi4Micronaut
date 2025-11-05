@@ -42,7 +42,7 @@ image:Adding_Dependency.png[]
 path: Demo_Pi4Micronaut/src/main/resources/application.yml
 . Create a new tree in the yml file as shown below.
 
-NOTE: A BCM numbering system should be used. More info can be found https://pinout.xyz[here].
+NOTE: A BCM numbering system should be used. More info can be found using this link: https://pinout.xyz.
 
 [source, yaml]
 ----

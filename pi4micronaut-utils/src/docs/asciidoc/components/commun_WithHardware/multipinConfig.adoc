@@ -16,7 +16,7 @@ include::../../../../../../components/src/main/resources/application.yml[tags=mu
 <.> Top level field for multi-pin digital inputs (equivalent of digital-output declaration)
 <.> Component Identifier (Used in @Named annotations)
 <.> Component Name
-<.> Addresses for each pin (Each component has a specific order outlined in the component description)
+<.> BCM Addresses for each pin (Each component has a specific order outlined in the component description)
 <.> Debounce values for each pin (same order as above)
 <.> Pull values for each pin (same order as above)
 <.> Shutdown value (All pins have the same shut down)
@@ -31,7 +31,7 @@ include::../../../../../../components/src/main/resources/application.yml[tags=mu
 <.> Top level field for multi-pin PWMs
 <.> Component Identifier (Used in @Named annotations)
 <.> Component Name
-<.> Addresses for each pin (Each component has a specific order outlined in the component description)
+<.> BCM Addresses for each pin (Each component has a specific order outlined in the component description)
 <.> PWM types for each pin (same order as above)
 <.> Provider (All pins have the same provider)
 <.> Startup values (Same order as above)

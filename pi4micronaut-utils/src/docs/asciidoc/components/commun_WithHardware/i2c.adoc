@@ -20,7 +20,7 @@ Each component will need:
 
 * name: Name of the component
 * bus: Bus address of device
-* device: Address of device
+* device: BCM Address of device
 
 .Example I2C declaration
 [source,yaml]
@@ -30,5 +30,5 @@ include::../../../../../../components/src/main/resources/application.yml[tags=i2
 <1> Component Identifier (Used in @Named annotations)
 <2> Component Name
 <3> Device bus (0 or 1)
-<4> Device address
+<4> BCM Device address
 

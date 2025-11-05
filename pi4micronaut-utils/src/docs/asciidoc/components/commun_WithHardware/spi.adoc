@@ -34,7 +34,7 @@ To define in application.yaml add spi as a field under pi4j, then add each compo
 Each component will need:
 
 * name: Name of the component
-* address: Address for Controller/Peripheral
+* BCM address: Address for Controller/Peripheral
 * baud: Baud rate/data rate
 * reset-pin: Address of GPIO reset pin
 
@@ -47,5 +47,5 @@ include::../../../../../../components/src/main/resources/application.yml[tags=sp
 <2> Component Name
 <3> TO DO: Figure out what this address is
 <4> Baud rate
-<5> Address of GPIO Reset pin
+<5> BCM Address of GPIO Reset pin
 
