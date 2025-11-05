@@ -9,10 +9,12 @@ In our library, our Active Buzzer component uses PWM. Once fully activated at 5 
 
 To define in application.yaml add pwm as a field under pi4j, then add each component under pwm.
 
+A BCM numbering system is used. More info can be found https://pinout.xyz[here].
+
 Each component will need:
 
 * name: Name of the component
-* address: GPIO pin associated with component
+* address: GPIO BCM pin associated with component
 * pwmType: Either SOFTWARE or HARDWARE based upon which type of PWM you wish to use
 * provider: pigpio-pwm
 * initial: Initial value on startup

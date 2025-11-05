@@ -27,6 +27,7 @@ SPI uses 4 separate connections to communicate with the target device:
 *Note:* Controller/Peripheral is formerly referred to as Master/Slave. In order to move away from the use of such terminology, we have opted to use the term Controller in place of Master, and Peripheral in place of Slave.
 ====
 
+A BCM numbering system is used. More info can be found https://pinout.xyz[here].
 
 To define in application.yaml add spi as a field under pi4j, then add each component under spi.
 

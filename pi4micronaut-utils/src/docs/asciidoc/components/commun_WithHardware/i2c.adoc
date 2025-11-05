@@ -6,6 +6,8 @@ I2C stands for **Inter-Integrated Circuit**. It is a bus interface connection pr
 The I2C protocol uses two wires: SDA (serial data) and SCL (serial clock). This protocol allows for communication between
 multiple devices using only two wires and unique addresses.
 
+A BCM numbering system is used. More info can be found https://pinout.xyz[here].
+
 The I2C LCD1602 consists of a normal LCD1602 and an I2C module that is attached to the back of the LCD.
 The I2C module is a chip that can expand the I/O ports of the LCD1602 using the I2C protocol.
 It converts the signals from the Raspberry Pi into commands for the LCD.
