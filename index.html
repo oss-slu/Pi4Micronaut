@@ -564,6 +564,21 @@ with Pi4Micronaut. As a demo, this will include the configuration and sample cod
 </li>
 <li>
 <p>Create a new tree in the yml file as shown below.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+A BCM numbering system should be used. More info can be found using this link: <a href="https://pinout.xyz" class="bare">https://pinout.xyz</a>.
+</td>
+</tr>
+</table>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="yaml"><span class="na">pi4j</span><span class="pi">:</span>
@@ -577,15 +592,14 @@ with Pi4Micronaut. As a demo, this will include the configuration and sample cod
 </div>
 </div>
 <div class="paragraph">
-<p>Here we are specifying a led as a digital output type with name LED, address 17, etc.
+<p>+
+Here we are specifying a led as a digital output type with name LED, BCM address 17, etc
 For more information on the LED setup guide, see our documentation <a href="https://oss-slu.github.io/Pi4Micronaut/#_led">here</a>.</p>
 </div>
 <div class="paragraph">
-<p>It should look like:
+<p>+
+It should look like:
 <span class="image"><img src="img/Add_Configuration.png" alt="Add Configuration"></span></p>
-</div>
-</li>
-</ol>
 </div>
 </div>
 <div class="sect3">
@@ -1276,6 +1290,18 @@ which determines how the circuit is created by utilizing the I2C pins of the GPI
 <p>Based on the pins and communication type, you have to define the configuration in the yml file accordingly.
 If a user wants to implement multiple hardware components then the configuration should be defined in the snake yml structure.</p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+A BCM numbering system should be used. More info can be found <a href="https://pinout.xyz">here</a>.
+</td>
+</tr>
+</table>
+</div>
 <div class="sect3">
 <h4 id="_yaml_configuration_workflow"><a class="anchor" href="#_yaml_configuration_workflow"></a>4.1.1. YAML Configuration Workflow</h4>
 <div class="ulist">
@@ -1314,6 +1340,9 @@ to apply the specifics listed in the yml file.</p>
 <p>"Digital Input" refers to a type of electronic signal or data that can be read by the Raspberry Pi&#8217;s GPIO pins. These signals are binary, meaning they can only be in one of two states: HIGH (1) or LOW (0).</p>
 </div>
 <div class="paragraph">
+<p>A BCM numbering system is used. More info can be found <a href="https://pinout.xyz">here</a>.</p>
+</div>
+<div class="paragraph">
 <p>To define in application.yaml add digital-input as a field under Pi4J, then add each component under digital-input.</p>
 </div>
 <div class="paragraph">
@@ -1325,7 +1354,7 @@ to apply the specifics listed in the yml file.</p>
 <p>name: Name of the component</p>
 </li>
 <li>
-<p>address: GPIO pin associated with component</p>
+<p>address: GPIO BCM pin associated with component</p>
 </li>
 <li>
 <p>debounce: value that determines the threshold for noise from the component</p>
@@ -1467,6 +1496,9 @@ to apply the specifics listed in the yml file.</p>
 <p>Digital outputs are also binary, meaning they can only have two states: HIGH (1) or LOW (0). These states correspond to different voltage levels, typically 3.3V for high and 0V (ground) for low on a Raspberry Pi.</p>
 </div>
 <div class="paragraph">
+<p>A BCM numbering system is used. More info can be found <a href="https://pinout.xyz">here</a>.</p>
+</div>
+<div class="paragraph">
 <p>To define in application.yaml, add digital-output as a field under Pi4J, then add each component under digital-output.</p>
 </div>
 <div class="paragraph">
@@ -1478,7 +1510,7 @@ to apply the specifics listed in the yml file.</p>
 <p>name: Name of the component</p>
 </li>
 <li>
-<p>address: GPIO pin associated with component</p>
+<p>address: GPIO BCM pin associated with component</p>
 </li>
 <li>
 <p>initial: Initial value, either LOW or HIGH</p>
@@ -1614,7 +1646,7 @@ to apply the specifics listed in the yml file.</p>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>Address of connected GPIO pin</td>
+<td>Address of connected GPIO BCM pin</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="4"></i><b>4</b></td>
@@ -1640,6 +1672,9 @@ The I2C protocol uses two wires: SDA (serial data) and SCL (serial clock). This 
 multiple devices using only two wires and unique addresses.</p>
 </div>
 <div class="paragraph">
+<p>A BCM numbering system is used. More info can be found <a href="https://pinout.xyz">here</a>.</p>
+</div>
+<div class="paragraph">
 <p>The I2C LCD1602 consists of a normal LCD1602 and an I2C module that is attached to the back of the LCD.
 The I2C module is a chip that can expand the I/O ports of the LCD1602 using the I2C protocol.
 It converts the signals from the Raspberry Pi into commands for the LCD.</p>
@@ -1662,7 +1697,7 @@ It converts the signals from the Raspberry Pi into commands for the LCD.</p>
 <p>bus: Bus address of device</p>
 </li>
 <li>
-<p>device: Address of device</p>
+<p>device: BCM Address of device</p>
 </li>
 </ul>
 </div>
@@ -1692,7 +1727,7 @@ It converts the signals from the Raspberry Pi into commands for the LCD.</p>
 </tr>
 <tr>
 <td><i class="conum" data-value="4"></i><b>4</b></td>
-<td>Device address</td>
+<td>BCM Device address</td>
 </tr>
 </table>
 </div>
@@ -1705,6 +1740,9 @@ It converts the signals from the Raspberry Pi into commands for the LCD.</p>
 <div class="paragraph">
 <p>MultiPin components are unique in that they require several of the same type of pin in order to function properly.
 Each class of multi-pin component (Digital Input, PWM), is declared slightly differently in the application.yaml file</p>
+</div>
+<div class="paragraph">
+<p>A BCM numbering system is used. More info can be found <a href="https://pinout.xyz">here</a>.</p>
 </div>
 <div class="listingblock">
 <div class="title">Example MultiPin Digital Input declaration</div>
@@ -1744,7 +1782,7 @@ Each class of multi-pin component (Digital Input, PWM), is declared slightly dif
 </tr>
 <tr>
 <td><i class="conum" data-value="4"></i><b>4</b></td>
-<td>Addresses for each pin (Each component has a specific order outlined in the component description)</td>
+<td>BCM Addresses for each pin (Each component has a specific order outlined in the component description)</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="5"></i><b>5</b></td>
@@ -1804,7 +1842,7 @@ Each class of multi-pin component (Digital Input, PWM), is declared slightly dif
 </tr>
 <tr>
 <td><i class="conum" data-value="4"></i><b>4</b></td>
-<td>Addresses for each pin (Each component has a specific order outlined in the component description)</td>
+<td>BCM Addresses for each pin (Each component has a specific order outlined in the component description)</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="5"></i><b>5</b></td>
@@ -1838,6 +1876,9 @@ In our library, our Active Buzzer component uses PWM. Once fully activated at 5 
 <p>To define in application.yaml add pwm as a field under pi4j, then add each component under pwm.</p>
 </div>
 <div class="paragraph">
+<p>A BCM numbering system is used. More info can be found <a href="https://pinout.xyz">here</a>.</p>
+</div>
+<div class="paragraph">
 <p>Each component will need:</p>
 </div>
 <div class="ulist">
@@ -1846,7 +1887,7 @@ In our library, our Active Buzzer component uses PWM. Once fully activated at 5 
 <p>name: Name of the component</p>
 </li>
 <li>
-<p>address: GPIO pin associated with component</p>
+<p>BCM address: GPIO pin associated with component</p>
 </li>
 <li>
 <p>pwmType: Either SOFTWARE or HARDWARE based upon which type of PWM you wish to use</p>
@@ -1915,7 +1956,7 @@ In our library, our Active Buzzer component uses PWM. Once fully activated at 5 
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>Address of connected GPIO pin</td>
+<td>BCM Address of connected GPIO pin</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="4"></i><b>4</b></td>
@@ -1980,6 +2021,9 @@ In our library, our Active Buzzer component uses PWM. Once fully activated at 5 
 </div>
 </div>
 <div class="paragraph">
+<p>A BCM numbering system is used. More info can be found <a href="https://pinout.xyz">here</a>.</p>
+</div>
+<div class="paragraph">
 <p>To define in application.yaml add spi as a field under pi4j, then add each component under spi.</p>
 </div>
 <div class="paragraph">
@@ -1991,7 +2035,7 @@ In our library, our Active Buzzer component uses PWM. Once fully activated at 5 
 <p>name: Name of the component</p>
 </li>
 <li>
-<p>address: Address for Controller/Peripheral</p>
+<p>BCM address: Address for Controller/Peripheral</p>
 </li>
 <li>
 <p>baud: Baud rate/data rate</p>
@@ -2037,7 +2081,7 @@ In our library, our Active Buzzer component uses PWM. Once fully activated at 5 
 </tr>
 <tr>
 <td><i class="conum" data-value="5"></i><b>5</b></td>
-<td>Address of GPIO Reset pin</td>
+<td>BCM Address of GPIO Reset pin</td>
 </tr>
 </table>
 </div>
@@ -2211,6 +2255,9 @@ required hardware components, assembly instructions, and functionality.</p>
 </div>
 <div class="sect4">
 <h5 id="_yaml_configuration"><a class="anchor" href="#_yaml_configuration"></a>YAML Configuration</h5>
+<div class="paragraph">
+<p>A BCM numbering system is used. More info can be found <a href="https://pinout.xyz">here</a>.</p>
+</div>
 <div class="paragraph">
 <p>The YAML configuration for the LEDs is as follows:</p>
 </div>
@@ -2497,6 +2544,9 @@ for more details.</p>
 <div class="sect4">
 <h5 id="_yaml_configuration_2"><a class="anchor" href="#_yaml_configuration_2"></a>YAML Configuration</h5>
 <div class="paragraph">
+<p>A BCM numbering system is used. More info can be found <a href="https://pinout.xyz">here</a>.</p>
+</div>
+<div class="paragraph">
 <p>The PhotoResistor as it appears in the YAML file:</p>
 </div>
 <div class="listingblock">
@@ -2704,6 +2754,9 @@ for more details.</p>
 </div>
 <div class="sect4">
 <h5 id="_yaml_configuration_3"><a class="anchor" href="#_yaml_configuration_3"></a>YAML Configuration</h5>
+<div class="paragraph">
+<p>A BCM numbering system is used. More info can be found <a href="https://pinout.xyz">here</a>.</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="yaml"><span class="na">digital-input</span><span class="pi">:</span>
@@ -2879,6 +2932,9 @@ adjust according to your power source and LED specifications</p>
 </div>
 <div class="sect4">
 <h5 id="_yaml_configuration_4"><a class="anchor" href="#_yaml_configuration_4"></a>YAML Configuration</h5>
+<div class="paragraph">
+<p>A BCM numbering system is used. More info can be found <a href="https://pinout.xyz">here</a>.</p>
+</div>
 <div class="paragraph">
 <p>The order for declaring the pin for the LED is as follows:</p>
 </div>
@@ -3109,6 +3165,9 @@ for more details.</p>
 <div class="sect4">
 <h5 id="_yaml_configuration_5"><a class="anchor" href="#_yaml_configuration_5"></a>YAML Configuration</h5>
 <div class="paragraph">
+<p>A BCM numbering system is used. More info can be found <a href="https://pinout.xyz">here</a>.</p>
+</div>
+<div class="paragraph">
 <p>The YAML configuration for the reed switch input:</p>
 </div>
 <div class="listingblock">
@@ -3318,6 +3377,9 @@ for more details.</p>
 <div class="sect4">
 <h5 id="_yaml_configuration_6"><a class="anchor" href="#_yaml_configuration_6"></a>YAML Configuration</h5>
 <div class="paragraph">
+<p>A BCM numbering system is used. More info can be found <a href="https://pinout.xyz">here</a>.</p>
+</div>
+<div class="paragraph">
 <p>The RFID scanner configuration as it appears in the application.yml:</p>
 </div>
 <div class="listingblock">
@@ -3487,6 +3549,9 @@ to the correct GPIO pins according to the YAML pin order below.</p>
 <div class="sect4">
 <h5 id="_yaml_configuration_7"><a class="anchor" href="#_yaml_configuration_7"></a>YAML Configuration</h5>
 <div class="paragraph">
+<p>A BCM numbering system is used. More info can be found <a href="https://pinout.xyz">here</a>.</p>
+</div>
+<div class="paragraph">
 <p>The order for declaring pins for a Rotary Encoder component in the application.yaml file is as follows</p>
 </div>
 <div class="paragraph">
@@ -3638,6 +3703,9 @@ for more details.</p>
 </div>
 <div class="sect4">
 <h5 id="_yaml_configuration_8"><a class="anchor" href="#_yaml_configuration_8"></a>YAML Configuration</h5>
+<div class="paragraph">
+<p>A BCM numbering system is used. More info can be found <a href="https://pinout.xyz">here</a>.</p>
+</div>
 <div class="paragraph">
 <p>The slide switch as it appears in the application.yml:</p>
 </div>
@@ -3858,6 +3926,9 @@ for more details.</p>
 <div class="sect4">
 <h5 id="_yaml_configuration_9"><a class="anchor" href="#_yaml_configuration_9"></a>YAML Configuration</h5>
 <div class="paragraph">
+<p>A BCM numbering system is used. More info can be found <a href="https://pinout.xyz">here</a>.</p>
+</div>
+<div class="paragraph">
 <p>The speed sensor as it appears in the application.yml:</p>
 </div>
 <div class="listingblock">
@@ -4045,6 +4116,9 @@ for more details.</p>
 </div>
 <div class="sect4">
 <h5 id="_yaml_configuration_10"><a class="anchor" href="#_yaml_configuration_10"></a>YAML Configuration</h5>
+<div class="paragraph">
+<p>A BCM numbering system is used. More info can be found <a href="https://pinout.xyz">here</a>.</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="yaml"><span class="na">digital-input</span><span class="pi">:</span></code></pre>
@@ -4208,6 +4282,9 @@ Our example showcases a tilt switch and LED which lights up when the tilt switch
 </div>
 <div class="sect4">
 <h5 id="_yaml_configuration_11"><a class="anchor" href="#_yaml_configuration_11"></a>YAML Configuration</h5>
+<div class="paragraph">
+<p>A BCM numbering system is used. More info can be found <a href="https://pinout.xyz">here</a>.</p>
+</div>
 <div class="paragraph">
 <p>The YAML configuration for the LED is as follows:</p>
 </div>
@@ -4434,6 +4511,9 @@ Also make sure that everything is properly secured to the breadboard.</p>
 <div class="sect4">
 <h5 id="_yaml_configuration_12"><a class="anchor" href="#_yaml_configuration_12"></a>YAML Configuration</h5>
 <div class="paragraph">
+<p>A BCM numbering system is used. More info can be found <a href="https://pinout.xyz">here</a>.</p>
+</div>
+<div class="paragraph">
 <p>The YAML configuration for the LED is as follows:</p>
 </div>
 <div class="listingblock">
@@ -4616,6 +4696,9 @@ and check the power source.</p>
 </div>
 <div class="sect4">
 <h5 id="_yaml_configuration_13"><a class="anchor" href="#_yaml_configuration_13"></a>YAML Configuration</h5>
+<div class="paragraph">
+<p>A BCM numbering system is used. More info can be found <a href="https://pinout.xyz">here</a>.</p>
+</div>
 <div class="paragraph">
 <p>The order for declaring the Trigger and Echo Pins of the Ultrasonic Sensor is as follows:</p>
 </div>
@@ -4976,6 +5059,9 @@ The first two commands will cause the display to turn on and display the value <
 </div>
 <div class="sect4">
 <h5 id="_yaml_configuration_14"><a class="anchor" href="#_yaml_configuration_14"></a>YAML Configuration</h5>
+<div class="paragraph">
+<p>A BCM numbering system is used. More info can be found <a href="https://pinout.xyz">here</a>.</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="yaml"><span class="na">digital-output</span><span class="pi">:</span>
@@ -5278,6 +5364,9 @@ for more details.</p>
 </div>
 <div class="sect4">
 <h5 id="_yaml_configuration_15"><a class="anchor" href="#_yaml_configuration_15"></a>YAML Configuration</h5>
+<div class="paragraph">
+<p>A BCM numbering system is used. More info can be found <a href="https://pinout.xyz">here</a>.</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="yaml"><span class="na">pwm</span><span class="pi">:</span>
@@ -5436,6 +5525,9 @@ for more details.</p>
 </div>
 <div class="sect4">
 <h5 id="_yaml_configuration_16"><a class="anchor" href="#_yaml_configuration_16"></a>YAML Configuration</h5>
+<div class="paragraph">
+<p>A BCM numbering system is used. More info can be found <a href="https://pinout.xyz">here</a>.</p>
+</div>
 <div class="paragraph">
 <p>The following YAML configuration is used to set up the Fan Controller in <code>application.yml</code>. This configuration includes parameters to control fan speed and behavior.</p>
 </div>
@@ -5734,6 +5826,9 @@ The number 1602 describes the display: 2 rows with 16 characters per row.</p>
 <div class="sect4">
 <h5 id="_yaml_configuration_17"><a class="anchor" href="#_yaml_configuration_17"></a>YAML Configuration</h5>
 <div class="paragraph">
+<p>A BCM numbering system is used. More info can be found <a href="https://pinout.xyz">here</a>.</p>
+</div>
+<div class="paragraph">
 <p>LCD1602 uses I2C communication for this circuit and configuration in the application.yml file is as follows</p>
 </div>
 <div class="listingblock">
@@ -5945,6 +6040,9 @@ as well as the LED specifications.</p>
 </div>
 <div class="sect4">
 <h5 id="_yaml_configuration_18"><a class="anchor" href="#_yaml_configuration_18"></a>YAML Configuration</h5>
+<div class="paragraph">
+<p>A BCM numbering system is used. More info can be found <a href="https://pinout.xyz">here</a>.</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="yaml"><span class="na">digital-output</span><span class="pi">:</span>
@@ -6214,6 +6312,9 @@ This will cause the motor to turn.</p>
 </div>
 <div class="sect4">
 <h5 id="_yaml_configuration_19"><a class="anchor" href="#_yaml_configuration_19"></a>YAML Configuration</h5>
+<div class="paragraph">
+<p>A BCM numbering system is used. More info can be found <a href="https://pinout.xyz">here</a>.</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="yaml"><span class="na">pwm</span><span class="pi">:</span>
@@ -6458,6 +6559,9 @@ To produce sound, a passive buzzer needs an external PWM signal supplied by Rasp
 </div>
 <div class="sect4">
 <h5 id="_yaml_configuration_20"><a class="anchor" href="#_yaml_configuration_20"></a>YAML Configuration</h5>
+<div class="paragraph">
+<p>A BCM numbering system is used. More info can be found <a href="https://pinout.xyz">here</a>.</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="yaml"><span class="na">pwm</span><span class="pi">:</span>
@@ -6786,6 +6890,9 @@ each color pin&#8217;s connection.</p>
 <div class="sect4">
 <h5 id="_yaml_configuration_21"><a class="anchor" href="#_yaml_configuration_21"></a>YAML Configuration</h5>
 <div class="paragraph">
+<p>A BCM numbering system is used. More info can be found <a href="https://pinout.xyz">here</a>.</p>
+</div>
+<div class="paragraph">
 <p>The order for declaring pins for a RGB LED component in the application.yaml file is as follows</p>
 </div>
 <div class="paragraph">
@@ -7054,6 +7161,9 @@ for more details.</p>
 </div>
 <div class="sect4">
 <h5 id="_yaml_configuration_22"><a class="anchor" href="#_yaml_configuration_22"></a>YAML Configuration</h5>
+<div class="paragraph">
+<p>A BCM numbering system is used. More info can be found <a href="https://pinout.xyz">here</a>.</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="yaml"><span class="na">pwm</span><span class="pi">:</span>
@@ -7114,7 +7224,7 @@ for more details.</p>
 <div id="footer">
 <div id="footer-text">
 Version v1.2<br>
-Last updated 2025-11-04 05:46:41 UTC
+Last updated 2025-11-05 22:16:50 UTC
 </div>
 </div>
 </body>

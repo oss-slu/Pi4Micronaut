@@ -220,6 +220,9 @@ th {
 <p>Digital outputs are also binary, meaning they can only have two states: HIGH (1) or LOW (0). These states correspond to different voltage levels, typically 3.3V for high and 0V (ground) for low on a Raspberry Pi.</p>
 </div>
 <div class="paragraph">
+<p>A BCM numbering system is used. More info can be found <a href="https://pinout.xyz">here</a>.</p>
+</div>
+<div class="paragraph">
 <p>To define in application.yaml, add digital-output as a field under Pi4J, then add each component under digital-output.</p>
 </div>
 <div class="paragraph">
@@ -231,7 +234,7 @@ th {
 <p>name: Name of the component</p>
 </li>
 <li>
-<p>address: GPIO pin associated with component</p>
+<p>address: GPIO BCM pin associated with component</p>
 </li>
 <li>
 <p>initial: Initial value, either LOW or HIGH</p>
@@ -259,7 +262,7 @@ th {
 <p>Component Name</p>
 </li>
 <li>
-<p>Address of connected GPIO pin</p>
+<p>Address of connected GPIO BCM pin</p>
 </li>
 <li>
 <p>Value to have on shutdown (HIGH = Off, LOW = On)</p>
@@ -277,7 +280,7 @@ th {
 <div id="footer">
 <div id="footer-text">
 Version v1.2<br>
-Last updated 2025-11-04 05:46:41 UTC
+Last updated 2025-11-05 22:16:50 UTC
 </div>
 </div>
 </body>

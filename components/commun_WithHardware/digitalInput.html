@@ -217,6 +217,9 @@ th {
 <p>"Digital Input" refers to a type of electronic signal or data that can be read by the Raspberry Pi&#8217;s GPIO pins. These signals are binary, meaning they can only be in one of two states: HIGH (1) or LOW (0).</p>
 </div>
 <div class="paragraph">
+<p>A BCM numbering system is used. More info can be found <a href="https://pinout.xyz">here</a>.</p>
+</div>
+<div class="paragraph">
 <p>To define in application.yaml add digital-input as a field under Pi4J, then add each component under digital-input.</p>
 </div>
 <div class="paragraph">
@@ -228,7 +231,7 @@ th {
 <p>name: Name of the component</p>
 </li>
 <li>
-<p>address: GPIO pin associated with component</p>
+<p>address: GPIO BCM pin associated with component</p>
 </li>
 <li>
 <p>debounce: value that determines the threshold for noise from the component</p>
@@ -274,7 +277,7 @@ th {
 <div id="footer">
 <div id="footer-text">
 Version v1.2<br>
-Last updated 2025-11-04 05:46:41 UTC
+Last updated 2025-11-05 22:16:50 UTC
 </div>
 </div>
 </body>
