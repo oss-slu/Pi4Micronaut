@@ -77,6 +77,9 @@ $ curl http://localhost:8080/reedSwitch/disable
   .. Move wires away from noisy power lines; shorten jumper wires where possible.
 
 ===== YAML Configuration
+
+A BCM numbering system is used. More info can be found https://pinout.xyz[here].
+
 The YAML configuration for the reed switch input:
 
 [source, yaml]

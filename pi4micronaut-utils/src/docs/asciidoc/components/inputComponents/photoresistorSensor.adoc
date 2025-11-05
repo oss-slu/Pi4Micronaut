@@ -95,6 +95,9 @@ PhotoResistor not working:
 * Verify the correct resistor is used (10KΩ)
 
 ===== YAML Configuration
+
+A BCM numbering system is used. More info can be found https://pinout.xyz[here].
+
 The PhotoResistor as it appears in the YAML file:
 
 [source, yaml]

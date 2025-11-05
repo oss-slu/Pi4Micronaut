@@ -27,13 +27,14 @@ SPI uses 4 separate connections to communicate with the target device:
 *Note:* Controller/Peripheral is formerly referred to as Master/Slave. In order to move away from the use of such terminology, we have opted to use the term Controller in place of Master, and Peripheral in place of Slave.
 ====
 
+A BCM numbering system is used. More info can be found https://pinout.xyz[here].
 
 To define in application.yaml add spi as a field under pi4j, then add each component under spi.
 
 Each component will need:
 
 * name: Name of the component
-* address: Address for Controller/Peripheral
+* BCM address: Address for Controller/Peripheral
 * baud: Baud rate/data rate
 * reset-pin: Address of GPIO reset pin
 
@@ -46,5 +47,5 @@ include::../../../../../../components/src/main/resources/application.yml[tags=sp
 <2> Component Name
 <3> TO DO: Figure out what this address is
 <4> Baud rate
-<5> Address of GPIO Reset pin
+<5> BCM Address of GPIO Reset pin
 
