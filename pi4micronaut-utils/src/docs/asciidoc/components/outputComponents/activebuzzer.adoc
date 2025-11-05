@@ -94,6 +94,9 @@ $curl http://localhost:8080/active-buzzer/morseCode
     * Verify all wires are in appropriate slots.
 
 ===== YAML Configuration
+
+A BCM numbering system is used. More info can be found https://pinout.xyz[here].
+
 [source, yaml]
 ----
 pwm:
