@@ -82,4 +82,6 @@ The constructor and the methods within the ThermistorHelper class can be seen in
 
 ====== This controller uses the thermistor to detect a temperature value
 [source, java]
+----
 include::../../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/ThermistorController.java[tag=ex]
+----
