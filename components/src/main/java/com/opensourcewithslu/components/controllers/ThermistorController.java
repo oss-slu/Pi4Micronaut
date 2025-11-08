@@ -21,6 +21,15 @@ public class ThermistorController {
         this.thermistorHelper = new ThermistorHelper(pi4jContext);
     }
 
+    /**
+     * Constructor for ThermistorController.
+     *
+     * @param spi SPI interface
+     */
+    public ThermistorController(@Named("adc0834") Spi spi) {
+        this.thermistorHelper = new ThermistorHelper(spi);
+    }
+
     // Endpoint to get temperature in Celsius
     @Get("/temperature/celsius")
     public double getTemperatureCelsius() {

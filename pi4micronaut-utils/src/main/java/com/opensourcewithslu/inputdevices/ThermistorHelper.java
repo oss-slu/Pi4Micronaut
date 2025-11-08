@@ -16,8 +16,9 @@ public class ThermistorHelper {
     private static final double B = 0.000234125;
     private static final double C = 0.0000000876741;
 
-    public ThermistorHelper(Context pi4j) {
-        this.spi = initializeADC(pi4j);
+    public ThermistorHelper(Spi spi) {
+        this.spi = spi;
+        log.info("SPI and ADC for thermistor initialized.");
     }
 
     /**
@@ -28,30 +29,6 @@ public class ThermistorHelper {
  */
     Spi getSpi() {  
     return spi;
-    }
-
-    /**
-     * Initialize SPI and ADC settings specific to ADC0834.
-     */
-    private Spi initializeADC(Context pi4j) {
-        try {
-            // Create SPI configuration for the ADC0834
-            SpiConfig spiConfig = Spi.newConfigBuilder(pi4j)
-                    .id("ADC0834")
-                    .name("Thermistor ADC")
-                    .address(17) // SPI channel 0
-                    .baud(1000000) // 1 MHz SPI clock speed
-                    .mode(SpiMode.MODE_0)
-                    .build();
-
-            Spi spi = pi4j.create(spiConfig);
-            log.info("SPI and ADC for thermistor initialized.");
-            return spi;
-
-        } catch (Exception e) {
-            log.error("Failed to initialize SPI for ADC0834", e);
-            throw new RuntimeException("SPI initialization failed", e);
-        }
     }
 
     /**
