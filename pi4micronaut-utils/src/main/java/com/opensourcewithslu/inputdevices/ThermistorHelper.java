@@ -14,6 +14,10 @@ public class ThermistorHelper {
     private static final double B = 0.000234125;
     private static final double C = 0.0000000876741;
 
+    /**
+     * Constructor for ThermistorHelper.
+     * @param adcConverterHelper The ADC0834ConverterHelper object.
+     */
     public ThermistorHelper( ADC0834ConverterHelper adcConverterHelper ) {
         this.adcConverterHelper = adcConverterHelper;
         this.spi = adcConverterHelper.getSpi();
@@ -32,6 +36,7 @@ public class ThermistorHelper {
 
     /**
      * Reads the raw value from the thermistor via ADC and converts it to resistance.
+     * @param channel The ADC channel to read (0-3).
      * @return the resistance value of the thermistor
      */
     public double getResistance(int channel) {
@@ -41,6 +46,7 @@ public class ThermistorHelper {
 
     /**
      * Reads the ADC value from the thermistor on ADC0834.
+     * @param channel The ADC channel to read (0-3).
      * @return the raw ADC value as a double
      */
     public double readADCValue( int channel ) {
@@ -63,6 +69,7 @@ public class ThermistorHelper {
 
     /**
      * Calculates the temperature in Celsius using the Steinhart-Hart equation.
+     * @param channel The ADC channel to read (0-3).
      * @return temperature in Celsius.
      */
     public double getTemperatureInCelsius(int channel) {
@@ -75,6 +82,7 @@ public class ThermistorHelper {
 
     /**
      * Converts temperature in Celsius to Fahrenheit.
+     * @param channel The ADC channel to read (0-3).
      * @return temperature in Fahrenheit.
      */
     public double getTemperatureInFahrenheit(int channel) {
