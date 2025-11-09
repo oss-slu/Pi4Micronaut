@@ -21,6 +21,15 @@ public class ADC0834ConverterHelper {
         log.info("ADC0834ConverterHelper initialized with SPI");
     }
 
+
+    /* Gets the SPI interface used by this class.
+    * 
+    * @return the SPI interface
+    */
+    Spi getSpi() {  
+        return spi;
+    }
+
     /**
      * Reads the digital value from the specified channel (0-3) of the ADC0834.
      * @param channel The ADC channel to read (0-3).
