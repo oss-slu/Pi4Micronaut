@@ -56,8 +56,8 @@ The existence of Pi4Micronaut is justified by the need for a robust, scalable, a
 - [Lab Automation](https://github.com/oss-slu/lab_automation_rpi)
 - [OSS SLU Checkin](https://github.com/oss-slu/SLU_OSS_CheckIn)
 
-## Micronaut 3.7.3
-- [Micronaut 3.7.3 User Guide](https://micronaut-projects.github.io/micronaut-docs-mn3/3.7.3/guide/index.html)
+## Micronaut 4.7.6
+- [Micronaut 4.7.6 User Guide](https://micronaut-projects.github.io/micronaut-docs-mn4/4.7.6/guide/)
 - [Micronaut Guides](https://docs.micronaut.io/latest/guide/index.html)
 - [Micronaut HTTP Client documentation](https://docs.micronaut.io/latest/guide/index.html#httpClient)
 
