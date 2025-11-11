@@ -6,7 +6,7 @@ Pi4Micronaut is an innovative Java library crafted for developers who aim to bui
 
 The existence of Pi4Micronaut is justified by the need for a robust, scalable, and efficient way to bridge the gap between enterprise-grade software and the physical world of hardware. It is particularly valuable for projects that demand both the high-performance, microservices-oriented capabilities of the Micronaut framework and the versatile hardware interaction that the Raspberry Pi offers. Whether it's for home automation, industrial monitoring, or educational purposes, Pi4Micronaut empowers developers to deliver reliable and sophisticated IoT applications that can run headless on a Raspberry Pi or be managed remotely, providing convenience, control, and customization to the end-users.
 
-**Note:** Pi4Micronaut doesn't work with the latest Raspberry Pi 5 because of its whole new architecture. Pi4J and pigpio libraries doesn't provide support for Pi 5 yet. Look out for the latest version of Pi4J to work with Pi5's in the future.
+**Note:** Pi4Micronaut doesn't work with the latest Raspberry Pi 5 because of its whole new architecture. Pi4J and pigpio libraries doesn't provide support for Pi 5 yet. Look out for the latest version of Pi4J to work with Pi 5 in the future.
 
 ### Information
 
@@ -16,21 +16,21 @@ The existence of Pi4Micronaut is justified by the need for a robust, scalable, a
 - **Developers:**
     - [Joey Heitzler](https://github.com/j-heitz) (capstone)
     - [Thomas Pautler](https://github.com/ThomasPautler952194) (capstone)
-    - [Yenkatarajalaxmimanohar Meda](https://github.com/yrlmanoharreddy) (alumni, prior tech lead)
-    - [Ava Enke](https://github.com/avaenk) (alumni)
-    - [Seyun Jeong](https://github.com/Ed0827) (alumni)
-    - [Ralph Tan](https://github.com/RalphTan37) (alumni)
-    - [Thomas Macas](https://github.com/tmacas) (alumni)
-    - [Leandru Martin](https://github.com/leandrumartin) (alumni)
-    - [Ruthvik Mannem](https://github.com/ruthvikm) (alumni, prior tech lead)
-    - [Adrian Swindle](https://github.com/SwindleA) (alumni)
-    - [Alex Delgado](https://github.com/adelgadoj3) (alumni)
-    - [Joe Folen](https://github.com/joefol) (alumni)
-    - [John Yanev](https://github.com/jyanev) (alumni)
-    - [Greih Murray](https://github.com/GreihMurray) (alumni)
-    - [Austin Howard](https://github.com/austinjhoward) (alumni)
-    - [Traison Diedrich](https://github.com/traison-diedrich) (alumni)
-    - [Sinuo Liu](https://github.com/liusinuo2000) (alumni)
+    - [Yenkatarajalaxmimanohar Meda](https://github.com/yrlmanoharreddy) (alum, prior tech lead)
+    - [Ava Enke](https://github.com/avaenk) (alum)
+    - [Seyun Jeong](https://github.com/Ed0827) (alum)
+    - [Ralph Tan](https://github.com/RalphTan37) (alum)
+    - [Thomas Macas](https://github.com/tmacas) (alum)
+    - [Leandru Martin](https://github.com/leandrumartin) (alum)
+    - [Ruthvik Mannem](https://github.com/ruthvikm) (alum, prior tech lead)
+    - [Adrian Swindle](https://github.com/SwindleA) (alum)
+    - [Alex Delgado](https://github.com/adelgadoj3) (alum)
+    - [Joe Folen](https://github.com/joefol) (alum)
+    - [John Yanev](https://github.com/jyanev) (alum)
+    - [Greih Murray](https://github.com/GreihMurray) (alum)
+    - [Austin Howard](https://github.com/austinjhoward) (alum)
+    - [Traison Diedrich](https://github.com/traison-diedrich) (alum)
+    - [Sinuo Liu](https://github.com/liusinuo2000) (alum)
 
 - **Start Date:** August 2022
 - **Adoption Date:** August 2022
