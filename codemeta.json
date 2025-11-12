@@ -1,0 +1,239 @@
+{
+  "name": "Pi4Micronaut",
+  "@context": "https://w3id.org/codemeta/3.0",
+  "author": [
+    {
+      "familyName": "Mannem",
+      "id": "https://github.com/ruthvikm",
+      "givenName": "Ruthvik",
+      "type": "Person"
+    },
+    {
+      "familyName": "Liu",
+      "id": "https://github.com/liusinuo2000",
+      "givenName": "Sinuo",
+      "type": "Person"
+    },
+    {
+      "familyName": "Diedrich",
+      "id": "https://github.com/traison-diedrich",
+      "givenName": "Traison",
+      "type": "Person"
+    },
+    {
+      "familyName": "Howard",
+      "id": "https://github.com/austinjhoward",
+      "givenName": "Austin",
+      "type": "Person"
+    },
+    {
+      "familyName": "Murray",
+      "id": "https://github.com/GreihMurray",
+      "givenName": "Greih",
+      "type": "Person"
+    },
+    {
+      "familyName": "Yanev",
+      "id": "https://github.com/jyanev",
+      "givenName": "John",
+      "type": "Person"
+    },
+    {
+      "familyName": "Folen",
+      "id": "https://github.com/joefol",
+      "givenName": "Joe",
+      "type": "Person"
+    },
+    {
+      "familyName": "Delgado",
+      "id": "https://github.com/adelgadoj3",
+      "givenName": "Alex",
+      "type": "Person"
+    },
+    {
+      "familyName": "Swindle",
+      "id": "https://github.com/SwindleA",
+      "givenName": "Adrian",
+      "type": "Person"
+    },
+    {
+      "familyName": "Meda",
+      "id": "https://github.com/yrlmanoharreddy",
+      "givenName": "Yenkatarajalaxmimanohar",
+      "type": "Person"
+    },
+    {
+      "familyName": "Macas",
+      "id": "https://github.com/tmacas",
+      "givenName": "Thomas",
+      "type": "Person"
+    },
+    {
+      "familyName": "Jeong",
+      "id": "https://github.com/Ed0827",
+      "givenName": "Seyun",
+      "type": "Person"
+    },
+    {
+      "familyName": "Tan",
+      "id": "https://github.com/RalphTan37",
+      "givenName": "Ralph",
+      "type": "Person"
+    },
+    {
+      "familyName": "Enke",
+      "id": "https://github.com/avaenk",
+      "givenName": "Ava",
+      "type": "Person"
+    },
+    {
+      "familyName": "Martin",
+      "id": "https://github.com/leandrumartin",
+      "givenName": "Leandru",
+      "type": "Person"
+    },
+    {
+      "id": "https://github.com/j-heitz",
+      "givenName": "Joey Heitzler",
+      "type": "Person"
+    },
+    {
+      "familyName": "Pautler",
+      "id": "https://github.com/ThomasPautler952194",
+      "givenName": "Thomas",
+      "type": "Person"
+    },
+    {
+      "roleName": "Tech Lead",
+      "schema:author": "https://github.com/ruthvikm",
+      "type": "Role"
+    },
+    {
+      "roleName": "Developer",
+      "schema:author": "https://github.com/liusinuo2000",
+      "type": "Role"
+    },
+    {
+      "roleName": "Developer",
+      "schema:author": "https://github.com/traison-diedrich",
+      "type": "Role"
+    },
+    {
+      "roleName": "Developer",
+      "schema:author": "https://github.com/austinjhoward",
+      "type": "Role"
+    },
+    {
+      "roleName": "Developer",
+      "schema:author": "https://github.com/GreihMurray",
+      "type": "Role"
+    },
+    {
+      "roleName": "Developer",
+      "schema:author": "https://github.com/jyanev",
+      "type": "Role"
+    },
+    {
+      "roleName": "Developer",
+      "schema:author": "https://github.com/joefol",
+      "type": "Role"
+    },
+    {
+      "roleName": "Developer",
+      "schema:author": "https://github.com/adelgadoj3",
+      "type": "Role"
+    },
+    {
+      "roleName": "Developer",
+      "schema:author": "https://github.com/SwindleA",
+      "type": "Role"
+    },
+    {
+      "roleName": "Tech Lead",
+      "schema:author": "https://github.com/yrlmanoharreddy",
+      "type": "Role"
+    },
+    {
+      "roleName": "Developer",
+      "schema:author": "https://github.com/tmacas",
+      "type": "Role"
+    },
+    {
+      "roleName": "Developer",
+      "schema:author": "https://github.com/Ed0827",
+      "type": "Role"
+    },
+    {
+      "roleName": "Developer",
+      "schema:author": "https://github.com/leandrumartin",
+      "type": "Role"
+    },
+    {
+      "roleName": "Tech Lead",
+      "schema:author": "https://github.com/leandrumartin",
+      "type": "Role"
+    },
+    {
+      "roleName": "Developer",
+      "schema:author": "https://github.com/j-heitz",
+      "type": "Role"
+    },
+    {
+      "roleName": "Developer",
+      "schema:author": "https://github.com/ThomasPautler952194",
+      "type": "Role"
+    }
+  ],
+  "contributor": [
+    {
+      "id": "https://github.com/sudoava",
+      "givenName": "sudoava",
+      "type": "Person"
+    },
+    {
+      "id": "https://github.com/liusinuo2000",
+      "givenName": "liusinuo2000",
+      "type": "Person"
+    },
+    {
+      "familyName": "Gupta",
+      "id": "https://github.com/Ankita562",
+      "givenName": "Ankita",
+      "type": "Person"
+    },
+    {
+      "familyName": "Sosnovshchenko",
+      "id": "https://github.com/sonata22",
+      "givenName": "Nataliia",
+      "type": "Person"
+    },
+    {
+      "id": "https://github.com/zka26",
+      "givenName": "zkatona",
+      "type": "Person"
+    }
+  ],
+  "codeRepository": "https://github.com/oss-slu/Pi4Micronaut",
+  "dateCreated": "2022-10-10",
+  "dateModified": "2024-05-10",
+  "datePublished": "2024-03-19",
+  "description": " A Java library combining Micronaut and Pi4j to streamline hardware connectivity to Raspberry Pis",
+  "developmentStatus": "active",
+  "downloadUrl": "https://central.sonatype.com/artifact/io.github.oss-slu/pi4micronaut-utils",
+  "keywords": [
+    "Raspberry Pi",
+    "Java",
+    "Pi4J",
+    "Micronaut"
+  ],
+  "license": "https://spdx.org/licenses/Apache-2.0",
+  "programmingLanguage": [
+    "Java"
+  ],
+  "runtimePlatform": [
+    "JVM"
+  ],
+  "schema:releaseNotes": "Supported Components:\n\nPush Button\nSlide Switch\nRotary Encoder\nRFID Scanner\nLED\nRGB LED\nLCD1602 Screen\nPhotosensor\nTouch Switch Sensor\nActive Buzzer\nPassive Buzzer\nPIR Motion Sensor\nUltrasonic Sensor\nTilt Switch\nMicro Switch\nServo Motor",
+  "version": "1.1",
+  "type": "SoftwareSourceCode"
+}
