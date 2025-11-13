@@ -45,7 +45,6 @@ include::../../../../../../components/src/main/resources/application.yml[tags=sp
 ----
 <1> Component Identifier (Used in @Named annotations)
 <2> Component Name
-<3> TO DO: Figure out what this address is
+<3> BCM Address of GPIO Reset pin
 <4> Baud rate
-<5> BCM Address of GPIO Reset pin
 
