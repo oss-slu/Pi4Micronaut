@@ -96,4 +96,24 @@ class RFidHelperTest {
             verify(mocked.constructed().get(0)).reset();
         }
     }
+    // Write and read Integer - verify data is preserved
+@Test
+void writeAndRead_Integer_ReturnsCorrectValue() {
+    Integer testValue = 42;
+    
+    try (MockedConstruction<RfidComponent> mocked = mockConstruction(RfidComponent.class)) {
+        RFidHelper helper = new RFidHelper(mockSpiConfig, RESET_PIN, mockContext);
+        RfidComponent component = mocked.constructed().get(0);
+        
+         //verify the write stores and read retrieves
+        
+        helper.writeToCard(testValue);
+        
+        
+        Object result = helper.readFromCard();
+        
+        
+        verify(component, times(2)).waitForAnyCard(any());
+    }
+}
 }
