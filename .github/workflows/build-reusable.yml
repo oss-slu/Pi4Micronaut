@@ -45,11 +45,16 @@ jobs:
       - name: Publish Library
         working-directory: pi4micronaut-utils
         env:
-          SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
-          SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
+          PORTAL_USERNAME: ${{ vars.PORTAL_USERNAME }}
+          PORTAL_PASSWORD: ${{ secrets.PORTAL_PASSWORD }}
           GPG_KEY: ${{ secrets.GPG_KEY }}
           GPG_PASSWORD: ${{ secrets.GPG_PASSWORD }}
         run: ./gradlew clean publish --info
+      - name: POST to Maven
+        uses: fjogeleit/http-request-action@v1
+        with:
+          url: 'https://ossrh-staging-api.central.sonatype.com/manual/upload/defaultRepository/io.github.oss-slu'
+          method: 'POST'
       - uses: actions/attest-build-provenance@v1
         with:
           subject-path: 'pi4micronaut-utils/build/libs/**/*.jar'
