@@ -103,13 +103,13 @@ artifacts {
 publishing {
     repositories {
         maven {
-            name = "OSSRH"
+            name = "ossrh-staging-api"
             credentials {
-                username = project.findProperty('SONATYPE_USERNAME') ?: System.getenv('SONATYPE_USERNAME')
-                password = project.findProperty('SONATYPE_PASSWORD') ?: System.getenv('SONATYPE_PASSWORD')
+                username = project.findProperty('PORTAL_USERNAME') ?: System.getenv('PORTAL_USERNAME')
+                password = project.findProperty('PORTAL_PASSWORD') ?: System.getenv('PORTAL_PASSWORD')
             }
-            def releasesRepoUrl = uri('https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/')
-            def snapshotsRepoUrl = uri('https://s01.oss.sonatype.org/content/repositories/snapshots/')
+            def releasesRepoUrl = uri('https://ossrh-staging-api.central.sonatype.com/service/local/staging/deploy/maven2/')
+            def snapshotsRepoUrl = uri('https://ossrh-staging-api.central.sonatype.com/content/repositories/snapshots/')
             url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
         }
     }
