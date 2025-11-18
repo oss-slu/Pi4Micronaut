@@ -49,7 +49,7 @@ The existence of Pi4Micronaut is justified by the need for a robust, scalable, a
 - [Maven Artifacts](https://repo1.maven.org/maven2/io/github/oss-slu/pi4micronaut-utils/)
 
 ### Architecture Diagram
-![Pi4Micronaut.png](System_Design_Diagram.png)
+![System_Design_Diagram.png](System_Design_Diagram.png)
 
 ## Example Projects using Pi4Micronaut Library
 - [Home Automation](https://github.com/oss-slu/home_automation_rpi)

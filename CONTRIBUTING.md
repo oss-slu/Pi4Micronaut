@@ -135,4 +135,4 @@ We write documentation files for each component, which are compiled and hosted o
 Also ensure that the classes you have written have appropriate Javadoc comments.
 
 ### Workflow Diagram
-![Workflow.png](Workflow_Diagram.png)
+![Workflow_Diagram.png](Workflow_Diagram.png)
