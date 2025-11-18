@@ -1,5 +1,15 @@
 ![Pi4Micronaut-Header](Pi4Micronaut_logo.png)
 
+[![Java CI](https://github.com/oss-slu/Pi4Micronaut/actions/workflows/github-actions.yml/badge.svg)](https://github.com/oss-slu/Pi4Micronaut/actions/workflows/github-actions.yml)
+![Maven Central Version](https://img.shields.io/maven-central/v/io.github.oss-slu/pi4micronaut-utils?logo=sonatype&logoColor=%23F18900&labelColor=%231B1C30&color=%23F18900)
+![GitHub License](https://img.shields.io/github/license/oss-slu/Pi4Micronaut)
+![Documentation](https://img.shields.io/badge/Documentation-8D021F?link=https%3A%2F%2Foss-slu.github.io%2FPi4Micronaut%2F)
+
+
+![Chat on Slack](https://img.shields.io/badge/Chat_on-Slack-4A154B?logo=slack&link=https%3A%2F%2Fjoin.slack.com%2Ft%2Foswslu%2Fshared_invite%2Fzt-24f0qhjbo-NkSfQ4LOg5wXxBdxP4vzfA)
+![Donate to OSS](https://img.shields.io/badge/Donate_to-OSS-003AA6?link=https%3A%2F%2Foss-slu.github.io%2Fconnect_with%2Fdonate)
+![Unity Foundation](https://img.shields.io/badge/Unity_Foundation-unityfoundation.io-blue?link=https%3A%2F%2Funityfoundation.io%2F)
+
 ## Overview
 
 Pi4Micronaut is an innovative Java library crafted for developers who aim to build Internet of Things (IoT) applications leveraging the Raspberry Pi platform. This software is designed to run directly on the Raspberry Pi, providing an interface between the high-level Micronaut framework and the low-level hardware control provided by Pi4J. It serves as a vital tool for Java developers who wish to create sophisticated IoT solutions that interact with various sensors and electronic components. By abstracting the complexity of hardware interactions, Pi4Micronaut allows developers to focus on crafting business logic and features, making it easier to bring IoT applications from concept to deployment rapidly.
