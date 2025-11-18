@@ -133,3 +133,6 @@ It is important that reviewers are able to replicate your work in order to prope
 We write documentation files for each component, which are compiled and hosted on our online documentation webpage. Create an .adoc file with the component name as the file name. Make sure to include all the information that the other components include. Simply copy/paste an existing component's documentation and edit as needed. Add the file here: `pi4micronaut-utils/src/docs/asciidoc/components/(inputComponents or outputComponents)`.
 
 Also ensure that the classes you have written have appropriate Javadoc comments.
+
+### Workflow Diagram
+![Workflow.png](Workflow_Diagram.png)
