@@ -38,7 +38,7 @@ The existence of Pi4Micronaut is justified by the need for a robust, scalable, a
     - Java
     - Micronaut Framework with Gradle
     - Pi4J Library
-- **Type:** IOT (Raspberry Pi)
+- **Type:** IoT (Raspberry Pi)
 - **License:** [Apache License 2.0](https://opensource.org/license/apache-2-0/)
 
 
@@ -49,7 +49,7 @@ The existence of Pi4Micronaut is justified by the need for a robust, scalable, a
 - [Maven Artifacts](https://repo1.maven.org/maven2/io/github/oss-slu/pi4micronaut-utils/)
 
 ### Architecture Diagram
-![Pi4Micronaut.png](Workflow_Diagram.png)
+![Pi4Micronaut.png](System_Design_Diagram.png)
 
 ## Example Projects using Pi4Micronaut Library
 - [Home Automation](https://github.com/oss-slu/home_automation_rpi)
@@ -62,7 +62,7 @@ The existence of Pi4Micronaut is justified by the need for a robust, scalable, a
 - [Micronaut HTTP Client documentation](https://docs.micronaut.io/latest/guide/index.html#httpClient)
 
 ## Pi4J 2.4.0
-- [Pi4j Documenttion](https://pi4j.com/documentation/)
+- [Pi4j Documentation](https://pi4j.com/documentation/)
 
 ## Shadow Gradle 7.1.2
 - [Shadow Gradle Plugin](https://plugins.gradle.org/plugin/com.github.johnrengelman.shadow)
