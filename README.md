@@ -1,14 +1,14 @@
 ![Pi4Micronaut-Header](Pi4Micronaut_logo.png)
 
 [![Java CI](https://github.com/oss-slu/Pi4Micronaut/actions/workflows/github-actions.yml/badge.svg)](https://github.com/oss-slu/Pi4Micronaut/actions/workflows/github-actions.yml)
-![Maven Central Version](https://img.shields.io/maven-central/v/io.github.oss-slu/pi4micronaut-utils?logo=sonatype&logoColor=%23F18900&labelColor=%231B1C30&color=%23F18900&link=https%3A%2F%2Fcentral.sonatype.com%2Fartifact%2Fio.github.oss-slu%2Fpi4micronaut-utils)
+[![Maven Central Version](https://img.shields.io/maven-central/v/io.github.oss-slu/pi4micronaut-utils?logo=sonatype&logoColor=%23F18900&labelColor=%231B1C30&color=%23F18900)](https://central.sonatype.com/artifact/io.github.oss-slu/pi4micronaut-utils)
 ![GitHub License](https://img.shields.io/github/license/oss-slu/Pi4Micronaut)
-![Documentation](https://img.shields.io/badge/Documentation-8D021F?link=https%3A%2F%2Foss-slu.github.io%2FPi4Micronaut%2F)
+[![Documentation](https://img.shields.io/badge/Documentation-8D021F)](https://oss-slu.github.io/Pi4Micronaut/)
 
 
-![Chat on Slack](https://img.shields.io/badge/Chat_on-Slack-4A154B?logo=slack&link=https%3A%2F%2Fjoin.slack.com%2Ft%2Foswslu%2Fshared_invite%2Fzt-24f0qhjbo-NkSfQ4LOg5wXxBdxP4vzfA)
-![Donate to OSS](https://img.shields.io/badge/Donate_to-OSS-003AA6?link=https%3A%2F%2Foss-slu.github.io%2Fconnect_with%2Fdonate)
-![Unity Foundation](https://img.shields.io/badge/Unity_Foundation-unityfoundation.io-blue?link=https%3A%2F%2Funityfoundation.io%2F)
+[![Chat on Slack](https://img.shields.io/badge/Chat_on-Slack-4A154B?logo=slack)](https://join.slack.com/t/oswslu/shared_invite/zt-24f0qhjbo-NkSfQ4LOg5wXxBdxP4vzfA)
+[![Donate to OSS](https://img.shields.io/badge/Donate_to-OSS-003AA6)](https://oss-slu.github.io/connect_with/donate)
+[![Unity Foundation](https://img.shields.io/badge/Unity_Foundation-unityfoundation.io-blue)](https://unityfoundation.io)
 
 ## Overview
 
