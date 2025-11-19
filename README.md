@@ -1,7 +1,7 @@
 ![Pi4Micronaut-Header](Pi4Micronaut_logo.png)
 
 [![Java CI](https://github.com/oss-slu/Pi4Micronaut/actions/workflows/github-actions.yml/badge.svg)](https://github.com/oss-slu/Pi4Micronaut/actions/workflows/github-actions.yml)
-![Maven Central Version](https://img.shields.io/maven-central/v/io.github.oss-slu/pi4micronaut-utils?logo=sonatype&logoColor=%23F18900&labelColor=%231B1C30&color=%23F18900)
+![Maven Central Version](https://img.shields.io/maven-central/v/io.github.oss-slu/pi4micronaut-utils?logo=sonatype&logoColor=%23F18900&labelColor=%231B1C30&color=%23F18900&link=https%3A%2F%2Fcentral.sonatype.com%2Fartifact%2Fio.github.oss-slu%2Fpi4micronaut-utils)
 ![GitHub License](https://img.shields.io/github/license/oss-slu/Pi4Micronaut)
 ![Documentation](https://img.shields.io/badge/Documentation-8D021F?link=https%3A%2F%2Foss-slu.github.io%2FPi4Micronaut%2F)
 
