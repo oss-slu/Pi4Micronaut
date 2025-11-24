@@ -29,6 +29,13 @@ jobs:
         working-directory: pi4micronaut-utils
         run: ./gradlew shadowJar
 
+        
+      - name: Upload built JAR as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: micronaut-jar
+          path: pi4micronaut-utils/build/libs/pi4micronaut-utils-*-all.jar
+
   publish-jar:
     runs-on: ubuntu-latest
     needs: build-library
@@ -58,3 +65,42 @@ jobs:
       - uses: actions/attest-build-provenance@v1
         with:
           subject-path: 'pi4micronaut-utils/build/libs/**/*.jar'
+  create-release:
+    runs-on: ubuntu-latest
+    needs: [build-library, publish-jar]
+    defaults:
+      run:
+        working-directory: pi4micronaut-utils
+    env:
+      GITHUB_TOKEN: ${{ secrets.CI_GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # ←←← ONLY CHANGE FROM LAST TIME: path is now just "build/libs"
+      - name: Download built JAR
+        uses: actions/download-artifact@v4
+        with:
+          name: micronaut-jar
+          path: build/libs
+
+      - name: Read version from gradle.properties
+        id: read_version
+        uses: madhead/read-java-properties@latest
+        with:
+          file: gradle.properties
+          property: version
+
+      - name: Create and push Git tag
+        run: |
+          TAG="${{ steps.read_version.outputs.value }}"
+          git tag -a "$TAG" -m "Release $TAG"
+          git push origin "$TAG"
+
+      - name: Create GitHub Release
+        run: |
+          gh release create "${{ steps.read_version.outputs.value }}" \
+            --verify-tag \
+            --generate-notes \
+            "build/libs/pi4micronaut-utils-${{ steps.read_version.outputs.value }}-all.jar"
