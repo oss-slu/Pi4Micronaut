@@ -7,7 +7,6 @@ plugins {
     id 'signing'
     id 'org.asciidoctor.jvm.convert' version '4.0.2'
     id 'java-library'
-    id("com.netflix.nebula.release") version "21.0.0"
 }
 
 group = 'io.github.oss-slu'
@@ -110,7 +109,7 @@ publishing {
             }
             def releasesRepoUrl = uri('https://ossrh-staging-api.central.sonatype.com/service/local/staging/deploy/maven2/')
             def snapshotsRepoUrl = uri('https://ossrh-staging-api.central.sonatype.com/content/repositories/snapshots/')
-            url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+            url = version.toString().endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
         }
     }
 
@@ -222,10 +221,5 @@ publishing {
         }
 
     }
-
-    nebulaRelease {
-        Set<String> releaseBranchPatterns = [/main/] as Set 
-    }
 }
-
 
