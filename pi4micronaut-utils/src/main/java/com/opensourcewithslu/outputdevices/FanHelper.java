@@ -17,10 +17,10 @@ public class FanHelper {
     /**
      * Constructor to initialize the FanHelper with a PWM instance.
      *
-     * @param fa the PWM instance to control the fan
+     * @param fan the PWM instance to control the fan
      */
-    public FanHelper(Pwm fa) {
-        this.pwm = fa;
+    public FanHelper(Pwm fan) {
+        this.pwm = fan;
     }
 
     /**
