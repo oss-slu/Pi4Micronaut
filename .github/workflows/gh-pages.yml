@@ -9,11 +9,6 @@ on:
       - main
       - develop
 
-permissions:
-  contents: write
-  pages: write
-  id-token: write
-
 jobs:
   build:
     runs-on: ubuntu-latest
