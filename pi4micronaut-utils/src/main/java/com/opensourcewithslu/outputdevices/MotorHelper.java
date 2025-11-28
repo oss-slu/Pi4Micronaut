@@ -64,7 +64,7 @@ public class MotorHelper {
      * Sets the speed of the DC motor.
      * This method calculates the necessary pulse width and duty cycle to achieve the specified speed.
      *
-     * @param speed the target speed for the motor, as a percentage between 0 and 1.
+     * @param speed the target speed for the motor, as a percentage between 0 and 100.
      */
     //tag::[method]
     public void setSpeed(double speed)
