@@ -24,7 +24,7 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
       - name: Bump version (nebula final)
         if: github.ref == 'refs/heads/main'
-        working-directory: ./pi4micronaut-utils
+        working-directory: ./Pi4Micronaut
         run: ./gradlew final
       - name: Execute Gradle build with info logging
         working-directory: pi4micronaut-utils
