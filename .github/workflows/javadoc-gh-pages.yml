@@ -30,15 +30,26 @@ jobs:
       - name: Generate Javadocs
         working-directory: pi4micronaut-utils
         run: ./gradlew javadoc
+      - name: Upload javadoc artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: javadoc
+          path: pi4micronaut-utils/build/docs/javadoc
   deploy:
     runs-on: ubuntu-latest
     needs: build
     steps:
+      - name: Download javadoc artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: javadoc
+          path: ./javadoc
+          retention-days: 1
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         if: github.ref == 'refs/heads/develop'
         with:
-          github_token: ${{ secrets.CI_GITHUB_TOKEN }}
-          publish_dir: ./pi4micronaut-utils/build/docs/javadoc
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./javadoc
           destination_dir: javadoc
           keep_files: true
