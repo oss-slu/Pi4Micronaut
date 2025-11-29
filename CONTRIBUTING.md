@@ -60,6 +60,8 @@
 
 * Note: A test suite will be developed in future to test the components without the use of external hardware
 
+* To run tests, use the command `./gradlew test`
+
 ### Signing the Contributor License Agreement
 
 * While creating a pull request, you’ll be prompted to sign a Contributor License Agreement. Please do so by logging in with your GitHub account.
@@ -93,6 +95,13 @@
 * Note: While your contribution is highly valued, there’s no guarantee that all pull requests will be merged. It depends on the library’s direction, quality of the contribution, and decisions of the maintainers.
 
 Thanks for considering a contribution to the Pi4Micronaut library! Your involvement helps make the project better for everyone.
+
+## Commands and Gradle Tasks
+
+Here are some useful commands and Gradle tasks for working with the Pi4Micronaut library:
+* **Build the Project:** `./gradlew build` - Compiles the code and builds the project.
+* **Run Tests:** `./gradlew test` - Executes the test suite.
+* **Compile AsciiDoc Documentation:** `./gradlew asciidoctor` - Generates the documentation from AsciiDoc files.
 
 ## How to Create a New Component
 
