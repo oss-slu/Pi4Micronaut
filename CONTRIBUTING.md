@@ -101,7 +101,7 @@ Thanks for considering a contribution to the Pi4Micronaut library! Your involvem
 Here are some useful commands and Gradle tasks for working with the Pi4Micronaut library:
 * **Build the Project:** `./gradlew build` - Compiles the code and builds the project.
 * **Run Tests:** `./gradlew test` - Executes the test suite.
-* **Compile AsciiDoc Documentation:** `./gradlew asciidoctor` - Generates the documentation from AsciiDoc files.
+* **Compile AsciiDoc Documentation:** `./gradlew asciidoctor` - Generates the documentation from AsciiDoc files. The output can be found in `pi4micronaut-utils/build/docs/asciidoc`.
 
 ## How to Create a New Component
 
