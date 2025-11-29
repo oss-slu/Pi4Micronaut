@@ -129,7 +129,7 @@ All controllers should be kept here: `components/src/main/java/com/opensourcewit
 
 ### Thoroughly test
 
-Contributors should thoroughly test their integrations. Software unit tests should be written in `pi4micronaut-utils/src/test/java/com/opensourcewithslu/(inputdevices or outputdevices)`.
+Contributors should thoroughly test their integrations. Software unit tests should be written in `pi4micronaut-utils/src/test/java/com/opensourcewithslu/(inputdevices or outputdevices)`. They can be run with `./gradlew test`.
 
 Hardware testing should also be done. When submitting a pull request, make sure to include how you tested the component, any circuits that you may have used, and how to run any examples you may have created. Instructions for how to conduct hardware testing, including how to send the files over to the Raspberry Pi device, are on our online documentation.
 
