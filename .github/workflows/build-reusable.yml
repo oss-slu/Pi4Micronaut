@@ -24,12 +24,18 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
         with:
           cache-read-only: ${{ github.ref != 'refs/heads/main' && github.ref != 'refs/heads/develop' }}
+      - name: Bump version (nebula final)
+        if: github.ref == 'refs/heads/main'
+        working-directory: .
+        run: ./gradlew final
       - name: Execute Gradle build with info logging
         working-directory: pi4micronaut-utils
         run: ./gradlew build --info
       - name: Execute Gradle shadowJar
         working-directory: pi4micronaut-utils
         run: ./gradlew shadowJar
+     
+      
 
   publish-jar:
     runs-on: ubuntu-latest

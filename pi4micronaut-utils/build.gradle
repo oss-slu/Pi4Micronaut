@@ -10,7 +10,6 @@ plugins {
 }
 
 group = 'io.github.oss-slu'
-version = 'v1.2'
 
 apply plugin: 'maven-publish'
 apply plugin: 'signing'
@@ -112,7 +111,7 @@ publishing {
             }
             def releasesRepoUrl = uri('https://ossrh-staging-api.central.sonatype.com/service/local/staging/deploy/maven2/')
             def snapshotsRepoUrl = uri('https://ossrh-staging-api.central.sonatype.com/content/repositories/snapshots/')
-            url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+            url = version.toString().endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
         }
     }
 
@@ -120,7 +119,7 @@ publishing {
         mavenJava(MavenPublication) {
             groupId = 'io.github.oss-slu'
             artifactId = 'pi4micronaut-utils'
-            version = 'v1.2'
+            version = project.findProperty('version')
             from components.java
 
             artifact sourcesJar
@@ -225,5 +224,3 @@ publishing {
 
     }
 }
-
-
