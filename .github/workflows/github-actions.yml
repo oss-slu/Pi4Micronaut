@@ -27,10 +27,7 @@ jobs:
       - name: Change wrapper permissions
         run: chmod +x pi4micronaut-utils/gradlew
       - name: Setup Gradle
-        uses: gradle/gradle-build-action@v2
-        with:
-          arguments: build
-          build-root-directory: pi4micronaut-utils/
+        uses: gradle/actions/setup-gradle@v4
       - name: Execute Gradle build
         working-directory: pi4micronaut-utils
         run: ./gradlew build
