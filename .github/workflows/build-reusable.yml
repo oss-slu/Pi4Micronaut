@@ -22,6 +22,8 @@ jobs:
         run: chmod +x pi4micronaut-utils/gradlew
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
+        with:
+          cache-read-only: ${{ github.ref != 'refs/heads/main' && github.ref != 'refs/heads/develop' }}
       - name: Execute Gradle build with info logging
         working-directory: pi4micronaut-utils
         run: ./gradlew build --info
@@ -39,9 +41,12 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-          cache: 'gradle'
       - name: Change wrapper permissions
         run: chmod +x pi4micronaut-utils/gradlew
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          cache-read-only: ${{ github.ref != 'refs/heads/main' && github.ref != 'refs/heads/develop' }}
       - name: Publish Library
         working-directory: pi4micronaut-utils
         env:
