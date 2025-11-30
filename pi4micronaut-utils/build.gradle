@@ -57,13 +57,15 @@ java {
     targetCompatibility = JavaVersion.toVersion("17")
 }
 
+tasks.register('copyJavadoc', Copy) {
+    dependsOn 'javadoc'
+    from tasks.javadoc.destinationDir
+    into "src/docs/javadoc"
+}
+
 tasks.named('build').configure {
     if (project.hasProperty('generateJavadoc') || System.getenv('CI') == 'true') {
-        dependsOn 'javadoc'
-        copy {
-            from tasks.javadoc.destinationDir
-            into "src/docs/javadoc"
-        }
+        dependsOn 'copyJavadoc'
     }
 }
 
