@@ -34,10 +34,6 @@ jobs:
       - name: Execute Gradle shadowJar
         working-directory: pi4micronaut-utils
         run: ./gradlew shadowJar
-     
-      
-
-        
       - name: Upload built JAR as artifact
         uses: actions/upload-artifact@v4
         with:
