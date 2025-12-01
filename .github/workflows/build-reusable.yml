@@ -78,7 +78,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      # ←←← ONLY CHANGE FROM LAST TIME: path is now just "build/libs"
       - name: Download built JAR
         uses: actions/download-artifact@v4
         with:
