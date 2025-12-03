@@ -97,7 +97,7 @@ jobs:
           cache-read-only: ${{ github.ref != 'refs/heads/main' && github.ref != 'refs/heads/develop' }}
       - name: Read library version
         id: read_version
-        working-directory: pi4micronaut-utils
+        working-directory: .
         run: |
           VERSION=$(./gradlew properties | grep "^version:" | awk '{print $2}')
           echo "version=$VERSION" >> $GITHUB_OUTPUT
@@ -105,10 +105,10 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: micronaut-jar
-          path: build/libs
+          path: pi4micronaut-utils/build/libs
       - name: Create GitHub Release
         run: |
           gh release create "${{ steps.read_version.outputs.version }}" \
             --verify-tag \
             --generate-notes \
-            "build/libs/pi4micronaut-utils-${{ steps.read_version.outputs.version }}-all.jar"
+            "pi4micronaut-utils/build/libs/pi4micronaut-utils-${{ steps.read_version.outputs.version }}-all.jar"
