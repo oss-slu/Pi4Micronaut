@@ -389,7 +389,7 @@ pre.rouge .nv, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi, pre.rouge .vm {
 <h1>Pi4Micronaut Documentation</h1>
 <div class="details">
 <span id="author" class="author">:imagesdir:img</span><br>
-<span id="revnumber">version 0.1.0-dev.1+develop.518a878</span>
+<span id="revnumber">version 0.1.0-dev.1+de4305b</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -460,12 +460,13 @@ pre.rouge .nv, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi, pre.rouge .vm {
 <li><a href="#_4_digit_7_segment_display">4.3.1. 4-Digit 7-Segment Display</a></li>
 <li><a href="#_active_buzzer">4.3.2. Active Buzzer</a></li>
 <li><a href="#_fan_controller">4.3.3. Fan Controller</a></li>
-<li><a href="#_lcd1602">4.3.4. LCD1602</a></li>
-<li><a href="#_led">4.3.5. LED</a></li>
-<li><a href="#_motor">4.3.6. Motor</a></li>
-<li><a href="#_passive_buzzer">4.3.7. Passive Buzzer</a></li>
-<li><a href="#_rgb_led">4.3.8. RGB LED</a></li>
-<li><a href="#_servo_motor">4.3.9. Servo Motor</a></li>
+<li><a href="#_ir_obstacle_avoidance_sensor">4.3.4. IR Obstacle Avoidance Sensor</a></li>
+<li><a href="#_lcd1602">4.3.5. LCD1602</a></li>
+<li><a href="#_led">4.3.6. LED</a></li>
+<li><a href="#_motor">4.3.7. Motor</a></li>
+<li><a href="#_passive_buzzer">4.3.8. Passive Buzzer</a></li>
+<li><a href="#_rgb_led">4.3.9. RGB LED</a></li>
+<li><a href="#_servo_motor">4.3.10. Servo Motor</a></li>
 </ul>
 </li>
 </ul>
@@ -911,52 +912,73 @@ For more information on the LED setup guide, see our documentation <a href="http
 <div class="ulist">
 <ul>
 <li>
-<p>Push Button</p>
-</li>
-<li>
-<p>Slide Switch</p>
-</li>
-<li>
-<p>Rotary Encoder</p>
-</li>
-<li>
-<p>RFID Scanner</p>
-</li>
-<li>
-<p>LED</p>
-</li>
-<li>
-<p>RGB LED</p>
-</li>
-<li>
-<p>LCD Screen</p>
-</li>
-<li>
-<p>Photo Sensor</p>
-</li>
-<li>
-<p>Touch Switch Sensor</p>
+<p>4-Digit 7-Segment Display</p>
 </li>
 <li>
 <p>Active Buzzer</p>
 </li>
 <li>
+<p>Fan Controller</p>
+</li>
+<li>
+<p>IR Obstacle Avoidance Sensor</p>
+</li>
+<li>
+<p>LCD1602 (Liquid Crystal Display)</p>
+</li>
+<li>
+<p>LED</p>
+</li>
+<li>
+<p>Micro Switch</p>
+</li>
+<li>
+<p>DC Motor</p>
+</li>
+<li>
 <p>Passive Buzzer</p>
+</li>
+<li>
+<p>PhotoResistor Sensor</p>
 </li>
 <li>
 <p>PIR Motion Sensor</p>
 </li>
 <li>
-<p>Ultrasonic Sensor</p>
+<p>Push Button</p>
+</li>
+<li>
+<p>Reed Switch</p>
+</li>
+<li>
+<p>RFID Scanner</p>
+</li>
+<li>
+<p>RGB LED</p>
+</li>
+<li>
+<p>Rotary Encoder</p>
 </li>
 <li>
 <p>Servo Motor</p>
 </li>
 <li>
+<p>Slide Switch</p>
+</li>
+<li>
+<p>Speed Sensor</p>
+</li>
+<li>
+<p>Thermistor Sensor</p>
+</li>
+<li>
 <p>Tilt Switch</p>
 </li>
 <li>
-<p>Micro Switch</p>
+<p>Touch Switch Sensor</p>
+</li>
+<li>
+<p>Ultrasonic Sensor</p>
 </li>
 </ul>
 </div>
@@ -1434,6 +1456,12 @@ to apply the specifics listed in the yml file.</p>
       <span class="na">address</span><span class="pi">:</span> <span class="m">17</span>
       <span class="na">pull</span><span class="pi">:</span> <span class="s">PULL_UP</span>
       <span class="na">debounce</span><span class="pi">:</span> <span class="m">200</span>
+      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-digital-input</span>
+    <span class="na">ir-obstacle-input</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">IR Obstacle Avoidance Sensor</span>
+      <span class="na">address</span><span class="pi">:</span> <span class="m">17</span>
+      <span class="na">pull</span><span class="pi">:</span> <span class="s">PULL_UP</span>
+      <span class="na">debounce</span><span class="pi">:</span> <span class="m">10000</span>
       <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-digital-input</span></code></pre>
 </div>
 </div>
@@ -5588,19 +5616,310 @@ for more details.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_lcd1602"><a class="anchor" href="#_lcd1602"></a>4.3.4. LCD1602</h4>
+<h4 id="_ir_obstacle_avoidance_sensor"><a class="anchor" href="#_ir_obstacle_avoidance_sensor"></a>4.3.4. IR Obstacle Avoidance Sensor</h4>
+<div class="paragraph text-right">
+<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/inputComponents/irObstacleAvoidanceSensor.adoc">Improve this doc</a></p>
+</div>
+<div class="sect4">
+<h5 id="_overview_17"><a class="anchor" href="#_overview_17"></a>Overview</h5>
+<div class="paragraph">
+<p>This section provides details for the IR Obstacle Avoidance Sensor, including its components, assembly instructions, and functionality.</p>
+</div>
+<div class="paragraph">
+<p>The IR (Infrared) Obstacle Avoidance Module is a proximity sensor that detects objects and obstacles within a short distance (2-30cm) using infrared reflection. It is commonly used in robotics for collision avoidance, object detection, and boundary sensing. The module features adjustable sensitivity via a potentiometer, digital output for easy integration, fast response time, low power consumption, and operates on 3.3V to 5V power supplies.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_components_18"><a class="anchor" href="#_components_18"></a>Components</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>1 x Raspberry Pi 4</p>
+</li>
+<li>
+<p>1 x IR Obstacle Avoidance Module</p>
+</li>
+<li>
+<p>5 x Male-to-Male Jumper Wires</p>
+</li>
+<li>
+<p>1 x Breadboard</p>
+</li>
+<li>
+<p>Power supply for Raspberry Pi</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_assembly_instructions_14"><a class="anchor" href="#_assembly_instructions_14"></a>Assembly Instructions</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Place the IR Obstacle Avoidance Module onto the breadboard.</p>
+</li>
+<li>
+<p>Connect the <strong>VCC</strong> pin of the IR module to <strong>3.3V</strong> on the Raspberry Pi.</p>
+</li>
+<li>
+<p>Connect the <strong>GND</strong> pin of the IR module to <strong>Ground</strong> on the Raspberry Pi.</p>
+</li>
+<li>
+<p>Connect the <strong>OUT</strong> (or <strong>DO</strong>) pin of the IR module to <strong>GPIO 17</strong> on the Raspberry Pi.</p>
+</li>
+<li>
+<p>Use the remaining two jumper wires to secure the module to the breadboard, following the provided circuit diagram.</p>
+</li>
+<li>
+<p>Verify connections to ensure no loose wires or short circuits.</p>
+</li>
+<li>
+<p>Adjust the potentiometer to set detection sensitivity:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Turn <strong>clockwise</strong> to increase sensitivity.</p>
+</li>
+<li>
+<p>Turn <strong>counter-clockwise</strong> to decrease sensitivity.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><strong>Tip</strong>: Use 3.3V for compatibility with Raspberry Pi GPIO. Ensure the module&#8217;s IR LEDs face forward.</p>
+</div>
+</blockquote>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_circuit_diagram_16"><a class="anchor" href="#_circuit_diagram_16"></a>Circuit Diagram</h5>
+<div class="imageblock">
+<div class="content">
+<img src="img/irObstacleAvoidance-CD.png" alt="irObstacleAvoidance CD">
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_schematic_diagram_3"><a class="anchor" href="#_schematic_diagram_3"></a>Schematic Diagram</h5>
+<div class="imageblock">
+<div class="content">
+<img src="img/irObstacleAvoidance-SD.png" alt="irObstacleAvoidance SD">
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_functionality_17"><a class="anchor" href="#_functionality_17"></a>Functionality</h5>
+<div class="paragraph">
+<p>The IR Obstacle Avoidance Module uses active infrared light reflection to detect obstacles. It emits infrared light via an onboard LED, which reflects off nearby objects and is detected by the IR receiver. The onboard comparator circuit processes the signal and outputs a digital signal (LOW when an obstacle is detected, HIGH when the path is clear). The detection range (2-30cm) is adjustable via the potentiometer, making it suitable for real-time robotics applications.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_testing_8"><a class="anchor" href="#_testing_8"></a>Testing</h5>
+<div class="paragraph">
+<p>Use the following commands to test the component:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="bash"><span class="nv">$curl</span> http://localhost:8080/ir-obstacle/status</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>/status</code> - Returns <code>true</code> if an obstacle is detected, <code>false</code> if the path is clear.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="bash"><span class="nv">$curl</span> http://localhost:8080/ir-obstacle/state</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>/state</code> - Returns the raw digital state (<code>HIGH</code> or <code>LOW</code>).</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="bash"><span class="nv">$curl</span> http://localhost:8080/ir-obstacle/message</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>/message</code> - Returns a human-readable status (<code>"Obstacle detected"</code> or <code>"No obstacle"</code>).</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="bash"><span class="nv">$curl</span> http://localhost:8080/ir-obstacle/wait/<span class="o">{</span>timeoutMillis<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>/wait/{timeoutMillis}</code> - Waits for obstacle detection within the specified timeout (in milliseconds) and returns <code>true</code> if detected, <code>false</code> otherwise.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="bash"><span class="nv">$curl</span> http://localhost:8080/ir-obstacle/init</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>/init</code> - Initializes the sensor and adds an event listener to print <code>"Obstacle Detected"</code> or <code>"No Obstacle"</code> to the console when the sensor state changes.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_troubleshooting_17"><a class="anchor" href="#_troubleshooting_17"></a>Troubleshooting</h5>
+<div class="paragraph">
+<p><strong>Sensor Always Reports Obstacle Detected</strong>:
+* Adjust potentiometer counter-clockwise to decrease sensitivity.
+* Ensure the module is not facing a reflective surface.
+* Verify VCC is connected to 3.3V.
+* Test with a white object to confirm detection.
+* Check GPIO state with <code>gpio readall</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Sensor Never Detects Obstacles</strong>:
+* Adjust potentiometer clockwise to increase sensitivity.
+* Verify OUT pin is connected to GPIO 17.
+* Confirm <code>application.yml</code> has the correct GPIO address.
+* Test with a reflective object (e.g., white or shiny surface).
+* Measure OUT pin voltage with a multimeter (should switch between 0V and 3.3V).</p>
+</div>
+<div class="paragraph">
+<p><strong>Inconsistent Detection</strong>:
+* Increase debounce time in <code>application.yml</code> to 20000 (20ms).
+* Secure all jumper wires.
+* Shield from sunlight or other IR sources.
+* Mount the module rigidly to prevent vibration.
+* Add a 100µF capacitor across VCC and GND near the module.</p>
+</div>
+<div class="paragraph">
+<p><strong>Module Won&#8217;t Power On</strong>:
+* Verify 3.3V at VCC with a multimeter.
+* Check GND connections.
+* Ensure <code>application.yml</code> is correctly configured.
+* Test GPIO manually with <code>gpio mode 17 in</code> and <code>gpio read 17</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Application Crashes</strong>:
+* Verify <code>application.yml</code> syntax and <code>ir-obstacle-input</code> key.
+* Ensure <code>@Named("ir-obstacle-input")</code> matches the configuration.
+* Rebuild with <code>./gradlew clean build</code>.
+* Check logs for configuration errors.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_yaml_configuration_17"><a class="anchor" href="#_yaml_configuration_17"></a>YAML Configuration</h5>
+<div class="paragraph">
+<p>The IR Obstacle Avoidance Sensor configuration as it appears in the YAML file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">pi4j</span><span class="pi">:</span>
+  <span class="na">digital-input</span><span class="pi">:</span>
+    <span class="na">ir-obstacle-input</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">IR Obstacle Avoidance Sensor</span>
+      <span class="na">address</span><span class="pi">:</span> <span class="m">17</span>
+      <span class="na">pull</span><span class="pi">:</span> <span class="s">PULL_UP</span>
+      <span class="na">debounce</span><span class="pi">:</span> <span class="m">10000</span>
+      <span class="na">provider</span><span class="pi">:</span> <span class="s">pigpio-digital-input</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_constructor_and_methods_12"><a class="anchor" href="#_constructor_and_methods_12"></a>Constructor and Methods</h5>
+<div class="paragraph">
+<p>To see the constructor and methods of the <code>IRObstacleAvoidance</code> class, refer to the JavaDoc: <a href="https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/inputdevices/IRObstacleAvoidance.html">IRObstacleAvoidance JavaDoc</a></p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_example_controller_6"><a class="anchor" href="#_example_controller_6"></a>Example Controller</h5>
+<div class="paragraph">
+<p>This controller demonstrates the usage of the IR Obstacle Avoidance Sensor:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="nd">@Controller</span><span class="o">(</span><span class="s">"/ir-obstacle"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">IRObstacleAvoidanceController</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">IRObstacleAvoidanceHelper</span> <span class="n">irObstacleAvoidanceHelper</span><span class="o">;</span>
+
+    <span class="c1">// Inject the IR obstacle avoidance digital input pin</span>
+    <span class="nd">@Inject</span>
+    <span class="kd">public</span> <span class="nf">IRObstacleAvoidanceController</span><span class="o">(</span><span class="nd">@Named</span><span class="o">(</span><span class="s">"ir-obstacle-input"</span><span class="o">)</span> <span class="nc">DigitalInput</span> <span class="n">digitalInput</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">irObstacleAvoidanceHelper</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">IRObstacleAvoidanceHelper</span><span class="o">(</span><span class="n">digitalInput</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="c1">// Endpoint to check if an obstacle is currently detected</span>
+    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/status"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isObstacleDetected</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">irObstacleAvoidanceHelper</span><span class="o">.</span><span class="na">isObstacleDetected</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="c1">// Endpoint to get the current state (HIGH or LOW)</span>
+    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/state"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">DigitalState</span> <span class="nf">getState</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">irObstacleAvoidanceHelper</span><span class="o">.</span><span class="na">getState</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="c1">// Endpoint to get human-readable status message</span>
+    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/message"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getStatusMessage</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">irObstacleAvoidanceHelper</span><span class="o">.</span><span class="na">getStatusMessage</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="c1">// Endpoint to wait for obstacle detection with timeout</span>
+    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/wait/{timeoutMillis}"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">waitForObstacle</span><span class="o">(</span><span class="kt">long</span> <span class="n">timeoutMillis</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">InterruptedException</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">irObstacleAvoidanceHelper</span><span class="o">.</span><span class="na">waitForObstacle</span><span class="o">(</span><span class="n">timeoutMillis</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="c1">// initializing endpoint</span>
+    <span class="nd">@Get</span><span class="o">(</span><span class="s">"/init"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">enable</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">irObstacleAvoidanceHelper</span><span class="o">.</span><span class="na">addEventListener</span> <span class="o">(</span><span class="n">event</span> <span class="o">-&gt;{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">irObstacleAvoidanceHelper</span><span class="o">.</span><span class="na">isObstacleDetected</span><span class="o">()){</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Obstacle Detected"</span><span class="o">);</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"No Obstacle"</span><span class="o">);</span>
+            <span class="o">}</span>
+    <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_lcd1602"><a class="anchor" href="#_lcd1602"></a>4.3.5. LCD1602</h4>
 <div class="paragraph text-right">
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/outputComponents/lcdScreen.adoc">Improve this doc</a></p>
 </div>
 <div class="sect4">
-<h5 id="_overview_17"><a class="anchor" href="#_overview_17"></a>Overview</h5>
+<h5 id="_overview_18"><a class="anchor" href="#_overview_18"></a>Overview</h5>
 <div class="paragraph">
 <p>This section provides details of the LCD1602 (Liquid Crystal Display) circuit,
 including its components, assembly instructions, and functionality.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_components_18"><a class="anchor" href="#_components_18"></a>Components</h5>
+<h5 id="_components_19"><a class="anchor" href="#_components_19"></a>Components</h5>
 <div class="olist arabic">
 <div class="title">Note: The LCD1602 only works on the 32-bit version of Raspberry Pi OS.</div>
 <ol class="arabic">
@@ -5623,7 +5942,7 @@ including its components, assembly instructions, and functionality.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_assembly_instructions_14"><a class="anchor" href="#_assembly_instructions_14"></a>Assembly Instructions</h5>
+<h5 id="_assembly_instructions_15"><a class="anchor" href="#_assembly_instructions_15"></a>Assembly Instructions</h5>
 <div class="paragraph">
 <p>Connect the 4 pins on the LCD1602 screen to the breadboard as described below and in the diagram:</p>
 </div>
@@ -5645,7 +5964,7 @@ including its components, assembly instructions, and functionality.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_circuit_diagram_16"><a class="anchor" href="#_circuit_diagram_16"></a>Circuit Diagram</h5>
+<h5 id="_circuit_diagram_17"><a class="anchor" href="#_circuit_diagram_17"></a>Circuit Diagram</h5>
 <div class="imageblock">
 <div class="content">
 <img src="img/lcd1602-circuit.png" alt="lcd1602 circuit">
@@ -5653,7 +5972,7 @@ including its components, assembly instructions, and functionality.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_functionality_17"><a class="anchor" href="#_functionality_17"></a>Functionality</h5>
+<h5 id="_functionality_18"><a class="anchor" href="#_functionality_18"></a>Functionality</h5>
 <div class="paragraph">
 <p>The LCD1602 is a kind of dot matrix module that can show letters, numbers, and other characters.
 The number 1602 describes the display: 2 rows with 16 characters per row.</p>
@@ -5754,7 +6073,7 @@ The number 1602 describes the display: 2 rows with 16 characters per row.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_troubleshooting_17"><a class="anchor" href="#_troubleshooting_17"></a>Troubleshooting</h5>
+<h5 id="_troubleshooting_18"><a class="anchor" href="#_troubleshooting_18"></a>Troubleshooting</h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -5804,7 +6123,7 @@ The number 1602 describes the display: 2 rows with 16 characters per row.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_yaml_configuration_17"><a class="anchor" href="#_yaml_configuration_17"></a>YAML Configuration</h5>
+<h5 id="_yaml_configuration_18"><a class="anchor" href="#_yaml_configuration_18"></a>YAML Configuration</h5>
 <div class="paragraph">
 <p>A BCM numbering system is used. More info can be found <a href="https://pinout.xyz">here</a>.</p>
 </div>
@@ -5822,7 +6141,7 @@ The number 1602 describes the display: 2 rows with 16 characters per row.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_constructor_and_methods_12"><a class="anchor" href="#_constructor_and_methods_12"></a>Constructor and Methods</h5>
+<h5 id="_constructor_and_methods_13"><a class="anchor" href="#_constructor_and_methods_13"></a>Constructor and Methods</h5>
 <div class="paragraph">
 <p>To see the constructor and methods of our LCD1602Helper class, see our javadoc <a href="https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/outputdevices/LCD1602Helper.html">here</a>
 for more details.</p>
@@ -5894,18 +6213,18 @@ for more details.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_led"><a class="anchor" href="#_led"></a>4.3.5. LED</h4>
+<h4 id="_led"><a class="anchor" href="#_led"></a>4.3.6. LED</h4>
 <div class="paragraph text-right">
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/outputComponents/led.adoc">Improve this doc</a></p>
 </div>
 <div class="sect4">
-<h5 id="_overview_18"><a class="anchor" href="#_overview_18"></a>Overview</h5>
+<h5 id="_overview_19"><a class="anchor" href="#_overview_19"></a>Overview</h5>
 <div class="paragraph">
 <p>This section provides details of the LED, including its components and assembly instructions.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_components_19"><a class="anchor" href="#_components_19"></a>Components</h5>
+<h5 id="_components_20"><a class="anchor" href="#_components_20"></a>Components</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -5933,7 +6252,7 @@ for more details.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_assembly_instructions_15"><a class="anchor" href="#_assembly_instructions_15"></a>Assembly Instructions</h5>
+<h5 id="_assembly_instructions_16"><a class="anchor" href="#_assembly_instructions_16"></a>Assembly Instructions</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -5964,7 +6283,7 @@ for more details.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_circuit_diagram_17"><a class="anchor" href="#_circuit_diagram_17"></a>Circuit Diagram</h5>
+<h5 id="_circuit_diagram_18"><a class="anchor" href="#_circuit_diagram_18"></a>Circuit Diagram</h5>
 <div class="imageblock">
 <div class="content">
 <img src="img/LED-CD.png" alt="LED CD">
@@ -5972,13 +6291,13 @@ for more details.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_functionality_18"><a class="anchor" href="#_functionality_18"></a>Functionality</h5>
+<h5 id="_functionality_19"><a class="anchor" href="#_functionality_19"></a>Functionality</h5>
 <div class="paragraph">
 <p>LED can be turned on or off, switch state and set to blink for the provided  duration in milliseconds.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_testing_8"><a class="anchor" href="#_testing_8"></a>Testing</h5>
+<h5 id="_testing_9"><a class="anchor" href="#_testing_9"></a>Testing</h5>
 <div class="paragraph">
 <p>Use the below commands to test the component. This will cause the LED to light.</p>
 </div>
@@ -6005,7 +6324,7 @@ for more details.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_troubleshooting_18"><a class="anchor" href="#_troubleshooting_18"></a>Troubleshooting</h5>
+<h5 id="_troubleshooting_19"><a class="anchor" href="#_troubleshooting_19"></a>Troubleshooting</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -6019,7 +6338,7 @@ as well as the LED specifications.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_yaml_configuration_18"><a class="anchor" href="#_yaml_configuration_18"></a>YAML Configuration</h5>
+<h5 id="_yaml_configuration_19"><a class="anchor" href="#_yaml_configuration_19"></a>YAML Configuration</h5>
 <div class="paragraph">
 <p>A BCM numbering system is used. More info can be found <a href="https://pinout.xyz">here</a>.</p>
 </div>
@@ -6042,7 +6361,7 @@ as well as the LED specifications.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_constructor_and_methods_13"><a class="anchor" href="#_constructor_and_methods_13"></a>Constructor and Methods</h5>
+<h5 id="_constructor_and_methods_14"><a class="anchor" href="#_constructor_and_methods_14"></a>Constructor and Methods</h5>
 <div class="paragraph">
 <p>To see the constructor and methods of our LEDHelper class see our javadoc <a href="https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/outputdevices/LEDHelper.html">here</a>
 for more details.</p>
@@ -6102,18 +6421,18 @@ for more details.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_motor"><a class="anchor" href="#_motor"></a>4.3.6. Motor</h4>
+<h4 id="_motor"><a class="anchor" href="#_motor"></a>4.3.7. Motor</h4>
 <div class="paragraph text-right">
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/outputComponents/motor.adoc">Improve this doc</a></p>
 </div>
 <div class="sect4">
-<h5 id="_overview_19"><a class="anchor" href="#_overview_19"></a>Overview</h5>
+<h5 id="_overview_20"><a class="anchor" href="#_overview_20"></a>Overview</h5>
 <div class="paragraph">
 <p>This section provides details of the DC motor, including its components and assembly instructions.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_components_20"><a class="anchor" href="#_components_20"></a>Components</h5>
+<h5 id="_components_21"><a class="anchor" href="#_components_21"></a>Components</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -6147,7 +6466,7 @@ for more details.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_assembly_instructions_16"><a class="anchor" href="#_assembly_instructions_16"></a>Assembly Instructions</h5>
+<h5 id="_assembly_instructions_17"><a class="anchor" href="#_assembly_instructions_17"></a>Assembly Instructions</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -6193,7 +6512,7 @@ for more details.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_circuit_diagram_18"><a class="anchor" href="#_circuit_diagram_18"></a>Circuit Diagram</h5>
+<h5 id="_circuit_diagram_19"><a class="anchor" href="#_circuit_diagram_19"></a>Circuit Diagram</h5>
 <div class="imageblock">
 <div class="content">
 <img src="img/Motor_bb.png" alt="Motor bb">
@@ -6201,7 +6520,7 @@ for more details.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_schematic_diagram_3"><a class="anchor" href="#_schematic_diagram_3"></a>Schematic Diagram</h5>
+<h5 id="_schematic_diagram_4"><a class="anchor" href="#_schematic_diagram_4"></a>Schematic Diagram</h5>
 <div class="imageblock">
 <div class="content">
 <img src="img/Motor_schem.jpg" alt="Motor schem">
@@ -6209,13 +6528,13 @@ for more details.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_functionality_19"><a class="anchor" href="#_functionality_19"></a>Functionality</h5>
+<h5 id="_functionality_20"><a class="anchor" href="#_functionality_20"></a>Functionality</h5>
 <div class="paragraph">
 <p>Motor can be enabled or disabled, change speed to custom value 0 to 100, and switch directions between clockwise and counterclockwise.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_testing_9"><a class="anchor" href="#_testing_9"></a>Testing</h5>
+<h5 id="_testing_10"><a class="anchor" href="#_testing_10"></a>Testing</h5>
 <div class="paragraph">
 <p>Use the below commands to test the component.
 This will cause the motor to turn.</p>
@@ -6246,7 +6565,7 @@ This will cause the motor to turn.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_troubleshooting_19"><a class="anchor" href="#_troubleshooting_19"></a>Troubleshooting</h5>
+<h5 id="_troubleshooting_20"><a class="anchor" href="#_troubleshooting_20"></a>Troubleshooting</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -6291,7 +6610,7 @@ This will cause the motor to turn.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_yaml_configuration_19"><a class="anchor" href="#_yaml_configuration_19"></a>YAML Configuration</h5>
+<h5 id="_yaml_configuration_20"><a class="anchor" href="#_yaml_configuration_20"></a>YAML Configuration</h5>
 <div class="paragraph">
 <p>A BCM numbering system is used. More info can be found <a href="https://pinout.xyz">here</a>.</p>
 </div>
@@ -6322,7 +6641,7 @@ This will cause the motor to turn.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_constructor_and_methods_14"><a class="anchor" href="#_constructor_and_methods_14"></a>Constructor and Methods</h5>
+<h5 id="_constructor_and_methods_15"><a class="anchor" href="#_constructor_and_methods_15"></a>Constructor and Methods</h5>
 <div class="paragraph">
 <p>To see the constructor and methods of our MotorHelper class see our javadoc <a href="https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/outputdevices/MotorHelper.html">here</a>
 for more details.</p>
@@ -6371,18 +6690,18 @@ for more details.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_passive_buzzer"><a class="anchor" href="#_passive_buzzer"></a>4.3.7. Passive Buzzer</h4>
+<h4 id="_passive_buzzer"><a class="anchor" href="#_passive_buzzer"></a>4.3.8. Passive Buzzer</h4>
 <div class="paragraph text-right">
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/outputComponents/passivebuzzer.adoc">Improve this doc</a></p>
 </div>
 <div class="sect4">
-<h5 id="_overview_20"><a class="anchor" href="#_overview_20"></a>Overview</h5>
+<h5 id="_overview_21"><a class="anchor" href="#_overview_21"></a>Overview</h5>
 <div class="paragraph">
 <p>This section provides details of the Passive Buzzer, including the components and assembly instructions. The Passive Buzzer emits various frequencies, as described by the code, to play music or many other frequencies.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_components_21"><a class="anchor" href="#_components_21"></a>Components</h5>
+<h5 id="_components_22"><a class="anchor" href="#_components_22"></a>Components</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -6413,7 +6732,7 @@ for more details.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_assembly_instructions_17"><a class="anchor" href="#_assembly_instructions_17"></a>Assembly Instructions</h5>
+<h5 id="_assembly_instructions_18"><a class="anchor" href="#_assembly_instructions_18"></a>Assembly Instructions</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -6450,7 +6769,7 @@ for more details.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_circuit_diagram_19"><a class="anchor" href="#_circuit_diagram_19"></a>Circuit Diagram</h5>
+<h5 id="_circuit_diagram_20"><a class="anchor" href="#_circuit_diagram_20"></a>Circuit Diagram</h5>
 <div class="imageblock">
 <div class="content">
 <img src="img/passive_buzzer-CD.png" alt="passive buzzer CD">
@@ -6466,7 +6785,7 @@ for more details.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_functionality_20"><a class="anchor" href="#_functionality_20"></a>Functionality</h5>
+<h5 id="_functionality_21"><a class="anchor" href="#_functionality_21"></a>Functionality</h5>
 <div class="paragraph">
 <p>A passive buzzer is an electronic component that produces sound by using an external oscillation source.
 To produce sound, a passive buzzer needs an external PWM signal supplied by Raspberry Pi. This signal controls the frequency of the sound produced, allowing for different tones or beeps. You can program specific melodies or sequences of beeps by changing the frequency of the PWM signal over time.</p>
@@ -6476,7 +6795,7 @@ To produce sound, a passive buzzer needs an external PWM signal supplied by Rasp
 </div>
 </div>
 <div class="sect4">
-<h5 id="_testing_10"><a class="anchor" href="#_testing_10"></a>Testing</h5>
+<h5 id="_testing_11"><a class="anchor" href="#_testing_11"></a>Testing</h5>
 <div class="paragraph">
 <p>Use the below commands to test the component.</p>
 </div>
@@ -6512,7 +6831,7 @@ To produce sound, a passive buzzer needs an external PWM signal supplied by Rasp
 </div>
 </div>
 <div class="sect4">
-<h5 id="_troubleshooting_20"><a class="anchor" href="#_troubleshooting_20"></a>Troubleshooting</h5>
+<h5 id="_troubleshooting_21"><a class="anchor" href="#_troubleshooting_21"></a>Troubleshooting</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -6538,7 +6857,7 @@ To produce sound, a passive buzzer needs an external PWM signal supplied by Rasp
 </div>
 </div>
 <div class="sect4">
-<h5 id="_yaml_configuration_20"><a class="anchor" href="#_yaml_configuration_20"></a>YAML Configuration</h5>
+<h5 id="_yaml_configuration_21"><a class="anchor" href="#_yaml_configuration_21"></a>YAML Configuration</h5>
 <div class="paragraph">
 <p>A BCM numbering system is used. More info can be found <a href="https://pinout.xyz">here</a>.</p>
 </div>
@@ -6562,7 +6881,7 @@ To produce sound, a passive buzzer needs an external PWM signal supplied by Rasp
 </div>
 </div>
 <div class="sect4">
-<h5 id="_example_controller_6"><a class="anchor" href="#_example_controller_6"></a>Example Controller</h5>
+<h5 id="_example_controller_7"><a class="anchor" href="#_example_controller_7"></a>Example Controller</h5>
 <div class="sect5">
 <h6 id="_this_controller_uses_the_passive_buzzer_to_emit_sound_once_prompted_by_the_commands"><a class="anchor" href="#_this_controller_uses_the_passive_buzzer_to_emit_sound_once_prompted_by_the_commands"></a>This controller uses the Passive Buzzer to emit sound once prompted by the commands</h6>
 <div class="listingblock">
@@ -6658,19 +6977,19 @@ To produce sound, a passive buzzer needs an external PWM signal supplied by Rasp
 </div>
 </div>
 <div class="sect3">
-<h4 id="_rgb_led"><a class="anchor" href="#_rgb_led"></a>4.3.8. RGB LED</h4>
+<h4 id="_rgb_led"><a class="anchor" href="#_rgb_led"></a>4.3.9. RGB LED</h4>
 <div class="paragraph text-right">
 <p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/outputComponents/rgbLed.adoc">Improve this doc</a></p>
 </div>
 <div class="sect4">
-<h5 id="_overview_21"><a class="anchor" href="#_overview_21"></a>Overview</h5>
+<h5 id="_overview_22"><a class="anchor" href="#_overview_22"></a>Overview</h5>
 <div class="paragraph">
 <p>This document provides details of the RGB (Red-Green-Blue) LED circuit,
 including its components, assembly instructions, and functionality.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_components_22"><a class="anchor" href="#_components_22"></a>Components</h5>
+<h5 id="_components_23"><a class="anchor" href="#_components_23"></a>Components</h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -6692,7 +7011,7 @@ including its components, assembly instructions, and functionality.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_assembly_instructions_18"><a class="anchor" href="#_assembly_instructions_18"></a>Assembly Instructions</h5>
+<h5 id="_assembly_instructions_19"><a class="anchor" href="#_assembly_instructions_19"></a>Assembly Instructions</h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -6724,7 +7043,7 @@ negative terminals (like GPIO pins set to OUTPUT and LOW on a microcontroller).<
 </div>
 </div>
 <div class="sect4">
-<h5 id="_circuit_diagram_20"><a class="anchor" href="#_circuit_diagram_20"></a>Circuit Diagram</h5>
+<h5 id="_circuit_diagram_21"><a class="anchor" href="#_circuit_diagram_21"></a>Circuit Diagram</h5>
 <div class="imageblock">
 <div class="content">
 <img src="https://docs.sunfounder.com/projects/raphael-kit/en/latest/_images/image61.png" alt="image61">
@@ -6740,7 +7059,7 @@ negative terminals (like GPIO pins set to OUTPUT and LOW on a microcontroller).<
 </div>
 </div>
 <div class="sect4">
-<h5 id="_functionality_21"><a class="anchor" href="#_functionality_21"></a>Functionality</h5>
+<h5 id="_functionality_22"><a class="anchor" href="#_functionality_22"></a>Functionality</h5>
 <div class="paragraph">
 <p>The RGB LED can produce a wide range of colors by mixing different intensities of
 Red, Green, and Blue. By adjusting the power to each pin, various colors can be
@@ -6773,7 +7092,7 @@ produced. For instance:</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_testing_11"><a class="anchor" href="#_testing_11"></a>Testing</h5>
+<h5 id="_testing_12"><a class="anchor" href="#_testing_12"></a>Testing</h5>
 <div class="paragraph">
 <p>Use the below commands to test the component.</p>
 </div>
@@ -6847,7 +7166,7 @@ and frequencies of red <strong>{frequency1}</strong>, green <strong>{frequency2}
 </div>
 </div>
 <div class="sect4">
-<h5 id="_troubleshooting_21"><a class="anchor" href="#_troubleshooting_21"></a>Troubleshooting</h5>
+<h5 id="_troubleshooting_22"><a class="anchor" href="#_troubleshooting_22"></a>Troubleshooting</h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -6868,7 +7187,7 @@ each color pin&#8217;s connection.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_yaml_configuration_21"><a class="anchor" href="#_yaml_configuration_21"></a>YAML Configuration</h5>
+<h5 id="_yaml_configuration_22"><a class="anchor" href="#_yaml_configuration_22"></a>YAML Configuration</h5>
 <div class="paragraph">
 <p>A BCM numbering system is used. More info can be found <a href="https://pinout.xyz">here</a>.</p>
 </div>
@@ -6905,7 +7224,7 @@ each color pin&#8217;s connection.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_constructor_and_methods_15"><a class="anchor" href="#_constructor_and_methods_15"></a>Constructor and Methods</h5>
+<h5 id="_constructor_and_methods_16"><a class="anchor" href="#_constructor_and_methods_16"></a>Constructor and Methods</h5>
 <div class="paragraph">
 <p>To see the constructor and methods of our RGBLEDHelper class see our javadoc <a href="https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/outputdevices/RGBLEDHelper.html">here</a>
 for more details.</p>
@@ -6992,18 +7311,18 @@ for more details.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_servo_motor"><a class="anchor" href="#_servo_motor"></a>4.3.9. Servo Motor</h4>
+<h4 id="_servo_motor"><a class="anchor" href="#_servo_motor"></a>4.3.10. Servo Motor</h4>
 <div class="paragraph text-right">
 <p><a href="https://github.com/oss-slu-Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/componets/outputComponents/servomotor.adoc">Improve this doc</a></p>
 </div>
 <div class="sect4">
-<h5 id="_overview_22"><a class="anchor" href="#_overview_22"></a>Overview</h5>
+<h5 id="_overview_23"><a class="anchor" href="#_overview_23"></a>Overview</h5>
 <div class="paragraph">
 <p>This section provides details of the Servo Motor. Specifically, the Micro Servo 9G - SG90, which is a positional servo with a range from 0 to 180 degrees. These details include the components and assembly instructions.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_components_23"><a class="anchor" href="#_components_23"></a>Components</h5>
+<h5 id="_components_24"><a class="anchor" href="#_components_24"></a>Components</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -7028,7 +7347,7 @@ for more details.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_assembly_instructions_19"><a class="anchor" href="#_assembly_instructions_19"></a>Assembly Instructions</h5>
+<h5 id="_assembly_instructions_20"><a class="anchor" href="#_assembly_instructions_20"></a>Assembly Instructions</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -7053,7 +7372,7 @@ for more details.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_circuit_diagram_21"><a class="anchor" href="#_circuit_diagram_21"></a>Circuit Diagram</h5>
+<h5 id="_circuit_diagram_22"><a class="anchor" href="#_circuit_diagram_22"></a>Circuit Diagram</h5>
 <div class="imageblock">
 <div class="content">
 <img src="img/servo-motor_CD.png" alt="servo motor CD">
@@ -7069,7 +7388,7 @@ for more details.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_functionality_22"><a class="anchor" href="#_functionality_22"></a>Functionality</h5>
+<h5 id="_functionality_23"><a class="anchor" href="#_functionality_23"></a>Functionality</h5>
 <div class="paragraph">
 <p>Servo motor is a PWM type and will rotate the arm between the angles of 0 to 180 degrees.</p>
 </div>
@@ -7117,7 +7436,7 @@ for more details.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_troubleshooting_22"><a class="anchor" href="#_troubleshooting_22"></a>Troubleshooting</h5>
+<h5 id="_troubleshooting_23"><a class="anchor" href="#_troubleshooting_23"></a>Troubleshooting</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -7140,7 +7459,7 @@ for more details.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_yaml_configuration_22"><a class="anchor" href="#_yaml_configuration_22"></a>YAML Configuration</h5>
+<h5 id="_yaml_configuration_23"><a class="anchor" href="#_yaml_configuration_23"></a>YAML Configuration</h5>
 <div class="paragraph">
 <p>A BCM numbering system is used. More info can be found <a href="https://pinout.xyz">here</a>.</p>
 </div>
@@ -7158,13 +7477,13 @@ for more details.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_constructor_and_methods_16"><a class="anchor" href="#_constructor_and_methods_16"></a>Constructor and Methods</h5>
+<h5 id="_constructor_and_methods_17"><a class="anchor" href="#_constructor_and_methods_17"></a>Constructor and Methods</h5>
 <div class="paragraph">
 <p>The constructor and the methods within the ServoMotorHelper class can be seen in our javadoc <a href="https://oss-slu-github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/outputdevices/ServoMotorHelper.html">here</a>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_example_controller_7"><a class="anchor" href="#_example_controller_7"></a>Example Controller</h5>
+<h5 id="_example_controller_8"><a class="anchor" href="#_example_controller_8"></a>Example Controller</h5>
 <div class="sect5">
 <h6 id="_this_controller_uses_the_servo_motor_to_move_the_arm_once_prompted_by_the_commands"><a class="anchor" href="#_this_controller_uses_the_servo_motor_to_move_the_arm_once_prompted_by_the_commands"></a>This controller uses the Servo Motor to move the arm once prompted by the commands</h6>
 <div class="listingblock">
@@ -7203,8 +7522,8 @@ for more details.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.0-dev.1+develop.518a878<br>
-Last updated 2025-12-04 21:23:47 UTC
+Version 0.1.0-dev.1+de4305b<br>
+Last updated 2025-12-05 16:44:31 UTC
 </div>
 </div>
 </body>

@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.18">
+<title>IR Obstacle Avoidance Sensor</title>
+<style>
+body {
+	font-family: sans-serif;
+	line-height: 1.5;
+	padding: 0;
+	margin: 0;
+	overflow-y: hidden;
+	overflow-x: hidden;
+}
+
+/*Needed to ensure that [.text-right] in the .adoc files align to the right. Otherwise they align
+to the left of the doc.*/
+.text-right{
+	text-align: right;
+}
+
+.text-right:hover{
+	text-decoration: underline;
+}
+
+.anchor{
+	color: green;
+	text-decoration: none;
+}
+
+.article {
+	display: grid;
+	grid-template-areas: "nav content";
+	grid-template-columns: 20em 1fr;
+	grid-template-rows: auto;
+}
+
+a {
+	text-decoration: none;
+}
+
+#header {
+	background-color: black;
+	background-image: url('img/Pi4Micronaut-RM.png');
+	background-size: contain;
+	background-position: left;
+	background-repeat: no-repeat;
+	grid-area: nav;
+	position: fixed;
+	width: 100%;
+	vertical-align: center;
+	max-height:100px;
+	height: 100%;
+	display: inline-block;
+	z-index: 10;
+	margin-bottom: 0;
+}
+
+#header a{
+	color:white;
+	margin-right: 20px;
+}
+
+#toc {
+	margin-top: 13px;
+	padding-top: 1em;
+	padding-left: 1em;
+	padding-right: 1em;
+	padding-bottom: 2em;
+	float: left;
+	max-height: 89.5%;
+	height: 100%;
+	overflow-y: auto;
+	position: fixed;
+	box-sizing: border-box;
+	background-color: gainsboro;
+	max-width: 20%;
+	width: 20%;
+}
+
+
+#toc a {
+	color: royalblue;
+}
+
+#toc li {
+	padding-bottom: .6em;
+}
+
+#toc ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+#toc ul ul {
+	padding-left: 1.4em;
+}
+
+#toctitle {
+	font-weight: bold;
+	color: black;
+}
+
+h1 {
+	text-indent: -9999px;
+	font-size: 2em;
+	background-color: transparent;
+	padding: .6em;
+	margin: 0;
+	width: 100%;
+	color: white;
+	height: 50%;
+	vertical-align: center;
+}
+
+h2 {
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
+
+
+/*.toc2{*/
+/*	float: left;*/
+/*}*/
+
+#toc a:hover {
+	text-decoration: underline;
+}
+
+#content {
+	background-color: white;
+	overflow-y: auto;
+	grid-area: content;
+	padding: 1em;
+	max-width: 80%;
+	width: 100%;
+	position: fixed;
+	z-index: 1;
+	max-height: 80%;
+	height: 100%;
+	margin-left: 20%;
+	margin-right: 0;
+	margin-bottom: 1%;
+	margin-top: 8%;
+	padding-bottom: 100px;
+}
+
+
+.hljs{
+	background: #cacbca !important;
+}
+
+#content img {
+	max-width: 100%;
+}
+
+.details{
+	float: right;
+	position: absolute;
+	bottom: 0px;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}
+
+pre {
+	background-color: #f7f7f8;
+	padding: 1em;
+	word-wrap: break-word;
+	white-space: pre-wrap;
+}
+
+table {
+	grid: none;
+	frame: none;
+}
+
+td, th {
+	border: 1px solid gray;
+	padding: .4em;
+}
+
+th {
+	background-color: #f9f9f9;
+	text-align: left;
+}
+
+#footer-text {
+	float: right;
+	position: absolute;
+	bottom: 0px;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}
+
+.title{
+	font-style: italic;
+	padding-top: 2em;
+}
+</style>
+</head>
+<body class="article">
+<div id="header">
+</div>
+<div id="content">
+<div class="sect3">
+<h4 id="_ir_obstacle_avoidance_sensor">IR Obstacle Avoidance Sensor</h4>
+<div class="paragraph text-right">
+<p><a href="https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/inputComponents/irObstacleAvoidanceSensor.adoc">Improve this doc</a></p>
+</div>
+<div class="sect4">
+<h5 id="_overview">Overview</h5>
+<div class="paragraph">
+<p>This section provides details for the IR Obstacle Avoidance Sensor, including its components, assembly instructions, and functionality.</p>
+</div>
+<div class="paragraph">
+<p>The IR (Infrared) Obstacle Avoidance Module is a proximity sensor that detects objects and obstacles within a short distance (2-30cm) using infrared reflection. It is commonly used in robotics for collision avoidance, object detection, and boundary sensing. The module features adjustable sensitivity via a potentiometer, digital output for easy integration, fast response time, low power consumption, and operates on 3.3V to 5V power supplies.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_components">Components</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>1 x Raspberry Pi 4</p>
+</li>
+<li>
+<p>1 x IR Obstacle Avoidance Module</p>
+</li>
+<li>
+<p>5 x Male-to-Male Jumper Wires</p>
+</li>
+<li>
+<p>1 x Breadboard</p>
+</li>
+<li>
+<p>Power supply for Raspberry Pi</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_assembly_instructions">Assembly Instructions</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Place the IR Obstacle Avoidance Module onto the breadboard.</p>
+</li>
+<li>
+<p>Connect the <strong>VCC</strong> pin of the IR module to <strong>3.3V</strong> on the Raspberry Pi.</p>
+</li>
+<li>
+<p>Connect the <strong>GND</strong> pin of the IR module to <strong>Ground</strong> on the Raspberry Pi.</p>
+</li>
+<li>
+<p>Connect the <strong>OUT</strong> (or <strong>DO</strong>) pin of the IR module to <strong>GPIO 17</strong> on the Raspberry Pi.</p>
+</li>
+<li>
+<p>Use the remaining two jumper wires to secure the module to the breadboard, following the provided circuit diagram.</p>
+</li>
+<li>
+<p>Verify connections to ensure no loose wires or short circuits.</p>
+</li>
+<li>
+<p>Adjust the potentiometer to set detection sensitivity:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Turn <strong>clockwise</strong> to increase sensitivity.</p>
+</li>
+<li>
+<p>Turn <strong>counter-clockwise</strong> to decrease sensitivity.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><strong>Tip</strong>: Use 3.3V for compatibility with Raspberry Pi GPIO. Ensure the module&#8217;s IR LEDs face forward.</p>
+</div>
+</blockquote>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_circuit_diagram">Circuit Diagram</h5>
+<div class="imageblock">
+<div class="content">
+<img src="../../img/irObstacleAvoidance-CD.png" alt="irObstacleAvoidance CD">
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_schematic_diagram">Schematic Diagram</h5>
+<div class="imageblock">
+<div class="content">
+<img src="../../img/irObstacleAvoidance-SD.png" alt="irObstacleAvoidance SD">
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_functionality">Functionality</h5>
+<div class="paragraph">
+<p>The IR Obstacle Avoidance Module uses active infrared light reflection to detect obstacles. It emits infrared light via an onboard LED, which reflects off nearby objects and is detected by the IR receiver. The onboard comparator circuit processes the signal and outputs a digital signal (LOW when an obstacle is detected, HIGH when the path is clear). The detection range (2-30cm) is adjustable via the potentiometer, making it suitable for real-time robotics applications.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_testing">Testing</h5>
+<div class="paragraph">
+<p>Use the following commands to test the component:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$curl http://localhost:8080/ir-obstacle/status</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>/status</code> - Returns <code>true</code> if an obstacle is detected, <code>false</code> if the path is clear.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$curl http://localhost:8080/ir-obstacle/state</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>/state</code> - Returns the raw digital state (<code>HIGH</code> or <code>LOW</code>).</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$curl http://localhost:8080/ir-obstacle/message</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>/message</code> - Returns a human-readable status (<code>"Obstacle detected"</code> or <code>"No obstacle"</code>).</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$curl http://localhost:8080/ir-obstacle/wait/{timeoutMillis}</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>/wait/{timeoutMillis}</code> - Waits for obstacle detection within the specified timeout (in milliseconds) and returns <code>true</code> if detected, <code>false</code> otherwise.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$curl http://localhost:8080/ir-obstacle/init</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>/init</code> - Initializes the sensor and adds an event listener to print <code>"Obstacle Detected"</code> or <code>"No Obstacle"</code> to the console when the sensor state changes.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_troubleshooting">Troubleshooting</h5>
+<div class="paragraph">
+<p><strong>Sensor Always Reports Obstacle Detected</strong>:
+* Adjust potentiometer counter-clockwise to decrease sensitivity.
+* Ensure the module is not facing a reflective surface.
+* Verify VCC is connected to 3.3V.
+* Test with a white object to confirm detection.
+* Check GPIO state with <code>gpio readall</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Sensor Never Detects Obstacles</strong>:
+* Adjust potentiometer clockwise to increase sensitivity.
+* Verify OUT pin is connected to GPIO 17.
+* Confirm <code>application.yml</code> has the correct GPIO address.
+* Test with a reflective object (e.g., white or shiny surface).
+* Measure OUT pin voltage with a multimeter (should switch between 0V and 3.3V).</p>
+</div>
+<div class="paragraph">
+<p><strong>Inconsistent Detection</strong>:
+* Increase debounce time in <code>application.yml</code> to 20000 (20ms).
+* Secure all jumper wires.
+* Shield from sunlight or other IR sources.
+* Mount the module rigidly to prevent vibration.
+* Add a 100µF capacitor across VCC and GND near the module.</p>
+</div>
+<div class="paragraph">
+<p><strong>Module Won&#8217;t Power On</strong>:
+* Verify 3.3V at VCC with a multimeter.
+* Check GND connections.
+* Ensure <code>application.yml</code> is correctly configured.
+* Test GPIO manually with <code>gpio mode 17 in</code> and <code>gpio read 17</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Application Crashes</strong>:
+* Verify <code>application.yml</code> syntax and <code>ir-obstacle-input</code> key.
+* Ensure <code>@Named("ir-obstacle-input")</code> matches the configuration.
+* Rebuild with <code>./gradlew clean build</code>.
+* Check logs for configuration errors.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_yaml_configuration">YAML Configuration</h5>
+<div class="paragraph">
+<p>The IR Obstacle Avoidance Sensor configuration as it appears in the YAML file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">pi4j:
+  digital-input:
+    ir-obstacle-input:
+      name: IR Obstacle Avoidance Sensor
+      address: 17
+      pull: PULL_UP
+      debounce: 10000
+      provider: pigpio-digital-input</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_constructor_and_methods">Constructor and Methods</h5>
+<div class="paragraph">
+<p>To see the constructor and methods of the <code>IRObstacleAvoidance</code> class, refer to the JavaDoc: <a href="https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/inputdevices/IRObstacleAvoidance.html">IRObstacleAvoidance JavaDoc</a></p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_example_controller">Example Controller</h5>
+<div class="paragraph">
+<p>This controller demonstrates the usage of the IR Obstacle Avoidance Sensor:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">Unresolved directive in IRObstacleAvoidance.adoc - include::../../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/IRObstacleAvoidanceController.java[tag=ex]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 0.1.0-dev.1+de4305b<br>
+Last updated 2025-12-05 16:44:31 UTC
+</div>
+</div>
+</body>
+</html>
