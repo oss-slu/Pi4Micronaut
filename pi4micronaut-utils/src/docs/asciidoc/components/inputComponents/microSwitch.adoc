@@ -82,6 +82,8 @@ $ curl http://localhost:8080/microSwitch/disable
 
 ===== YAML Configuration
 
+A BCM numbering system is used. More info can be found https://pinout.xyz[here].
+
 The YAML configuration for the LEDs is as follows:
 
 [source, yaml]

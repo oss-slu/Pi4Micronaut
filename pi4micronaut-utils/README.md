@@ -1,8 +1,8 @@
-## Micronaut 3.7.2 Documentation
+## Micronaut 4.7.6 Documentation
 
-- [User Guide](https://docs.micronaut.io/3.7.2/guide/index.html)
-- [API Reference](https://docs.micronaut.io/3.7.2/api/index.html)
-- [Configuration Reference](https://docs.micronaut.io/3.7.2/guide/configurationreference.html)
+- [User Guide](https://micronaut-projects.github.io/micronaut-docs-mn4/4.7.6/guide/)
+- [API Reference](https://micronaut-projects.github.io/micronaut-docs-mn4/4.7.6/api/index.html)
+- [Configuration Reference](https://micronaut-projects.github.io/micronaut-docs-mn4/4.7.6/guide/configurationreference.html)
 - [Micronaut Guides](https://guides.micronaut.io/index.html)
 
 ---

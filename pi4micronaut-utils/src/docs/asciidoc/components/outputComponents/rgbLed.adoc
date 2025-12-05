@@ -86,6 +86,9 @@ each color pin's connection.
 *Note:* The Hex value format must start with "0x" not "#" while passing it as a parameter of "setColorHex()" method. For example, use "0x0000ff" for blue.
 
 ===== YAML Configuration
+
+A BCM numbering system is used. More info can be found https://pinout.xyz[here].
+
 The order for declaring pins for a RGB LED component in the application.yaml file is as follows
 
 *RED-PIN-INFO, GREEN-PIN-INFO, BLUE-PIN-INFO*

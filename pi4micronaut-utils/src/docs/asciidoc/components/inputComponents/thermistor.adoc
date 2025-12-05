@@ -64,6 +64,9 @@ $ curl http://localhost:8080/temperature/celsius
 
 
 ===== YAML Configuration
+
+A BCM numbering system is used. More info can be found https://pinout.xyz[here].
+
 [source, yaml]
 
 ----
@@ -79,4 +82,6 @@ The constructor and the methods within the ThermistorHelper class can be seen in
 
 ====== This controller uses the thermistor to detect a temperature value
 [source, java]
+----
 include::../../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/ThermistorController.java[tag=ex]
+----

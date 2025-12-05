@@ -79,6 +79,8 @@ Also make sure that everything is properly secured to the breadboard.
 
 ===== YAML Configuration
 
+A BCM numbering system is used. More info can be found https://pinout.xyz[here].
+
 The YAML configuration for the LED is as follows:
 
 [source, yaml]

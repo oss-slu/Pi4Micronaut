@@ -21,6 +21,8 @@ which determines how the circuit is created by utilizing the I2C pins of the GPI
 Based on the pins and communication type, you have to define the configuration in the yml file accordingly.
 If a user wants to implement multiple hardware components then the configuration should be defined in the snake yml structure.
 
+Note: A BCM numbering system should be used. More info can be found at https://pinout.xyz.
+
 ==== YAML Configuration Workflow
 
 - The specifications in the yml file are given to the component in the controller through the use of the @Named() annotation.
