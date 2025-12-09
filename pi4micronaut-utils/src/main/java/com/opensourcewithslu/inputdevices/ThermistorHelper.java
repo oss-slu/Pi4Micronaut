@@ -21,6 +21,16 @@ public class ThermistorHelper {
     }
 
     /**
+ * Gets the SPI interface used by this class.
+ * this is used for ThermistorHelperTest to mock SPI interactions.
+ * 
+ * @return the SPI interface
+ */
+    Spi getSpi() {  
+    return spi;
+    }
+
+    /**
      * Initialize SPI and ADC settings specific to ADC0834.
      */
     private Spi initializeADC(Context pi4j) {

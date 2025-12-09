@@ -48,7 +48,7 @@ This section provides details of the DC motor, including its components and asse
 
 ===== Circuit Diagram
 
-image::motor_bb.png[]
+image::Motor_bb.png[]
 
 ===== Schematic Diagram
 
@@ -89,6 +89,8 @@ $ curl http://localhost:8080/motor/enable
 - Check for appropriate voltage from power source.
 
 ===== YAML Configuration
+
+A BCM numbering system is used. More info can be found https://pinout.xyz[here].
 
 [source,yaml]
 ----

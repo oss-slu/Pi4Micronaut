@@ -1,13 +1,15 @@
 plugins {
     id("com.github.johnrengelman.shadow") version "7.1.2"
-    id("io.micronaut.library") version "3.7.3"
+//    id("io.micronaut.library") version "3.7.3"
+    id("io.micronaut.application") version "4.4.4"
+    id("io.micronaut.aot") version "4.4.4"
     id 'maven-publish'
     id 'signing'
     id 'org.asciidoctor.jvm.convert' version '4.0.2'
+    id 'java-library'
 }
 
 group = 'io.github.oss-slu'
-version = 'v1.1'
 
 apply plugin: 'maven-publish'
 apply plugin: 'signing'
@@ -17,13 +19,22 @@ repositories {
 }
 
 dependencies {
-    annotationProcessor("io.micronaut:micronaut-validation")
-    implementation("io.micronaut:micronaut-http-client")
+    annotationProcessor("io.micronaut:micronaut-http-validation")
+    annotationProcessor("io.micronaut.serde:micronaut-serde-processor")
+    implementation("io.micronaut.serde:micronaut-serde-jackson")
+    compileOnly("io.micronaut:micronaut-http-client")
+    runtimeOnly("ch.qos.logback:logback-classic")
+    testImplementation("io.micronaut:micronaut-http-client")
+    implementation("io.micronaut:micronaut-jackson-databind")
+//    annotationProcessor("io.micronaut:micronaut-validation")
+//    implementation("io.micronaut:micronaut-http-client")
     implementation("jakarta.annotation:jakarta.annotation-api")
     runtimeOnly("ch.qos.logback:logback-classic")
-    implementation("io.micronaut:micronaut-jackson-databind")
-    implementation("io.micronaut:micronaut-validation")
+//    implementation("io.micronaut:micronaut-jackson-databind")
+//    implementation("io.micronaut:micronaut-validation")
+    implementation 'org.fusesource.jansi:jansi:2.4.0'
     implementation files("libs/crowpi.jar", "libs/components.jar")
+    runtimeOnly "org.yaml:snakeyaml:2.0"
     api 'com.pi4j:pi4j-core:2.4.0'
     api 'com.pi4j:pi4j-plugin-raspberrypi:2.4.0'
     api 'com.pi4j:pi4j-plugin-pigpio:2.4.0'
@@ -37,16 +48,24 @@ dependencies {
 
 }
 
+application {
+    mainClass = "com.opensourcewithslu.Application"
+}
+
 java {
     sourceCompatibility = JavaVersion.toVersion("17")
     targetCompatibility = JavaVersion.toVersion("17")
 }
 
-tasks.named('build').configure {
+tasks.register('copyJavadoc', Copy) {
     dependsOn 'javadoc'
-    copy {
-        from tasks.javadoc.destinationDir
-        into "src/docs/javadoc"
+    from tasks.javadoc.destinationDir
+    into "src/docs/javadoc"
+}
+
+tasks.named('build').configure {
+    if (project.hasProperty('generateJavadoc') || System.getenv('CI') == 'true') {
+        dependsOn 'copyJavadoc'
     }
 }
 
@@ -85,14 +104,14 @@ artifacts {
 publishing {
     repositories {
         maven {
-            name = "OSSRH"
+            name = "ossrh-staging-api"
             credentials {
-                username = project.findProperty('SONATYPE_USERNAME') ?: System.getenv('SONATYPE_USERNAME')
-                password = project.findProperty('SONATYPE_PASSWORD') ?: System.getenv('SONATYPE_PASSWORD')
+                username = project.findProperty('PORTAL_USERNAME') ?: System.getenv('PORTAL_USERNAME')
+                password = project.findProperty('PORTAL_PASSWORD') ?: System.getenv('PORTAL_PASSWORD')
             }
-            def releasesRepoUrl = uri('https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/')
-            def snapshotsRepoUrl = uri('https://s01.oss.sonatype.org/content/repositories/snapshots/')
-            url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+            def releasesRepoUrl = uri('https://ossrh-staging-api.central.sonatype.com/service/local/staging/deploy/maven2/')
+            def snapshotsRepoUrl = uri('https://ossrh-staging-api.central.sonatype.com/content/repositories/snapshots/')
+            url = version.toString().endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
         }
     }
 
@@ -100,7 +119,7 @@ publishing {
         mavenJava(MavenPublication) {
             groupId = 'io.github.oss-slu'
             artifactId = 'pi4micronaut-utils'
-            version = 'v1.1'
+            version = project.findProperty('version')
             from components.java
 
             artifact sourcesJar
@@ -110,7 +129,7 @@ publishing {
                 name = 'pi4micronaut-utils'
                 packaging = 'jar'
                 description = 'A Java-based library that uses the Micronaut framework and Pi4J to simplify the use of electronic components connected to a Raspberry Pi through GPIO '
-                url = "https://github.com/oss-slu/Pi4Micronaut"
+                url = "https://oss-slu.github.io/Pi4Micronaut"
 
                 licenses {
                     license {
@@ -120,6 +139,30 @@ publishing {
                 }
 
                 developers {
+                    developer {
+                        id = 'yrlmanoharreddy'
+                        name = 'Yenkatarajalaxmimanohar'
+                    }
+                    developer {
+                        id = 'avaenk'
+                        name = 'Ava Enke'
+                    }
+                    developer {
+                        id = 'Ed0827'
+                        name = 'Seyun Jeong'
+                    }
+                    developer {
+                        id = 'RalphTan37'
+                        name = 'Ralph Tan'
+                    }
+                    developer {
+                        id = 'tmacas'
+                        name = 'Thomas Macas'
+                    }
+                    developer {
+                        id = 'leandrumartin'
+                        name = 'Leandru Martin'
+                    }
                     developer {
                         id = 'ruthvikm'
                         name = 'Ruthvik Mannem'
@@ -141,19 +184,19 @@ publishing {
                         name = 'John Yanev'
                     }
                     developer{
-                        id = 'MurrayG'
+                        id = 'GreihMurray'
                         name = 'Greih Murray'
                     }
                     developer{
-                        id = 'TraisonD'
+                        id = 'traison-diedrich'
                         name = 'Traison Diedrich'
                     }
                     developer{
-                        id = 'AustinH'
+                        id = 'austinjhoward'
                         name = 'Austin Howard'
                     }
                     developer{
-                        id = 'SinuoL'
+                        id = 'liusinuo2000'
                         name = 'Sinuo Liu'
                     }
 
@@ -181,5 +224,3 @@ publishing {
 
     }
 }
-
-

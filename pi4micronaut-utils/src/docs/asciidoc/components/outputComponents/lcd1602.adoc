@@ -124,6 +124,9 @@ $ uname -m
 .................
 
 ===== YAML Configuration
+
+A BCM numbering system is used. More info can be found https://pinout.xyz[here].
+
 LCD1602 uses I2C communication for this circuit and configuration in the application.yml file is as follows
 [source, yaml]
 ----

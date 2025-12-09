@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 
 //tag::ex[]
 @Controller("/microSwitch")
-public class MicroSwitchController { 
+public class MicroSwitchController {
     private static final Logger log = LoggerFactory.getLogger(MicroSwitchController.class);
     private final MicroSwitchHelper microSwitchHelper;
     private final LEDHelper ledHelper1;
@@ -25,11 +25,12 @@ public class MicroSwitchController {
         this.ledHelper1 = new LEDHelper(led1);
         this.ledHelper2 = new LEDHelper(led2);
     }
+
     //enables the micro switch. The LEDs will switch states as the switch is pressed
     @Get("/enable")
     public void enableMicroSwitch() {
         microSwitchHelper.addEventListener(e -> {
-            try { 
+            try {
                 if (microSwitchHelper.isPressed) {
                     ledHelper1.ledOff();
                     ledHelper2.ledOn();
@@ -42,6 +43,7 @@ public class MicroSwitchController {
             }
         });
     }
+
     //disable the micro switch
     @Get("/disable")
     public void disableMicroSwitch() {

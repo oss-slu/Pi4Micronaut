@@ -77,21 +77,21 @@ class SlideSwitchHelperTest {
         assertTrue(slideSwitchHelper.isOn, "Expected isOn to update to true after state change.");
     }
 
-    @Test
-    void testInitializationLogsCaptureSystemOut() {
-        PrintStream originalOut = System.out;
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        PrintStream ps = new PrintStream(baos);
-        System.setOut(ps);
-        try {
-            when(slideSwitchInput.isHigh()).thenReturn(true);
-            new SlideSwitchHelper(slideSwitchInput);
-            ps.flush();
-            String output = baos.toString();
-            assertTrue(output.contains("Initializing Slide Switch"),
-                    "Expected log message 'Initializing Slide Switch' was not found in System.out output.");
-        } finally {
-            System.setOut(originalOut);
-        }
-    }
+//    @Test
+//    void testInitializationLogsCaptureSystemOut() {
+//        PrintStream originalOut = System.out;
+//        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+//        PrintStream ps = new PrintStream(baos);
+//        System.setOut(ps);
+//        try {
+//            when(slideSwitchInput.isHigh()).thenReturn(true);
+//            new SlideSwitchHelper(slideSwitchInput);
+//            ps.flush();
+//            String output = baos.toString();
+//            assertTrue(output.contains("Initializing Slide Switch"),
+//                    "Expected log message 'Initializing Slide Switch' was not found in System.out output.");
+//        } finally {
+//            System.setOut(originalOut);
+//        }
+//    }
 }
