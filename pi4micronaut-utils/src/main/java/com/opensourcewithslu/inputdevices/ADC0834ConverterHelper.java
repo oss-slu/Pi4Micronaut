@@ -1,6 +1,8 @@
 package com.opensourcewithslu.inputdevices;
 
+import com.pi4j.context.Context;
 import com.pi4j.io.spi.Spi;
+import com.pi4j.io.spi.SpiConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,10 +16,11 @@ public class ADC0834ConverterHelper {
 
     /**
      * Constructor for ADC0834ConverterHelper.
-     * @param spi The SPI interface.
+     * @param spiConfig A Pi4J SPIConfig object which holds the SPI configuration.
+     * @param pi4jContext The Pi4J context object.
      */
-    public ADC0834ConverterHelper(Spi spi) {
-        this.spi = spi;
+    public ADC0834ConverterHelper(SpiConfig spiConfig, Context pi4jContext) {
+        this.spi = pi4jContext.create(spiConfig);
         log.info("ADC0834ConverterHelper initialized with SPI");
     }
 
