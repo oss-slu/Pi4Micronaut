@@ -150,6 +150,12 @@ pi4j:
       pull: PULL_UP
       debounce: 200
       provider: pigpio-digital-input
+    ir-obstacle-input:
+      name: IR Obstacle Avoidance Sensor
+      address: 17
+      pull: PULL_UP
+      debounce: 10000
+      provider: pigpio-digital-input
   # end::digitalInput[]
 
   # tag::digitalOutput[]

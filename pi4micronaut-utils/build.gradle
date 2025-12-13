@@ -10,7 +10,6 @@ plugins {
 }
 
 group = 'io.github.oss-slu'
-version = 'v1.2'
 
 apply plugin: 'maven-publish'
 apply plugin: 'signing'
@@ -58,13 +57,15 @@ java {
     targetCompatibility = JavaVersion.toVersion("17")
 }
 
+tasks.register('copyJavadoc', Copy) {
+    dependsOn 'javadoc'
+    from tasks.javadoc.destinationDir
+    into "src/docs/javadoc"
+}
+
 tasks.named('build').configure {
     if (project.hasProperty('generateJavadoc') || System.getenv('CI') == 'true') {
-        dependsOn 'javadoc'
-        copy {
-            from tasks.javadoc.destinationDir
-            into "src/docs/javadoc"
-        }
+        dependsOn 'copyJavadoc'
     }
 }
 
@@ -103,14 +104,14 @@ artifacts {
 publishing {
     repositories {
         maven {
-            name = "OSSRH"
+            name = "ossrh-staging-api"
             credentials {
-                username = project.findProperty('SONATYPE_USERNAME') ?: System.getenv('SONATYPE_USERNAME')
-                password = project.findProperty('SONATYPE_PASSWORD') ?: System.getenv('SONATYPE_PASSWORD')
+                username = project.findProperty('PORTAL_USERNAME') ?: System.getenv('PORTAL_USERNAME')
+                password = project.findProperty('PORTAL_PASSWORD') ?: System.getenv('PORTAL_PASSWORD')
             }
-            def releasesRepoUrl = uri('https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/')
-            def snapshotsRepoUrl = uri('https://s01.oss.sonatype.org/content/repositories/snapshots/')
-            url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+            def releasesRepoUrl = uri('https://ossrh-staging-api.central.sonatype.com/service/local/staging/deploy/maven2/')
+            def snapshotsRepoUrl = uri('https://ossrh-staging-api.central.sonatype.com/content/repositories/snapshots/')
+            url = version.toString().endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
         }
     }
 
@@ -118,7 +119,7 @@ publishing {
         mavenJava(MavenPublication) {
             groupId = 'io.github.oss-slu'
             artifactId = 'pi4micronaut-utils'
-            version = 'v1.2'
+            version = project.findProperty('version')
             from components.java
 
             artifact sourcesJar
@@ -223,5 +224,3 @@ publishing {
 
     }
 }
-
-
