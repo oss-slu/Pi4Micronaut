@@ -1,6 +1,8 @@
 package com.opensourcewithslu.inputdevices;
 
+import com.pi4j.context.Context;
 import com.pi4j.io.spi.Spi;
+import com.pi4j.io.spi.SpiConfig;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.slf4j.Logger;
@@ -16,6 +18,8 @@ public class ThermistorHelperTest {
 
     private int channel;
     private Spi mockSpi;
+    private SpiConfig mockSpiConfig;
+    private Context mockContext;
     private ThermistorHelper thermistorHelper;
     private ADC0834ConverterHelper adcHelper;
     
@@ -25,7 +29,10 @@ public class ThermistorHelperTest {
         channel = 0;
 
         mockSpi = mock(Spi.class);
-        adcHelper = new ADC0834ConverterHelper(mockSpi);
+        mockSpiConfig = mock(SpiConfig.class);
+        mockContext = mock(Context.class);
+        when(mockContext.create(any(SpiConfig.class))).thenReturn(mockSpi);
+        adcHelper = new ADC0834ConverterHelper(mockSpiConfig, mockContext);
 
         thermistorHelper = new ThermistorHelper(adcHelper);
     }
