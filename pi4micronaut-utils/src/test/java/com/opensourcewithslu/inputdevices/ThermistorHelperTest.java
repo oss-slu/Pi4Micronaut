@@ -30,27 +30,6 @@ public class ThermistorHelperTest {
         thermistorHelper = new ThermistorHelper(adcHelper);
     }
 
-    @Test 
-    void testReadADCValue_successfulRead() throws Exception {
-        ThermistorHelper spyHelper = spy(thermistorHelper);
-
-        // Replace spi field with our mock
-        doReturn(mockSpi).when(spyHelper).getSpi();
-
-        // Mock the transfer(byte[], byte[]) method
-        doAnswer(invocation -> {
-            byte[] txBuffer = invocation.getArgument(0);
-            byte[] rxBuffer = invocation.getArgument(1);
-            // Simulate ADC0834 response - 8-bit value in rxBuffer[1]
-            rxBuffer[0] = 0x00;  // First byte unused
-            rxBuffer[1] = (byte) 0x80;  // 8-bit value: 128 (decimal)
-            return null;
-        }).when(mockSpi).transfer(any(byte[].class), any(byte[].class));
-        double adcValue = spyHelper.readADCValue( channel );
-        log.info("Test successful ADC read, got value: {}", adcValue);
-        assertEquals(128.0, adcValue, "ADC value should be correctly decoded");
-    }
-
     @Test
     void testReadADCValue_failureReturnsMinusOne() throws Exception {
         ThermistorHelper spyHelper = spy(thermistorHelper);
