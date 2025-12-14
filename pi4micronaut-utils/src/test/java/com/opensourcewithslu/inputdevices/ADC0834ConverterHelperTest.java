@@ -17,6 +17,7 @@ public class ADC0834ConverterHelperTest {
     private static final Logger log = LoggerFactory.getLogger(ADC0834ConverterHelperTest.class);
 
     private Context mockContext;
+    private SpiConfig mockSpiConfig;
     private Spi mockSpi;
     private ADC0834ConverterHelper adc;
 
@@ -24,8 +25,9 @@ public class ADC0834ConverterHelperTest {
     public void setUp() {
         mockContext = Mockito.mock(Context.class);
         mockSpi = Mockito.mock(Spi.class);
+        mockSpiConfig = Mockito.mock(SpiConfig.class);
         when(mockContext.create(any(SpiConfig.class))).thenReturn(mockSpi);
-        adc = new ADC0834ConverterHelper(mockSpi);
+        adc = new ADC0834ConverterHelper(mockSpiConfig, mockContext);
     }
 
     @Test
