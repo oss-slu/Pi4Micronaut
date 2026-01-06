@@ -69,9 +69,7 @@ public class PassiveBuzzerHelper {
     //tag::method[]
     public void getFrequency(){
     //end::method[]
-
         log.info(String.valueOf(passiveBuzzerFreq));
-
     }
 
     /**
@@ -101,11 +99,7 @@ public class PassiveBuzzerHelper {
                if (frequency >= 20 && frequency <= 20000) {
                    log.info("Setting frequency to " + frequency + " Hz.");
                    passiveBuzzerOn(passBuzzDC, frequency);
-                   try {
-                       Thread.sleep(duration); // Play each frequency for the specified duration
-                   } catch (InterruptedException e) {
-                       Thread.currentThread().interrupt();
-                   }
+                   sleep(duration);  // makes it easier to test and follows solid principles
                    passiveBuzzerOff();
                } else {
                    log.error("Frequency is out of range. Please choose a value between 20 Hz and 20 kHz.");
@@ -121,12 +115,7 @@ public class PassiveBuzzerHelper {
      */
     public void passiveBuzzTone(){
         passiveBuzzerOn(passBuzzDC, passiveBuzzerFreq);
-
-        try{
-            Thread.sleep(1000); // Buzz for 1 second
-        } catch (InterruptedException e){
-            Thread.currentThread().interrupt();
-        }
+        sleep(1000); // removed the redundant code
         passiveBuzzerOff();
     }
 
@@ -139,11 +128,7 @@ public class PassiveBuzzerHelper {
             //passiveBuzzer.setFrequency(freq);
             log.info(String.valueOf(freq));
             passiveBuzzerOn(passBuzzDC, freq);
-            try{
-                Thread.sleep(1000); //Play each frequency for a full second
-            } catch (InterruptedException e){
-                Thread.currentThread().interrupt();
-            }
+            sleep(1000); // removed the redundant code
             passiveBuzzerOff();
         }
     }
@@ -166,20 +151,19 @@ public class PassiveBuzzerHelper {
             int freq = frequencies[digit];
             passiveBuzzerOn(passBuzzDC, freq);
             //passiveBuzzer.setFrequency(freq); This is no longer needed.
-            try{
-                Thread.sleep(500); //Pause for beat
-            } catch (InterruptedException e){
-                Thread.currentThread().interrupt();
-            }
+            sleep(500); // removed the redundant code
         }
 
-        try{
-            Thread.sleep(1000); //Pause for a second after song concludes
-        } catch (InterruptedException e){
-            Thread.currentThread().interrupt();
-        }
+        sleep(1000); // removed redundant code
         passiveBuzzerOff();
     }
 
+    public void sleep(long duration){
+        try {
+            Thread.sleep(duration); // Play each frequency for the specified duration
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+    }
 
 }
