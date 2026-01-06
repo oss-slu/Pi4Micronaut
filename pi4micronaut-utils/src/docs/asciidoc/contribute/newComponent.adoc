@@ -25,7 +25,7 @@ https://github.com/oss-slu/Pi4Micronaut/issues/new/choose[Issue] to suggest chan
 5. Create a Controller:
 ** Controllers define and handle interactions with a given component. The Controller of a component will have a `@Controller("/example")` right above the class declaration that acts as the endpoint for requests to the component. Instead of "example", you should name the endpoint something that is identifiable to the component. Each method of the Controller should have a `@Get("/exampleEndPoint")` above the method declaration. The endpoint for the method should have the same name as the method and any parameters should be included in the endpoint `/exampleEndPoint/{parameter1},{parameter2}`.
 ** See the https://github.com/oss-slu/Pi4Micronaut/blob/develop/components/src/main/java/com/opensourcewithslu/components/controllers/rgbController.java[RGB Controller] for an example of a Controller.
-** Consult the https://micronaut-projects.github.io/micronaut-docs-mn3/3.8.1/guide/#creatingClient[Micronaut Documentation] for more explanation on Controllers.
+** Consult the https://micronaut-projects.github.io/micronaut-docs-mn4/4.7.6/guide/#routing[Micronaut Documentation] for more explanation on Controllers.
 ** All Controllers should be kept here:
 `components\src\main\java\com\opensourcewithslu\components\controllers`
 

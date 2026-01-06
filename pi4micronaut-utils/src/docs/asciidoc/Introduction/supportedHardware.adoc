@@ -6,19 +6,26 @@ If you plan on creating an application using any of the hardware components list
 
 We plan on offering support for many more hardware components in the future. If you have a hardware component you would like to use but can't find, feel free to checkout how you can add support for it under "Contributing to the Library"
 
-* Push Button
-* Slide Switch
-* Rotary Encoder
-* RFID Scanner
-* LED
-* RGB LED
-* LCD Screen
-* Photo Sensor
-* Touch Switch Sensor
+* 4-Digit 7-Segment Display
 * Active Buzzer
-* Passive Buzzer
-* PIR Motion Sensor
-* Ultrasonic Sensor
-* Servo Motor
-* Tilt Switch
+* Fan Controller
+* IR Obstacle Avoidance Sensor
+* LCD1602 (Liquid Crystal Display)
+* LED
 * Micro Switch
+* DC Motor
+* Passive Buzzer
+* PhotoResistor Sensor
+* PIR Motion Sensor
+* Push Button
+* Reed Switch
+* RFID Scanner
+* RGB LED
+* Rotary Encoder
+* Servo Motor
+* Slide Switch
+* Speed Sensor
+* Thermistor Sensor
+* Tilt Switch
+* Touch Switch Sensor
+* Ultrasonic Sensor

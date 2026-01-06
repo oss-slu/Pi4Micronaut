@@ -39,6 +39,9 @@ image::fanCircuit.png[]
 image::fanSchmetic.png[]
 
 ===== YAML Configuration
+
+A BCM numbering system is used. More info can be found https://pinout.xyz[here].
+
 The following YAML configuration is used to set up the Fan Controller in `application.yml`. This configuration includes parameters to control fan speed and behavior.
 
 [source, yaml]

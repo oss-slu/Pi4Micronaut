@@ -1,0 +1,140 @@
+:imagesdir: img/
+
+ifndef::rootpath[]
+:rootpath: ../../
+endif::rootpath[]
+
+ifdef::rootpath[]
+:imagesdir: {rootpath}{imagesdir}
+endif::rootpath[]
+
+==== IR Obstacle Avoidance Sensor
+[.text-right]
+https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/inputComponents/irObstacleAvoidanceSensor.adoc[Improve this doc]
+
+===== Overview
+This section provides details for the IR Obstacle Avoidance Sensor, including its components, assembly instructions, and functionality.
+
+The IR (Infrared) Obstacle Avoidance Module is a proximity sensor that detects objects and obstacles within a short distance (2-30cm) using infrared reflection. It is commonly used in robotics for collision avoidance, object detection, and boundary sensing. The module features adjustable sensitivity via a potentiometer, digital output for easy integration, fast response time, low power consumption, and operates on 3.3V to 5V power supplies.
+
+===== Components
+* 1 x Raspberry Pi 4
+* 1 x IR Obstacle Avoidance Module
+* 5 x Male-to-Male Jumper Wires
+* 1 x Breadboard
+* Power supply for Raspberry Pi
+
+===== Assembly Instructions
+* Place the IR Obstacle Avoidance Module onto the breadboard.
+* Connect the **VCC** pin of the IR module to **3.3V** on the Raspberry Pi.
+* Connect the **GND** pin of the IR module to **Ground** on the Raspberry Pi.
+* Connect the **OUT** (or **DO**) pin of the IR module to **GPIO 17** on the Raspberry Pi.
+* Use the remaining two jumper wires to secure the module to the breadboard, following the provided circuit diagram.
+* Verify connections to ensure no loose wires or short circuits.
+* Adjust the potentiometer to set detection sensitivity:
+  - Turn **clockwise** to increase sensitivity.
+  - Turn **counter-clockwise** to decrease sensitivity.
+
+> **Tip**: Use 3.3V for compatibility with Raspberry Pi GPIO. Ensure the module's IR LEDs face forward.
+
+===== Circuit Diagram
+image::irObstacleAvoidance-CD.png[]
+
+===== Schematic Diagram
+image::irObstacleAvoidance-SD.png[]
+
+===== Functionality
+The IR Obstacle Avoidance Module uses active infrared light reflection to detect obstacles. It emits infrared light via an onboard LED, which reflects off nearby objects and is detected by the IR receiver. The onboard comparator circuit processes the signal and outputs a digital signal (LOW when an obstacle is detected, HIGH when the path is clear). The detection range (2-30cm) is adjustable via the potentiometer, making it suitable for real-time robotics applications.
+
+===== Testing
+Use the following commands to test the component:
+
+[source, bash]
+----
+$curl http://localhost:8080/ir-obstacle/status
+----
+* `/status` - Returns `true` if an obstacle is detected, `false` if the path is clear.
+
+[source, bash]
+----
+$curl http://localhost:8080/ir-obstacle/state
+----
+* `/state` - Returns the raw digital state (`HIGH` or `LOW`).
+
+[source, bash]
+----
+$curl http://localhost:8080/ir-obstacle/message
+----
+* `/message` - Returns a human-readable status (`"Obstacle detected"` or `"No obstacle"`).
+
+[source, bash]
+----
+$curl http://localhost:8080/ir-obstacle/wait/{timeoutMillis}
+----
+* `/wait/{timeoutMillis}` - Waits for obstacle detection within the specified timeout (in milliseconds) and returns `true` if detected, `false` otherwise.
+
+[source, bash]
+----
+$curl http://localhost:8080/ir-obstacle/init
+----
+* `/init` - Initializes the sensor and adds an event listener to print `"Obstacle Detected"` or `"No Obstacle"` to the console when the sensor state changes.
+
+===== Troubleshooting
+**Sensor Always Reports Obstacle Detected**:
+* Adjust potentiometer counter-clockwise to decrease sensitivity.
+* Ensure the module is not facing a reflective surface.
+* Verify VCC is connected to 3.3V.
+* Test with a white object to confirm detection.
+* Check GPIO state with `gpio readall`.
+
+**Sensor Never Detects Obstacles**:
+* Adjust potentiometer clockwise to increase sensitivity.
+* Verify OUT pin is connected to GPIO 17.
+* Confirm `application.yml` has the correct GPIO address.
+* Test with a reflective object (e.g., white or shiny surface).
+* Measure OUT pin voltage with a multimeter (should switch between 0V and 3.3V).
+
+**Inconsistent Detection**:
+* Increase debounce time in `application.yml` to 20000 (20ms).
+* Secure all jumper wires.
+* Shield from sunlight or other IR sources.
+* Mount the module rigidly to prevent vibration.
+* Add a 100µF capacitor across VCC and GND near the module.
+
+**Module Won't Power On**:
+* Verify 3.3V at VCC with a multimeter.
+* Check GND connections.
+* Ensure `application.yml` is correctly configured.
+* Test GPIO manually with `gpio mode 17 in` and `gpio read 17`.
+
+**Application Crashes**:
+* Verify `application.yml` syntax and `ir-obstacle-input` key.
+* Ensure `@Named("ir-obstacle-input")` matches the configuration.
+* Rebuild with `./gradlew clean build`.
+* Check logs for configuration errors.
+
+===== YAML Configuration
+The IR Obstacle Avoidance Sensor configuration as it appears in the YAML file:
+
+[source, yaml]
+----
+pi4j:
+  digital-input:
+    ir-obstacle-input:
+      name: IR Obstacle Avoidance Sensor
+      address: 17
+      pull: PULL_UP
+      debounce: 10000
+      provider: pigpio-digital-input
+----
+
+===== Constructor and Methods
+To see the constructor and methods of the `IRObstacleAvoidance` class, refer to the JavaDoc: link:https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/inputdevices/IRObstacleAvoidance.html[IRObstacleAvoidance JavaDoc]
+
+===== Example Controller
+This controller demonstrates the usage of the IR Obstacle Avoidance Sensor:
+
+[source, java]
+----
+include::../../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/IRObstacleAvoidanceController.java[tag=ex]
+----

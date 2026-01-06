@@ -65,7 +65,14 @@ public class MicroSwitchHelper {
         }
     }
 
-    public void setLog (Logger log){
+
+    /**
+     * Sets the logger object.
+     * This method is intended for internal testing purposes only.
+     * 
+     * @param log Logger object to set the logger to.
+     */
+    void setLog (Logger log){
         this.log = log;
     }
 }

@@ -85,6 +85,9 @@ $ curl http://localhost:8080/passive-buzzer/enable
     * When using a file, verify that the file itself is scp'd to the raspberrypi (see PassiveBuzzerController for full information).
 
 ===== YAML Configuration
+
+A BCM numbering system is used. More info can be found https://pinout.xyz[here].
+
 [source, yaml]
 
 ----

@@ -17,10 +17,10 @@ public class FanHelper {
     /**
      * Constructor to initialize the FanHelper with a PWM instance.
      *
-     * @param fa the PWM instance to control the fan
+     * @param fan the PWM instance to control the fan
      */
-    public FanHelper(Pwm fa) {
-        this.pwm = fa;
+    public FanHelper(Pwm fan) {
+        this.pwm = fan;
     }
 
     /**
@@ -48,7 +48,7 @@ public class FanHelper {
     /**
      * Sets the fan speed by adjusting the PWM duty cycle.
      *
-     * @param speed the desired fan speed (duty cycle), must be between 0 and 1024
+     * @param speed the desired fan speed (duty cycle). Must be between 0 and 1024.
      * @throws IllegalArgumentException if the speed is out of bounds
      */
     public void setSpeed(int speed) {
