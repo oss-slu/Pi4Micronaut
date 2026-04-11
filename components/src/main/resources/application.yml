@@ -314,3 +314,18 @@ camera:
   resolution: "1920x1080"  # <1>
   frame-rate: 30            # <2>
   # end::camera[]
+  # tag::joystick[]
+  # Joystick x-axis -> ADC CH0, y-axis -> ADC CH1, button (SW) -> digital input
+  spi:
+    joystick-adc:
+      name: Joystick ADC
+      address: 0
+      baud: 1000000
+  digital-input:
+    joystick-sw:
+      name: Joystick Button
+      address: 25
+      pull: PULL_UP
+      debounce: 10000
+      provider: pigpio-digital-input
+  # end::joystick[]
