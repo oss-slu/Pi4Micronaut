@@ -304,3 +304,13 @@ pi4j:
       initials: 0, 0, 0
       shutdowns: 0, 0, 0
   # end::multiPWM[]
+  # tag::camera[]
+  # Camera module connects via CSI ribbon cable (not GPIO).
+  # Supported resolutions and max frame rates:
+  #   1920x1080 -> max 30 fps
+  #   1280x720  -> max 60 fps
+  #   640x480   -> max 90 fps
+camera:
+  resolution: "1920x1080"  # <1>
+  frame-rate: 30            # <2>
+  # end::camera[]
