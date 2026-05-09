@@ -99,7 +99,7 @@ public class PassiveBuzzerHelper {
                if (frequency >= 20 && frequency <= 20000) {
                    log.info("Setting frequency to " + frequency + " Hz.");
                    passiveBuzzerOn(passBuzzDC, frequency);
-                   sleep(duration);  // makes it easier to test and follows solid principles
+                   sleep(duration);
                    passiveBuzzerOff();
                } else {
                    log.error("Frequency is out of range. Please choose a value between 20 Hz and 20 kHz.");
@@ -115,7 +115,7 @@ public class PassiveBuzzerHelper {
      */
     public void passiveBuzzTone(){
         passiveBuzzerOn(passBuzzDC, passiveBuzzerFreq);
-        sleep(1000); // removed the redundant code
+        sleep(1000);
         passiveBuzzerOff();
     }
 
@@ -128,7 +128,7 @@ public class PassiveBuzzerHelper {
             //passiveBuzzer.setFrequency(freq);
             log.info(String.valueOf(freq));
             passiveBuzzerOn(passBuzzDC, freq);
-            sleep(1000); // removed the redundant code
+            sleep(1000);
             passiveBuzzerOff();
         }
     }
@@ -151,10 +151,10 @@ public class PassiveBuzzerHelper {
             int freq = frequencies[digit];
             passiveBuzzerOn(passBuzzDC, freq);
             //passiveBuzzer.setFrequency(freq); This is no longer needed.
-            sleep(500); // removed the redundant code
+            sleep(500);
         }
 
-        sleep(1000); // removed redundant code
+        sleep(1000);
         passiveBuzzerOff();
     }
 
