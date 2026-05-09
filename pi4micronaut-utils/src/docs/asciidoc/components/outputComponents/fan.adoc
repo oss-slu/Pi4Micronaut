@@ -36,7 +36,7 @@ image::fanCircuit.png[]
 
 ===== Schematic Diagram
 
-image::fanSchmetic.png[]
+image::fanSchematic.png[]
 
 ===== YAML Configuration
 The following YAML configuration is used to set up the Fan Controller in `application.yml`. This configuration includes parameters to control fan speed and behavior.
