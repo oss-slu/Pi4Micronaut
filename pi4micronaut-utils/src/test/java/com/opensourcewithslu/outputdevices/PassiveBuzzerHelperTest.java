@@ -48,12 +48,15 @@ public class PassiveBuzzerHelperTest {
         Path path = tempDir.resolve("frequencies.txt");
         Files.writeString(path, "20,30,10000,20000,30000");
 
+        doNothing().when(passiveBuzzerHelper).sleep(anyLong());
+
         passiveBuzzerHelper.setFrequencies(path.toFile());
 
         verify(passiveBuzzer, times(1)).on(passiveBuzzerHelper.passBuzzDC, 20);
         verify(passiveBuzzer, times(1)).on(passiveBuzzerHelper.passBuzzDC, 30);
         verify(passiveBuzzer, times(1)).on(passiveBuzzerHelper.passBuzzDC, 10000);
         verify(passiveBuzzer, times(1)).on(passiveBuzzerHelper.passBuzzDC, 20000);
+        verify(passiveBuzzer, never()).on(passiveBuzzerHelper.passBuzzDC, 30000);
     }
 
     @Test
