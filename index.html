@@ -396,7 +396,7 @@ pre.rouge .nv, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi, pre.rouge .vm {
 <h1>Pi4Micronaut Documentation</h1>
 <div class="details">
 <span id="author" class="author">:imagesdir:img</span><br>
-<span id="revnumber">version 0.1.0-dev.1+develop.7e527bc</span>
+<span id="revnumber">version 0.1.0-dev.1+develop.d249665</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -6898,6 +6898,7 @@ To produce sound, a passive buzzer needs an external PWM signal supplied by Rasp
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="nd">@Controller</span><span class="o">(</span><span class="s">"/passive-buzzer"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">PassiveBuzzerController</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Logger</span> <span class="n">log</span> <span class="o">=</span> <span class="nc">LoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="nc">PassiveBuzzerController</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
     <span class="kd">private</span> <span class="kd">final</span> <span class="nc">PassiveBuzzerHelper</span> <span class="n">passiveBuzzerHelper</span><span class="o">;</span>
 
     <span class="kd">protected</span> <span class="kt">int</span> <span class="n">passBuzzFreq</span> <span class="o">=</span> <span class="mi">440</span><span class="o">;</span>
@@ -6933,9 +6934,7 @@ To produce sound, a passive buzzer needs an external PWM signal supplied by Rasp
      */</span>
     <span class="nd">@Get</span><span class="o">(</span><span class="s">"/showFreq"</span><span class="o">)</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">passiveBuzzerFreq</span><span class="o">(){</span>
-
-        <span class="n">passiveBuzzerHelper</span><span class="o">.</span><span class="na">getFrequency</span><span class="o">();</span>
-
+        <span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="nc">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">passiveBuzzerHelper</span><span class="o">.</span><span class="na">getFrequency</span><span class="o">()));</span>
     <span class="o">}</span>
 
     <span class="cm">/**
@@ -7532,8 +7531,8 @@ for more details.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.0-dev.1+develop.7e527bc<br>
-Last updated 2026-05-09 16:57:35 UTC
+Version 0.1.0-dev.1+develop.d249665<br>
+Last updated 2026-05-09 18:06:10 UTC
 </div>
 </div>
 </body>
