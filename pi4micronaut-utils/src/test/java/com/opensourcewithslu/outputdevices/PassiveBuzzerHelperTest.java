@@ -44,11 +44,6 @@ public class PassiveBuzzerHelperTest {
     }
 
     @Test
-    void getFrequency() {
-//        No business logic is implemented in getFrequency() method
-    }
-
-    @Test
     void setFrequencies() throws IOException {
         Path path = tempDir.resolve("frequencies.txt");
         Files.writeString(path, "20,30,10000,20000,30000");

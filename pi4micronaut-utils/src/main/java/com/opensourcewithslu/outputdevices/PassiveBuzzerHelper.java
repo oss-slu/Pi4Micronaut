@@ -158,7 +158,7 @@ public class PassiveBuzzerHelper {
         passiveBuzzerOff();
     }
 
-    public void sleep(long duration){
+    protected void sleep(long duration){
         try {
             Thread.sleep(duration); // Play each frequency for the specified duration
         } catch (InterruptedException e) {
