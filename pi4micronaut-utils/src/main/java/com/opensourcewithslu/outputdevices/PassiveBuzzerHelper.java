@@ -67,11 +67,9 @@ public class PassiveBuzzerHelper {
      */
 
     //tag::method[]
-    public void getFrequency(){
+    public int getFrequency(){
     //end::method[]
-
-        log.info(String.valueOf(passiveBuzzerFreq));
-
+        return passiveBuzzerFreq;
     }
 
     /**
