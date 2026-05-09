@@ -44,6 +44,9 @@ and check the power source.
 adjust according to your power source and LED specifications
 
 ===== YAML Configuration
+
+A BCM numbering system is used. More info can be found https://pinout.xyz[here].
+
 The order for declaring the pin for the LED is as follows:
 
 [source, yaml]

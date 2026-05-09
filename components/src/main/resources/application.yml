@@ -14,7 +14,7 @@ pi4j:
       name: ADC0834  # <1>
       address: 17            # <2> # SPI channel 0
       baud: 1000000         # <3> # 1 MHz SPI clock speed
-      mode: SPI_MODE_0
+      reset-pin: 27
   # end::spi[]
 
   # tag::pwm[]
@@ -149,6 +149,12 @@ pi4j:
       address: 17
       pull: PULL_UP
       debounce: 200
+      provider: pigpio-digital-input
+    ir-obstacle-input:
+      name: IR Obstacle Avoidance Sensor
+      address: 17
+      pull: PULL_UP
+      debounce: 10000
       provider: pigpio-digital-input
   # end::digitalInput[]
 

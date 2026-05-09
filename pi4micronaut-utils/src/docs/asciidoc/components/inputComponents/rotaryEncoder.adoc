@@ -61,6 +61,9 @@ $ curl http://localhost:8080/rotaryEncoder/value
 - Make sure that a 10k resistor is being used
 
 ===== YAML Configuration
+
+A BCM numbering system is used. More info can be found https://pinout.xyz[here].
+
 The order for declaring pins for a Rotary Encoder component in the application.yaml file is as follows
 
 *SW-PIN-INFO, CLK-PIN-INFO, DT-PIN-INFO*

@@ -2,19 +2,32 @@
 name: New Feature request
 about: Suggest an idea or feature for this project
 labels: enhancement
+type: Feature
 ---
 
-**You would like to implement a new component? If yes, please provide all the necessary details** \
-A clear configuration of the component and its working principle. Ex. It uses PWM
-- GPIO pins that are used by this component.
-- Circuit diagram if available
-- Any additional chips are used. Ex: It uses ADC0834
+## Feature Description
 
-**Is your feature request related to a problem? Please describe.** \
-A clear and concise description of what the problem is. Ex: I have a problem with LED [...]
+*A clear and concise description of the feature, and why it should be added to the project.*
 
-**Describe the solution you'd like** \
-A clear and concise description of what you want to happen.
+*If you would like to see a new component implemented, please provide as many details as possible, such as communication protocols used, GPIO pins used, circuit diagrams if available, and any additional chips necessary.*
 
-**Additional context** \
-Add any other context or screenshots about the feature request here.
+## ✅ Tasks to be Completed
+
+*A checklist of individual tasks that likely must be done before the feature can be considered "complete".*
+
+- [ ] Task 1:
+- [ ] Task 2:
+- [ ] Task 3:
+
+## Acceptance Criteria
+
+*A checklist of conditions that must be met for this task to be considered complete. How will we verify that it's done correctly?*
+
+- [ ] The new feature is implemented as described.
+- [ ] All related code passes the repository's workflow checks (linting, tests).
+- [ ] The application runs without errors after the changes are made.
+- [ ] (If applicable) New automated tests have been added to cover the changes.
+
+## Additional context
+
+A*dd any other context or screenshots about the feature request here.*

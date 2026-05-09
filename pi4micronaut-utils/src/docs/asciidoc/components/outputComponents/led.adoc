@@ -62,6 +62,9 @@ $ curl http://localhost:8080/led/ledOn
 as well as the LED specifications.
 
 ===== YAML Configuration
+
+A BCM numbering system is used. More info can be found https://pinout.xyz[here].
+
 [source, yaml]
 ----
 digital-output:

@@ -1,0 +1,49 @@
+title: Pi4Micronaut
+authors:
+  - given-names: Ruthvik
+    family-names: Mannem
+  - given-names: Sinuo
+    family-names: Liu
+  - given-names: Traison
+    family-names: Diedrich
+  - given-names: Austin
+    family-names: Howard
+  - given-names: Greih
+    family-names: Murray
+  - given-names: John
+    family-names: Yanev
+  - given-names: Joe
+    family-names: Folen
+  - given-names: Alex
+    family-names: Delgado
+  - given-names: Adrian
+    family-names: Swindle
+  - given-names: Yenkatarajalaxmimanohar
+    family-names: Meda
+  - given-names: Thomas
+    family-names: Macas
+  - given-names: Seyun
+    family-names: Jeong
+  - given-names: Ralph
+    family-names: Tan
+  - given-names: Ava
+    family-names: Enke
+  - given-names: Leandru
+    family-names: Martin
+  - given-names: Joey Heitzler
+  - given-names: Thomas
+    family-names: Pautler
+cff-version: 1.2.0
+message: If you use this software, please cite it using the metadata from this file.
+type: software
+abstract: " A Java library combining Micronaut and Pi4j to streamline hardware
+  connectivity to Raspberry Pis"
+keywords:
+  - Raspberry Pi
+  - Java
+  - Pi4J
+  - Micronaut
+license: Apache-2.0
+repository-code: https://github.com/oss-slu/Pi4Micronaut
+date-released: 2024-05-10
+version: "1.1"

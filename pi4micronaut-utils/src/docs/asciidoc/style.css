@@ -193,3 +193,9 @@ th {
 	font-style: italic;
 	padding-top: 2em;
 }
+
+h3 {
+	margin-top: 30px;
+	padding-top: 10px;
+	border-top: 1px solid #e0e0e0;
+}

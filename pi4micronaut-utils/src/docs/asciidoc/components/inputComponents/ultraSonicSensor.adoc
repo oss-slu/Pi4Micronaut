@@ -58,6 +58,9 @@ $curl http://localhost:8080/ultraSound/enable
 and check the power source.
 
 ===== YAML Configuration
+
+A BCM numbering system is used. More info can be found https://pinout.xyz[here].
+
 The order for declaring the Trigger and Echo Pins of the Ultrasonic Sensor is as follows:
 
 So the Trigger Pin would be connected to GPIO 23 and the Echo Pin would be connected to GPIO 24.

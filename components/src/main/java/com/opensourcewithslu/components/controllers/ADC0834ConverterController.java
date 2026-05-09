@@ -1,7 +1,8 @@
 package com.opensourcewithslu.components.controllers;
 
-import com.pi4j.io.spi.Spi;
 import com.opensourcewithslu.inputdevices.ADC0834ConverterHelper;
+import com.pi4j.context.Context;
+import com.pi4j.io.spi.SpiConfig;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import jakarta.inject.Named;
@@ -19,10 +20,11 @@ public class ADC0834ConverterController {
     /**
      * Constructor for ADC0834ConverterController.
      *
-     * @param spi SPI interface
+     * @param spiConfig A Pi4J SPIConfig object which holds the SPI configuration.
+     * @param pi4jContext The Pi4J context object.
      */
-    public ADC0834ConverterController(@Named("adc0834") Spi spi) {
-        this.adcConverterHelper = new ADC0834ConverterHelper(spi);
+    public ADC0834ConverterController(@Named("adc0834") SpiConfig spiConfig, Context pi4jContext) {
+        this.adcConverterHelper = new ADC0834ConverterHelper(spiConfig, pi4jContext);
         log.info("ADC0834ConverterController initialized with SPI");
     }
 

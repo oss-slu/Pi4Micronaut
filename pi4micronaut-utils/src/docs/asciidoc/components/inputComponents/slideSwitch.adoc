@@ -56,6 +56,9 @@ This will either return true,if the switch is on, and false if the switch is off
 Verify that all connections are correct and that the order of components in a row are correct. 
 
 ===== YAML Configuration
+
+A BCM numbering system is used. More info can be found https://pinout.xyz[here].
+
 The slide switch as it appears in the application.yml:
 
 [source, yaml]

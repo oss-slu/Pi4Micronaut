@@ -6,11 +6,9 @@
 
 * Before making contributions, understand the purpose and functionality of the Pi4Micronaut library.
 
-* Review the library documentation, any related articles, or tutorials.
-
-Our documentation can be found online at [oss-slu.github.io/Pi4Micronaut](https://oss-slu.github.io/Pi4Micronaut/). Good information and tutorials on Raspberry Pis and electronic components can be found online from [Sunfounder](https://docs.sunfounder.com/en/latest/), [SparkFun](https://learn.sparkfun.com/), or others.
-
-This file will go over some quick information about our library, but please refer to our documentation webpage for more complete information.
+* Review the library documentation, any related articles, or tutorials. 
+  * Our documentation can be found online at [oss-slu.github.io/Pi4Micronaut](https://oss-slu.github.io/Pi4Micronaut/). Good information and tutorials on Raspberry Pis and electronic components can be found online from [Sunfounder](https://docs.sunfounder.com/en/latest/), [SparkFun](https://learn.sparkfun.com/), or others. 
+  * This file will go over some quick information about our library, but please refer to our documentation webpage for more complete information.
 
 ### Set Up Your Development Environment
 
@@ -62,6 +60,8 @@ This file will go over some quick information about our library, but please refe
 
 * Note: A test suite will be developed in future to test the components without the use of external hardware
 
+* To run tests, use the command `./gradlew test`
+
 ### Signing the Contributor License Agreement
 
 * While creating a pull request, you’ll be prompted to sign a Contributor License Agreement. Please do so by logging in with your GitHub account.
@@ -96,6 +96,13 @@ This file will go over some quick information about our library, but please refe
 
 Thanks for considering a contribution to the Pi4Micronaut library! Your involvement helps make the project better for everyone.
 
+## Commands and Gradle Tasks
+
+Here are some useful commands and Gradle tasks for working with the Pi4Micronaut library:
+* **Build the Project:** `./gradlew build` - Compiles the code and builds the project.
+* **Run Tests:** `./gradlew test` - Executes the test suite.
+* **Compile AsciiDoc Documentation:** `./gradlew asciidoctor` - Generates the documentation from AsciiDoc files. The output can be found in `pi4micronaut-utils/build/docs/asciidoc`.
+
 ## How to Create a New Component
 
 If it's compatible with a Raspberry Pi, then it should work well with Pi4Micronaut. The following steps should encompass in brief how most components are added to the library; further details can be found on our documentation webpage. Start by creating a new issue to suggest changes.
@@ -122,7 +129,7 @@ All controllers should be kept here: `components/src/main/java/com/opensourcewit
 
 ### Thoroughly test
 
-Contributors should thoroughly test their integrations. Software unit tests should be written in `pi4micronaut-utils/src/test/java/com/opensourcewithslu/(inputdevices or outputdevices)`.
+Contributors should thoroughly test their integrations. Software unit tests should be written in `pi4micronaut-utils/src/test/java/com/opensourcewithslu/(inputdevices or outputdevices)`. They can be run with `./gradlew test`.
 
 Hardware testing should also be done. When submitting a pull request, make sure to include how you tested the component, any circuits that you may have used, and how to run any examples you may have created. Instructions for how to conduct hardware testing, including how to send the files over to the Raspberry Pi device, are on our online documentation.
 
@@ -133,3 +140,6 @@ It is important that reviewers are able to replicate your work in order to prope
 We write documentation files for each component, which are compiled and hosted on our online documentation webpage. Create an .adoc file with the component name as the file name. Make sure to include all the information that the other components include. Simply copy/paste an existing component's documentation and edit as needed. Add the file here: `pi4micronaut-utils/src/docs/asciidoc/components/(inputComponents or outputComponents)`.
 
 Also ensure that the classes you have written have appropriate Javadoc comments.
+
+### Workflow Diagram
+![Workflow_Diagram.png](Workflow_Diagram.png)
