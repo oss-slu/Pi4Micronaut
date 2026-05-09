@@ -5,10 +5,13 @@ import com.pi4j.io.pwm.Pwm;
 import io.micronaut.http.annotation.*;
 import jakarta.inject.Named;
 import java.io.File;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 //tag::ex[]
 @Controller("/passive-buzzer")
 public class PassiveBuzzerController {
+    private static final Logger log = LoggerFactory.getLogger(PassiveBuzzerController.class);
     private final PassiveBuzzerHelper passiveBuzzerHelper;
 
     protected int passBuzzFreq = 440;
@@ -44,9 +47,7 @@ public class PassiveBuzzerController {
      */
     @Get("/showFreq")
     public void passiveBuzzerFreq(){
-
-        passiveBuzzerHelper.getFrequency();
-
+        log.info(String.valueOf(passiveBuzzerHelper.getFrequency()));
     }
 
     /**
