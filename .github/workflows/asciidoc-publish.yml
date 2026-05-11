@@ -12,7 +12,7 @@ jobs:
     name: ASCII DOC publish
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
     - name: Deploy docs to ghpages
       uses: peaceiris/actions-gh-pages@v3
       with:
