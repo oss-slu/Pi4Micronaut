@@ -22,3 +22,8 @@ jobs:
       uses: tonynv/asciidoctor-action@master
       with:
           program: "./gradlew asciidoctor"
+    - name: Upload AsciiDoc output
+      uses: actions/upload-artifact@v4
+      with:
+        name: asciidoc-output
+        path: pi4micronaut-utils/build/docs/asciidoc/
