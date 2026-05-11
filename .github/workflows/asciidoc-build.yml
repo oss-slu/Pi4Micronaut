@@ -3,8 +3,12 @@ name: build adocs
 on:
   push:
     branches:
-    - main
-    - develop
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+  workflow_call:
 
 jobs:
   adoc_build:
@@ -18,10 +22,3 @@ jobs:
       uses: tonynv/asciidoctor-action@master
       with:
           program: "./gradlew asciidoctor"
-    - name: Deploy docs to ghpages
-      uses: peaceiris/actions-gh-pages@v3
-      with: 
-        deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-        publish_branch: gh-pages
-        publish_dir: ./pi4micronaut-utils/build/docs/asciidoc/
-

@@ -1,0 +1,23 @@
+name: publish adocs
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    uses: ./.github/workflows/asciidoc-build.yml
+  adoc_publish:
+    needs: build
+    runs-on: ubuntu-latest
+    name: ASCII DOC publish
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Deploy docs to ghpages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+        publish_branch: gh-pages
+        publish_dir: ./pi4micronaut-utils/build/docs/asciidoc/
