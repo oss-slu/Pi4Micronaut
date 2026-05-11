@@ -1,11 +1,7 @@
 name: publish adocs
 permissions:
   contents: read
-on:
-  workflow_call:
-    secrets:
-      ACTIONS_DEPLOY_KEY:
-        required: true
+on: workflow_call
 
 jobs:
   build:

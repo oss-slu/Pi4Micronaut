@@ -5,14 +5,9 @@ on:
     branches:
       - main
 
-permissions:
-  contents: write
-
 jobs:
   publish-asciidoc:
     uses: ./.github/workflows/asciidoc-publish.yml
-    secrets:
-      ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
 
   publish-javadoc:
     needs: publish-asciidoc
