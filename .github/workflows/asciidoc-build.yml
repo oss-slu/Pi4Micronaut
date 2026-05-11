@@ -16,10 +16,10 @@ jobs:
     name: ASCII DOC build
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
     - name: Get build container
       id: adocbuild
-      uses: tonynv/asciidoctor-action@master
+      uses: tonynv/asciidoctor-action@v2
       with:
           program: "./gradlew asciidoctor"
     - name: Upload AsciiDoc output
