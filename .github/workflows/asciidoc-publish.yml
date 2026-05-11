@@ -1,7 +1,11 @@
 name: publish adocs
 permissions:
   contents: read
-on: workflow_call
+on:
+  workflow_call:
+    secrets:
+      ACTIONS_DEPLOY_KEY:
+        required: true
 
 jobs:
   build:
@@ -24,3 +28,4 @@ jobs:
         deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
         publish_branch: gh-pages
         publish_dir: ./pi4micronaut-utils/build/docs/asciidoc/
+        keep_files: true
