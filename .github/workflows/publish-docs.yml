@@ -1,14 +1,16 @@
 name: Publish Documentation
-
+permissions:
+  contents: write
 on:
   push:
     branches:
       - main
-      - develop
 
 jobs:
   publish-asciidoc:
-    uses: ./.github/workflows/asciidoc-build.yml
+    uses: ./.github/workflows/asciidoc-publish.yml
+    secrets:
+      ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
 
   publish-javadoc:
     needs: publish-asciidoc
