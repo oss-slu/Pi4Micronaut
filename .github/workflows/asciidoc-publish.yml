@@ -13,6 +13,11 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
+    - name: Download AsciiDoc output
+      uses: actions/download-artifact@v4
+      with:
+        name: asciidoc-output
+        path: pi4micronaut-utils/build/docs/asciidoc/
     - name: Deploy docs to ghpages
       uses: peaceiris/actions-gh-pages@v3
       with:
