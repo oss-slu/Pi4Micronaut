@@ -4,7 +4,10 @@ permissions:
   pages: write
   id-token: write
 on:
-  workflow_call: 
+  workflow_call:
+    secrets:
+      GITHUB_TOKEN:
+        required: true
 
 jobs:
   build:
