@@ -1,12 +1,7 @@
 name: publish adocs
-
-on:
-  push:
-    branches:
-      - main
-
 permissions:
   contents: read
+on: workflow_call
 
 jobs:
   build:

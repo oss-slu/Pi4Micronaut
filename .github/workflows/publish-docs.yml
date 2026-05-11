@@ -4,11 +4,10 @@ on:
   push:
     branches:
       - main
-      - develop
 
 jobs:
   publish-asciidoc:
-    uses: ./.github/workflows/asciidoc-build.yml
+    uses: ./.github/workflows/asciidoc-publish.yml
 
   publish-javadoc:
     needs: publish-asciidoc
