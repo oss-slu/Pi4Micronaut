@@ -1,4 +1,4 @@
-name: publish adocs
+name: Publish AsciiDoc
 permissions:
   contents: read
 on:
