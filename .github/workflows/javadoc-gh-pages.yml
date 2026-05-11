@@ -4,10 +4,8 @@ permissions:
   pages: write
   id-token: write
 on:
-  push:
-    branches:
-      - main
-      - develop
+  workflow_call:
+    
 
 jobs:
   build:
