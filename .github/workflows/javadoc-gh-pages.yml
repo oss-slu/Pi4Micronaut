@@ -4,8 +4,7 @@ permissions:
   pages: write
   id-token: write
 on:
-  workflow_call:
-    
+  workflow_call: 
 
 jobs:
   build:
