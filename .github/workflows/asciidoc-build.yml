@@ -15,15 +15,15 @@ jobs:
     runs-on: ubuntu-latest
     name: ASCII DOC build
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-    - name: Get build container
-      id: adocbuild
-      uses: tonynv/asciidoctor-action@v2
-      with:
-          program: "./gradlew asciidoctor"
-    - name: Upload AsciiDoc output
-      uses: actions/upload-artifact@v4
-      with:
-        name: asciidoc-output
-        path: pi4micronaut-utils/build/docs/asciidoc/
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Get build container
+        id: adocbuild
+        uses: tonynv/asciidoctor-action@v2
+        with:
+            program: "./gradlew asciidoctor"
+      - name: Upload AsciiDoc output
+        uses: actions/upload-artifact@v4
+        with:
+          name: asciidoc-output
+          path: pi4micronaut-utils/build/docs/asciidoc/

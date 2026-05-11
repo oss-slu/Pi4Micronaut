@@ -1,7 +1,11 @@
 name: publish adocs
 permissions:
   contents: read
-on: workflow_call
+on:
+  workflow_call:
+    secrets:
+      ACTIONS_DEPLOY_KEY:
+        required: true
 
 jobs:
   build:
@@ -11,17 +15,17 @@ jobs:
     runs-on: ubuntu-latest
     name: ASCII DOC publish
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-    - name: Download AsciiDoc output
-      uses: actions/download-artifact@v4
-      with:
-        name: asciidoc-output
-        path: pi4micronaut-utils/build/docs/asciidoc/
-    - name: Deploy docs to ghpages
-      uses: peaceiris/actions-gh-pages@v4
-      with:
-        deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-        publish_branch: gh-pages
-        publish_dir: ./pi4micronaut-utils/build/docs/asciidoc/
-        keep_files: true
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Download AsciiDoc output
+        uses: actions/download-artifact@v4
+        with:
+          name: asciidoc-output
+          path: pi4micronaut-utils/build/docs/asciidoc/
+      - name: Deploy docs to ghpages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          publish_branch: gh-pages
+          publish_dir: ./pi4micronaut-utils/build/docs/asciidoc/
+          keep_files: true
