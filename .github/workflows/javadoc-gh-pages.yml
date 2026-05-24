@@ -4,10 +4,7 @@ permissions:
   pages: write
   id-token: write
 on:
-  push:
-    branches:
-      - main
-      - develop
+  workflow_call:
 
 jobs:
   build:
@@ -43,10 +40,8 @@ jobs:
         with:
           name: javadoc
           path: ./javadoc
-          retention-days: 1
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
-        if: github.ref == 'refs/heads/develop'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./javadoc

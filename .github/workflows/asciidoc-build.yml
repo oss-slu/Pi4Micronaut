@@ -3,25 +3,26 @@ name: build adocs
 on:
   push:
     branches:
-    - main
-    - develop
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+  workflow_call:
 
 jobs:
   adoc_build:
     runs-on: ubuntu-latest
     name: ASCII DOC build
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-    - name: Get build container
-      id: adocbuild
-      uses: tonynv/asciidoctor-action@master
-      with:
-          program: "./gradlew asciidoctor"
-    - name: Deploy docs to ghpages
-      uses: peaceiris/actions-gh-pages@v3
-      with: 
-        deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-        publish_branch: gh-pages
-        publish_dir: ./pi4micronaut-utils/build/docs/asciidoc/
-
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Get build container
+        uses: tonynv/asciidoctor-action@v2
+        with:
+            program: "./gradlew asciidoctor"
+      - name: Upload AsciiDoc output
+        uses: actions/upload-artifact@v4
+        with:
+          name: asciidoc-output
+          path: pi4micronaut-utils/build/docs/asciidoc/
