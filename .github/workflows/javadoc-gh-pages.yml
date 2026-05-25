@@ -4,10 +4,7 @@ permissions:
   pages: write
   id-token: write
 on:
-  push:
-    branches:
-      - main
-      - develop
+  workflow_call:
 
 jobs:
   build:
@@ -43,7 +40,6 @@ jobs:
         with:
           name: javadoc
           path: ./javadoc
-          retention-days: 1
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         with:
