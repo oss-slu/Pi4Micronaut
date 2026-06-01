@@ -220,6 +220,7 @@
   "description": " A Java library combining Micronaut and Pi4j to streamline hardware connectivity to Raspberry Pis",
   "developmentStatus": "active",
   "downloadUrl": "https://central.sonatype.com/artifact/io.github.oss-slu/pi4micronaut-utils",
+  "issueTracker": "https://github.com/oss-slu/Pi4Micronaut/issues",
   "keywords": [
     "Raspberry Pi",
     "Java",
@@ -229,6 +230,10 @@
   "license": "https://spdx.org/licenses/Apache-2.0",
   "programmingLanguage": [
     "Java"
+  ],
+  "relatedLink": [
+    "https://oss-slu.github.io/Pi4Micronaut/",
+    "https://oss-slu.github.io/projects/pi4micronaut/about"
   ],
   "runtimePlatform": [
     "JVM"
