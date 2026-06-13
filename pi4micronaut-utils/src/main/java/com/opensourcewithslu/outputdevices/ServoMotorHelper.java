@@ -1,6 +1,5 @@
 package com.opensourcewithslu.outputdevices;
 
-import com.pi4j.io.exception.IOException;
 import com.pi4j.io.pwm.Pwm;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,7 +33,7 @@ public class ServoMotorHelper {
      * Enables the servo motor by starting PWM output at 0% duty cycle and the
      * configured servo frequency.
      *
-     * @throws IOException if the underlying PWM implementation cannot start the signal
+     * @throws com.pi4j.io.exception.IOException if the underlying PWM implementation cannot start the signal
      */
     public void enable() {
         log.info("Enabling servo motor");
@@ -45,7 +44,7 @@ public class ServoMotorHelper {
     /**
      * Disables the servo motor and stops PWM output.
      *
-     * @throws IOException if the underlying PWM implementation cannot stop the signal
+     * @throws com.pi4j.io.exception.IOException if the underlying PWM implementation cannot stop the signal
      */
     public void disable() {
         log.info("Disabling servo motor");
@@ -72,7 +71,7 @@ public class ServoMotorHelper {
      * </p>
      *
      * @param angle the target angle for the servo motor, between 0 and 180 degrees.
-     * @throws IOException if the underlying PWM implementation cannot update the signal
+     * @throws com.pi4j.io.exception.IOException if the underlying PWM implementation cannot update the signal
      */
     public void setAngle(int angle) {
         if (!isEnabled) {
