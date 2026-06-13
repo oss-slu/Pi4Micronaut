@@ -4,6 +4,9 @@ import com.pi4j.io.spi.Spi;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * Helper for reading thermistor values through an ADC.
+ */
 public class ThermistorHelper {
     private static final Logger log = LoggerFactory.getLogger(ThermistorHelper.class);
     private final Spi spi; // SPI interface for ADC communication

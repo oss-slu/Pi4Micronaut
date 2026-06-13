@@ -6,6 +6,9 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Map;
 
+/**
+ * Helper for controlling a four-digit seven-segment display.
+ */
 public class FourDigitSevenSegmentDisplayHelper {
     private static Logger log = LoggerFactory.getLogger(FourDigitSevenSegmentDisplayHelper.class);
 

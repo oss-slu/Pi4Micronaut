@@ -5,6 +5,9 @@ import com.pi4j.io.gpio.digital.DigitalStateChangeListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * Helper for monitoring a reed switch input.
+ */
 public class ReedSwitchHelper {
     private static final Logger log = LoggerFactory.getLogger(ReedSwitchHelper.class);
 

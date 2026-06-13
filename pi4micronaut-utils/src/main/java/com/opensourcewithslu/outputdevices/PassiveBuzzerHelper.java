@@ -64,6 +64,8 @@ public class PassiveBuzzerHelper {
     /**
      *
      * Logs the passiveBuzzerFreq to the console
+     *
+     * @return the current default frequency
      */
 
     //tag::method[]
@@ -158,6 +160,11 @@ public class PassiveBuzzerHelper {
         passiveBuzzerOff();
     }
 
+    /**
+     * Sleeps for the specified duration.
+     *
+     * @param duration the time to sleep in milliseconds
+     */
     protected void sleep(long duration){
         try {
             Thread.sleep(duration); // Play each frequency for the specified duration
