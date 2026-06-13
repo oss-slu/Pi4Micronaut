@@ -32,7 +32,6 @@ public class ServoMotorHelper {
     /**
      * Enables the servo motor by starting PWM output at 0% duty cycle and the
      * configured servo frequency.
-     *
      */
     public void enable() {
         log.info("Enabling servo motor");
@@ -42,7 +41,6 @@ public class ServoMotorHelper {
 
     /**
      * Disables the servo motor and stops PWM output.
-     *
      */
     public void disable() {
         log.info("Disabling servo motor");
