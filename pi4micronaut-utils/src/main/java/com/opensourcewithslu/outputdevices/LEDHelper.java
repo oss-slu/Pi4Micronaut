@@ -16,9 +16,9 @@ public class LEDHelper {
     private final DigitalOutput ledOutput;
 
     /**
+     * LEDHelper constructor.
      *
-     * LEGHelper constructor.
-     * @param ledOutput An instance of a Pi4J DigitalOutput object.
+     * @param ledOutput an instance of a Pi4J DigitalOutput object
      */
     //tag::const[]
     public LEDHelper(DigitalOutput ledOutput)
@@ -72,10 +72,9 @@ public class LEDHelper {
     }
 
     /**
+     * Blinks the LED for the specified duration.
      *
-     * @param duration blink will take the duration parameter and have the led
-     *                 blink for that duration.
-     *
+     * @param duration the duration to blink in milliseconds
      */
 
     public void blink (int duration) {
