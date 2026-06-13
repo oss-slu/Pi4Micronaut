@@ -62,10 +62,9 @@ public class PassiveBuzzerHelper {
     }
 
     /**
+     * Returns the current default frequency for the passive buzzer.
      *
-     * Logs the passiveBuzzerFreq to the console
-     *
-     * @return the current default frequency
+     * @return the current default frequency in Hz
      */
 
     //tag::method[]
