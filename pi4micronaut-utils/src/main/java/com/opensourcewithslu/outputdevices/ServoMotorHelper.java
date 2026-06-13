@@ -1,5 +1,6 @@
 package com.opensourcewithslu.outputdevices;
 
+import com.pi4j.io.exception.IOException;
 import com.pi4j.io.pwm.Pwm;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,8 +31,10 @@ public class ServoMotorHelper {
     }
 
     /**
-     * Enables the servo motor by setting an initial duty cycle and frequency.
-     * The servo motor remains disabled until this method is called.
+     * Enables the servo motor by starting PWM output at 0% duty cycle and the
+     * configured servo frequency.
+     *
+     * @throws IOException if the underlying PWM implementation cannot start the signal
      */
     public void enable() {
         log.info("Enabling servo motor");
@@ -40,7 +43,9 @@ public class ServoMotorHelper {
     }
 
     /**
-     * Disables the servo motor, effectively stopping any ongoing PWM signal.
+     * Disables the servo motor and stops PWM output.
+     *
+     * @throws IOException if the underlying PWM implementation cannot stop the signal
      */
     public void disable() {
         log.info("Disabling servo motor");
@@ -60,9 +65,14 @@ public class ServoMotorHelper {
 
     /**
      * Sets the servo motor to a specific angle.
-     * This method calculates the necessary pulse width and duty cycle to achieve the specified angle.
+     * <p>
+     * The angle must be between 0 and 180 degrees. Values outside that range
+     * are ignored and logged. This method also waits briefly after updating the
+     * PWM signal so the servo has time to move.
+     * </p>
      *
      * @param angle the target angle for the servo motor, between 0 and 180 degrees.
+     * @throws IOException if the underlying PWM implementation cannot update the signal
      */
     public void setAngle(int angle) {
         if (!isEnabled) {
@@ -90,7 +100,7 @@ public class ServoMotorHelper {
     }
 
     /**
-     * Sets the logger for this ServoMotorHelper instance.
+     * Sets the logger for this {@code ServoMotorHelper} instance.
      * This method is intended for internal testing purposes only.
      *
      * @param logger the logger to be used for logging messages.
