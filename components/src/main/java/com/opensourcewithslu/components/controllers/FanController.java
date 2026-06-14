@@ -7,6 +7,7 @@ import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.PathVariable;
 import jakarta.inject.Named;
 
+//tag::ex[]
 @Controller("/fan")
 public class FanController {
     private final FanHelper fanHelper;
@@ -30,3 +31,4 @@ public class FanController {
         fanHelper.setSpeed(speed);
     }
 }
+//end::ex[]
