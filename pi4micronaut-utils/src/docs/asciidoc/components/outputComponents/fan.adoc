@@ -21,6 +21,7 @@ This section provides comprehensive details about the Fan Controller component, 
 * 1 x Fan (PWM-controlled or simple DC fan)
 * Jumper wires
 * Breadboard
+* T-extension board
 * Power source
 
 ===== Circuit Setup
@@ -46,22 +47,14 @@ The following YAML configuration is used to set up the Fan Controller in `applic
 
 [source, yaml]
 ----
-  # tag::fan[]
+pwm:
   fan:
-    controller:
-      name: "Raspberry Pi Fan Controller"
-      pwm-pin:
-        name: Fan PWM Pin
-        address: 18
-        frequency: 25000
-        shutdown: LOW
-        initial: LOW
-        provider: pigpio-pwm-output
-      speed-settings:
-        low: 30
-        medium: 60
-        high: 100
-  # end::fan[]
+    name: FAN
+    address: 18
+    pwm-type: SOFTWARE
+    provider: pigpio-pwm
+    initial: 0
+    shutdown: 0
 ----
 
 ===== Functionality
@@ -69,15 +62,15 @@ The Fan Controller allows the Raspberry Pi to control the speed of a fan using P
 
 ===== Testing
 
-To test the Fan Controller component with the Micronaut API, use the following commands:
+To test the Fan Controller component with the Micronaut API, use the following commands with our example controller:
 
 [source, bash]
 ----
-$ curl http://localhost:8080/fan/speed/high
+$ curl http://localhost:8080/fan
 ----
-* `/speed/{level}` - Sets the fan speed to the specified level (`low`, `medium`, or `high`).
+* `/start` - Turns on the fan at full speed.
+* `/setSpeed/{speed}` - Sets the fan speed to the specified integer speed.
 * `/stop` - Turns off the fan.
-* `/shutdown` - Deactivates the fan completely and resets settings.
 
 ===== Troubleshooting
 - **Fan not working**: Verify the fan is connected to the correct GPIO pins and ensure power is supplied to the fan.
