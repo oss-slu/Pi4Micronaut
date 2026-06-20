@@ -34,6 +34,10 @@ This section provides information regarding the RFID scanner component and its c
 
 image::rfid_circuit.png[]
 
+===== Schematic Diagram
+
+image::rfid_schematic.png[]
+
 ===== Functionality
 RFID Scanner requires RFID tags to work with. We can read/write the data on to the tags using the scanner.
 

@@ -39,6 +39,9 @@ When looking at the bottom of PIR, the pins from left to right are:
 
 image::PIR_Sensor_Circuit.png[]
 
+===== Schematic Diagram
+
+image::PIR_Sensor_Schematic.webp[]
 
 ===== Functionality
 

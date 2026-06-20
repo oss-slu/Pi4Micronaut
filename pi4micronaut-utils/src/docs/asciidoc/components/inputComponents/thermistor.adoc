@@ -36,7 +36,11 @@ This section provides details of the Thermistor, including the components and as
 . DIN (pin 27): Connect to the (GPIO10) pin on the Raspberry Pi.
 . CS (pin 17): Connect to the (GPIO17) pin on the Raspberry Pi.
 
-===== Wiring Diagrams
+===== Circuit Diagram
+
+image::thermistor_circuit.webp[]
+
+===== Schematic Diagram
 
 image::thermistor_schematic.webp[]
 
