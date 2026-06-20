@@ -1,0 +1,154 @@
+:imagesdir: img/
+
+ifndef::rootpath[]
+:rootpath: ../../
+endif::rootpath[]
+
+ifdef::rootpath[]
+:imagesdir: {rootpath}{imagesdir}
+endif::rootpath[]
+
+==== Analog Joystick
+[.text-right]
+https://github.com/oss-slu/Pi4Micronaut/edit/develop/pi4micronaut-utils/src/docs/asciidoc/components/inputComponents/joystick.adoc[Improve this doc]
+
+===== Overview
+
+This section documents the Analog Joystick component for Pi4Micronaut. The joystick module provides two-axis analog input (x and y) and a digital push-button input when the joystick is pressed down.
+
+Analog axis values are read via an ADC0834 converter (channels 0 and 1). The push-button (SW pin) is read as a GPIO digital input (active LOW). ADC values range from 0 to 255, with 128 representing the center (neutral) position.
+
+===== Components
+
+* Analog Joystick Module (SunFounder Raphael Kit compatible)
+* ADC0834 Analog-to-Digital Converter
+* Raspberry Pi
+* T-Extension Board
+* Breadboard
+* Jumper wires
+
+===== Assembly Instructions
+
+. Connect the joystick **VCC** pin to **3.3V** on the T-Extension Board.
+. Connect the joystick **GND** pin to **GND** on the T-Extension Board.
+. Connect the joystick **VRx** (x-axis) pin to the **CH0** input of the ADC0834.
+. Connect the joystick **VRy** (y-axis) pin to the **CH1** input of the ADC0834.
+. Connect the joystick **SW** (button) pin to **GPIO BCM 25** on the T-Extension Board.
+. Wire the ADC0834 to the Raspberry Pi SPI pins:
+   - ADC0834 **CS**  → GPIO BCM 8 (CE0)
+   - ADC0834 **CLK** → GPIO BCM 11 (SCLK)
+   - ADC0834 **DO**  → GPIO BCM 9 (MISO)
+   - ADC0834 **DI**  → GPIO BCM 10 (MOSI)
+   - ADC0834 **VCC** → 3.3V
+   - ADC0834 **GND** → GND
+
+===== Circuit Diagram
+
+[source]
+----
+ Raspberry Pi GPIO          ADC0834              Joystick Module
+ ┌──────────────┐          ┌────────┐            ┌─────────────┐
+ │ GPIO 8  CE0  ├──── CS ──┤        ├── CH0 ─────┤ VRx (x)     │
+ │ GPIO 11 SCLK ├── CLK ──┤        ├── CH1 ─────┤ VRy (y)     │
+ │ GPIO 9  MISO ├──  DO ──┤        │            │ VCC ─── 3.3V │
+ │ GPIO 10 MOSI ├──  DI ──┤        │            │ GND ─── GND  │
+ │              │          └────────┘            └─────────────┘
+ │ GPIO 25      ├────────────────────────────────┤ SW (button)  │
+ └──────────────┘
+----
+
+===== Schematic Diagram
+
+[source]
+----
+ [3.3V]──[Joystick VCC]
+ [GND] ──[Joystick GND]
+ [Joystick VRx]──[ADC0834 CH0]──[SPI MISO/MOSI/CLK/CE0]──[Raspberry Pi]
+ [Joystick VRy]──[ADC0834 CH1]
+ [Joystick SW] ──[GPIO 25, PULL_UP]──[Raspberry Pi]
+----
+
+NOTE: The SW pin uses an internal pull-up resistor. The button is detected as pressed when the pin reads LOW.
+
+===== YAML Configuration
+
+A BCM numbering system is used. More info can be found https://pinout.xyz[here].
+
+[source, yaml]
+----
+pi4j:
+  spi:
+    joystick-adc:             # <1>
+      name: Joystick ADC      # <2>
+      address: 0              # <3>
+      baud: 1000000           # <4>
+  digital-input:
+    joystick-sw:                        # <1>
+      name: Joystick Button             # <2>
+      address: 25                       # <3>
+      pull: PULL_UP                     # <4>
+      debounce: 10000                   # <5>
+      provider: pigpio-digital-input    # <6>
+----
+<1> Component id used with `@Named` in the controller
+<2> Display name
+<3> SPI channel (CE0 = 0) / GPIO BCM pin number
+<4> SPI baud rate / pull resistor direction (PULL_UP for active-LOW SW)
+<5> Debounce time in microseconds
+<6> Pi4J provider
+
+===== Functionality
+
+The `JoystickHelper` class reads x and y axis values via an `ADC0834ConverterHelper` and detects button presses via a `DigitalInput`. Key features:
+
+* *X-axis* — reads ADC channel 0, returns 0–255 (center = 128).
+* *Y-axis* — reads ADC channel 1, returns 0–255 (center = 128).
+* *Direction* — derives UP, DOWN, LEFT, RIGHT, CENTER, or diagonal from axis values using a ±50 deadzone.
+* *Button* — active LOW; `isPressed` is `true` when the joystick is pushed down.
+* *Event listener* — attach/remove a `DigitalStateChangeListener` for button state changes.
+
+===== Testing
+
+Use the commands below to interact with the joystick via the REST API.
+
+Read x-axis value:
+[source, bash]
+----
+$ curl http://localhost:8080/joystick/x
+----
+
+Read y-axis value:
+[source, bash]
+----
+$ curl http://localhost:8080/joystick/y
+----
+
+Read direction:
+[source, bash]
+----
+$ curl http://localhost:8080/joystick/direction
+----
+
+Check if button is pressed:
+[source, bash]
+----
+$ curl http://localhost:8080/joystick/isPressed
+----
+
+===== Troubleshooting
+
+* *ADC always returns 0 or 255* — check SPI wiring (CE0, SCLK, MISO, MOSI) and ensure SPI is enabled via `raspi-config` → *Interface Options* → *SPI*.
+* *Axis values are inverted* — swap CH0/CH1 on the ADC0834 or swap the VRx/VRy joystick wires.
+* *Button never registers* — confirm GPIO 25 is connected to SW and that `PULL_UP` is configured; SW is active LOW.
+* *Direction always CENTER* — verify the ADC is reading non-constant values; the deadzone is ±50 around 128.
+
+===== Constructor and Methods
+
+The constructor and methods of the `JoystickHelper` class are documented in the Javadoc
+link:https://oss-slu.github.io/Pi4Micronaut/javadoc/com/opensourcewithslu/inputdevices/JoystickHelper.html[here].
+
+===== Example Controller
+
+====== This controller exposes all joystick functions via REST endpoints
+[source, java]
+include::../../../../../../components/src/main/java/com/opensourcewithslu/components/controllers/JoystickController.java[tag=ex]
