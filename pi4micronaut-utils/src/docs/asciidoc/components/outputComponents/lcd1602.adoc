@@ -38,6 +38,10 @@ Connect the 4 pins on the LCD1602 screen to the breadboard as described below an
 
 image::lcd1602-circuit.png[]
 
+===== Schematic Diagram
+
+image::lcd1602-schematic.webp[]
+
 ===== Functionality
 
 The LCD1602 is a kind of dot matrix module that can show letters, numbers, and other characters.
