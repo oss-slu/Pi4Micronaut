@@ -53,7 +53,7 @@ pi4j:
             address: 17
             shutdown: LOW
             initial: LOW
-            provider: pigpio-digital-output
+            provider: ffm-digital-output
 ----
 +
 Here we are specifying a led as a digital output type with name LED, BCM address 17, etc

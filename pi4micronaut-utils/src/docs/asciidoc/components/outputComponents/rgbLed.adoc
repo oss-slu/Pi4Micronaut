@@ -102,14 +102,14 @@ multi-pwm:
     name: RGB LED
     addresses: 17, 18, 27
     pwmTypes: SOFTWARE, SOFTWARE, SOFTWARE
-    provider: pigpio-pwm
+    provider: ffm-pwm
     initials: 0, 0, 0
     shutdowns: 0, 0, 0
   rgb-led-2:
     name: RGB LED 2
     addresses: 18, 27, 22
     pwmTypes: SOFTWARE, SOFTWARE, SOFTWARE
-    provider: pigpio-pwm
+    provider: ffm-pwm
     initials: 0, 0, 0
     shutdowns: 0, 0, 0
 ----

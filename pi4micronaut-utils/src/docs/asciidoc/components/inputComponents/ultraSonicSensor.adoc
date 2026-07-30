@@ -73,7 +73,7 @@ digital-input:
     address: 24
     pull: PULL_DOWN
     debounce: 3000
-    provider: pigpio-digital-input
+    provider: ffm-digital-input
 
 digital-output:
   ultra-sonic-trig:
@@ -81,7 +81,7 @@ digital-output:
     address: 23
     shutdown: LOW
     initial: LOW
-    provider: pigpio-digital-output
+    provider: ffm-digital-output
 ----
 
 ===== Constructor and Methods

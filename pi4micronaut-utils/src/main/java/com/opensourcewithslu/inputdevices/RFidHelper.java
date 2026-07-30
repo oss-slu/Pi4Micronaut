@@ -27,7 +27,7 @@ public class RFidHelper {
     public RFidHelper(SpiConfig config, int reset, Context pi4jContext)
     //end::const[]
     {
-        this.scanner = new RfidComponent(pi4jContext, reset, config.getAddress(), config.getBaud());
+        this.scanner = new RfidComponent(pi4jContext, reset, config.channel(), config.baud());
     }
 
     /**
@@ -39,7 +39,7 @@ public class RFidHelper {
     public RFidHelper(SpiConfig config, Context pi4jContext)
     //end::const[]
     {
-        this.scanner = new RfidComponent(pi4jContext, config.getAddress(), config.getBaud());
+        this.scanner = new RfidComponent(pi4jContext, config.channel(), config.baud());
     }
 
     /**

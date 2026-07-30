@@ -69,14 +69,14 @@ digital-input:
       address: 18
       pull: PULL_DOWN
       debounce: 3000
-      provider: pigpio-digital-input
+      provider: ffm-digital-input
 
     slide-switch-input-2:
       name: Slide Switch Input
       address: 22
       pull: PULL_DOWN
       debounce: 3000
-      provider: pigpio-digital-input
+      provider: ffm-digital-input
 ----
 
 *Note:* There are two slide switches, one that uses GPIO 18 and the other uses GPIO 22.

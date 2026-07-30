@@ -108,7 +108,7 @@ The PhotoResistor as it appears in the YAML file:
       address: 4                          # <.>
       debounce: 100000                    # <.>
       pull: PULL_DOWN                     # <.>
-      provider: pigpio-digital-input      # <.>
+      provider: ffm-digital-input      # <.>
 
   digital-output:
     photo-resistor-output:
@@ -116,7 +116,7 @@ The PhotoResistor as it appears in the YAML file:
       address: 27
       shutdown: LOW
       initial: HIGH
-      provider: pigpio-digital-output
+      provider: ffm-digital-output
 
 ----
 

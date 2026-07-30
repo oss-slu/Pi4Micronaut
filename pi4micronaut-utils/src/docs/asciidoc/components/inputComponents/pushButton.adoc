@@ -57,7 +57,7 @@ digital-output:
     address: 17
     shutdown: LOW
     initial: LOW
-    provider: pigpio-digital-output
+    provider: ffm-digital-output
 ----
 So the LED would be connected to GPIO 17.
 
@@ -71,7 +71,7 @@ digital-input:
       address: 18
       pull: PULL_DOWN
       debounce: 30
-      provider: pigpio-digital-input
+      provider: ffm-digital-input
 ----
 So the push button would be connected to GPIO 18.
 

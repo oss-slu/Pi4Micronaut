@@ -84,7 +84,7 @@ public class ServoMotorHelper {
 
         log.info("Setting servo to {} degrees, Pulse Width: {} us, Duty Cycle: {}%", angle, pulseWidth, dutyCycle);
 
-        servoMotor.on(dutyCycle, FREQUENCY);
+        servoMotor.on(Math.round(dutyCycle), FREQUENCY);
         try {
             Thread.sleep(100); // Pauses the thread to allow the servo to reach the set angle.
         } catch (InterruptedException e) {

@@ -9,6 +9,6 @@ Welcome to the **Pi4Micronaut Documentation**!
 
 Pi4Micronaut is an Open Source Java library that utilizes the Micronaut Framework and Pi4J to streamline the process of creating custom IoT applications that require hardware connectivity to Raspberry Pi's.
 
-Pi4Micronaut doesn't work with the latest Raspberry Pi 5 because of its new architecture. Pi4J and pigpio libraries don't provide support for Pi 5 yet. Look out for the latest version of Pi4J that will work with Pi 5 in the future.
+Pi4Micronaut uses Pi4J 4.x with the Foreign Function &amp; Memory (FFM) provider, which talks to the GPIO pins through the Linux GPIO character device (gpiochip) rather than the legacy pigpio library. This modern interface works across Raspberry Pi models, including the Raspberry Pi 5, and other Linux-based single-board computers.
 
 By reading through our documentation, you will learn how to implement our library into your application.

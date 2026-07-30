@@ -15,7 +15,7 @@ Each component will need
 * address: GPIO BCM pin associated with component
 * debounce: value that determines the threshold for noise from the component
 * pull: Either PULL_UP or PULL_DOWN depending on component
-* provider: pigpio-digital-input
+* provider: ffm-digital-input
 
 .Example Digital Input declaration
 [source,yaml]
@@ -28,4 +28,4 @@ include::../../../../../../components/src/main/resources/application.yml[tags=di
 <.> Address of connected GPIO pin
 <.> Debounce value
 <.> Pull value (PULL_UP or PULL_DOWN)
-<.> Provider (pigpio-digital-input)
+<.> Provider (ffm-digital-input)

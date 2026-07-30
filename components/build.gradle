@@ -1,8 +1,8 @@
 plugins {
-    id("com.github.johnrengelman.shadow") version "7.1.2"
+    id("com.gradleup.shadow") version "9.6.1"
 //    id("io.micronaut.application") version "3.7.3"
-    id("io.micronaut.application") version "4.4.4"
-    id("io.micronaut.aot") version "4.4.4"
+    id("io.micronaut.application") version "5.0.2"
+    id("io.micronaut.aot") version "5.0.2"
 }
 
 version = "0.1"
@@ -30,8 +30,15 @@ application {
     mainClass.set("com.opensourcewithslu.components.Application")
 }
 java {
-    sourceCompatibility = JavaVersion.toVersion("21")
-    targetCompatibility = JavaVersion.toVersion("21")
+    sourceCompatibility = JavaVersion.toVersion("25")
+    targetCompatibility = JavaVersion.toVersion("25")
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+    // The only test class (ComponentsTest) has its @Test annotation commented out, so no tests are
+    // discovered. Gradle 9 fails a test task that discovers no tests unless this is turned off.
+    failOnNoDiscoveredTests = false
 }
 
 micronaut {

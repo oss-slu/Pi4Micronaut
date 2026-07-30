@@ -6,6 +6,8 @@ import com.pi4j.exception.ShutdownException;
 import com.pi4j.io.binding.DigitalBinding;
 import com.pi4j.io.gpio.digital.*;
 
+import java.util.function.Consumer;
+
 /*
 The MockDigitalInput class implements the DigitalInput interface, which requires
 all methods to be implemented, even if they are not used in the mock.
@@ -97,7 +99,21 @@ public class MockDigitalInput implements DigitalInput {
     }
 
     @Override
-    public Object shutdown(Context context) throws ShutdownException {
+    public Object shutdownInternal(Context context) throws ShutdownException {
+        return null;
+    }
+
+    @Override
+    public void close() {
+    }
+
+    @Override
+    public Consumer<Boolean> addConsumer(Consumer<Boolean> listener) {
+        return listener;
+    }
+
+    @Override
+    public DigitalInput removeConsumer(Consumer<Boolean> listener) {
         return null;
     }
 }

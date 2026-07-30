@@ -82,7 +82,7 @@ public class MotorHelper {
 
         log.info("Setting motor speed to {}%", speed);
 
-        motor.on(speed, FREQUENCY);
+        motor.on((int) Math.round(speed), FREQUENCY);
     }
 
     /**

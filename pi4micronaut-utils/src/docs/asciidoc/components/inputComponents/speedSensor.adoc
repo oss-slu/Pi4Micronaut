@@ -92,7 +92,7 @@ digital-input:
     name: Speed Sensor
     address: 17
     pulses-per-revolution: 20
-    provider: pigpio-digital-input
+    provider: ffm-digital-input
     debounce: 500
 ----
 
