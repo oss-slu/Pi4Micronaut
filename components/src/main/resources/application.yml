@@ -208,7 +208,6 @@ pi4j:
       shutdown: LOW
       initial: LOW
       provider: ffm-digital-output
-    name: Digit 0
     adc-cs:
       name: ADCChipSelect
       address: 5                # <1> Specify the GPIO pin for CS (Chip Select)
