@@ -23,35 +23,35 @@ pi4j:
       name: active-buzzer        # <2>
       address: 17                # <3>
       pwmType: SOFTWARE          # <4>
-      provider: pigpio-pwm       # <5>
+      provider: ffm-pwm       # <5>
       initial: 0                 # <6>
       shutdown: 0                # <7>
     passive-buzzer:
       name: passive-buzzer
       address: 17
       pwmType: SOFTWARE
-      provider: pigpio-pwm
+      provider: ffm-pwm
       initial: 0
       shutdown: 0
     servo-motor:
       name: Servo Motor
       address: 18
       pwmType: SOFTWARE
-      provider: pigpio-pwm
+      provider: ffm-pwm
       initial: 0
       shutdown: 0
     motor:
       name: Motor
       address: 22
       pwmType: SOFTWARE
-      provider: pigpio-pwm
+      provider: ffm-pwm
       initial: 0
       shutdown: 0
     fan:
       name: FAN
       address: 18
       pwm-type: SOFTWARE
-      provider: pigpio-pwm
+      provider: ffm-pwm
       initial: 0
       shutdown: 0
   # end::pwm[]
@@ -71,91 +71,91 @@ pi4j:
       address: 4                          # <.>
       debounce: 100000                    # <.>
       pull: PULL_DOWN                     # <.>
-      provider: pigpio-digital-input      # <.>
+      provider: ffm-digital-input      # <.>
     button-input-1:
       name: Push Button Input
       address: 16
       pull: PULL_DOWN
       debounce: 30
-      provider: pigpio-digital-input
+      provider: ffm-digital-input
     button-input-2:
       name: Push Button Input
       address: 21
       pull: PULL_DOWN
       debounce: 30
-      provider: pigpio-digital-input
+      provider: ffm-digital-input
     button-input-3:
       name: Push Button Input
       address: 18
       pull: PULL_DOWN
       debounce: 30
-      provider: pigpio-digital-input
+      provider: ffm-digital-input
     slide-switch-input:
       name: Slide Switch Input
       address: 18
       pull: PULL_DOWN
       debounce: 3000
-      provider: pigpio-digital-input
+      provider: ffm-digital-input
     slide-switch-input-2:
       name: Slide Switch Input
       address: 22
       pull: PULL_DOWN
       debounce: 3000
-      provider: pigpio-digital-input
+      provider: ffm-digital-input
     touch-switch-input:
       name: Touch Switch Input
       address: 17
       pull: PULL_DOWN
       debounce: 200000
-      provider: pigpio-digital-input
+      provider: ffm-digital-input
     micro-switch:
       name: Micro Switch
       address: 19
       pull: PULL_DOWN
       debounce: 200000
-      provider: pigpio-digital-input
+      provider: ffm-digital-input
     pir-sensor:
       name: PIR Sensor
       address: 13
       pull: PULL_DOWN
       debounce: 30000
-      provider: pigpio-digital-input
+      provider: ffm-digital-input
     ultra-sonic-echo:
       name: UltraSonic Sensor Input
       address: 24
       pull: PULL_DOWN
       debounce: 3000
-      provider: pigpio-digital-input
+      provider: ffm-digital-input
     tilt-switch-input:
       name: Tilt Switch Input
       address: 17
       pull: PULL_DOWN
       debounce: 5000
-      provider: pigpio-digital-input
+      provider: ffm-digital-input
     speed-sensor:
       name: Speed Sensor           # <1>
       address: 17                 # <2>
       pulses-per-revolution: 20    # <3>
-      provider: pigpio-digital-input # <4>
+      provider: ffm-digital-input # <4>
       debounce: 500                # <5>
     adc-dout:
       name: ADC DataOut
       address: 8                # <4> Specify the GPIO pin for Data Out
       pull: PULL_DOWN           # Configure pull-up or pull-down as needed
       debounce: 100             # Optional debounce time for stable readings
-      provider: pigpio-digital-input
+      provider: ffm-digital-input
     reed-switch-input:
       name: Reed Switch
       address: 17
       pull: PULL_UP
       debounce: 200
-      provider: pigpio-digital-input
+      provider: ffm-digital-input
     ir-obstacle-input:
       name: IR Obstacle Avoidance Sensor
       address: 17
       pull: PULL_UP
       debounce: 10000
-      provider: pigpio-digital-input
+      provider: ffm-digital-input
   # end::digitalInput[]
 
   # tag::digitalOutput[]
@@ -165,60 +165,60 @@ pi4j:
       address: 17                           # <3>
       shutdown: LOW                        # <4>
       initial: LOW                         # <5>
-      provider: pigpio-digital-output       # <6>
+      provider: ffm-digital-output       # <6>
     led2:
       name: LED Output
       address: 26
       shutdown: HIGH
       initial: HIGH
-      provider: pigpio-digital-output
+      provider: ffm-digital-output
     led3:
       name: LED Output
       address: 22
       shutdown: LOW
       initial: HIGH
-      provider: pigpio-digital-output
+      provider: ffm-digital-output
     led4:
       name: LED Output
       address: 27
       shutdown: HIGH
       initial: HIGH
-      provider: pigpio-digital-output
+      provider: ffm-digital-output
     photo-resistor-output:
       name: Photo Resistor Output
       address: 27
       shutdown: LOW
       initial: HIGH
-      provider: pigpio-digital-output
+      provider: ffm-digital-output
     ultra-sonic-trig:
       name: UltraSonic Sensor Output
       address: 23
       shutdown: LOW
       initial: LOW
-      provider: pigpio-digital-output
+      provider: ffm-digital-output
     motor-pin-1:
       name: Motor Pin 1
       address: 17
       shutdown: HIGH
       initial: HIGH
-      provider: pigpio-digital-output
+      provider: ffm-digital-output
     motor-pin-2:
       name: Motor Pin 2
       address: 27
       shutdown: LOW
       initial: LOW
-      provider: pigpio-digital-output
+      provider: ffm-digital-output
     name: Digit 0
     adc-cs:
       name: ADCChipSelect
       address: 5                # <1> Specify the GPIO pin for CS (Chip Select)
       initial: HIGH             # Initial state for Chip Select (could be HIGH or LOW based on needs)
-      provider: pigpio-digital-output
+      provider: ffm-digital-output
     adc-clk:
       name: ADCClock
       address: 6                # <2> Specify the GPIO pin for CLK (Clock)
       initial: LOW              # Initial state for Clock
-      provider: pigpio-digital-output
+      provider: ffm-digital-output
     adc-din:
       name: ADCDataIn
       address: 7                # <3> Specify the GPIO pin for Data In
@@ -228,43 +228,43 @@ pi4j:
       address: 17
       shutdown: LOW
       initial: LOW
-      provider: pigpio-digital-output
+      provider: ffm-digital-output
     digit-1:
       name: Digit 1
       address: 27
       shutdown: LOW
       initial: LOW
-      provider: pigpio-digital-output
+      provider: ffm-digital-output
     digit-2:
       name: Digit 2
       address: 22
       shutdown: LOW
       initial: LOW
-      provider: pigpio-digital-output
+      provider: ffm-digital-output
     digit-3:
       name: Digit 3
       address: 10
       shutdown: LOW
       initial: LOW
-      provider: pigpio-digital-output
+      provider: ffm-digital-output
     sdi:
       name: SDI
       address: 24
       shutdown: LOW
       initial: LOW
-      provider: pigpio-digital-output
+      provider: ffm-digital-output
     rclk:
       name: RCLK
       address: 23
       shutdown: LOW
       initial: LOW
-      provider: pigpio-digital-output
+      provider: ffm-digital-output
     srclk:
       name: SRCLK
       address: 18
       shutdown: LOW
       initial: LOW
-      provider: pigpio-digital-output
+      provider: ffm-digital-output
   # end::digitalOutput[]
 
   # tag::multiInput[]
@@ -276,7 +276,7 @@ pi4j:
       pulls: PULL_DOWN,PULL_UP,PULL_UP     # <.>
       shutdown: LOW                        # <.>
       initial: HIGH                        # <.>
-      provider: pigpio-digital-input       # <.>
+      provider: ffm-digital-input       # <.>
     rotary-encoder-2:
       name: Rotary Encoder 2
       addresses: 12, 16, 20
@@ -284,7 +284,7 @@ pi4j:
       pulls: PULL_DOWN, PULL_UP, PULL_UP
       shutdown: LOW
       initial: HIGH
-      provider: pigpio-digital-input
+      provider: ffm-digital-input
   # end::multiInput[]
 
   # tag::multiPWM[]
@@ -293,14 +293,14 @@ pi4j:
       name: RGB LED                             # <.>
       addresses: 17, 18, 27                     # <.>
       pwmTypes: SOFTWARE, SOFTWARE, SOFTWARE    # <.>
-      provider: pigpio-pwm                      # <.>
+      provider: ffm-pwm                      # <.>
       initials: 0, 0, 0                         # <.>
       shutdowns: 0, 0, 0                        # <.>
     rgb-led-2:
       name: RGB LED 2
       addresses: 18, 27, 22
       pwmTypes: SOFTWARE, SOFTWARE, SOFTWARE
-      provider: pigpio-pwm
+      provider: ffm-pwm
       initials: 0, 0, 0
       shutdowns: 0, 0, 0
   # end::multiPWM[]

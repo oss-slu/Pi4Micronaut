@@ -87,7 +87,7 @@ pwm:
       name: Servo Motor
       address: 18
       pwmType: SOFTWARE
-      provider: pigpio-pwm
+      provider: ffm-pwm
       initial: 0
       shutdown: 0
 ----

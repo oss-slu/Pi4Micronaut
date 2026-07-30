@@ -31,6 +31,6 @@ Note: A BCM numbering system should be used. More info can be found at https://p
 - The communication type configuration classes are in our utilities folder which define the methods and attributes which are used in the factory classes
  to apply the specifics listed in the yml file.
 - The factory classes create a context with all the beans which can be used by the different hardware components.
-- When the JAR file is ran on the RaspberryPi, the beans interact with the pigpio library to communicate with the GPIO pins.
+- When the JAR file is ran on the RaspberryPi, the beans interact with the Pi4J FFM provider, which uses the Linux GPIO character device (gpiochip) to communicate with the GPIO pins.
 
 image:Config_Workflow.png[]

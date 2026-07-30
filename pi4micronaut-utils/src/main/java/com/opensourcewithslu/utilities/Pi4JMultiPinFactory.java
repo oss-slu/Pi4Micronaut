@@ -38,7 +38,7 @@ public class Pi4JMultiPinFactory {
             var inputConfigBuilder = DigitalInput.newConfigBuilder(pi4jContext)
                     .id(config.getId() + i)
                     .name(config.getName())
-                    .address(config.getAddresses()[i])
+                    .bcm(config.getAddresses()[i])
                     .debounce(config.getDebounces()[i])
                     .pull(config.getPulls()[i])
                     .provider(config.getProvider());
@@ -65,7 +65,7 @@ public class Pi4JMultiPinFactory {
             var pwmConfigBuilder = Pwm.newConfigBuilder(pi4jContext)
                     .id(config.getId() + i)
                     .name(config.getName())
-                    .address(config.getAddresses()[i])
+                    .channel(config.getAddresses()[i])
                     .pwmType(config.getPwmTypes()[i])
                     .initial(config.getInitials()[i])
                     .shutdown(config.getShutdowns()[i])

@@ -94,14 +94,14 @@ digital-output:
     address: 22
     shutdown: HIGH
     initial: HIGH
-    provider: pigpio-digital-output
+    provider: ffm-digital-output
 
     led2:
     name: LED Output
     address: 27
     shutdown: HIGH
     initial: HIGH
-    provider: pigpio-digital-output
+    provider: ffm-digital-output
 ----
 So, the output of the LEDs is connected to GPIO 22 and GPIO 27 respectively.
 
@@ -114,7 +114,7 @@ The YAML configuration for the micro switch is as follows:
       address: 17
       pull: PULL_DOWN
       debounce: 200000
-      provider: pigpio-digital-input
+      provider: ffm-digital-input
 ----
 So, the input of the micro switch is connected to GPIO 17.
 

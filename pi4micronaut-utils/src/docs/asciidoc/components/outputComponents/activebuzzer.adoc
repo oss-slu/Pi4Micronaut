@@ -104,7 +104,7 @@ pwm:
     name: active-buzzer
     address: 17
     pwmType: SOFTWARE
-    provider: pigpio-pwm
+    provider: ffm-pwm
     initial: 0
     shutdown: 0
 ----

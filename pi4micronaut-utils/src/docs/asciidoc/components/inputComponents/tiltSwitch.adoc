@@ -90,7 +90,7 @@ digital-output:
     address: 26
     shutdown: HIGH
     initial: HIGH
-    provider: pigpio-digital-output
+    provider: ffm-digital-output
 ----
 So, the output of the LED is connected to GPIO 26.
 
@@ -104,7 +104,7 @@ digital-input:
     address: 17
     pull: PULL_DOWN
     debounce: 5000
-    provider: pigpio-digital-input
+    provider: ffm-digital-input
 ----
 So, the input of the tilt switch is connected to GPIO 17.
 

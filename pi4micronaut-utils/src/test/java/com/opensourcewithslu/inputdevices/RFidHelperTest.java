@@ -23,7 +23,7 @@ class RFidHelperTest {
     void setUp() {
         mockContext = Mockito.mock(Context.class);
         mockSpiConfig = Mockito.mock(SpiConfig.class);
-        when(mockSpiConfig.getAddress()).thenReturn(0);
+        when(mockSpiConfig.channel()).thenReturn(0);
         when(mockSpiConfig.getBaud()).thenReturn(1_000_000);
     }
 

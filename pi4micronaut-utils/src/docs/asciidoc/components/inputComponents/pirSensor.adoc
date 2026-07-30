@@ -80,7 +80,7 @@ digital-input:
       address: 13
       pull: PULL_DOWN
       debounce: 30000
-      provider: pigpio-digital-input
+      provider: ffm-digital-input
 ----
 
 ===== Constructor and Methods

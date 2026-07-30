@@ -70,12 +70,7 @@ To verify installation, run
 java --version
 ----
 +
-Finally, install pigpio
-+
-[source, bash]
-----
-sudo apt-get install pigpio
-----
+No additional native library needs to be installed: the Pi4J FFM provider communicates directly with the Linux GPIO character device (gpiochip). Make sure the user running the application has access to the GPIO devices (for example, by being a member of the `gpio` group).
 
 ==== Enabling Different Communication Protocols
 . In the Pi4Micronaut library, we have used different communication protocols, such as I2C, SPI, etc.

@@ -9,14 +9,6 @@ import com.pi4j.io.i2c.I2CConfig;
 import com.pi4j.io.pwm.Pwm;
 import com.pi4j.io.spi.Spi;
 import com.pi4j.io.spi.SpiConfig;
-import com.pi4j.library.pigpio.PiGpio;
-import com.pi4j.plugin.pigpio.provider.gpio.digital.PiGpioDigitalInputProvider;
-import com.pi4j.plugin.pigpio.provider.gpio.digital.PiGpioDigitalOutputProvider;
-import com.pi4j.plugin.pigpio.provider.i2c.PiGpioI2CProvider;
-import com.pi4j.plugin.pigpio.provider.pwm.PiGpioPwmProvider;
-import com.pi4j.plugin.pigpio.provider.serial.PiGpioSerialProvider;
-import com.pi4j.plugin.pigpio.provider.spi.PiGpioSpiProvider;
-import com.pi4j.plugin.raspberrypi.platform.RaspberryPiPlatform;
 import io.micronaut.context.annotation.Bean;
 import io.micronaut.context.annotation.EachBean;
 import io.micronaut.context.annotation.Factory;
@@ -35,31 +27,17 @@ public class Pi4JFactory {
 
     /**
      * This creates the Pi4J Context that is used to create all the beans for the individual components.
+     * <p>
+     * The context is built with {@link Pi4J#newAutoContext()}, which auto-detects the plugins on the
+     * classpath. With only {@code pi4j-core} and {@code pi4j-plugin-ffm} present, this registers the
+     * Foreign Function &amp; Memory (FFM) providers ({@code ffm-digital-input}, {@code ffm-digital-output},
+     * {@code ffm-pwm}, {@code ffm-i2c} and {@code ffm-spi}).
      * @return A Pi4J Context
      */
     @Singleton
     @Bean(preDestroy = "shutdown")
     public com.pi4j.context.Context createPi4jContext() {
-        final var piGpio = PiGpio.newNativeInstance();
-
-        // Build Pi4J context with this platform and PiGPIO providers
-        return Pi4J.newContextBuilder()
-                .noAutoDetect()
-                .add(
-                        PiGpioDigitalInputProvider.newInstance(piGpio),
-                        PiGpioDigitalOutputProvider.newInstance(piGpio),
-                        PiGpioPwmProvider.newInstance(piGpio),
-                        PiGpioI2CProvider.newInstance(piGpio),
-                        PiGpioSerialProvider.newInstance(piGpio),
-                        PiGpioSpiProvider.newInstance(piGpio)
-                )
-                .add(new RaspberryPiPlatform(){
-                    @Override
-                    protected String[] getProviders() {
-                        return new String[]{};
-                    }
-                })
-                .build();
+        return Pi4J.newAutoContext();
     }
 
     /**
@@ -74,7 +52,7 @@ public class Pi4JFactory {
         var outputConfigBuilder = DigitalOutput.newConfigBuilder(pi4jContext)
                 .id(config.getId())
                 .name(config.getName())
-                .address(config.getAddress())
+                .bcm(config.getAddress())
                 .shutdown(config.getShutdown())
                 .initial(config.getInitial())
                 .provider(config.getProvider());
@@ -93,7 +71,7 @@ public class Pi4JFactory {
         var inputConfigBuilder = DigitalInput.newConfigBuilder(pi4jContext)
                 .id(config.getId())
                 .name(config.getName())
-                .address(config.getAddress())
+                .bcm(config.getAddress())
                 .debounce(config.getDebounce())
                 .pull(config.getPull())
                 .provider(config.getProvider());
@@ -114,7 +92,7 @@ public class Pi4JFactory {
                 Pwm.newConfigBuilder(pi4jContext)
                     .id(config.getId())
                     .name(config.getName())
-                    .address(config.getAddress())
+                    .channel(config.getAddress())
                     .pwmType(config.getPwmType())
                     .provider(config.getProvider())
                     .initial(config.getInitial())
@@ -135,7 +113,7 @@ public class Pi4JFactory {
         return Spi.newConfigBuilder(pi4jContext)
                 .id(config.getId())
                 .name(config.getName())
-                .address(config.getChannel())
+                .channel(config.getChannel())
                 .baud(config.getBaud())
                 .build();
     }

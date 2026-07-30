@@ -125,7 +125,7 @@ pi4j:
       address: 17
       pull: PULL_UP
       debounce: 10000
-      provider: pigpio-digital-input
+      provider: ffm-digital-input
 ----
 
 ===== Constructor and Methods

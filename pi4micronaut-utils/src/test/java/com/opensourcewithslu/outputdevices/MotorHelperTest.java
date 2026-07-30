@@ -38,7 +38,7 @@ public class MotorHelperTest {
         motorHelper.enable();
         verify(log).info("Enabling DC motor");
         motorHelper.setSpeed(10);
-        verify(motor).on(10.0d, 50);
+        verify(motor).on(10, 50);
         verify(log).info("Setting motor speed to {}%", 10.0d);
     }
 
@@ -46,7 +46,7 @@ public class MotorHelperTest {
     void setSpeedFailsWhenDisabled() {
         motorHelper.setSpeed(10);
         verify(log).info("You must enable the DC motor first.");
-        verify(motor, never()).on(10.0d, 50);
+        verify(motor, never()).on(10, 50);
         verify(log, never()).info("Setting motor speed to {}%", 10);
     }
 
@@ -56,7 +56,7 @@ public class MotorHelperTest {
         verify(log).info("Enabling DC motor");
         motorHelper.setSpeed(-10);
         verify(log).info("You must enter a speed between 0 and 100.");
-        verify(motor, never()).on(-10.0d, 50);
+        verify(motor, never()).on(-10, 50);
         verify(log, never()).info("Setting speed to {}%", -10.0d);
     }
 
@@ -66,7 +66,7 @@ public class MotorHelperTest {
         verify(log).info("Enabling DC motor");
         motorHelper.setSpeed(110);
         verify(log).info("You must enter a speed between 0 and 100.");
-        verify(motor, never()).on(110.0d, 50);
+        verify(motor, never()).on(110, 50);
         verify(log, never()).info("Setting motor speed to {}%", 110.0d);
     }
 

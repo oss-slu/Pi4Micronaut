@@ -5,7 +5,6 @@
 ![GitHub License](https://img.shields.io/github/license/oss-slu/Pi4Micronaut)
 [![Documentation](https://img.shields.io/badge/Documentation-8D021F)](https://oss-slu.github.io/Pi4Micronaut/)
 
-
 [![Chat on Slack](https://img.shields.io/badge/Chat_on-Slack-4A154B?logo=slack)](https://join.slack.com/t/oswslu/shared_invite/zt-24f0qhjbo-NkSfQ4LOg5wXxBdxP4vzfA)
 [![Donate to OSS](https://img.shields.io/badge/Donate_to-OSS-003AA6)](https://oss-slu.github.io/connect_with/donate)
 [![Unity Foundation](https://img.shields.io/badge/Unity_Foundation-unityfoundation.io-blue)](https://unityfoundation.io)
@@ -16,7 +15,7 @@ Pi4Micronaut is an innovative Java library crafted for developers who aim to bui
 
 The existence of Pi4Micronaut is justified by the need for a robust, scalable, and efficient way to bridge the gap between enterprise-grade software and the physical world of hardware. It is particularly valuable for projects that demand both the high-performance, microservices-oriented capabilities of the Micronaut framework and the versatile hardware interaction that the Raspberry Pi offers. Whether it's for home automation, industrial monitoring, or educational purposes, Pi4Micronaut empowers developers to deliver reliable and sophisticated IoT applications that can run headless on a Raspberry Pi or be managed remotely, providing convenience, control, and customization to the end-users.
 
-**Note:** Pi4Micronaut doesn't work with the latest Raspberry Pi 5 because of its whole new architecture. The Pi4J and pigpio libraries doesn't provide support for Pi 5 yet. Look out for the latest version of Pi4J to work with Pi 5 in the future.
+**Note:** Pi4Micronaut also works with the latest Raspberry Pi 5, although it has a new GPIO architecture. The Pi4J library V4+ is based on Java 25 and uses the Foreign Function and Memory API to handle the GPIOs, which makes it independent of the Raspberry Pi system and can even be used on other single-board computers.
 
 ### Information
 
@@ -51,7 +50,6 @@ The existence of Pi4Micronaut is justified by the need for a robust, scalable, a
 - **Type:** IoT (Raspberry Pi)
 - **License:** [Apache License 2.0](https://opensource.org/license/apache-2-0/)
 
-
 ## Pi4Micronaut
 - [Link to Pi4Micronaut Documentation](https://oss-slu.github.io/Pi4Micronaut/)
 - [API Reference](https://oss-slu.github.io/Pi4Micronaut/javadoc/index.html)
@@ -71,7 +69,7 @@ The existence of Pi4Micronaut is justified by the need for a robust, scalable, a
 - [Micronaut Guides](https://docs.micronaut.io/latest/guide/index.html)
 - [Micronaut HTTP Client documentation](https://docs.micronaut.io/latest/guide/index.html#httpClient)
 
-## Pi4J 2.4.0
+## Pi4J 4.0.2
 - [Pi4j Documentation](https://pi4j.com/documentation/)
 
 ## Shadow Gradle 7.1.2

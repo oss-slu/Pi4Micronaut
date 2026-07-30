@@ -71,7 +71,7 @@ public class ServoMotorHelperTest {
         float pulseWidth = servoMotorHelper.map(-10);
         float dutyCycle = (pulseWidth / PWM_CYCLE_MICROSECONDS) * 100;
 
-        verify(servoMotor, never()).on(dutyCycle, FREQUENCY);
+        verify(servoMotor, never()).on(Math.round(dutyCycle), FREQUENCY);
         verify(log, never()).info("Setting angle to {} degrees", -10);
     }
 
@@ -88,7 +88,7 @@ public class ServoMotorHelperTest {
         float pulseWidth = servoMotorHelper.map(181);
         float dutyCycle = (pulseWidth / PWM_CYCLE_MICROSECONDS) * 100;
 
-        verify(servoMotor, never()).on(dutyCycle, FREQUENCY);
+        verify(servoMotor, never()).on(Math.round(dutyCycle), FREQUENCY);
         verify(log, never()).info("Setting angle to {} degrees", 181);
     }
 
@@ -105,7 +105,7 @@ public class ServoMotorHelperTest {
         float dutyCycle = (pulseWidth / PWM_CYCLE_MICROSECONDS) * 100;
 
         verify(log).info("Setting servo to {} degrees, Pulse Width: {} us, Duty Cycle: {}%", 0, pulseWidth, dutyCycle);
-        verify(servoMotor).on(dutyCycle, FREQUENCY);
+        verify(servoMotor).on(Math.round(dutyCycle), FREQUENCY);
     }
 
     @Test
@@ -125,7 +125,7 @@ public class ServoMotorHelperTest {
             throw new RuntimeException("Error running test: ", e);
         }
         verify(log).info("Setting servo to {} degrees, Pulse Width: {} us, Duty Cycle: {}%", 180, pulseWidth, dutyCycle);
-        verify(servoMotor).on(dutyCycle, FREQUENCY);
+        verify(servoMotor).on(Math.round(dutyCycle), FREQUENCY);
     }
 
     @Test
@@ -145,7 +145,7 @@ public class ServoMotorHelperTest {
             throw new RuntimeException("Error running test: ", e);
         }
         verify(log).info("Setting servo to {} degrees, Pulse Width: {} us, Duty Cycle: {}%", 90, pulseWidth, dutyCycle);
-        verify(servoMotor).on(dutyCycle, FREQUENCY);
+        verify(servoMotor).on(Math.round(dutyCycle), FREQUENCY);
     }
 
     @Test

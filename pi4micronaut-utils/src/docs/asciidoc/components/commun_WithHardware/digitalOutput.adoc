@@ -16,7 +16,7 @@ Each component will need
 * address: GPIO BCM pin associated with component
 * initial: Initial value, either LOW or HIGH
 * shutdown: State to take when program successfully shuts down properly, either LOW or HIGH
-* provider: pigpio-digital-output
+* provider: ffm-digital-output
 
 .Example Digital Output declaration
 [source,yaml]
@@ -28,4 +28,4 @@ include::../../../../../../components/src/main/resources/application.yml[tags=di
 <3> Address of connected GPIO BCM pin
 <4> Value to have on shutdown (HIGH = Off, LOW = On)
 <5> Value to have on startup
-<6> Provider (pigpio-digital-output)
+<6> Provider (ffm-digital-output)

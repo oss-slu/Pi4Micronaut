@@ -80,7 +80,7 @@ multi-digital-input:
     pulls: PULL_DOWN,PULL_UP,PULL_UP
     shutdown: LOW
     initial: HIGH
-    provider: pigpio-digital-input
+    provider: ffm-digital-input
 ----
 
 the sw pin would be the one connected to GPIO 27, the clk pin would be connected to GPIO 18, and the dt pin would connect to GPIO 17. All lists of values for Rotary Encoder components will follow the same order.

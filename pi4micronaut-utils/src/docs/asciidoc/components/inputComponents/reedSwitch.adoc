@@ -90,7 +90,7 @@ digital-input:
     address: 17
     pull: PULL_UP
     debounce: 200
-    provider: pigpio-digital-input
+    provider: ffm-digital-input
 ----
 
 The YAML configuration for the first LED:
@@ -103,7 +103,7 @@ digital-output:
     address: 22
     shutdown: LOW
     initial: HIGH
-    provider: pigpio-digital-output
+    provider: ffm-digital-output
 ----
 
 The YAML configuration for the second LED:
@@ -116,7 +116,7 @@ digital-output:
     address: 27
     shutdown: HIGH
     initial: HIGH
-    provider: pigpio-digital-output
+    provider: ffm-digital-output
 ----
 
 

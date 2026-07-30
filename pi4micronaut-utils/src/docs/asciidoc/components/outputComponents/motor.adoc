@@ -99,7 +99,7 @@ pwm:
     name: Motor
     address: 22
     pwmType: SOFTWARE
-    provider: pigpio-pwm
+    provider: ffm-pwm
     initial: 0
     shutdown: 0
 digital-output:
@@ -108,13 +108,13 @@ digital-output:
     address: 17
     shutdown: HIGH
     initial: HIGH
-    provider: pigpio-digital-output
+    provider: ffm-digital-output
   motor-pin-2:
     name: Motor Pin 2
     address: 27
     shutdown: LOW
     initial: LOW
-    provider: pigpio-digital-output
+    provider: ffm-digital-output
 ----
 
 ===== Constructor and Methods
