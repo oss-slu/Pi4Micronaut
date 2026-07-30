@@ -36,8 +36,8 @@ java {
 
 tasks.named('test') {
     useJUnitPlatform()
-    // The only test (ComponentsTest) boots an embedded app that needs Pi hardware, so it is disabled.
-    // Gradle 9 fails a test task that discovers no tests unless this is turned off.
+    // The only test class (ComponentsTest) has its @Test annotation commented out, so no tests are
+    // discovered. Gradle 9 fails a test task that discovers no tests unless this is turned off.
     failOnNoDiscoveredTests = false
 }
 
